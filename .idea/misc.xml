@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/blood_drop.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/diabetes_button_rounded_corners.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/edittext_style.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/gradient_text_view_style.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/gradient_text_view_style_b.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/gray_textview_style.xml" value="0.22135416666666666" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/green_textview_style_1.xml" value="0.22135416666666666" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_blood_drop.xml" value="0.2015625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_bloodtype_black_48dp.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_favorite_border_black_48dp.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_favorite_white_48dp.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_hand_white_icon.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_heart.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_hearth_white_icon.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_icons8_hypertension_100.xml" value="0.215625" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_settings_icon.xml" value="0.22135416666666666" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/relativelayout_style.xml" value="0.22135416666666666" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/drawable/textview_style.xml" value="0.14166666666666666" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_check.xml" value="0.33" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.33" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_login.xml" value="0.22" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/ANDROID/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_result.xml" value="0.22" />
+        <entry key="..\:/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/activity_main.xml" value="0.10592105263157894" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/cvdtest_relative_layout_style.xml" value="0.16306306306306306" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/main_options_menu.xml" value="0.3310810810810811" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/activity_main.xml" value="0.21557971014492755" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_check.xml" value="0.22657657657657657" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.22657657657657657" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_login.xml" value="0.23641304347826086" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_register.xml" value="0.19062640829202343" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_result.xml" value="0.22" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_result_alt.xml" value="0.20675675675675675" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/menu/main_menu.xml" value="0.3171171171171171" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/menu/main_otpions_menu.xml" value="0.3171171171171171" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/drawable/cvd_test_relative_layout.xml" value="0.13828125" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/drawable/imagebutton_style.xml" value="0.13828125" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/drawable/term_of_user_rel_layout.xml" value="0.13828125" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/drawable/terms_of_use_texttitle.xml" value="0.13828125" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/activity_main.xml" value="0.2063063063063063" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/cvd_title_form.xml" value="0.25" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_check.xml" value="0.25" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.15" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_login.xml" value="0.21" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_register.xml" value="0.21" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_result.xml" value="0.16905737704918034" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_result_alt.xml" value="0.10625" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/popup_menu.xml" value="0.17" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/blood_drop.xml" value="0.215625" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/cvd_button_rounded_corners.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/cvd_result_textview_style.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/cvd_test_relative_layout.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/cvdtest_relative_layout_style.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/diabetes_button_rounded_corners.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/diabetes_relativelayout_style.xml" value="0.18828828828828828" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/diabetes_result_textview_style.xml" value="0.18828828828828828" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/drawable_test_style.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/edittext_style.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/green_diabetes_form_title_style.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/green_diabetes_title_textview.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/green_textview_style_1.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/green_textview_style_2.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/green_textview_style_3.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/green_textview_style_4.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/green_textview_style_5.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/ic_favorite_border_black_48dp.xml" value="0.215625" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/ic_favorite_white_24dp.xml" value="0.215625" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/ic_favorite_white_48dp.xml" value="0.215625" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/ic_kindey.xml" value="0.215625" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/ic_nose.xml" value="0.215625" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/ic_terms.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/orange_cvd_title_textview.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/orange_textview2_.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/orange_textview_1.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/orange_textview_10.xml" value="0.20045045045045046" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/orange_textview_3.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/orange_textview_4.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/orange_textview_5.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/result_bar_view_style.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/textview_style.xml" value="0.17612612612612613" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/white_middle_rellayout_style.xml" value="0.20045045045045046" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/white_textview_style.xml" value="0.20045045045045046" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/white_top_rellayout_style.xml" value="0.20045045045045046" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/wining_rellayout_style.xml" value="0.20045045045045046" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/winning_top_rellayout_style.xml" value="0.20045045045045046" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/drawable/winning_top_rellayout_theme.xml" value="0.20045045045045046" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/layout/fragment_check.xml" value="0.22" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.33" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/layout/fragment_login.xml" value="0.23777173913043478" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/layout/fragment_register.xml" value="0.25679347826086957" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/layout/fragment_result.xml" value="0.25" />
+        <entry key="..\:/Users/User/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/layout/fragment_result_alt.xml" value="0.33" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/button_rounded_corners.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/edittext_style.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/gradient_text_view_style.xml" value="0.21574074074074073" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/gradient_text_view_style_b.xml" value="0.21574074074074073" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_baseline_128_home.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_baseline_home_64.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_check_svg.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_check_svg_128.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_diabetes.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_heart.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_login_128_svg.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_login_svg.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_person_icon_svg_1.xml" value="0.20729166666666668" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_register_128_svg.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/ic_register_svg.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/relativelayout_style.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/drawable/textview_style.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/layout/fragment_blank.xml" value="0.2006340579710145" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/layout/fragment_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/layout/fragment_logout.xml" value="0.33" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/layout/fragment_register.xml" value="0.33" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/layout/fragment_result.xml" value="0.25" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/layout/fragment_test.xml" value="0.21" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24114583333333334" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/menu/main_menu.xml" value="0.2703125" />
+        <entry key="..\:/Users/user4/AndroidStudioProjects/CVDRiskEstimator/app/src/main/res/menu/nav_drawer_menu.xml" value="0.35555555555555557" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/gradient_text_view_style_b.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_check_svg.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_check_svg_128.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_login_128_svg.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_login_svg.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_notes_medical_solid.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_notes_medical_solid_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_registration_icon.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_registration_icon_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_sign_in.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_sign_in__24.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/ic_sign_in_alt_solid.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/drawable/relativelayout_style.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/layout/fragment_check.xml" value="0.25" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/layout/fragment_register.xml" value="0.23777173913043478" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/layout/fragment_test.xml" value="0.23007246376811594" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-0/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/button_rounded_corners.xml" value="0.2265625" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/covariance_logo.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/cvd_button_rounded_corners.xml" value="0.2265625" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/diabetes_button_rounded_corners.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/edittext_style.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/gradient_text_view_style.xml" value="0.2265625" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/gradient_text_view_style_b.xml" value="0.2265625" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/green_diabetes_title_textview.xml" value="0.203125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/green_textview_style_1.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/green_textview_style_2.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/green_textview_style_3.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/green_textview_style_4.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/green_textview_style_5.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/green_textview_style_6.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/green_textview_style_7.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/green_textview_style_8.xml" value="0.3828125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_baseline_128_home.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_bloodtype_black_48dp.xml" value="0.203125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_check_svg.xml" value="0.178125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_check_svg_128.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_cvd_new_vector.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_cvd_vector.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_diabetes.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_diabetes_vector.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_favorite_border_black_48dp.xml" value="0.203125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_hand_white_icon.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_heart.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_hearth_white_icon.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_login_128_svg.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_login_svg.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_notes_medical_solid_24.xml" value="0.2265625" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_person_icon_svg_1.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_person_icon_svg_2.xml" value="0.178125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_person_icon_svg_3.xml" value="0.178125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_person_icon_svg_4.xml" value="0.178125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_person_icon_svg_5.xml" value="0.178125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_person_icon_svg_6.xml" value="0.178125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_register_128_svg.xml" value="0.178125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_register_svg.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_registration_icon_24.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_sign_in__24.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_cvd_title_textview.xml" value="0.203125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_textview2_.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_textview_1.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_textview_10.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_textview_3.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_textview_4.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_textview_5.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_textview_6.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_textview_7.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/radiobutton_style.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/relativelayout_style.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/test_imageview_style.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/textview_style.xml" value="0.178125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/drawable/usericon_animation_list.xml" value="0.178125" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_blank.xml" value="0.26222826086956524" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_result.xml" value="0.2" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.21041666666666667" />
+        <entry key="..\:/Users/user4/Documents/CVDRiskEstimator app/Medical Test Estimator v1-2/app/src/main/res/menu/main_menu.xml" value="0.21041666666666667" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/blood_drop.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/blood_drop_24dp.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/cvd_button_rounded_corners.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/cvd_result_textview_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/cvd_test_relative_layout.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/cvdtest_relative_layout_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/diabetes_button_rounded_corners.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/diabetes_relativelayout_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/diabetes_result_textview_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/edittext_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/gradient_text_view_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/gradient_text_view_style_b.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/gray_result_title_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/gray_results_title_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/green_diabetes_form_title_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/green_diabetes_title_textview.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/green_textview_style_1.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/green_textview_style_2.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/green_textview_style_3.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/green_textview_style_4.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/green_textview_style_5.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_baseline_128_home.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_bloodtype_black_48dp.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_check_svg.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_check_svg_128.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_cvd_new_vector.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_cvd_vector.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_diabetes.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_diabetes_vector.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_favorite_border_black_48dp.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_favorite_white_24dp.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_favorite_white_48dp.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_hand_white_icon.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_heart.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_hearth_white_icon.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_icons8_hypertension_100.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_kindey.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_login_128_svg.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_login_svg.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_nose.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_notes_medical_solid.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_notes_medical_solid_24.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_person_icon_svg_1.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_person_icon_svg_3.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_person_icon_svg_5.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_person_icon_svg_6.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_person_outline_white_24dp.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_register_128_svg.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_register_svg.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_registration_icon.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_registration_icon_24.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_settings_icon.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_sign_in.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_sign_in__24.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/ic_user_icon_24.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/orange_cvd_title_textview.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/orange_textview2_.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/orange_textview_1.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/orange_textview_10.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/orange_textview_3.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/orange_textview_4.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/orange_textview_5.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/orange_textview_6.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/orange_textview_7.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/radiobutton_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/relativelayout_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/test_imageview_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/drawable/textview_style.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up - versioning/app/src/main/res/layout/activity_main.xml" value="0.1585144927536232" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up/app/src/main/res/layout/fragment_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up/app/src/main/res/layout/fragment_register.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - LiveData - Code Clean Up/app/src/main/res/layout/fragment_result.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/cvd_button_rounded_corners.xml" value="0.32666666666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/cvd_result_textview_style.xml" value="0.18423423423423424" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/cvd_test_relative_layout.xml" value="0.32666666666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/cvdtest_relative_layout_style.xml" value="0.18423423423423424" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/diabetes_relativelayout_style.xml" value="0.32666666666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/diabetes_result_textview_style.xml" value="0.18423423423423424" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/green_diabetes_form_title_style.xml" value="0.18423423423423424" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/green_diabetes_title_textview.xml" value="0.18423423423423424" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/orange_cvd_title_textview.xml" value="0.18423423423423424" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/relativelayout_style.xml" value="0.18423423423423424" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/drawable/textview_style.xml" value="0.18423423423423424" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/layout/activity_main.xml" value="0.21" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/layout/fragment_blank.xml" value="0.17027027027027028" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/layout/fragment_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/layout/fragment_login.xml" value="0.12477477477477478" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/layout/fragment_register.xml" value="0.17027027027027028" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2 - before LiveData/app/src/main/res/layout/fragment_result.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/blood_drop.xml" value="0.3356164383561644" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/blood_drop_24dp.xml" value="0.25" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/cvd_button_rounded_corners.xml" value="0.18055555555555555" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/cvd_test_relative_layout.xml" value="0.15360360360360362" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/cvdtest_relative_layout_style.xml" value="0.15360360360360362" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/diabetes_button_rounded_corners.xml" value="0.18055555555555555" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/diabetes_relativelayout_style.xml" value="0.15360360360360362" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/diabetes_result_textview_style.xml" value="0.15360360360360362" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/gray_result_title_style.xml" value="0.32666666666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/gray_results_title_style.xml" value="0.18055555555555555" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/gray_textview_style.xml" value="0.32666666666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/green_diabetes_form_title_style.xml" value="0.18055555555555555" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/green_diabetes_title_textview.xml" value="0.20972222222222223" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_check_svg.xml" value="0.3356164383561644" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_favorite_white_24dp.xml" value="0.32666666666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_favorite_white_48dp.xml" value="0.3356164383561644" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_hand_white_icon.xml" value="0.3356164383561644" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_hearth_white_icon.xml" value="0.3356164383561644" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_kindey.xml" value="0.3356164383561644" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_lungs.xml" value="0.3356164383561644" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_nose.xml" value="0.3356164383561644" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_registration_icon_24.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_sign_in.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_sign_in__24.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_user_icon.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_user_icon_24.xml" value="0.3356164383561644" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/ic_user_icon_256_535406120__2_.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_cvd_title_textview.xml" value="0.18055555555555555" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/orange_textview_4.xml" value="0.20972222222222223" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/relativelayout_style.xml" value="0.15360360360360362" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/result_textview_style.xml" value="0.15360360360360362" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/drawable/textview_style.xml" value="0.32666666666666666" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_blank.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_login.xml" value="0.5" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_register.xml" value="0.67" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-2/app/src/main/res/layout/fragment_result.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - MDI Test/app/src/main/res/layout/fragment_check.xml" value="0.13465952563121653" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - MDI Test/app/src/main/res/layout/fragment_m_d_i_check.xml" value="0.2063063063063063" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/drawable/imagebutton_style.xml" value="0.2015625" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/cvd_title_form.xml" value="0.16" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_check.xml" value="0.16" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.1256578947368421" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_m_d_i.xml" value="0.19467213114754098" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_m_d_i_check.xml" value="0.19467213114754098" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_register.xml" value="0.11118421052631579" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_result.xml" value="0.21" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_result_alt.xml" value="0.21" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/fragment_test.xml" value="0.11118421052631579" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review - include files/app/src/main/res/layout/popup_menu.xml" value="0.19467213114754098" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/layout/fragment_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Estimator v1-3 -  After peer review/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/blood_drop.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/blood_drop_24dp.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/cvd_button_rounded_corners.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/cvd_result_textview_style.xml" value="0.18603603603603602" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/cvd_test_relative_layout.xml" value="0.18603603603603602" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/ic_favorite_border_black_48dp.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/ic_favorite_white_24dp.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/ic_favorite_white_48dp.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/ic_lungs_solid.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/login_register_textview_style.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/relativelayout_style.xml" value="0.23873873873873874" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/result_bar_view_style.xml" value="0.18603603603603602" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/term_of_user_rel_layout.xml" value="0.23873873873873874" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/terms_of_use_textitle_style.xml" value="0.18603603603603602" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/terms_of_use_texttitle.xml" value="0.18603603603603602" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/terms_of_use_textview.xml" value="0.18603603603603602" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/test_imageview_style.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/textview_style.xml" value="0.18603603603603602" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/drawable/white_middle_rellayout_style.xml" value="0.23873873873873874" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/cvd_title_form.xml" value="0.14" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_blank.xml" value="0.22477477477477478" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_check.xml" value="0.2" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_register.xml" value="0.2063063063063063" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_result.xml" value="0.33" />
+        <entry key="..\:/Users/user4/Documents/Medical Test Etsimator - new versions/Medical Test Estimator v1-3 -  After peer review - Adding Options Menu/app/src/main/res/layout/fragment_result_alt.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2063063063063063" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

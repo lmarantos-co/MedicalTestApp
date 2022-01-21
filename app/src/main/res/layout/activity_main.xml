@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainActiConLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/MidnightBlue">
+
+
+    <include
+        android:id="@+id/include_cvd_title_form"
+        layout="@layout/cvd_title_form"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/horGL1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:visibility="visible">
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+
+    <!--    covariance title form-->
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VG5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Naby"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.22"
+         />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
+
+    <ImageView
+        android:id="@+id/cvdTestImgV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:alpha="1"
+        android:background="@color/trans"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/VGL4"
+        app:layout_constraintStart_toStartOf="@+id/VGL1"
+        app:layout_constraintTop_toTopOf="@+id/horGL2"
+        app:srcCompat="@drawable/ic_favorite_white_48dp" />
+
+    <TextView
+        android:id="@+id/cvdTestTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="CVD Test"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/VGL4"
+        app:layout_constraintStart_toStartOf="@+id/VGL1"
+        app:layout_constraintTop_toBottomOf="@+id/cvdTestImgV" />
+
+    <ImageView
+        android:id="@+id/diabetesTestImgV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@color/trans"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/VGL2"
+        app:layout_constraintStart_toStartOf="@+id/VGL4"
+        app:layout_constraintTop_toTopOf="@+id/horGL2"
+        app:srcCompat="@drawable/blood_drop" />
+
+    <TextView
+        android:id="@+id/diabetesTestTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Diabetes Test"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/VGL2"
+        app:layout_constraintStart_toStartOf="@+id/VGL4"
+        app:layout_constraintTop_toBottomOf="@+id/diabetesTestImgV" />
+
+    <ImageView
+        android:id="@+id/kidneyImgV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:alpha="1"
+        android:background="@color/trans"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/VGL4"
+        app:layout_constraintStart_toStartOf="@+id/VGL1"
+        app:layout_constraintTop_toTopOf="@+id/barHG4"
+        app:srcCompat="@drawable/ic_kindey" />
+
+
+    <TextView
+        android:id="@+id/kidneysTestTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Kidneys Temp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/VGL4"
+        app:layout_constraintStart_toStartOf="@+id/VGL1"
+        app:layout_constraintTop_toBottomOf="@+id/kidneyImgV" />
+
+
+    <ImageView
+        android:id="@+id/lungsImgV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:alpha="1"
+        android:background="@color/trans"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/VGL2"
+        app:layout_constraintStart_toStartOf="@+id/VGL4"
+        app:layout_constraintTop_toTopOf="@+id/barHG4"
+        app:srcCompat="@drawable/ic_lungs_solid" />
+
+    <TextView
+        android:id="@+id/lungsTestTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Lungs Temp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/VGL2"
+        app:layout_constraintStart_toStartOf="@+id/VGL4"
+        app:layout_constraintTop_toBottomOf="@+id/lungsImgV" />
+
+    <include
+        android:id="@+id/include_popup_menu"
+        layout="@layout/popup_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/menuLeftGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VGL4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VG6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/barHG4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/registerTxtV"-->
+    <!--        style="@style/MainTextViewStyle"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:background="@color/third_dark_accent"-->
+    <!--        android:drawableLeft="@drawable/ic_register_128_svg"-->
+    <!--        android:gravity="center"-->
+    <!--        android:paddingLeft="10dp"-->
+    <!--        android:text="REGISTER"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="24sp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:visibility="gone"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/horGL3"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/horGL2" />-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/loginTxtV"-->
+    <!--        style="@style/MainTextViewStyle"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:background="@color/fourth_dark_accent"-->
+    <!--        android:drawableLeft="@drawable/ic_login_128_svg"-->
+    <!--        android:gravity="center"-->
+    <!--        android:paddingLeft="10dp"-->
+    <!--        android:text="LOGIN"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="24sp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:visibility="gone"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/horGL4"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/horGL3" />-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+        android:id="@+id/appBottomnavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horGL5"
+        app:menu="@menu/bottom_nav_menu">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

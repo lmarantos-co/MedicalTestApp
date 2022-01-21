@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="checkPatientViewModel"
+            type="com.example.cvdriskestimator.viewModels.CheckPatientViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/formConLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MidnightBlue">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+
+        <!--    covariance title form-->
+
+        <include
+            android:id="@+id/include_cvd_title_form"
+            layout="@layout/cvd_title_form"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/horGL1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        application menu panel-->
+
+
+        <include
+            android:id="@+id/include_pop_up_menu"
+            layout="@layout/popup_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VG5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <RelativeLayout
+            android:id="@+id/CvdTestTitleRelLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
+
+            <TextView
+                android:id="@+id/CVDTestTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/orange_cvd_title_textview"
+                android:drawableLeft="@drawable/ic_favorite_white_24dp"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:singleLine="false"
+                android:text="CVD Test"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fadeScrollbars="false"
+            android:fillViewport="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toBottomOf="@id/horGL1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/checkLinLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:context=".MainActivity">
+
+                <View
+                    android:id="@+id/pillowVIew"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+
+                <TextView
+                    android:id="@+id/formTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Please enter the required patient data:"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RelativeLayout
+                    android:id="@+id/ageRelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:backgroundTintMode="add"
+                    android:elevation="2dp"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:id="@+id/agelinLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/ageTxtV"
+                            style="@style/CVDTestTextViewStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="false"
+                            android:layout_alignParentLeft="false"
+                            android:layout_centerInParent="false"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="false"
+                            android:background="@drawable/orange_textview_4"
+                            android:gravity="center"
+                            android:minHeight="48dp"
+                            android:text="Current Age :"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:id="@+id/imgVInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@id/ageTxtV"
+                            android:layout_alignParentLeft="false"
+                            android:layout_alignParentEnd="false"
+                            android:layout_alignParentRight="false"
+                            android:layout_centerInParent="false"
+                            android:layout_centerHorizontal="true"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/ageEdTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/agelinLayout"
+                        android:layout_centerInParent="true"
+                        android:clickable="true"
+                        android:contentDescription="Enter Your Age"
+                        android:contextClickable="true"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:minHeight="48dp"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/ageLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ageEdTxt"
+                        android:layout_centerInParent="true"
+                        android:elevation="2dp"
+                        android:text="Age must be between 20-79 "
+                        android:textSize="13sp"
+                        android:textStyle="italic" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/sexRellayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/sexTxtView"
+                        style="@style/CVDTestTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/orange_textview_4"
+                        android:gravity="center"
+                        android:minHeight="48dp"
+                        android:text="Sex"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/sexRG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/sexTxtView">
+
+                        <RadioButton
+                            android:id="@+id/maleRB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/sexTxtView"
+                            android:layout_gravity="center"
+                            android:background="@drawable/radiobutton_style"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:minHeight="48dp"
+                            android:paddingRight="20dp"
+                            android:text="MALE"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/femaleRB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/maleRB"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:text="FEMALE"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/raceRelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/RaceTxtView3"
+                        style="@style/CVDTestTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/orange_textview_4"
+                        android:gravity="center"
+                        android:minHeight="48dp"
+                        android:text="Race"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/raceRG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/RaceTxtView3">
+
+                        <RadioButton
+                            android:id="@+id/raceRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="false"
+                            android:layout_gravity="center"
+                            android:background="@drawable/radiobutton_style"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:paddingRight="105dp"
+                            android:text="White"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/raceRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/raceRB1"
+                            android:layout_centerInParent="false"
+                            android:layout_gravity="center"
+                            android:background="@drawable/radiobutton_style"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:text="African American"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/raceRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/raceRB2"
+                            android:layout_centerInParent="false"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:paddingRight="105dp"
+                            android:text="Other"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/sbbRelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/sbbTxtBx"
+                        style="@style/CVDTestTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/orange_textview_4"
+                        android:gravity="center"
+                        android:minHeight="48dp"
+                        android:text="Systolic Blood Pressure (mm Hg)"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <EditText
+                        android:id="@+id/sbbEdTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/sbbTxtBx"
+                        android:layout_centerInParent="true"
+                        android:clickable="true"
+                        android:contentDescription="Enter Your Systolic Blood Presure"
+                        android:editable="true"
+                        android:ems="10"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:minHeight="48dp"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toBottomOf="@+id/sbbTxtBx" />
+
+                    <TextView
+                        android:id="@+id/sbpLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/sbbEdTxt"
+                        android:layout_centerInParent="true"
+                        android:text="Value must be between 90-200 "
+                        android:textSize="13sp"
+                        android:textStyle="italic"
+                        app:layout_constraintTop_toBottomOf="@+id/sbbEdTxt" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tchRelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tchTxtBx"
+                        style="@style/CVDTestTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/orange_textview_4"
+                        android:gravity="center"
+                        android:minHeight="48dp"
+                        android:text="Total Cholesterol (mg /Dl)"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/tchEdTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tchTxtBx"
+                        android:layout_centerInParent="true"
+                        android:clickable="true"
+                        android:contentDescription="Enter Your Total Cholesterol"
+                        android:editable="true"
+                        android:ems="10"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:minHeight="48dp"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toBottomOf="@+id/tchTxtBx" />
+
+                    <TextView
+                        android:id="@+id/tchLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tchEdTxt"
+                        android:layout_centerInParent="true"
+                        android:text="Value must be between 130 - 320 "
+                        android:textSize="13sp"
+                        android:textStyle="italic"
+                        app:layout_constraintTop_toBottomOf="@+id/tchEdTxt" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/hchRelLayout"
+                    style="@style/CVDTestTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/hchTxtBx"
+                        style="@style/CVDTestTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/orange_textview_4"
+                        android:gravity="center"
+                        android:minHeight="48dp"
+                        android:text="HDL Cholesterol (mg /Dl)"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/hchEdTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/hchTxtBx"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="5dp"
+                        android:clickable="true"
+                        android:contentDescription="Enter your HDL Cholesterol"
+                        android:editable="true"
+                        android:ems="10"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:minHeight="48dp"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/hdlLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/hchEdTxt"
+                        android:layout_centerInParent="true"
+                        android:text="Value must be between 20 - 100 "
+                        android:textSize="13sp"
+                        android:textStyle="italic"
+                        app:layout_constraintTop_toBottomOf="@+id/hchEdTxt" />
+
+
+                </RelativeLayout>
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horGL0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.05" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/firstHorGDL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.15" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/secondHorGDL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.3" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/thirdHorGDL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.4" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/fourthHorGL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.52" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/fifthHorGDL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.67" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/sixthHorGL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.83" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/seventhGL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="1" />
+
+
+                <RelativeLayout
+                    android:id="@+id/smokeRelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/relativelayout_style"
+                    app:layout_constraintTop_toTopOf="@+id/fifthHorGDL">
+
+                    <LinearLayout
+                        android:id="@+id/smokeLinLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="false"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/smkTxtV"
+                            style="@style/CVDTestTextViewStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="false"
+                            android:layout_alignParentLeft="false"
+                            android:layout_centerInParent="false"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="false"
+                            android:background="@drawable/orange_textview_4"
+                            android:gravity="center"
+                            android:minHeight="48dp"
+                            android:text="Smoker?"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:id="@+id/imgVInfo2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="false"
+                            android:layout_alignParentRight="false"
+                            android:layout_centerHorizontal="false"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+                    </LinearLayout>
+
+                    <RadioGroup
+                        android:id="@+id/SmokeRGr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/smokeLinLayout"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp">
+
+                        <RadioButton
+                            android:id="@+id/smokeRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/radiobutton_style"
+                            android:paddingRight="2dp"
+                            android:text="Current"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/smokeRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/radiobutton_style"
+                            android:paddingRight="3dp"
+                            android:text="Former"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/smokeRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingRight="15dp"
+                            android:text="Never"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verGL0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.05" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/vertGL1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.7" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verGL4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.95" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/vertGL3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/vertGL2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.3" />
+
+                <RelativeLayout
+                    android:id="@+id/treatrelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/treatTxtV"
+                        style="@style/CVDTestTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/orange_textview_4"
+                        android:gravity="center"
+                        android:minHeight="48dp"
+                        android:text="@string/treatment"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/TreatRadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/treatTxtV"
+                        android:layout_centerInParent="true"
+                        app:layout_constraintTop_toBottomOf="@+id/treatTxtV">
+
+                        <RadioButton
+                            android:id="@+id/treatRButton1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/radiobutton_style"
+                            android:clickable="true"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:paddingRight="35dp"
+                            android:text="on treatment"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/treatRadioButton2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:text="not on treatment"
+                            android:textSize="20sp"
+                            tools:layout_editor_absoluteX="35dp"
+                            tools:layout_editor_absoluteY="1234dp" />
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submitBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="false"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/cvd_button_rounded_corners"
+                    android:padding="20dp"
+                    android:text="CALCULATE"
+                    android:textSize="20sp"
+                    android:visibility="visible"
+                    tools:ignore="TextContrastCheck" />
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:visibility="gone"
+            app:itemBackground="@color/black"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

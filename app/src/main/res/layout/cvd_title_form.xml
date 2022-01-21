@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--    covariance title form-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MTEConLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/cvdTitleForm"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        app:layout_constraintBottom_toTopOf="@id/horGL1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </RelativeLayout>
+
+    <!--    covariance title form-->
+
+    <ImageView
+        android:id="@+id/covariance_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/covariance_logo"
+        app:layout_constraintBottom_toTopOf="@id/cvdtitleHorGL2"
+        app:layout_constraintLeft_toRightOf="@id/cvdtitleVGL5"
+        app:layout_constraintRight_toLeftOf="@id/cvdtitleVGL7"
+        app:layout_constraintTop_toBottomOf="@id/cvdtitleHorGL1" />
+
+
+    <TextView
+        android:id="@+id/cvdTitleTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/trans"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/cvd_title"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/cvdtitleHorGL4"
+        app:layout_constraintLeft_toRightOf="@id/VG5"
+        app:layout_constraintRight_toLeftOf="@id/cvdTitleVG2" />
+
+
+    <TextView
+        android:id="@+id/signature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/company_signature"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintRight_toLeftOf="@id/cvdTitleVG2"
+        app:layout_constraintTop_toBottomOf="@id/cvdTitleTxtV" />
+
+
+    <ImageView
+        android:id="@+id/userIcon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@drawable/settings"
+        app:layout_constraintBottom_toTopOf="@id/cvdtitleHorGL2User"
+        app:layout_constraintLeft_toRightOf="@id/cvdtitleVGL8"
+        app:layout_constraintRight_toLeftOf="@id/cvdtitleVGL6"
+        app:layout_constraintTop_toBottomOf="@id/cvdtitleHorGL1User" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VG5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Naby"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdtitleHorGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.357" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdtitleHorGL1User"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2856" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdtitleVGL5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdtitleVGL7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdtitleVGL6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.97" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdtitleVGL8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.87" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdTitleVG2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdtitleHorGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6426" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdtitleHorGL2User"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.714" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdtitleHorGL3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cvdtitleHorGL4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,0 +1,53 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.CVDRiskEstimator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MainTextViewStyle" parent="TextAppearance.AppCompat" >
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CVDTestTextViewStyle" parent="TextAppearance.AppCompat" >
+        <item name="background">@drawable/gradient_text_view_style_b</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="DiabetesTextViewStyle" parent="TextAppearance.AppCompat" >
+        <item name="background">@drawable/gradient_text_view_style</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="CustomPopupTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <!-- if using android.widget.PopupMenu -->
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+        <!-- if using android.support.v7.widget.PopupMenu -->
+        <item name="popupMenuStyle">@style/PopupMenu</item>
+    </style>
+
+    <style name="PopupMenu" parent="Widget.AppCompat.PopupMenu">
+<!--        <item name="android:popupBackground">@color/DarkBlue</item>-->
+        <item name="android:itemBackground">@color/Naby</item>
+        <item name="android:itemPadding">30dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+</resources>
