@@ -41,4 +41,25 @@
     <string name="terms_of_use_1">Τα δεδομένα σας δεν αποστέλονται πουθενά. Η εφαρμογή δεν έχει διασύνδεση και δεν χρησιμοποιεί internet.</string>
     <string name="terms_of_use_2"> Η εφαρμογή αυτή δεν αντικαθιστά την γνωμάτευση του γιατρού.</string>
     <string name="terms_of_use_3">Ανατρέξτε στους όρους, ξανά, από το menu.</string>
+    <string name="MDIQ1">Have you felt low in spirits or sad?</string>
+    <string name="MDIQ2">Have you lost interest in your daily activities?</string>
+    <string name="MDIQ3">Have you felt lacking in energy and strength?</string>
+    <string name="MDIQ4">Have you felt less self-confident?</string>
+    <string name="MDIQ5">Have you had a bad conscience or feelings of guilt?</string>
+    <string name="MDIQ6">Have you felt that life wasn’t worth living?</string>
+    <string name="MDIQ7">Have you had difficulty in concentrating?</string>
+    <string name="MDIQ8">Have you felt very restless?</string>
+    <string name="MDIQ9">Have you felt subdued or slowed down?</string>
+    <string name="MDIQ10">Have you been sleeping too little?</string>
+    <string name="MDIQ11">Have you had trouble sleeping at night?</string>
+    <string name="MDIQ12">Have you suffered from reduced appetite?</string>
+    <string name="MDIQ13">Have you suffered from increased appetite?</string>
+    <string name="MDIA1">All The Time</string>
+    <string name="MDIA2">Most Of The Time</string>
+    <string name="MDIA3">Slightly More Than Half The Time</string>
+    <string name="MDIA4">Slightly Less Than Half The Time</string>
+    <string name="MDIA5">Some Of The Time</string>
+    <string name="MDIA6">At No Time</string>
+    <string name="mdi_test_score">Your total score : </string>
+    <string name="mdi_test_depression">The severity of depression : </string>
 </resources>

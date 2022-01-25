@@ -18,15 +18,11 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.example.cvdriskestimator.Fragments.CheckFragment
-import com.example.cvdriskestimator.Fragments.DiabetesCheckFragment
-import com.example.cvdriskestimator.Fragments.LoginFragment
-import com.example.cvdriskestimator.Fragments.RegisterFragment
+import com.example.cvdriskestimator.Fragments.*
 import com.example.cvdriskestimator.RealmDB.RealmDB
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import java.lang.reflect.Method
-import javax.microedition.khronos.opengles.GL
 
 
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -37,6 +33,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var registerFragment: RegisterFragment
     private lateinit var checkFragment: CheckFragment
     private lateinit var checkDiabetesFragment : DiabetesCheckFragment
+    private lateinit var mdiCheckFragment: MDICheckFragment
     private lateinit var popupMenu: PopupMenu
     private lateinit var MTETitleForm : RelativeLayout
     private  var mteTitleFormHeight : Int = 0
@@ -97,12 +94,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         noseTestTitle = findViewById(R.id.lungsTestTxtView)
 
 
-
-        loginFragment = LoginFragment.newInstance()
-        registerFragment = RegisterFragment.newInstance()
-        checkFragment = CheckFragment.newInstance()
-        checkDiabetesFragment = DiabetesCheckFragment.newInstance()
-
         initPrefs()
 
         initUI()
@@ -133,7 +124,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             showMedicalTests()
         }
 
-
+        loginFragment = LoginFragment.newInstance()
+        registerFragment = RegisterFragment.newInstance()
+        checkFragment = CheckFragment.newInstance()
+        checkDiabetesFragment = DiabetesCheckFragment.newInstance()
+        mdiCheckFragment = MDICheckFragment.newInstance()
 
         setFragmentContainerConstraint(2)
 
@@ -214,6 +209,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction(checkDiabetesFragment)
         }
 
+        kidneyIcon.setOnClickListener {
+            hideLayoutElements()
+            playSelectTestAudio(4)
+            fragmentTransaction(mdiCheckFragment)
+        }
+
         showMedicalTests()
 
     }
@@ -251,6 +252,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
             3 -> {
                 val mediaPlayer: MediaPlayer = MediaPlayer.create(applicationContext, R.raw.test_for_diabetes)
+                mediaPlayer.start() // no need to call prepare(); create() does that for you
+            }
+            4 -> {
+                val mediaPlayer: MediaPlayer = MediaPlayer.create(applicationContext, R.raw.mdi_test_index)
                 mediaPlayer.start() // no need to call prepare(); create() does that for you
             }
         }
@@ -432,12 +437,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         return super.onOptionsItemSelected(item)
     }
 
-    fun passFragmentInstance(fragment : Fragment) {
-        if (fragment is RegisterFragment)
-            registerFragment = fragment
-        if (fragment is LoginFragment)
-            loginFragment = fragment
-    }
 
     private fun hideFragmentVisibility()
     {
@@ -456,6 +455,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is CheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is DiabetesCheckFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is MDICheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is LoginFragment)
             fragmentTransaction.show(loginFragment)
