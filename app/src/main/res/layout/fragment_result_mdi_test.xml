@@ -3,7 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/results_con_layout_mdi_test"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/MidnightBlue">
+
+    <!--    covariance title form-->
+
+    <include
+        android:id="@+id/include_cvd_title_form"
+        layout="@layout/cvd_title_form"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/horGL1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include_pop_up_menu"
+        layout="@layout/popup_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/titleVGL1"
@@ -13,18 +40,53 @@
         app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultProgressBarHGLT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/titleVGL1"
+        app:layout_constraintTop_toBottomOf="@id/resultProgressBarHGLT"
+        android:id="@+id/MDItestProgressBarRelLayout"/>
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultBarHGLTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultBarHGLBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.32" />
+        app:layout_constraintGuide_percent="0.47" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id='@+id/resultBarNoDepressionVGL'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.41" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id='@+id/resultBarMildDepressionVGL'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.49" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarModerateDepressionVGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.58" />
 
     <RelativeLayout
         android:id='@+id/resultBar'
@@ -33,7 +95,50 @@
         app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
         app:layout_constraintLeft_toRightOf="@id/titleVGL1"
         app:layout_constraintRight_toLeftOf="@id/titleVGL2"
-        app:layout_constraintTop_toTopOf="@id/resultBarHGLTop"/>
+        app:layout_constraintTop_toTopOf="@id/resultBarHGLTop">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/resultBarNoDepRelLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
+        app:layout_constraintLeft_toRightOf="@id/titleVGL1"
+        app:layout_constraintRight_toLeftOf="@id/resultBarNoDepressionVGL"
+        app:layout_constraintTop_toTopOf="@id/resultBarHGLTop" />
+
+    <RelativeLayout
+        android:id="@+id/resultBarMildDepRelLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/green_5"
+        app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
+        app:layout_constraintLeft_toRightOf="@id/resultBarNoDepressionVGL"
+        app:layout_constraintRight_toLeftOf="@id/resultBarMildDepressionVGL"
+        app:layout_constraintTop_toTopOf="@id/resultBarHGLTop" />
+
+    <RelativeLayout
+        android:id="@+id/resultBarModerateDepRelLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/orange_5"
+        app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
+        app:layout_constraintLeft_toRightOf="@id/resultBarMildDepressionVGL"
+        app:layout_constraintRight_toLeftOf="@id/resultBarModerateDepressionVGL"
+        app:layout_constraintTop_toTopOf="@id/resultBarHGLTop" />
+
+    <RelativeLayout
+        android:id="@+id/resultBarSevereDepRelLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/dark_red"
+        app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
+        app:layout_constraintLeft_toRightOf="@id/resultBarModerateDepressionVGL"
+        app:layout_constraintRight_toLeftOf="@id/titleVGL2"
+        app:layout_constraintTop_toTopOf="@id/resultBarHGLTop" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/titleVGL2"
@@ -51,7 +156,7 @@
         android:gravity="center"
         app:layout_constraintLeft_toRightOf="@id/titleVGL1"
         app:layout_constraintRight_toLeftOf="@id/titleVGL2"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/include_cvd_title_form">
 
         <TextView
             android:id="@+id/totalScore"

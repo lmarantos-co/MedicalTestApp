@@ -3,7 +3,7 @@ package com.example.cvdriskestimator.MedicalTestAlgorithms
 class MDITestEstimator {
 
     fun calculateMDI(mdiq1 : Int, mdiq2 : Int, mdiq3 : Int,  mdiq4 : Int, mdiq5 : Int, mdiq6 : Int , mdiq7 : Int
-                     , mdiq8 : Int , mdiq9 : Int , mdiq10 : Int , mdiq11 : Int , mdiq12 : Int , mdiq13 : Int) : String
+                     , mdiq8 : Int , mdiq9 : Int , mdiq10 : Int , mdiq11 : Int , mdiq12 : Int , mdiq13 : Int) : Int
     {
         var resultSum : Int = 0
         var diagnosis : String = ""
@@ -26,7 +26,7 @@ class MDITestEstimator {
             diagnosis = "Severe depression" + resultSum
         }
 
-        return diagnosis
+        return resultSum
     }
 
     fun maxAB(a : Int, b : Int) : Int

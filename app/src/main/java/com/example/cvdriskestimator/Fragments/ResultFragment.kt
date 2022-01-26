@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
@@ -15,12 +16,15 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import android.widget.*
+import androidx.compose.ui.graphics.Color
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.palette.graphics.Palette
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.CustomClasses.customDerpesionProgressView
+import kotlinx.coroutines.delay
 import java.lang.reflect.Method
 
 
@@ -76,6 +80,22 @@ class ResultFragment : Fragment() {
     private lateinit var formConLayout : ConstraintLayout
     private lateinit var termsRelLayout : RelativeLayout
 
+    private lateinit var noDepressionLayout : RelativeLayout
+    private lateinit var mildDepressionLayout  : RelativeLayout
+    private lateinit var moderateDepressionLayout : RelativeLayout
+    private lateinit var servereDepressionLayout : RelativeLayout
+    private var noDepressionFormWidth : Int = 0
+    private var mildDepressionFormWidth : Int = 0
+    private var moderateDepressionFormWidth : Int = 0
+    private var severeDepressionFormWidth : Int = 0
+    private var depressionResultBarHeight : Int = 0
+    private lateinit var depressionProgressBar : RelativeLayout
+
+
+    //screen dimensions
+    var screenWidth : Int = 0
+    var screenHeight : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -91,6 +111,7 @@ class ResultFragment : Fragment() {
 //        actionBar!!.setDisplayHomeAsUpEnabled(true)
         // Inflate the layout for this fragment
         var view = View(mainActivity.applicationContext)
+        getScreenDimens()
         val test_type : Int = arguments!!.getInt(ARG_PARAM2)
         if (test_type == 1)
         {
@@ -152,6 +173,73 @@ class ResultFragment : Fragment() {
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
             termsRelLayout.visibility = View.INVISIBLE
             return view
+        }
+        if (test_type == 3)
+        {
+            view = inflater.inflate(R.layout.fragment_result_mdi_test , container, false)
+            formConLayout = view.findViewById(R.id.results_con_layout_mdi_test)
+            MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+            termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+            termsRelLayout.visibility = View.INVISIBLE
+            closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+            companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
+            depressionProgressBar = RelativeLayout(mainActivity.applicationContext)
+            depressionProgressBar = view.findViewById(R.id.MDItestProgressBarRelLayout)
+            noDepressionLayout = view.findViewById(R.id.resultBarNoDepRelLayout)
+            mildDepressionLayout = view.findViewById(R.id.resultBarMildDepRelLayout)
+            moderateDepressionLayout = view.findViewById(R.id.resultBarModerateDepRelLayout)
+            servereDepressionLayout = view.findViewById(R.id.resultBarSevereDepRelLayout)
+            //get the width of each depression bar when it is ready
+//            val viewNDTreeObserver : ViewTreeObserver = noDepressionLayout.viewTreeObserver
+//            if (viewNDTreeObserver.isAlive) {
+//                viewNDTreeObserver.addOnGlobalLayoutListener {
+//                    noDepressionFormWidth = noDepressionLayout.width
+//                    depressionResultBarHeight = noDepressionLayout.height
+//                    //run the resultBarFill method
+//                }
+//            }
+            noDepressionLayout.post {
+                noDepressionFormWidth = noDepressionLayout.width
+                depressionResultBarHeight = noDepressionLayout.height
+            }
+
+//            val viewmiDTreeObserver : ViewTreeObserver = mildDepressionLayout.viewTreeObserver
+//            if (viewmiDTreeObserver.isAlive) {
+//                viewmiDTreeObserver.addOnGlobalLayoutListener {
+//                }
+//            }
+
+            mildDepressionLayout.post{
+                mildDepressionFormWidth = mildDepressionLayout.width
+
+            }
+
+//            val viewmoderateDTreeObserver : ViewTreeObserver = moderateDepressionLayout.viewTreeObserver
+//            if (viewmoderateDTreeObserver.isAlive) {
+//                viewmoderateDTreeObserver.addOnGlobalLayoutListener {
+//                    moderateDepressionFormWidth = moderateDepressionLayout.width
+//                }
+//            }
+
+            moderateDepressionLayout.post{
+                moderateDepressionFormWidth = moderateDepressionLayout.width
+            }
+
+//            val viewsevereDTreeObserver : ViewTreeObserver = servereDepressionLayout.viewTreeObserver
+//            if (viewsevereDTreeObserver.isAlive) {
+//                viewsevereDTreeObserver.addOnGlobalLayoutListener {
+//                    severeDepressionFormWidth = servereDepressionLayout.width
+//                    createDepressionResultBarViews()
+//                }
+//            }
+
+            servereDepressionLayout.post {
+                severeDepressionFormWidth = servereDepressionLayout.width
+                createDepressionResultBarViews()
+            }
         }
         return view
     }
@@ -321,31 +409,77 @@ class ResultFragment : Fragment() {
         }
     }
 
-    private fun increaseViewSize(view: View , heightIncr : Int) {
-        val valueAnimator = ValueAnimator.ofInt(view.measuredHeight, view.measuredHeight + heightIncr)
-        valueAnimator.duration = 500L
-        valueAnimator.addUpdateListener {
-            val animatedValue = valueAnimator.animatedValue as Int
-            val layoutParams = view.layoutParams
-            layoutParams.height = animatedValue
-            view.layoutParams = layoutParams
+    //function to create Views above the result bar
+    private fun createDepressionResultBarViews()
+    {
+        depressionProgressBar.layoutParams.width = (RelativeLayout.LayoutParams.WRAP_CONTENT)
+        depressionProgressBar.layoutParams.height = (RelativeLayout.LayoutParams.WRAP_CONTENT)
+        val viewHeight = 50
+        val viewWidth = (screenWidth / 90).toFloat()
+        val range = 90
+        val yDepressionResultBar = depressionProgressBar.y
+        val xDepressionResultBar = depressionProgressBar.x
+        for (i in 1..range)
+        {
+            val paint = Paint()
+            var depResBarView = customDerpesionProgressView(mainActivity.applicationContext , xDepressionResultBar , yDepressionResultBar, xDepressionResultBar + i*viewWidth , yDepressionResultBar + viewHeight.toFloat() , paint)
+            //add the created view to the relativelayout
+            depressionProgressBar.addView(depResBarView)
         }
-        valueAnimator.start()
+        val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1.8).toInt()
+        animateDepressionProgressBar(userMDIResult)
+
     }
 
-    private fun startViewFadeAnimation(view : RelativeLayout) {
-        val animation: Animation = AlphaAnimation(1.0f, 0.0f)
-        animation.interpolator = LinearInterpolator()
-        animation.duration = 500
-        animation.repeatCount = Animation.INFINITE
-        animation.repeatMode = Animation.REVERSE
-        view.startAnimation(animation)
-    }
+    fun animateDepressionProgressBar(depressionResult : Int) {
+        //get programmatically the children of the views
+        for (i in 0 until depressionResult) {
+            if ((i > 0) && (i < 36)) {
+                depressionProgressBar.getChildAt(i).animate().alpha(0.5F).setDuration(100).start()
+                depressionProgressBar.getChildAt(i).animate().alpha(1F).setDuration(100).withEndAction {
+                    depressionProgressBar.getChildAt(i)
+                        .setBackgroundColor(resources.getColor(R.color.blue))
+                }
 
+            }
+            if ((i >= 36) && (i <= 44)) {
+                depressionProgressBar.getChildAt(i).animate().alpha(0.5F).setDuration(100).start()
+                depressionProgressBar.getChildAt(i).animate().alpha(1F).setDuration(100).withEndAction {
+                    depressionProgressBar.getChildAt(i)
+                        .setBackgroundColor(resources.getColor(R.color.green_5))
+                }
+
+            }
+            if ((i >= 45) && (i <= 54)) {
+                depressionProgressBar.getChildAt(i).animate().alpha(0.5F).setDuration(100).start()
+                depressionProgressBar.getChildAt(i).animate().alpha(1F).setDuration(100).withEndAction {
+                    depressionProgressBar.getChildAt(i)
+                        .setBackgroundColor(resources.getColor(R.color.orange_5))
+                }
+
+            }
+            if (i > 54) {
+                depressionProgressBar.getChildAt(i).animate().alpha(0.5F).setDuration(100).start()
+                depressionProgressBar.getChildAt(i).animate().alpha(1F).setDuration(100).withEndAction {
+                    depressionProgressBar.getChildAt(i)
+                        .setBackgroundColor(resources.getColor(R.color.dark_red))
+                }
+
+            }
+        }
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
+    }
+
+    private fun getScreenDimens()
+    {
+        val displayMetrics = DisplayMetrics()
+        mainActivity.windowManager.defaultDisplay.getMetrics(displayMetrics)
+        screenWidth = displayMetrics.widthPixels
+        screenHeight= displayMetrics.heightPixels
     }
 
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cvdriskestimator.Fragments.MDICheckFragment
+import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.MDITestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
@@ -21,6 +22,7 @@ class CheckMDIPatientViewModel : ViewModel() {
     private lateinit  var realm : Realm
     private  var realmDAO =  RealmDAO()
     private var mdiTestEstimator = MDITestEstimator()
+    private lateinit var resultFragment : ResultFragment
 
     //mutable data that hold the patient data
     var patientData = MutableLiveData<Patient>()
@@ -100,10 +102,15 @@ class CheckMDIPatientViewModel : ViewModel() {
                 storePatientOnRealm(newPatient)
                 val result = mdiTestEstimator.calculateMDI(mdiq1!!, mdiq2!!, mdiq3!!, mdiq4!!, mdiq5!! , mdiq6!! , mdiq7!!
                     , mdiq8!! , mdiq9!! , mdiq10!! , mdiq11!! , mdiq12!! , mdiq13!!)
-                Toast.makeText(mainActivity.applicationContext , result , Toast.LENGTH_LONG).show()
-
+                Toast.makeText(mainActivity.applicationContext , result.toString() , Toast.LENGTH_LONG).show()
+                openResultFragment(result)
             }
+    }
 
+    private fun openResultFragment(testResult : Int)
+    {
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 3)
+        mainActivity.fragmentTransaction(resultFragment)
     }
 
     private fun checkQuestionForInputError(value : Int?, questionNO: Int) : Boolean

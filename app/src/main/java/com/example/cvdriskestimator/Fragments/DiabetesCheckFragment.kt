@@ -376,19 +376,8 @@ class DiabetesCheckFragment : Fragment() {
 
     }
 
-    fun showResult(calculation : String)
-    {
-        diabetesCheckBinding.resultsTitle.text = "RESULTS : " + calculation
-        var percentage  = (calculation.substring(0 , 4).toDouble() * 100)
-        diabetesCheckBinding.results.text = getString(R.string.result) +  " ${percentage}%"
-    }
 
 
-
-    private fun showTermsOfUseLayout() {
-
-        diabetesCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.VISIBLE
-    }
 
     private fun hideTermsOfUseLayout() {
         diabetesCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.GONE

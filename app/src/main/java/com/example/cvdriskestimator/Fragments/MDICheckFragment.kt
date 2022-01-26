@@ -72,6 +72,8 @@ class MDICheckFragment : Fragment() {
         mdiPatientViewModel.passFragment(this)
         mdiPatientViewModel.initialiseRealm()
 
+        mdiCheckBinding.includeCvdTitleForm.userIcon.alpha = 1f
+
         val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "userDummy")
         if (userName != "userDummy")
         {

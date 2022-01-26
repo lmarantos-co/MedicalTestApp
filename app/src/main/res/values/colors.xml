@@ -21,6 +21,7 @@
     <color name="light_gray">#DDDDDD</color>
     <color name="sandy_brown">#F4A460</color>
     <color name="Red">#FF0000</color>
+    <color name="dark_red">	#8B0000</color>
     <color name="red_violet">#F8BBD0</color>
     <color name="light_purple">#d2a0f9</color>
     <color name="plum">#DDA0DD</color>
