@@ -72,7 +72,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/orange_cvd_title_textview"
-                android:drawableLeft="@drawable/ic_favorite_white_24dp"
+                android:drawableLeft="@drawable/ic_favorite_black_24dp"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:minHeight="48dp"

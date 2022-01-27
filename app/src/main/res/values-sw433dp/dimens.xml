@@ -2,4 +2,5 @@
 <resources>
     <dimen name="terms_text_size">26sp</dimen>
     <dimen name="cvd_title">22sp</dimen>
+    <dimen name="derpessionMagendaBoxSize">34dp</dimen>
 </resources>

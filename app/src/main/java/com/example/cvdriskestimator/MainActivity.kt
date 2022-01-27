@@ -51,11 +51,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var fragContainerConstraintSet: ConstraintSet
     private lateinit var cvdVectorIcon : ImageView
     private lateinit var diabetesVectorIcon : ImageView
-    private lateinit var kidneyIcon : ImageView
+    private lateinit var depressionIcon : ImageView
     private lateinit var noseIcon : ImageView
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
-    private lateinit var kidneysTestTitle : TextView
+    private lateinit var depressionTestTitle : TextView
     private lateinit var noseTestTitle : TextView
     private lateinit var animationZoomIn : Animation
     private lateinit var animationBounce : Animation
@@ -86,11 +86,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         termsCloseBtn = termsConLayout.findViewById(R.id.closeBtn)
         cvdVectorIcon = findViewById(R.id.cvdTestImgV)
         diabetesVectorIcon = findViewById(R.id.diabetesTestImgV)
-        kidneyIcon = findViewById(R.id.kidneyImgV)
+        depressionIcon = findViewById(R.id.depressionImgV)
         noseIcon = findViewById(R.id.lungsImgV)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
-        kidneysTestTitle = findViewById(R.id.kidneysTestTxtView)
+        depressionTestTitle = findViewById(R.id.depressionTestTxtView)
         noseTestTitle = findViewById(R.id.lungsTestTxtView)
 
 
@@ -133,6 +133,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setFragmentContainerConstraint(2)
 
         showTermsOfUseLayout()
+
+        hideTermsOfUseLayout()
+
         termsOFUseView.setOnClickListener {
             hideTermsOfUseLayout()
         }
@@ -193,7 +196,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     private fun hideTermsOfUseLayout() {
-        termsOFUseView.visibility = View.GONE
+        termsOFUseView.visibility = View.INVISIBLE
     }
 
     private fun initTestsRelLayouts()
@@ -209,7 +212,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction(checkDiabetesFragment)
         }
 
-        kidneyIcon.setOnClickListener {
+        depressionIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(4)
             fragmentTransaction(mdiCheckFragment)
@@ -274,9 +277,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
         val message = shared.getString("MSG" , "Test 1")
         val login = shared.getString("LOG" , "Test 2")
-
-        popupMenu.menu.getItem(1).setTitle(login)
-
+        val popUpmenu = popupMenu.menu
+        popUpmenu.getItem(1).setTitle(login)
         //replace register with check user
         var user : String
         with(shared.edit())
@@ -284,8 +286,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             user = shared.getString("userName" , "userDummy")!!
         }
         user = "$user data"
-        popupMenu.menu.getItem(3).setTitle(user)
-
+        popUpmenu.getItem(3).setTitle(user)
     }
 
     @SuppressLint("RestrictedApi")
@@ -300,9 +301,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
         val message = shared.getString("MSG" , "Test 1")
         val login = shared.getString("LOG" , "Test 2")
-        popupMenu.menu.getItem(1).setTitle("login")
+        val popUpmenu = popupMenu.menu
+        popUpmenu.getItem(1).setTitle("login")
         //set register button message
-        popupMenu.menu.getItem(3).setTitle("userDummy Data")
+        popUpmenu.getItem(3).setTitle("userDummy Data")
 
 //        enableRegisterButton()
 //        disableCheckButton()
@@ -347,6 +349,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
+        depressionIcon.animate().alpha(1f).duration = 1200
+        depressionIcon.startAnimation(bounceTests)
         cvdVectorIcon.startAnimation(bounceTests)
         diabetesVectorIcon.startAnimation(bounceTests)
 
@@ -368,11 +372,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         diabetesVectorIcon.clearAnimation()
         cvdVectorIcon.visibility = View.INVISIBLE
         diabetesVectorIcon.visibility = View.INVISIBLE
-        kidneyIcon.visibility = View.INVISIBLE
+        depressionIcon.visibility = View.INVISIBLE
         noseIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
-        kidneysTestTitle.visibility = View.INVISIBLE
+        depressionTestTitle.visibility = View.INVISIBLE
         noseTestTitle.visibility = View.INVISIBLE
         noseIcon.visibility = View.INVISIBLE
         hideCVDTitleForm()
@@ -385,10 +389,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         diabetesVectorIcon.visibility = View.VISIBLE
         cvdTestTitle.visibility = View.VISIBLE
         diabetestestTitle.visibility = View.VISIBLE
-        kidneysTestTitle.visibility = View.VISIBLE
+        depressionTestTitle.visibility = View.VISIBLE
         noseTestTitle.visibility = View.VISIBLE
         noseIcon.visibility = View.VISIBLE
-        kidneyIcon.visibility = View.VISIBLE
+        depressionIcon.visibility = View.VISIBLE
         noseIcon.visibility = View.VISIBLE
         showCVDTitleForm()
     }
@@ -444,7 +448,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(loginFragment)
         fragmentTransaction.hide(registerFragment)
         fragmentTransaction.hide(checkFragment)
-        fragmentTransaction.hide(checkDiabetesFragment).commit()
+        fragmentTransaction.hide(checkDiabetesFragment)
+        fragmentTransaction.hide(mdiCheckFragment).commit()
     }
 
 
@@ -502,7 +507,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
         val inflater : MenuInflater = popupMenu.menuInflater
         inflater.inflate(R.menu.main_optionss_menu , popupMenu.menu)
-        popupMenu.menu.getItem(1).setTitle(getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Login"))
 
         // show icons on popup menu
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {

@@ -117,7 +117,7 @@
         app:layout_constraintTop_toBottomOf="@+id/diabetesTestImgV" />
 
     <ImageView
-        android:id="@+id/kidneyImgV"
+        android:id="@+id/depressionImgV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
@@ -128,20 +128,20 @@
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toTopOf="@+id/barHG4"
-        app:srcCompat="@drawable/ic_kindey" />
+        app:srcCompat="@drawable/ic_depression" />
 
 
     <TextView
-        android:id="@+id/kidneysTestTxtView"
+        android:id="@+id/depressionTestTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Kidneys Temp"
+        android:text="DerpessionTest"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
-        app:layout_constraintTop_toBottomOf="@+id/kidneyImgV" />
+        app:layout_constraintTop_toBottomOf="@+id/depressionImgV" />
 
 
     <ImageView
@@ -174,7 +174,8 @@
         android:id="@+id/include_popup_menu"
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="visible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/VGL1"

@@ -24,6 +24,25 @@
         android:layout_height="match_parent"
         android:visibility="invisible" />
 
+    <TextView
+        android:id="@+id/mditestTitleTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/trans"
+        android:drawableLeft="@drawable/ic_depression_24"
+        android:drawablePadding="8dp"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/cvd_test_results"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/horGL1" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horGL1"
         android:layout_width="wrap_content"
@@ -44,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -65,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.47" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id='@+id/resultBarNoDepressionVGL'
@@ -156,41 +175,58 @@
         android:gravity="center"
         app:layout_constraintLeft_toRightOf="@id/titleVGL1"
         app:layout_constraintRight_toLeftOf="@id/titleVGL2"
-        app:layout_constraintTop_toBottomOf="@+id/include_cvd_title_form">
+        app:layout_constraintTop_toBottomOf="@+id/mditestTitleTxtV">
 
-        <TextView
-            android:id="@+id/totalScore"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ScoreLinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/totalScoreDescTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="false"
+                android:gravity="center"
+                android:text="@string/mdi_test_score"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/totalScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/depStatusLinLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="false"
-            android:gravity="center"
-            android:text="@string/mdi_test_score"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:layout_below="@id/ScoreLinLayout">
 
-        <TextView
-            android:id="@+id/depressionLevel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/totalScore"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:text="@string/mdi_test_depression"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/depressionLevelTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/totalScore"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/mdi_test_depression"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/depressionStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20sp"/>
 
-    <RelativeLayout
-        android:id="@+id/bottomBar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/horGL2"
-        app:layout_constraintEnd_toStartOf="@id/titleVGL2"
-        app:layout_constraintStart_toStartOf="@id/titleVGL1"
-        app:layout_constraintTop_toTopOf="@+id/horGL3">
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -207,5 +243,129 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.82" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/magendaTopHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/magendaBottomHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id='@+id/magednaRightVGL'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <RelativeLayout
+        android:id='@+id/magednaRelLayout'
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/relativelayout_style"
+        app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
+        app:layout_constraintLeft_toRightOf="@id/titleVGL1"
+        app:layout_constraintRight_toLeftOf="@id/magednaRightVGL"
+        app:layout_constraintTop_toBottomOf="@id/magendaTopHGL">
+
+        <LinearLayout
+            android:id="@+id/noDeprLinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/noDepView"
+                android:layout_width="@dimen/derpessionMagendaBoxSize"
+                android:layout_height="@dimen/derpessionMagendaBoxSize"
+                android:background="@color/blue" />
+
+            <TextView
+                android:id="@+id/noDepTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-- no depression"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mildDeprLinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noDeprLinLayout"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/mildDepView"
+                android:layout_width="@dimen/derpessionMagendaBoxSize"
+                android:layout_height="@dimen/derpessionMagendaBoxSize"
+                android:background="@color/green_5" />
+
+            <TextView
+                android:id="@+id/mildDepTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-- mild depression"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/moderateDeprLinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mildDeprLinLayout"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/moderateDepView"
+                android:layout_width="@dimen/derpessionMagendaBoxSize"
+                android:layout_height="@dimen/derpessionMagendaBoxSize"
+                android:background="@color/orange_5" />
+
+            <TextView
+                android:id="@+id/moderateDepTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-- moderate depression"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/severeDeprLinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/moderateDeprLinLayout"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/severeDepView"
+                android:layout_width="@dimen/derpessionMagendaBoxSize"
+                android:layout_height="@dimen/derpessionMagendaBoxSize"
+                android:background="@color/dark_red" />
+
+            <TextView
+                android:id="@+id/severeDepTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-- severe depression"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

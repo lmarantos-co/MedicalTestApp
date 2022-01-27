@@ -63,6 +63,7 @@ class LoginFragment : Fragment() {
             hideTermsOfUseLayout()
         }
 
+        loginBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
         return loginBinding.root
     }

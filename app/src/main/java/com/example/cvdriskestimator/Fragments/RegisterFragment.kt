@@ -76,6 +76,9 @@ class RegisterFragment : Fragment() {
             hideTermsOfUseLayout()
         }
 
+        registerBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
+
+
         return registerBinding.root
     }
 

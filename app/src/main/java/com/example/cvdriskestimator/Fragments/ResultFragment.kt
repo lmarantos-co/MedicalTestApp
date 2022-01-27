@@ -1,22 +1,16 @@
 package com.example.cvdriskestimator.Fragments
 
-import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Paint
 import android.graphics.Typeface
-import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.util.DisplayMetrics
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
-import android.view.animation.LinearInterpolator
 import android.widget.*
-import androidx.compose.ui.graphics.Color
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.palette.graphics.Palette
 import com.example.cvdriskestimator.MainActivity
@@ -24,8 +18,7 @@ import com.example.cvdriskestimator.R
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.CustomClasses.customDerpesionProgressView
-import kotlinx.coroutines.delay
-import java.lang.reflect.Method
+import kotlinx.coroutines.*
 
 
 /**
@@ -84,6 +77,8 @@ class ResultFragment : Fragment() {
     private lateinit var mildDepressionLayout  : RelativeLayout
     private lateinit var moderateDepressionLayout : RelativeLayout
     private lateinit var servereDepressionLayout : RelativeLayout
+    private lateinit var totalScore : TextView
+    private lateinit var depressStatus : TextView
     private var noDepressionFormWidth : Int = 0
     private var mildDepressionFormWidth : Int = 0
     private var moderateDepressionFormWidth : Int = 0
@@ -186,59 +181,39 @@ class ResultFragment : Fragment() {
             companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
             userIcon = MTEtitle.findViewById(R.id.userIcon)
             userIcon.alpha = 1f
+            testHeadling= view.findViewById(R.id.mditestTitleTxtV)
             depressionProgressBar = RelativeLayout(mainActivity.applicationContext)
             depressionProgressBar = view.findViewById(R.id.MDItestProgressBarRelLayout)
             noDepressionLayout = view.findViewById(R.id.resultBarNoDepRelLayout)
             mildDepressionLayout = view.findViewById(R.id.resultBarMildDepRelLayout)
             moderateDepressionLayout = view.findViewById(R.id.resultBarModerateDepRelLayout)
             servereDepressionLayout = view.findViewById(R.id.resultBarSevereDepRelLayout)
-            //get the width of each depression bar when it is ready
-//            val viewNDTreeObserver : ViewTreeObserver = noDepressionLayout.viewTreeObserver
-//            if (viewNDTreeObserver.isAlive) {
-//                viewNDTreeObserver.addOnGlobalLayoutListener {
-//                    noDepressionFormWidth = noDepressionLayout.width
-//                    depressionResultBarHeight = noDepressionLayout.height
-//                    //run the resultBarFill method
-//                }
-//            }
+            totalScore = view.findViewById(R.id.totalScore)
+            depressStatus = view.findViewById(R.id.depressionStatus)
+            setMDIResultsOnForm(arguments!!.getDouble(ARG_PARAM1).toInt() , getMDIResult(arguments!!.getDouble(ARG_PARAM1).toInt()))
+
             noDepressionLayout.post {
                 noDepressionFormWidth = noDepressionLayout.width
                 depressionResultBarHeight = noDepressionLayout.height
             }
 
-//            val viewmiDTreeObserver : ViewTreeObserver = mildDepressionLayout.viewTreeObserver
-//            if (viewmiDTreeObserver.isAlive) {
-//                viewmiDTreeObserver.addOnGlobalLayoutListener {
-//                }
-//            }
 
             mildDepressionLayout.post{
                 mildDepressionFormWidth = mildDepressionLayout.width
 
             }
 
-//            val viewmoderateDTreeObserver : ViewTreeObserver = moderateDepressionLayout.viewTreeObserver
-//            if (viewmoderateDTreeObserver.isAlive) {
-//                viewmoderateDTreeObserver.addOnGlobalLayoutListener {
-//                    moderateDepressionFormWidth = moderateDepressionLayout.width
-//                }
-//            }
 
             moderateDepressionLayout.post{
                 moderateDepressionFormWidth = moderateDepressionLayout.width
             }
 
-//            val viewsevereDTreeObserver : ViewTreeObserver = servereDepressionLayout.viewTreeObserver
-//            if (viewsevereDTreeObserver.isAlive) {
-//                viewsevereDTreeObserver.addOnGlobalLayoutListener {
-//                    severeDepressionFormWidth = servereDepressionLayout.width
-//                    createDepressionResultBarViews()
-//                }
-//            }
 
             servereDepressionLayout.post {
                 severeDepressionFormWidth = servereDepressionLayout.width
-                createDepressionResultBarViews()
+                GlobalScope.launch(Dispatchers.Main) {
+                    createDepressionResultBarViews()
+                }
             }
         }
         return view
@@ -281,7 +256,7 @@ class ResultFragment : Fragment() {
             setFormColors(1)
             setRatingBarColors(1)
             testHeadling.setText(R.string.cvd_test_results)
-            testHeadling.setCompoundDrawablesWithIntrinsicBounds(mainActivity.getDrawable(R.drawable.ic_favorite_white_24dp) , null, null, null)
+            testHeadling.setCompoundDrawablesWithIntrinsicBounds(mainActivity.getDrawable(R.drawable.ic_favorite_black_24dp) , null, null, null)
 //            val resultString = getString(R.string.cvd_test_result) + " " + "<b>" +
 //            String.format("%.2f" , arguments!!.getDouble(ARG_PARAM1)) + " %." + "</b>"
             barFlashAnimation(arguments!!.getDouble(ARG_PARAM1))
@@ -299,7 +274,12 @@ class ResultFragment : Fragment() {
             var resultString = getString(R.string.diabetes_test_result)
             resultString = resultString + " " + "<b>" + String.format("%.2f" , arguments!!.getDouble(ARG_PARAM1) * 100) + "</b>" + "% ."
             riskResultTxtVSum.text = Html.fromHtml(resultString)
-
+        }
+        if (test_type == 3)
+        {
+            setFormColors(3)
+            testHeadling.setText("MDI Test")
+            testHeadling.setCompoundDrawablesWithIntrinsicBounds(mainActivity.getDrawable(R.drawable.ic_depression_24) , null, null, null)
         }
     }
 
@@ -332,6 +312,9 @@ class ResultFragment : Fragment() {
             2 -> {
                 testHeadling.setBackgroundResource(R.drawable.green_diabetes_form_title_style)
                 testResultInfoLayout.setBackgroundResource(R.drawable.diabetes_relativelayout_style)
+            }
+            3 -> {
+                testHeadling.setBackgroundResource(R.drawable.green_diabetes_form_title_style)
             }
         }
     }
@@ -409,36 +392,110 @@ class ResultFragment : Fragment() {
         }
     }
 
+    private fun getMDIResult(mdiResult : Int) : String
+    {
+        if ((mdiResult>=0) && (mdiResult < 20))
+        {
+            return "No Depression"
+        }
+        if ((mdiResult>=20) && (mdiResult <= 24))
+        {
+            return "Mild depression"
+        }
+        if ((mdiResult>=25) && (mdiResult <= 29))
+        {
+            return "Moderate depression"
+        }
+        if (mdiResult>=30)
+        {
+            return "Severe depression"
+        }
+        return ""
+    }
+
+    private fun setMDIResultsOnForm(mdiDepressionInt : Int , mdiDepressionType : String)
+    {
+        totalScore.text = mdiDepressionInt.toString()
+        depressStatus.text = mdiDepressionType
+        setMDIResultTextViewColors(mdiDepressionInt)
+    }
+
+    private fun setMDIResultTextViewColors(mdiDepressionInt : Int)
+    {
+        if ((mdiDepressionInt>=0) && (mdiDepressionInt < 20))
+        {
+            totalScore.setTextColor(resources.getColor(R.color.blue))
+            depressStatus.setTextColor(resources.getColor(R.color.blue))
+        }
+        if ((mdiDepressionInt>=20) && (mdiDepressionInt <= 24))
+        {
+            totalScore.setTextColor(resources.getColor(R.color.green_5))
+            depressStatus.setTextColor(resources.getColor(R.color.green_5))    }
+        if ((mdiDepressionInt>=25) && (mdiDepressionInt <= 29))
+        {
+            totalScore.setTextColor(resources.getColor(R.color.orange_5))
+            depressStatus.setTextColor(resources.getColor(R.color.orange_5))      }
+        if (mdiDepressionInt>=30)
+        {
+            totalScore.setTextColor(resources.getColor(R.color.dark_red))
+            depressStatus.setTextColor(resources.getColor(R.color.dark_red))      }
+    }
+
     //function to create Views above the result bar
-    private fun createDepressionResultBarViews()
+suspend fun createDepressionResultBarViews()
     {
         depressionProgressBar.layoutParams.width = (RelativeLayout.LayoutParams.WRAP_CONTENT)
         depressionProgressBar.layoutParams.height = (RelativeLayout.LayoutParams.WRAP_CONTENT)
         val viewHeight = 50
-        val viewWidth = (screenWidth / 90).toFloat()
+        val viewWidth = (screenWidth / 91).toFloat()
         val range = 90
         val yDepressionResultBar = depressionProgressBar.y
         val xDepressionResultBar = depressionProgressBar.x
-        for (i in 1..range)
+        val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1.8).toInt()
+        for (i in 1..userMDIResult)
         {
             val paint = Paint()
             var depResBarView = customDerpesionProgressView(mainActivity.applicationContext , xDepressionResultBar , yDepressionResultBar, xDepressionResultBar + i*viewWidth , yDepressionResultBar + viewHeight.toFloat() , paint)
+            depResBarView.layoutParams
             //add the created view to the relativelayout
-            depressionProgressBar.addView(depResBarView)
+            depressionProgressBar.addView(depResBarView ,
+                ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            )
+            delay(200)
+            setProgresViewColor(depResBarView , i)
+            depressionProgressBar.invalidate()
         }
-        val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1.8).toInt()
         animateDepressionProgressBar(userMDIResult)
 
+    }
+
+    fun setProgresViewColor(view : View, index : Int)
+    {
+        if ((index >= 0) && (index <  36)) {
+            view.background = resources.getDrawable(R.drawable.blue_progressbar_style)
+
+        }
+        if ((index >= 36) && (index <= 44)) {
+            view.background = resources.getDrawable(R.drawable.green_progressbar_style)
+        }
+        if ((index >= 45) && (index <= 54))
+        {
+            view.background = resources.getDrawable(R.drawable.green_progressbar_style)
+        }
+
+        if (index > 54) {
+            view.background = resources.getDrawable(R.drawable.red_progressbar_style)
+        }
     }
 
     fun animateDepressionProgressBar(depressionResult : Int) {
         //get programmatically the children of the views
         for (i in 0 until depressionResult) {
-            if ((i > 0) && (i < 36)) {
+            if ((i >= 0) && (i < 36)) {
                 depressionProgressBar.getChildAt(i).animate().alpha(0.5F).setDuration(100).start()
                 depressionProgressBar.getChildAt(i).animate().alpha(1F).setDuration(100).withEndAction {
                     depressionProgressBar.getChildAt(i)
-                        .setBackgroundColor(resources.getColor(R.color.blue))
+                        .background = resources.getDrawable(R.drawable.blue_progressbar_style)
                 }
 
             }
@@ -446,7 +503,7 @@ class ResultFragment : Fragment() {
                 depressionProgressBar.getChildAt(i).animate().alpha(0.5F).setDuration(100).start()
                 depressionProgressBar.getChildAt(i).animate().alpha(1F).setDuration(100).withEndAction {
                     depressionProgressBar.getChildAt(i)
-                        .setBackgroundColor(resources.getColor(R.color.green_5))
+                        .background = resources.getDrawable(R.drawable.green_progressbar_style)
                 }
 
             }
@@ -454,7 +511,7 @@ class ResultFragment : Fragment() {
                 depressionProgressBar.getChildAt(i).animate().alpha(0.5F).setDuration(100).start()
                 depressionProgressBar.getChildAt(i).animate().alpha(1F).setDuration(100).withEndAction {
                     depressionProgressBar.getChildAt(i)
-                        .setBackgroundColor(resources.getColor(R.color.orange_5))
+                        .background = resources.getDrawable(R.drawable.orange_progressbar_style)
                 }
 
             }
@@ -462,7 +519,7 @@ class ResultFragment : Fragment() {
                 depressionProgressBar.getChildAt(i).animate().alpha(0.5F).setDuration(100).start()
                 depressionProgressBar.getChildAt(i).animate().alpha(1F).setDuration(100).withEndAction {
                     depressionProgressBar.getChildAt(i)
-                        .setBackgroundColor(resources.getColor(R.color.dark_red))
+                        .background = resources.getDrawable(R.drawable.red_progressbar_style)
                 }
 
             }

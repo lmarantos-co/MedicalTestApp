@@ -133,7 +133,6 @@ class CheckMDIPatientViewModel : ViewModel() {
 
     private fun storePatientOnDB(patient : Patient)
     {
-        var patient = Patient()
         //execute transaction on realm
         realm.executeTransaction {
             realm.insertOrUpdate(patient)

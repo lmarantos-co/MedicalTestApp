@@ -52,6 +52,7 @@
             android:id="@+id/MDITestTitleLayout">
 
             <TextView
+                android:id="@+id/mdiTestTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -60,7 +61,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/orange_cvd_title_textview"
-                android:drawableLeft="@drawable/ic_favorite_white_24dp"
+                android:drawableLeft="@drawable/ic_depression_24"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:minHeight="48dp"
@@ -69,8 +70,7 @@
                 android:singleLine="false"
                 android:text="MDI Test"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:id="@+id/mdiTestTitle"/>
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -305,7 +305,7 @@
                             android:layout_below="@id/MDIQ2RB5"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="130dp"
+                            android:paddingRight="195dp"
                             android:text="@string/MDIA6"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1305,7 +1305,7 @@
                             android:layout_below="@id/MDIQ12RB5"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="130dp"
+                            android:paddingRight="195dp"
                             android:text="@string/MDIA6"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1405,8 +1405,8 @@
                             android:layout_below="@id/MDIQ13RB5"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="130dp"
-                            android:text="@string/MDIA5"
+                            android:paddingRight="195dp"
+                            android:text="@string/MDIA6"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
