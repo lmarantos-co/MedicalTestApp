@@ -1,5 +1,6 @@
 package com.example.cvdriskestimator.viewModels
 
+import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -50,13 +51,13 @@ class CheckMDIPatientViewModel : ViewModel() {
     fun setUserDummyData()
     {
         realm.executeTransaction {
-            var dummyPatient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , "userDummy").findFirst()
+            var dummyPatient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , "tempUser").findFirst()
             if (dummyPatient == null)
             {
                 val patient = Patient()
                 //set the initial values of the patient object
-                patient.userName = "userDummy"
-                patient.password = "password#1"
+                patient.userName = "tempUser"
+                patient.password = "dummy#1"
                 realm.insertOrUpdate(patient)
             }
         }
@@ -72,36 +73,20 @@ class CheckMDIPatientViewModel : ViewModel() {
         patientData.postValue(patientData.value)
     }
 
-    fun checkMDITestPatient(mdiq1 : Int? , mdiq2 : Int? , mdiq3 : Int? , mdiq4 : Int? , mdiq5 : Int? , mdiq6 : Int? , mdiq7 : Int?
-                                    , mdiq8 : Int? , mdiq9 : Int? , mdiq10 : Int? , mdiq11 : Int? , mdiq12 : Int? , mdiq13 : Int?)
+    fun checkMDITestPatient(allPatientSelections : ArrayList<Int?>)
     {
-        if ((checkQuestionForInputError(mdiq1 , 1)) && (checkQuestionForInputError(mdiq2 , 2))
-            && (checkQuestionForInputError(mdiq3 , 3)) && (checkQuestionForInputError(mdiq4 , 4))
-            && (checkQuestionForInputError(mdiq5 , 5)) && (checkQuestionForInputError(mdiq6 , 6))
-            && (checkQuestionForInputError(mdiq7 , 7)) && (checkQuestionForInputError(mdiq8 , 8))
-            && (checkQuestionForInputError(mdiq9 , 9)) && (checkQuestionForInputError(mdiq10 , 10))
-            && (checkQuestionForInputError(mdiq11 , 11)) && (checkQuestionForInputError(mdiq12 , 12))
-            && (checkQuestionForInputError(mdiq13 , 13)))
+        if ((checkQuestionForInputError(allPatientSelections[0] , 1)) && (checkQuestionForInputError(allPatientSelections[1]  , 2))
+            && (checkQuestionForInputError(allPatientSelections[2]  , 3)) && (checkQuestionForInputError(allPatientSelections[3]  , 4))
+            && (checkQuestionForInputError(allPatientSelections[4]  , 5)) && (checkQuestionForInputError(allPatientSelections[5]  , 6))
+            && (checkQuestionForInputError(allPatientSelections[6]  , 7)) && (checkQuestionForInputError(allPatientSelections[7]  , 8))
+            && (checkQuestionForInputError(allPatientSelections[8]  , 9)) && (checkQuestionForInputError(allPatientSelections[9]  , 10))
+            && (checkQuestionForInputError(allPatientSelections[10]  , 11)) && (checkQuestionForInputError(allPatientSelections[11]  , 12))
+            && (checkQuestionForInputError(allPatientSelections[12]  , 13)))
             {
-                //store the patient data on the database
-                val newPatient = Patient()
-                newPatient.patientMDIQ1 = mdiq1
-                newPatient.patientMDIQ2 = mdiq2
-                newPatient.patientMDIQ3 = mdiq3
-                newPatient.patientMDIQ4 = mdiq4
-                newPatient.patientMDIQ5 = mdiq5
-                newPatient.patientMDIQ6 = mdiq6
-                newPatient.patientMDIQ7 = mdiq7
-                newPatient.patientMDIQ8 = mdiq8
-                newPatient.patientMDIQ9 = mdiq9
-                newPatient.patientMDIQ10 = mdiq10
-                newPatient.patientMDIQ11 = mdiq11
-                newPatient.patientMDIQ12 = mdiq12
-                newPatient.patientMDIQ13 = mdiq13
-
-                storePatientOnRealm(newPatient)
-                val result = mdiTestEstimator.calculateMDI(mdiq1!!, mdiq2!!, mdiq3!!, mdiq4!!, mdiq5!! , mdiq6!! , mdiq7!!
-                    , mdiq8!! , mdiq9!! , mdiq10!! , mdiq11!! , mdiq12!! , mdiq13!!)
+                storePatientOnRealm(allPatientSelections)
+                val result = mdiTestEstimator.calculateMDI(allPatientSelections[0]!!, allPatientSelections[1]!!, allPatientSelections[2]!!, allPatientSelections[3]!!, allPatientSelections[4]!! ,
+                    allPatientSelections[5]!! , allPatientSelections[6]!!, allPatientSelections[7]!! , allPatientSelections[8]!! , allPatientSelections[9]!! ,
+                    allPatientSelections[10]!! , allPatientSelections[11]!! , allPatientSelections[12]!!)
                 Toast.makeText(mainActivity.applicationContext , result.toString() , Toast.LENGTH_LONG).show()
                 openResultFragment(result)
             }
@@ -126,15 +111,34 @@ class CheckMDIPatientViewModel : ViewModel() {
         return correctData
     }
 
-    private fun storePatientOnRealm(patient : Patient) : Job =
+    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int?>) : Job =
         viewModelScope.launch{
-            storePatientOnDB(patient)
+            storePatientOnDB(allPatientSelections)
         }
 
-    private fun storePatientOnDB(patient : Patient)
+    private fun storePatientOnDB(allPatientSelections: ArrayList<Int?>)
     {
         //execute transaction on realm
         realm.executeTransaction {
+
+            //store the patient data on the database
+            val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+            val patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
+
+            patient!!.patientMDIQ1 = allPatientSelections[0]
+            patient!!.patientMDIQ2 = allPatientSelections[1]
+            patient!!.patientMDIQ3 = allPatientSelections[2]
+            patient!!.patientMDIQ4 = allPatientSelections[3]
+            patient!!.patientMDIQ5 = allPatientSelections[4]
+            patient!!.patientMDIQ6 = allPatientSelections[5]
+            patient!!.patientMDIQ7 = allPatientSelections[6]
+            patient!!.patientMDIQ8 = allPatientSelections[7]
+            patient!!.patientMDIQ9 = allPatientSelections[8]
+            patient!!.patientMDIQ10 = allPatientSelections[9]
+            patient!!.patientMDIQ11 = allPatientSelections[10]
+            patient!!.patientMDIQ12 = allPatientSelections[11]
+            patient!!.patientMDIQ13 = allPatientSelections[12]
+
             realm.insertOrUpdate(patient)
 
         }

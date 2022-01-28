@@ -54,11 +54,11 @@ class CheckPatientViewModel : ViewModel() , Observable {
 
     private fun initialiseUserDummy() {
         realm.executeTransaction {
-            val dummyPatient : Patient? =  realm.where(Patient::class.java).isNotNull("id") .equalTo("userName" , "userDummy").findFirst()
+            val dummyPatient : Patient? =  realm.where(Patient::class.java).isNotNull("id") .equalTo("userName" , "tempUser").findFirst()
             if (dummyPatient == null)
             {
                 val patient = Patient()
-                patient.userName = "userDummy"
+                patient.userName = "tempUser"
                 patient.password = "dummy#1"
                 realm.insertOrUpdate(patient)
             }
@@ -265,7 +265,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
 
     private  fun fetchPatientRecord() {
         val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
-        val username = prefs.getString("userName" , "userDummy")
+        val username = prefs.getString("userName" , "tempUser")
         patientDATA = realmDAO.fetchPatientData(username!!)
         patientDATA.postValue(patientDATA.value)
     }
@@ -279,7 +279,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
     private  fun saveUserDataToDB(sex : String, age : String, sbp : String, TCH : String, HDL : String, smokingStatus: String, treatmentStatus: String)
     {
         val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
-        val username = prefs.getString("userName", "userDummy")
+        val username = prefs.getString("userName", "tempUser")
         //get the user record
 //        val realm = Realm.getInstance(mainActivity.passRealmConfig())
         //run the realm async transaction

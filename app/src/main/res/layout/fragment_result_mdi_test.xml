@@ -63,28 +63,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <RelativeLayout
+        android:id="@+id/MDItestProgressBarRelLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/titleVGL1"
-        app:layout_constraintTop_toBottomOf="@id/resultProgressBarHGLT"
-        android:id="@+id/MDItestProgressBarRelLayout"/>
+        app:layout_constraintTop_toBottomOf="@id/resultProgressBarHGLT" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultBarHGLTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultBarHGLBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.55" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id='@+id/resultBarNoDepressionVGL'
@@ -166,21 +166,40 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultsTopHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
     <RelativeLayout
         android:id="@+id/mdiTestTitleRelLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:background="@color/light_gray"
         android:gravity="center"
         app:layout_constraintLeft_toRightOf="@id/titleVGL1"
         app:layout_constraintRight_toLeftOf="@id/titleVGL2"
-        app:layout_constraintTop_toBottomOf="@+id/mditestTitleTxtV">
+        app:layout_constraintTop_toBottomOf="@id/resultsTopHGL">
+
+        <TextView
+            android:id='@+id/testResultTxtV'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:id="@+id/ScoreLinLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/testResultTxtV"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:id="@+id/totalScoreDescTxtV"
@@ -198,6 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingLeft="5dp"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -206,7 +226,10 @@
             android:id="@+id/depStatusLinLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ScoreLinLayout">
+            android:layout_below="@id/ScoreLinLayout"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/depressionLevelTxtV"
@@ -224,7 +247,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="20sp"/>
+                android:paddingLeft="5dp"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -249,14 +273,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.50" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/magendaBottomHGL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id='@+id/magednaRightVGL'

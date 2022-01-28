@@ -182,6 +182,7 @@ class ResultFragment : Fragment() {
             userIcon = MTEtitle.findViewById(R.id.userIcon)
             userIcon.alpha = 1f
             testHeadling= view.findViewById(R.id.mditestTitleTxtV)
+            riskResultTxtV = view.findViewById(R.id.testResultTxtV)
             depressionProgressBar = RelativeLayout(mainActivity.applicationContext)
             depressionProgressBar = view.findViewById(R.id.MDItestProgressBarRelLayout)
             noDepressionLayout = view.findViewById(R.id.resultBarNoDepRelLayout)
@@ -279,6 +280,7 @@ class ResultFragment : Fragment() {
         {
             setFormColors(3)
             testHeadling.setText("MDI Test")
+            riskResultTxtV.setText("Result")
             testHeadling.setCompoundDrawablesWithIntrinsicBounds(mainActivity.getDrawable(R.drawable.ic_depression_24) , null, null, null)
         }
     }
@@ -315,6 +317,7 @@ class ResultFragment : Fragment() {
             }
             3 -> {
                 testHeadling.setBackgroundResource(R.drawable.green_diabetes_form_title_style)
+                riskResultTxtV.setBackgroundResource(R.drawable.cvd_test_relative_layout)
             }
         }
     }
@@ -461,11 +464,11 @@ suspend fun createDepressionResultBarViews()
             depressionProgressBar.addView(depResBarView ,
                 ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             )
-            delay(200)
+            delay(100)
             setProgresViewColor(depResBarView , i)
             depressionProgressBar.invalidate()
         }
-        animateDepressionProgressBar(userMDIResult)
+//        animateDepressionProgressBar(userMDIResult)
 
     }
 
@@ -480,7 +483,7 @@ suspend fun createDepressionResultBarViews()
         }
         if ((index >= 45) && (index <= 54))
         {
-            view.background = resources.getDrawable(R.drawable.green_progressbar_style)
+            view.background = resources.getDrawable(R.drawable.orange_progressbar_style)
         }
 
         if (index > 54) {

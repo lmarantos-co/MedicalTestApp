@@ -62,11 +62,11 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
 
     private fun initialiseUserDummy() {
         realm.executeTransaction {
-            var dummyPatient : Patient? =  realm.where(Patient::class.java).isNotNull("id") .equalTo("userName" , "userDummy").findFirst()
+            var dummyPatient : Patient? =  realm.where(Patient::class.java).isNotNull("id") .equalTo("userName" , "tempUser").findFirst()
             if (dummyPatient == null)
             {
                 val patient = Patient()
-                patient.userName = "userDummy"
+                patient.userName = "tempUser"
                 patient.password = "dummy#1"
                 realm.insertOrUpdate(patient)
             }
@@ -148,7 +148,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
 
     private  fun fetchPatientRecord() {
         val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
-        val username = prefs.getString("userName" , "userDummy")
+        val username = prefs.getString("userName" , "tempUser")
         patientDATA = realmDAO.fetchPatientData(username!!)
         patientDATA.postValue(patientDATA.value)    }
 
@@ -160,7 +160,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
     private fun registerPatient(sex : String, pam : String, Steroids : String, age : String, BMI : String, familyStatus : String, SmokingStatus : String)
     {
         var prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
-        var userName = prefs.getString("userName", "userDummy")
+        var userName = prefs.getString("userName", "tempUser")
         realm.executeTransaction {
             var patient : Patient = realm.where(Patient::class.java).equalTo("userName" , userName).findFirst()!!
                 patient.patientAge = age

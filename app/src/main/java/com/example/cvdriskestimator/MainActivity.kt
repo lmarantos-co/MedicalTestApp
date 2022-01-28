@@ -184,7 +184,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         with (sharedPref.edit()) {
             putString("LOG" , "Login")
             putString("MSG" , "Medical Test Estimator")
-            putString("userName" , "userDummy")
+            putString("userName" , "tempUser")
             apply()
         }
     }
@@ -283,7 +283,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         var user : String
         with(shared.edit())
         {
-            user = shared.getString("userName" , "userDummy")!!
+            user = shared.getString("userName" , "tempUser")!!
         }
         user = "$user data"
         popUpmenu.getItem(3).setTitle(user)
@@ -296,7 +296,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         {
             putString("MSG" , "Medical Test Estimator")
             putString("LOG" , "Login")
-            putString("userName" , "userDummy")
+            putString("userName" , "tempUser")
             apply()
         }
         val message = shared.getString("MSG" , "Test 1")
@@ -304,7 +304,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         val popUpmenu = popupMenu.menu
         popUpmenu.getItem(1).setTitle("login")
         //set register button message
-        popUpmenu.getItem(3).setTitle("userDummy Data")
+        popUpmenu.getItem(3).setTitle("tempUser Data")
 
 //        enableRegisterButton()
 //        disableCheckButton()
@@ -378,7 +378,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         diabetestestTitle.visibility = View.INVISIBLE
         depressionTestTitle.visibility = View.INVISIBLE
         noseTestTitle.visibility = View.INVISIBLE
-        noseIcon.visibility = View.INVISIBLE
         hideCVDTitleForm()
     }
 
@@ -507,7 +506,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
         val inflater : MenuInflater = popupMenu.menuInflater
         inflater.inflate(R.menu.main_optionss_menu , popupMenu.menu)
-
+        popupMenu.menu.getItem(1).title =
+            this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Login")
+        popupMenu.menu.getItem(3).title =
+            this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data"
         // show icons on popup menu
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             popupMenu.setForceShowIcon(true)

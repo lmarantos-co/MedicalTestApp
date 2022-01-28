@@ -42,6 +42,7 @@ class MDICheckFragment : Fragment() {
     private var loginFragment = LoginFragment.newInstance()
     private var registerFragment = RegisterFragment.newInstance()
     private lateinit var popupMenu : PopUpMenu
+    private var allPatientSelections = arrayListOf<Int?>(1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 1, 1, 1, 1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,8 +75,8 @@ class MDICheckFragment : Fragment() {
 
         mdiCheckBinding.includeCvdTitleForm.userIcon.alpha = 1f
 
-        val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "userDummy")
-        if (userName != "userDummy")
+        val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+        if (userName != "tempUser")
         {
             mdiPatientViewModel.setPatientDataOnForm(userName!!)
         }
@@ -91,13 +92,23 @@ class MDICheckFragment : Fragment() {
         })
 
         mdiCheckBinding.submitBtn.setOnClickListener {
-            mdiPatientViewModel.checkMDITestPatient(getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ1RG) , getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ2RG)
-                                                    , getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ3RG), getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ4RG)
-                                                    , getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ5RG) ,
-                                                    getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ6RG) , getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ7RG)  ,
-                                                    getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ8RG), getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ9RG) ,
-                                                    getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ10RG)  , getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ11RG)
-                                                    , getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ12RG)  , getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ13RG))
+
+            allPatientSelections[0] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ1RG)
+            allPatientSelections[1] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ2RG)
+            allPatientSelections[2] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ3RG)
+            allPatientSelections[3] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ4RG)
+            allPatientSelections[4] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ5RG)
+            allPatientSelections[5] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ6RG)
+            allPatientSelections[6] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ7RG)
+            allPatientSelections[7] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ8RG)
+            allPatientSelections[8] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ9RG)
+            allPatientSelections[9] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ10RG)
+            allPatientSelections[10] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ11RG)
+            allPatientSelections[11] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ12RG)
+            allPatientSelections[12] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ13RG)
+
+
+            mdiPatientViewModel.checkMDITestPatient(allPatientSelections)
         }
 
         //set the PopUpMenu
@@ -172,27 +183,27 @@ class MDICheckFragment : Fragment() {
             }
             0 ->
             {
-                rg[0].isSelected = true
+                (rg.getChildAt(0) as RadioButton).isChecked = true
             }
             1 ->
             {
-                rg[1].isSelected = true
+                (rg.getChildAt(1) as RadioButton).isChecked = true
             }
             2 ->
             {
-                rg[2].isSelected = true
+                (rg.getChildAt(2) as RadioButton).isChecked = true
             }
             3->
             {
-                rg[3].isSelected = true
+                (rg.getChildAt(3) as RadioButton).isChecked = true
             }
             4 ->
             {
-                rg[4].isSelected = true
+                (rg.getChildAt(4) as RadioButton).isChecked = true
             }
             5 ->
             {
-                rg[5].isSelected = true
+                (rg.getChildAt(5) as RadioButton).isChecked = true
             }
         }
     }
@@ -223,7 +234,7 @@ class MDICheckFragment : Fragment() {
 
     fun showSelectionError(error : String)
     {
-        Toast.makeText(mainActivity.applicationContext ,  error  , Toast.LENGTH_LONG ,).show()
+        Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
     }
 
     override fun onAttach(context: Context) {

@@ -77,8 +77,8 @@ class CheckFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI(view)
-        val userName = activity!!.getPreferences(Context.MODE_PRIVATE).getString("userName" , "userDummy")
-        if (userName != "userDummy")
+        val userName = activity!!.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+        if (userName != "tempUser")
             checkPatientViewModel.setPatientDataOnForm()
         else {
             checkPatientViewModel.setUserDummyData()

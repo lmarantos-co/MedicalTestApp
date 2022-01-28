@@ -175,8 +175,8 @@ class RegisterPatientViewModel : ViewModel() , Observable{
                     // 3.
                     val patient = Patient()
                     patient.id = "0"
-                    patient.userName = "userTest"
-                    patient.password = "userPass"
+                    patient.userName = "tempUser"
+                    patient.password = "dummy#1"
                     // 4.
                     realmTransaction.insert(patient)
                 }

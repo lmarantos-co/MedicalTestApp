@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.example.cvdriskestimator.Fragments.*
 import com.example.cvdriskestimator.MainActivity
@@ -20,6 +21,9 @@ class PopUpMenu {
     private var prFragment : Fragment
     private var prLoginFragment : LoginFragment?
     private var prRegisterFragment : RegisterFragment?
+    //variables to set the menu item titles
+    var LOG : String = "Login"
+    var USER : String =  "tempUser Data"
     private lateinit var prPopupmenu: PopupMenu
 
     constructor(termsOfUse : RelativeLayout, mainActivity: MainActivity, fragment: Fragment, loginFragment: LoginFragment?, registerFragment: RegisterFragment?)
@@ -75,7 +79,7 @@ class PopUpMenu {
         val inflater : MenuInflater = prPopupmenu.menuInflater
         inflater.inflate(R.menu.main_optionss_menu , prPopupmenu.menu)
         prPopupmenu.menu.getItem(1).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Login"))
-
+        prPopupmenu.menu.getItem(3).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser"))
         // show icons on popup menu
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             prPopupmenu.setForceShowIcon(true)

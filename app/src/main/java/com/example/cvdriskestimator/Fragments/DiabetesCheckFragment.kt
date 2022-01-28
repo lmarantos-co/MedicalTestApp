@@ -77,8 +77,8 @@ class DiabetesCheckFragment : Fragment() {
     override fun onViewCreated(view : View, savedInstanceState: Bundle?)
     {
 
-        val userName = activity!!.getPreferences(Context.MODE_PRIVATE).getString("userName" , "testUser")
-        if (userName != "userDummy")
+        val userName = activity!!.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+        if (userName != "tempUser")
             checkDiabetesPatientViewModel.setPatientDataOnForm()
         else {
             checkDiabetesPatientViewModel.setUserDummyData()
