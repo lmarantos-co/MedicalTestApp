@@ -111,6 +111,8 @@ class MDICheckFragment : Fragment() {
             mdiPatientViewModel.checkMDITestPatient(allPatientSelections)
         }
 
+        mdiCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
+
         //set the PopUpMenu
         popupMenu = PopUpMenu(mdiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment)
 

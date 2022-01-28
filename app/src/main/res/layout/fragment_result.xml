@@ -11,7 +11,7 @@
 
 
     <TextView
-        android:id="@+id/loginTitleTxtV2"
+        android:id="@+id/testTitleTxtV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/trans"

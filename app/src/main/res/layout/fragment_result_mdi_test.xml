@@ -177,7 +177,7 @@
         android:id="@+id/mdiTestTitleRelLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/light_gray"
+        android:background="@drawable/relativelayout_style"
         android:gravity="center"
         app:layout_constraintLeft_toRightOf="@id/titleVGL1"
         app:layout_constraintRight_toLeftOf="@id/titleVGL2"
@@ -227,6 +227,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ScoreLinLayout"
+            android:background="@color/very_light_gray"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="5dp">

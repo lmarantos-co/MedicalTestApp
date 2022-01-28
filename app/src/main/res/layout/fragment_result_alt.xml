@@ -11,7 +11,7 @@
     tools:context=".Fragments.ResultFragment">
 
     <TextView
-        android:id="@+id/loginTitleTxtV2"
+        android:id="@+id/testTitleTxtV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/trans"
@@ -213,7 +213,7 @@
         android:background="@drawable/relativelayout_style"
         app:layout_constraintLeft_toRightOf="@id/verGL1"
         app:layout_constraintRight_toLeftOf="@id/verGL2"
-        app:layout_constraintTop_toBottomOf="@+id/loginTitleTxtV2">
+        app:layout_constraintTop_toBottomOf="@+id/testTitleTxtV">
 
         <TextView
             android:id="@+id/txtVTestResultTitle"

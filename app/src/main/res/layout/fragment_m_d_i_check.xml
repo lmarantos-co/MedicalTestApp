@@ -32,7 +32,7 @@
             layout="@layout/popup_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horGL1"
@@ -60,7 +60,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/orange_cvd_title_textview"
+                android:background="@drawable/purple_mditest_form_title_style"
                 android:drawableLeft="@drawable/ic_depression_24"
                 android:drawablePadding="8dp"
                 android:gravity="center"
@@ -115,28 +115,30 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ1RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ1RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ1TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ1"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ1TxtV"
-                        android:text="@string/MDIQ1"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ1RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ1TxtV"
-                        android:id="@+id/MDIQ1RG">
+                        android:layout_below="@id/MDIQ1TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ1RB1"
@@ -163,16 +165,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ1RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ1RB3"
+                            android:layout_below="@id/MDIQ1RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ1RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ1RB4"
@@ -215,28 +216,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ2RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ2RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ2TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ2"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ2TxtV"
-                        android:text="@string/MDIQ2"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ2RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ2TxtV"
-                        android:id="@+id/MDIQ2RG">
+                        android:layout_below="@id/MDIQ2TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ2RB1"
@@ -263,16 +266,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ2RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ2RB3"
+                            android:layout_below="@id/MDIQ1RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ1RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ2RB4"
@@ -315,28 +317,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ3RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ3RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ3TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ3"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ3TxtV"
-                        android:text="@string/MDIQ3"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ3RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ3TxtV"
-                        android:id="@+id/MDIQ3RG">
+                        android:layout_below="@id/MDIQ3TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ3RB1"
@@ -363,16 +367,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ3RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ3RB3"
+                            android:layout_below="@id/MDIQ1RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ1RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ3RB4"
@@ -415,28 +418,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ4RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ4RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ4TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ4"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ4TxtV"
-                        android:text="@string/MDIQ4"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ4RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ4TxtV"
-                        android:id="@+id/MDIQ4RG">
+                        android:layout_below="@id/MDIQ4TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ4RB1"
@@ -463,16 +468,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ4RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ4RB3"
+                            android:layout_below="@id/MDIQ1RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ1RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ4RB4"
@@ -515,28 +519,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ5RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ5RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ5TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ5"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ5TxtV"
-                        android:text="@string/MDIQ5"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ5RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ5TxtV"
-                        android:id="@+id/MDIQ5RG">
+                        android:layout_below="@id/MDIQ5TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ5RB1"
@@ -563,16 +569,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ5RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ5RB3"
+                            android:layout_below="@id/MDIQ1RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ1RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ5RB4"
@@ -615,28 +620,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ6RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ6RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ6TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ6"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ6TxtV"
-                        android:text="@string/MDIQ6"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ6RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ6TxtV"
-                        android:id="@+id/MDIQ6RG">
+                        android:layout_below="@id/MDIQ6TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ6RB1"
@@ -663,16 +670,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ6RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ6RB3"
+                            android:layout_below="@id/MDIQ1RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ1RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ6RB4"
@@ -715,28 +721,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ7RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ7RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ7TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ7"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ7TxtV"
-                        android:text="@string/MDIQ7"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ7RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ7TxtV"
-                        android:id="@+id/MDIQ7RG">
+                        android:layout_below="@id/MDIQ7TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ7RB1"
@@ -763,16 +771,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ7RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ7RB3"
+                            android:layout_below="@id/MDIQ7RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ7RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ7RB4"
@@ -815,28 +822,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ8RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ8RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ8TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ8"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ8TxtV"
-                        android:text="@string/MDIQ8"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ8RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ8TxtV"
-                        android:id="@+id/MDIQ8RG">
+                        android:layout_below="@id/MDIQ8TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ8RB1"
@@ -863,16 +872,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ8RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ8RB3"
+                            android:layout_below="@id/MDIQ8RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ8RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ8RB4"
@@ -915,28 +923,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ9RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ9RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ9TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ9"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ9TxtV"
-                        android:text="@string/MDIQ9"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ9RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ9TxtV"
-                        android:id="@+id/MDIQ9RG">
+                        android:layout_below="@id/MDIQ9TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ9RB1"
@@ -963,16 +973,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ9RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ9RB3"
+                            android:layout_below="@id/MDIQ9RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ9RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ9RB4"
@@ -1015,28 +1024,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ10RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ10RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ10TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ10"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ10TxtV"
-                        android:text="@string/MDIQ10"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ10RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ10TxtV"
-                        android:id="@+id/MDIQ10RG">
+                        android:layout_below="@id/MDIQ10TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ10RB1"
@@ -1063,16 +1074,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ10RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ10RB3"
+                            android:layout_below="@id/MDIQ10RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ10RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ10RB4"
@@ -1115,28 +1125,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDI11RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDI11RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ11TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ11"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ11TxtV"
-                        android:text="@string/MDIQ11"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ11RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ11TxtV"
-                        android:id="@+id/MDIQ11RG">
+                        android:layout_below="@id/MDIQ11TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ11RB1"
@@ -1163,16 +1175,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ11RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ11RB3"
+                            android:layout_below="@id/MDIQ11RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ11RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ11RB4"
@@ -1215,28 +1226,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ12RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ12RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ12TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:minHeight="48dp"
+                        android:text="@string/MDIQ12"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ12TxtV"
-                        android:text="@string/MDIQ12"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ12RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ12TxtV"
-                        android:id="@+id/MDIQ12RG">
+                        android:layout_below="@id/MDIQ12TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ12RB1"
@@ -1263,16 +1276,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ12RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ12RB3"
+                            android:layout_below="@id/MDIQ1RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ1RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ12RB4"
@@ -1315,28 +1327,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/MDIQ13RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/relativelayout_style"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/MDIQ13RelLayout">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
+                        android:id="@+id/MDIQ13TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:maxHeight="48dp"
+                        android:text="@string/MDIQ13"
                         android:textColor="@color/black"
-                        android:id="@+id/MDIQ13TxtV"
-                        android:text="@string/MDIQ13"/>
+                        android:textSize="20sp" />
 
                     <RadioGroup
+                        android:id="@+id/MDIQ13RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/MDIQ13TxtV"
-                        android:id="@+id/MDIQ13RG">
+                        android:layout_below="@id/MDIQ13TxtV">
 
                         <RadioButton
                             android:id="@+id/MDIQ13RB1"
@@ -1363,16 +1377,15 @@
                             android:textSize="20sp" />
 
                         <RadioButton
+                            android:id="@+id/MDIQ13RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/MDIQ13RB3"
+                            android:layout_below="@id/MDIQ13RB2"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/MDIA3"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/MDIQ13RB2"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/MDIQ13RB4"
@@ -1421,7 +1434,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:background="@drawable/cvd_button_rounded_corners"
+                    android:background="@drawable/mdi_button_rounded_corners"
                     android:padding="20dp"
                     android:text="CALCULATE"
                     android:textSize="20sp"

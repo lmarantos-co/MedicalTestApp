@@ -106,13 +106,14 @@ class ResultFragment : Fragment() {
 //        actionBar!!.setDisplayHomeAsUpEnabled(true)
         // Inflate the layout for this fragment
         var view = View(mainActivity.applicationContext)
+
         getScreenDimens()
         val test_type : Int = arguments!!.getInt(ARG_PARAM2)
         if (test_type == 1)
         {
             view = inflater.inflate(R.layout.fragment_result, container, false)
             formConLayout = view.findViewById(R.id.results_constraint_layout)
-            testHeadling = view.findViewById(R.id.loginTitleTxtV2)
+            testHeadling = view.findViewById(R.id.testTitleTxtV)
             riskResultTxtV = view.findViewById(R.id.txtVTestResultTitle)
             riskResultTxtVSum = view.findViewById(R.id.txtViewTestResultSummary)
             cvdTestResults = view.findViewById(R.id.txtVcvdTestDetails)
@@ -121,7 +122,6 @@ class ResultFragment : Fragment() {
             closeBtn = menuConLayout.findViewById(R.id.closeBtn)
             companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
             userIcon = MTEtitle.findViewById(R.id.userIcon)
-            userIcon.alpha = 1f
             testTitle = view.findViewById(R.id.txtVTestResultTitle)
             testResultInfoLayout = view.findViewById(R.id.testResultInfoRelLayout)
             ratingBarTitle = view.findViewById(R.id.ratingBarTitle)
@@ -135,13 +135,12 @@ class ResultFragment : Fragment() {
             hightRIskHighTxtV = view.findViewById(R.id.highRiskTxtV)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
             termsRelLayout.visibility = View.INVISIBLE
-            return view
         }
         if (test_type == 2)
         {
             view = inflater.inflate(R.layout.fragment_result_alt, container, false)
             formConLayout = view.findViewById(R.id.results_constraint_layout_alt)
-            testHeadling = view.findViewById(R.id.loginTitleTxtV2)
+            testHeadling = view.findViewById(R.id.testTitleTxtV)
             riskResultTxtV = view.findViewById(R.id.txtVTestResultTitle)
             riskResultTxtVSum = view.findViewById(R.id.txtViewTestResultSummary)
             cvdTestResults = view.findViewById(R.id.txtVcvdTestDetails)
@@ -167,11 +166,10 @@ class ResultFragment : Fragment() {
             testResultInfoLayout = view.findViewById(R.id.testResultInfoRelLayout)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
             termsRelLayout.visibility = View.INVISIBLE
-            return view
         }
         if (test_type == 3)
         {
-            view = inflater.inflate(R.layout.fragment_result_mdi_test , container, false)
+            view = inflater.inflate(R.layout.fragment_result_mdi_test, container, false)
             formConLayout = view.findViewById(R.id.results_con_layout_mdi_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
@@ -240,6 +238,8 @@ class ResultFragment : Fragment() {
         //get the palette from the cov logo image
         palette = createPaletteSync(covLogoBitmap)
         setIconsDimens()
+
+
 
         popupMenuComp = PopUpMenu(termsRelLayout, mainActivity, this, loginFragment, registerFragment)
 
@@ -316,15 +316,14 @@ class ResultFragment : Fragment() {
                 testResultInfoLayout.setBackgroundResource(R.drawable.diabetes_relativelayout_style)
             }
             3 -> {
-                testHeadling.setBackgroundResource(R.drawable.green_diabetes_form_title_style)
-                riskResultTxtV.setBackgroundResource(R.drawable.cvd_test_relative_layout)
+                testHeadling.setBackgroundResource(R.drawable.purple_mditest_form_title_style)
+                riskResultTxtV.setBackgroundResource(R.drawable.mdi_test_relative_layout)
             }
         }
     }
 
     private fun createPaletteSync(bitmap  : Bitmap) : Palette
     {
-        val logoBitmap = BitmapFactory.decodeResource(resources , R.drawable.covariance_logo)
         val builder = Palette.Builder(bitmap)
         palette = builder.generate()
         return palette
