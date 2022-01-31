@@ -38,13 +38,6 @@
         <!--        application menu panel-->
 
 
-        <include
-            android:id="@+id/include_pop_up_menu"
-            layout="@layout/popup_menu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible" />
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VG5"
             android:layout_width="wrap_content"
@@ -107,11 +100,11 @@
                 android:orientation="vertical"
                 tools:context=".MainActivity">
 
+
                 <View
                     android:id="@+id/pillowVIew"
                     android:layout_width="match_parent"
                     android:layout_height="50dp" />
-
 
                 <TextView
                     android:id="@+id/formTxtV"
@@ -260,6 +253,13 @@
                             android:textSize="20sp" />
 
                     </RadioGroup>
+
+                    <include
+                        android:id="@+id/include_pop_up_menu"
+                        layout="@layout/popup_menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible" />
 
                 </RelativeLayout>
 

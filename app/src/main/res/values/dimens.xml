@@ -3,5 +3,5 @@
     <dimen name="terms_text_size">20sp</dimen>
     <dimen name="terms_reference_size">16sp</dimen>
     <dimen name="cvd_title">24sp</dimen>
-    <dimen name="derpessionMagendaBoxSize">32dp</dimen>
+    <dimen name="derpessionMagendaBoxSize">40dp</dimen>
 </resources>

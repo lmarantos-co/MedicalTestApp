@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var signature : TextView
     private lateinit var termsConLayout : ConstraintLayout
     private lateinit var termsOFUseView : RelativeLayout
-    private lateinit var termsCloseBtn : Button
+    private lateinit var termsCloseBtn : ImageView
     private lateinit var fragmentContainer: FrameLayout
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var drawerLayout : DrawerLayout
@@ -140,10 +140,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             hideTermsOfUseLayout()
         }
 
+
         termsCloseBtn.setOnClickListener {
             hideTermsOfUseLayout()
         }
-
 
         userIconImg.setOnClickListener {
             showPopUp(userIconImg)
@@ -372,6 +372,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         diabetesVectorIcon.clearAnimation()
         cvdVectorIcon.visibility = View.INVISIBLE
         diabetesVectorIcon.visibility = View.INVISIBLE
+        depressionIcon.clearAnimation()
         depressionIcon.visibility = View.INVISIBLE
         noseIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
@@ -391,6 +392,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         depressionTestTitle.visibility = View.VISIBLE
         noseTestTitle.visibility = View.VISIBLE
         noseIcon.visibility = View.VISIBLE
+        depressionIcon.clearAnimation()
         depressionIcon.visibility = View.VISIBLE
         noseIcon.visibility = View.VISIBLE
         showCVDTitleForm()

@@ -69,7 +69,7 @@ class ResultFragment : Fragment() {
     private  var loginFragment: LoginFragment = LoginFragment.newInstance()
     private  var registerFragment: RegisterFragment = RegisterFragment.newInstance()
     private lateinit var popupMenuComp : PopUpMenu
-    private lateinit var closeBtn : Button
+    private lateinit var closeBtn : ImageView
     private lateinit var formConLayout : ConstraintLayout
     private lateinit var termsRelLayout : RelativeLayout
 
@@ -118,6 +118,8 @@ class ResultFragment : Fragment() {
             riskResultTxtVSum = view.findViewById(R.id.txtViewTestResultSummary)
             cvdTestResults = view.findViewById(R.id.txtVcvdTestDetails)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             closeBtn = menuConLayout.findViewById(R.id.closeBtn)
             companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
@@ -230,9 +232,11 @@ class ResultFragment : Fragment() {
             mainActivity.backToActivity()
         }
 
-        menuConLayout.findViewById<Button>(R.id.closeBtn).setOnClickListener {
+        menuConLayout.findViewById<ImageView>(R.id.closeBtn).setOnClickListener {
             hideTermsOfUseLayout()
         }
+
+        termsRelLayout.visibility = View.INVISIBLE
 
         val covLogoBitmap = BitmapFactory.decodeResource(resources , R.drawable.covariance_logo)
         //get the palette from the cov logo image

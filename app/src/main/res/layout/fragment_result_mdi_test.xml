@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/results_con_layout_mdi_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,10 +29,11 @@
         android:id="@+id/mditestTitleTxtV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="@color/trans"
         android:drawableLeft="@drawable/ic_depression_24"
         android:drawablePadding="8dp"
-        android:elevation="5dp"
+        android:elevation="4dp"
         android:gravity="center"
         android:minHeight="48dp"
         android:paddingLeft="16dp"
@@ -63,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <RelativeLayout
         android:id="@+id/MDItestProgressBarRelLayout"
@@ -77,14 +79,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.55" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultBarHGLBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id='@+id/resultBarNoDepressionVGL'
@@ -197,6 +199,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/testResultTxtV"
+            android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:paddingRight="10dp">
@@ -228,6 +231,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ScoreLinLayout"
             android:background="@color/very_light_gray"
+            android:gravity="center"
+            android:orientation="vertical"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="5dp">
@@ -274,14 +279,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
+        app:layout_constraintGuide_percent="0.65" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/magendaBottomHGL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id='@+id/magednaRightVGL'
@@ -296,15 +301,16 @@
         android:layout_height="wrap_content"
         android:background="@drawable/relativelayout_style"
         app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
-        app:layout_constraintLeft_toRightOf="@id/titleVGL1"
-        app:layout_constraintRight_toLeftOf="@id/magednaRightVGL"
+        app:layout_constraintEnd_toEndOf="@+id/titleVGL2"
+        app:layout_constraintStart_toStartOf="@+id/titleVGL1"
         app:layout_constraintTop_toBottomOf="@id/magendaTopHGL">
 
         <LinearLayout
             android:id="@+id/noDeprLinLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="8dp">
 
             <View
                 android:id="@+id/noDepView"
@@ -314,11 +320,12 @@
 
             <TextView
                 android:id="@+id/noDepTxtV"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="-- no depression"
+                android:gravity="center"
+                android:text="no depression"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -327,7 +334,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/noDeprLinLayout"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="8dp">
 
             <View
                 android:id="@+id/mildDepView"
@@ -337,11 +345,12 @@
 
             <TextView
                 android:id="@+id/mildDepTxtV"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="-- mild depression"
+                android:gravity="center"
+                android:text="mild depression"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -350,7 +359,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/mildDeprLinLayout"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="8dp">
 
             <View
                 android:id="@+id/moderateDepView"
@@ -360,11 +370,12 @@
 
             <TextView
                 android:id="@+id/moderateDepTxtV"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="-- moderate depression"
+                android:gravity="center"
+                android:text="moderate depression"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -373,7 +384,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/moderateDeprLinLayout"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="8dp">
 
             <View
                 android:id="@+id/severeDepView"
@@ -383,11 +395,12 @@
 
             <TextView
                 android:id="@+id/severeDepTxtV"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="-- severe depression"
+                android:gravity="center"
+                android:text="severe depression"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
