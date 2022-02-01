@@ -95,4 +95,69 @@ open class Patient() : RealmModel {
 
 
     var patientMDIQ13 : Int? = null
+
+    //variables related with Beck Anxiety Inventory Test
+
+    var patientBAIQ1 : Int? = null
+
+
+    var patientBAIQ2 : Int? = null
+
+
+    var patientBAIQ3 : Int? = null
+
+
+    var patientBAIQ4 : Int? = null
+
+
+    var patientBAIQ5 : Int? = null
+
+
+    var patientBAIQ6 : Int? = null
+
+
+    var patientBAIQ7 : Int? = null
+
+
+    var patientBAIQ8 : Int? = null
+
+
+    var patientBAIQ9 : Int? = null
+
+
+    var patientBAIQ10 : Int? = null
+
+
+    var patientBAIQ11 : Int? = null
+
+
+    var patientBAIQ12 : Int? = null
+
+
+    var patientBAIQ13 : Int? = null
+
+    var patientBAIQ14 : Int? = null
+
+
+    var patientBAIQ15 : Int? = null
+
+
+    var patientBAIQ16 : Int? = null
+
+
+    var patientBAIQ17 : Int? = null
+
+
+    var patientBAIQ18 : Int? = null
+
+
+    var patientBAIQ19 : Int? = null
+
+
+    var patientBAIQ20 : Int? = null
+
+
+    var patientBAIQ21 : Int? = null
+
+
 }

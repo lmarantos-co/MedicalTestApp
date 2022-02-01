@@ -32,64 +32,66 @@ private const val ARG_PARAM2 = "test_type"
 
 class ResultFragment : Fragment() {
 
-    private lateinit var mainActivity : MainActivity
+    private lateinit var mainActivity: MainActivity
     private var riskResult: Double? = null
-    private lateinit var testHeadling : TextView
-    private lateinit var riskResultTxtV : TextView
-    private lateinit var riskResultTxtVSum : TextView
-    private lateinit var MTEtitle : ConstraintLayout
-    private lateinit var menuConLayout : ConstraintLayout
-    private lateinit var cvdTitleForm : RelativeLayout
-    private lateinit var companyLogo : ImageView
-    private lateinit var userIcon : ImageView
-    private lateinit var testTitle : TextView
-    private lateinit var cvdTestResults : TextView
-    private lateinit var testResultInfoLayout : RelativeLayout
-    private lateinit var ratingBarTitle : TextView
-    private lateinit var lowRiskLayout : RelativeLayout
-    private lateinit var borderRiskLayout : RelativeLayout
-    private lateinit var intermediateRiskLayout : RelativeLayout
-    private lateinit var highRiskLayout : RelativeLayout
-    private lateinit var lowRiskView : TextView
-    private lateinit var borderRiskLowTxtV : TextView
-    private lateinit var intermediateRiskLowTxtV : TextView
-    private lateinit var hightRIskHighTxtV : TextView
+    private lateinit var testHeadling: TextView
+    private lateinit var riskResultTxtV: TextView
+    private lateinit var riskResultTxtVSum: TextView
+    private lateinit var MTEtitle: ConstraintLayout
+    private lateinit var menuConLayout: ConstraintLayout
+    private lateinit var cvdTitleForm: RelativeLayout
+    private lateinit var companyLogo: ImageView
+    private lateinit var userIcon: ImageView
+    private lateinit var testTitle: TextView
+    private lateinit var cvdTestResults: TextView
+    private lateinit var testResultInfoLayout: RelativeLayout
+    private lateinit var ratingBarTitle: TextView
+    private lateinit var lowRiskLayout: RelativeLayout
+    private lateinit var borderRiskLayout: RelativeLayout
+    private lateinit var intermediateRiskLayout: RelativeLayout
+    private lateinit var highRiskLayout: RelativeLayout
+    private lateinit var lowRiskView: TextView
+    private lateinit var borderRiskLowTxtV: TextView
+    private lateinit var intermediateRiskLowTxtV: TextView
+    private lateinit var hightRIskHighTxtV: TextView
 
-    private lateinit var diabetesRatingBar : RelativeLayout
-    private lateinit var drawPercView : View
-    private lateinit var upPerc : TextView
-    private lateinit var resultPerc : TextView
-    private lateinit var bottomPerc : TextView
-    private var ratingBarHegiht : Int = 0
-    private var mteTitleHeight : Int = 0
+    private lateinit var diabetesRatingBar: RelativeLayout
+    private lateinit var drawPercView: View
+    private lateinit var upPerc: TextView
+    private lateinit var resultPerc: TextView
+    private lateinit var bottomPerc: TextView
+    private var ratingBarHegiht: Int = 0
+    private var mteTitleHeight: Int = 0
 
     private lateinit var newConstraintSet: ConstraintSet
-    private lateinit var palette : Palette
+    private lateinit var palette: Palette
 
-    private  var loginFragment: LoginFragment = LoginFragment.newInstance()
-    private  var registerFragment: RegisterFragment = RegisterFragment.newInstance()
-    private lateinit var popupMenuComp : PopUpMenu
-    private lateinit var closeBtn : ImageView
-    private lateinit var formConLayout : ConstraintLayout
-    private lateinit var termsRelLayout : RelativeLayout
+    private var loginFragment: LoginFragment = LoginFragment.newInstance()
+    private var registerFragment: RegisterFragment = RegisterFragment.newInstance()
+    private lateinit var popupMenuComp: PopUpMenu
+    private lateinit var closeBtn: ImageView
+    private lateinit var formConLayout: ConstraintLayout
+    private lateinit var termsRelLayout: RelativeLayout
 
-    private lateinit var noDepressionLayout : RelativeLayout
-    private lateinit var mildDepressionLayout  : RelativeLayout
-    private lateinit var moderateDepressionLayout : RelativeLayout
-    private lateinit var servereDepressionLayout : RelativeLayout
-    private lateinit var totalScore : TextView
-    private lateinit var depressStatus : TextView
-    private var noDepressionFormWidth : Int = 0
-    private var mildDepressionFormWidth : Int = 0
-    private var moderateDepressionFormWidth : Int = 0
-    private var severeDepressionFormWidth : Int = 0
-    private var depressionResultBarHeight : Int = 0
-    private lateinit var depressionProgressBar : RelativeLayout
+    private lateinit var noDepressionLayout: RelativeLayout
+    private lateinit var mildDepressionLayout: RelativeLayout
+    private lateinit var moderateDepressionLayout: RelativeLayout
+    private lateinit var servereDepressionLayout: RelativeLayout
+    private lateinit var totalScore: TextView
+    private lateinit var depressStatus: TextView
+    private var noDepressionFormWidth: Int = 0
+    private var mildDepressionFormWidth: Int = 0
+    private var moderateDepressionFormWidth: Int = 0
+    private var severeDepressionFormWidth: Int = 0
+    private var depressionResultBarHeight: Int = 0
+    private lateinit var depressionProgressBar: RelativeLayout
+
+    private lateinit var baiTestSummary: TextView
 
 
     //screen dimensions
-    var screenWidth : Int = 0
-    var screenHeight : Int = 0
+    var screenWidth: Int = 0
+    var screenHeight: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,9 +110,8 @@ class ResultFragment : Fragment() {
         var view = View(mainActivity.applicationContext)
 
         getScreenDimens()
-        val test_type : Int = arguments!!.getInt(ARG_PARAM2)
-        if (test_type == 1)
-        {
+        val test_type: Int = arguments!!.getInt(ARG_PARAM2)
+        if (test_type == 1) {
             view = inflater.inflate(R.layout.fragment_result, container, false)
             formConLayout = view.findViewById(R.id.results_constraint_layout)
             testHeadling = view.findViewById(R.id.testTitleTxtV)
@@ -138,8 +139,7 @@ class ResultFragment : Fragment() {
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
             termsRelLayout.visibility = View.INVISIBLE
         }
-        if (test_type == 2)
-        {
+        if (test_type == 2) {
             view = inflater.inflate(R.layout.fragment_result_alt, container, false)
             formConLayout = view.findViewById(R.id.results_constraint_layout_alt)
             testHeadling = view.findViewById(R.id.testTitleTxtV)
@@ -169,8 +169,7 @@ class ResultFragment : Fragment() {
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
             termsRelLayout.visibility = View.INVISIBLE
         }
-        if (test_type == 3)
-        {
+        if (test_type == 3) {
             view = inflater.inflate(R.layout.fragment_result_mdi_test, container, false)
             formConLayout = view.findViewById(R.id.results_con_layout_mdi_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
@@ -181,7 +180,7 @@ class ResultFragment : Fragment() {
             companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
             userIcon = MTEtitle.findViewById(R.id.userIcon)
             userIcon.alpha = 1f
-            testHeadling= view.findViewById(R.id.mditestTitleTxtV)
+            testHeadling = view.findViewById(R.id.mditestTitleTxtV)
             riskResultTxtV = view.findViewById(R.id.testResultTxtV)
             depressionProgressBar = RelativeLayout(mainActivity.applicationContext)
             depressionProgressBar = view.findViewById(R.id.MDItestProgressBarRelLayout)
@@ -191,7 +190,10 @@ class ResultFragment : Fragment() {
             servereDepressionLayout = view.findViewById(R.id.resultBarSevereDepRelLayout)
             totalScore = view.findViewById(R.id.totalScore)
             depressStatus = view.findViewById(R.id.depressionStatus)
-            setMDIResultsOnForm(arguments!!.getDouble(ARG_PARAM1).toInt() , getMDIResult(arguments!!.getDouble(ARG_PARAM1).toInt()))
+            setMDIResultsOnForm(
+                arguments!!.getDouble(ARG_PARAM1).toInt(),
+                getMDIResult(arguments!!.getDouble(ARG_PARAM1).toInt())
+            )
 
             noDepressionLayout.post {
                 noDepressionFormWidth = noDepressionLayout.width
@@ -199,13 +201,13 @@ class ResultFragment : Fragment() {
             }
 
 
-            mildDepressionLayout.post{
+            mildDepressionLayout.post {
                 mildDepressionFormWidth = mildDepressionLayout.width
 
             }
 
 
-            moderateDepressionLayout.post{
+            moderateDepressionLayout.post {
                 moderateDepressionFormWidth = moderateDepressionLayout.width
             }
 
@@ -216,6 +218,25 @@ class ResultFragment : Fragment() {
                     createDepressionResultBarViews()
                 }
             }
+        }
+        if (test_type == 4) {
+            view = inflater.inflate(R.layout.fragment_result_bai_test, container, false)
+            formConLayout = view.findViewById(R.id.results_con_layout_bai_test)
+            MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+            termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+            termsRelLayout.visibility = View.INVISIBLE
+            closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+            companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
+            testHeadling = view.findViewById(R.id.baiTestTitleTxtV)
+            riskResultTxtV = view.findViewById(R.id.testResultTxtV)
+            totalScore = view.findViewById(R.id.totalScore)
+            val score = arguments!!.getDouble(ARG_PARAM1).toInt()
+            totalScore.setText(score.toString())
+            baiTestSummary = view.findViewById(R.id.BAItestSummary)
+            setBaiTestSummary(score)
         }
         return view
     }
@@ -238,14 +259,15 @@ class ResultFragment : Fragment() {
 
         termsRelLayout.visibility = View.INVISIBLE
 
-        val covLogoBitmap = BitmapFactory.decodeResource(resources , R.drawable.covariance_logo)
+        val covLogoBitmap = BitmapFactory.decodeResource(resources, R.drawable.covariance_logo)
         //get the palette from the cov logo image
         palette = createPaletteSync(covLogoBitmap)
         setIconsDimens()
 
 
 
-        popupMenuComp = PopUpMenu(termsRelLayout, mainActivity, this, loginFragment, registerFragment)
+        popupMenuComp =
+            PopUpMenu(termsRelLayout, mainActivity, this, loginFragment, registerFragment)
 
         userIcon.setOnClickListener {
             popupMenuComp.showPopUp(userIcon)
@@ -256,36 +278,69 @@ class ResultFragment : Fragment() {
             hideTermsOfUseLayout()
         }
 
-        val test_type : Int = arguments!!.getInt(ARG_PARAM2)
+        val test_type: Int = arguments!!.getInt(ARG_PARAM2)
         if (test_type == 1) {
             setFormColors(1)
             setRatingBarColors(1)
             testHeadling.setText(R.string.cvd_test_results)
-            testHeadling.setCompoundDrawablesWithIntrinsicBounds(mainActivity.getDrawable(R.drawable.ic_favorite_black_24dp) , null, null, null)
+            testHeadling.setCompoundDrawablesWithIntrinsicBounds(
+                mainActivity.getDrawable(R.drawable.ic_favorite_black_24dp),
+                null,
+                null,
+                null
+            )
 //            val resultString = getString(R.string.cvd_test_result) + " " + "<b>" +
 //            String.format("%.2f" , arguments!!.getDouble(ARG_PARAM1)) + " %." + "</b>"
             barFlashAnimation(arguments!!.getDouble(ARG_PARAM1))
 //            riskResultTxtVSum.text = resources.getString(R.string.cvd_response_text)
-            ratingBarTitle.setText("Result : " + String.format("%.2f" , arguments!!.getDouble(ARG_PARAM1)) +" %")
-            cvdTestResults.setTypeface(null , Typeface.ITALIC)
+            ratingBarTitle.setText(
+                "Result : " + String.format(
+                    "%.2f",
+                    arguments!!.getDouble(ARG_PARAM1)
+                ) + " %"
+            )
+            cvdTestResults.setTypeface(null, Typeface.ITALIC)
             cvdTestResults.setText(R.string.cvd_response_text)
         }
         if (test_type == 2) {
 //            setIconsDimens()
             setFormColors(2)
             testHeadling.setText(R.string.diabetes_test_results)
-            testHeadling.setCompoundDrawablesWithIntrinsicBounds(mainActivity.getDrawable(R.drawable.blood_drop_24dp) , null, null, null)
+            testHeadling.setCompoundDrawablesWithIntrinsicBounds(
+                mainActivity.getDrawable(R.drawable.blood_drop_24dp),
+                null,
+                null,
+                null
+            )
             riskResultTxtV.setText("Result")
             var resultString = getString(R.string.diabetes_test_result)
-            resultString = resultString + " " + "<b>" + String.format("%.2f" , arguments!!.getDouble(ARG_PARAM1) * 100) + "</b>" + "% ."
+            resultString = resultString + " " + "<b>" + String.format(
+                "%.2f",
+                arguments!!.getDouble(ARG_PARAM1) * 100
+            ) + "</b>" + "% ."
             riskResultTxtVSum.text = Html.fromHtml(resultString)
         }
-        if (test_type == 3)
-        {
+        if (test_type == 3) {
             setFormColors(3)
             testHeadling.setText("MDI Test")
             riskResultTxtV.setText("Result")
-            testHeadling.setCompoundDrawablesWithIntrinsicBounds(mainActivity.getDrawable(R.drawable.ic_depression_24) , null, null, null)
+            testHeadling.setCompoundDrawablesWithIntrinsicBounds(
+                mainActivity.getDrawable(R.drawable.ic_depression_24),
+                null,
+                null,
+                null
+            )
+        }
+        if (test_type == 4) {
+            setFormColors(3)
+            testHeadling.setText("BAI Test")
+            riskResultTxtV.setText("Result")
+            testHeadling.setCompoundDrawablesWithIntrinsicBounds(
+                mainActivity.getDrawable(R.drawable.ic_depression_24),
+                null,
+                null,
+                null
+            )
         }
     }
 
@@ -302,13 +357,12 @@ class ResultFragment : Fragment() {
         userIcon.layoutParams.height = widthPixels / 10
     }
 
-    private fun setAltLLayout()
-    {
+    private fun setAltLLayout() {
         newConstraintSet = ConstraintSet()
-        newConstraintSet.clone(mainActivity.applicationContext , R.layout.fragment_result_alt)
+        newConstraintSet.clone(mainActivity.applicationContext, R.layout.fragment_result_alt)
     }
 
-    private fun setFormColors(testType : Int) {
+    private fun setFormColors(testType: Int) {
         when (testType) {
             1 -> {
                 ratingBarTitle.setBackgroundResource(R.drawable.cvd_test_relative_layout)
@@ -323,22 +377,22 @@ class ResultFragment : Fragment() {
                 testHeadling.setBackgroundResource(R.drawable.purple_mditest_form_title_style)
                 riskResultTxtV.setBackgroundResource(R.drawable.mdi_test_relative_layout)
             }
+            4 -> {
+                testHeadling.setBackgroundResource(R.drawable.purple_mditest_form_title_style)
+                riskResultTxtV.setBackgroundResource(R.drawable.mdi_test_relative_layout)
+            }
         }
     }
 
-    private fun createPaletteSync(bitmap  : Bitmap) : Palette
-    {
+    private fun createPaletteSync(bitmap: Bitmap): Palette {
         val builder = Palette.Builder(bitmap)
         palette = builder.generate()
         return palette
     }
 
-    private fun setRatingBarColors(result : Int)
-    {
-        when(result)
-        {
-            1 ->
-            {
+    private fun setRatingBarColors(result: Int) {
+        when (result) {
+            1 -> {
                 highRiskLayout.setBackgroundResource(R.drawable.white_middle_rellayout_style)
                 intermediateRiskLayout.setBackgroundResource(R.drawable.white_middle_rellayout_style)
                 borderRiskLayout.setBackgroundResource(R.drawable.white_middle_rellayout_style)
@@ -348,7 +402,7 @@ class ResultFragment : Fragment() {
     }
 
 
-    private fun barFlashAnimation(percentage : Double) {
+    private fun barFlashAnimation(percentage: Double) {
         if ((percentage >= 0) && (percentage <= 5)) {
             higlightWiningView(lowRiskLayout)
         }
@@ -363,8 +417,7 @@ class ResultFragment : Fragment() {
         }
     }
 
-    private fun higlightWiningView(view : RelativeLayout)
-    {
+    private fun higlightWiningView(view: RelativeLayout) {
         if ((view.id == R.id.borderRiskRelLayout) || (view.id == R.id.intermediateRiskLRelLayout))
             view.setBackgroundColor(resources.getColor(R.color.red_violet))
         if (view.id == R.id.hightRiskRelLayout)
@@ -373,8 +426,7 @@ class ResultFragment : Fragment() {
             view.setBackgroundColor(resources.getColor(R.color.red_violet))
     }
 
-    private fun drawDiabetesPercentage(perc : Double)
-    {
+    private fun drawDiabetesPercentage(perc: Double) {
         var resultPercHeight = ratingBarHegiht * perc
         drawPercView.setBackgroundColor(mainActivity.resources.getColor(R.color.Red))
 //        increaseViewSize(drawPercView , resultPercHeight.toInt())
@@ -384,72 +436,65 @@ class ResultFragment : Fragment() {
         //check if the bottomPerc gets invisible by the userResultPerc
         if (arguments!!.getDouble(ARG_PARAM1) * 100 < 10) {
             bottomPerc.visibility = View.INVISIBLE
-            resultPerc.text = "  " + String.format("%.2f", arguments!!.getDouble(ARG_PARAM1) * 100) + " %"
+            resultPerc.text =
+                "  " + String.format("%.2f", arguments!!.getDouble(ARG_PARAM1) * 100) + " %"
         }
 
-        if (arguments!!.getDouble(ARG_PARAM1) * 100 >  90) {
+        if (arguments!!.getDouble(ARG_PARAM1) * 100 > 90) {
             upPerc.visibility = View.INVISIBLE
-            resultPerc.text = "  " + String.format("%.2f", arguments!!.getDouble(ARG_PARAM1) * 100) + " %"
+            resultPerc.text =
+                "  " + String.format("%.2f", arguments!!.getDouble(ARG_PARAM1) * 100) + " %"
         }
 
-        if ((arguments!!.getDouble(ARG_PARAM1) * 100 >= 10) && (arguments!!.getDouble(ARG_PARAM1) * 100 <= 90))
-        {
-            resultPerc.text = "  " + String.format("%.2f" , arguments!!.getDouble(ARG_PARAM1) * 100) + " %"
+        if ((arguments!!.getDouble(ARG_PARAM1) * 100 >= 10) && (arguments!!.getDouble(ARG_PARAM1) * 100 <= 90)) {
+            resultPerc.text =
+                "  " + String.format("%.2f", arguments!!.getDouble(ARG_PARAM1) * 100) + " %"
         }
     }
 
-    private fun getMDIResult(mdiResult : Int) : String
-    {
-        if ((mdiResult>=0) && (mdiResult < 20))
-        {
+    private fun getMDIResult(mdiResult: Int): String {
+        if ((mdiResult >= 0) && (mdiResult < 20)) {
             return "No Depression"
         }
-        if ((mdiResult>=20) && (mdiResult <= 24))
-        {
+        if ((mdiResult >= 20) && (mdiResult <= 24)) {
             return "Mild depression"
         }
-        if ((mdiResult>=25) && (mdiResult <= 29))
-        {
+        if ((mdiResult >= 25) && (mdiResult <= 29)) {
             return "Moderate depression"
         }
-        if (mdiResult>=30)
-        {
+        if (mdiResult >= 30) {
             return "Severe depression"
         }
         return ""
     }
 
-    private fun setMDIResultsOnForm(mdiDepressionInt : Int , mdiDepressionType : String)
-    {
+    private fun setMDIResultsOnForm(mdiDepressionInt: Int, mdiDepressionType: String) {
         totalScore.text = mdiDepressionInt.toString()
         depressStatus.text = mdiDepressionType
         setMDIResultTextViewColors(mdiDepressionInt)
     }
 
-    private fun setMDIResultTextViewColors(mdiDepressionInt : Int)
-    {
-        if ((mdiDepressionInt>=0) && (mdiDepressionInt < 20))
-        {
+    private fun setMDIResultTextViewColors(mdiDepressionInt: Int) {
+        if ((mdiDepressionInt >= 0) && (mdiDepressionInt < 20)) {
             totalScore.setTextColor(resources.getColor(R.color.blue))
             depressStatus.setTextColor(resources.getColor(R.color.blue))
         }
-        if ((mdiDepressionInt>=20) && (mdiDepressionInt <= 24))
-        {
+        if ((mdiDepressionInt >= 20) && (mdiDepressionInt <= 24)) {
             totalScore.setTextColor(resources.getColor(R.color.green_5))
-            depressStatus.setTextColor(resources.getColor(R.color.green_5))    }
-        if ((mdiDepressionInt>=25) && (mdiDepressionInt <= 29))
-        {
+            depressStatus.setTextColor(resources.getColor(R.color.green_5))
+        }
+        if ((mdiDepressionInt >= 25) && (mdiDepressionInt <= 29)) {
             totalScore.setTextColor(resources.getColor(R.color.orange_5))
-            depressStatus.setTextColor(resources.getColor(R.color.orange_5))      }
-        if (mdiDepressionInt>=30)
-        {
+            depressStatus.setTextColor(resources.getColor(R.color.orange_5))
+        }
+        if (mdiDepressionInt >= 30) {
             totalScore.setTextColor(resources.getColor(R.color.dark_red))
-            depressStatus.setTextColor(resources.getColor(R.color.dark_red))      }
+            depressStatus.setTextColor(resources.getColor(R.color.dark_red))
+        }
     }
 
     //function to create Views above the result bar
-suspend fun createDepressionResultBarViews()
-    {
+    suspend fun createDepressionResultBarViews() {
         depressionProgressBar.layoutParams.width = (RelativeLayout.LayoutParams.WRAP_CONTENT)
         depressionProgressBar.layoutParams.height = (RelativeLayout.LayoutParams.WRAP_CONTENT)
         val viewHeight = 50
@@ -458,39 +503,63 @@ suspend fun createDepressionResultBarViews()
         val yDepressionResultBar = depressionProgressBar.y
         val xDepressionResultBar = depressionProgressBar.x
         val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1.8).toInt()
-        for (i in 1..userMDIResult)
-        {
+        for (i in 1..userMDIResult) {
             val paint = Paint()
-            var depResBarView = customDerpesionProgressView(mainActivity.applicationContext , xDepressionResultBar , yDepressionResultBar, xDepressionResultBar + i*viewWidth , yDepressionResultBar + viewHeight.toFloat() , paint)
+            var depResBarView = customDerpesionProgressView(
+                mainActivity.applicationContext,
+                xDepressionResultBar,
+                yDepressionResultBar,
+                xDepressionResultBar + i * viewWidth,
+                yDepressionResultBar + viewHeight.toFloat(),
+                paint
+            )
             depResBarView.layoutParams
             //add the created view to the relativelayout
-            depressionProgressBar.addView(depResBarView ,
-                ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            depressionProgressBar.addView(
+                depResBarView,
+                ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
             )
             delay(100)
-            setProgresViewColor(depResBarView , i)
+            setProgresViewColor(depResBarView, i)
             depressionProgressBar.invalidate()
         }
 //        animateDepressionProgressBar(userMDIResult)
 
     }
 
-    fun setProgresViewColor(view : View, index : Int)
-    {
-        if ((index >= 0) && (index <  36)) {
+    fun setProgresViewColor(view: View, index: Int) {
+        if ((index >= 0) && (index < 36)) {
             view.background = resources.getDrawable(R.drawable.blue_progressbar_style)
 
         }
         if ((index >= 36) && (index <= 44)) {
             view.background = resources.getDrawable(R.drawable.green_progressbar_style)
         }
-        if ((index >= 45) && (index <= 54))
-        {
+        if ((index >= 45) && (index <= 54)) {
             view.background = resources.getDrawable(R.drawable.orange_progressbar_style)
         }
 
         if (index > 54) {
             view.background = resources.getDrawable(R.drawable.red_progressbar_style)
+        }
+    }
+
+    fun setBaiTestSummary(testSum : Int)
+    {
+        if ((testSum >=0) && (testSum < 21))
+        {
+            baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT1)
+        }
+        if ((testSum >=22) && (testSum < 35))
+        {
+            baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT2)
+        }
+        if (testSum >=36)
+        {
+            baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT3)
         }
     }
 

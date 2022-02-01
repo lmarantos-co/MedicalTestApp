@@ -129,7 +129,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ1"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -234,7 +234,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ2"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -338,7 +338,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ3"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -443,7 +443,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ4"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -548,7 +548,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ5"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -652,7 +652,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ6"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -758,7 +758,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ7"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -864,7 +864,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ8"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -969,7 +969,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ9"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -1074,7 +1074,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ10"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -1179,7 +1179,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ11"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -1283,7 +1283,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:minHeight="48dp"
+                        android:minHeight="64dp"
                         android:text="@string/MDIQ12"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -1384,7 +1384,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
-                        android:maxHeight="48dp"
+                        android:maxHeight="64dp"
                         android:text="@string/MDIQ13"
                         android:textColor="@color/black"
                         android:textSize="20sp" />

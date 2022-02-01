@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var checkFragment: CheckFragment
     private lateinit var checkDiabetesFragment : DiabetesCheckFragment
     private lateinit var mdiCheckFragment: MDICheckFragment
+    private lateinit var baiCheckFragment: BAICheckFragment
     private lateinit var popupMenu: PopupMenu
     private lateinit var MTETitleForm : RelativeLayout
     private  var mteTitleFormHeight : Int = 0
@@ -129,6 +130,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         checkFragment = CheckFragment.newInstance()
         checkDiabetesFragment = DiabetesCheckFragment.newInstance()
         mdiCheckFragment = MDICheckFragment.newInstance()
+        baiCheckFragment = BAICheckFragment.newInstance()
 
         setFragmentContainerConstraint(2)
 
@@ -218,6 +220,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction(mdiCheckFragment)
         }
 
+        noseIcon.setOnClickListener {
+            hideLayoutElements()
+            playSelectTestAudio(5)
+            fragmentTransaction(baiCheckFragment)
+        }
+
         showMedicalTests()
 
     }
@@ -259,6 +267,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
             4 -> {
                 val mediaPlayer: MediaPlayer = MediaPlayer.create(applicationContext, R.raw.mdi_test_index)
+                mediaPlayer.start() // no need to call prepare(); create() does that for you
+            }
+            5 -> {
+                val mediaPlayer: MediaPlayer = MediaPlayer.create(applicationContext, R.raw.test_for_bai)
                 mediaPlayer.start() // no need to call prepare(); create() does that for you
             }
         }
@@ -345,12 +357,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private fun showMedicalTests() {
         cvdVectorIcon.visibility = View.VISIBLE
         diabetesVectorIcon.visibility = View.VISIBLE
+        depressionIcon.visibility = View.VISIBLE
+        noseIcon.visibility = View.VISIBLE
         cvdVectorIcon.animate().alpha(1f).duration = 1200
-
-
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
         depressionIcon.animate().alpha(1f).duration = 1200
         depressionIcon.startAnimation(bounceTests)
+        noseIcon.animate().alphaBy(1f).duration = 1200
+        noseTestTitle.startAnimation(bounceTests)
         cvdVectorIcon.startAnimation(bounceTests)
         diabetesVectorIcon.startAnimation(bounceTests)
 
@@ -450,7 +464,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(registerFragment)
         fragmentTransaction.hide(checkFragment)
         fragmentTransaction.hide(checkDiabetesFragment)
-        fragmentTransaction.hide(mdiCheckFragment).commit()
+        fragmentTransaction.hide(mdiCheckFragment)
+        fragmentTransaction.hide(baiCheckFragment)
+            .commit()
     }
 
 
@@ -463,6 +479,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is DiabetesCheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is MDICheckFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is BAICheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is LoginFragment)
             fragmentTransaction.show(loginFragment)

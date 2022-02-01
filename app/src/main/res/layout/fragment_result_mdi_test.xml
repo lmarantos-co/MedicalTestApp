@@ -310,7 +310,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="8dp">
+            android:paddingLeft="64dp">
 
             <View
                 android:id="@+id/noDepView"
@@ -322,7 +322,8 @@
                 android:id="@+id/noDepTxtV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="center|left"
+                android:paddingLeft="16dp"
                 android:text="no depression"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -335,7 +336,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/noDeprLinLayout"
             android:orientation="horizontal"
-            android:paddingLeft="8dp">
+            android:paddingLeft="64dp">
 
             <View
                 android:id="@+id/mildDepView"
@@ -347,7 +348,8 @@
                 android:id="@+id/mildDepTxtV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="center|left"
+                android:paddingLeft="16dp"
                 android:text="mild depression"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -360,7 +362,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/mildDeprLinLayout"
             android:orientation="horizontal"
-            android:paddingLeft="8dp">
+            android:paddingLeft="64dp">
 
             <View
                 android:id="@+id/moderateDepView"
@@ -372,7 +374,8 @@
                 android:id="@+id/moderateDepTxtV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="center|left"
+                android:paddingLeft="16dp"
                 android:text="moderate depression"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -385,7 +388,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/moderateDeprLinLayout"
             android:orientation="horizontal"
-            android:paddingLeft="8dp">
+            android:paddingLeft="64dp">
 
             <View
                 android:id="@+id/severeDepView"
@@ -397,7 +400,8 @@
                 android:id="@+id/severeDepTxtV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="center|left"
+                android:paddingLeft="16dp"
                 android:text="severe depression"
                 android:textColor="@color/black"
                 android:textSize="20sp" />

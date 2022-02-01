@@ -5,37 +5,37 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cvdriskestimator.Fragments.MDICheckFragment
+import com.example.cvdriskestimator.Fragments.BAICheckFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.MedicalTestAlgorithms.MDITestEstimator
+import com.example.cvdriskestimator.MedicalTestAlgorithms.BAITestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import io.realm.Realm
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class CheckMDIPatientViewModel : ViewModel() {
+class CheckBAIPatientViewModel : ViewModel() {
 
-    private lateinit var mainActivity : MainActivity
-    private lateinit var mdiCheckFragment: MDICheckFragment
-    private lateinit  var realm : Realm
-    private  var realmDAO =  RealmDAO()
-    private var mdiTestEstimator = MDITestEstimator()
-    private lateinit var resultFragment : ResultFragment
 
-    //mutable data that hold the patient data
+    private lateinit var mainActivity: MainActivity
+    private lateinit var baiCheckFragment: BAICheckFragment
+    private lateinit var realm : Realm
+    private lateinit var baiTestEstimator : BAITestEstimator
+    private var realmDAO = RealmDAO()
+    private lateinit var resultFragment: ResultFragment
+
     var patientData = MutableLiveData<Patient>()
 
-    fun passActivity(activity : MainActivity)
+    fun passActivity(activity: MainActivity)
     {
         mainActivity = activity
+        baiTestEstimator = BAITestEstimator(activity)
     }
 
-    fun passFragment(fragment : MDICheckFragment)
+    fun passFragment(BAICheckFragment: BAICheckFragment)
     {
-        mdiCheckFragment = fragment
+        baiCheckFragment = BAICheckFragment
     }
 
     fun initialiseRealm()
@@ -73,7 +73,7 @@ class CheckMDIPatientViewModel : ViewModel() {
         patientData.postValue(patientData.value)
     }
 
-    fun checkMDITestPatient(allPatientSelections : ArrayList<Int?>)
+    fun checkBAITestPatient(allPatientSelections : ArrayList<Int?>)
     {
         if ((checkQuestionForInputError(allPatientSelections[0] , 1)) && (checkQuestionForInputError(allPatientSelections[1]  , 2))
             && (checkQuestionForInputError(allPatientSelections[2]  , 3)) && (checkQuestionForInputError(allPatientSelections[3]  , 4))
@@ -81,20 +81,25 @@ class CheckMDIPatientViewModel : ViewModel() {
             && (checkQuestionForInputError(allPatientSelections[6]  , 7)) && (checkQuestionForInputError(allPatientSelections[7]  , 8))
             && (checkQuestionForInputError(allPatientSelections[8]  , 9)) && (checkQuestionForInputError(allPatientSelections[9]  , 10))
             && (checkQuestionForInputError(allPatientSelections[10]  , 11)) && (checkQuestionForInputError(allPatientSelections[11]  , 12))
-            && (checkQuestionForInputError(allPatientSelections[12]  , 13)))
-            {
-                storePatientOnRealm(allPatientSelections)
-                val result = mdiTestEstimator.calculateMDI(allPatientSelections[0]!!, allPatientSelections[1]!!, allPatientSelections[2]!!, allPatientSelections[3]!!, allPatientSelections[4]!! ,
-                    allPatientSelections[5]!! , allPatientSelections[6]!!, allPatientSelections[7]!! , allPatientSelections[8]!! , allPatientSelections[9]!! ,
-                    allPatientSelections[10]!! , allPatientSelections[11]!! , allPatientSelections[12]!!)
-                Toast.makeText(mainActivity.applicationContext , result.toString() , Toast.LENGTH_LONG).show()
-                openResultFragment(result)
-            }
+            && (checkQuestionForInputError(allPatientSelections[12]  , 13)) && (checkQuestionForInputError(allPatientSelections[13]  , 14))
+            && (checkQuestionForInputError(allPatientSelections[14]  , 15)) && (checkQuestionForInputError(allPatientSelections[15]  , 16))
+            && (checkQuestionForInputError(allPatientSelections[16]  , 17)) && (checkQuestionForInputError(allPatientSelections[17]  , 18))
+            && (checkQuestionForInputError(allPatientSelections[18]  , 19)) && (checkQuestionForInputError(allPatientSelections[19]  , 20))
+            && (checkQuestionForInputError(allPatientSelections[20]  , 21)))
+        {
+            storePatientOnRealm(allPatientSelections)
+            val result = baiTestEstimator.calculateBAIndex(allPatientSelections[0]!!, allPatientSelections[1]!!, allPatientSelections[2]!!, allPatientSelections[3]!!, allPatientSelections[4]!! ,
+                allPatientSelections[5]!! , allPatientSelections[6]!!, allPatientSelections[7]!! , allPatientSelections[8]!! , allPatientSelections[9]!! ,
+                allPatientSelections[10]!! , allPatientSelections[11]!! , allPatientSelections[12]!! , allPatientSelections[13]!! , allPatientSelections[14]!!,
+                allPatientSelections[15]!! , allPatientSelections[16]!! , allPatientSelections[17]!! , allPatientSelections[18]!! , allPatientSelections[19]!!
+                , allPatientSelections[20]!!)
+            openResultFragment(result)
+        }
     }
 
     private fun openResultFragment(testResult : Int)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 3)
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 4)
         mainActivity.fragmentTransaction(resultFragment)
     }
 
@@ -103,7 +108,7 @@ class CheckMDIPatientViewModel : ViewModel() {
         var correctData : Boolean = false
         if (value == null)
         {
-            mdiCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO)
+            baiCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO)
             correctData = false
         }
         else
@@ -138,12 +143,18 @@ class CheckMDIPatientViewModel : ViewModel() {
             patient!!.patientBAIQ11 = allPatientSelections[10]
             patient!!.patientBAIQ12 = allPatientSelections[11]
             patient!!.patientBAIQ13 = allPatientSelections[12]
-
+            patient!!.patientBAIQ14 = allPatientSelections[13]
+            patient!!.patientBAIQ15 = allPatientSelections[14]
+            patient!!.patientBAIQ16 = allPatientSelections[15]
+            patient!!.patientBAIQ17 = allPatientSelections[16]
+            patient!!.patientBAIQ18 = allPatientSelections[17]
+            patient!!.patientBAIQ19 = allPatientSelections[18]
+            patient!!.patientBAIQ20 = allPatientSelections[19]
+            patient!!.patientBAIQ21 = allPatientSelections[20]
 
             realm.insertOrUpdate(patient)
 
         }
     }
-
 
 }
