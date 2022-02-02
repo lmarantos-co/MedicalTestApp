@@ -216,6 +216,12 @@
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/cvd_test_relative_layout.xml" value="0.154296875" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/diabetes_button_rounded_corners.xml" value="0.154296875" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/green_diabetes_form_title_style.xml" value="0.154296875" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_anxiety_24_black.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_anxiety_icon.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_depression.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_favorite_black_24dp.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_favorite_white_48dp.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/imagebutton_style.xml" value="0.2548611111111111" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/mdi_button_rounded_corners.xml" value="0.154296875" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/mdi_test_relative_layout.xml" value="0.154296875" />
@@ -224,13 +230,14 @@
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/orange_textview_5.xml" value="0.133984375" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/purple_mditest_form_title_style.xml" value="0.154296875" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/purple_textview.xml" value="0.133984375" />
-        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/activity_main.xml" value="0.157421875" />
-        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_b_a_i_check.xml" value="0.11768953068592057" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/winning_top_rellayout_style.xml" value="0.19675925925925927" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_b_a_i_check.xml" value="0.22" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_check.xml" value="0.18" />
-        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.1421875" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_diabetes_check.xml" value="0.21" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_m_d_i_check.xml" value="0.22" />
-        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result.xml" value="0.121875" />
-        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_alt.xml" value="0.121875" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result.xml" value="0.5" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_alt.xml" value="0.25" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_bai_test.xml" value="0.22" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_mdi_test.xml" value="0.2" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/popup_menu.xml" value="0.2063063063063063" />
@@ -422,5 +429,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.5" />
+      </ProjectState>
+    </option>
   </component>
 </project>

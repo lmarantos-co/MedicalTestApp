@@ -17,20 +17,6 @@
         android:layout_height="match_parent"
         android:background="@color/MidnightBlue">
 
-        <RelativeLayout
-            android:id="@+id/cvdTitleForm"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/Naby"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            app:layout_constraintBottom_toTopOf="@id/horGL1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </RelativeLayout>
-
         <!--    covariance title form-->
 
          <androidx.constraintlayout.widget.Guideline

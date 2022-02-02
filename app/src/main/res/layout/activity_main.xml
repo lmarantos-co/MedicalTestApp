@@ -145,7 +145,7 @@
 
 
     <ImageView
-        android:id="@+id/lungsImgV"
+        android:id="@+id/AnxietyImgV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
@@ -156,19 +156,19 @@
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toTopOf="@+id/barHG4"
-        app:srcCompat="@drawable/ic_lungs_solid" />
+        app:srcCompat="@drawable/ic_anxiety_icon" />
 
     <TextView
-        android:id="@+id/lungsTestTxtView"
+        android:id="@+id/anxietyTestTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Lungs Temp"
+        android:text="Anxiety Test"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
-        app:layout_constraintTop_toBottomOf="@+id/lungsImgV" />
+        app:layout_constraintTop_toBottomOf="@+id/AnxietyImgV" />
 
     <include
         android:id="@+id/include_popup_menu"

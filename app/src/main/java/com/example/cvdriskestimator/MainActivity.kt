@@ -53,11 +53,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var cvdVectorIcon : ImageView
     private lateinit var diabetesVectorIcon : ImageView
     private lateinit var depressionIcon : ImageView
-    private lateinit var noseIcon : ImageView
+    private lateinit var anxietyIcon : ImageView
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
-    private lateinit var noseTestTitle : TextView
+    private lateinit var anxietyTestTitle : TextView
     private lateinit var animationZoomIn : Animation
     private lateinit var animationBounce : Animation
     private lateinit var animationSlideLeftToRight : Animation
@@ -88,11 +88,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         cvdVectorIcon = findViewById(R.id.cvdTestImgV)
         diabetesVectorIcon = findViewById(R.id.diabetesTestImgV)
         depressionIcon = findViewById(R.id.depressionImgV)
-        noseIcon = findViewById(R.id.lungsImgV)
+        anxietyIcon = findViewById(R.id.AnxietyImgV)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
         depressionTestTitle = findViewById(R.id.depressionTestTxtView)
-        noseTestTitle = findViewById(R.id.lungsTestTxtView)
+        anxietyTestTitle = findViewById(R.id.anxietyTestTxtView)
 
 
         initPrefs()
@@ -206,23 +206,27 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         cvdVectorIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(2)
+            checkFragment = CheckFragment.newInstance()
             fragmentTransaction(checkFragment)
         }
         diabetesVectorIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(3)
+            checkDiabetesFragment = DiabetesCheckFragment.newInstance()
             fragmentTransaction(checkDiabetesFragment)
         }
 
         depressionIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(4)
+            mdiCheckFragment = MDICheckFragment.newInstance()
             fragmentTransaction(mdiCheckFragment)
         }
 
-        noseIcon.setOnClickListener {
+        anxietyIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(5)
+            baiCheckFragment = BAICheckFragment.newInstance()
             fragmentTransaction(baiCheckFragment)
         }
 
@@ -358,13 +362,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         cvdVectorIcon.visibility = View.VISIBLE
         diabetesVectorIcon.visibility = View.VISIBLE
         depressionIcon.visibility = View.VISIBLE
-        noseIcon.visibility = View.VISIBLE
+        anxietyIcon.visibility = View.VISIBLE
         cvdVectorIcon.animate().alpha(1f).duration = 1200
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
         depressionIcon.animate().alpha(1f).duration = 1200
         depressionIcon.startAnimation(bounceTests)
-        noseIcon.animate().alphaBy(1f).duration = 1200
-        noseTestTitle.startAnimation(bounceTests)
+        anxietyIcon.animate().alphaBy(1f).duration = 1200
+        anxietyIcon.startAnimation(bounceTests)
         cvdVectorIcon.startAnimation(bounceTests)
         diabetesVectorIcon.startAnimation(bounceTests)
 
@@ -388,11 +392,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         diabetesVectorIcon.visibility = View.INVISIBLE
         depressionIcon.clearAnimation()
         depressionIcon.visibility = View.INVISIBLE
-        noseIcon.visibility = View.INVISIBLE
+        anxietyIcon.clearAnimation()
+        anxietyIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
         depressionTestTitle.visibility = View.INVISIBLE
-        noseTestTitle.visibility = View.INVISIBLE
+        anxietyTestTitle.visibility = View.INVISIBLE
         hideCVDTitleForm()
     }
 
@@ -404,11 +409,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         cvdTestTitle.visibility = View.VISIBLE
         diabetestestTitle.visibility = View.VISIBLE
         depressionTestTitle.visibility = View.VISIBLE
-        noseTestTitle.visibility = View.VISIBLE
-        noseIcon.visibility = View.VISIBLE
+        anxietyTestTitle.visibility = View.VISIBLE
+        anxietyIcon.visibility = View.VISIBLE
         depressionIcon.clearAnimation()
         depressionIcon.visibility = View.VISIBLE
-        noseIcon.visibility = View.VISIBLE
+        anxietyIcon.visibility = View.VISIBLE
         showCVDTitleForm()
     }
 

@@ -68,7 +68,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/purple_mditest_form_title_style"
-                android:drawableLeft="@drawable/ic_depression_24"
+                android:drawableLeft="@drawable/ic_anxiety_24_black"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:minHeight="48dp"
@@ -112,9 +112,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="Please enter the required patient data:"
+                    android:text="@string/bai_test_info"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -155,7 +157,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -168,7 +170,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -182,10 +184,9 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="@string/BAIA3"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ1RB4"
@@ -194,7 +195,7 @@
                             android:layout_below="@id/BAIQ1RB3"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -238,7 +239,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -253,7 +254,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -267,7 +268,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -277,11 +278,10 @@
                             android:layout_below="@id/BAIQ2RB3"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="4dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -323,7 +323,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -338,7 +338,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -352,7 +352,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -366,7 +366,7 @@
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -391,8 +391,7 @@
                         android:minHeight="48dp"
                         android:text="@string/BAIQ4"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
 
                     <RadioGroup
                         android:id="@+id/BAIQ4RG"
@@ -411,7 +410,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -425,7 +424,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -438,7 +437,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -449,11 +448,10 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingRight="4dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -475,12 +473,11 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
+                        android:maxLines="1"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ5"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:paddingRight="186dp"
-                        />
+                        android:textSize="20sp" />
 
                     <RadioGroup
                         android:id="@+id/BAIQ5RG"
@@ -498,7 +495,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -512,7 +509,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -526,7 +523,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -536,11 +533,10 @@
                             android:layout_below="@id/BAIQ5RB3"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="4dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -581,7 +577,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -598,7 +594,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -612,7 +608,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -623,11 +619,10 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingRight="4dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -671,7 +666,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -684,7 +679,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -698,7 +693,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -709,11 +704,10 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingRight="4dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -755,7 +749,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -770,7 +764,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -784,7 +778,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -794,11 +788,10 @@
                             android:layout_below="@id/BAIQ8RB3"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="4dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -842,7 +835,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -855,7 +848,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -869,7 +862,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -882,7 +875,7 @@
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -927,7 +920,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -940,7 +933,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -954,7 +947,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -965,11 +958,10 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingRight="4dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -1013,7 +1005,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -1027,7 +1019,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -1040,7 +1032,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -1054,7 +1046,7 @@
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -1097,7 +1089,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -1110,7 +1102,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -1123,7 +1115,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -1133,11 +1125,10 @@
                             android:layout_below="@id/BAIQ12RB3"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="4dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>
@@ -1181,7 +1172,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -1195,7 +1186,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -1209,7 +1200,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -1223,7 +1214,7 @@
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
 
@@ -1266,7 +1257,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1282,7 +1273,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -1296,7 +1287,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -1310,7 +1301,7 @@
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
 
@@ -1356,7 +1347,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -1370,7 +1361,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -1384,7 +1375,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -1398,7 +1389,7 @@
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
 
@@ -1443,7 +1434,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -1457,7 +1448,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -1485,7 +1476,7 @@
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
 
@@ -1530,7 +1521,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -1544,7 +1535,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -1558,7 +1549,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -1572,7 +1563,7 @@
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
 
@@ -1596,7 +1587,7 @@
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
-                        android:text="@string/BAIQ13"
+                        android:text="@string/BAIQ18"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1617,7 +1608,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -1628,11 +1619,10 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingRight="138dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -1646,21 +1636,21 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
                             android:id="@+id/BAIQ18RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/BAIQ13RB3"
+                            android:layout_below="@id/BAIQ18RB3"
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
 
@@ -1706,7 +1696,7 @@
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             />
 
                         <RadioButton
@@ -1720,7 +1710,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -1734,7 +1724,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -1745,11 +1735,10 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingRight="4dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
 
@@ -1791,7 +1780,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1807,7 +1796,7 @@
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             />
 
                         <RadioButton
@@ -1821,7 +1810,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -1832,7 +1821,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1858,7 +1847,7 @@
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
-                        android:text="@string/BAIQ13"
+                        android:text="@string/BAIQ21"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1876,7 +1865,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ1Padding"
+                            android:paddingRight="@dimen/baitestQ1Padding"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1889,7 +1878,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ2Padding"
+                            android:paddingRight="@dimen/baitestQ2Padding"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1905,7 +1894,7 @@
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingLeft="@dimen/baitestQ3Padding"
+                            android:paddingRight="@dimen/baitestQ3Padding"
                             />
 
                         <RadioButton
@@ -1916,7 +1905,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingLeft="@dimen/baitestQ4Padding"
+                            android:paddingRight="@dimen/baitestQ4Padding"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp" />

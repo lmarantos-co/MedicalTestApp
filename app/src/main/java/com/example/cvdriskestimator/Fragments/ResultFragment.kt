@@ -262,8 +262,6 @@ class ResultFragment : Fragment() {
         val covLogoBitmap = BitmapFactory.decodeResource(resources, R.drawable.covariance_logo)
         //get the palette from the cov logo image
         palette = createPaletteSync(covLogoBitmap)
-        setIconsDimens()
-
 
 
         popupMenuComp =
@@ -303,7 +301,6 @@ class ResultFragment : Fragment() {
             cvdTestResults.setText(R.string.cvd_response_text)
         }
         if (test_type == 2) {
-//            setIconsDimens()
             setFormColors(2)
             testHeadling.setText(R.string.diabetes_test_results)
             testHeadling.setCompoundDrawablesWithIntrinsicBounds(
@@ -336,25 +333,12 @@ class ResultFragment : Fragment() {
             testHeadling.setText("BAI Test")
             riskResultTxtV.setText("Result")
             testHeadling.setCompoundDrawablesWithIntrinsicBounds(
-                mainActivity.getDrawable(R.drawable.ic_depression_24),
+                mainActivity.getDrawable(R.drawable.ic_anxiety_24_black),
                 null,
                 null,
                 null
             )
         }
-    }
-
-    private fun setIconsDimens() {
-        var displayMetrics = DisplayMetrics()
-        mainActivity.windowManager.defaultDisplay.getMetrics(displayMetrics)
-        var widthPixels = displayMetrics.widthPixels
-
-        companyLogo.layoutParams.width = widthPixels / 10
-        companyLogo.layoutParams.height = widthPixels / 12
-
-
-        userIcon.layoutParams.width = widthPixels / 10
-        userIcon.layoutParams.height = widthPixels / 10
     }
 
     private fun setAltLLayout() {
@@ -538,18 +522,18 @@ class ResultFragment : Fragment() {
         if ((index >= 36) && (index <= 44)) {
             view.background = resources.getDrawable(R.drawable.green_progressbar_style)
         }
-        if ((index >= 45) && (index <= 54)) {
+        if ((index >= 45) && (index <= 53)) {
             view.background = resources.getDrawable(R.drawable.orange_progressbar_style)
         }
 
-        if (index > 54) {
+        if (index >= 54) {
             view.background = resources.getDrawable(R.drawable.red_progressbar_style)
         }
     }
 
     fun setBaiTestSummary(testSum : Int)
     {
-        if ((testSum >=0) && (testSum < 21))
+        if ((testSum >=0) && (testSum <= 21))
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT1)
         }

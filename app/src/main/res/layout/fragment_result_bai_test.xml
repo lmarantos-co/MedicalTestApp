@@ -98,10 +98,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/testResultTxtV"
+            android:background="@color/very_light_gray"
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/totalScoreDescTxtV"
@@ -131,12 +133,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <RelativeLayout
         android:id='@+id/baiTestSummaryRelLayout'
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/relativelayout_style"
         app:layout_constraintEnd_toEndOf="@id/titleVGL2"
         app:layout_constraintStart_toStartOf="@id/titleVGL1"
@@ -146,9 +148,11 @@
             android:id="@+id/BAItestSummary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:padding="10dp"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="22sp" />
 
     </RelativeLayout>
 

@@ -4,8 +4,8 @@
     <dimen name="terms_reference_size">16sp</dimen>
     <dimen name="cvd_title">24sp</dimen>
     <dimen name="derpessionMagendaBoxSize">40dp</dimen>
-    <dimen name="baitestQ1Padding">260dp</dimen>
-    <dimen name="baitestQ2Padding">40dp</dimen>
+    <dimen name="baitestQ1Padding">258dp</dimen>
+    <dimen name="baitestQ2Padding">35dp</dimen>
     <dimen name="baitestQ3Padding">0dp</dimen>
     <dimen name="baitestQ4Padding">80dp</dimen>
 

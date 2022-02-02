@@ -83,10 +83,10 @@
     <string name="BAIQ19">19. Faint / lightheaded</string>
     <string name="BAIQ20">20. Face flushed</string>
     <string name="BAIQ21">21. Hot/cold sweats </string>
-    <string name="BAIA1">Not At All </string>
+    <string name="BAIA1">Not At All.</string>
     <string name="BAIA2">Mildly but it didn’t bother me much.</string>
-    <string name="BAIA3">Moderately - it wasn’t pleasant at times</string>
-    <string name="BAIA4">Severely – it bothered me a lot</string>
+    <string name="BAIA3">Moderately - it wasn’t pleasant at times.</string>
+    <string name="BAIA4">Severely – it bothered me a lot.</string>
     <string name="BAIRESULT1">A grand sum between 0 – 21 indicates very low anxiety. That is usually a good thing. However, it is
                             possible that you might be unrealistic in either your assessment which would be denial or that you have
                             learned to “mask” the symptoms commonly associated with anxiety. Too little “anxiety” could indicate that
@@ -102,4 +102,7 @@
                         you mentally and physically. You may want to consult a counselor if the feelings persist. </string>
     <string name="bai_test_score">Your total score : </string>
     <string name="bai_test_anxiety">The severity of anxiety : </string>
+    <string name="bai_test_info">Below is a list of common symptoms of anxiety. Please carefully read each item in the list. Indicate how much you
+                                have been bothered by that symptom during the past month, including today, by circling the number in the
+                                corresponding space in the column next to each symptom</string>
 </resources>

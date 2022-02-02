@@ -5,6 +5,6 @@
     <dimen name="derpessionMagendaBoxSize">40dp</dimen>
     <dimen name="baitestQ1Padding">260dp</dimen>
     <dimen name="baitestQ2Padding">40dp</dimen>
-    <dimen name="baitestQ3Padding">0dp</dimen>
+    <dimen name="baitestQ3Padding">20dp</dimen>
     <dimen name="baitestQ4Padding">80dp</dimen>
 </resources>
