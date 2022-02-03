@@ -125,19 +125,19 @@ class CheckMDIPatientViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             val patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
 
-            patient!!.patientBAIQ1 = allPatientSelections[0]
-            patient!!.patientBAIQ2 = allPatientSelections[1]
-            patient!!.patientBAIQ3 = allPatientSelections[2]
-            patient!!.patientBAIQ4 = allPatientSelections[3]
-            patient!!.patientBAIQ5 = allPatientSelections[4]
-            patient!!.patientBAIQ6 = allPatientSelections[5]
-            patient!!.patientBAIQ7 = allPatientSelections[6]
-            patient!!.patientBAIQ8 = allPatientSelections[7]
-            patient!!.patientBAIQ9 = allPatientSelections[8]
-            patient!!.patientBAIQ10 = allPatientSelections[9]
-            patient!!.patientBAIQ11 = allPatientSelections[10]
-            patient!!.patientBAIQ12 = allPatientSelections[11]
-            patient!!.patientBAIQ13 = allPatientSelections[12]
+            patient!!.patientMDIQ1 = allPatientSelections[0]
+            patient!!.patientMDIQ2 = allPatientSelections[1]
+            patient!!.patientMDIQ3 = allPatientSelections[2]
+            patient!!.patientMDIQ4 = allPatientSelections[3]
+            patient!!.patientMDIQ5 = allPatientSelections[4]
+            patient!!.patientMDIQ6 = allPatientSelections[5]
+            patient!!.patientMDIQ7 = allPatientSelections[6]
+            patient!!.patientMDIQ8 = allPatientSelections[7]
+            patient!!.patientMDIQ9 = allPatientSelections[8]
+            patient!!.patientMDIQ10 = allPatientSelections[9]
+            patient!!.patientMDIQ11 = allPatientSelections[10]
+            patient!!.patientMDIQ12 = allPatientSelections[11]
+            patient!!.patientMDIQ13 = allPatientSelections[12]
 
 
             realm.insertOrUpdate(patient)

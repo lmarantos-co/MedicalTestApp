@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/results_con_layout_bai_test"
@@ -24,7 +23,7 @@
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horGL1"
@@ -129,17 +128,145 @@
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/AnxietyresultTopGL"
+        android:id="@+id/resultBarTOPGL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.4" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarBOTTOMGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <RelativeLayout
+        android:id="@+id/lowAnxietyResultBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/resultBarBOTTOMGL"
+        app:layout_constraintEnd_toEndOf="@id/lowAnxietyHGL"
+        app:layout_constraintStart_toStartOf="@id/titleVGL1"
+        app:layout_constraintTop_toBottomOf="@id/resultBarTOPGL" />
+
+    <RelativeLayout
+        android:id="@+id/moderateAnxietyResultBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/resultBarBOTTOMGL"
+        app:layout_constraintEnd_toEndOf="@id/moderateAnxietyHGL"
+        app:layout_constraintStart_toStartOf="@id/lowAnxietyHGL"
+        app:layout_constraintTop_toBottomOf="@id/resultBarTOPGL" />
+
+    <RelativeLayout
+        android:id="@+id/severeAnxietyResultBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/resultBarBOTTOMGL"
+        app:layout_constraintEnd_toEndOf="@id/titleVGL2"
+        app:layout_constraintStart_toStartOf="@id/moderateAnxietyHGL"
+        app:layout_constraintTop_toBottomOf="@id/resultBarTOPGL" />
+
+    <TextView
+        android:id="@+id/lowAnxietyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/beforeTitleVGL1"
+        app:layout_constraintTop_toBottomOf="@id/lowAnxietyResultBar" />
+
+    <TextView
+        android:id="@+id/moderateAnxietyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="21"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/beforeLowAnxietyHGL"
+        app:layout_constraintTop_toBottomOf="@id/moderateAnxietyResultBar" />
+
+    <TextView
+        android:id="@+id/severeAnxietyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="35"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/beforeModerateAnxietyHGL"
+        app:layout_constraintTop_toBottomOf="@id/severeAnxietyResultBar" />
+
+    <TextView
+        android:id="@+id/mostSevereAnxietyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="63"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/beforeTitleVGL2"
+        app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lowAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/moderateAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.58" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeTitleVGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeTitleVGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeLowAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeModerateAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/AnxietyresultTopGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
     <RelativeLayout
         android:id='@+id/baiTestSummaryRelLayout'
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/relativelayout_style"
+        android:background="@drawable/bai_test_summary_rel_layout"
         app:layout_constraintEnd_toEndOf="@id/titleVGL2"
         app:layout_constraintStart_toStartOf="@id/titleVGL1"
         app:layout_constraintTop_toBottomOf="@id/AnxietyresultTopGL">
@@ -152,7 +279,7 @@
             android:padding="10dp"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
 
     </RelativeLayout>
 

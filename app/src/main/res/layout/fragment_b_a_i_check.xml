@@ -32,7 +32,7 @@
             layout="@layout/popup_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horGL1"
@@ -67,7 +67,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/purple_mditest_form_title_style"
+                android:background="@drawable/blue_baitest_form_title_style"
                 android:drawableLeft="@drawable/ic_anxiety_24_black"
                 android:drawablePadding="8dp"
                 android:gravity="center"
@@ -136,7 +136,7 @@
                         android:id="@+id/BAIQ1TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ1"
@@ -217,13 +217,12 @@
                         android:id="@+id/BAIQ2TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ2"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
 
                     <RadioGroup
                         android:id="@+id/BAIQ2RG"
@@ -301,13 +300,12 @@
                         android:id="@+id/BAIQ3TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ3"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
 
                     <RadioGroup
                         android:id="@+id/BAIQ3RG"
@@ -386,7 +384,7 @@
                         android:id="@+id/BAIQ4TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ4"
@@ -471,7 +469,7 @@
                         android:id="@+id/BAIQ5TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:maxLines="1"
                         android:minHeight="48dp"
@@ -556,7 +554,7 @@
                         android:id="@+id/BAIQ6TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ6"
@@ -642,7 +640,7 @@
                         android:id="@+id/BAIQ7TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ7"
@@ -727,13 +725,12 @@
                         android:id="@+id/BAIQ8TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ8"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
 
                     <RadioGroup
                         android:id="@+id/BAIQ8RG"
@@ -811,7 +808,7 @@
                         android:id="@+id/BAIQ9TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ9"
@@ -894,14 +891,13 @@
                     <TextView
                         android:id="@+id/BAIQ10TxtV"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ10"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
 
                     <RadioGroup
                         android:id="@+id/BAIQ10RG"
@@ -981,13 +977,12 @@
                         android:id="@+id/BAIQ11TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ11"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
 
                     <RadioGroup
                         android:id="@+id/BAIQ11RG"
@@ -1066,7 +1061,7 @@
                         android:id="@+id/BAIQ12TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ12"
@@ -1148,9 +1143,9 @@
                         android:id="@+id/BAIQ13TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
-                        android:maxHeight="48dp"
+                        android:minHeight="48dp"
                         android:text="@string/BAIQ13"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -1235,13 +1230,12 @@
                         android:id="@+id/BAIQ14TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ14"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
 
                     <RadioGroup
                         android:id="@+id/BAIQ14RG"
@@ -1322,13 +1316,12 @@
                         android:id="@+id/BAIQ15TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ15"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
 
                     <RadioGroup
                         android:id="@+id/BAIQ15RG"
@@ -1410,7 +1403,7 @@
                         android:id="@+id/BAIQ16TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ16"
@@ -1497,7 +1490,7 @@
                         android:id="@+id/BAIQ17TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ17"
@@ -1584,7 +1577,7 @@
                         android:id="@+id/BAIQ18TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ18"
@@ -1671,13 +1664,12 @@
                         android:id="@+id/BAIQ19TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ19"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
 
                     <RadioGroup
                         android:id="@+id/BAIQ19RG"
@@ -1759,7 +1751,7 @@
                         android:id="@+id/BAIQ20TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ20"
@@ -1844,7 +1836,7 @@
                         android:id="@+id/BAIQ21TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/light_blue_textview"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/BAIQ21"
@@ -1922,7 +1914,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:background="@drawable/mdi_button_rounded_corners"
+                    android:background="@drawable/bai_button_rounded_corners"
                     android:padding="20dp"
                     android:text="CALCULATE"
                     android:textSize="20sp"

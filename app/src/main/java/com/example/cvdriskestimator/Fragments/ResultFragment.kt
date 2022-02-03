@@ -87,6 +87,9 @@ class ResultFragment : Fragment() {
     private lateinit var depressionProgressBar: RelativeLayout
 
     private lateinit var baiTestSummary: TextView
+    private lateinit var lowAnxietyRelLayout : RelativeLayout
+    private lateinit var moderateAnxietyRelLayout : RelativeLayout
+    private lateinit var severeAnxietyRelLayout : RelativeLayout
 
 
     //screen dimensions
@@ -236,6 +239,9 @@ class ResultFragment : Fragment() {
             val score = arguments!!.getDouble(ARG_PARAM1).toInt()
             totalScore.setText(score.toString())
             baiTestSummary = view.findViewById(R.id.BAItestSummary)
+            lowAnxietyRelLayout = view.findViewById(R.id.lowAnxietyResultBar)
+            moderateAnxietyRelLayout = view.findViewById(R.id.moderateAnxietyResultBar)
+            severeAnxietyRelLayout = view.findViewById(R.id.severeAnxietyResultBar)
             setBaiTestSummary(score)
         }
         return view
@@ -329,7 +335,7 @@ class ResultFragment : Fragment() {
             )
         }
         if (test_type == 4) {
-            setFormColors(3)
+            setFormColors(4)
             testHeadling.setText("BAI Test")
             riskResultTxtV.setText("Result")
             testHeadling.setCompoundDrawablesWithIntrinsicBounds(
@@ -362,8 +368,8 @@ class ResultFragment : Fragment() {
                 riskResultTxtV.setBackgroundResource(R.drawable.mdi_test_relative_layout)
             }
             4 -> {
-                testHeadling.setBackgroundResource(R.drawable.purple_mditest_form_title_style)
-                riskResultTxtV.setBackgroundResource(R.drawable.mdi_test_relative_layout)
+                testHeadling.setBackgroundResource(R.drawable.blue_baitest_form_title_style)
+                riskResultTxtV.setBackgroundResource(R.drawable.baitest_rel_layout)
             }
         }
     }
@@ -536,16 +542,26 @@ class ResultFragment : Fragment() {
         if ((testSum >=0) && (testSum <= 21))
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT1)
+            lowAnxietyRelLayout.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+            moderateAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            severeAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
         }
         if ((testSum >=22) && (testSum < 35))
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT2)
+            lowAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            moderateAnxietyRelLayout.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+            severeAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
         }
         if (testSum >=36)
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT3)
+            lowAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            moderateAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            severeAnxietyRelLayout.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
         }
     }
+
 
     fun animateDepressionProgressBar(depressionResult : Int) {
         //get programmatically the children of the views

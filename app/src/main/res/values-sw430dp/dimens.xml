@@ -2,7 +2,8 @@
 <resources>
     <dimen name="terms_text_size">20sp</dimen>
     <dimen name="cvd_title">24sp</dimen>
-    <dimen name="derpessionMagendaBoxSize">40dp</dimen>
+    <dimen name="derpessionMagendaBoxSizeHeight">40dp</dimen>
+    <dimen name="derpessionMagendaBoxSizeWidth">120dp</dimen>
     <dimen name="baitestQ1Padding">263dp</dimen>
     <dimen name="baitestQ2Padding">40dp</dimen>
     <dimen name="baitestQ3Padding">0dp</dimen>

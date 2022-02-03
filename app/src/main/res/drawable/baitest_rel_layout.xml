@@ -4,7 +4,7 @@
 
     <!-- View background color -->
     <solid
-        android:color="@color/trans" >
+        android:color="@color/light_blue" >
     </solid>
 
 
@@ -14,14 +14,6 @@
         android:topRightRadius="10dp"
         >
     </corners>
-
-    <!-- View border color and width -->
-    <!--    <stroke-->
-    <!--        android:width="2dp"-->
-    <!--        android:color="@color/black" >-->
-    <!--    </stroke>-->
-
-
 
 
 </shape>

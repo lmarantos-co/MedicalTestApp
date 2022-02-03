@@ -204,19 +204,19 @@ class BAICheckFragment : Fragment() {
             {
 
             }
-            1 ->
+            0 ->
             {
                 (rg.getChildAt(0) as RadioButton).isChecked = true
             }
-            2 ->
+            1 ->
             {
                 (rg.getChildAt(1) as RadioButton).isChecked = true
             }
-            3 ->
+            2 ->
             {
                 (rg.getChildAt(2) as RadioButton).isChecked = true
             }
-            4->
+            3->
             {
                 (rg.getChildAt(3) as RadioButton).isChecked = true
             }

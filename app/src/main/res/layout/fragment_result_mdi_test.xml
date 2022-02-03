@@ -299,7 +299,7 @@
         android:id='@+id/magednaRelLayout'
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/relativelayout_style"
+        android:background="@drawable/magenda_rel_layout_style"
         app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
         app:layout_constraintEnd_toEndOf="@+id/titleVGL2"
         app:layout_constraintStart_toStartOf="@+id/titleVGL1"
@@ -309,13 +309,12 @@
             android:id="@+id/noDeprLinLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="64dp">
+            android:orientation="horizontal">
 
             <View
                 android:id="@+id/noDepView"
-                android:layout_width="@dimen/derpessionMagendaBoxSize"
-                android:layout_height="@dimen/derpessionMagendaBoxSize"
+                android:layout_width="@dimen/derpessionMagendaBoxSizeWidth"
+                android:layout_height="@dimen/derpessionMagendaBoxSizeHeight"
                 android:background="@color/blue" />
 
             <TextView
@@ -335,13 +334,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/noDeprLinLayout"
-            android:orientation="horizontal"
-            android:paddingLeft="64dp">
+            android:orientation="horizontal">
 
             <View
                 android:id="@+id/mildDepView"
-                android:layout_width="@dimen/derpessionMagendaBoxSize"
-                android:layout_height="@dimen/derpessionMagendaBoxSize"
+                android:layout_width="@dimen/derpessionMagendaBoxSizeWidth"
+                android:layout_height="@dimen/derpessionMagendaBoxSizeHeight"
                 android:background="@color/green_5" />
 
             <TextView
@@ -361,13 +359,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/mildDeprLinLayout"
-            android:orientation="horizontal"
-            android:paddingLeft="64dp">
+            android:orientation="horizontal">
 
             <View
                 android:id="@+id/moderateDepView"
-                android:layout_width="@dimen/derpessionMagendaBoxSize"
-                android:layout_height="@dimen/derpessionMagendaBoxSize"
+                android:layout_width="@dimen/derpessionMagendaBoxSizeWidth"
+                android:layout_height="@dimen/derpessionMagendaBoxSizeHeight"
                 android:background="@color/orange_5" />
 
             <TextView
@@ -387,13 +384,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/moderateDeprLinLayout"
-            android:orientation="horizontal"
-            android:paddingLeft="64dp">
+            android:orientation="horizontal">
 
             <View
                 android:id="@+id/severeDepView"
-                android:layout_width="@dimen/derpessionMagendaBoxSize"
-                android:layout_height="@dimen/derpessionMagendaBoxSize"
+                android:layout_width="@dimen/derpessionMagendaBoxSizeWidth"
+                android:layout_height="@dimen/derpessionMagendaBoxSizeHeight"
                 android:background="@color/dark_red" />
 
             <TextView
