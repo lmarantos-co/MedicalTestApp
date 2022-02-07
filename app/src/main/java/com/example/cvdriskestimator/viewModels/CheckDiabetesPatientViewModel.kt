@@ -108,6 +108,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             }
             else
             {
+                bmiCorrect = bmiCorrect && false
                 diabetesCheckFragment.displayBMIError("BMI must be between 10 and 50.")
             }
         }

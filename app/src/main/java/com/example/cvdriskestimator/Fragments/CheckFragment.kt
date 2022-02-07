@@ -1,7 +1,9 @@
 package com.example.cvdriskestimator.Fragments
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -20,6 +22,7 @@ import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.databinding.FragmentCheckBinding
 import com.example.cvdriskestimator.viewModels.CheckPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckPatientViewModelFactory
+import io.realm.Realm
 import java.lang.reflect.Method
 
 
@@ -123,6 +126,8 @@ class CheckFragment : Fragment() {
             mainActivity.backToActivity()
         }
 
+        checkBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
+
         checkBinding.includePopUpMenu.closeBtn.setOnClickListener {
             hideTermsOfUseLayout()
         }
@@ -131,6 +136,25 @@ class CheckFragment : Fragment() {
 //        setUserIconDimens()
         setAllComponentsWithoudDB()
         getSex()
+        checkBinding.clearBtn.setOnClickListener {
+
+            AlertDialog.Builder(this.activity)
+                .setTitle("Clear All Data")
+                .setMessage("Are you sure you want to delete the user data?") // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes,
+                    DialogInterface.OnClickListener { dialog, which ->
+                        // Continue with delete operation
+
+                        initPatientData()
+
+                        })
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()
+        }
+
         checkBinding.submitBtn.setOnClickListener {
             hideSoftKeyboard()
             checkPatientViewModel.checkOnAllDataConstraints(
@@ -193,7 +217,7 @@ class CheckFragment : Fragment() {
 
 
 
-    private fun initPatientData() {
+    fun initPatientData() {
         checkBinding.ageEdTxt.setText("")
         checkBinding.ageEdTxt.invalidate()
         checkBinding.sbbEdTxt.setText("")

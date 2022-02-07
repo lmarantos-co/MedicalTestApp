@@ -1,7 +1,9 @@
 package com.example.cvdriskestimator.Fragments
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -105,6 +107,24 @@ class DiabetesCheckFragment : Fragment() {
 //        setUserIconDimens()
 
         diabetesCheckBinding.includeCvdTitleForm.userIcon.alpha = 1f
+
+        diabetesCheckBinding.clearBtn.setOnClickListener {
+
+            AlertDialog.Builder(this.activity)
+                .setTitle("Clear All Data")
+                .setMessage("Are you sure you want to delete the user data?") // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes,
+                    DialogInterface.OnClickListener { dialog, which ->
+                        // Continue with delete operation
+
+                        initPatientData()
+
+                    })
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()        }
 
         diabetesCheckBinding.submitBtn.setOnClickListener {
             hideSoftKeyboard()
@@ -299,7 +319,7 @@ class DiabetesCheckFragment : Fragment() {
         diabetesCheckBinding.editTextBMI.error = error
     }
 
-    private fun initPatientData()
+    fun initPatientData()
     {
         //set sex on UI
         diabetesCheckBinding.sexRG.clearCheck()
@@ -307,6 +327,8 @@ class DiabetesCheckFragment : Fragment() {
         diabetesCheckBinding.steroidsRG.clearCheck()
         diabetesCheckBinding.editTextBMI.setText("")
         diabetesCheckBinding.editTextAge.setText("")
+        diabetesCheckBinding.siblingsRG.clearCheck()
+        diabetesCheckBinding.SmokeRGr.clearCheck()
     }
 
     private fun setPatientData(patient : Patient)

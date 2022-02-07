@@ -102,7 +102,5 @@
                         you mentally and physically. You may want to consult a counselor if the feelings persist. </string>
     <string name="bai_test_score">Your total score : </string>
     <string name="bai_test_anxiety">The severity of anxiety : </string>
-    <string name="bai_test_info">Below is a list of common symptoms of anxiety. Please carefully read each item in the list. Indicate how much you
-                                have been bothered by that symptom during the past month, including today, by circling the number in the
-                                corresponding space in the column next to each symptom</string>
+    <string name="bai_test_info">Indicate how much you have been bothered by the following symptoms during the past month, including today.</string>
 </resources>

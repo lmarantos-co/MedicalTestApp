@@ -1,6 +1,8 @@
 package com.example.cvdriskestimator.Fragments
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -84,6 +86,24 @@ class BAICheckFragment : Fragment() {
         baiPatientViewModel.patientData.observe(viewLifecycleOwner , {
             setPatientData(it)
         })
+
+        baiCheckBinding.clearBtn.setOnClickListener {
+            AlertDialog.Builder(this.activity)
+                .setTitle("Clear All Data")
+                .setMessage("Are you sure you want to delete the user data?") // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes,
+                    DialogInterface.OnClickListener { dialog, which ->
+                        // Continue with delete operation
+
+                        initialisePatientData()
+
+                    })
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()
+        }
 
         baiCheckBinding.submitBtn.setOnClickListener {
 
@@ -171,7 +191,7 @@ class BAICheckFragment : Fragment() {
         } , 1000)
     }
 
-    private fun initialisePatientData()
+    fun initialisePatientData()
     {
         baiCheckBinding.BAIQ1RG.clearCheck()
         baiCheckBinding.BAIQ2RG.clearCheck()

@@ -1,6 +1,8 @@
 package com.example.cvdriskestimator.CustomClasses
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Build
 import android.view.ContextThemeWrapper
 import android.view.MenuInflater
@@ -12,6 +14,8 @@ import androidx.fragment.app.Fragment
 import com.example.cvdriskestimator.Fragments.*
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.RealmDB.Patient
+import io.realm.Realm
 import java.lang.reflect.Method
 
 class PopUpMenu {
@@ -25,6 +29,7 @@ class PopUpMenu {
     var LOG : String = "Login"
     var USER : String =  "tempUser Data"
     private lateinit var prPopupmenu: PopupMenu
+    private lateinit var realm : Realm
 
     constructor(termsOfUse : RelativeLayout, mainActivity: MainActivity, fragment: Fragment, loginFragment: LoginFragment?, registerFragment: RegisterFragment?)
     {
@@ -48,7 +53,7 @@ class PopUpMenu {
                     prMainActivity.backToActivity()
                 }
                 R.id.login_item -> {
-                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is ResultFragment))
+                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) ||(prFragment is ResultFragment))
                     {
                         val prefs = prMainActivity.getPreferences(Context.MODE_PRIVATE)
                         val message = prefs.getString("LOG", "Test1")
@@ -61,13 +66,106 @@ class PopUpMenu {
 
                 }
                 R.id.register_item -> {
-                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is LoginFragment) || (prFragment is MDICheckFragment) || (prFragment is ResultFragment))
+                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is LoginFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is ResultFragment))
                     {
                         prMainActivity.backToActivity()
                         prMainActivity.fragmentTransaction(prRegisterFragment!!)
                     }
                 }
                 R.id.user_item -> {
+
+                }
+                R.id.clear_data ->
+                {
+
+                    AlertDialog.Builder(prFragment.activity)
+                        .setTitle("Clear All Data")
+                        .setMessage("Are you sure you want to delete the user data?") // Specifying a listener allows you to take an action before dismissing the dialog.
+                        // The dialog is automatically dismissed when a dialog button is clicked.
+                        .setPositiveButton(android.R.string.yes,
+                            DialogInterface.OnClickListener { dialog, which ->
+                                // Continue with delete operation
+
+                                Realm.init(prMainActivity.applicationContext)
+                                realm = Realm.getDefaultInstance()
+                                realm.executeTransaction {
+                                    val username = prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+                                    val patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
+                                    //initaalize all patient data fields
+                                    patient!!.patientAge = ""
+                                    patient!!.smoker = ""
+                                    patient!!.patientSiblings = ""
+                                    patient!!.patientBMI = ""
+                                    patient!!.patientSex = ""
+                                    patient!!.patientSteroids = ""
+                                    patient!!.patientPAM = ""
+                                    patient!!.SSB = ""
+                                    patient!!.HDL = ""
+                                    patient!!.TCH = ""
+                                    patient!!.treatment = ""
+                                    patient!!.patientRace = ""
+
+                                    patient!!.patientMDIQ1 = null
+                                    patient!!.patientMDIQ2 = null
+                                    patient!!.patientMDIQ3 = null
+                                    patient!!.patientMDIQ5 = null
+                                    patient!!.patientMDIQ6 = null
+                                    patient!!.patientMDIQ7 = null
+                                    patient!!.patientMDIQ8 = null
+                                    patient!!.patientMDIQ5 = null
+                                    patient!!.patientMDIQ10 = null
+                                    patient!!.patientMDIQ11 = null
+                                    patient!!.patientMDIQ12 = null
+                                    patient!!.patientMDIQ13 = null
+
+                                    patient!!.patientBAIQ1 = null
+                                    patient!!.patientBAIQ2 = null
+                                    patient!!.patientBAIQ3 = null
+                                    patient!!.patientBAIQ4 = null
+                                    patient!!.patientBAIQ5 = null
+                                    patient!!.patientBAIQ6 = null
+                                    patient!!.patientBAIQ7 = null
+                                    patient!!.patientBAIQ8 = null
+                                    patient!!.patientBAIQ9 = null
+                                    patient!!.patientBAIQ10 = null
+                                    patient!!.patientBAIQ11 = null
+                                    patient!!.patientBAIQ12 = null
+                                    patient!!.patientBAIQ13 = null
+                                    patient!!.patientBAIQ14 = null
+                                    patient!!.patientBAIQ15 = null
+                                    patient!!.patientBAIQ16 = null
+                                    patient!!.patientBAIQ17 = null
+                                    patient!!.patientBAIQ18 = null
+                                    patient!!.patientBAIQ19 = null
+                                    patient!!.patientBAIQ20 = null
+                                    patient!!.patientBAIQ21 = null
+
+                                }
+
+                                if (prFragment is CheckFragment)
+                                {
+                                    (prFragment as CheckFragment).initPatientData()
+                                }
+
+                                if (prFragment is DiabetesCheckFragment)
+                                {
+                                    (prFragment as DiabetesCheckFragment).initPatientData()
+                                }
+
+                                if (prFragment is MDICheckFragment)
+                                {
+                                    (prFragment as MDICheckFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is BAICheckFragment)
+                                {
+                                    (prFragment as BAICheckFragment).initialisePatientData()
+                                }
+
+                            }) // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show()
 
                 }
                 R.id.terms_item -> {

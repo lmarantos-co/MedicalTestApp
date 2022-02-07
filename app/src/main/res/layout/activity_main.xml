@@ -229,6 +229,66 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.45" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/barHG5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.68" />
+
+    <ImageView
+        android:id="@+id/kidneysImgV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:alpha="1"
+        android:background="@color/trans"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/VGL4"
+        app:layout_constraintStart_toStartOf="@+id/VGL1"
+        app:layout_constraintTop_toTopOf="@+id/barHG5"
+        app:srcCompat="@drawable/ic_kindey" />
+
+
+    <TextView
+        android:id="@+id/kidneysTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Kidneys Demo"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/VGL4"
+        app:layout_constraintStart_toStartOf="@+id/VGL1"
+        app:layout_constraintTop_toBottomOf="@+id/kidneysImgV" />
+
+
+    <ImageView
+        android:id="@+id/LungsImgV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:alpha="1"
+        android:background="@color/trans"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/VGL2"
+        app:layout_constraintStart_toStartOf="@+id/VGL4"
+        app:layout_constraintTop_toTopOf="@+id/barHG5"
+        app:srcCompat="@drawable/ic_lungs_solid" />
+
+    <TextView
+        android:id="@+id/lungsTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Lungs Demo"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/VGL2"
+        app:layout_constraintStart_toStartOf="@+id/VGL4"
+        app:layout_constraintTop_toBottomOf="@+id/LungsImgV" />
 
     <!--    <TextView-->
     <!--        android:id="@+id/registerTxtV"-->

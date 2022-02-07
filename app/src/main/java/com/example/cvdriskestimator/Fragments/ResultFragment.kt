@@ -16,9 +16,18 @@ import androidx.palette.graphics.Palette
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.get
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.CustomClasses.customDerpesionProgressView
 import kotlinx.coroutines.*
+import android.view.ViewGroup
+import android.view.animation.ScaleAnimation
+
+
+
+
+
+
 
 
 /**
@@ -56,6 +65,7 @@ class ResultFragment : Fragment() {
     private lateinit var hightRIskHighTxtV: TextView
 
     private lateinit var diabetesRatingBar: RelativeLayout
+    private lateinit var diabetesBottomBar : RelativeLayout
     private lateinit var drawPercView: View
     private lateinit var upPerc: TextView
     private lateinit var resultPerc: TextView
@@ -156,6 +166,7 @@ class ResultFragment : Fragment() {
             userIcon = MTEtitle.findViewById(R.id.userIcon)
             userIcon.alpha = 1f
             diabetesRatingBar = view.findViewById(R.id.ratingBar)
+            diabetesBottomBar = view.findViewById(R.id.bottomBar)
             val viewTreeObserver: ViewTreeObserver = diabetesRatingBar.getViewTreeObserver()
             if (viewTreeObserver.isAlive) {
                 viewTreeObserver.addOnGlobalLayoutListener {
@@ -186,11 +197,11 @@ class ResultFragment : Fragment() {
             testHeadling = view.findViewById(R.id.mditestTitleTxtV)
             riskResultTxtV = view.findViewById(R.id.testResultTxtV)
             depressionProgressBar = RelativeLayout(mainActivity.applicationContext)
-            depressionProgressBar = view.findViewById(R.id.MDItestProgressBarRelLayout)
-            noDepressionLayout = view.findViewById(R.id.resultBarNoDepRelLayout)
-            mildDepressionLayout = view.findViewById(R.id.resultBarMildDepRelLayout)
-            moderateDepressionLayout = view.findViewById(R.id.resultBarModerateDepRelLayout)
-            servereDepressionLayout = view.findViewById(R.id.resultBarSevereDepRelLayout)
+            depressionProgressBar = view.findViewById(R.id.resulVerticalProgressBar)
+            noDepressionLayout = view.findViewById(R.id.noDepView)
+            mildDepressionLayout = view.findViewById(R.id.mildDepView)
+            moderateDepressionLayout = view.findViewById(R.id.moderateDepView)
+            servereDepressionLayout = view.findViewById(R.id.severeDepView)
             totalScore = view.findViewById(R.id.totalScore)
             depressStatus = view.findViewById(R.id.depressionStatus)
             setMDIResultsOnForm(
@@ -423,6 +434,10 @@ class ResultFragment : Fragment() {
         drawPercView.layoutParams.height = resultPercHeight.toInt()
 //        resultPerc.y = drawPercView.y + drawPercView.layoutParams.height - resultPercHeight.toInt()
         resultPerc.layoutParams.height = drawPercView.layoutParams.height * 2
+        if (arguments!!.getDouble(ARG_PARAM1) * 100 < 4)
+        {
+            resultPerc.layoutParams.height = diabetesBottomBar.layoutParams.height
+        }
         //check if the bottomPerc gets invisible by the userResultPerc
         if (arguments!!.getDouble(ARG_PARAM1) * 100 < 10) {
             bottomPerc.visibility = View.INVISIBLE
@@ -459,9 +474,9 @@ class ResultFragment : Fragment() {
     }
 
     private fun setMDIResultsOnForm(mdiDepressionInt: Int, mdiDepressionType: String) {
-        totalScore.text = mdiDepressionInt.toString()
-        depressStatus.text = mdiDepressionType
-        setMDIResultTextViewColors(mdiDepressionInt)
+        totalScore.text = Html.fromHtml("<b>" + mdiDepressionInt.toString() + "</b>")
+        depressStatus.text = Html.fromHtml("<b>" + mdiDepressionType+ "</b>")
+//        setMDIResultTextViewColors(mdiDepressionInt)
     }
 
     private fun setMDIResultTextViewColors(mdiDepressionInt: Int) {
@@ -485,54 +500,59 @@ class ResultFragment : Fragment() {
 
     //function to create Views above the result bar
     suspend fun createDepressionResultBarViews() {
-        depressionProgressBar.layoutParams.width = (RelativeLayout.LayoutParams.WRAP_CONTENT)
+
+        depressionProgressBar.layoutParams.width = 0
         depressionProgressBar.layoutParams.height = (RelativeLayout.LayoutParams.WRAP_CONTENT)
-        val viewHeight = 50
-        val viewWidth = (screenWidth / 91).toFloat()
-        val range = 90
+        val viewWidth = (screenWidth  / 100) * 15
+        val viewHeight = (screenHeight / 51).toFloat() /2
         val yDepressionResultBar = depressionProgressBar.y
+        var currentHeight = yDepressionResultBar
         val xDepressionResultBar = depressionProgressBar.x
-        val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1.8).toInt()
-        for (i in 1..userMDIResult) {
-            val paint = Paint()
-            var depResBarView = customDerpesionProgressView(
-                mainActivity.applicationContext,
-                xDepressionResultBar,
-                yDepressionResultBar,
-                xDepressionResultBar + i * viewWidth,
-                yDepressionResultBar + viewHeight.toFloat(),
-                paint
-            )
-            depResBarView.layoutParams
-            //add the created view to the relativelayout
-            depressionProgressBar.addView(
-                depResBarView,
-                ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
+        val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1).toInt()
+
+
+        val paint = Paint()
+        var depResBarView = customDerpesionProgressView(
+                        mainActivity.applicationContext,
+                        xDepressionResultBar ,
+                          yDepressionResultBar,
+                        xDepressionResultBar + screenWidth,
+                        yDepressionResultBar + (userMDIResult-1) * viewHeight.toFloat(),
+                        paint    )
+
+                depResBarView.layoutParams
+        setProgresViewColor(depResBarView , userMDIResult)
+        //add the created view to the relativelayout
+                depResBarView.invalidate()
+                depressionProgressBar.addView(
+                    depResBarView,
+                    ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
                 )
-            )
-            delay(100)
-            setProgresViewColor(depResBarView, i)
-            depressionProgressBar.invalidate()
-        }
-//        animateDepressionProgressBar(userMDIResult)
+        depressionProgressBar.invalidate()
+
+        val scale = ScaleAnimation(1f , 1f , 0f , 1f)
+        scale.fillAfter = true
+        scale.duration = 1000
+        depressionProgressBar.startAnimation(scale)
 
     }
 
     fun setProgresViewColor(view: View, index: Int) {
-        if ((index >= 0) && (index < 36)) {
+        if ((index >= 0) && (index < 20)) {
             view.background = resources.getDrawable(R.drawable.blue_progressbar_style)
 
         }
-        if ((index >= 36) && (index <= 44)) {
+        if ((index >= 20) && (index <= 24)) {
             view.background = resources.getDrawable(R.drawable.green_progressbar_style)
         }
-        if ((index >= 45) && (index <= 53)) {
+        if ((index >= 25) && (index <= 29)) {
             view.background = resources.getDrawable(R.drawable.orange_progressbar_style)
         }
 
-        if (index >= 54) {
+        if (index >= 30) {
             view.background = resources.getDrawable(R.drawable.red_progressbar_style)
         }
     }

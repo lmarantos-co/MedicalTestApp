@@ -35,6 +35,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <include
+            android:id="@+id/include_pop_up_menu"
+            layout="@layout/popup_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
         <!--        application menu panel-->
 
 
@@ -248,18 +255,13 @@
                             android:layout_gravity="center"
                             android:clickable="true"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:text="FEMALE"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                     </RadioGroup>
 
-                    <include
-                        android:id="@+id/include_pop_up_menu"
-                        layout="@layout/popup_menu"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="visible" />
 
                 </RelativeLayout>
 
@@ -300,6 +302,7 @@
                             android:background="@drawable/radiobutton_style"
                             android:clickable="true"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="105dp"
                             android:text="White"
                             android:textSize="20sp" />
@@ -315,6 +318,7 @@
                             android:clickable="true"
                             android:enabled="true"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:text="African American"
                             android:textSize="20sp" />
 
@@ -328,6 +332,7 @@
                             android:clickable="true"
                             android:enabled="true"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="105dp"
                             android:text="Other"
                             android:textSize="20sp" />
@@ -615,6 +620,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
+                            android:minHeight="48dp"
                             android:paddingRight="2dp"
                             android:text="Current"
                             android:textAlignment="center"
@@ -626,6 +632,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
+                            android:minHeight="48dp"
                             android:paddingRight="3dp"
                             android:text="Former"
                             android:textAlignment="center"
@@ -636,6 +643,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="15dp"
                             android:text="Never"
                             android:textAlignment="center"
@@ -739,21 +747,43 @@
 
                 </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/submitBtn"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="false"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/cvd_button_rounded_corners"
-                    android:padding="20dp"
-                    android:text="CALCULATE"
-                    android:textSize="20sp"
-                    android:visibility="visible"
-                    tools:ignore="TextContrastCheck" />
+                    android:id="@+id/testButtonsRelLayoyt">
 
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submitBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/cvd_button_rounded_corners"
+                        android:padding="20dp"
+                        android:text="CALCULATE"
+                        android:textSize="20sp"
+                        android:visibility="visible"
+                        tools:ignore="TextContrastCheck" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/clearBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/submitBtn"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerVertical="false"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/submitBtn"
+                        android:background="@drawable/cvd_button_rounded_corners"
+                        android:text="CLEAR DATA" />
+
+
+                </RelativeLayout>
 
             </LinearLayout>
 

@@ -1,6 +1,8 @@
 package com.example.cvdriskestimator.Fragments
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -91,6 +93,24 @@ class MDICheckFragment : Fragment() {
             setPatientData(it)
         })
 
+        mdiCheckBinding.clearBtn.setOnClickListener {
+
+            AlertDialog.Builder(this.activity)
+                .setTitle("Clear All Data")
+                .setMessage("Are you sure you want to delete the user data?") // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes,
+                    DialogInterface.OnClickListener { dialog, which ->
+                        // Continue with delete operation
+
+                        initialisePatientData()
+
+                    })
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()        }
+
         mdiCheckBinding.submitBtn.setOnClickListener {
 
             allPatientSelections[0] = getAsnwerFromRadioGroup(mdiCheckBinding.MDIQ1RG)
@@ -158,7 +178,7 @@ class MDICheckFragment : Fragment() {
         } , 1000)
     }
 
-    private fun initialisePatientData()
+    fun initialisePatientData()
     {
         mdiCheckBinding.MDIQ1RG.clearCheck()
         mdiCheckBinding.MDIQ2RG.clearCheck()
@@ -185,27 +205,27 @@ class MDICheckFragment : Fragment() {
             }
             0 ->
             {
-                (rg.getChildAt(0) as RadioButton).isChecked = true
+                (rg.getChildAt(5) as RadioButton).isChecked = true
             }
             1 ->
             {
-                (rg.getChildAt(1) as RadioButton).isChecked = true
+                (rg.getChildAt(4) as RadioButton).isChecked = true
             }
             2 ->
             {
-                (rg.getChildAt(2) as RadioButton).isChecked = true
+                (rg.getChildAt(3) as RadioButton).isChecked = true
             }
             3->
             {
-                (rg.getChildAt(3) as RadioButton).isChecked = true
+                (rg.getChildAt(2) as RadioButton).isChecked = true
             }
             4 ->
             {
-                (rg.getChildAt(4) as RadioButton).isChecked = true
+                (rg.getChildAt(1) as RadioButton).isChecked = true
             }
             5 ->
             {
-                (rg.getChildAt(5) as RadioButton).isChecked = true
+                (rg.getChildAt(0) as RadioButton).isChecked = true
             }
         }
     }

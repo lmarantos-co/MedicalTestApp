@@ -26,6 +26,12 @@
         android:icon="@drawable/ic_person_outline_white_24dp"/>
 
     <item
+        android:id="@+id/clear_data"
+        app:showAsAction="always"
+        android:title="Clear All Data"
+        android:icon="@drawable/ic_settings" />
+
+    <item
         android:id="@+id/terms_item"
         app:showAsAction="always"
         android:title="Terms Of Use"
