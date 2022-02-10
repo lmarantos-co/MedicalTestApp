@@ -37,21 +37,27 @@
         <item name="android:popupMenuStyle">@style/PopupMenu</item>
         <!-- if using android.support.v7.widget.PopupMenu -->
         <item name="popupMenuStyle">@style/PopupMenu</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>
     </style>
 
     <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
 <!--        <item name="android:popupBackground">@color/DarkBlue</item>-->
-        <item name="android:itemBackground">@color/Naby</item>
-        <item name="android:listPreferredItemHeight">15dp</item>
-        <item name="android:listPreferredItemPaddingEnd">20dp</item>
-        <item name="android:listPreferredItemPaddingStart">20dp</item>
-        <item name="android:listPreferredItemPaddingLeft">20dp</item>
-        <item name="android:listPreferredItemPaddingRight">20dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:itemBackground">@drawable/pop_up_background</item>
+        <item name="android:popupBackground">@drawable/pop_up_background</item>
     </style>
 
+    <style name="myPopupMenuTextAppearanceSmall" parent="@android:style/TextAppearance.DeviceDefault.Widget.PopupMenu.Small">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="myPopupMenuTextAppearanceLarge" parent="@android:style/TextAppearance.DeviceDefault.Widget.PopupMenu.Large">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">25sp</item>
+    </style>
 
 
 </resources>

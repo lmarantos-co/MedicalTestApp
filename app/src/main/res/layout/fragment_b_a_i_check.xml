@@ -32,7 +32,7 @@
             layout="@layout/popup_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horGL1"
@@ -117,6 +117,7 @@
                     android:layout_marginRight="16dp"
                     android:gravity="center"
                     android:text="@string/bai_test_info"
+                    android:justificationMode="inter_word"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -491,6 +492,7 @@
                             android:layout_below="@id/BAIQ5RB1"
                             android:layout_gravity="left"
                             android:gravity="left"
+                            android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -596,13 +598,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/BAIQ6RB3"
-                            android:layout_gravity="center"
-                            android:gravity="center"
+                            android:layout_gravity="left"
+                            android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:paddingRight="@dimen/baitestQ4Padding"
                             />
 
                     </RadioGroup>

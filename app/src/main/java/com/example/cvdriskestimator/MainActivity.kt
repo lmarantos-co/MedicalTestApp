@@ -27,9 +27,14 @@ import com.google.android.material.navigation.NavigationView
 import io.realm.Realm
 import java.lang.reflect.Method
 import android.content.DialogInterface
-
-
-
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.TypefaceSpan
+import android.text.SpannableStringBuilder
+import androidx.core.view.get
+import androidx.core.view.size
+import java.security.AccessController.getContext
 
 
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -547,7 +552,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
             R.id.clear_data -> {
 
-                AlertDialog.Builder(applicationContext)
+                AlertDialog.Builder(this)
                     .setTitle("Clear All Data")
                     .setMessage("Are you sure you want to delete the user data?") // Specifying a listener allows you to take an action before dismissing the dialog.
                     // The dialog is automatically dismissed when a dialog button is clicked.
@@ -629,6 +634,15 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Login")
         popupMenu.menu.getItem(3).title =
             this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data"
+        //aplly font to all menu item
+        applyFontToMenuItem(popupMenu.menu.getItem(0) , "Home" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(1) , this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Login")!! , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(2) , "Register" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(3) , this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(4) , "Clear All Data" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(5) , "Terms Of Use" , applicationContext )
+
+
         // show icons on popup menu
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             popupMenu.setForceShowIcon(true)
@@ -656,6 +670,15 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         //show the PopUp menu
         popupMenu.show()
+    }
+
+    //function to apply font family to menu items
+    private fun applyFontToMenuItem(menuItem: MenuItem, menuTitle : String, mContext : Context)
+    {
+        val typeface = Typeface.create("sans-serif",Typeface.NORMAL) //  THIS
+        var string  = SpannableString(menuTitle)
+        string.setSpan(TypefaceSpan(typeface), 0, menuTitle.length - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        menuItem.title = menuTitle
     }
 
 

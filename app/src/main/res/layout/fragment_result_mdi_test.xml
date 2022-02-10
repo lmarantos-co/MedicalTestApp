@@ -58,14 +58,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultProgressBarHGLT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.52" />
 
     <RelativeLayout
         android:id="@+id/MDItestProgressBarRelLayout"
@@ -86,28 +86,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
+        app:layout_constraintGuide_percent="0.61" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id='@+id/resultBarModerateDepressionHGL'
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.74" />
+        app:layout_constraintGuide_percent="0.77" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id='@+id/resultBarMildDepressionHGL'
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.69" />
+        app:layout_constraintGuide_percent="0.72" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultBarNoDepressionHGL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.64" />
+        app:layout_constraintGuide_percent="0.67" />
 
     <RelativeLayout
         android:id='@+id/resultBar'
@@ -151,6 +151,13 @@
         app:layout_constraintGuide_percent="0.2" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultProgressBarRightVGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.24" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultsTopHGL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -164,7 +171,7 @@
         android:background="@drawable/relativelayout_style"
         android:gravity="center"
         app:layout_constraintLeft_toRightOf="@id/resultProgressBarVGL"
-        app:layout_constraintRight_toLeftOf="@id/magednaRightVGL"
+        app:layout_constraintRight_toLeftOf="@id/mdiResultRightVGL"
         app:layout_constraintTop_toBottomOf="@id/resultsTopHGL">
 
         <TextView
@@ -254,21 +261,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.79" />
+        app:layout_constraintGuide_percent="0.82" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/magendaTopHelperHGL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.44" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/magendaTopHGL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.47" />
+        app:layout_constraintGuide_percent="0.48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/magendaHelperBottomHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.97" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/magendaBottomHGL"
@@ -278,11 +292,18 @@
         app:layout_constraintGuide_percent="0.97" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id='@+id/magednaRightVGL'
+        android:id='@+id/mdiResultRightVGL'
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id='@+id/magednaRightVGL'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/severeDeprHelperHGL"
@@ -299,8 +320,9 @@
         android:text="50"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/magednaRightVGL" />
+        app:layout_constraintBottom_toTopOf="@+id/magendaBottomHGL"
+        app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
+        app:layout_constraintTop_toTopOf="@+id/magendaHelperBottomHGL" />
 
     <RelativeLayout
         android:id="@+id/severeDepView"
@@ -442,7 +464,7 @@
         android:text="0"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/resultBarHGLTop"
+        app:layout_constraintBottom_toTopOf="@+id/resultProgressBarHGLT"
         app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
         app:layout_constraintTop_toTopOf="@+id/magendaTopHelperHGL" />
 
@@ -454,10 +476,21 @@
         app:layout_constraintGuide_percent="0.1" />
 
     <RelativeLayout
+        android:id="@+id/surroundResultBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
+        app:layout_constraintLeft_toRightOf="@id/resultProgressBarVGL"
+        app:layout_constraintRight_toLeftOf="@id/resultProgressBarRightVGL"
+        app:layout_constraintTop_toBottomOf="@id/magendaTopHGL" />
+
+    <RelativeLayout
         android:id="@+id/resulVerticalProgressBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/titleVGL2"
+        android:elevation="5dp"
+        app:layout_constraintEnd_toStartOf="@id/resultProgressBarRightVGL"
         app:layout_constraintStart_toStartOf="@+id/resultProgressBarVGL"
         app:layout_constraintTop_toTopOf="@+id/magendaTopHGL" />
 

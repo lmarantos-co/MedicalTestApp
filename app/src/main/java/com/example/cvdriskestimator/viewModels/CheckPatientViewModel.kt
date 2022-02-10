@@ -270,7 +270,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
         patientDATA.postValue(patientDATA.value)
     }
 
-    private fun savePatient(sex : String, age : String, sbp : String, TCH : String, HDL : String, smokingStatus : String, treatmentStatus : String) : Job =
+    fun savePatient(sex : String, age : String, sbp : String, TCH : String, HDL : String, smokingStatus : String, treatmentStatus : String) : Job =
         viewModelScope.launch {
             saveUserDataToDB(sex , age , sbp, TCH , HDL , smokingStatus , treatmentStatus)
         }
