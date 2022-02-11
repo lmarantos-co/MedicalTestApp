@@ -18,13 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/include_pop_up_menu"
-        layout="@layout/popup_menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible" />
-
     <TextView
         android:id="@+id/mditestTitleTxtV"
         android:layout_width="wrap_content"
@@ -343,7 +336,7 @@
             android:paddingLeft="16dp"
             android:text="Severe depression"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="@dimen/mdiMagendaTextSize" />
 
     </RelativeLayout>
 
@@ -380,7 +373,7 @@
             android:paddingLeft="16dp"
             android:text="Moderate depression"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="@dimen/mdiMagendaTextSize" />
 
     </RelativeLayout>
 
@@ -416,7 +409,7 @@
             android:paddingLeft="16dp"
             android:text="Mild depression"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="@dimen/mdiMagendaTextSize" />
 
     </RelativeLayout>
 
@@ -452,7 +445,14 @@
             android:paddingLeft="16dp"
             android:text="No depression"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="@dimen/mdiMagendaTextSize" />
+
+        <include
+            android:id="@+id/include_pop_up_menu"
+            layout="@layout/popup_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" />
 
     </RelativeLayout>
 

@@ -504,7 +504,8 @@ class ResultFragment : Fragment() {
         depressionProgressBar.layoutParams.width = 0
         depressionProgressBar.layoutParams.height = (RelativeLayout.LayoutParams.WRAP_CONTENT)
         val viewWidth = (screenWidth  / 100) * 15
-        val viewHeight = (screenHeight / 51).toFloat() /2
+//        val viewHeight = (screenHeight / 51).toFloat() /2
+        val viewHeight = screenHeight / 100
         val yDepressionResultBar = depressionProgressBar.y
         var currentHeight = yDepressionResultBar
         val xDepressionResultBar = depressionProgressBar.x
@@ -517,7 +518,7 @@ class ResultFragment : Fragment() {
                         xDepressionResultBar ,
                           yDepressionResultBar,
                         xDepressionResultBar + screenWidth,
-                        yDepressionResultBar + (userMDIResult-1) * viewHeight.toFloat(),
+                        yDepressionResultBar + (userMDIResult) * viewHeight.toFloat(),
                         paint    )
 
                 depResBarView.layoutParams
