@@ -177,7 +177,7 @@ class PopUpMenu {
         val inflater : MenuInflater = prPopupmenu.menuInflater
         inflater.inflate(R.menu.main_optionss_menu , prPopupmenu.menu)
         prPopupmenu.menu.getItem(1).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Login"))
-        prPopupmenu.menu.getItem(3).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser"))
+        prPopupmenu.menu.getItem(3).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data")
         // show icons on popup menu
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             prPopupmenu.setForceShowIcon(true)
