@@ -8,5 +8,5 @@
     <dimen name="baitestQ2Padding">40dp</dimen>
     <dimen name="baitestQ3Padding">0dp</dimen>
     <dimen name="baitestQ4Padding">80dp</dimen>
-    <dimen name="mdiMagendaTextSize">10sp</dimen>
+    <dimen name="mdiMagendaTextSize">16sp</dimen>
 </resources>

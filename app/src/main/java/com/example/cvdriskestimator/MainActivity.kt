@@ -677,7 +677,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     {
         val typeface = Typeface.create("sans-serif",Typeface.NORMAL) //  THIS
         var string  = SpannableString(menuTitle)
-        string.setSpan(TypefaceSpan(typeface), 0, menuTitle.length - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        string.setSpan(typeface, 0, menuTitle.length - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         menuItem.title = menuTitle
     }
 
