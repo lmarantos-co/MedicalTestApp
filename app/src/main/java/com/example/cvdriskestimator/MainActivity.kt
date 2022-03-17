@@ -32,6 +32,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.TypefaceSpan
 import android.text.SpannableStringBuilder
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.view.get
 import androidx.core.view.size
 import java.security.AccessController.getContext
@@ -87,6 +88,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContentView(R.layout.activity_main)
 
 
@@ -114,6 +117,23 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyTestTitle = findViewById(R.id.anxietyTestTxtView)
         kidnyesTestTitle = findViewById(R.id.kidneysTxtView)
         lungsTestTitle = findViewById(R.id.lungsTxtView)
+//        hideLayoutElements()
+//        (fragmentContainer.findViewById(R.id.intro_motion_layout) as MotionLayout).transitionToEnd()
+//        (fragmentContainer.findViewById(R.id.intro_motion_layout) as MotionLayout).setTransitionListener(object : MotionLayout.TransitionListener{
+//            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
+//            }
+//
+//            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
+//            }
+//
+//            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
+//                showLayoutElements()
+//            }
+//
+//            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
+////            }
+//
+//        })
 
         initPrefs()
 
@@ -422,11 +442,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyTestTitle.visibility = View.INVISIBLE
         kidnyesTestTitle.visibility = View.INVISIBLE
         lungsTestTitle.visibility = View.INVISIBLE
-        hideCVDTitleForm()
     }
 
     private fun showLayoutElements() {
-        constraintLayout.visibility = View.VISIBLE
         MTETitle.visibility = View.VISIBLE
         cvdVectorIcon.visibility = View.VISIBLE
         diabetesVectorIcon.visibility = View.VISIBLE
@@ -442,7 +460,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.VISIBLE
         kindeysIcon.visibility = View.VISIBLE
         lungsIcon.visibility = View.VISIBLE
-        showCVDTitleForm()
     }
 
     private fun setAllViewsDimens()
@@ -461,16 +478,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         (height * 0.14) / 8
     }
 
-    private fun showCVDTitleForm()
-    {
-        MTETitle.visibility = View.VISIBLE
-    }
-
-    private fun hideCVDTitleForm()
-    {
-        MTETitle.visibility = View.INVISIBLE
-
-    }
 
     private fun initRealmDB() {
         realmDB = RealmDB(applicationContext)
