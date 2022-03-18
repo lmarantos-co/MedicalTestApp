@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var checkDiabetesFragment : DiabetesCheckFragment
     private lateinit var mdiCheckFragment: MDICheckFragment
     private lateinit var baiCheckFragment: BAICheckFragment
+    private lateinit var mdsCheckFragment: medDietTestFragment
     private lateinit var popupMenu: PopupMenu
     private lateinit var MTETitleForm : RelativeLayout
     private  var mteTitleFormHeight : Int = 0
@@ -171,6 +172,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         checkDiabetesFragment = DiabetesCheckFragment.newInstance()
         mdiCheckFragment = MDICheckFragment.newInstance()
         baiCheckFragment = BAICheckFragment.newInstance()
+        mdsCheckFragment = medDietTestFragment.newInstance()
 
         setFragmentContainerConstraint(2)
 
@@ -268,6 +270,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             playSelectTestAudio(5)
             baiCheckFragment = BAICheckFragment.newInstance()
             fragmentTransaction(baiCheckFragment)
+        }
+
+        kindeysIcon.setOnClickListener {
+            hideLayoutElements()
+            fragmentTransaction(mdsCheckFragment)
         }
 
         showMedicalTests()
@@ -506,6 +513,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(checkDiabetesFragment)
         fragmentTransaction.hide(mdiCheckFragment)
         fragmentTransaction.hide(baiCheckFragment)
+        fragmentTransaction.hide(mdsCheckFragment)
             .commit()
     }
 
@@ -521,6 +529,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is MDICheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is BAICheckFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is medDietTestFragment)
             fragmentTransaction.show(fragment)
         if (fragment is LoginFragment)
             fragmentTransaction.show(loginFragment)

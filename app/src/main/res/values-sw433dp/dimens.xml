@@ -8,4 +8,9 @@
     <dimen name="baitestQ2Padding">40dp</dimen>
     <dimen name="baitestQ3Padding">0dp</dimen>
     <dimen name="baitestQ4Padding">80dp</dimen>
+    <dimen name="mdstestQ1A2Padding">24dp</dimen>
+    <dimen name="mdstestQ1A3Padding">12dp</dimen>
+    <dimen name="mdstestQ1A6Padding">12dp</dimen>
+    <dimen name="mdstestQ2A3Padding">22dp</dimen>
+    <dimen name="mdstestQ2A4Padding">10dp</dimen>
 </resources>
