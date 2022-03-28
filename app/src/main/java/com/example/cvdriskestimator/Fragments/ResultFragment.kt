@@ -16,18 +16,12 @@ import androidx.palette.graphics.Palette
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.get
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.CustomClasses.customDerpesionProgressView
 import kotlinx.coroutines.*
 import android.view.ViewGroup
 import android.view.animation.ScaleAnimation
-
-
-
-
-
-
+import kotlin.coroutines.CoroutineContext
 
 
 /**
@@ -100,6 +94,21 @@ class ResultFragment : Fragment() {
     private lateinit var lowAnxietyRelLayout : RelativeLayout
     private lateinit var moderateAnxietyRelLayout : RelativeLayout
     private lateinit var severeAnxietyRelLayout : RelativeLayout
+
+    //mds test score variables
+    private lateinit var mdsTestScore : TextView
+    private lateinit var mdsTestResult: TextView
+    private lateinit var view1 : View
+    private lateinit var view2 : View
+    private lateinit var view3 : View
+    private lateinit var view4 : View
+    private lateinit var view5 : View
+    private lateinit var view6 : View
+    private lateinit var view7 : View
+    private lateinit var view8 : View
+    private lateinit var view9 : View
+    private lateinit var view10 : View
+    private lateinit var view11 : View
 
 
     //screen dimensions
@@ -235,7 +244,7 @@ class ResultFragment : Fragment() {
         }
         if (test_type == 4) {
             view = inflater.inflate(R.layout.fragment_result_bai_test, container, false)
-            formConLayout = view.findViewById(R.id.results_con_layout_bai_test)
+            formConLayout = view.findViewById(R.id.results_con_layout_mds_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -254,6 +263,39 @@ class ResultFragment : Fragment() {
             moderateAnxietyRelLayout = view.findViewById(R.id.moderateAnxietyResultBar)
             severeAnxietyRelLayout = view.findViewById(R.id.severeAnxietyResultBar)
             setBaiTestSummary(score)
+        }
+
+        if (test_type == 5)
+        {
+            view = inflater.inflate(R.layout.fragment_result_mds_layout, container, false)
+            formConLayout = view.findViewById(R.id.results_con_layout_mds_test)
+            MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+            termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+            termsRelLayout.visibility = View.INVISIBLE
+            closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+            companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
+            testHeadling = view.findViewById(R.id.mdsTestTitleTxtV)
+            mdsTestScore = view.findViewById(R.id.totalScore)
+            mdsTestResult = view.findViewById(R.id.totalScoreDescTxtV)
+            val score = arguments!!.getDouble(ARG_PARAM1)
+            mdsTestScore.text = (String.format(resources.getString(R.string.mds_test_score) ,String.format("%.2f" , score.toFloat())))
+            mdsTestResult.text = getMDSResult(score.toInt())
+            view1 = view.findViewById(R.id.view1)
+            view2 = view.findViewById(R.id.view2)
+            view3 = view.findViewById(R.id.view3)
+            view4 = view.findViewById(R.id.view4)
+            view5 = view.findViewById(R.id.view5)
+            view6 = view.findViewById(R.id.view6)
+            view7 = view.findViewById(R.id.view7)
+            view8 = view.findViewById(R.id.view8)
+            view9 = view.findViewById(R.id.view9)
+            view10 = view.findViewById(R.id.view10)
+            view11 = view.findViewById(R.id.view11)
+
+
         }
         return view
     }
@@ -356,6 +398,15 @@ class ResultFragment : Fragment() {
                 null
             )
         }
+
+        if (test_type == 5)
+        {
+            setFormColors(testType = 5)
+            GlobalScope.launch(Dispatchers.Main)
+            {
+                setMDSTestBarColors(arguments!!.getDouble(ARG_PARAM1).toInt())
+            }
+        }
     }
 
     private fun setAltLLayout() {
@@ -381,6 +432,10 @@ class ResultFragment : Fragment() {
             4 -> {
                 testHeadling.setBackgroundResource(R.drawable.blue_baitest_form_title_style)
                 riskResultTxtV.setBackgroundResource(R.drawable.baitest_rel_layout)
+            }
+            5 ->
+            {
+                testHeadling.setBackgroundResource(R.drawable.yellow_mdstest_form_title_style)
             }
         }
     }
@@ -495,6 +550,86 @@ class ResultFragment : Fragment() {
         if (mdiDepressionInt >= 30) {
             totalScore.setTextColor(resources.getColor(R.color.dark_red))
             depressStatus.setTextColor(resources.getColor(R.color.dark_red))
+        }
+    }
+
+    private fun getMDSResult(score : Int) : String
+    {
+        if ((0 >= score) && (score <= 22))
+        {
+            return (resources.getString(R.string.mds_test_result1))
+        }
+        if ((27.5 >= score) && (score <= 33))
+        {
+            return (resources.getString(R.string.mds_test_result2))
+        }
+        if ((38.5 >= score) && (score <= 44))
+        {
+            return (resources.getString(R.string.mds_test_result3))
+        }
+        if ((49.5 >= score) && (score <= 55))
+        {
+            return (resources.getString(R.string.mds_test_result4))
+        }
+        return ""
+    }
+
+    private suspend fun setMDSTestBarColors(score : Int)
+    {
+        if (score > 0)
+        {
+            view1.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+        }
+        if (score > 5)
+        {
+            view2.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+        }
+        if (score > 10)
+        {
+            view3.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+        }
+        if (score > 15)
+        {
+            view4.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+        }
+        if (score > 20)
+        {
+            view5.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+        }
+        if (score > 25)
+        {
+            view6.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+        }
+        if (score > 30)
+        {
+            view7.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+        }
+        if (score > 35)
+        {
+            view8.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+        }
+        if (score > 40)
+        {
+            view9.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+        }
+        if (score > 45)
+        {
+            view10.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+        }
+        if (score > 50)
+        {
+            view11.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
         }
     }
 

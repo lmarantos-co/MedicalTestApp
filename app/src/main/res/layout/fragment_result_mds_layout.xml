@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/results_con_layout_mds_test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/MidnightBlue">>
+
+    <!--    covariance title form-->
+
+    <include
+        android:id="@+id/include_cvd_title_form"
+        layout="@layout/cvd_title_form"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/horGL1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include_pop_up_menu"
+        layout="@layout/popup_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <TextView
+        android:id="@+id/mdsTestTitleTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/trans"
+        android:drawableLeft="@drawable/ic_diet_24dp"
+        android:drawablePadding="8dp"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/mds_test_results"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/horGL1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/titleVGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/titleVGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultsTopHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultsBottomHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.38" />
+
+    <RelativeLayout
+        android:id="@+id/mdsTestTitleRelLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mds_test_result_rel_layout"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/resultsBottomHGL"
+        app:layout_constraintLeft_toRightOf="@id/titleVGL1"
+        app:layout_constraintRight_toLeftOf="@id/titleVGL2"
+        app:layout_constraintTop_toBottomOf="@id/resultsTopHGL">
+
+        <LinearLayout
+            android:id="@+id/MedDietScoreLinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/relativelayout_style"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/totalScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:text="@string/mds_test_score"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/totalScoreDescTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="false"
+                android:gravity="center"
+                android:text="@string/mds_test_score"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLtopResultBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.47" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.51" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.59" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.63" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.67" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.71" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.79" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.83" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.87" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.91" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGLbottomResultBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <!--    view bars to occupy the test result score-->
+    <View
+        android:id="@+id/view1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/horGLbottomResultBar"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLview1" />
+
+    <TextView
+        android:id="@+id/zeroTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view1"
+        app:layout_constraintEnd_toStartOf="@+id/titleVGL2"
+        app:layout_constraintStart_toStartOf="@+id/titleVGL1"
+        app:layout_constraintTop_toTopOf="@+id/horGLview1" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view1"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLview2" />
+
+    <TextView
+        android:id="@+id/oneTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/view1"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/horGLview2" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLview3" />
+
+    <TextView
+        android:id="@+id/twoTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/horGLview2"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/horGLview3" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view3"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLview4" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/horGLview3"
+        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="@+id/view4" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view4"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLview5" />
+
+    <TextView
+        android:id="@+id/fourTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/horGLview4"
+        app:layout_constraintEnd_toEndOf="@+id/view5"
+        app:layout_constraintStart_toStartOf="@+id/view5"
+        app:layout_constraintTop_toTopOf="@+id/horGLview5" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLview6" />
+
+    <TextView
+        android:id="@+id/fiveTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/horGLview5"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintStart_toStartOf="@+id/view6"
+        app:layout_constraintTop_toTopOf="@+id/horGLview6" />
+
+    <View
+        android:id="@+id/view7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view6"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLview7" />
+
+    <TextView
+        android:id="@+id/sixthTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="35"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/horGLview6"
+        app:layout_constraintEnd_toEndOf="@+id/view7"
+        app:layout_constraintStart_toStartOf="@+id/view7"
+        app:layout_constraintTop_toTopOf="@+id/horGLview7" />
+
+    <View
+        android:id="@+id/view8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view7"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLview8" />
+
+    <TextView
+        android:id="@+id/seventhTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="40"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/view7"
+        app:layout_constraintEnd_toEndOf="@+id/view8"
+        app:layout_constraintStart_toStartOf="@+id/view8"
+        app:layout_constraintTop_toTopOf="@+id/horGLview8" />
+
+    <View
+        android:id="@+id/view9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view8"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLview9" />
+
+    <TextView
+        android:id="@+id/eightTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="45"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/view8"
+        app:layout_constraintEnd_toEndOf="@+id/view9"
+        app:layout_constraintStart_toStartOf="@+id/view9"
+        app:layout_constraintTop_toTopOf="@+id/horGLview9" />
+
+    <View
+        android:id="@+id/view10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view9"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLtopResultBar" />
+
+    <TextView
+        android:id="@+id/ninthTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/horGLview9"
+        app:layout_constraintEnd_toStartOf="@+id/rightHGLresultBar"
+        app:layout_constraintStart_toStartOf="@+id/leftHGLresultBar"
+        app:layout_constraintTop_toTopOf="@+id/horGLtopResultBar" />
+
+    <View
+        android:id="@+id/view11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view10"
+        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
+        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@id/horGLview10" />
+
+    <TextView
+        android:id="@+id/tenthTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="55"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/horGLtopResultBar"
+        app:layout_constraintEnd_toStartOf="@+id/rightHGLresultBar"
+        app:layout_constraintStart_toStartOf="@+id/leftHGLresultBar"
+        app:layout_constraintTop_toTopOf="@+id/horGLview10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftHGLresultBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightHGLresultBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

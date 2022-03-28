@@ -57,5 +57,6 @@
     <color name="orange_10">#FEF5E7</color>
     <color name="purple">#A865C9</color>
     <color name="light_blue">#bcdfeb</color>
+    <color name="light_yellow">#F3DF0C</color>
     <color name="trans">#00000000</color>
 </resources>

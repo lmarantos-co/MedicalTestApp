@@ -180,4 +180,7 @@ open class Patient() : RealmModel {
     var patientMDSQ9 : Int? = null
 
     var patientMDSQ10 : Int? = null
+
+    var patientMDSQ11 : Int? = null
+
 }

@@ -30,12 +30,6 @@ import android.content.DialogInterface
 import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.style.TypefaceSpan
-import android.text.SpannableStringBuilder
-import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.core.view.get
-import androidx.core.view.size
-import java.security.AccessController.getContext
 
 
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -68,13 +62,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var diabetesVectorIcon : ImageView
     private lateinit var depressionIcon : ImageView
     private lateinit var anxietyIcon : ImageView
-    private lateinit var kindeysIcon : ImageView
+    private lateinit var dietIcon : ImageView
     private lateinit var lungsIcon : ImageView
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
     private lateinit var anxietyTestTitle : TextView
-    private lateinit var kidnyesTestTitle : TextView
+    private lateinit var dietTestTitle : TextView
     private lateinit var lungsTestTitle : TextView
     private lateinit var animationZoomIn : Animation
     private lateinit var animationBounce : Animation
@@ -110,13 +104,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         diabetesVectorIcon = findViewById(R.id.diabetesTestImgV)
         depressionIcon = findViewById(R.id.depressionImgV)
         anxietyIcon = findViewById(R.id.AnxietyImgV)
-        kindeysIcon = findViewById(R.id.kidneysImgV)
+        dietIcon = findViewById(R.id.dietImgV)
         lungsIcon = findViewById(R.id.LungsImgV)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
         depressionTestTitle = findViewById(R.id.depressionTestTxtView)
         anxietyTestTitle = findViewById(R.id.anxietyTestTxtView)
-        kidnyesTestTitle = findViewById(R.id.kidneysTxtView)
+        dietTestTitle = findViewById(R.id.medDietScoreTxtView)
         lungsTestTitle = findViewById(R.id.lungsTxtView)
 //        hideLayoutElements()
 //        (fragmentContainer.findViewById(R.id.intro_motion_layout) as MotionLayout).transitionToEnd()
@@ -272,7 +266,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction(baiCheckFragment)
         }
 
-        kindeysIcon.setOnClickListener {
+        dietIcon.setOnClickListener {
             hideLayoutElements()
             fragmentTransaction(mdsCheckFragment)
         }
@@ -410,14 +404,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         diabetesVectorIcon.visibility = View.VISIBLE
         depressionIcon.visibility = View.VISIBLE
         anxietyIcon.visibility = View.VISIBLE
+        dietIcon.visibility = View.VISIBLE
         cvdVectorIcon.animate().alpha(1f).duration = 1200
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
         depressionIcon.animate().alpha(1f).duration = 1200
+        dietIcon.animate().alpha(1f).duration = 1200
         depressionIcon.startAnimation(bounceTests)
         anxietyIcon.animate().alphaBy(1f).duration = 1200
         anxietyIcon.startAnimation(bounceTests)
         cvdVectorIcon.startAnimation(bounceTests)
         diabetesVectorIcon.startAnimation(bounceTests)
+        dietIcon.startAnimation(bounceTests)
 
     }
 
@@ -441,13 +438,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         depressionIcon.visibility = View.INVISIBLE
         anxietyIcon.clearAnimation()
         anxietyIcon.visibility = View.INVISIBLE
-        kindeysIcon.visibility = View.INVISIBLE
+        dietIcon.clearAnimation()
+        dietIcon.visibility = View.INVISIBLE
         lungsIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
         depressionTestTitle.visibility = View.INVISIBLE
         anxietyTestTitle.visibility = View.INVISIBLE
-        kidnyesTestTitle.visibility = View.INVISIBLE
+        dietTestTitle.visibility = View.INVISIBLE
         lungsTestTitle.visibility = View.INVISIBLE
     }
 
@@ -459,13 +457,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         diabetestestTitle.visibility = View.VISIBLE
         depressionTestTitle.visibility = View.VISIBLE
         anxietyTestTitle.visibility = View.VISIBLE
-        kidnyesTestTitle.visibility = View.VISIBLE
+        dietTestTitle.visibility = View.VISIBLE
         lungsTestTitle.visibility = View.VISIBLE
         anxietyIcon.visibility = View.VISIBLE
         depressionIcon.clearAnimation()
         depressionIcon.visibility = View.VISIBLE
         anxietyIcon.visibility = View.VISIBLE
-        kindeysIcon.visibility = View.VISIBLE
+        dietIcon.visibility = View.VISIBLE
         lungsIcon.visibility = View.VISIBLE
     }
 

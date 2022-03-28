@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/results_con_layout_bai_test"
+    android:id="@+id/results_con_layout_mds_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/MidnightBlue">>
@@ -23,7 +23,7 @@
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horGL1"

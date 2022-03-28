@@ -53,7 +53,7 @@ class PopUpMenu {
                     prMainActivity.backToActivity()
                 }
                 R.id.login_item -> {
-                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) ||(prFragment is ResultFragment))
+                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) ||(prFragment is ResultFragment))
                     {
                         val prefs = prMainActivity.getPreferences(Context.MODE_PRIVATE)
                         val message = prefs.getString("LOG", "Test1")
@@ -66,7 +66,7 @@ class PopUpMenu {
 
                 }
                 R.id.register_item -> {
-                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is LoginFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is ResultFragment))
+                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is LoginFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is ResultFragment))
                     {
                         prMainActivity.backToActivity()
                         prMainActivity.fragmentTransaction(prRegisterFragment!!)
@@ -160,6 +160,11 @@ class PopUpMenu {
                                 if (prFragment is BAICheckFragment)
                                 {
                                     (prFragment as BAICheckFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is medDietTestFragment)
+                                {
+                                    (prFragment as medDietTestFragment).initialisePatientData()
                                 }
 
                             }) // A null listener allows the button to dismiss the dialog and take no further action.

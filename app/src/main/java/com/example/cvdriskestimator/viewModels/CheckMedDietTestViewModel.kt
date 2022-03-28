@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.Fragments.medDietTestFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.RealmDB.Patient
@@ -18,6 +19,7 @@ class CheckMedDietTestViewModel : ViewModel(){
     private lateinit var realm : Realm
     private lateinit var mainActivity: MainActivity
     private lateinit var medDietTestFragment: medDietTestFragment
+    private lateinit var resultFragment: ResultFragment
     private var realmDAO = RealmDAO()
     var patientData = MutableLiveData<Patient>()
 
@@ -69,7 +71,46 @@ class CheckMedDietTestViewModel : ViewModel(){
         patientData.postValue(patientData.value)
     }
 
-    private fun storePatientData(medDietScoreValues : ArrayList<Int>)
+    fun checkMDSTestPatient(allPatientSelections : ArrayList<Int?>)
+    {
+        if ((checkQuestionForInputError(allPatientSelections[0] , 1)) && (checkQuestionForInputError(allPatientSelections[1]  , 2))
+            && (checkQuestionForInputError(allPatientSelections[2]  , 3)) && (checkQuestionForInputError(allPatientSelections[3]  , 4))
+            && (checkQuestionForInputError(allPatientSelections[4]  , 5)) && (checkQuestionForInputError(allPatientSelections[5]  , 6))
+            && (checkQuestionForInputError(allPatientSelections[6]  , 7)) && (checkQuestionForInputError(allPatientSelections[7]  , 8))
+            && (checkQuestionForInputError(allPatientSelections[8]  , 9)) && (checkQuestionForInputError(allPatientSelections[9]  , 10) )
+            && (checkQuestionForInputError(allPatientSelections[10]  , 11))
+           )
+        {
+            storePatientData(allPatientSelections)
+            var score : Int = 0
+            for (patientValue in allPatientSelections)
+            {
+                score += patientValue!!
+            }
+            openResultFragment(score)
+        }
+    }
+
+    fun openResultFragment(score : Int)
+    {
+        resultFragment = ResultFragment.newInstance(score.toDouble() , 5)
+        mainActivity.fragmentTransaction(resultFragment)
+    }
+
+    private fun checkQuestionForInputError(value : Int?, questionNO: Int) : Boolean
+    {
+        var correctData : Boolean = false
+        if (value == null)
+        {
+            medDietTestFragment.showSelectionError("Please select an answer for question No : " + questionNO)
+            correctData = false
+        }
+        else
+            correctData = true
+        return correctData
+    }
+
+    private fun storePatientData(medDietScoreValues : ArrayList<Int?>)
     {
         realm.executeTransaction {
 
@@ -85,6 +126,7 @@ class CheckMedDietTestViewModel : ViewModel(){
             patient!!.patientMDSQ8 = medDietScoreValues.get(7)
             patient!!.patientMDSQ9 = medDietScoreValues.get(8)
             patient!!.patientMDSQ10 = medDietScoreValues.get(9)
+            patient!!.patientMDSQ11 = medDietScoreValues.get(10)
 
             realm.copyToRealmOrUpdate(patient)
 

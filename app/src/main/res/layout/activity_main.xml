@@ -178,7 +178,7 @@
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/VGL1"
@@ -240,7 +240,7 @@
         app:layout_constraintGuide_percent="0.68" />
 
     <ImageView
-        android:id="@+id/kidneysImgV"
+        android:id="@+id/dietImgV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
@@ -251,20 +251,20 @@
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toTopOf="@+id/barHG5"
-        app:srcCompat="@drawable/ic_kindey" />
+        app:srcCompat="@drawable/ic_diet" />
 
 
     <TextView
-        android:id="@+id/kidneysTxtView"
+        android:id="@+id/medDietScoreTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Kidneys Demo"
+        android:text="MedDietScore Test"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
-        app:layout_constraintTop_toBottomOf="@+id/kidneysImgV" />
+        app:layout_constraintTop_toBottomOf="@+id/dietImgV" />
 
 
     <ImageView

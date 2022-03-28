@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.29" />
+            app:layout_constraintGuide_percent="0.38" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horGL1"
@@ -68,8 +68,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/blue_baitest_form_title_style"
-                android:drawableLeft="@drawable/ic_anxiety_24_black"
+                android:background="@drawable/yellow_mdstest_form_title_style"
+                android:drawableLeft="@drawable/ic_diet_24dp"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:minHeight="48dp"
@@ -113,6 +113,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center"
                     android:text="@string/MedDietScore_subtitle"
                     android:textColor="@color/white"
@@ -128,23 +130,43 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/relativelayout_style">
 
-                    <TextView
-                        android:id="@+id/Question1TxtV"
+                    <RelativeLayout
+                        android:id="@+id/QandIcon1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:gravity="center"
-                        android:minHeight="64dp"
-                        android:text="@string/mds_question1"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
+                        android:background="@drawable/yellow_textview_style">
+
+                        <TextView
+                            android:id="@+id/Question1TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/mds_question1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+
+                        <ImageView
+                            android:id="@+id/cerrealImgV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/Question1TxtV"
+                            android:layout_centerHorizontal="true"
+                            android:layout="@id/Question1TxtV"
+                            app:srcCompat="@drawable/ic_cereal_icon" />
+
+
+                    </RelativeLayout>
 
 
                     <RadioGroup
                         android:id='@+id/medDietScoreRGQ1'
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/Question1TxtV">
+                        android:layout_below="@id/QandIcon1">
+
 
                         <RadioButton
                             android:layout_width="wrap_content"
@@ -180,6 +202,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingRight="@dimen/mdstestQ1A4Padding"
                             android:text="@string/mds_q1a4"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -189,6 +212,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingRight="@dimen/mdstestQ1A5Padding"
                             android:text="@string/mds_q1a5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -198,7 +222,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ1A6Padding"
+                            android:paddingRight="15dp"
                             android:text="@string/mds_q1a6"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -216,22 +240,40 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/relativelayout_style">
 
+                <RelativeLayout
+                    android:id="@+id/QandIcon2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/yellow_textview_style">
+
                     <TextView
                         android:id="@+id/Question2TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:background="@drawable/yellow_textview_style"
                         android:gravity="center"
+                        android:minHeight="64dp"
                         android:text="@string/mds_question2"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/potatoesImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Question2TxtV"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_potatoes_icon" />
+
+                </RelativeLayout>
 
 
                     <RadioGroup
                         android:id='@+id/medDietScoreRGQ2'
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/Question2TxtV">
+                        android:layout_below="@id/QandIcon2">
 
                         <RadioButton
                             android:layout_width="wrap_content"
@@ -257,7 +299,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ2A3Padding"
+                            android:paddingRight="24dp"
                             android:text="@string/mds_q2a3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -267,7 +309,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ2A4Padding"
+                            android:paddingRight="12dp"
                             android:text="@string/mds_q2a4"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -286,7 +328,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ1A6Padding"
+                            android:paddingRight="@dimen/mdstestQ2A6Padding"
                             android:text="@string/mds_q2a6"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -304,22 +346,40 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/relativelayout_style">
 
+                <RelativeLayout
+                    android:id="@+id/QandIcon3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/yellow_textview_style">
+
+
                     <TextView
                         android:id="@+id/Question3TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:background="@drawable/yellow_textview_style"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question3"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+                    <ImageView
+                        android:id="@+id/fruitsImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Question3TxtV"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_fruits_icon" />
+
+                </RelativeLayout>
+
 
                     <RadioGroup
                         android:id='@+id/medDietScoreRGQ3'
                         android:layout_width="match_parent"
-                        android:layout_below="@id/Question3TxtV"
+                        android:layout_below="@id/QandIcon3"
                         android:layout_height="wrap_content">
 
                         <RadioButton
@@ -346,7 +406,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ2A3Padding"
+                            android:paddingRight="@dimen/mdstestQ3A3Padding"
                             android:text="@string/mds_q3a3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -356,7 +416,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ2A4Padding"
+                            android:paddingRight="@dimen/mdstestQ3A4Padding"
                             android:text="@string/mds_q3a4"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -366,6 +426,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingRight="@dimen/mdstestQ3A5Padding"
                             android:text="@string/mds_q3a5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -375,8 +436,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingRight="@dimen/mdstestQ3A6Padding"
                             android:text="@string/mds_q3a6"
-                            android:paddingRight="@dimen/mdstestQ1A6Padding"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -393,22 +454,39 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/relativelayout_style">
 
+                <RelativeLayout
+                    android:id="@+id/QandIcon4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/yellow_textview_style">
+
                     <TextView
                         android:id="@+id/Question4TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:background="@drawable/yellow_textview_style"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question4"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+                    <ImageView
+                        android:id="@+id/veggiesImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Question4TxtV"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_vegetables_icon" />
+
+                </RelativeLayout>
+
 
                     <RadioGroup
                         android:id='@+id/medDietScoreRGQ4'
                         android:layout_width="match_parent"
-                        android:layout_below="@id/Question4TxtV"
+                        android:layout_below="@id/QandIcon4"
                         android:layout_height="wrap_content">
 
                         <RadioButton
@@ -416,6 +494,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingRight="@dimen/mdstestQ4A1Padding"
                             android:text="@string/mds_q4a1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -425,7 +504,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ1A2Padding"
+                            android:paddingRight="@dimen/mdstestQ4A2Padding"
                             android:text="@string/mds_q4a2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -481,29 +560,46 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/relativelayout_style">
 
+                <RelativeLayout
+                    android:id="@+id/QandIcon5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/yellow_textview_style">
+
                     <TextView
                         android:id="@+id/Question5TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:background="@drawable/yellow_textview_style"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question5"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+                    <ImageView
+                        android:id="@+id/legumensImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Question5TxtV"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_peas_icon" />
+
+                </RelativeLayout>
 
                     <RadioGroup
                         android:id='@+id/medDietScoreRGQ5'
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/Question5TxtV">
+                        android:layout_below="@id/QandIcon5">
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingRight="@dimen/mdstestQ5A1Padding"
                             android:text="@string/mds_q5a1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -571,22 +667,39 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/relativelayout_style">
 
+                <RelativeLayout
+                    android:id="@+id/QandIcon6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/yellow_textview_style">
+
                     <TextView
                         android:id="@+id/Question6TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:background="@drawable/yellow_textview_style"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question6"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+                    <ImageView
+                        android:id="@+id/fishImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Question6TxtV"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_fish_icon" />
+
+                </RelativeLayout>
+
 
                     <RadioGroup
                         android:id='@+id/medDietScoreRGQ6'
                         android:layout_width="match_parent"
-                        android:layout_below="@id/Question6TxtV"
+                        android:layout_below="@id/QandIcon6"
                         android:layout_height="wrap_content">
 
                         <RadioButton
@@ -604,8 +717,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="@string/mds_q6a2"
                             android:paddingRight="@dimen/mdstestQ1A2Padding"
+                            android:text="@string/mds_q6a2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -614,7 +727,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ5A3Padding"
+                            android:paddingRight="@dimen/mdstestQ6A3Padding"
                             android:text="@string/mds_q6a3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -624,7 +737,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ5A4Padding"
+                            android:paddingRight="@dimen/mdstestQ6A4Padding"
                             android:text="@string/mds_q6a4"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -644,8 +757,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingRight="@dimen/mdstestQ6A6Padding"
                             android:text="@string/mds_q6a6"
-                            android:paddingRight="@dimen/mdstestQ1A6Padding"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -662,11 +775,26 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/relativelayout_style">
 
+                    <View
+                        android:id="@+id/q1helper"
+                        android:layout_width="1dp"
+                        android:layout_height="400dp"
+                        android:layout_marginLeft="160dp"
+                        android:background="@color/black"
+                        android:visibility="invisible" />
+
+                    <RelativeLayout
+                    android:id="@+id/QandIcon7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/yellow_textview_style">
+
                     <TextView
                         android:id="@+id/Question7TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:background="@drawable/yellow_textview_style"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question7"
@@ -674,10 +802,21 @@
                         android:textSize="20sp" />
 
 
+                        <ImageView
+                        android:id="@+id/meatImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Question7TxtV"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_meat_icon" />
+
+                </RelativeLayout>
+
+
                     <RadioGroup
                         android:id='@+id/medDietScoreRGQ7'
                         android:layout_width="match_parent"
-                        android:layout_below="@id/Question7TxtV"
+                        android:layout_below="@id/QandIcon7"
                         android:layout_height="wrap_content">
 
                         <RadioButton
@@ -695,8 +834,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingRight="@dimen/mdstestQ7A2Padding"
                             android:text="@string/mds_q7a2"
-                            android:paddingRight="@dimen/mdstestQ1A2Padding"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -725,7 +864,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ7A5Padding"
+                            android:paddingRight="6dp"
                             android:text="@string/mds_q7a5"
                             android:textColor="@color/black"
                             android:textSize="22sp" />
@@ -753,22 +892,38 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/relativelayout_style">
 
+                <RelativeLayout
+                    android:id="@+id/QandIcon8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/yellow_textview_style">
+
                     <TextView
                         android:id="@+id/Question8TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:background="@drawable/yellow_textview_style"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question8"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+                    <ImageView
+                        android:id="@+id/poultryImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Question8TxtV"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_chicken_icon" />
+
+                </RelativeLayout>
 
                     <RadioGroup
                         android:id='@+id/medDietScoreRGQ8'
                         android:layout_width="match_parent"
-                        android:layout_below="@id/Question8TxtV"
+                        android:layout_below="@id/QandIcon8"
                         android:layout_height="wrap_content">
 
                         <RadioButton
@@ -776,7 +931,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ8A1APadding"
+                            android:paddingRight="@dimen/mdstestQ8A1Padding"
                             android:text="@string/mds_q8a1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -786,8 +941,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingRight="@dimen/mdstestQ8A2Padding"
                             android:text="@string/mds_q8a2"
-                            android:paddingRight="@dimen/mdstestQ1A2Padding"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -816,7 +971,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="23dp"
+                            android:paddingRight="@dimen/mdstestQ8A5Padding"
                             android:text="@string/mds_q8a5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -844,22 +999,38 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/relativelayout_style">
 
+                <RelativeLayout
+                    android:id="@+id/QandIcon9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/yellow_textview_style">
+
                     <TextView
                         android:id="@+id/Question9TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:background="@drawable/yellow_textview_style"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question9"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+                    <ImageView
+                        android:id="@+id/milkImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Question9TxtV"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_milk_icon" />
+
+                </RelativeLayout>
 
                     <RadioGroup
                         android:id='@+id/medDietScoreRGQ9'
                         android:layout_width="match_parent"
-                        android:layout_below="@id/Question9TxtV"
+                        android:layout_below="@id/QandIcon9"
                         android:layout_height="wrap_content">
 
                         <RadioButton
@@ -867,7 +1038,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="62dp"
+                            android:paddingRight="@dimen/mdstestQ9A1APadding"
                             android:text="@string/mds_q9a1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -878,7 +1049,6 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/mds_q9a2"
-                            android:paddingRight="@dimen/mdstestQ1A2Padding"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -887,7 +1057,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ9A3Padding"
                             android:text="@string/mds_q9a3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -897,7 +1066,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ9A4Padding"
                             android:text="@string/mds_q9a4"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -907,7 +1075,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="@dimen/mdstestQ9A5Padding"
                             android:text="@string/mds_q9a5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -935,22 +1102,38 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/relativelayout_style">
 
+                <RelativeLayout
+                    android:id="@+id/QandIcon10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/yellow_textview_style">
+
                     <TextView
                         android:id="@+id/Question10TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:background="@drawable/yellow_textview_style"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question10"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+                    <ImageView
+                        android:id="@+id/oilImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Question10TxtV"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_olive_icon" />
+
+                </RelativeLayout>
 
                     <RadioGroup
                         android:id='@+id/medDietScoreRGQ10'
                         android:layout_width="match_parent"
-                        android:layout_below="@id/Question10TxtV"
+                        android:layout_below="@id/QandIcon10"
                         android:layout_height="wrap_content">
 
                         <RadioButton
@@ -958,6 +1141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingRight="@dimen/mdstestQ10A1Padding"
                             android:text="@string/mds_q10a1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -967,7 +1151,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="120dp"
                             android:text="@string/mds_q10a2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -977,7 +1160,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="120dp"
+                            android:paddingRight="@dimen/mdstestQ10A3Padding"
                             android:text="@string/mds_q10a3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -987,7 +1170,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="120dp"
+                            android:paddingRight="@dimen/mdstestQ10A4Padding"
                             android:text="@string/mds_q10a4"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -997,7 +1180,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="120dp"
+                            android:paddingRight="@dimen/mdstestQ10A5Padding"
                             android:text="@string/mds_q10a5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1007,13 +1190,155 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:paddingRight="104dp"
+                            android:paddingRight="@dimen/mdstestQ10A6Padding"
                             android:text="@string/mds_q10a6"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                     </RadioGroup>
 
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/question11RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/relativelayout_style">
+
+                <RelativeLayout
+                    android:id="@+id/QandIcon11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/yellow_textview_style">
+
+                    <TextView
+                        android:id="@+id/Question11TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/yellow_textview_style"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/mds_question11"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/alcoholImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Question11TxtV"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_alcohol" />
+
+                </RelativeLayout>
+
+                    <RadioGroup
+                        android:id='@+id/medDietScoreRGQ11'
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/QandIcon11"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="@string/mds_q11a1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:paddingRight="120dp"
+                            android:text="@string/mds_q11a2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:paddingRight="120dp"
+                            android:text="@string/mds_q11a3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:paddingRight="120dp"
+                            android:text="@string/mds_q11a4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:paddingRight="120dp"
+                            android:text="@string/mds_q11a5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:paddingRight="104dp"
+                            android:text="@string/mds_q11a6"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/testButtonsRelLayoyt">>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submitBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/bai_button_rounded_corners"
+                        android:padding="20dp"
+                        android:text="CALCULATE"
+                        android:textSize="20sp"
+                        android:visibility="visible"
+                        tools:ignore="TextContrastCheck" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/clearBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/submitBtn"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerVertical="false"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/submitBtn"
+                        android:background="@drawable/bai_button_rounded_corners"
+                        android:text="CLEAR DATA" />
                 </RelativeLayout>
 
             </LinearLayout>
