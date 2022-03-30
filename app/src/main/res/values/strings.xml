@@ -103,7 +103,7 @@
     <string name="bai_test_score">Your total score : </string>
     <string name="bai_test_anxiety">The severity of anxiety : </string>
     <string name="bai_test_info">Indicate how much you have been bothered by the following symptoms during the past month, including today.</string>
-    <string name="MedDietScore_subtitle">Frequency of consumption (portions / month) \n (* Click on each Food Icon to learn more about the Portion quantity)</string>
+    <string name="MedDietScore_subtitle">Frequency of consumption (portions / month)</string>
     <string name="mds_question1">1. Unprocessed cereals (whole milling bread, pasta, rice, etc)</string>
     <string name="mds_question2">2. Potatoes</string>
     <string name="mds_question3">3. Fruits</string>
