@@ -183,4 +183,31 @@ open class Patient() : RealmModel {
 
     var patientMDSQ11 : Int? = null
 
+    //variables related with the Brief Pain Inventory Index
+
+    var patientBPIQ1 : Int? = null
+
+    var patientBPIQ2 : Int? = null
+
+    var patientBPIQ3 : Int? = null
+
+    var patientBPIQ4 : Int? = null
+
+    var patientBPIQ5 : Int? = null
+
+    var patientBPIQ6 : Int? = null
+
+    var patientBPIQ7 : Int? = null
+
+    var patientBPIQ8 : Int? = null
+
+    var patientBPIQ9 : Int? = null
+
+    var patientBPIQ10 : Int? = null
+
+    var patientBPIQ11 : Int? = null
+
+    var patientBPIQ12 : Int? = null
+
+
 }

@@ -187,4 +187,27 @@
     <string name="mds_test_result2">A	good	start,	but	you	can	do	better,	if	you	value	your	health.</string>
     <string name="mds_test_result3">You’re	doing	well.	What	would	help	you	to	add	another	point or two?</string>
     <string name="mds_test_result4">Long life! Your	eating	habits	follow	the	Med	Diet very closely.</string>
+    <string name="bpi_q1">1. On the diagram, shade in the areas where you feel pain. Click on the area that hurts most.</string>
+    <string name="bpi_q2">2. Please rate your pain by circling the one number that best describes your pain at its worst in the last week. </string>
+    <string name="bpi_q3">3. Please rate your pain by circling the one number that best describes your pain at its least in the last week. </string>
+    <string name="bpi_q4">4. Please rate your pain by circling the one number that best describes your pain on average. </string>
+    <string name="bpi_q5">5. Please rate your pain by circling the one number that tells how much pain you have right now"</string>
+    <string name="bpi_q6">6. In the last week, how much relief have pain treatments or medications provided? Please circle the one percentage that
+                          best shows how much relief you have received.</string>
+    <string name="bpi_q7">7. Select the one number that describes how, during the past week, pain has interfered with your:</string>
+    <string name="bpi_q7a">a. General activity</string>
+    <string name="bpi_q7b">b. Mood </string>
+    <string name="bpi_q7c">c. Walking ability </string>
+    <string name="bpi_q7d">d. Normal work (includes both outside the home and housework) </string>
+    <string name="bpi_q7e">e. Relations with other people </string>
+    <string name="bpi_q7f">f. Sleep </string>
+    <string name="bpi_q7g">g. Enjoyment of life</string>
+    <string name="bpi_psscore_low">No pain</string>
+    <string name="bpi_psscore_high">Pain as bad as you can imagine</string>
+    <string name="bpi_meds_low">No relief</string>
+    <string name="bpi_meds_high">Complete relief</string>
+    <string name="bpi_least_interfere">Does not interfere</string>
+    <string name="bpi_most_interfere">Completely interferes </string>
+    <string name="bpi_test_info">Please anwser the following questions : </string>
+
 </resources>

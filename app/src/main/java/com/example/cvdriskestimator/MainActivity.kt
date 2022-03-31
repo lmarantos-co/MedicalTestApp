@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var mdiCheckFragment: MDICheckFragment
     private lateinit var baiCheckFragment: BAICheckFragment
     private lateinit var mdsCheckFragment: medDietTestFragment
+    private lateinit var bpiCheckFragment: BPICheckFragment
     private lateinit var popupMenu: PopupMenu
     private lateinit var MTETitleForm : RelativeLayout
     private  var mteTitleFormHeight : Int = 0
@@ -167,6 +168,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         mdiCheckFragment = MDICheckFragment.newInstance()
         baiCheckFragment = BAICheckFragment.newInstance()
         mdsCheckFragment = medDietTestFragment.newInstance()
+        bpiCheckFragment = BPICheckFragment.newInstance()
 
         setFragmentContainerConstraint(2)
 
@@ -269,6 +271,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon.setOnClickListener {
             hideLayoutElements()
             fragmentTransaction(mdsCheckFragment)
+        }
+
+        lungsIcon.setOnClickListener {
+            hideLayoutElements()
+            fragmentTransaction(bpiCheckFragment)
         }
 
         showMedicalTests()
