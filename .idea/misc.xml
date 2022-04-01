@@ -248,6 +248,7 @@
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_peas_icon.xml" value="0.2310185185185185" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_potatoes_icon.xml" value="0.2310185185185185" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_red_circle.xml" value="0.2" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_scale.xml" value="0.21064814814814814" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_settings.xml" value="0.17685185185185184" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_sign_in__24.xml" value="0.17685185185185184" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_vegetables_icon.xml" value="0.2310185185185185" />
@@ -285,6 +286,7 @@
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result.xml" value="0.2" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_alt.xml" value="0.2" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_bai_test.xml" value="0.22" />
+        <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_bpi_test.xml" value="0.22" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_mdi_test.xml" value="0.33" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_mds_layout.xml" value="0.25" />
         <entry key="..\:/Users/user4/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_test.xml" value="0.19953703703703704" />

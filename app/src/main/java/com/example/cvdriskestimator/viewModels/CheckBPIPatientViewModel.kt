@@ -75,17 +75,22 @@ class CheckBPIPatientViewModel : ViewModel() {
             && (checkQuestionForInputError(allPatientValues[2]  , 4)) && (checkQuestionForInputError(allPatientValues[3]  , 5))
             && (checkQuestionForInputError(allPatientValues[4]  , 6)) && (checkQuestionForInputError(allPatientValues[5]  , 7))
             && (checkQuestionForInputError(allPatientValues[6]  , 8)) && (checkQuestionForInputError(allPatientValues[7]  , 9))
-            && (checkQuestionForInputError(allPatientValues[8]  , 10)) && (checkQuestionForInputError(allPatientValues[11]  , 12)))
-            {
-                //all data input is correct
-                GlobalScope.launch(Dispatchers.Main) {
-                    storePatientDataOnRealmDB(allPatientValues)
-                    //calculate the pain scores
-                    bpiTestEstimator = BPITestEstimator(allPatientValues)
+            && (checkQuestionForInputError(allPatientValues[8]  , 10)) && (checkQuestionForInputError(allPatientValues[11]  , 12))) {
+            //all data input is correct
+            GlobalScope.launch(Dispatchers.Main) {
+                storePatientDataOnRealmDB(allPatientValues)
+                //calculate the pain scores
+                bpiTestEstimator = BPITestEstimator(allPatientValues)
+                var scoreResults = bpiTestEstimator.calculatePainScores()
 
-                    resultFragment = ResultFragment.newInstance()
-                }
+                resultFragment = ResultFragment.newInstance(
+                    scoreResults.get(0).toDouble(),
+                    scoreResults.get(1).toDouble(),
+                    6
+                )
+                mainActivity.fragmentTransaction(resultFragment)
             }
+        }
 
     }
 

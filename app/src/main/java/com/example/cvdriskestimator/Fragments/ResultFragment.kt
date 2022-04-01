@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Html
 import android.util.DisplayMetrics
 import android.view.*
@@ -21,7 +23,8 @@ import com.example.cvdriskestimator.CustomClasses.customDerpesionProgressView
 import kotlinx.coroutines.*
 import android.view.ViewGroup
 import android.view.animation.ScaleAnimation
-import kotlin.coroutines.CoroutineContext
+import java.lang.Runnable
+import java.util.*
 
 
 /**
@@ -29,8 +32,9 @@ import kotlin.coroutines.CoroutineContext
  * Use the [ResultFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-private const val ARG_PARAM1 = "risk_result"
-private const val ARG_PARAM2 = "test_type"
+private const val ARG_PARAM1 = "risk_result1"
+private const val ARG_PARAM2 = "risk_result2"
+private const val ARG_PARAM3 = "test_type"
 
 
 class ResultFragment : Fragment() {
@@ -110,6 +114,14 @@ class ResultFragment : Fragment() {
     private lateinit var view10 : View
     private lateinit var view11 : View
 
+    //BPI Score Test Result variables
+    private lateinit var pssTestScore : TextView
+    private lateinit var pssTestResult : TextView
+    private lateinit var pisTestScore : TextView
+    private lateinit var pisTestResult : TextView
+    private lateinit var bpiresultBar : RelativeLayout
+
+
 
     //screen dimensions
     var screenWidth: Int = 0
@@ -132,7 +144,7 @@ class ResultFragment : Fragment() {
         var view = View(mainActivity.applicationContext)
 
         getScreenDimens()
-        val test_type: Int = arguments!!.getInt(ARG_PARAM2)
+        val test_type: Int = arguments!!.getInt(ARG_PARAM3)
         if (test_type == 1) {
             view = inflater.inflate(R.layout.fragment_result, container, false)
             formConLayout = view.findViewById(R.id.results_constraint_layout)
@@ -244,7 +256,7 @@ class ResultFragment : Fragment() {
         }
         if (test_type == 4) {
             view = inflater.inflate(R.layout.fragment_result_bai_test, container, false)
-            formConLayout = view.findViewById(R.id.results_con_layout_mds_test)
+            formConLayout = view.findViewById(R.id.results_con_layout_bpi_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -255,7 +267,7 @@ class ResultFragment : Fragment() {
             userIcon.alpha = 1f
             testHeadling = view.findViewById(R.id.baiTestTitleTxtV)
             riskResultTxtV = view.findViewById(R.id.testResultTxtV)
-            totalScore = view.findViewById(R.id.totalScore)
+            totalScore = view.findViewById(R.id.totalPSScore)
             val score = arguments!!.getDouble(ARG_PARAM1).toInt()
             totalScore.setText(score.toString())
             baiTestSummary = view.findViewById(R.id.BAItestSummary)
@@ -265,10 +277,9 @@ class ResultFragment : Fragment() {
             setBaiTestSummary(score)
         }
 
-        if (test_type == 5)
-        {
+        if (test_type == 5) {
             view = inflater.inflate(R.layout.fragment_result_mds_layout, container, false)
-            formConLayout = view.findViewById(R.id.results_con_layout_mds_test)
+            formConLayout = view.findViewById(R.id.results_con_layout_bpi_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -278,10 +289,13 @@ class ResultFragment : Fragment() {
             userIcon = MTEtitle.findViewById(R.id.userIcon)
             userIcon.alpha = 1f
             testHeadling = view.findViewById(R.id.mdsTestTitleTxtV)
-            mdsTestScore = view.findViewById(R.id.totalScore)
+            mdsTestScore = view.findViewById(R.id.totalPSScore)
             mdsTestResult = view.findViewById(R.id.totalScoreDescTxtV)
             val score = arguments!!.getDouble(ARG_PARAM1)
-            mdsTestScore.text = (String.format(resources.getString(R.string.mds_test_score) ,String.format("%.2f" , score.toFloat())))
+            mdsTestScore.text = (String.format(
+                resources.getString(R.string.mds_test_score),
+                String.format("%.2f", score.toFloat())
+            ))
             mdsTestResult.text = getMDSResult(score.toInt())
             view1 = view.findViewById(R.id.view1)
             view2 = view.findViewById(R.id.view2)
@@ -294,11 +308,46 @@ class ResultFragment : Fragment() {
             view9 = view.findViewById(R.id.view9)
             view10 = view.findViewById(R.id.view10)
             view11 = view.findViewById(R.id.view11)
-
-
         }
-        return view
-    }
+        if (test_type == 6) {
+            view = inflater.inflate(R.layout.fragment_result_bpi_test, container, false)
+            formConLayout = view.findViewById(R.id.results_con_layout_bpi_test)
+            MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+            termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+            termsRelLayout.visibility = View.INVISIBLE
+            closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+            companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
+            testHeadling = view.findViewById(R.id.bpiTestTitleTxtV)
+            pssTestScore = view.findViewById(R.id.totalPSScore)
+            pssTestResult = view.findViewById(R.id.totalPSSScoreDescTxtV)
+            pisTestScore = view.findViewById(R.id.totalPIScore)
+            pisTestResult = view.findViewById(R.id.totalPISScoreDescTxtV)
+            bpiresultBar = view.findViewById(R.id.resultBarView)
+
+
+// Create the Handler object (on the main thread by default)
+            var runningTest: Int = 0
+            val handler = Handler()
+            // Define the code block to be executed
+            // Define the code block to be executed
+            val runnableCode: Runnable = object : Runnable {
+                override fun run() {
+                    // Do something here on the main thread
+                    createBPIResultBarViews(runningTest)
+                    runningTest = (runningTest++) % 2
+                    // Repeat this the same runnable code block again another 2 seconds
+                    // 'this' is referencing the Runnable object
+                    handler.postDelayed(this, 2000)
+                }
+            }
+            // Start the initial runnable task by posting through the handler
+            handler.post(runnableCode)
+        }
+            return view
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -335,7 +384,7 @@ class ResultFragment : Fragment() {
             hideTermsOfUseLayout()
         }
 
-        val test_type: Int = arguments!!.getInt(ARG_PARAM2)
+        val test_type: Int = arguments!!.getInt(ARG_PARAM3)
         if (test_type == 1) {
             setFormColors(1)
             setRatingBarColors(1)
@@ -407,6 +456,11 @@ class ResultFragment : Fragment() {
                 setMDSTestBarColors(arguments!!.getDouble(ARG_PARAM1).toInt())
             }
         }
+        if (test_type == 6)
+        {
+            pssTestScore.text = arguments!!.getDouble(ARG_PARAM1).toInt().toString()
+            pisTestScore.text = arguments!!.getDouble(ARG_PARAM2).toInt().toString()
+        }
     }
 
     private fun setAltLLayout() {
@@ -434,6 +488,10 @@ class ResultFragment : Fragment() {
                 riskResultTxtV.setBackgroundResource(R.drawable.baitest_rel_layout)
             }
             5 ->
+            {
+                testHeadling.setBackgroundResource(R.drawable.yellow_mdstest_form_title_style)
+            }
+            6 ->
             {
                 testHeadling.setBackgroundResource(R.drawable.yellow_mdstest_form_title_style)
             }
@@ -634,7 +692,7 @@ class ResultFragment : Fragment() {
     }
 
     //function to create Views above the result bar
-    suspend fun createDepressionResultBarViews() {
+    fun createDepressionResultBarViews() {
 
         depressionProgressBar.layoutParams.width = 0
         depressionProgressBar.layoutParams.height = (RelativeLayout.LayoutParams.WRAP_CONTENT)
@@ -642,7 +700,6 @@ class ResultFragment : Fragment() {
 //        val viewHeight = (screenHeight / 51).toFloat() /2
         val viewHeight = screenHeight / 100
         val yDepressionResultBar = depressionProgressBar.y
-        var currentHeight = yDepressionResultBar
         val xDepressionResultBar = depressionProgressBar.x
         val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1).toInt()
 
@@ -676,6 +733,82 @@ class ResultFragment : Fragment() {
 
     }
 
+    //function to create Views above the bpi result bar
+    fun createBPIResultBarViews(runningResult : Int) {
+
+        bpiresultBar.layoutParams.width = 0
+        bpiresultBar.layoutParams.height = (RelativeLayout.LayoutParams.WRAP_CONTENT)
+        val viewHeight = screenHeight / 10
+        val ybpiresultBar = bpiresultBar.y
+        val xbpiresultBar = bpiresultBar.x
+        val userPSSResult = (arguments!!.getDouble(ARG_PARAM1) * 1).toInt()
+        val userPISResult = (arguments!!.getDouble(ARG_PARAM2) * 1).toInt()
+
+        val paint = Paint()
+
+
+        when (runningResult)
+        {
+            0 ->
+            {
+                var bpiPSSResBarView = customDerpesionProgressView(
+                    mainActivity.applicationContext,
+                    xbpiresultBar ,
+                    ybpiresultBar,
+                    xbpiresultBar + screenWidth,
+                    ybpiresultBar + (userPSSResult) * viewHeight.toFloat(),
+                    paint    )
+
+                bpiPSSResBarView.layoutParams
+                setBPIProgresViewColor(bpiPSSResBarView , userPSSResult)
+                //add the created view to the relativelayout
+                bpiPSSResBarView.invalidate()
+                bpiresultBar.addView(
+                    bpiPSSResBarView,
+                    ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+                )
+                bpiresultBar.invalidate()
+
+                val scale = ScaleAnimation(1f , 1f , 0f , 1f)
+                scale.fillAfter = true
+                scale.duration = 1000
+                bpiresultBar.startAnimation(scale)
+            }
+
+            1 ->
+            {
+                var bpiPISResBarView = customDerpesionProgressView(
+                    mainActivity.applicationContext,
+                    xbpiresultBar ,
+                    ybpiresultBar,
+                    xbpiresultBar + screenWidth,
+                    ybpiresultBar + (userPISResult) * viewHeight.toFloat(),
+                    paint    )
+
+                bpiPISResBarView.layoutParams
+                setBPIProgresViewColor(bpiPISResBarView , userPISResult)
+                //add the created view to the relativelayout
+                bpiPISResBarView.invalidate()
+                bpiresultBar.addView(
+                    bpiPISResBarView,
+                    ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+                )
+                bpiresultBar.invalidate()
+
+                val scale = ScaleAnimation(1f , 1f , 0f , 1f)
+                scale.fillAfter = true
+                scale.duration = 1000
+                bpiresultBar.startAnimation(scale)
+            }
+        }
+    }
+
     fun setProgresViewColor(view: View, index: Int) {
         if ((index >= 0) && (index < 20)) {
             view.background = resources.getDrawable(R.drawable.blue_progressbar_style)
@@ -690,6 +823,19 @@ class ResultFragment : Fragment() {
 
         if (index >= 30) {
             view.background = resources.getDrawable(R.drawable.red_progressbar_style)
+        }
+    }
+
+    fun setBPIProgresViewColor(view: View, index: Int) {
+        if ((index >= 0) && (index <= 4)) {
+            view.background = resources.getDrawable(R.drawable.blue_progressbar_style)
+
+        }
+        if ((index > 4) && (index <= 6)) {
+            view.background = resources.getDrawable(R.drawable.green_progressbar_style)
+        }
+        if ((index >= 7) && (index <= 10)) {
+            view.background = resources.getDrawable(R.drawable.orange_progressbar_style)
         }
     }
 
@@ -784,11 +930,12 @@ class ResultFragment : Fragment() {
 
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: Double, param2: Int) =
+        fun newInstance(param1: Double, param2: Double , param3: Int) =
             ResultFragment().apply {
                 arguments = Bundle().apply {
                     putDouble(ARG_PARAM1, param1)
-                    putInt(ARG_PARAM2 , param2)
+                    putDouble(ARG_PARAM2 , param2)
+                    putInt(ARG_PARAM3 , param3)
                 }
             }
     }

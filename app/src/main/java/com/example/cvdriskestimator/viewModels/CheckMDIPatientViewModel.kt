@@ -94,7 +94,7 @@ class CheckMDIPatientViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Int)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 3)
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 , 3)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

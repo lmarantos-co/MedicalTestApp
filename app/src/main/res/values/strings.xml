@@ -209,5 +209,9 @@
     <string name="bpi_least_interfere">Does not interfere</string>
     <string name="bpi_most_interfere">Completely interferes </string>
     <string name="bpi_test_info">Please anwser the following questions : </string>
+    <string name="bpi_title_result">BPI Test</string>
+    <string name="bpi_test_results">The results of the BPI Score are : </string>
+    <string name="bpi_pss_test_score">Your pain severity score : </string>
+    <string name="bpi_pis_test_score">Your pain interference score : </string>
 
 </resources>
