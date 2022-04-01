@@ -238,7 +238,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.51" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/rightViewBarHGL"
@@ -263,43 +263,100 @@
         app:layout_constraintStart_toStartOf="@+id/resultViewLeftVGL"
         app:layout_constraintTop_toBottomOf="@+id/bottomBarViewVGL" />
 
+    <RelativeLayout
+        android:id="@+id/lowPainRelLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/blue_progressbar_style"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/topResultViewHGL"
+        app:layout_constraintLeft_toRightOf="@+id/moderatePainRightVGL"
+        app:layout_constraintRight_toLeftOf="@+id/rightViewBarHGL"
+        app:layout_constraintTop_toBottomOf="@+id/bottomBarViewVGL">
 
-    <TextView
-        android:id="@+id/mildPaintxtV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Mild Pain"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        <TextView
+            android:id="@+id/lowPaintxtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:text="Low Pain"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/mildPainRelLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/green_progressbar_style"
+        android:elevation="5dp"
         app:layout_constraintBottom_toTopOf="@+id/modPainTopHGL"
-        app:layout_constraintEnd_toStartOf="@+id/rightViewBarHGL"
-        app:layout_constraintStart_toStartOf="@+id/rightBarHGL"
-        app:layout_constraintTop_toTopOf="@+id/topResultViewHGL" />
+        app:layout_constraintLeft_toRightOf="@+id/moderatePainRightVGL"
+        app:layout_constraintRight_toLeftOf="@+id/rightViewBarHGL"
+        app:layout_constraintTop_toBottomOf="@+id/topResultViewHGL">
 
-    <TextView
-        android:id="@+id/modPainTxtV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Moderate Pain"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        <TextView
+            android:id="@+id/mildPaintxtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:text="Mild Pain"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/moderatePainRelLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/orange_progressbar_style"
+        android:elevation="5dp"
         app:layout_constraintBottom_toTopOf="@+id/modPainBottomHGL"
-        app:layout_constraintStart_toStartOf="@+id/rightBarHGL"
-        app:layout_constraintTop_toTopOf="@+id/modPainTopHGL" />
+        app:layout_constraintLeft_toRightOf="@+id/moderatePainRightVGL"
+        app:layout_constraintRight_toLeftOf="@+id/rightViewBarHGL"
+        app:layout_constraintTop_toBottomOf="@+id/modPainTopHGL">
 
-    <TextView
-        android:id="@+id/sevPaintxtV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Severe Pain"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        <TextView
+            android:id="@+id/modPainTxtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:text="Moderate Pain"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/severePainRelLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/red_progressbar_style"
+        android:elevation="5dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomResultBarHGL"
-        app:layout_constraintEnd_toStartOf="@+id/titleVGL2"
-        app:layout_constraintStart_toStartOf="@+id/rightBarHGL"
-        app:layout_constraintTop_toTopOf="@+id/modPainBottomHGL" />
+        app:layout_constraintLeft_toRightOf="@+id/moderatePainRightVGL"
+        app:layout_constraintRight_toLeftOf="@+id/rightViewBarHGL"
+        app:layout_constraintTop_toBottomOf="@+id/modPainBottomHGL">
+
+        <TextView
+            android:id="@+id/sevPaintxtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:text="Severe Pain"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

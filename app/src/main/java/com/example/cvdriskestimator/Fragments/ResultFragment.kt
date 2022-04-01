@@ -330,6 +330,7 @@ class ResultFragment : Fragment() {
 
 // Create the Handler object (on the main thread by default)
             var runningTest: Int = 0
+            var counter : Int = 0
             val handler = Handler()
             // Define the code block to be executed
             // Define the code block to be executed
@@ -337,7 +338,8 @@ class ResultFragment : Fragment() {
                 override fun run() {
                     // Do something here on the main thread
                     createBPIResultBarViews(runningTest)
-                    runningTest = (runningTest++) % 2
+                    runningTest = Math.floorMod(counter , 2)
+                    counter ++
                     // Repeat this the same runnable code block again another 2 seconds
                     // 'this' is referencing the Runnable object
                     handler.postDelayed(this, 2000)
@@ -827,15 +829,19 @@ class ResultFragment : Fragment() {
     }
 
     fun setBPIProgresViewColor(view: View, index: Int) {
-        if ((index >= 0) && (index <= 4)) {
+        if ((index >= 0) && (index <= 1)) {
             view.background = resources.getDrawable(R.drawable.blue_progressbar_style)
 
         }
-        if ((index > 4) && (index <= 6)) {
+        if ((index >= 1) && (index <= 4)) {
             view.background = resources.getDrawable(R.drawable.green_progressbar_style)
+
+        }
+        if ((index > 4) && (index <= 6)) {
+            view.background = resources.getDrawable(R.drawable.orange_progressbar_style)
         }
         if ((index >= 7) && (index <= 10)) {
-            view.background = resources.getDrawable(R.drawable.orange_progressbar_style)
+            view.background = resources.getDrawable(R.drawable.red_progressbar_style)
         }
     }
 
