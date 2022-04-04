@@ -209,5 +209,9 @@ open class Patient() : RealmModel {
 
     var patientBPIQ12 : Int? = null
 
+    var patientBPIcircleX : Float? = null
+
+    var patientBPIcircleY : Float? = null
+
 
 }

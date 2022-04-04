@@ -17,6 +17,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
@@ -45,11 +46,13 @@ class BPICheckFragment : Fragment() {
     private lateinit var popUpMenu : PopUpMenu
     private lateinit var loginFragment: LoginFragment
     private lateinit var registerFragment: RegisterFragment
-    private  var allPatientAnswers = arrayListOf<Int?>(1 ,1 ,1, 1, 1, 1, 1, 1, 1, 1, 1 , 1)
+    private  var allPatientAnswers = arrayListOf<Int?>(1 ,1 ,1, 1, 1, 1, 1, 1, 1, 1, 1 , 1, 1)
     private lateinit var showCircle : Animation
     private var screenWidth : Float = 0f
     private var screenHeight : Float = 0f
-
+    private var redCircleX : Float? = null
+    private var redCircleY : Float? = null
+    private var CircleCoordinates = arrayListOf<Float?>(0f, 0f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,28 +118,219 @@ class BPICheckFragment : Fragment() {
 
         }
 
-        binding.humanBodyImgV.setOnTouchListener (object : View.OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                if (event!!.action == MotionEvent.ACTION_DOWN) {
-                    var xCoordinate = event!!.x
-                    var yCoordinate = event!!.y
-                    getSceenDimensions()
-                    var xOffset = screenWidth / 9
-                    var yOffset = screenHeight / 14
+        //set listeners for the radioGroups
+        binding.g2RGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g2RGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g2RGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g2RGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g2RGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g2RGb.getChildAt(4) as RadioButton).isChecked = false
 
-                    var imageX = binding.humanBodyImgV.x
-                    var imageY = binding.humanBodyImgV.y
-                    var circle = binding.redCircleImgV
-                    circle.x = imageX + xCoordinate + circle.width / 2 - xOffset
-                    circle.y = imageY + yCoordinate + circle.width / 2 - yOffset
-                    circle.animate().alphaBy(1f).duration = 500
-                    circle.startAnimation(showCircle)
+        }
 
-                }
-                return true
+        binding.g2RGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g2RGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g2RGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g2RGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g2RGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g2RGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.g2RGa.getChildAt(5) as RadioButton).isChecked = false
+
+        }
+
+        binding.q3RGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.q3RGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.q3RGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.q3RGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.q3RGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.q3RGb.getChildAt(4) as RadioButton).isChecked = false
+        }
+
+        binding.q3RGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.q3RGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.q3RGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.q3RGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.q3RGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.q3RGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.q3RGa.getChildAt(5) as RadioButton).isChecked = false        }
+
+        binding.q4RGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.q4RGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.q4RGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.q4RGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.q4RGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.q4RGb.getChildAt(4) as RadioButton).isChecked = false          }
+
+        binding.q4RGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.q4RGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.q4RGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.q4RGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.q4RGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.q4RGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.q4RGa.getChildAt(5) as RadioButton).isChecked = false           }
+
+
+        binding.q5RGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.q5RGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.q5RGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.q5RGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.q5RGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.q5RGb.getChildAt(4) as RadioButton).isChecked = false         }
+
+        binding.q5RGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.q5RGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.q5RGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.q5RGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.q5RGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.q5RGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.q5RGa.getChildAt(5) as RadioButton).isChecked = false         }
+
+        binding.q6RGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.q6RGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.q6RGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.q6RGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.q6RGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.q6RGb.getChildAt(4) as RadioButton).isChecked = false         }
+
+        binding.q6RGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.q6RGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.q6RGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.q6RGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.q6RGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.q6RGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.q6RGa.getChildAt(5) as RadioButton).isChecked = false           }
+
+        binding.g7RGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7aRGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7aRGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7aRGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7aRGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7aRGb.getChildAt(4) as RadioButton).isChecked = false          }
+
+        binding.g7aRGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7RGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7RGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7RGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7RGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7RGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.g7RGa.getChildAt(5) as RadioButton).isChecked = false          }
+
+        binding.g7bRGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7bRGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7bRGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7bRGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7bRGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7bRGb.getChildAt(4) as RadioButton).isChecked = false         }
+
+        binding.g7bRGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7bRGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7bRGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7bRGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7bRGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7bRGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.g7bRGa.getChildAt(5) as RadioButton).isChecked = false          }
+
+        binding.g7cRGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7cRGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7cRGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7cRGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7cRGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7cRGb.getChildAt(4) as RadioButton).isChecked = false           }
+
+        binding.g7cRGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7cRGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7cRGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7cRGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7cRGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7cRGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.g7cRGa.getChildAt(5) as RadioButton).isChecked = false          }
+
+        binding.g7dRGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7dRGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7dRGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7dRGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7dRGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7dRGb.getChildAt(4) as RadioButton).isChecked = false           }
+
+        binding.g7dRGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7dRGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7dRGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7dRGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7dRGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7dRGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.g7dRGa.getChildAt(5) as RadioButton).isChecked = false           }
+
+        binding.g7eRGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7eRGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7eRGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7eRGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7eRGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7eRGb.getChildAt(4) as RadioButton).isChecked = false            }
+
+        binding.g7eRGb.setOnCheckedChangeListener { radioGroup, i ->
+                (binding.g7eRGa.getChildAt(0) as RadioButton).isChecked = false
+                (binding.g7eRGa.getChildAt(1) as RadioButton).isChecked = false
+                (binding.g7eRGa.getChildAt(2) as RadioButton).isChecked = false
+                (binding.g7eRGa.getChildAt(3) as RadioButton).isChecked = false
+                (binding.g7eRGa.getChildAt(4) as RadioButton).isChecked = false
+                (binding.g7eRGa.getChildAt(5) as RadioButton).isChecked = false           }
+
+
+        binding.g7fRGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7fRGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7fRGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7fRGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7fRGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7fRGb.getChildAt(4) as RadioButton).isChecked = false             }
+
+        binding.g7fRGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7fRGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7fRGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7fRGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7fRGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7fRGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.g7fRGa.getChildAt(5) as RadioButton).isChecked = false             }
+
+        binding.g7gRGa.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7gRGb.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7gRGb.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7gRGb.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7gRGb.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7gRGb.getChildAt(4) as RadioButton).isChecked = false                   }
+
+        binding.g7gRGb.setOnCheckedChangeListener { radioGroup, i ->
+            (binding.g7gRGa.getChildAt(0) as RadioButton).isChecked = false
+            (binding.g7gRGa.getChildAt(1) as RadioButton).isChecked = false
+            (binding.g7gRGa.getChildAt(2) as RadioButton).isChecked = false
+            (binding.g7gRGa.getChildAt(3) as RadioButton).isChecked = false
+            (binding.g7gRGa.getChildAt(4) as RadioButton).isChecked = false
+            (binding.g7gRGa.getChildAt(5) as RadioButton).isChecked = false           }
+
+        redCircleX = binding.redCircleImgV.x
+        redCircleY = binding.redCircleImgV.y
+        CircleCoordinates.add(redCircleY!!)
+        CircleCoordinates.add(redCircleY!!)
+
+        binding.humanBodyImgV.setOnTouchListener { v, event ->
+            if (event!!.action == MotionEvent.ACTION_DOWN) {
+                var xCoordinate = event!!.x
+                var yCoordinate = event!!.y
+                getSceenDimensions()
+                var xOffset = screenWidth / 9
+                var yOffset = screenHeight / 14
+
+                var imageX = binding.humanBodyImgV.x
+                var imageY = binding.humanBodyImgV.y
+                var circle = binding.redCircleImgV
+                circle.x = imageX + xCoordinate + circle.width / 2 - xOffset
+                circle.y = imageY + yCoordinate + circle.width / 2 - yOffset
+                circle.animate().alphaBy(1f).duration = 500
+                redCircleX = circle.x
+                redCircleY = circle.y
+                circle.startAnimation(showCircle)
             }
-
-        })
+            true
+        }
 
         binding.clearBtn.setOnClickListener {
             AlertDialog.Builder(this.activity)
@@ -302,12 +496,24 @@ class BPICheckFragment : Fragment() {
                 }
             }
 
-            bpiPatientViewModel.checkBPITestPAtient(allPatientAnswers)
+            if (getAnswerFromRadioGroupA(binding.g7fRGa) != null)
+                allPatientAnswers[12] = getAnswerFromRadioGroupA(binding.g7fRGa)
+            else
+            {
+                if (getAnswerFromRadioGroupB(binding.g7fRGb) != null)
+                    allPatientAnswers[12] = getAnswerFromRadioGroupB(binding.g7fRGb)
+                else
+                {
+                    allPatientAnswers[12] = null
+                }
+            }
+
+            bpiPatientViewModel.checkBPITestPAtient(allPatientAnswers, CircleCoordinates)
         }
 
-        bpiPatientViewModel.patientData.observe(viewLifecycleOwner, {
+        bpiPatientViewModel.patientData.observe(viewLifecycleOwner) {
             setPatientDataOnForm(it!!)
-        })
+        }
     }
 
     private fun drawCircleOnHumanBody(x : Float , y : Float , radius : Float, canvasBitmap: Bitmap)
@@ -419,6 +625,7 @@ class BPICheckFragment : Fragment() {
             {
                 setQuestionOfRadioGroupB(binding.g7gRGb , patient.patientBPIQ12!!)
             }
+            setRedCircePos(patient.patientBPIcircleX!! , patient.patientBPIcircleY!! )
         } , 1000)
     }
 
@@ -457,23 +664,23 @@ class BPICheckFragment : Fragment() {
         when (patientValue)
         {
 
-            0 -> {
+            6-> {
                 (rg.getChildAt(0) as RadioButton).isChecked = true
             }
 
-            1 -> {
+            7 -> {
                 (rg.getChildAt(1) as RadioButton).isChecked = true
             }
 
-            2 -> {
+            8 -> {
                 (rg.getChildAt(2) as RadioButton).isChecked = true
             }
 
-            3 -> {
+            9 -> {
                 (rg.getChildAt(3) as RadioButton).isChecked = true
             }
 
-            4 -> {
+            10 -> {
                 (rg.getChildAt(4) as RadioButton).isChecked = true
             }
         }
@@ -503,15 +710,15 @@ class BPICheckFragment : Fragment() {
         var answer = rg.checkedRadioButtonId
 
         if (rg[0].id == answer)
-            return 0
+            return 6
         if (rg[1].id == answer)
-            return 1
+            return 7
         if (rg[2].id == answer)
-            return 2
+            return 8
         if (rg[3].id == answer)
-            return 3
+            return 9
         if (rg[4].id == answer)
-            return 4
+            return 10
 
         else return null
     }
@@ -542,11 +749,75 @@ class BPICheckFragment : Fragment() {
         binding.g7fRGb.clearCheck()
         binding.g7gRGa.clearCheck()
         binding.g7gRGb.clearCheck()
+        binding.redCircleImgV.alpha = 0F
     }
 
-    fun setErrorOnForm(error : String)
+    private fun setRedCircePos(CircleX : Float , CircleY : Float)
+    {
+        var circle = binding.redCircleImgV
+        circle.x = CircleX
+        circle.y = CircleY
+        circle.animate().alphaBy(1f).duration = 500
+        circle.startAnimation(showCircle)
+    }
+
+    fun setErrorOnForm(error : String, questionNo : Int)
     {
         Toast.makeText(mainActivity.applicationContext , error , Toast.LENGTH_LONG).show()
+        when(questionNo)
+        {
+            1 -> {
+                (binding.bpiQ1RelLayout.findViewById(R.id.bpi_q1_txtV) as TextView).requestFocus()
+            }
+            2 ->
+            {
+                (binding.bpiQ2RelLayout.findViewById(R.id.bpi_q2_txtV) as TextView).requestFocus()
+            }
+            3 ->
+            {
+                (binding.bpiQ3RelLayout.findViewById(R.id.bpi_q3_txtV) as TextView).requestFocus()
+            }
+            4 ->
+            {
+                (binding.bpiQ4RelLayout.findViewById(R.id.bpi_q4_txtV) as TextView).requestFocus()
+            }
+            5 ->
+            {
+                (binding.bpiQ5RelLayout.findViewById(R.id.bpi_q5_txtV) as TextView).requestFocus()
+            }
+            6 ->
+            {
+                (binding.bpiQ6RelLayout.findViewById(R.id.bpi_q6_txtV) as TextView).requestFocus()
+            }
+            7 ->
+            {
+                (binding.bpiQ7RelLayout.findViewById(R.id.bpi_q7a_txtV) as TextView).requestFocus()
+            }
+            8 ->
+            {
+                (binding.bpiQ7RelLayout.findViewById(R.id.bpi_q7b_txtV) as TextView).requestFocus()
+            }
+            9 ->
+            {
+                (binding.bpiQ7RelLayout.findViewById(R.id.bpi_q7c_txtV) as TextView).requestFocus()
+            }
+            10 ->
+            {
+                (binding.bpiQ7RelLayout.findViewById(R.id.bpi_q7d_txtV) as TextView).requestFocus()
+            }
+            11 ->
+            {
+                (binding.bpiQ7RelLayout.findViewById(R.id.bpi_q7e_txtV) as TextView).requestFocus()
+            }
+            12 ->
+            {
+                (binding.bpiQ7RelLayout.findViewById(R.id.bpi_q7f_txtV) as TextView).requestFocus()
+            }
+            13 ->
+            {
+                (binding.bpiQ7RelLayout.findViewById(R.id.bpi_q7g_txtV) as TextView).requestFocus()
+            }
+        }
     }
 
     fun hidePopPutermsLayout()

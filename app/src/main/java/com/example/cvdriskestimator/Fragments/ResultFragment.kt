@@ -495,7 +495,7 @@ class ResultFragment : Fragment() {
             }
             6 ->
             {
-                testHeadling.setBackgroundResource(R.drawable.yellow_mdstest_form_title_style)
+                testHeadling.setBackgroundResource(R.drawable.red_bpi_form_style)
             }
         }
     }
