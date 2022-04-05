@@ -64,13 +64,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var depressionIcon : ImageView
     private lateinit var anxietyIcon : ImageView
     private lateinit var dietIcon : ImageView
-    private lateinit var lungsIcon : ImageView
+    private lateinit var painIcon : ImageView
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
     private lateinit var anxietyTestTitle : TextView
     private lateinit var dietTestTitle : TextView
-    private lateinit var lungsTestTitle : TextView
+    private lateinit var painTestTitle : TextView
     private lateinit var animationZoomIn : Animation
     private lateinit var animationBounce : Animation
     private lateinit var animationSlideLeftToRight : Animation
@@ -106,13 +106,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         depressionIcon = findViewById(R.id.depressionImgV)
         anxietyIcon = findViewById(R.id.AnxietyImgV)
         dietIcon = findViewById(R.id.dietImgV)
-        lungsIcon = findViewById(R.id.LungsImgV)
+        painIcon = findViewById(R.id.bpiImgV)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
         depressionTestTitle = findViewById(R.id.depressionTestTxtView)
         anxietyTestTitle = findViewById(R.id.anxietyTestTxtView)
         dietTestTitle = findViewById(R.id.medDietScoreTxtView)
-        lungsTestTitle = findViewById(R.id.lungsTxtView)
+        painTestTitle = findViewById(R.id.lungsTxtView)
 //        hideLayoutElements()
 //        (fragmentContainer.findViewById(R.id.intro_motion_layout) as MotionLayout).transitionToEnd()
 //        (fragmentContainer.findViewById(R.id.intro_motion_layout) as MotionLayout).setTransitionListener(object : MotionLayout.TransitionListener{
@@ -273,7 +273,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction(mdsCheckFragment)
         }
 
-        lungsIcon.setOnClickListener {
+        painIcon.setOnClickListener {
             hideLayoutElements()
             fragmentTransaction(bpiCheckFragment)
         }
@@ -412,16 +412,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         depressionIcon.visibility = View.VISIBLE
         anxietyIcon.visibility = View.VISIBLE
         dietIcon.visibility = View.VISIBLE
+        painIcon.visibility = View.VISIBLE
         cvdVectorIcon.animate().alpha(1f).duration = 1200
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
         depressionIcon.animate().alpha(1f).duration = 1200
         dietIcon.animate().alpha(1f).duration = 1200
+        painIcon.animate().alpha(1f).duration = 1200
         depressionIcon.startAnimation(bounceTests)
         anxietyIcon.animate().alphaBy(1f).duration = 1200
         anxietyIcon.startAnimation(bounceTests)
         cvdVectorIcon.startAnimation(bounceTests)
         diabetesVectorIcon.startAnimation(bounceTests)
         dietIcon.startAnimation(bounceTests)
+        painIcon.startAnimation(bounceTests)
 
     }
 
@@ -447,13 +450,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.INVISIBLE
         dietIcon.clearAnimation()
         dietIcon.visibility = View.INVISIBLE
-        lungsIcon.visibility = View.INVISIBLE
+        painIcon.clearAnimation()
+        painIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
         depressionTestTitle.visibility = View.INVISIBLE
         anxietyTestTitle.visibility = View.INVISIBLE
         dietTestTitle.visibility = View.INVISIBLE
-        lungsTestTitle.visibility = View.INVISIBLE
+        painTestTitle.visibility = View.INVISIBLE
     }
 
     private fun showLayoutElements() {
@@ -465,13 +469,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         depressionTestTitle.visibility = View.VISIBLE
         anxietyTestTitle.visibility = View.VISIBLE
         dietTestTitle.visibility = View.VISIBLE
-        lungsTestTitle.visibility = View.VISIBLE
+        painTestTitle.visibility = View.VISIBLE
         anxietyIcon.visibility = View.VISIBLE
         depressionIcon.clearAnimation()
         depressionIcon.visibility = View.VISIBLE
         anxietyIcon.visibility = View.VISIBLE
         dietIcon.visibility = View.VISIBLE
-        lungsIcon.visibility = View.VISIBLE
+        painIcon.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()

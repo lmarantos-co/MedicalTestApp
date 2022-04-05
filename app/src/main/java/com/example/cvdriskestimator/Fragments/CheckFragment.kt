@@ -331,23 +331,44 @@ class CheckFragment : Fragment() {
     fun displayAgeError(error : String)
     {
         checkBinding.ageEdTxt.error = error
+        checkBinding.ageEdTxt.requestFocus()
     }
 
     fun displaySBPError(error : String)
     {
         checkBinding.sbbEdTxt.error = error
+        checkBinding.sbbEdTxt.requestFocus()
     }
 
     fun displayTCHError(error : String)
     {
         checkBinding.tchEdTxt.error = error
+        checkBinding.tchEdTxt.requestFocus()
     }
 
     fun displayHDLError(error : String)
     {
         checkBinding.hchEdTxt.error = error
+        checkBinding.hchEdTxt.requestFocus()
     }
 
+    fun displaySexError(error : String)
+    {
+        Toast.makeText(mainActivity.applicationContext, error , Toast.LENGTH_LONG).show()
+        checkBinding.sexTxtView.requestFocus()
+    }
+
+    fun displaySmokerError(error : String)
+    {
+        Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
+        checkBinding.smkTxtV.requestFocus()
+    }
+
+    fun displayTreatmentError(error : String)
+    {
+        Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
+        checkBinding.treatTxtV.requestFocus()
+    }
 
     private fun showTermsOfUseLayout() {
 

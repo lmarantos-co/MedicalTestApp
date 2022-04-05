@@ -596,20 +596,20 @@ class ResultFragment : Fragment() {
 
     private fun setMDIResultTextViewColors(mdiDepressionInt: Int) {
         if ((mdiDepressionInt >= 0) && (mdiDepressionInt < 20)) {
-            totalScore.setTextColor(resources.getColor(R.color.blue))
+            totalScore.setTextColor(mainActivity.resources.getColor(R.color.blue))
             depressStatus.setTextColor(resources.getColor(R.color.blue))
         }
         if ((mdiDepressionInt >= 20) && (mdiDepressionInt <= 24)) {
-            totalScore.setTextColor(resources.getColor(R.color.green_5))
-            depressStatus.setTextColor(resources.getColor(R.color.green_5))
+            totalScore.setTextColor(mainActivity.resources.getColor(R.color.green_5))
+            depressStatus.setTextColor(mainActivity.resources.getColor(R.color.green_5))
         }
         if ((mdiDepressionInt >= 25) && (mdiDepressionInt <= 29)) {
-            totalScore.setTextColor(resources.getColor(R.color.orange_5))
-            depressStatus.setTextColor(resources.getColor(R.color.orange_5))
+            totalScore.setTextColor(mainActivity.resources.getColor(R.color.orange_5))
+            depressStatus.setTextColor(mainActivity.resources.getColor(R.color.orange_5))
         }
         if (mdiDepressionInt >= 30) {
-            totalScore.setTextColor(resources.getColor(R.color.dark_red))
-            depressStatus.setTextColor(resources.getColor(R.color.dark_red))
+            totalScore.setTextColor(mainActivity.resources.getColor(R.color.dark_red))
+            depressStatus.setTextColor(mainActivity.resources.getColor(R.color.dark_red))
         }
     }
 
@@ -638,57 +638,57 @@ class ResultFragment : Fragment() {
     {
         if (score > 0)
         {
-            view1.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view1.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
         if (score > 5)
         {
-            view2.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view2.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
         if (score > 10)
         {
-            view3.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view3.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
         if (score > 15)
         {
-            view4.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view4.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
         if (score > 20)
         {
-            view5.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view5.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
         if (score > 25)
         {
-            view6.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view6.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
         if (score > 30)
         {
-            view7.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view7.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
         if (score > 35)
         {
-            view8.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view8.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
         if (score > 40)
         {
-            view9.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view9.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
         if (score > 45)
         {
-            view10.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view10.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
         if (score > 50)
         {
-            view11.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            view11.setBackgroundColor(mainActivity.resources.getColor(R.color.light_yellow))
             delay(100)
         }
     }

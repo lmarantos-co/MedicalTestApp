@@ -268,7 +268,7 @@
 
 
     <ImageView
-        android:id="@+id/LungsImgV"
+        android:id="@+id/bpiImgV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
@@ -279,19 +279,19 @@
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toTopOf="@+id/barHG5"
-        app:srcCompat="@drawable/ic_lungs_solid" />
+        app:srcCompat="@drawable/ic_pain__2_" />
 
     <TextView
         android:id="@+id/lungsTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Lungs Demo"
+        android:text="Brief Pain Index Test"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
-        app:layout_constraintTop_toBottomOf="@+id/LungsImgV" />
+        app:layout_constraintTop_toBottomOf="@+id/bpiImgV" />
 
     <!--    <TextView-->
     <!--        android:id="@+id/registerTxtV"-->

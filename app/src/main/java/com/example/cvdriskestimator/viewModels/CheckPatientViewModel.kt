@@ -215,7 +215,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
         allDataCorrect = checkHDLCholesterol(HDL) && allDataCorrect
         if (checkSexStatus(sex) == "")
         {
-            Toast.makeText(mainActivity.applicationContext, "Please select sex status" ,Toast.LENGTH_LONG).show()
+            checkFragment.displaySexError("Please select sex status")
             allDataCorrect = false
         }
         else
@@ -224,7 +224,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
         }
         if (checkSmokingStatus(SmRG) == "")
         {
-            Toast.makeText(mainActivity.applicationContext, "Please select Smoking status", Toast.LENGTH_LONG).show()
+            checkFragment.displaySmokerError("Please select smoking status")
             allDataCorrect = false
         }
         else
@@ -233,13 +233,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
         }
         if (checkTreatmentStatus(TrRG) == "")
         {
-            mainActivity.runOnUiThread {
-                Toast.makeText(
-                    mainActivity.applicationContext,
-                    "Please select Treatment status",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
+            checkFragment.displayTreatmentError("Please select treatment status")
             allDataCorrect = false
         }
         else

@@ -86,9 +86,9 @@ class medDietTestFragment : Fragment() {
         }
 
         //set the observer for the patient data coming from view model
-        medDietTestViewModel.patientData.observe(viewLifecycleOwner , {
+        medDietTestViewModel.patientData.observe(viewLifecycleOwner) {
             setPatientData(it)
-        })
+        }
 
         initUI(view)
     }
@@ -170,17 +170,17 @@ class medDietTestFragment : Fragment() {
     {
         var result : Int? = null
         val radioButtonId = rg.checkedRadioButtonId
-        if (rg.get(0).id == radioButtonId)
+        if (rg[0].id == radioButtonId)
             result = 0
-        if (rg.get(1).id == radioButtonId)
+        if (rg[1].id == radioButtonId)
             result = 1
-        if (rg.get(2).id == radioButtonId)
+        if (rg[2].id == radioButtonId)
             result = 2
-        if (rg.get(3).id == radioButtonId)
+        if (rg[3].id == radioButtonId)
             result = 3
-        if (rg.get(4).id == radioButtonId)
+        if (rg[4].id == radioButtonId)
             result = 4
-        if (rg.get(5).id == radioButtonId)
+        if (rg[5].id == radioButtonId)
             result = 5
         return result
     }
@@ -190,9 +190,56 @@ class medDietTestFragment : Fragment() {
         medDietTestBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
     }
 
-    fun showSelectionError(error : String)
+    fun showSelectionError(error : String, qNo : Int)
     {
         Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
+        when(qNo)
+        {
+            1 ->
+            {
+                medDietTestBinding.Question1TxtV.requestFocus()
+            }
+            2 ->
+            {
+                medDietTestBinding.Question2TxtV.requestFocus()
+            }
+            3 ->
+            {
+                medDietTestBinding.Question3TxtV.requestFocus()
+            }
+            4 ->
+            {
+                medDietTestBinding.Question4TxtV.requestFocus()
+            }
+            5 ->
+            {
+                medDietTestBinding.Question5TxtV.requestFocus()
+            }
+            6 ->
+            {
+                medDietTestBinding.Question6TxtV.requestFocus()
+            }
+            7 ->
+            {
+                medDietTestBinding.Question7TxtV.requestFocus()
+            }
+            8 ->
+            {
+                medDietTestBinding.Question8TxtV.requestFocus()
+            }
+            9 ->
+            {
+                medDietTestBinding.Question9TxtV.requestFocus()
+            }
+            10 ->
+            {
+                medDietTestBinding.Question10TxtV.requestFocus()
+            }
+            11 ->
+            {
+                medDietTestBinding.Question11TxtV.requestFocus()
+            }
+        }
     }
 
     private fun initUI(view : View)

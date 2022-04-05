@@ -80,7 +80,7 @@ class CheckBPIPatientViewModel : ViewModel() {
             && (checkCircleCoordinates(circleCoordinates))){
             //all data input is correct
             GlobalScope.launch(Dispatchers.Main) {
-                storePatientDataOnRealmDB(allPatientValues)
+                storePatientDataOnRealmDB(allPatientValues, circleCoordinates)
                 //calculate the pain scores
                 bpiTestEstimator = BPITestEstimator(allPatientValues)
                 var scoreResults = bpiTestEstimator.calculatePainScores()
@@ -109,7 +109,7 @@ class CheckBPIPatientViewModel : ViewModel() {
         return result
     }
 
-    fun storePatientDataOnRealmDB(allPatientData : ArrayList<Int?>)
+    fun storePatientDataOnRealmDB(allPatientData : ArrayList<Int?>, CircleCoordinates : ArrayList<Float?>)
     {
         realm.executeTransaction {
             var patient = Patient()
@@ -125,6 +125,8 @@ class CheckBPIPatientViewModel : ViewModel() {
             patient.patientBPIQ10 = allPatientData[9]
             patient.patientBPIQ11 = allPatientData[10]
             patient.patientBPIQ12 = allPatientData[11]
+            patient.patientBPIcircleX = CircleCoordinates.get(0)
+            patient.patientBPIcircleY = CircleCoordinates.get(1)
             realm.copyToRealmOrUpdate(patient)
         }
     }

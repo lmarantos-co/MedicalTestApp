@@ -116,13 +116,6 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
     }
 
 
-//    private fun checkPatientSex(sex : String) : Boolean
-//    {
-//        var correctSex : Boolean
-//        correctSex = (sex == "MALE") && (sex = "FEMALE")
-//        if (correctSex == false)
-//            diabetesCheckFragment.displaySexError("Please input your Sex.")
-//    }
 
     fun checkPatientForDiabetesData(sex : String , pam : String, Steroids : String , age : String , BMI : String , familyStatus : String , SmokingStatus : String)
     {
