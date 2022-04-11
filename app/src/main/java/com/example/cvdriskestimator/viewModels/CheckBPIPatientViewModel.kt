@@ -73,14 +73,14 @@ class CheckBPIPatientViewModel : ViewModel() {
     {
         if ((checkQuestionForInputError(allPatientValues[0] , 2)) && (checkQuestionForInputError(allPatientValues[1]  , 3))
             && (checkQuestionForInputError(allPatientValues[2]  , 4)) && (checkQuestionForInputError(allPatientValues[3]  , 5))
-            && (checkQuestionForInputError(allPatientValues[4]  , 6)) && (checkQuestionForInputError(allPatientValues[5]  , 7))
+            && (checkQuestionForInputError(allPatientValues[4]  , 6))
             && (checkQuestionForInputError(allPatientValues[6]  , 8)) && (checkQuestionForInputError(allPatientValues[7]  , 9))
             && (checkQuestionForInputError(allPatientValues[8]  , 10)) && (checkQuestionForInputError(allPatientValues[9]  , 11))
             && (checkQuestionForInputError(allPatientValues[10]  , 12))
             && (checkCircleCoordinates(circleCoordinates))){
             //all data input is correct
             GlobalScope.launch(Dispatchers.Main) {
-                storePatientDataOnRealmDB(allPatientValues, circleCoordinates)
+                storePatientDataOnRealmDB(allPatientValues)
                 //calculate the pain scores
                 bpiTestEstimator = BPITestEstimator(allPatientValues)
                 var scoreResults = bpiTestEstimator.calculatePainScores()
@@ -109,7 +109,7 @@ class CheckBPIPatientViewModel : ViewModel() {
         return result
     }
 
-    fun storePatientDataOnRealmDB(allPatientData : ArrayList<Int?>, CircleCoordinates : ArrayList<Float?>)
+    fun storePatientDataOnRealmDB(allPatientData : ArrayList<Int?>)
     {
         realm.executeTransaction {
             var patient = Patient()
@@ -125,8 +125,6 @@ class CheckBPIPatientViewModel : ViewModel() {
             patient.patientBPIQ10 = allPatientData[9]
             patient.patientBPIQ11 = allPatientData[10]
             patient.patientBPIQ12 = allPatientData[11]
-            patient.patientBPIcircleX = CircleCoordinates.get(0)
-            patient.patientBPIcircleY = CircleCoordinates.get(1)
             realm.copyToRealmOrUpdate(patient)
         }
     }
@@ -136,7 +134,7 @@ class CheckBPIPatientViewModel : ViewModel() {
         var correctData : Boolean = false
         if (value == null)
         {
-            bpiFragment.setErrorOnForm("Please select an answer for question No : " + questionNO , questionNO)
+            bpiFragment.setErrorOnForm("Please select an answer for question No : $questionNO", questionNO)
             correctData = false
         }
         else

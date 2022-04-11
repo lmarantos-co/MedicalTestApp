@@ -83,9 +83,9 @@ class BAICheckFragment : Fragment() {
         }
 
         //set the observer for the patient mutable live data
-        baiPatientViewModel.patientData.observe(viewLifecycleOwner) {
+        baiPatientViewModel.patientData.observe(viewLifecycleOwner , {
             setPatientData(it)
-        }
+        })
 
         baiCheckBinding.clearBtn.setOnClickListener {
             AlertDialog.Builder(this.activity)
@@ -263,96 +263,9 @@ class BAICheckFragment : Fragment() {
         baiCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
     }
 
-    fun showSelectionError(error : String, qNo : Int)
+    fun showSelectionError(error : String)
     {
         Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
-        when(qNo)
-        {
-            1 ->
-            {
-                baiCheckBinding.BAIQ1TxtV.requestFocus()
-            }
-            2 ->
-            {
-                baiCheckBinding.BAIQ2TxtV.requestFocus()
-            }
-            3 ->
-            {
-                baiCheckBinding.BAIQ3TxtV.requestFocus()
-            }
-            4 ->
-            {
-                baiCheckBinding.BAIQ4TxtV.requestFocus()
-            }
-            5 ->
-            {
-                baiCheckBinding.BAIQ5TxtV.requestFocus()
-            }
-            6 ->
-            {
-                baiCheckBinding.BAIQ6TxtV.requestFocus()
-            }
-            7 ->
-            {
-                baiCheckBinding.BAIQ7TxtV.requestFocus()
-            }
-            8 ->
-            {
-                baiCheckBinding.BAIQ8TxtV.requestFocus()
-            }
-            9 ->
-            {
-                baiCheckBinding.BAIQ9TxtV.requestFocus()
-            }
-            10 ->
-            {
-                baiCheckBinding.BAIQ10TxtV.requestFocus()
-            }
-            11 ->
-            {
-                baiCheckBinding.BAIQ11TxtV.requestFocus()
-            }
-            12 ->
-            {
-                baiCheckBinding.BAIQ12TxtV.requestFocus()
-            }
-            13 ->
-            {
-                baiCheckBinding.BAIQ13TxtV.requestFocus()
-            }
-            14 ->
-            {
-                baiCheckBinding.BAIQ14TxtV.requestFocus()
-            }
-            15 ->
-            {
-                baiCheckBinding.BAIQ15TxtV.requestFocus()
-            }
-            16 ->
-            {
-                baiCheckBinding.BAIQ16TxtV.requestFocus()
-            }
-            17 ->
-            {
-                baiCheckBinding.BAIQ17TxtV.requestFocus()
-            }
-            18 ->
-            {
-                baiCheckBinding.BAIQ18TxtV.requestFocus()
-            }
-            19 ->
-            {
-                baiCheckBinding.BAIQ19TxtV.requestFocus()
-            }
-            20 ->
-            {
-                baiCheckBinding.BAIQ20TxtV.requestFocus()
-            }
-            21 ->
-            {
-                baiCheckBinding.BAIQ21TxtV.requestFocus()
-            }
-        }
     }
 
     override fun onAttach(context: Context) {

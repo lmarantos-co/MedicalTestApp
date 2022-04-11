@@ -106,30 +106,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         depressionIcon = findViewById(R.id.depressionImgV)
         anxietyIcon = findViewById(R.id.AnxietyImgV)
         dietIcon = findViewById(R.id.dietImgV)
-        painIcon = findViewById(R.id.bpiImgV)
+        painIcon = findViewById(R.id.PainImgV)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
         depressionTestTitle = findViewById(R.id.depressionTestTxtView)
         anxietyTestTitle = findViewById(R.id.anxietyTestTxtView)
         dietTestTitle = findViewById(R.id.medDietScoreTxtView)
-        painTestTitle = findViewById(R.id.lungsTxtView)
-//        hideLayoutElements()
-//        (fragmentContainer.findViewById(R.id.intro_motion_layout) as MotionLayout).transitionToEnd()
-//        (fragmentContainer.findViewById(R.id.intro_motion_layout) as MotionLayout).setTransitionListener(object : MotionLayout.TransitionListener{
-//            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
-//            }
-//
-//            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
-//            }
-//
-//            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-//                showLayoutElements()
-//            }
-//
-//            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
-////            }
-//
-//        })
+        painTestTitle = findViewById(R.id.painTxtView)
 
         initPrefs()
 
@@ -270,11 +253,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         dietIcon.setOnClickListener {
             hideLayoutElements()
+            playSelectTestAudio(6)
             fragmentTransaction(mdsCheckFragment)
         }
 
         painIcon.setOnClickListener {
             hideLayoutElements()
+            playSelectTestAudio(7)
             fragmentTransaction(bpiCheckFragment)
         }
 
@@ -324,6 +309,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             5 -> {
                 val mediaPlayer: MediaPlayer = MediaPlayer.create(applicationContext, R.raw.test_for_bai)
                 mediaPlayer.start() // no need to call prepare(); create() does that for you
+            }
+            6 -> {
+                val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.med_diet_test)
+                mediaPlayer.start()
+            }
+            7 -> {
+                val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.bpi_test)
+                mediaPlayer.start()
             }
         }
 
@@ -417,13 +410,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
         depressionIcon.animate().alpha(1f).duration = 1200
         dietIcon.animate().alpha(1f).duration = 1200
-        painIcon.animate().alpha(1f).duration = 1200
         depressionIcon.startAnimation(bounceTests)
         anxietyIcon.animate().alphaBy(1f).duration = 1200
         anxietyIcon.startAnimation(bounceTests)
         cvdVectorIcon.startAnimation(bounceTests)
         diabetesVectorIcon.startAnimation(bounceTests)
         dietIcon.startAnimation(bounceTests)
+        painTestTitle.animate().alphaBy(1f).duration = 1200
         painIcon.startAnimation(bounceTests)
 
     }

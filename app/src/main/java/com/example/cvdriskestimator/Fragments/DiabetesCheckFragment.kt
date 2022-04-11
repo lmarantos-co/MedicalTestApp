@@ -88,9 +88,9 @@ class DiabetesCheckFragment : Fragment() {
         }
 
         //observe live data change
-        checkDiabetesPatientViewModel.patientDATA.observe(viewLifecycleOwner) {
+        checkDiabetesPatientViewModel.patientDATA.observe(viewLifecycleOwner , {
             setPatientData(it)
-        }
+        })
 
         diabetesCheckBinding.includeCvdTitleForm.cvdTitleForm.setOnClickListener {
             mainActivity.backToActivity()
@@ -229,11 +229,6 @@ class DiabetesCheckFragment : Fragment() {
             }
 
         }
-        if (patientSex == "")
-        {
-            displayError("Please select your sex.")
-            diabetesCheckBinding.sextxtV.requestFocus()
-        }
         return patientSex
     }
 
@@ -249,11 +244,6 @@ class DiabetesCheckFragment : Fragment() {
                 patientPAM = "NO"
             }
         }
-        if (patientPAM == "")
-        {
-            displayAgeError("Please select your Prescribed Antihypertension Medication Status.")
-            diabetesCheckBinding.pamtxtV.requestFocus()
-        }
         return patientPAM
     }
 
@@ -267,11 +257,6 @@ class DiabetesCheckFragment : Fragment() {
             diabetesCheckBinding.steroidsRG.getChildAt(1).id -> {
                 patientSteroids = "NO"
             }
-        }
-        if (patientSteroids == "")
-        {
-            displayError("Please select your Prescribed Steroids Status")
-            diabetesCheckBinding.steroidstxtV.requestFocus()
         }
             return patientSteroids
     }
@@ -302,11 +287,6 @@ class DiabetesCheckFragment : Fragment() {
                 diabeteSibling = "No Diabetes"
             }
         }
-        if (diabeteSibling == "")
-        {
-            displayError("Please select your siblings status")
-            diabetesCheckBinding.siblingstxtV.requestFocus()
-        }
         return diabeteSibling
 
     }
@@ -325,11 +305,6 @@ class DiabetesCheckFragment : Fragment() {
                 smokingStatus = "Never"
             }
         }
-        if (smokingStatus == "")
-        {
-            displayError("Please select your smoking status")
-            diabetesCheckBinding.smkTxtV.requestFocus()
-        }
         return smokingStatus
     }
 
@@ -337,18 +312,11 @@ class DiabetesCheckFragment : Fragment() {
     fun displayAgeError(error : String)
     {
         diabetesCheckBinding.editTextAge.error = error
-        diabetesCheckBinding.editTextAge.requestFocus()
     }
 
     fun displayBMIError(error : String)
     {
         diabetesCheckBinding.editTextBMI.error = error
-        diabetesCheckBinding.editTextBMI.requestFocus()
-    }
-
-    fun displayError(error : String)
-    {
-        Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
     }
 
     fun initPatientData()

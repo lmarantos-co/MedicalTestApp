@@ -78,6 +78,8 @@ class BPICheckFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
+        initRadioGroups()
+
     }
 
     private fun initUI()
@@ -102,209 +104,6 @@ class BPICheckFragment : Fragment() {
          binding.includeCvdTitleForm.userIcon.setOnClickListener {
              popUpMenu.showPopUp(it)
         }
-
-
-        //listeners on form
-        binding.includePopUpMenu.termsRelLayout.setOnClickListener {
-            hidePopPutermsLayout()
-        }
-
-        binding.includePopUpMenu.closeBtn.setOnClickListener {
-            hidePopPutermsLayout()
-        }
-
-        binding.includeCvdTitleForm.cvdTitleForm.setOnClickListener {
-            mainActivity.backToActivity()
-
-        }
-
-        //set listeners for the radioGroups
-        binding.g2RGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g2RGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g2RGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g2RGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g2RGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g2RGb.getChildAt(4) as RadioButton).isChecked = false
-
-        }
-
-        binding.g2RGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g2RGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g2RGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g2RGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g2RGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g2RGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.g2RGa.getChildAt(5) as RadioButton).isChecked = false
-
-        }
-
-        binding.q3RGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.q3RGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.q3RGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.q3RGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.q3RGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.q3RGb.getChildAt(4) as RadioButton).isChecked = false
-        }
-
-        binding.q3RGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.q3RGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.q3RGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.q3RGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.q3RGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.q3RGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.q3RGa.getChildAt(5) as RadioButton).isChecked = false        }
-
-        binding.q4RGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.q4RGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.q4RGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.q4RGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.q4RGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.q4RGb.getChildAt(4) as RadioButton).isChecked = false          }
-
-        binding.q4RGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.q4RGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.q4RGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.q4RGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.q4RGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.q4RGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.q4RGa.getChildAt(5) as RadioButton).isChecked = false           }
-
-
-        binding.q5RGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.q5RGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.q5RGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.q5RGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.q5RGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.q5RGb.getChildAt(4) as RadioButton).isChecked = false         }
-
-        binding.q5RGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.q5RGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.q5RGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.q5RGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.q5RGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.q5RGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.q5RGa.getChildAt(5) as RadioButton).isChecked = false         }
-
-        binding.q6RGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.q6RGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.q6RGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.q6RGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.q6RGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.q6RGb.getChildAt(4) as RadioButton).isChecked = false         }
-
-        binding.q6RGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.q6RGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.q6RGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.q6RGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.q6RGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.q6RGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.q6RGa.getChildAt(5) as RadioButton).isChecked = false           }
-
-        binding.g7RGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7aRGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7aRGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7aRGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7aRGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7aRGb.getChildAt(4) as RadioButton).isChecked = false          }
-
-        binding.g7aRGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7RGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7RGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7RGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7RGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7RGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.g7RGa.getChildAt(5) as RadioButton).isChecked = false          }
-
-        binding.g7bRGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7bRGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7bRGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7bRGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7bRGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7bRGb.getChildAt(4) as RadioButton).isChecked = false         }
-
-        binding.g7bRGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7bRGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7bRGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7bRGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7bRGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7bRGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.g7bRGa.getChildAt(5) as RadioButton).isChecked = false          }
-
-        binding.g7cRGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7cRGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7cRGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7cRGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7cRGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7cRGb.getChildAt(4) as RadioButton).isChecked = false           }
-
-        binding.g7cRGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7cRGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7cRGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7cRGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7cRGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7cRGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.g7cRGa.getChildAt(5) as RadioButton).isChecked = false          }
-
-        binding.g7dRGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7dRGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7dRGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7dRGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7dRGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7dRGb.getChildAt(4) as RadioButton).isChecked = false           }
-
-        binding.g7dRGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7dRGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7dRGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7dRGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7dRGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7dRGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.g7dRGa.getChildAt(5) as RadioButton).isChecked = false           }
-
-        binding.g7eRGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7eRGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7eRGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7eRGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7eRGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7eRGb.getChildAt(4) as RadioButton).isChecked = false            }
-
-        binding.g7eRGb.setOnCheckedChangeListener { radioGroup, i ->
-                (binding.g7eRGa.getChildAt(0) as RadioButton).isChecked = false
-                (binding.g7eRGa.getChildAt(1) as RadioButton).isChecked = false
-                (binding.g7eRGa.getChildAt(2) as RadioButton).isChecked = false
-                (binding.g7eRGa.getChildAt(3) as RadioButton).isChecked = false
-                (binding.g7eRGa.getChildAt(4) as RadioButton).isChecked = false
-                (binding.g7eRGa.getChildAt(5) as RadioButton).isChecked = false           }
-
-
-        binding.g7fRGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7fRGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7fRGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7fRGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7fRGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7fRGb.getChildAt(4) as RadioButton).isChecked = false             }
-
-        binding.g7fRGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7fRGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7fRGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7fRGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7fRGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7fRGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.g7fRGa.getChildAt(5) as RadioButton).isChecked = false             }
-
-        binding.g7gRGa.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7gRGb.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7gRGb.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7gRGb.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7gRGb.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7gRGb.getChildAt(4) as RadioButton).isChecked = false                   }
-
-        binding.g7gRGb.setOnCheckedChangeListener { radioGroup, i ->
-            (binding.g7gRGa.getChildAt(0) as RadioButton).isChecked = false
-            (binding.g7gRGa.getChildAt(1) as RadioButton).isChecked = false
-            (binding.g7gRGa.getChildAt(2) as RadioButton).isChecked = false
-            (binding.g7gRGa.getChildAt(3) as RadioButton).isChecked = false
-            (binding.g7gRGa.getChildAt(4) as RadioButton).isChecked = false
-            (binding.g7gRGa.getChildAt(5) as RadioButton).isChecked = false           }
 
         redCircleX = binding.redCircleImgV.x
         redCircleY = binding.redCircleImgV.y
@@ -352,161 +151,163 @@ class BPICheckFragment : Fragment() {
 
         binding.submitBtn.setOnClickListener {
 
-            if (getAnswerFromRadioGroupA(binding.g2RGa) != null)
+            allPatientAnswers[0] = null
+            if (checkRadioButtonId(binding.g2RGa.checkedRadioButtonId , binding.g2RGa))
+            {
                 allPatientAnswers[0] = getAnswerFromRadioGroupA(binding.g2RGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.g2RGb) != null)
+                if (checkRadioButtonId(binding.g2RGb.checkedRadioButtonId , binding.g2RGb))
+                {
                     allPatientAnswers[0] = getAnswerFromRadioGroupB(binding.g2RGb)
-                else
-                {
-                    allPatientAnswers[0] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.q3RGa) != null)
+            allPatientAnswers[1] = null
+            if (checkRadioButtonId(binding.q3RGa.checkedRadioButtonId , binding.q3RGa))
+            {
                 allPatientAnswers[1] = getAnswerFromRadioGroupA(binding.q3RGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.q3RGb) != null)
+                if (checkRadioButtonId(binding.q3RGb.checkedRadioButtonId , binding.q3RGb))
+                {
                     allPatientAnswers[1] = getAnswerFromRadioGroupB(binding.q3RGb)
-                else
-                {
-                    allPatientAnswers[1] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.q4RGa) != null)
-                allPatientAnswers[2] = getAnswerFromRadioGroupA(binding.q4RGa)
+            allPatientAnswers[2] = null
+            if (checkRadioButtonId(binding.q4aRG.checkedRadioButtonId , binding.q4aRG))
+            {
+                allPatientAnswers[2] = getAnswerFromRadioGroupA(binding.q4aRG)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.q4RGb) != null)
+                if (checkRadioButtonId(binding.q4RGb.checkedRadioButtonId , binding.q4RGb))
+                {
                     allPatientAnswers[2] = getAnswerFromRadioGroupB(binding.q4RGb)
-                else
-                {
-                    allPatientAnswers[2] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.q5RGa) != null)
+            allPatientAnswers[3] = null
+            if (checkRadioButtonId(binding.q5RGa.checkedRadioButtonId , binding.q5RGa))
+            {
                 allPatientAnswers[3] = getAnswerFromRadioGroupA(binding.q5RGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.q5RGb) != null)
+                if (checkRadioButtonId(binding.q5RGb.checkedRadioButtonId , binding.q5RGb))
+                {
                     allPatientAnswers[3] = getAnswerFromRadioGroupB(binding.q5RGb)
-                else
-                {
-                    allPatientAnswers[3] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.q6RGa) != null)
+            allPatientAnswers[4] = null
+            if (checkRadioButtonId(binding.q6RGa.checkedRadioButtonId , binding.q6RGa))
+            {
                 allPatientAnswers[4] = getAnswerFromRadioGroupA(binding.q6RGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.q6RGb) != null)
+                if (checkRadioButtonId(binding.q6RGb.checkedRadioButtonId , binding.q6RGb))
+                {
                     allPatientAnswers[4] = getAnswerFromRadioGroupB(binding.q6RGb)
-                else
-                {
-                    allPatientAnswers[4] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.g7RGa) != null)
-                allPatientAnswers[5] = getAnswerFromRadioGroupA(binding.g7RGa)
+            allPatientAnswers[5] = null
+            if (checkRadioButtonId(binding.g7aRGa.checkedRadioButtonId , binding.g7aRGa))
+            {
+                allPatientAnswers[5] = getAnswerFromRadioGroupA(binding.g7aRGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.g7aRGb) != null)
+                if (checkRadioButtonId(binding.g7aRGb.checkedRadioButtonId , binding.g7aRGb))
+                {
                     allPatientAnswers[5] = getAnswerFromRadioGroupB(binding.g7aRGb)
-                else
-                {
-                    allPatientAnswers[5] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.g7bRGa) != null)
+            allPatientAnswers[6] = null
+            if (checkRadioButtonId(binding.g7bRGa.checkedRadioButtonId , binding.g7bRGa))
+            {
                 allPatientAnswers[6] = getAnswerFromRadioGroupA(binding.g7bRGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.g7bRGb) != null)
+                if (checkRadioButtonId(binding.g7bRGb.checkedRadioButtonId , binding.g7bRGb))
+                {
                     allPatientAnswers[6] = getAnswerFromRadioGroupB(binding.g7bRGb)
-                else
-                {
-                    allPatientAnswers[6] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.g7cRGa) != null)
+            allPatientAnswers[7] = null
+            if (checkRadioButtonId(binding.g7cRGa.checkedRadioButtonId , binding.g7cRGa))
+            {
                 allPatientAnswers[7] = getAnswerFromRadioGroupA(binding.g7cRGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.g7cRGb) != null)
+                if (checkRadioButtonId(binding.g7cRGb.checkedRadioButtonId , binding.g7cRGb))
+                {
                     allPatientAnswers[7] = getAnswerFromRadioGroupB(binding.g7cRGb)
-                else
-                {
-                    allPatientAnswers[7] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.g7dRGa) != null)
+            allPatientAnswers[8] = null
+            if (checkRadioButtonId(binding.g7dRGa.checkedRadioButtonId , binding.g7dRGa))
+            {
                 allPatientAnswers[8] = getAnswerFromRadioGroupA(binding.g7dRGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.g7dRGb) != null)
+                if (checkRadioButtonId(binding.g7dRGb.checkedRadioButtonId , binding.g7dRGb))
+                {
                     allPatientAnswers[8] = getAnswerFromRadioGroupB(binding.g7dRGb)
-                else
-                {
-                    allPatientAnswers[8] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.g7eRGa) != null)
+            allPatientAnswers[9] = null
+            if (checkRadioButtonId(binding.g7eRGa.checkedRadioButtonId , binding.g7eRGa))
+            {
                 allPatientAnswers[9] = getAnswerFromRadioGroupA(binding.g7eRGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.g7eRGb) != null)
+                if (checkRadioButtonId(binding.g7eRGb.checkedRadioButtonId , binding.g7eRGb))
+                {
                     allPatientAnswers[9] = getAnswerFromRadioGroupB(binding.g7eRGb)
-                else
-                {
-                    allPatientAnswers[9] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.g7fRGa) != null)
+            allPatientAnswers[10] = null
+            if (checkRadioButtonId(binding.g7fRGa.checkedRadioButtonId , binding.g7fRGa))
+            {
                 allPatientAnswers[10] = getAnswerFromRadioGroupA(binding.g7fRGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.g7fRGb) != null)
+                if (checkRadioButtonId(binding.g7fRGb.checkedRadioButtonId , binding.g7fRGb))
+                {
                     allPatientAnswers[10] = getAnswerFromRadioGroupB(binding.g7fRGb)
-                else
-                {
-                    allPatientAnswers[10] = null
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.g7gRGa) != null)
+            allPatientAnswers[11] = null
+            if (checkRadioButtonId(binding.g7gRGa.checkedRadioButtonId , binding.g7gRGa))
+            {
                 allPatientAnswers[11] = getAnswerFromRadioGroupA(binding.g7gRGa)
+            }
             else
             {
-                if (getAnswerFromRadioGroupB(binding.g7gRGb) != null)
-                    allPatientAnswers[11] = getAnswerFromRadioGroupB(binding.g7gRGb)
-                else
+                if (checkRadioButtonId(binding.g7gRGb.checkedRadioButtonId , binding.g7gRGb))
                 {
-                    allPatientAnswers[11] = null
+                    allPatientAnswers[11] = getAnswerFromRadioGroupB(binding.g7gRGb)
                 }
             }
 
-            if (getAnswerFromRadioGroupA(binding.g7fRGa) != null)
-                allPatientAnswers[12] = getAnswerFromRadioGroupA(binding.g7fRGa)
-            else
-            {
-                if (getAnswerFromRadioGroupB(binding.g7fRGb) != null)
-                    allPatientAnswers[12] = getAnswerFromRadioGroupB(binding.g7fRGb)
-                else
-                {
-                    allPatientAnswers[12] = null
-                }
-            }
+
 
             bpiPatientViewModel.checkBPITestPAtient(allPatientAnswers, CircleCoordinates)
         }
@@ -525,106 +326,275 @@ class BPICheckFragment : Fragment() {
         binding.humanBodyImgV.invalidate()
     }
 
+    private fun initRadioGroups()
+    {
+
+        setRadioButtonOnClickListener(binding.bpiA1Rb0 , binding.g2RGb)
+        setRadioButtonOnClickListener(binding.bpiA1Rb1 , binding.g2RGb)
+        setRadioButtonOnClickListener(binding.bpiA1Rb2 , binding.g2RGb)
+        setRadioButtonOnClickListener(binding.bpiA1Rb3 , binding.g2RGb)
+        setRadioButtonOnClickListener(binding.bpiA1Rb4 , binding.g2RGb)
+        setRadioButtonOnClickListener(binding.bpiA1Rb5 , binding.g2RGb)
+        setRadioButtonOnClickListener(binding.bpiA1Rb6 , binding.g2RGa)
+        setRadioButtonOnClickListener(binding.bpiA1Rb7 , binding.g2RGa)
+        setRadioButtonOnClickListener(binding.bpiA1Rb8 , binding.g2RGa)
+        setRadioButtonOnClickListener(binding.bpiA1Rb9 , binding.g2RGa)
+        setRadioButtonOnClickListener(binding.bpiA1Rb10 , binding.g2RGa)
+
+        setRadioButtonOnClickListener(binding.bpiA3Rb0 , binding.q3RGb)
+        setRadioButtonOnClickListener(binding.bpiA3Rb1 , binding.q3RGb)
+        setRadioButtonOnClickListener(binding.bpiA3Rb2 , binding.q3RGb)
+        setRadioButtonOnClickListener(binding.bpiA3Rb3 , binding.q3RGb)
+        setRadioButtonOnClickListener(binding.bpiA3Rb4 , binding.q3RGb)
+        setRadioButtonOnClickListener(binding.bpiA3Rb5 , binding.q3RGb)
+        setRadioButtonOnClickListener(binding.bpiA3Rb6 , binding.q3RGa)
+        setRadioButtonOnClickListener(binding.bpiA3Rb7 , binding.q3RGa)
+        setRadioButtonOnClickListener(binding.bpiA3Rb8 , binding.q3RGa)
+        setRadioButtonOnClickListener(binding.bpiA3Rb9 , binding.q3RGa)
+        setRadioButtonOnClickListener(binding.bpiA3Rb10 , binding.q3RGa)
+
+        setRadioButtonOnClickListener(binding.bpiA4Rb0 , binding.q4RGb)
+        setRadioButtonOnClickListener(binding.bpiA4Rb1 , binding.q4RGb)
+        setRadioButtonOnClickListener(binding.bpiA4Rb2 , binding.q4RGb)
+        setRadioButtonOnClickListener(binding.bpiA4Rb3 , binding.q4RGb)
+        setRadioButtonOnClickListener(binding.bpiA4Rb4 , binding.q4RGb)
+        setRadioButtonOnClickListener(binding.bpiA4Rb5 , binding.q4RGb)
+        setRadioButtonOnClickListener(binding.bpiA4Rb6 , binding.q4aRG)
+        setRadioButtonOnClickListener(binding.bpiA4Rb7 , binding.q4aRG)
+        setRadioButtonOnClickListener(binding.bpiA4Rb8 , binding.q4aRG)
+        setRadioButtonOnClickListener(binding.bpiA4Rb9 , binding.q4aRG)
+        setRadioButtonOnClickListener(binding.bpiA4Rb10 , binding.q4aRG)
+
+        setRadioButtonOnClickListener(binding.bpiA5Rb0 , binding.q5RGb)
+        setRadioButtonOnClickListener(binding.bpiA5Rb1 , binding.q5RGb)
+        setRadioButtonOnClickListener(binding.bpiA5Rb2 , binding.q5RGb)
+        setRadioButtonOnClickListener(binding.bpiA5Rb3 , binding.q5RGb)
+        setRadioButtonOnClickListener(binding.bpiA5Rb4 , binding.q5RGb)
+        setRadioButtonOnClickListener(binding.bpiA5Rb5 , binding.q5RGb)
+        setRadioButtonOnClickListener(binding.bpiA5Rb6 , binding.q5RGa)
+        setRadioButtonOnClickListener(binding.bpiA5Rb7 , binding.q5RGa)
+        setRadioButtonOnClickListener(binding.bpiA5Rb8 , binding.q5RGa)
+        setRadioButtonOnClickListener(binding.bpiA5Rb9 , binding.q5RGa)
+        setRadioButtonOnClickListener(binding.bpiA5Rb10 , binding.q5RGa)
+
+        setRadioButtonOnClickListener(binding.bpiA6Rb0 , binding.q6RGb)
+        setRadioButtonOnClickListener(binding.bpiA6Rb1 , binding.q6RGb)
+        setRadioButtonOnClickListener(binding.bpiA6Rb2 , binding.q6RGb)
+        setRadioButtonOnClickListener(binding.bpiA6Rb3 , binding.q6RGb)
+        setRadioButtonOnClickListener(binding.bpiA6Rb4 , binding.q6RGb)
+        setRadioButtonOnClickListener(binding.bpiA6Rb5 , binding.q6RGb)
+        setRadioButtonOnClickListener(binding.bpiA6Rb6 , binding.q6RGa)
+        setRadioButtonOnClickListener(binding.bpiA6Rb7 , binding.q6RGa)
+        setRadioButtonOnClickListener(binding.bpiA6Rb8 , binding.q6RGa)
+        setRadioButtonOnClickListener(binding.bpiA6Rb9 , binding.q6RGa)
+        setRadioButtonOnClickListener(binding.bpiA6Rb10 , binding.q6RGa)
+
+        setRadioButtonOnClickListener(binding.bpiA7aRb0 , binding.g7aRGb)
+        setRadioButtonOnClickListener(binding.bpiA7aRb1 , binding.g7aRGb)
+        setRadioButtonOnClickListener(binding.bpiA7aRb2 , binding.g7aRGb)
+        setRadioButtonOnClickListener(binding.bpiA7aRb3 , binding.g7aRGb)
+        setRadioButtonOnClickListener(binding.bpiA7aRb4 , binding.g7aRGb)
+        setRadioButtonOnClickListener(binding.bpiA7aRb5 , binding.g7aRGb)
+        setRadioButtonOnClickListener(binding.bpiA7aRb6 , binding.g7aRGa)
+        setRadioButtonOnClickListener(binding.bpiA7aRb7 , binding.g7aRGa)
+        setRadioButtonOnClickListener(binding.bpiA7aRb8 , binding.g7aRGa)
+        setRadioButtonOnClickListener(binding.bpiA7aRb9 , binding.g7aRGa)
+        setRadioButtonOnClickListener(binding.bpiA7aRb10 , binding.g7aRGa)
+
+        setRadioButtonOnClickListener(binding.bpiA7bRb0 , binding.g7bRGb)
+        setRadioButtonOnClickListener(binding.bpiA7bRb1 , binding.g7bRGb)
+        setRadioButtonOnClickListener(binding.bpiA7bRb2 , binding.g7bRGb)
+        setRadioButtonOnClickListener(binding.bpiA7bRb3 , binding.g7bRGb)
+        setRadioButtonOnClickListener(binding.bpiA7bRb4 , binding.g7bRGb)
+        setRadioButtonOnClickListener(binding.bpiA7bRb5 , binding.g7bRGb)
+        setRadioButtonOnClickListener(binding.bpiA7bRb6 , binding.g7bRGa)
+        setRadioButtonOnClickListener(binding.bpiA7bRb7 , binding.g7bRGa)
+        setRadioButtonOnClickListener(binding.bpiA7bRb8 , binding.g7bRGa)
+        setRadioButtonOnClickListener(binding.bpiA7bRb9 , binding.g7bRGa)
+        setRadioButtonOnClickListener(binding.bpiA7bRb10 , binding.g7bRGa)
+
+        setRadioButtonOnClickListener(binding.bpiA7cRb0 , binding.g7cRGb)
+        setRadioButtonOnClickListener(binding.bpiA7cRb1 , binding.g7cRGb)
+        setRadioButtonOnClickListener(binding.bpiA7cRb2 , binding.g7cRGb)
+        setRadioButtonOnClickListener(binding.bpiA7cRb3 , binding.g7cRGb)
+        setRadioButtonOnClickListener(binding.bpiA7cRb4 , binding.g7cRGb)
+        setRadioButtonOnClickListener(binding.bpiA7cRb5 , binding.g7cRGb)
+        setRadioButtonOnClickListener(binding.bpiA7cRb6 , binding.g7cRGa)
+        setRadioButtonOnClickListener(binding.bpiA7cRb7 , binding.g7cRGa)
+        setRadioButtonOnClickListener(binding.bpiA7cRb8 , binding.g7cRGa)
+        setRadioButtonOnClickListener(binding.bpiA7cRb9 , binding.g7cRGa)
+        setRadioButtonOnClickListener(binding.bpiA7cRb10 , binding.g7cRGa)
+
+        setRadioButtonOnClickListener(binding.bpiA7dRb0 , binding.g7dRGb)
+        setRadioButtonOnClickListener(binding.bpiA7dRb1 , binding.g7dRGb)
+        setRadioButtonOnClickListener(binding.bpiA7dRb2 , binding.g7dRGb)
+        setRadioButtonOnClickListener(binding.bpiA7dRb3 , binding.g7dRGb)
+        setRadioButtonOnClickListener(binding.bpiA7dRb4 , binding.g7dRGb)
+        setRadioButtonOnClickListener(binding.bpiA7dRb5 , binding.g7dRGb)
+        setRadioButtonOnClickListener(binding.bpiA7dRb6 , binding.g7dRGa)
+        setRadioButtonOnClickListener(binding.bpiA7dRb7 , binding.g7dRGa)
+        setRadioButtonOnClickListener(binding.bpiA7dRb8 , binding.g7dRGa)
+        setRadioButtonOnClickListener(binding.bpiA7dRb9 , binding.g7dRGa)
+        setRadioButtonOnClickListener(binding.bpiA7dRb10 , binding.g7dRGa)
+
+        setRadioButtonOnClickListener(binding.bpiA7eRb0 , binding.g7eRGb)
+        setRadioButtonOnClickListener(binding.bpiA7eRb1 , binding.g7eRGb)
+        setRadioButtonOnClickListener(binding.bpiA7eRb2 , binding.g7eRGb)
+        setRadioButtonOnClickListener(binding.bpiA7eRb3 , binding.g7eRGb)
+        setRadioButtonOnClickListener(binding.bpiA7eRb4 , binding.g7eRGb)
+        setRadioButtonOnClickListener(binding.bpiA7eRb5 , binding.g7eRGb)
+        setRadioButtonOnClickListener(binding.bpiA7eRb6 , binding.g7eRGa)
+        setRadioButtonOnClickListener(binding.bpiA7eRb7 , binding.g7eRGa)
+        setRadioButtonOnClickListener(binding.bpiA7eRb8 , binding.g7eRGa)
+        setRadioButtonOnClickListener(binding.bpiA7eRb9 , binding.g7eRGa)
+        setRadioButtonOnClickListener(binding.bpiA7eRb10 , binding.g7eRGa)
+
+        setRadioButtonOnClickListener(binding.bpiA7fRb0 , binding.g7fRGb)
+        setRadioButtonOnClickListener(binding.bpiA7fRb1 , binding.g7fRGb)
+        setRadioButtonOnClickListener(binding.bpiA7fRb2 , binding.g7fRGb)
+        setRadioButtonOnClickListener(binding.bpiA7fRb3 , binding.g7fRGb)
+        setRadioButtonOnClickListener(binding.bpiA7fRb4 , binding.g7fRGb)
+        setRadioButtonOnClickListener(binding.bpiA7fRb5 , binding.g7fRGb)
+        setRadioButtonOnClickListener(binding.bpiA7fRb6 , binding.g7fRGa)
+        setRadioButtonOnClickListener(binding.bpiA7fRb7 , binding.g7fRGa)
+        setRadioButtonOnClickListener(binding.bpiA7fRb8 , binding.g7fRGa)
+        setRadioButtonOnClickListener(binding.bpiA7fRb9 , binding.g7fRGa)
+        setRadioButtonOnClickListener(binding.bpiA7fRb10 , binding.g7fRGa)
+
+        setRadioButtonOnClickListener(binding.bpiA7gRb0 , binding.g7gRGb)
+        setRadioButtonOnClickListener(binding.bpiA7gRb1 , binding.g7gRGb)
+        setRadioButtonOnClickListener(binding.bpiA7gRb2 , binding.g7gRGb)
+        setRadioButtonOnClickListener(binding.bpiA7gRb3 , binding.g7gRGb)
+        setRadioButtonOnClickListener(binding.bpiA7gRb4 , binding.g7gRGb)
+        setRadioButtonOnClickListener(binding.bpiA7gRb5 , binding.g7gRGb)
+        setRadioButtonOnClickListener(binding.bpiA7gRb6 , binding.g7gRGa)
+        setRadioButtonOnClickListener(binding.bpiA7gRb7 , binding.g7gRGa)
+        setRadioButtonOnClickListener(binding.bpiA7gRb8 , binding.g7gRGa)
+        setRadioButtonOnClickListener(binding.bpiA7gRb9 , binding.g7gRGa)
+        setRadioButtonOnClickListener(binding.bpiA7gRb10 , binding.g7gRGa)
+
+    }
+
+    private fun setRadioButtonOnClickListener(radiobutton : RadioButton, radioGroup : RadioGroup)
+    {
+        radiobutton.setOnClickListener {
+            radioGroup.clearCheck()
+        }
+    }
+
+
     private fun setPatientDataOnForm(patient : Patient)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialiseFormData()
             if ((patient.patientBPIQ1!! >= 0) && (patient.patientBPIQ1!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.g2RGa , patient.patientBPIQ1!!)
+                setQuestionOfRadioGroupA(binding.g2RGa, patient.patientBPIQ1)
             }
             if ((patient.patientBPIQ1!! >= 6) && (patient.patientBPIQ1!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.g2RGb , patient.patientBPIQ1!!)
+                setQuestionOfRadioGroupB(binding.g2RGb, patient.patientBPIQ1)
             }
+
             if ((patient.patientBPIQ2!! >= 0) && (patient.patientBPIQ2!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.q3RGa , patient.patientBPIQ2!!)
+                setQuestionOfRadioGroupA(binding.q3RGa, patient.patientBPIQ2)
             }
             if ((patient.patientBPIQ2!! >= 6) && (patient.patientBPIQ2!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.q3RGb , patient.patientBPIQ2!!)
+                setQuestionOfRadioGroupB(binding.q3RGb, patient.patientBPIQ2)
             }
+
             if ((patient.patientBPIQ3!! >= 0) && (patient.patientBPIQ3!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.q4RGa , patient.patientBPIQ3!!)
+                setQuestionOfRadioGroupA(binding.q4aRG, patient.patientBPIQ3)
             }
             if ((patient.patientBPIQ3!! >= 6) && (patient.patientBPIQ3!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.q4RGb , patient.patientBPIQ3!!)
+                setQuestionOfRadioGroupB(binding.q4RGb, patient.patientBPIQ3)
             }
+
             if ((patient.patientBPIQ4!! >= 0) && (patient.patientBPIQ4!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.q5RGa , patient.patientBPIQ4!!)
+                setQuestionOfRadioGroupA(binding.q5RGa, patient.patientBPIQ4)
             }
             if ((patient.patientBPIQ4!! >= 6) && (patient.patientBPIQ4!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.q5RGb , patient.patientBPIQ4!!)
+                setQuestionOfRadioGroupB(binding.q5RGb, patient.patientBPIQ4)
             }
+
             if ((patient.patientBPIQ5!! >= 0) && (patient.patientBPIQ5!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.q6RGa , patient.patientBPIQ5!!)
+                setQuestionOfRadioGroupA(binding.q6RGa, patient.patientBPIQ5)
             }
             if ((patient.patientBPIQ5!! >= 6) && (patient.patientBPIQ5!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.q6RGb , patient.patientBPIQ5!!)
+                setQuestionOfRadioGroupB(binding.q6RGb, patient.patientBPIQ4)
             }
+
             if ((patient.patientBPIQ6!! >= 0) && (patient.patientBPIQ6!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.g7RGa , patient.patientBPIQ6!!)
+                setQuestionOfRadioGroupA(binding.g7aRGa, patient.patientBPIQ6)
             }
             if ((patient.patientBPIQ6!! >= 6) && (patient.patientBPIQ6!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.g7aRGb , patient.patientBPIQ6!!)
+                setQuestionOfRadioGroupB(binding.g7aRGb, patient.patientBPIQ6)
             }
+
             if ((patient.patientBPIQ7!! >= 0) && (patient.patientBPIQ7!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.g7bRGa , patient.patientBPIQ7!!)
+                setQuestionOfRadioGroupA(binding.g7bRGa, patient.patientBPIQ7)
             }
             if ((patient.patientBPIQ7!! >= 6) && (patient.patientBPIQ7!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.g7bRGb , patient.patientBPIQ7!!)
+                setQuestionOfRadioGroupB(binding.g7bRGb, patient.patientBPIQ7)
             }
+
             if ((patient.patientBPIQ8!! >= 0) && (patient.patientBPIQ8!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.g7cRGa , patient.patientBPIQ8!!)
+                setQuestionOfRadioGroupA(binding.g7cRGa, patient.patientBPIQ8)
             }
             if ((patient.patientBPIQ8!! >= 6) && (patient.patientBPIQ8!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.g7cRGb , patient.patientBPIQ8!!)
+                setQuestionOfRadioGroupB(binding.g7cRGb, patient.patientBPIQ8)
             }
+
             if ((patient.patientBPIQ9!! >= 0) && (patient.patientBPIQ9!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.g7dRGa , patient.patientBPIQ9!!)
+                setQuestionOfRadioGroupA(binding.g7dRGa, patient.patientBPIQ9)
             }
             if ((patient.patientBPIQ9!! >= 6) && (patient.patientBPIQ9!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.g7dRGb , patient.patientBPIQ9!!)
+                setQuestionOfRadioGroupB(binding.g7dRGb, patient.patientBPIQ9)
             }
+
             if ((patient.patientBPIQ10!! >= 0) && (patient.patientBPIQ10!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.g7eRGa , patient.patientBPIQ10!!)
+                setQuestionOfRadioGroupA(binding.g7eRGa, patient.patientBPIQ10)
             }
             if ((patient.patientBPIQ10!! >= 6) && (patient.patientBPIQ10!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.g7eRGb , patient.patientBPIQ10!!)
+                setQuestionOfRadioGroupB(binding.g7eRGb, patient.patientBPIQ10)
             }
+
             if ((patient.patientBPIQ11!! >= 0) && (patient.patientBPIQ11!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.g7fRGa , patient.patientBPIQ11!!)
+                setQuestionOfRadioGroupA(binding.g7fRGa, patient.patientBPIQ11)
             }
             if ((patient.patientBPIQ11!! >= 6) && (patient.patientBPIQ11!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.g7fRGb , patient.patientBPIQ11!!)
+                setQuestionOfRadioGroupB(binding.g7fRGb, patient.patientBPIQ11)
             }
+
             if ((patient.patientBPIQ12!! >= 0) && (patient.patientBPIQ12!! <= 5))
             {
-                setQuestionOfRadioGroupA(binding.g7gRGa , patient.patientBPIQ12!!)
+                setQuestionOfRadioGroupA(binding.g7gRGa, patient.patientBPIQ12)
             }
             if ((patient.patientBPIQ12!! >= 6) && (patient.patientBPIQ12!! <= 10))
             {
-                setQuestionOfRadioGroupB(binding.g7gRGb , patient.patientBPIQ12!!)
+                setQuestionOfRadioGroupB(binding.g7gRGb, patient.patientBPIQ12)
             }
+
             setRedCircePos(patient.patientBPIcircleX!! , patient.patientBPIcircleY!! )
         } , 1000)
     }
@@ -659,29 +629,30 @@ class BPICheckFragment : Fragment() {
         }
     }
 
+
     private fun setQuestionOfRadioGroupB(rg : RadioGroup , patientValue : Int?)
     {
         when (patientValue)
         {
 
             6-> {
-                (rg.getChildAt(0) as RadioButton).isChecked = true
+                (rg.getChildAt(6) as RadioButton).isChecked = true
             }
 
             7 -> {
-                (rg.getChildAt(1) as RadioButton).isChecked = true
+                (rg.getChildAt(7) as RadioButton).isChecked = true
             }
 
             8 -> {
-                (rg.getChildAt(2) as RadioButton).isChecked = true
+                (rg.getChildAt(8) as RadioButton).isChecked = true
             }
 
             9 -> {
-                (rg.getChildAt(3) as RadioButton).isChecked = true
+                (rg.getChildAt(9) as RadioButton).isChecked = true
             }
 
             10 -> {
-                (rg.getChildAt(4) as RadioButton).isChecked = true
+                (rg.getChildAt(10) as RadioButton).isChecked = true
             }
         }
     }
@@ -707,7 +678,7 @@ class BPICheckFragment : Fragment() {
 
     private fun getAnswerFromRadioGroupB(rg : RadioGroup) : Int?
     {
-        var answer = rg.checkedRadioButtonId
+        val answer = rg.checkedRadioButtonId
 
         if (rg[0].id == answer)
             return 6
@@ -719,23 +690,29 @@ class BPICheckFragment : Fragment() {
             return 9
         if (rg[4].id == answer)
             return 10
-
         else return null
     }
+
+    private fun checkRadioButtonId(id : Int , radioGroup : RadioGroup) : Boolean
+    {
+        return radioGroup.findViewById<RadioButton>(id) != null
+    }
+
+
 
     private fun initialiseFormData()
     {
         binding.g2RGa.clearCheck()
         binding.g2RGb.clearCheck()
         binding.q3RGa.clearCheck()
-        binding.q4RGb.clearCheck()
-        binding.q4RGa.clearCheck()
+        binding.q3RGb.clearCheck()
+        binding.q4aRG.clearCheck()
         binding.q4RGb.clearCheck()
         binding.q5RGa.clearCheck()
         binding.q5RGb.clearCheck()
         binding.q6RGa.clearCheck()
         binding.q6RGb.clearCheck()
-        binding.g7RGa.clearCheck()
+        binding.g7aRGa.clearCheck()
         binding.g7aRGb.clearCheck()
         binding.g7bRGa.clearCheck()
         binding.g7bRGb.clearCheck()
@@ -749,6 +726,7 @@ class BPICheckFragment : Fragment() {
         binding.g7fRGb.clearCheck()
         binding.g7gRGa.clearCheck()
         binding.g7gRGb.clearCheck()
+
         binding.redCircleImgV.alpha = 0F
     }
 
