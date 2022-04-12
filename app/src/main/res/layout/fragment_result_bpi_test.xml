@@ -225,13 +225,13 @@
     <ImageView
         android:id="@+id/scaleImgV"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:rotation="90"
-        android:translationX="-50dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomResultBarHGL"
+        app:layout_constraintEnd_toStartOf="@+id/rightBarHGL"
         app:layout_constraintLeft_toRightOf="@id/titleVGL1"
-        app:layout_constraintTop_toBottomOf="@+id/topResultBarHGL"
-        app:lay
-        app:srcCompat="@drawable/ic_scale" />
+        app:layout_constraintStart_toStartOf="@+id/resultViewRightHGL"
+        app:layout_constraintTop_toBottomOf="@+id/bottomBarViewVGL"
+        app:srcCompat="@drawable/ic_scale_image" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/rightBarHGL"
@@ -280,6 +280,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="16dp"
+            android:gravity="center"
             android:text="Low Pain"
             android:textColor="@color/white"
             android:textSize="18sp" />
@@ -304,6 +305,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="16dp"
+            android:gravity="center"
             android:text="Mild Pain"
             android:textColor="@color/white"
             android:textSize="18sp" />

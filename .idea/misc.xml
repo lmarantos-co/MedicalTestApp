@@ -398,6 +398,7 @@
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_pain__24dp.xml" value="0.2675" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_pain__2_.xml" value="0.2675" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_scale.xml" value="0.2235" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_scale_image.xml" value="0.2465" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_sign_in.xml" value="0.2675" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/mds_test_result_rel_layout.xml" value="0.2675" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/purple_mditest_form_title_style.xml" value="0.2675" />
@@ -407,6 +408,7 @@
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/activity_main.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_b_p_i_check.xml" value="0.25" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_m_d_i_check.xml" value="0.2625" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_med_diet_test.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_bpi_test.xml" value="0.25" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/fragment_result_mdi_test.xml" value="0.2625" />
       </map>

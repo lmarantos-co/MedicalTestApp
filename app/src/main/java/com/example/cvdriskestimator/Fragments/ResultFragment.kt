@@ -327,26 +327,40 @@ class ResultFragment : Fragment() {
             pisTestResult = view.findViewById(R.id.totalPISScoreDescTxtV)
             bpiresultBar = view.findViewById(R.id.resultBarView)
 
-
-// Create the Handler object (on the main thread by default)
+            //coroutine implementation of BPI Bar view
             var runningTest: Int = 0
             var counter : Int = 0
-            val handler = Handler()
-            // Define the code block to be executed
-            // Define the code block to be executed
-            val runnableCode: Runnable = object : Runnable {
-                override fun run() {
-                    // Do something here on the main thread
+            GlobalScope.launch(Dispatchers.Main) {
+                // Do something here on the main thread
+                while (counter < 10000) {
                     createBPIResultBarViews(runningTest)
-                    runningTest = Math.floorMod(counter , 2)
-                    counter ++
-                    // Repeat this the same runnable code block again another 2 seconds
-                    // 'this' is referencing the Runnable object
-                    handler.postDelayed(this, 2000)
+                    counter++
+                    runningTest = Math.floorMod(counter, 2)
                 }
             }
-            // Start the initial runnable task by posting through the handler
-            handler.post(runnableCode)
+
+
+// Create the Handler object (on the main thread by default)
+//            var runningTest: Int = 0
+//            var counter : Int = 0
+//            val handler = Handler()
+//            // Define the code block to be executed
+//
+//
+//
+//            val runnableCode: Runnable = object : Runnable {
+//                override fun run() {
+//                    // Do something here on the main thread
+//                    createBPIResultBarViews(runningTest)
+//                    counter ++
+//                    runningTest = Math.floorMod(counter , 2)
+//                    // Repeat this the same runnable code block again another 2 seconds
+//                    // 'this' is referencing the Runnable object
+//                    handler.postDelayed(this, 2000)
+//                }
+//            }
+//            // Start the initial runnable task by posting through the handler
+//            handler.post(runnableCode)
         }
             return view
         }
@@ -460,6 +474,7 @@ class ResultFragment : Fragment() {
         }
         if (test_type == 6)
         {
+            setFormColors(testType = 6)
             pssTestScore.text = arguments!!.getDouble(ARG_PARAM1).toInt().toString()
             pisTestScore.text = arguments!!.getDouble(ARG_PARAM2).toInt().toString()
         }
@@ -736,16 +751,16 @@ class ResultFragment : Fragment() {
     }
 
     //function to create Views above the bpi result bar
-    fun createBPIResultBarViews(runningResult : Int) {
+    suspend fun createBPIResultBarViews(runningResult : Int) {
 
         bpiresultBar.layoutParams.width = 0
         bpiresultBar.layoutParams.height = (RelativeLayout.LayoutParams.WRAP_CONTENT)
-        val viewHeight = screenHeight / 15
+        val viewHeight = screenHeight / 20
         val ybpiresultBar = bpiresultBar.y
         val xbpiresultBar = bpiresultBar.x
         val userPSSResult = (arguments!!.getDouble(ARG_PARAM1) * 1).toInt()
         val userPISResult = (arguments!!.getDouble(ARG_PARAM2) * 1).toInt()
-
+        var progressBarSubViews = ArrayList<customDerpesionProgressView>()
         val paint = Paint()
 
 
@@ -753,65 +768,100 @@ class ResultFragment : Fragment() {
         {
             0 ->
             {
-                var bpiPSSResBarView = customDerpesionProgressView(
-                    mainActivity.applicationContext,
-                    xbpiresultBar ,
-                    ybpiresultBar,
-                    xbpiresultBar + screenWidth,
-                    ybpiresultBar + (userPSSResult) * viewHeight.toFloat(),
-                    paint    )
+                coroutineScope {
+//                    var bpiPSSResBarView = customDerpesionProgressView(
+//                        mainActivity.applicationContext,
+//                        xbpiresultBar ,
+//                        ybpiresultBar,
+//                        xbpiresultBar + screenWidth,
+//                        ybpiresultBar + (userPSSResult) * viewHeight.toFloat(),
+//                        paint    )
 
-                bpiPSSResBarView.layoutParams
-                setBPIProgresViewColor(bpiPSSResBarView , userPSSResult)
-                //add the created view to the relativelayout
-                bpiPSSResBarView.invalidate()
-                bpiresultBar.addView(
-                    bpiPSSResBarView,
-                    ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                    )
-                )
-                bpiresultBar.invalidate()
+//                    bpiPSSResBarView.layoutParams
+//                    setBPIProgresViewColor(bpiPSSResBarView , userPSSResult)
+                    //add the created view to the relativelayout
+                    bpiresultBar.removeAllViews()
+                    progressBarSubViews = createBPIBarView(userPSSResult , viewHeight.toFloat())
+                    for (view in progressBarSubViews.iterator())
+                    {
+                        view.invalidate()
+                        bpiresultBar.addView(
+                            view,
+                            ViewGroup.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                        )
+                    }
+                    bpiresultBar.invalidate()
+//                    bpiPSSResBarView.invalidate()
+//                    bpiresultBar.addView(
+//                        bpiPSSResBarView,
+//                        ViewGroup.LayoutParams(
+//                            ViewGroup.LayoutParams.WRAP_CONTENT,
+//                            ViewGroup.LayoutParams.WRAP_CONTENT
+//                        )
+//                    )
+//                    bpiresultBar.invalidate()
 
-                val scale = ScaleAnimation(1f , 1f , 0f , 1f)
-                scale.fillAfter = true
-                scale.duration = 1000
-                bpiresultBar.startAnimation(scale)
+                    val scale = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scale.fillAfter = true
+                    scale.duration = 1000
+                    bpiresultBar.startAnimation(scale)
+                    delay(1000)
+                }
             }
 
             1 ->
             {
-                var bpiPISResBarView = customDerpesionProgressView(
-                    mainActivity.applicationContext,
-                    xbpiresultBar ,
-                    ybpiresultBar,
-                    xbpiresultBar + screenWidth,
-                    ybpiresultBar + (userPISResult) * viewHeight.toFloat(),
-                    paint    )
+                coroutineScope {
+//                    var bpiPISResBarView = customDerpesionProgressView(
+//                        mainActivity.applicationContext,
+//                        xbpiresultBar ,
+//                        ybpiresultBar,
+//                        xbpiresultBar + screenWidth,
+//                        ybpiresultBar + (userPISResult) * viewHeight.toFloat(),
+//                        paint    )
+//
+//                    bpiPISResBarView.layoutParams
+//                    setBPIProgresViewColor(bpiPISResBarView , userPISResult)
+                    //add the created view to the relativelayout
+//                    bpiPISResBarView.invalidate()
+//                    bpiresultBar.addView(
+//                        bpiPISResBarView,
+//                        ViewGroup.LayoutParams(
+//                            ViewGroup.LayoutParams.WRAP_CONTENT,
+//                            ViewGroup.LayoutParams.WRAP_CONTENT
+//                        )
+//                    )
+//                    bpiresultBar.invalidate()
+                    bpiresultBar.removeAllViews()
+                    progressBarSubViews = createBPIBarView(userPISResult , viewHeight.toFloat())
+                    for (view in progressBarSubViews.iterator())
+                    {
+                        view.invalidate()
+                        bpiresultBar.addView(
+                            view,
+                            ViewGroup.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                        )
+                    }
+                    bpiresultBar.invalidate()
 
-                bpiPISResBarView.layoutParams
-                setBPIProgresViewColor(bpiPISResBarView , userPISResult)
-                //add the created view to the relativelayout
-                bpiPISResBarView.invalidate()
-                bpiresultBar.addView(
-                    bpiPISResBarView,
-                    ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                    )
-                )
-                bpiresultBar.invalidate()
+                    val scale = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scale.fillAfter = true
+                    scale.duration = 1000
+                    bpiresultBar.startAnimation(scale)
+                    delay(1000)
+                }
 
-                val scale = ScaleAnimation(1f , 1f , 0f , 1f)
-                scale.fillAfter = true
-                scale.duration = 1000
-                bpiresultBar.startAnimation(scale)
             }
         }
     }
 
-    fun setProgresViewColor(view: View, index: Int) {
+    private fun setProgresViewColor(view: View, index: Int) {
         if ((index >= 0) && (index < 20)) {
             view.background = resources.getDrawable(R.drawable.blue_progressbar_style)
 
@@ -828,19 +878,90 @@ class ResultFragment : Fragment() {
         }
     }
 
-    fun setBPIProgresViewColor(view: View, index: Int) {
+    private fun createBPIBarView(score : Int, viewHeight : Float) : ArrayList<customDerpesionProgressView>
+    {
+        var xResultBaseBar  = bpiresultBar.x
+        var yResultBaseBar = bpiresultBar.y
+        var progressBarSubViews = ArrayList<customDerpesionProgressView>()
+        val paint = Paint()
+        var barResultViewComplete = false
+        if (score < 1)
+        {
+            var lowProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar, xResultBaseBar + screenWidth , yResultBaseBar + ((score) * viewHeight) , paint)
+            setBPIProgresViewColor(lowProgressBarView , score)
+            progressBarSubViews.add(lowProgressBarView)
+            barResultViewComplete = true
+        }
+        if (score >= 1)
+        {
+            var lowProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar, xResultBaseBar + screenWidth , yResultBaseBar + ((1) * viewHeight) , paint)
+            setBPIProgresViewColor(lowProgressBarView, 1)
+            progressBarSubViews.add(lowProgressBarView)
+            if (score == 1)
+                barResultViewComplete = true
+        }
+        if ((score < 4) && (!barResultViewComplete))
+        {
+            var mildProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (1 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((score) * viewHeight) , paint)
+            setBPIProgresViewColor(mildProgressBarView , score)
+            progressBarSubViews.add(mildProgressBarView)
+            barResultViewComplete = true
+        }
+        if (score >= 4)
+        {
+              var mildProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (1 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((4) * viewHeight) , paint)
+            setBPIProgresViewColor(mildProgressBarView , 4)
+            progressBarSubViews.add(mildProgressBarView)
+            if (score == 4)
+                barResultViewComplete = true
+        }
+        if ((score < 7) && (!barResultViewComplete))
+        {
+            var moderateProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (4 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((score) * viewHeight) , paint)
+            setBPIProgresViewColor(moderateProgressBarView , score)
+            progressBarSubViews.add(moderateProgressBarView)
+            barResultViewComplete = true
+        }
+        if (score >= 7)
+        {
+            var moderateProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (4 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((7) * viewHeight) , paint)
+            setBPIProgresViewColor(moderateProgressBarView , 7)
+            progressBarSubViews.add(moderateProgressBarView)
+            if (score == 7)
+                barResultViewComplete = true
+        }
+        if ((score < 10) && (!barResultViewComplete))
+        {
+            var severeProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (7 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((score) * viewHeight) , paint)
+            setBPIProgresViewColor(severeProgressBarView , score)
+            progressBarSubViews.add(severeProgressBarView)
+            barResultViewComplete = true
+        }
+        if (score == 10)
+        {
+            var severeProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (7 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((10) * viewHeight) , paint)
+            setBPIProgresViewColor(severeProgressBarView , 10)
+            progressBarSubViews.add(severeProgressBarView)
+            if (score == 10)
+                barResultViewComplete = true
+        }
+
+        return progressBarSubViews
+    }
+
+    private fun setBPIProgresViewColor(view: View, index: Int) {
         if ((index >= 0) && (index <= 1)) {
             view.background = resources.getDrawable(R.drawable.blue_progressbar_style)
 
         }
-        if ((index >= 1) && (index <= 4)) {
+        if ((index > 1) && (index <= 4)) {
             view.background = resources.getDrawable(R.drawable.green_progressbar_style)
 
         }
-        if ((index > 4) && (index <= 6)) {
+        if ((index > 4) && (index <= 7)) {
             view.background = resources.getDrawable(R.drawable.orange_progressbar_style)
         }
-        if ((index >= 7) && (index <= 10)) {
+        if ((index > 7) && (index <= 10)) {
             view.background = resources.getDrawable(R.drawable.red_progressbar_style)
         }
     }
