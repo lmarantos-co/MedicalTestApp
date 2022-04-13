@@ -808,7 +808,7 @@ class ResultFragment : Fragment() {
                     scale.fillAfter = true
                     scale.duration = 1000
                     bpiresultBar.startAnimation(scale)
-                    delay(1000)
+                    delay(3000)
                 }
             }
 
@@ -854,7 +854,7 @@ class ResultFragment : Fragment() {
                     scale.fillAfter = true
                     scale.duration = 1000
                     bpiresultBar.startAnimation(scale)
-                    delay(1000)
+                    delay(3000)
                 }
 
             }
