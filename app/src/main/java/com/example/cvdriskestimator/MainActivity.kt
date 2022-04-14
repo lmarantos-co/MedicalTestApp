@@ -516,6 +516,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(mdiCheckFragment)
         fragmentTransaction.hide(baiCheckFragment)
         fragmentTransaction.hide(mdsCheckFragment)
+        fragmentTransaction.hide(bpiCheckFragment)
             .commit()
     }
 

@@ -86,10 +86,13 @@ class medDietTestFragment : Fragment() {
         }
 
         //set the observer for the patient data coming from view model
-        medDietTestViewModel.patientData.observe(viewLifecycleOwner , {
+        medDietTestViewModel.patientData.observe(viewLifecycleOwner) {
             setPatientData(it)
-        })
+        }
 
+        medDietTestBinding.includeCvdTitleForm.MTEConLayout.setOnClickListener {
+            mainActivity.backToActivity()
+        }
         initUI(view)
     }
 

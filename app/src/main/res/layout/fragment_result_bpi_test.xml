@@ -90,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.48" />
+        app:layout_constraintGuide_percent="0.5" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -98,14 +98,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.67" />
+        app:layout_constraintGuide_percent="0.63" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/modPainBottomHGL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.764" />
+        app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topResultBarHGL"
@@ -253,6 +253,92 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.43" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topLowresultHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lowResultPointerGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46" />
+
+    <View
+        android:id="@+id/lowResultView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/topResultViewHGL"
+        app:layout_constraintLeft_toRightOf="@id/resultViewLeftVGL"
+        app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
+        app:layout_constraintTop_toBottomOf="@+id/topLowresultHGL" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mildResultPointerGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <View
+        android:id="@+id/mildResultView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@color/green_5"
+        app:layout_constraintBottom_toTopOf="@+id/modPainTopHGL"
+        app:layout_constraintLeft_toRightOf="@id/resultViewLeftVGL"
+        app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
+        app:layout_constraintTop_toBottomOf="@+id/topResultViewHGL" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/moderateResultPointerGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <View
+        android:id="@+id/moderateResultView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@color/orange_5"
+        app:layout_constraintBottom_toTopOf="@+id/modPainBottomHGL"
+        app:layout_constraintLeft_toRightOf="@id/resultViewLeftVGL"
+        app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
+        app:layout_constraintTop_toBottomOf="@+id/modPainTopHGL" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/severeResultPointerGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <View
+        android:id="@+id/severeResultView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@color/Red"
+        app:layout_constraintBottom_toTopOf="@+id/bottmSevereResultHGL"
+        app:layout_constraintLeft_toRightOf="@id/resultViewLeftVGL"
+        app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
+        app:layout_constraintTop_toBottomOf="@+id/modPainBottomHGL" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottmSevereResultHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.875" />
 
     <RelativeLayout
         android:id="@+id/resultBarView"

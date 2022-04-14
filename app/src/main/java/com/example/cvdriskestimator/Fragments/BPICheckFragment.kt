@@ -89,6 +89,9 @@ class BPICheckFragment : Fragment() {
         bpiPatientViewModel.initRealm(mainActivity.applicationContext)
         showCircle = AnimationUtils.loadAnimation(mainActivity.applicationContext , R.anim.show_circle)
         binding.includeCvdTitleForm.userIcon.alpha = 1f
+        binding.includeCvdTitleForm.MTEConLayout.setOnClickListener {
+            mainActivity.backToActivity()
+        }
         binding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
         binding.includePopUpMenu.termsRelLayout.setOnClickListener {
             binding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
@@ -735,6 +738,7 @@ class BPICheckFragment : Fragment() {
         var circle = binding.redCircleImgV
         circle.x = CircleX
         circle.y = CircleY
+        circle.invalidate()
         circle.animate().alphaBy(1f).duration = 500
         circle.startAnimation(showCircle)
     }

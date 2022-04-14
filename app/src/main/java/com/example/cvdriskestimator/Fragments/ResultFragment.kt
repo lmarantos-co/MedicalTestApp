@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.Html
+import android.transition.TransitionManager
 import android.util.DisplayMetrics
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -22,7 +23,9 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.CustomClasses.customDerpesionProgressView
 import kotlinx.coroutines.*
 import android.view.ViewGroup
+import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
+import androidx.constraintlayout.widget.Guideline
 import java.lang.Runnable
 import java.util.*
 
@@ -120,7 +123,17 @@ class ResultFragment : Fragment() {
     private lateinit var pisTestScore : TextView
     private lateinit var pisTestResult : TextView
     private lateinit var bpiresultBar : RelativeLayout
+    private lateinit var moderatePainBar : RelativeLayout
 
+    private lateinit var lowResultView : View
+    private lateinit var mildResultView : View
+    private lateinit var moderateResultView : View
+    private lateinit var severeResultView : View
+    private lateinit var lowResultPointer : Guideline
+    private lateinit var mildResultPointer : Guideline
+    private lateinit var moderateResultPointer : Guideline
+    private lateinit var severeResultPointer : Guideline
+    private lateinit var newPainConstraintSet : ConstraintSet
 
 
     //screen dimensions
@@ -326,6 +339,16 @@ class ResultFragment : Fragment() {
             pisTestScore = view.findViewById(R.id.totalPIScore)
             pisTestResult = view.findViewById(R.id.totalPISScoreDescTxtV)
             bpiresultBar = view.findViewById(R.id.resultBarView)
+            moderatePainBar = view.findViewById(R.id.moderatePainRelLayout)
+
+            lowResultView = view.findViewById(R.id.lowResultView)
+            mildResultView = view.findViewById(R.id.mildResultView)
+            moderateResultView = view.findViewById(R.id.moderateResultView)
+            severeResultView = view.findViewById(R.id.severeResultView)
+            lowResultPointer = view.findViewById(R.id.lowResultPointerGL)
+            mildResultPointer = view.findViewById(R.id.mildResultPointerGL)
+            moderateResultPointer = view.findViewById(R.id.moderateResultPointerGL)
+            severeResultPointer = view.findViewById(R.id.severeResultPointerGL)
 
             //coroutine implementation of BPI Bar view
             var runningTest: Int = 0
@@ -333,7 +356,8 @@ class ResultFragment : Fragment() {
             GlobalScope.launch(Dispatchers.Main) {
                 // Do something here on the main thread
                 while (counter < 10000) {
-                    createBPIResultBarViews(runningTest)
+//                    createBPIResultBarViews(runningTest)
+                    highlightPainViews(runningTest)
                     counter++
                     runningTest = Math.floorMod(counter, 2)
                 }
@@ -750,6 +774,380 @@ class ResultFragment : Fragment() {
 
     }
 
+    suspend fun highlightPainViews(runningResult : Int)
+    {
+        val userPSSResult = (arguments!!.getDouble(ARG_PARAM1) * 1).toInt()
+        val userPISResult = (arguments!!.getDouble(ARG_PARAM2) * 1).toInt()
+        when(runningResult)
+        {
+            0 ->
+            {
+                coroutineScope {
+                    if (userPSSResult < 1)
+                    {
+                        var newPerc  = ((4 * userPSSResult.toFloat() / 1  + 46) / 100)
+                        lowResultPointer.setGuidelinePercent(newPerc.toFloat())
+                        mildResultView.alpha = 0f
+                        mildResultView.invalidate()
+                        moderateResultView.alpha = 0f
+                        moderateResultView.invalidate()
+                        severeResultView.alpha = 0f
+                        severeResultView.invalidate()
+                        newPainConstraintSet = ConstraintSet()
+                        newPainConstraintSet.clone(mainActivity.applicationContext , R.layout.fragment_result_bpi_test)
+                        newPainConstraintSet.connect(R.id.lowResultView , ConstraintSet.BOTTOM , R.id.lowResultPointerGL , ConstraintSet.TOP)
+                        newPainConstraintSet.applyTo(formConLayout)
+                        formConLayout.invalidate()
+                        var scaleAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                        scaleAnimation.fillAfter = true
+                        scaleAnimation.duration = 300
+                        lowResultView.startAnimation(scaleAnimation)
+                    }
+                    if (userPSSResult == 1)
+                    {
+                        var newPerc = (50f / 100f)
+                        lowResultPointer.setGuidelinePercent(newPerc.toFloat())
+                        newPainConstraintSet = ConstraintSet()
+                        newPainConstraintSet.clone(mainActivity.applicationContext , R.layout.fragment_result_bpi_test)
+                        mildResultView.alpha = 0f
+                        moderateResultView.alpha = 0f
+                        severeResultView.alpha = 0f
+                        mildResultView.invalidate()
+                        moderateResultView.invalidate()
+                        severeResultView.invalidate()
+                        newPainConstraintSet.connect(R.id.lowResultView , ConstraintSet.BOTTOM , R.id.lowResultPointerGL , ConstraintSet.TOP)
+                        newPainConstraintSet.applyTo(formConLayout)
+                        formConLayout.invalidate()
+                        var scaleAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                        scaleAnimation.fillAfter = true
+                        scaleAnimation.duration = 300
+                        lowResultView.startAnimation(scaleAnimation)
+                    }
+
+                    if (userPSSResult < 4)
+                    {
+                        var newPerc = ((13 * (userPSSResult.toFloat() - 1) / (3) + 50) / 100)
+                        lowResultPointer.setGuidelinePercent(newPerc.toFloat())
+                        newPainConstraintSet = ConstraintSet()
+                        newPainConstraintSet.clone(mainActivity.applicationContext , R.layout.fragment_result_bpi_test)
+                        lowResultView.alpha = 1f
+                        moderateResultView.alpha = 0f
+                        severeResultView.alpha = 0f
+                        lowResultView.invalidate()
+                        moderateResultView.invalidate()
+                        severeResultView.invalidate()
+                        newPainConstraintSet.connect(R.id.mildResultView , ConstraintSet.BOTTOM , R.id.mildResultPointerGL , ConstraintSet.TOP)
+                        newPainConstraintSet.applyTo(formConLayout)
+                        formConLayout.invalidate()
+                        var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                        scaleLowAnimation.fillAfter = true
+                        scaleLowAnimation.duration = 300
+                        lowResultView.startAnimation(scaleLowAnimation)
+                        scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                        {
+                            override fun onAnimationStart(p0: Animation?) {
+                            }
+
+                            override fun onAnimationEnd(p0: Animation?) {
+                                var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                scaleMildAnimation.fillAfter = true
+                                scaleMildAnimation.duration = 300
+                                mildResultView.startAnimation(scaleMildAnimation)
+                            }
+
+                            override fun onAnimationRepeat(p0: Animation?) {
+                            }
+
+                        })
+                    }
+                    if (userPSSResult == 4)
+                    {
+                        var newPerc = (63f / 100f ).toFloat()
+                        lowResultPointer.setGuidelinePercent(newPerc.toFloat())
+                        newPainConstraintSet = ConstraintSet()
+                        newPainConstraintSet.clone(mainActivity.applicationContext , R.layout.fragment_result_bpi_test)
+                        lowResultView.alpha = 1f
+                        moderateResultView.alpha = 0f
+                        severeResultView.alpha = 0f
+                        lowResultView.invalidate()
+                        moderateResultView.invalidate()
+                        severeResultView.invalidate()
+                        newPainConstraintSet.connect(R.id.mildResultView , ConstraintSet.BOTTOM , R.id.mildResultPointerGL , ConstraintSet.TOP)
+                        newPainConstraintSet.applyTo(formConLayout)
+                        formConLayout.invalidate()
+
+                        var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                        scaleLowAnimation.fillAfter = true
+                        scaleLowAnimation.duration = 300
+                        lowResultView.startAnimation(scaleLowAnimation)
+                        scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                        {
+                            override fun onAnimationStart(p0: Animation?) {
+                            }
+
+                            override fun onAnimationEnd(p0: Animation?) {
+                                var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                scaleMildAnimation.fillAfter = true
+                                scaleMildAnimation.duration = 300
+                                mildResultView.startAnimation(scaleMildAnimation)
+                            }
+
+                            override fun onAnimationRepeat(p0: Animation?) {
+                            }
+
+                        })
+                    }
+
+                    if (userPSSResult < 7)
+                    {
+                        var newPerc = ((12 * ((userPSSResult.toFloat() - 4) / 3) + 63) / 100)
+                        lowResultPointer.setGuidelinePercent(newPerc)
+                        newPainConstraintSet = ConstraintSet()
+                        newPainConstraintSet.clone(mainActivity.applicationContext , R.layout.fragment_result_bpi_test)
+                        mildResultView.alpha = 1f
+                        lowResultView.alpha = 1f
+                        severeResultView.alpha = 0f
+                        mildResultView.invalidate()
+                        lowResultView.invalidate()
+                        severeResultView.invalidate()
+                        newPainConstraintSet.connect(R.id.moderateResultView , ConstraintSet.BOTTOM , R.id.moderateResultPointerGL , ConstraintSet.TOP)
+                        newPainConstraintSet.applyTo(formConLayout)
+                        formConLayout.invalidate()
+
+                        var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                        scaleLowAnimation.fillAfter = true
+                        scaleLowAnimation.duration = 300
+                        lowResultView.startAnimation(scaleLowAnimation)
+                        scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                        {
+                            override fun onAnimationStart(p0: Animation?) {
+                            }
+
+                            override fun onAnimationEnd(p0: Animation?) {
+                                var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                scaleMildAnimation.fillAfter = true
+                                scaleMildAnimation.duration = 300
+                                mildResultView.startAnimation(scaleMildAnimation)
+
+                                scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                                {
+                                    override fun onAnimationStart(p0: Animation?) {
+                                    }
+
+                                    override fun onAnimationEnd(p0: Animation?) {
+                                        var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                        scaleModerateAnimation.fillAfter = true
+                                        scaleModerateAnimation.duration = 300
+                                        moderateResultView.startAnimation(scaleModerateAnimation)                                    }
+
+                                    override fun onAnimationRepeat(p0: Animation?) {
+                                    }
+
+                                })
+                            }
+
+                            override fun onAnimationRepeat(p0: Animation?) {
+                            }
+
+                        })
+                    }
+                    if (userPSSResult == 7)
+                    {
+                        var newPerc = (75f / 100f)
+                        lowResultPointer.setGuidelinePercent(newPerc.toFloat())
+                        newPainConstraintSet = ConstraintSet()
+                        newPainConstraintSet.clone(mainActivity.applicationContext , R.layout.fragment_result_bpi_test)
+                        mildResultView.alpha = 1f
+                        lowResultView.alpha = 1f
+                        severeResultView.alpha = 0f
+                        mildResultView.invalidate()
+                        lowResultView.invalidate()
+                        severeResultView.invalidate()
+                        newPainConstraintSet = ConstraintSet()
+                        newPainConstraintSet.connect(R.id.moderateResultView , ConstraintSet.BOTTOM , R.id.moderateResultPointerGL , ConstraintSet.TOP)
+                        newPainConstraintSet.applyTo(formConLayout)
+                        formConLayout.invalidate()
+
+                        var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                        scaleLowAnimation.fillAfter = true
+                        scaleLowAnimation.duration = 300
+                        lowResultView.startAnimation(scaleLowAnimation)
+                        scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                        {
+                            override fun onAnimationStart(p0: Animation?) {
+                            }
+
+                            override fun onAnimationEnd(p0: Animation?) {
+                                var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                scaleMildAnimation.fillAfter = true
+                                scaleMildAnimation.duration = 300
+                                mildResultView.startAnimation(scaleMildAnimation)
+
+                                scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                                {
+                                    override fun onAnimationStart(p0: Animation?) {
+                                    }
+
+                                    override fun onAnimationEnd(p0: Animation?) {
+                                        var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                        scaleModerateAnimation.fillAfter = true
+                                        scaleModerateAnimation.duration = 300
+                                        moderateResultView.startAnimation(scaleModerateAnimation)                                    }
+
+                                    override fun onAnimationRepeat(p0: Animation?) {
+                                    }
+
+                                })
+                            }
+
+                            override fun onAnimationRepeat(p0: Animation?) {
+                            }
+
+                        })
+                    }
+
+                    if (userPSSResult < 10)
+                    {
+                        var newPerc = ((15 * (userPSSResult.toFloat() - 7) / 3) + 75) /100f
+                        lowResultPointer.setGuidelinePercent(newPerc.toFloat())
+                        newPainConstraintSet = ConstraintSet()
+                        newPainConstraintSet.clone(mainActivity.applicationContext , R.layout.fragment_result_bpi_test)
+                        mildResultView.alpha = 1f
+                        moderateResultView.alpha = 1f
+                        lowResultView.alpha = 1f
+                        mildResultView.invalidate()
+                        moderateResultView.invalidate()
+                        lowResultView.invalidate()
+                        newPainConstraintSet.connect(R.id.severeResultView , ConstraintSet.BOTTOM , R.id.severeResultPointerGL , ConstraintSet.TOP)
+                        newPainConstraintSet.applyTo(formConLayout)
+                        formConLayout.invalidate()
+
+                        var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                        scaleLowAnimation.fillAfter = true
+                        scaleLowAnimation.duration = 300
+                        lowResultView.startAnimation(scaleLowAnimation)
+                        scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                        {
+                            override fun onAnimationStart(p0: Animation?) {
+                            }
+
+                            override fun onAnimationEnd(p0: Animation?) {
+                                var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                scaleMildAnimation.fillAfter = true
+                                scaleMildAnimation.duration = 300
+                                mildResultView.startAnimation(scaleMildAnimation)
+
+                                scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                                {
+                                    override fun onAnimationStart(p0: Animation?) {
+                                    }
+
+                                    override fun onAnimationEnd(p0: Animation?) {
+                                        var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                        scaleModerateAnimation.fillAfter = true
+                                        scaleModerateAnimation.duration = 300
+                                        moderateResultView.startAnimation(scaleModerateAnimation)
+                                        scaleModerateAnimation.setAnimationListener( object : Animation.AnimationListener
+                                        {
+                                            override fun onAnimationStart(p0: Animation?) {
+                                            }
+
+                                            override fun onAnimationEnd(p0: Animation?) {
+                                                var scaleSevereAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                                scaleSevereAnimation.fillAfter = true
+                                                scaleSevereAnimation.duration = 300
+                                                severeResultView.startAnimation(scaleSevereAnimation)                                             }
+
+                                            override fun onAnimationRepeat(p0: Animation?) {
+                                            }
+
+                                        })
+                                    }
+
+                                    override fun onAnimationRepeat(p0: Animation?) {
+                                    }
+
+                                })
+                            }
+
+                            override fun onAnimationRepeat(p0: Animation?) {
+                            }
+
+                        })
+                    }
+                    if (userPSSResult == 10)
+                    {
+                        var newPerc = (90f).toFloat()
+                        lowResultPointer.setGuidelinePercent(newPerc)
+                        newPainConstraintSet = ConstraintSet()
+                        newPainConstraintSet.clone(mainActivity.applicationContext , R.layout.fragment_result_bpi_test)
+                        mildResultView.alpha = 1f
+                        moderateResultView.alpha = 1f
+                        lowResultView.alpha = 1f
+                        mildResultView.invalidate()
+                        moderateResultView.invalidate()
+                        lowResultView.invalidate()
+                        newPainConstraintSet.connect(R.id.severeResultView , ConstraintSet.BOTTOM , R.id.severeResultPointerGL , ConstraintSet.TOP)
+                        newPainConstraintSet.applyTo(formConLayout)
+                        formConLayout.invalidate()
+                        var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                        scaleLowAnimation.fillAfter = true
+                        scaleLowAnimation.duration = 300
+                        lowResultView.startAnimation(scaleLowAnimation)
+                        scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                        {
+                            override fun onAnimationStart(p0: Animation?) {
+                            }
+
+                            override fun onAnimationEnd(p0: Animation?) {
+                                var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                scaleMildAnimation.fillAfter = true
+                                scaleMildAnimation.duration = 300
+                                mildResultView.startAnimation(scaleMildAnimation)
+
+                                scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                                {
+                                    override fun onAnimationStart(p0: Animation?) {
+                                    }
+
+                                    override fun onAnimationEnd(p0: Animation?) {
+                                        var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                        scaleModerateAnimation.fillAfter = true
+                                        scaleModerateAnimation.duration = 300
+                                        moderateResultView.startAnimation(scaleModerateAnimation)
+                                        scaleModerateAnimation.setAnimationListener( object : Animation.AnimationListener
+                                        {
+                                            override fun onAnimationStart(p0: Animation?) {
+                                            }
+
+                                            override fun onAnimationEnd(p0: Animation?) {
+                                                var scaleSevereAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                                scaleSevereAnimation.fillAfter = true
+                                                scaleSevereAnimation.duration = 300
+                                                severeResultView.startAnimation(scaleSevereAnimation)                                             }
+
+                                            override fun onAnimationRepeat(p0: Animation?) {
+                                            }
+
+                                        })
+                                    }
+
+                                    override fun onAnimationRepeat(p0: Animation?) {
+                                    }
+
+                                })
+                            }
+
+                            override fun onAnimationRepeat(p0: Animation?) {
+                            }
+
+                        })
+                    }
+                }
+            }
+        }
+    }
+
     //function to create Views above the bpi result bar
     suspend fun createBPIResultBarViews(runningResult : Int) {
 
@@ -837,7 +1235,7 @@ class ResultFragment : Fragment() {
 //                    bpiresultBar.invalidate()
                     bpiresultBar.removeAllViews()
                     progressBarSubViews = createBPIBarView(userPISResult , viewHeight.toFloat())
-                    for (view in progressBarSubViews.iterator())
+                    for (view in progressBarSubViews)
                     {
                         view.invalidate()
                         bpiresultBar.addView(
@@ -885,16 +1283,23 @@ class ResultFragment : Fragment() {
         var progressBarSubViews = ArrayList<customDerpesionProgressView>()
         val paint = Paint()
         var barResultViewComplete = false
+        var lowProgressBarView = View(mainActivity.applicationContext)
+        var mildProgressBarView = View(mainActivity.applicationContext)
+        var moderateProgressBarView = View(mainActivity.applicationContext)
+        var severeProgressBarView = View(mainActivity.applicationContext)
         if (score < 1)
         {
-            var lowProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar, xResultBaseBar + screenWidth , yResultBaseBar + ((score) * viewHeight) , paint)
+//            var dummyCustomView = customDerpesionProgressView(mainActivity.applicationContext, 100f, 100f, 200f, 300f, paint )
+//            dummyCustomView.setBackgroundColor(resources.getColor(R.color.blue))
+//            progressBarSubViews.add(dummyCustomView)
+            lowProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , 0f , xResultBaseBar + screenWidth , ((score) * viewHeight) , paint)
             setBPIProgresViewColor(lowProgressBarView , score)
             progressBarSubViews.add(lowProgressBarView)
             barResultViewComplete = true
         }
         if (score >= 1)
         {
-            var lowProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar, xResultBaseBar + screenWidth , yResultBaseBar + ((1) * viewHeight) , paint)
+            lowProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar ,  0f   , xResultBaseBar + screenWidth ,((1) * viewHeight) , paint)
             setBPIProgresViewColor(lowProgressBarView, 1)
             progressBarSubViews.add(lowProgressBarView)
             if (score == 1)
@@ -902,29 +1307,30 @@ class ResultFragment : Fragment() {
         }
         if ((score < 4) && (!barResultViewComplete))
         {
-            var mildProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (1 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((score) * viewHeight) , paint)
+            mildProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar ,  lowProgressBarView.height +  (1 * viewHeight) , xResultBaseBar + screenWidth , lowProgressBarView.height + ((score) * viewHeight), paint)
             setBPIProgresViewColor(mildProgressBarView , score)
             progressBarSubViews.add(mildProgressBarView)
             barResultViewComplete = true
         }
         if (score >= 4)
         {
-              var mildProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (1 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((4) * viewHeight) , paint)
+            mildProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar ,lowProgressBarView.height +  (1 * viewHeight) , xResultBaseBar + screenWidth ,lowProgressBarView.height +  ((4) * viewHeight) , paint)
             setBPIProgresViewColor(mildProgressBarView , 4)
+
             progressBarSubViews.add(mildProgressBarView)
             if (score == 4)
                 barResultViewComplete = true
         }
         if ((score < 7) && (!barResultViewComplete))
         {
-            var moderateProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (4 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((score) * viewHeight) , paint)
+            moderateProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , lowProgressBarView.height + mildProgressBarView.height + (4 * viewHeight), xResultBaseBar + screenWidth , lowProgressBarView.height + mildProgressBarView.height  +  ((score) * viewHeight) , paint)
             setBPIProgresViewColor(moderateProgressBarView , score)
             progressBarSubViews.add(moderateProgressBarView)
             barResultViewComplete = true
         }
         if (score >= 7)
         {
-            var moderateProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (4 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((7) * viewHeight) , paint)
+            moderateProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar ,lowProgressBarView.height + mildProgressBarView.height +  (4 * viewHeight) , xResultBaseBar + screenWidth , lowProgressBarView.height + mildProgressBarView.height + ((7) * viewHeight) , paint)
             setBPIProgresViewColor(moderateProgressBarView , 7)
             progressBarSubViews.add(moderateProgressBarView)
             if (score == 7)
@@ -932,14 +1338,14 @@ class ResultFragment : Fragment() {
         }
         if ((score < 10) && (!barResultViewComplete))
         {
-            var severeProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (7 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((score) * viewHeight) , paint)
+            severeProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , lowProgressBarView.height + mildProgressBarView.height + moderateProgressBarView.height +(7 * viewHeight) , xResultBaseBar + screenWidth , lowProgressBarView.height + mildProgressBarView.height + moderateProgressBarView.height + ((score) * viewHeight) , paint)
             setBPIProgresViewColor(severeProgressBarView , score)
             progressBarSubViews.add(severeProgressBarView)
             barResultViewComplete = true
         }
         if (score == 10)
         {
-            var severeProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , yResultBaseBar + (7 * viewHeight), xResultBaseBar + screenWidth , yResultBaseBar + ((10) * viewHeight) , paint)
+            severeProgressBarView = customDerpesionProgressView(mainActivity.applicationContext , xResultBaseBar , lowProgressBarView.height + mildProgressBarView.height + moderateProgressBarView.height + (7 * viewHeight), xResultBaseBar + screenWidth , lowProgressBarView.height + mildProgressBarView.height + moderateProgressBarView.height + ((10) * viewHeight)  , paint)
             setBPIProgresViewColor(severeProgressBarView , 10)
             progressBarSubViews.add(severeProgressBarView)
             if (score == 10)
