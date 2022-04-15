@@ -539,7 +539,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction.show(loginFragment)
         if (fragment is RegisterFragment)
             fragmentTransaction.show(registerFragment)
-
+        if (fragment is BPICheckFragment)
+            fragmentTransaction.show(fragment)
 
         fragmentTransaction.replace(R.id.fragmentContainer , fragment).addToBackStack("FRAGMENT").commit()
     }

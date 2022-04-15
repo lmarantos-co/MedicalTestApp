@@ -279,6 +279,20 @@
         app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
         app:layout_constraintTop_toBottomOf="@+id/topLowresultHGL" />
 
+<!--    progress bar implem-->
+    <ProgressBar
+        android:id="@+id/lowResultProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@color/blue"
+        style="@style/Widget.AppCompat.ProgressBar"
+        app:layout_constraintBottom_toTopOf="@+id/topResultViewHGL"
+        app:layout_constraintLeft_toRightOf="@id/resultViewLeftVGL"
+        app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
+        app:layout_constraintTop_toBottomOf="@+id/topLowresultHGL" />
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/mildResultPointerGL"
         android:layout_width="wrap_content"
@@ -292,6 +306,19 @@
         android:layout_height="0dp"
         android:alpha="0"
         android:background="@color/green_5"
+        app:layout_constraintBottom_toTopOf="@+id/modPainTopHGL"
+        app:layout_constraintLeft_toRightOf="@id/resultViewLeftVGL"
+        app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
+        app:layout_constraintTop_toBottomOf="@+id/topResultViewHGL" />
+
+    <ProgressBar
+        android:id="@+id/mildResultProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@color/green_5"
+        style="@style/Widget.AppCompat.ProgressBar"
+
         app:layout_constraintBottom_toTopOf="@+id/modPainTopHGL"
         app:layout_constraintLeft_toRightOf="@id/resultViewLeftVGL"
         app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
@@ -315,6 +342,19 @@
         app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
         app:layout_constraintTop_toBottomOf="@+id/modPainTopHGL" />
 
+    <ProgressBar
+        android:id="@+id/moderateResultProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@color/orange_5"
+        style="@style/Widget.AppCompat.ProgressBar"
+        app:layout_constraintBottom_toTopOf="@+id/modPainBottomHGL"
+        app:layout_constraintLeft_toRightOf="@id/resultViewLeftVGL"
+        app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
+        app:layout_constraintTop_toBottomOf="@+id/modPainTopHGL" />
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/severeResultPointerGL"
         android:layout_width="wrap_content"
@@ -328,6 +368,18 @@
         android:layout_height="0dp"
         android:alpha="0"
         android:background="@color/Red"
+        app:layout_constraintBottom_toTopOf="@+id/bottmSevereResultHGL"
+        app:layout_constraintLeft_toRightOf="@id/resultViewLeftVGL"
+        app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
+        app:layout_constraintTop_toBottomOf="@+id/modPainBottomHGL" />
+
+    <ProgressBar
+        android:id="@+id/severeResultProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@color/Red"
+        style="@style/Widget.AppCompat.ProgressBar"
         app:layout_constraintBottom_toTopOf="@+id/bottmSevereResultHGL"
         app:layout_constraintLeft_toRightOf="@id/resultViewLeftVGL"
         app:layout_constraintRight_toLeftOf="@+id/resultViewRightHGL"
@@ -369,7 +421,7 @@
             android:gravity="center"
             android:text="Low Pain"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
     </RelativeLayout>
 
@@ -394,7 +446,7 @@
             android:gravity="center"
             android:text="Mild Pain"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

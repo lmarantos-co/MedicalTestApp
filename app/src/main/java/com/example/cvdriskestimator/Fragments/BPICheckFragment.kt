@@ -99,8 +99,14 @@ class BPICheckFragment : Fragment() {
         val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
 
         Log.d("THREAD" , Thread.currentThread().name)
-        if (username == "tempUser")
+        if (username != "tempUser")
+        {
+            bpiPatientViewModel.setPatientDataOnForm(username!!)
+        }
+        else
+        {
             bpiPatientViewModel.initPatientData()
+        }
         loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
         popUpMenu = PopUpMenu(binding.includePopUpMenu.termsRelLayout , mainActivity , this , loginFragment , registerFragment)

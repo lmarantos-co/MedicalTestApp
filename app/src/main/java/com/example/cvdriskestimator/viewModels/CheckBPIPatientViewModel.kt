@@ -76,7 +76,7 @@ class CheckBPIPatientViewModel : ViewModel() {
             && (checkQuestionForInputError(allPatientValues[4]  , 6))
             && (checkQuestionForInputError(allPatientValues[6]  , 8)) && (checkQuestionForInputError(allPatientValues[7]  , 9))
             && (checkQuestionForInputError(allPatientValues[8]  , 10)) && (checkQuestionForInputError(allPatientValues[9]  , 11))
-            && (checkQuestionForInputError(allPatientValues[10]  , 12))
+            && (checkQuestionForInputError(allPatientValues[10]  , 12)) && (checkQuestionForInputError(allPatientValues[11]  , 13))
             && (checkCircleCoordinates(circleCoordinates))){
             //all data input is correct
             GlobalScope.launch(Dispatchers.Main) {
@@ -86,8 +86,8 @@ class CheckBPIPatientViewModel : ViewModel() {
                 var scoreResults = bpiTestEstimator.calculatePainScores()
 
                 resultFragment = ResultFragment.newInstance(
-                    scoreResults.get(0).toDouble(),
-                    scoreResults.get(1).toDouble(),
+                    scoreResults[0].toDouble(),
+                    scoreResults[1].toDouble(),
                     6
                 )
                 mainActivity.fragmentTransaction(resultFragment)
