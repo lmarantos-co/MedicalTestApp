@@ -113,8 +113,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:text="@string/MedDietScore_subtitle"
                     android:textColor="@color/white"
@@ -141,23 +141,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
                             android:gravity="center"
                             android:minHeight="64dp"
                             android:text="@string/mds_question1"
-                            android:focusableInTouchMode="true"
-                            android:focusable="true"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
-
-
-                        <ImageView
-                            android:id="@+id/cerrealImgV"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/Question1TxtV"
-                            android:layout_centerHorizontal="true"
-                            android:layout="@id/Question1TxtV"
-                            app:srcCompat="@drawable/ic_cereal_icon" />
 
 
                     </RelativeLayout>
@@ -262,14 +252,6 @@
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
-                    <ImageView
-                        android:id="@+id/potatoesImgV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Question2TxtV"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/ic_potatoes_icon" />
-
                 </RelativeLayout>
 
 
@@ -370,14 +352,6 @@
                         android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
-
-                    <ImageView
-                        android:id="@+id/fruitsImgV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Question3TxtV"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/ic_fruits_icon" />
 
                 </RelativeLayout>
 
@@ -480,14 +454,6 @@
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
-                    <ImageView
-                        android:id="@+id/veggiesImgV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Question4TxtV"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/ic_vegetables_icon" />
-
                 </RelativeLayout>
 
 
@@ -587,14 +553,6 @@
                         android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
-
-                    <ImageView
-                        android:id="@+id/legumensImgV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Question5TxtV"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/ic_peas_icon" />
 
                 </RelativeLayout>
 
@@ -696,14 +654,6 @@
                         android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
-
-                    <ImageView
-                        android:id="@+id/fishImgV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Question6TxtV"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/ic_fish_icon" />
 
                 </RelativeLayout>
 
@@ -816,15 +766,7 @@
                         android:textSize="20sp" />
 
 
-                        <ImageView
-                        android:id="@+id/meatImgV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Question7TxtV"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/ic_meat_icon" />
-
-                </RelativeLayout>
+                    </RelativeLayout>
 
 
                     <RadioGroup
@@ -925,14 +867,6 @@
                         android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
-
-                    <ImageView
-                        android:id="@+id/poultryImgV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Question8TxtV"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/ic_chicken_icon" />
 
                 </RelativeLayout>
 
@@ -1035,14 +969,6 @@
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
-                    <ImageView
-                        android:id="@+id/milkImgV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Question9TxtV"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/ic_milk_icon" />
-
                 </RelativeLayout>
 
                     <RadioGroup
@@ -1139,14 +1065,6 @@
                         android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
-
-                    <ImageView
-                        android:id="@+id/oilImgV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Question10TxtV"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/ic_olive_icon" />
 
                 </RelativeLayout>
 
@@ -1248,14 +1166,6 @@
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
-                    <ImageView
-                        android:id="@+id/alcoholImgV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Question11TxtV"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/ic_alcohol" />
-
                 </RelativeLayout>
 
                     <RadioGroup
@@ -1331,16 +1241,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/testButtonsRelLayoyt">>
+
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
-                        android:background="@drawable/bai_button_rounded_corners"
+                        android:background="@drawable/mds_button_rounded_corners"
                         android:padding="20dp"
                         android:text="CALCULATE"
                         android:textSize="20sp"
@@ -1359,7 +1269,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
-                        android:background="@drawable/bai_button_rounded_corners"
+                        android:background="@drawable/mds_button_rounded_corners"
                         android:text="CLEAR DATA" />
                 </RelativeLayout>
 

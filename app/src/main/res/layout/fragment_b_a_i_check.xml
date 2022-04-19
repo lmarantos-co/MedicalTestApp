@@ -138,11 +138,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ1"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

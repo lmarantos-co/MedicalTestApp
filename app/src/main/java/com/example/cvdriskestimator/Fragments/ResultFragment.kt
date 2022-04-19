@@ -538,10 +538,6 @@ class ResultFragment : Fragment() {
         }
     }
 
-    private fun setAltLLayout() {
-        newConstraintSet = ConstraintSet()
-        newConstraintSet.clone(mainActivity.applicationContext, R.layout.fragment_result_alt)
-    }
 
     private fun setFormColors(testType: Int) {
         when (testType) {
@@ -565,6 +561,7 @@ class ResultFragment : Fragment() {
             5 ->
             {
                 testHeadling.setBackgroundResource(R.drawable.yellow_mdstest_form_title_style)
+                mdsTestScore.setBackgroundResource(R.drawable.mds_test_result_rel_layout)
             }
             6 ->
             {
@@ -709,59 +706,84 @@ class ResultFragment : Fragment() {
 
     private suspend fun setMDSTestBarColors(score : Int)
     {
+        var barsRemaining  : Int = 0
         if (score > 0)
         {
             view1.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 5)
         {
             view2.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 10)
         {
             view3.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 15)
         {
             view4.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 20)
         {
             view5.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 25)
         {
             view6.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 30)
         {
             view7.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 35)
         {
             view8.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 40)
         {
             view9.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 45)
         {
             view10.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 50)
         {
             view11.setBackgroundColor(resources.getColor(R.color.light_yellow))
+            delay(100)
+            barsRemaining ++
+        }
+        setMDSTestWhiteBarColors(barsRemaining)
+    }
+
+    suspend fun setMDSTestWhiteBarColors(barsNo : Int)
+    {
+        var viewIDs = intArrayOf(view1.id , view2.id , view3.id , view4.id , view5.id , view6.id , view7.id ,
+            view8.id , view9.id , view10.id , view11.id)
+
+        for (i in 10 downTo barsNo)
+        {
+            view?.findViewById<View>(viewIDs.get(i))!!.setBackgroundColor(resources.getColor(R.color.light_gray))
             delay(100)
         }
     }
