@@ -22,7 +22,8 @@
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible" />
+        android:elevation="10dp"
+        android:visibility="visible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horGL1"
@@ -139,6 +140,7 @@
         android:id="@+id/baiTestTitleRelLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="@drawable/mds_test_result_rel_layout"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/resultsBottomHGL"

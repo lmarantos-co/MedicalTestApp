@@ -1082,10 +1082,10 @@ class ResultFragment : Fragment() {
                 if ((userPSSResult < 10) && (!barHeightSet))
                 {
                     mainActivity.runOnUiThread {
-                        var newModViewHeight : Float = (userPSSResult.toFloat() - 7) / 3 * severeProgreessViewHeight
+                        var newSevViewHeight : Float = (userPSSResult.toFloat() - 7) / 3 * severeProgreessViewHeight
                         var severeY = severeResultView.y
                         severeResultView.updateLayoutParams{
-                            height = newModViewHeight.toInt()
+                            height = newSevViewHeight.toInt()
                         }
                         val sevLayoutParams = severeResultView.layoutParams as ConstraintLayout.LayoutParams
                         sevLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
@@ -1241,6 +1241,22 @@ class ResultFragment : Fragment() {
                 mildResultView.alpha = 0f
                 moderateResultView.alpha = 0f
                 severeResultView.alpha = 0f
+                //re set the height for each resultView
+                lowResultView.updateLayoutParams {
+                    height = lowProgressViewHeight
+                }
+
+                mildResultView.updateLayoutParams {
+                    height = mildProgressViewHeight
+                }
+
+                moderateResultView.updateLayoutParams {
+                    height = moderateProgressViewHeight
+                }
+
+                severeResultView.updateLayoutParams {
+                    height = severeProgreessViewHeight
+                }
             }
         1 ->
         {
@@ -1669,6 +1685,23 @@ class ResultFragment : Fragment() {
             mildResultView.alpha = 0f
             moderateResultView.alpha = 0f
             severeResultView.alpha = 0f
+
+//          reset the height for each resultView
+            lowResultView.updateLayoutParams {
+                height = lowProgressViewHeight
+            }
+
+            mildResultView.updateLayoutParams {
+                height = mildProgressViewHeight
+            }
+
+            moderateResultView.updateLayoutParams {
+                height = moderateProgressViewHeight
+            }
+
+            severeResultView.updateLayoutParams {
+                height = severeProgreessViewHeight
+            }
         }
         }
 
@@ -1682,6 +1715,8 @@ class ResultFragment : Fragment() {
             {   mainActivity.runOnUiThread {
                 totalPSSScore.setTypeface(totalPSSScore.getTypeface(), android.graphics.Typeface.BOLD)
                 totalPISScore.setTypeface(null , android.graphics.Typeface.NORMAL)
+                pssTestScore.setTypeface(pisTestScore.typeface , Typeface.BOLD)
+                pisTestScore.setTypeface(null , Typeface.NORMAL)
             }
 
             }
@@ -1690,6 +1725,8 @@ class ResultFragment : Fragment() {
                 mainActivity.runOnUiThread {
                     totalPISScore.setTypeface(totalPISScore.getTypeface(), android.graphics.Typeface.BOLD)
                     totalPSSScore.setTypeface(null, android.graphics.Typeface.NORMAL)
+                    pisTestScore.setTypeface(pisTestScore.typeface , Typeface.BOLD)
+                    pssTestScore.setTypeface(null , Typeface.NORMAL)
                 }
 
             }

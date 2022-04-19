@@ -89,9 +89,9 @@ class MDICheckFragment : Fragment() {
         }
 
         //set the observer for the patient mutable live data
-        mdiPatientViewModel.patientData.observe(viewLifecycleOwner , {
+        mdiPatientViewModel.patientData.observe(viewLifecycleOwner) {
             setPatientData(it)
-        })
+        }
 
         mdiCheckBinding.clearBtn.setOnClickListener {
 

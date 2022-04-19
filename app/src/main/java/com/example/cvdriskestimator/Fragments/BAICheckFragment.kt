@@ -83,9 +83,9 @@ class BAICheckFragment : Fragment() {
         }
 
         //set the observer for the patient mutable live data
-        baiPatientViewModel.patientData.observe(viewLifecycleOwner , {
+        baiPatientViewModel.patientData.observe(viewLifecycleOwner) {
             setPatientData(it)
-        })
+        }
 
         baiCheckBinding.clearBtn.setOnClickListener {
             AlertDialog.Builder(this.activity)

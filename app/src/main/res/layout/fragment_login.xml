@@ -251,6 +251,7 @@
             android:id="@+id/loginSbmBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:background="@drawable/login_register_textview_style"
             android:backgroundTint="@color/white"
             android:padding="20dp"
