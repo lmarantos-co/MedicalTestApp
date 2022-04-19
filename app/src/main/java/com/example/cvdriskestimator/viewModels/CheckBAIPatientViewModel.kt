@@ -108,7 +108,7 @@ class CheckBAIPatientViewModel : ViewModel() {
         var correctData : Boolean = false
         if (value == null)
         {
-            baiCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO)
+            baiCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO , questionNO)
             correctData = false
         }
         else

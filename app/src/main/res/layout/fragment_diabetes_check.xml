@@ -44,7 +44,7 @@
             layout="@layout/popup_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VG5"
@@ -155,6 +155,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/green_textview_style_4"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:elevation="4dp"
                         android:gravity="center"
                         android:minHeight="48dp"
@@ -162,7 +164,7 @@
                         android:paddingBottom="5dp"
                         android:shadowDx="2"
                         android:shadowDy="2"
-                        android:text="PATIENT SEX"
+                        android:text="Patient Sex"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -215,6 +217,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/green_textview_style_4"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:elevation="4dp"
                         android:gravity="center"
                         android:minHeight="48dp"
@@ -279,6 +283,8 @@
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:text="@string/steroids"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -339,7 +345,7 @@
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:text="PATIENT AGE"
+                        android:text="Patient Age"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -349,6 +355,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/ageTxtV"
                         android:layout_centerHorizontal="true"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:ems="10"
                         android:gravity="center"
                         android:hint="Patient age in years"
@@ -384,7 +392,7 @@
                         android:paddingBottom="5dp"
                         android:text="@string/BMI"
                         android:textColor="@color/black"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/editTextBMI"
@@ -394,6 +402,8 @@
                         android:layout_centerHorizontal="true"
                         android:ems="10"
                         android:gravity="center"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:hint="Input your Body Mass Indicator"
                         android:inputType="numberDecimal"
                         android:minHeight="48dp"
@@ -422,6 +432,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/green_textview_style_4"
                         android:elevation="4dp"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
@@ -495,6 +507,8 @@
                         android:layout_centerInParent="false"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="false"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:background="@drawable/green_textview_style_4"
                         android:elevation="4dp"
                         android:gravity="center"

@@ -88,9 +88,9 @@ class DiabetesCheckFragment : Fragment() {
         }
 
         //observe live data change
-        checkDiabetesPatientViewModel.patientDATA.observe(viewLifecycleOwner , {
+        checkDiabetesPatientViewModel.patientDATA.observe(viewLifecycleOwner) {
             setPatientData(it)
-        })
+        }
 
         diabetesCheckBinding.includeCvdTitleForm.cvdTitleForm.setOnClickListener {
             mainActivity.backToActivity()
@@ -134,6 +134,7 @@ class DiabetesCheckFragment : Fragment() {
             if (getPatientSex() == "")
             {
                 Toast.makeText(mainActivity.applicationContext, "Please select SEX Status.", Toast.LENGTH_LONG).show()
+                diabetesCheckBinding.sextxtV.requestFocus()
                 correctRGInput = false
                 toastMessageShown = true
             }
@@ -141,6 +142,7 @@ class DiabetesCheckFragment : Fragment() {
             {
                 if (!toastMessageShown)
                     Toast.makeText(mainActivity.applicationContext, "Please select Prescribed Antihypertensive Medication Status.", Toast.LENGTH_LONG).show()
+                diabetesCheckBinding.steroidstxtV.requestFocus()
                 correctRGInput = false
                 toastMessageShown = true
             }
@@ -148,6 +150,7 @@ class DiabetesCheckFragment : Fragment() {
             {
                 if (!toastMessageShown)
                     Toast.makeText(mainActivity.applicationContext, " Please select PrescribedSteroids Status" , Toast.LENGTH_LONG).show()
+                diabetesCheckBinding.pamtxtV.requestFocus()
                 correctRGInput = false
                 toastMessageShown = true
             }
@@ -155,6 +158,7 @@ class DiabetesCheckFragment : Fragment() {
             {
                 if (!toastMessageShown)
                     Toast.makeText(mainActivity.applicationContext, " Please select Sibling Family History Status" , Toast.LENGTH_LONG).show()
+                diabetesCheckBinding.siblingstxtV.requestFocus()
                 correctRGInput = false
                 toastMessageShown = true
             }
@@ -162,6 +166,7 @@ class DiabetesCheckFragment : Fragment() {
             {
                 if (!toastMessageShown)
                     Toast.makeText(mainActivity.applicationContext, " Please select Smoking Status" , Toast.LENGTH_LONG).show()
+                diabetesCheckBinding.smkTxtV.requestFocus()
                 correctRGInput = false
                 toastMessageShown = true
             }

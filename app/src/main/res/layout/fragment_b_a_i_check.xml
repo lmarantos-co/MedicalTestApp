@@ -141,6 +141,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ1"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -219,6 +221,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ2"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -300,6 +304,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ3"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -381,6 +387,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ4"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -463,6 +471,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ5"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -545,6 +555,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ6"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -627,6 +639,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ7"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -709,6 +723,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ8"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -790,6 +806,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ9"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -872,6 +890,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ10"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -953,6 +973,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ11"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1035,6 +1057,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ12"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1117,6 +1141,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ13"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1200,6 +1226,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ14"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1282,6 +1310,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ15"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1365,6 +1395,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ16"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1448,6 +1480,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ17"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1531,6 +1565,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ18"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1614,6 +1650,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ19"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1697,6 +1735,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ20"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1777,6 +1817,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ21"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

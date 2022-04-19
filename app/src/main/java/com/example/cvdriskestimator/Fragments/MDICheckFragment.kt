@@ -254,9 +254,76 @@ class MDICheckFragment : Fragment() {
         mdiCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
     }
 
-    fun showSelectionError(error : String)
+    fun showSelectionError(error : String, questionNo :  Int)
     {
         Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
+        when(questionNo)
+        {
+            1 ->
+            {
+                mdiCheckBinding.MDIQ1TxtV.requestFocus()
+            }
+
+            2 ->
+            {
+                mdiCheckBinding.MDIQ2TxtV.requestFocus()
+            }
+
+            3 ->
+            {
+                mdiCheckBinding.MDIQ3TxtV.requestFocus()
+            }
+
+            4 ->
+            {
+                mdiCheckBinding.MDIQ4TxtV.requestFocus()
+            }
+
+            5 ->
+            {
+                mdiCheckBinding.MDIQ5TxtV.requestFocus()
+            }
+
+            6 ->
+            {
+                mdiCheckBinding.MDIQ6TxtV.requestFocus()
+            }
+
+            7 ->
+            {
+                mdiCheckBinding.MDIQ7TxtV.requestFocus()
+            }
+
+            8 ->
+            {
+                mdiCheckBinding.MDIQ8TxtV.requestFocus()
+            }
+
+            9 ->
+            {
+                mdiCheckBinding.MDIQ9TxtV.requestFocus()
+            }
+
+            10 ->
+            {
+                mdiCheckBinding.MDIQ10TxtV.requestFocus()
+            }
+
+            11 ->
+            {
+                mdiCheckBinding.MDIQ11TxtV.requestFocus()
+            }
+
+            12 ->
+            {
+                mdiCheckBinding.MDIQ12TxtV.requestFocus()
+            }
+
+            13 ->
+            {
+                mdiCheckBinding.MDIQ13TxtV.requestFocus()
+            }
+        }
     }
 
     override fun onAttach(context: Context) {

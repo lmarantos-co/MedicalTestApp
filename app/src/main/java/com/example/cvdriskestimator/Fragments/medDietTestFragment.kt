@@ -193,9 +193,63 @@ class medDietTestFragment : Fragment() {
         medDietTestBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
     }
 
-    fun showSelectionError(error : String)
+    fun showSelectionError(error : String, questionNo : Int)
     {
         Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
+        when(questionNo)
+        {
+            1 ->
+            {
+                medDietTestBinding.Question1TxtV.requestFocus()
+            }
+
+            2 ->
+            {
+                medDietTestBinding.Question2TxtV.requestFocus()
+            }
+
+            3 ->
+            {
+                medDietTestBinding.Question3TxtV.requestFocus()
+            }
+
+            4 ->
+            {
+                medDietTestBinding.Question4TxtV.requestFocus()
+            }
+
+            5 ->
+            {
+                medDietTestBinding.Question5TxtV.requestFocus()
+            }
+
+            7 ->
+            {
+                medDietTestBinding.Question7TxtV.requestFocus()
+            }
+
+            8 ->
+            {
+                medDietTestBinding.Question8TxtV.requestFocus()
+            }
+
+            9 ->
+            {
+                medDietTestBinding.Question9TxtV.requestFocus()
+            }
+
+            10 ->
+            {
+                medDietTestBinding.Question10TxtV.requestFocus()
+            }
+
+            11 ->
+            {
+                medDietTestBinding.Question11TxtV.requestFocus()
+            }
+
+
+        }
     }
 
     private fun initUI(view : View)

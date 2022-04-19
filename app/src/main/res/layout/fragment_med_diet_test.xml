@@ -32,7 +32,7 @@
             layout="@layout/popup_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/rbGuideLine"
@@ -144,6 +144,8 @@
                             android:gravity="center"
                             android:minHeight="64dp"
                             android:text="@string/mds_question1"
+                            android:focusableInTouchMode="true"
+                            android:focusable="true"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -255,6 +257,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question2"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -362,6 +366,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question3"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -469,6 +475,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question4"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -575,6 +583,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question5"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -682,6 +692,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question6"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -798,6 +810,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question7"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -907,6 +921,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question8"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1014,6 +1030,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question9"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1117,6 +1135,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question10"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1223,6 +1243,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/mds_question11"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

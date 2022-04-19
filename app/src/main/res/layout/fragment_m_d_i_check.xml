@@ -130,6 +130,8 @@
                         android:background="@drawable/purple_textview"
                         android:gravity="center"
                         android:minHeight="64dp"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:text="@string/MDIQ1"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -236,6 +238,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ2"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -340,6 +344,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ3"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -445,6 +451,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ4"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -550,6 +558,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ5"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -654,6 +664,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ6"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -760,6 +772,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ7"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -866,6 +880,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ8"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -971,6 +987,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ9"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1076,6 +1094,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ10"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1181,6 +1201,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ11"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1285,6 +1307,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ12"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1386,6 +1410,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ13"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

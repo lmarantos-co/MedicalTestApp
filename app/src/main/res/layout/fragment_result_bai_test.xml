@@ -23,7 +23,7 @@
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horGL1"
@@ -118,6 +118,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="false"
                 android:gravity="center"
+                android:maxLines="3"
+                android:minLines="3"
                 android:text="@string/bai_test_score"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -127,6 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:minLines="3"
                 android:paddingLeft="5dp"
                 android:textSize="20sp" />
 

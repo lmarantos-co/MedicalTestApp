@@ -103,7 +103,7 @@ class CheckMDIPatientViewModel : ViewModel() {
         var correctData : Boolean = false
         if (value == null)
         {
-            mdiCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO)
+            mdiCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO, questionNO)
             correctData = false
         }
         else

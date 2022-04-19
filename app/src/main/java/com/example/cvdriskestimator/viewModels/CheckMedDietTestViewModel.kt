@@ -102,7 +102,7 @@ class CheckMedDietTestViewModel : ViewModel(){
         var correctData : Boolean = false
         if (value == null)
         {
-            medDietTestFragment.showSelectionError("Please select an answer for question No : " + questionNO)
+            medDietTestFragment.showSelectionError("Please select an answer for question No : " + questionNO, questionNO)
             correctData = false
         }
         else

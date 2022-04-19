@@ -222,6 +222,7 @@ class CheckFragment : Fragment() {
         checkBinding.ageEdTxt.invalidate()
         checkBinding.sbbEdTxt.setText("")
         checkBinding.tchEdTxt.setText("")
+        checkBinding.hchEdTxt.setText("")
         checkBinding.sexRG.clearCheck()
         checkBinding.raceRG.clearCheck()
         checkBinding.SmokeRGr.clearCheck()
@@ -331,21 +332,49 @@ class CheckFragment : Fragment() {
     fun displayAgeError(error : String)
     {
         checkBinding.ageEdTxt.error = error
+        checkBinding.ageEdTxt.requestFocus()
     }
 
     fun displaySBPError(error : String)
     {
         checkBinding.sbbEdTxt.error = error
+        checkBinding.sbbEdTxt.requestFocus()
     }
 
     fun displayTCHError(error : String)
     {
         checkBinding.tchEdTxt.error = error
+        checkBinding.tchEdTxt.requestFocus()
     }
 
     fun displayHDLError(error : String)
     {
         checkBinding.hchEdTxt.error = error
+        checkBinding.hchEdTxt.requestFocus()
+    }
+
+    fun displayRadioGroupError(groupNo : Int)
+    {
+        when(groupNo)
+        {
+            1 ->
+            {
+                checkBinding.sexTxtView.requestFocus()
+                Toast.makeText(mainActivity.applicationContext , "Please select Sex Status.", Toast.LENGTH_LONG).show()
+            }
+
+            2 ->
+            {
+                checkBinding.smkTxtV
+                Toast.makeText(mainActivity.applicationContext , "Please select Smoking Status.", Toast.LENGTH_LONG).show()
+            }
+
+            3 ->
+            {
+                checkBinding.treatTxtV
+                Toast.makeText(mainActivity.applicationContext , "Please select Treatmet Status.", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
 
