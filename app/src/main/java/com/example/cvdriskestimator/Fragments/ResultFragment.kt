@@ -29,6 +29,7 @@ import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import androidx.constraintlayout.widget.Guideline
 import androidx.core.view.updateLayoutParams
+import androidx.core.widget.NestedScrollView
 import java.lang.Runnable
 import java.util.*
 
@@ -99,6 +100,7 @@ class ResultFragment : Fragment() {
     private var severeDepressionFormWidth: Int = 0
     private var depressionResultBarHeight: Int = 0
     private lateinit var depressionProgressBar: RelativeLayout
+    private lateinit var depressionNestedScrollView : NestedScrollView
 
     private lateinit var baiTestSummary: TextView
     private lateinit var lowAnxietyRelLayout : RelativeLayout
@@ -235,7 +237,7 @@ class ResultFragment : Fragment() {
             termsRelLayout.visibility = View.INVISIBLE
         }
         if (test_type == 3) {
-            view = inflater.inflate(R.layout.fragment_result_mdi_test, container, false)
+            view = inflater.inflate(R.layout.fragment_result_mdi_test, container, false) as View
             formConLayout = view.findViewById(R.id.results_con_layout_mdi_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
@@ -253,6 +255,8 @@ class ResultFragment : Fragment() {
             mildDepressionLayout = view.findViewById(R.id.mildDepView)
             moderateDepressionLayout = view.findViewById(R.id.moderateDepView)
             servereDepressionLayout = view.findViewById(R.id.severeDepView)
+            depressionNestedScrollView = view.findViewById(R.id.resultScrollView)
+            depressionNestedScrollView.isNestedScrollingEnabled = true
             totalScore = view.findViewById(R.id.totalScore)
             depressStatus = view.findViewById(R.id.depressionStatus)
             setMDIResultsOnForm(
@@ -807,7 +811,7 @@ class ResultFragment : Fragment() {
                         xDepressionResultBar ,
                           yDepressionResultBar,
                         xDepressionResultBar + screenWidth,
-                        yDepressionResultBar + (userMDIResult) * viewHeight.toFloat(),
+                        yDepressionResultBar + (userMDIResult * 1.5f) * viewHeight.toFloat(),
                         paint    )
 
                 depResBarView.layoutParams
