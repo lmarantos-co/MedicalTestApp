@@ -87,6 +87,7 @@ class CheckMDIPatientViewModel : ViewModel() {
                 val result = mdiTestEstimator.calculateMDI(allPatientSelections[0]!!, allPatientSelections[1]!!, allPatientSelections[2]!!, allPatientSelections[3]!!, allPatientSelections[4]!! ,
                     allPatientSelections[5]!! , allPatientSelections[6]!!, allPatientSelections[7]!! , allPatientSelections[8]!! , allPatientSelections[9]!! ,
                     allPatientSelections[10]!! , allPatientSelections[11]!! , allPatientSelections[12]!!)
+                Toast.makeText(mainActivity.applicationContext , result.toString() , Toast.LENGTH_LONG).show()
                 openResultFragment(result)
             }
     }

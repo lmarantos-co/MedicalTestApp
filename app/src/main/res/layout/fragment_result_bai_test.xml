@@ -83,7 +83,7 @@
     <RelativeLayout
         android:id="@+id/baiTestTitleRelLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/relativelayout_style"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/resultsBottomHGL"

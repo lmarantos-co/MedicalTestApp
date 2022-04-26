@@ -128,10 +128,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:text="@string/MDIQ1"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
