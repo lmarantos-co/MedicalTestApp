@@ -55,7 +55,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/resultScrollView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:addStatesFromChildren="false"
         android:animateLayoutChanges="false"
@@ -84,76 +84,22 @@
             tools:context=".MainActivity">
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/scrollViewConayout"
+            <RelativeLayout
+                android:id="@+id/scrollViewRelayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:layout_height="wrap_content"
                 android:scrollbars="vertical">
 
-                <include
-                    android:id="@+id/include_magenda_module"
-                    layout="@layout/depression_magenda_module_layout"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:visibility="invisible"
-                    app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
-                    app:layout_constraintLeft_toRightOf="@id/titleVGL1"
-                    app:layout_constraintRight_toLeftOf="@id/magednaRightVGL"
-                    app:layout_constraintTop_toBottomOf="@id/magendaTopHGL" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/titleVGL1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.25" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/titleVGL2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.2" />
-
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultProgressBarVGL"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.1" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id='@+id/mdiResultRightVGL'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.9" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultsTopHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.25" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/testTitleHGL"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintGuide_percent="0.3" />
 
                 <RelativeLayout
                     android:id="@+id/mdiTestTitleRelLayout"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/relativelayout_style"
-                    android:gravity="center"
-                    app:layout_constraintLeft_toRightOf="@id/resultProgressBarVGL"
-                    app:layout_constraintRight_toLeftOf="@id/mdiResultRightVGL"
-                    app:layout_constraintTop_toTopOf="@+id/scrollViewConayout">
+                    android:gravity="center">
 
                     <TextView
                         android:id='@+id/testResultTxtV'
@@ -231,157 +177,68 @@
                 </RelativeLayout>
 
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/titleScrollVGL1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.25" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/titleScrollVGL2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.2" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultScrollProgressBarVGL"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.1" />
-
-                <RelativeLayout
-                    android:id="@+id/MDItestProgressBarRelLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id='@+id/resultBarModerateDepressionHGL'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.9" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id='@+id/resultBarMildDepressionHGL'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.825" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultBarNoDepressionHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.75" />
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/MDItestProgressBarRelLayout"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1" />-->
 
 
-                <RelativeLayout
-                    android:id='@+id/resultBar'
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:visibility="gone"
-                    app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1"
-                    app:layout_constraintRight_toLeftOf="@id/titleScrollVGL2">
+<!--                <RelativeLayout-->
+<!--                    android:id='@+id/resultBar'-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:visibility="gone"-->
+<!--                    app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1"-->
+<!--                    app:layout_constraintRight_toLeftOf="@id/titleScrollVGL2">-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
-                <RelativeLayout
-                    android:id="@+id/resultBarNoDepRelLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@color/blue"
-                    android:visibility="gone"
-                    app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1" />
-
-
-                <RelativeLayout
-                    android:id="@+id/resultBarSevereDepRelLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@color/dark_red"
-                    android:visibility="gone"
-                    app:layout_constraintRight_toLeftOf="@id/titleScrollVGL2" />
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/resultBarNoDepRelLayout"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@color/blue"-->
+<!--                    android:visibility="gone"-->
+<!--                    app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1" />-->
 
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultProgressBarRightVGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.24" />
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/resultBarSevereDepRelLayout"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@color/dark_red"-->
+<!--                    android:visibility="gone"-->
+<!--                    app:layout_constraintRight_toLeftOf="@id/titleScrollVGL2" />-->
 
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/horGL3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_percent="0.87" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/magendaTopHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.45"
-                    app:layout_constraintTop_toBottomOf="@+id/scrollViewConayout" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/magendaHelperBottomHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.97" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/magendaBottomHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="1.50" />
-
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id='@+id/magednaRightVGL'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.75" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/severeDeprHelperHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.9" />
 
                 <TextView
                     android:id='@+id/severeDepMaxValueTxtV'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/severeDepView"
+                    android:layout_alignTop="@+id/severeDepView"
                     android:layout_marginStart="8dp"
                     android:text="50"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toTopOf="@+id/magendaBottomHGL"
-                    app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-                    app:layout_constraintTop_toTopOf="@+id/magendaHelperBottomHGL" />
+                    android:textSize="20sp" />
 
                 <RelativeLayout
                     android:id="@+id/severeDepView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="100dp"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/moderateDepView"
+                    android:layout_centerHorizontal="true"
                     android:background="@color/Red"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
-                    app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
-                    app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
-                    app:layout_constraintTop_toBottomOf="@id/resultBarModerateDepressionHGL">
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/severeDepTxtV"
@@ -400,24 +257,21 @@
                     android:id='@+id/severeDepValueTxtV'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/severeDepView"
+                    android:layout_alignTop="@+id/severeDepView"
                     android:layout_marginStart="8dp"
                     android:text="30"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-                    app:layout_constraintTop_toTopOf="@+id/resultBarModerateDepressionHGL" />
+                    android:textSize="20sp" />
 
                 <RelativeLayout
                     android:id="@+id/moderateDepView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_below="@id/severeDepView"
+                    android:layout_width="100dp"
+                    android:layout_height="200dp"
+                    android:layout_below="@id/mildDepView"
+                    android:layout_centerHorizontal="true"
                     android:background="@color/orange_5"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@id/resultBarModerateDepressionHGL"
-                    app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
-                    app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
-                    app:layout_constraintTop_toBottomOf="@id/resultBarMildDepressionHGL">
+                    android:visibility="visible">
 
 
                     <TextView
@@ -437,24 +291,21 @@
                     android:id='@+id/moderateDepValueTxtV'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/moderateDepView"
+                    android:layout_alignTop="@+id/moderateDepView"
                     android:layout_marginStart="8dp"
                     android:text="25"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-                    app:layout_constraintTop_toTopOf="@+id/resultBarMildDepressionHGL" />
+                    android:textSize="20sp" />
 
                 <RelativeLayout
                     android:id="@+id/mildDepView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_below="@id/moderateDepView"
+                    android:layout_width="100dp"
+                    android:layout_height="200dp"
+                    android:layout_below="@id/noDepView"
+                    android:layout_centerHorizontal="true"
                     android:background="@color/green_5"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@id/resultBarMildDepressionHGL"
-                    app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
-                    app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
-                    app:layout_constraintTop_toBottomOf="@id/resultBarNoDepressionHGL">
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/mildDepTxtV"
@@ -473,24 +324,22 @@
                     android:id='@+id/mildDepValueTxtV'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/mildDepView"
+                    android:layout_alignTop="@+id/mildDepView"
                     android:layout_marginStart="8dp"
                     android:text="20"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-                    app:layout_constraintTop_toTopOf="@+id/resultBarNoDepressionHGL" />
+                    android:textSize="20sp" />
 
                 <RelativeLayout
                     android:id="@+id/noDepView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_below="@id/mildDepView"
+                    android:layout_width="100dp"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/mdiTestTitleRelLayout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
                     android:background="@color/blue"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@id/resultBarNoDepressionHGL"
-                    app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
-                    app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
-                    app:layout_constraintTop_toBottomOf="@id/magendaTopHGL">
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/noDepTxtV"
@@ -509,35 +358,35 @@
                     android:id='@+id/noDepValueTxtV'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/noDepView"
+                    android:layout_marginLeft="16dp"
+                    android:layout_alignTop="@+id/noDepView"
                     android:layout_marginStart="8dp"
                     android:text="0"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-                    app:layout_constraintTop_toTopOf="@+id/magendaTopHGL" />
+                    android:textSize="20sp" />
 
 
-                <RelativeLayout
-                    android:id="@+id/surroundResultBar"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@color/black"
-                    app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
-                    app:layout_constraintLeft_toRightOf="@id/resultScrollProgressBarVGL"
-                    app:layout_constraintRight_toLeftOf="@id/resultProgressBarRightVGL"
-                    app:layout_constraintTop_toBottomOf="@id/magendaTopHGL" />
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/surroundResultBar"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@color/black"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"-->
+<!--                    app:layout_constraintLeft_toRightOf="@id/resultScrollProgressBarVGL"-->
+<!--                    app:layout_constraintRight_toLeftOf="@id/resultProgressBarRightVGL"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/magendaTopHGL" />-->
 
                 <RelativeLayout
                     android:id="@+id/resulVerticalProgressBar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:elevation="5dp"
-                    app:layout_constraintEnd_toStartOf="@id/resultProgressBarRightVGL"
-                    app:layout_constraintStart_toStartOf="@+id/resultScrollProgressBarVGL"
-                    app:layout_constraintTop_toTopOf="@+id/magendaTopHGL" />
+                    android:layout_toLeftOf="@+id/noDepView"
+                    android:layout_alignTop="@+id/noDepView"
+                />
 
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
 
         </LinearLayout>
 

@@ -6,31 +6,24 @@ import android.graphics.BitmapFactory
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Bundle
-import android.os.FileUtils
-import android.os.Handler
-import android.os.Looper
 import android.text.Html
-import android.text.style.TypefaceSpan
-import android.transition.TransitionManager
 import android.util.DisplayMetrics
 import android.view.*
-import androidx.fragment.app.Fragment
-import android.widget.*
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.palette.graphics.Palette
-import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.R
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
-import com.example.cvdriskestimator.CustomClasses.customDerpesionProgressView
-import kotlinx.coroutines.*
-import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
+import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.Guideline
 import androidx.core.view.updateLayoutParams
 import androidx.core.widget.NestedScrollView
-import java.lang.Runnable
+import androidx.fragment.app.Fragment
+import androidx.palette.graphics.Palette
+import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.CustomClasses.customDerpesionProgressView
+import com.example.cvdriskestimator.MainActivity
+import com.example.cvdriskestimator.R
+import kotlinx.coroutines.*
 import java.util.*
 
 
@@ -284,6 +277,7 @@ class ResultFragment : Fragment() {
             servereDepressionLayout.post {
                 severeDepressionFormWidth = servereDepressionLayout.width
                 GlobalScope.launch(Dispatchers.Main) {
+                    setDimensionsForDepressionViews()
                     createDepressionResultBarViews()
                 }
             }
@@ -790,6 +784,33 @@ class ResultFragment : Fragment() {
             view?.findViewById<View>(viewIDs.get(i))!!.setBackgroundColor(resources.getColor(R.color.light_gray))
             delay(100)
         }
+    }
+
+    private fun setDimensionsForDepressionViews()
+    {
+        var viewWidth = screenWidth / 2
+        var viewHeight = screenHeight / 100
+        noDepressionLayout.layoutParams = RelativeLayout.LayoutParams(viewWidth , viewHeight * 30)
+        var lp: RelativeLayout.LayoutParams? = noDepressionLayout.layoutParams as RelativeLayout.LayoutParams
+        lp!!.addRule(RelativeLayout.CENTER_HORIZONTAL)
+        lp!!.addRule(RelativeLayout.ABOVE , R.id.mdiTestTitleRelLayout)
+        noDepressionLayout.layoutParams = lp
+        mildDepressionLayout.layoutParams = RelativeLayout.LayoutParams(viewWidth , (viewHeight * 7.5).toInt())
+        var mdlp: RelativeLayout.LayoutParams? = mildDepressionLayout.layoutParams as RelativeLayout.LayoutParams
+        mdlp!!.addRule(RelativeLayout.CENTER_HORIZONTAL)
+        mdlp!!.addRule(RelativeLayout.ABOVE , R.id.noDepView)
+        mildDepressionLayout.layoutParams = mdlp
+        moderateDepressionLayout.layoutParams = RelativeLayout.LayoutParams(viewWidth , (viewHeight * 7.5).toInt())
+        var moddlp: RelativeLayout.LayoutParams? = moderateDepressionLayout.layoutParams as RelativeLayout.LayoutParams
+        moddlp!!.addRule(RelativeLayout.CENTER_HORIZONTAL)
+        moddlp!!.addRule(RelativeLayout.ABOVE , R.id.mildDepView)
+        mildDepressionLayout.layoutParams = moddlp
+        servereDepressionLayout.layoutParams = RelativeLayout.LayoutParams(viewWidth , (viewHeight * 50).toInt())
+        var sevdlp: RelativeLayout.LayoutParams? = servereDepressionLayout.layoutParams as RelativeLayout.LayoutParams
+        sevdlp!!.addRule(RelativeLayout.CENTER_HORIZONTAL)
+        sevdlp!!.addRule(RelativeLayout.ABOVE , R.id.moderateResultView)
+        servereDepressionLayout.layoutParams = sevdlp
+
     }
 
     //function to create Views above the result bar
