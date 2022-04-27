@@ -93,7 +93,6 @@ class ResultFragment : Fragment() {
     private var severeDepressionFormWidth: Int = 0
     private var depressionResultBarHeight: Int = 0
     private lateinit var depressionProgressBar: RelativeLayout
-    private lateinit var depressionNestedScrollView : NestedScrollView
 
     private lateinit var baiTestSummary: TextView
     private lateinit var lowAnxietyRelLayout : RelativeLayout
@@ -248,8 +247,6 @@ class ResultFragment : Fragment() {
             mildDepressionLayout = view.findViewById(R.id.mildDepView)
             moderateDepressionLayout = view.findViewById(R.id.moderateDepView)
             servereDepressionLayout = view.findViewById(R.id.severeDepView)
-            depressionNestedScrollView = view.findViewById(R.id.resultScrollView)
-            depressionNestedScrollView.isNestedScrollingEnabled = true
             totalScore = view.findViewById(R.id.totalScore)
             depressStatus = view.findViewById(R.id.depressionStatus)
             setMDIResultsOnForm(
@@ -277,7 +274,7 @@ class ResultFragment : Fragment() {
             servereDepressionLayout.post {
                 severeDepressionFormWidth = servereDepressionLayout.width
                 GlobalScope.launch(Dispatchers.Main) {
-                    setDimensionsForDepressionViews()
+//                    setDimensionsForDepressionViews()
                     createDepressionResultBarViews()
                 }
             }
@@ -707,62 +704,88 @@ class ResultFragment : Fragment() {
 
     private suspend fun setMDSTestBarColors(score : Int)
     {
+        var barsRemaining  : Int = 0
         if (score > 0)
         {
             view1.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 5)
         {
             view2.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 10)
         {
             view3.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 15)
         {
             view4.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 20)
         {
             view5.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 25)
         {
             view6.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 30)
         {
             view7.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 35)
         {
             view8.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 40)
         {
             view9.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 45)
         {
             view10.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
         }
         if (score > 50)
         {
             view11.setBackgroundColor(resources.getColor(R.color.light_yellow))
             delay(100)
+            barsRemaining ++
+        }
+        setMDSTestWhiteBarColors(barsRemaining)
+    }
+
+    suspend fun setMDSTestWhiteBarColors(barsNo : Int)
+    {
+        var viewIDs = intArrayOf(view1.id , view2.id , view3.id , view4.id , view5.id , view6.id , view7.id ,
+            view8.id , view9.id , view10.id , view11.id)
+
+        for (i in barsNo..10)
+        {
+            view?.findViewById<View>(viewIDs[i])!!.setBackgroundColor(resources.getColor(R.color.light_gray))
+            delay(100)
         }
     }
+
 
     private fun setDimensionsForDepressionViews()
     {
@@ -798,7 +821,7 @@ class ResultFragment : Fragment() {
         depressionProgressBar.layoutParams.height = (RelativeLayout.LayoutParams.WRAP_CONTENT)
         val viewWidth = (screenWidth  / 100) * 15
 //        val viewHeight = (screenHeight / 51).toFloat() /2
-        val viewHeight = screenHeight / 100
+        val viewHeight = screenHeight / 150
         val yDepressionResultBar = depressionProgressBar.y
         val xDepressionResultBar = depressionProgressBar.x
         val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1).toInt()
@@ -810,7 +833,7 @@ class ResultFragment : Fragment() {
                         xDepressionResultBar ,
                           yDepressionResultBar,
                         xDepressionResultBar + screenWidth,
-                        yDepressionResultBar + (userMDIResult * 1.5f) * viewHeight.toFloat(),
+                        yDepressionResultBar + (userMDIResult ) * viewHeight.toFloat(),
                         paint    )
 
                 depResBarView.layoutParams

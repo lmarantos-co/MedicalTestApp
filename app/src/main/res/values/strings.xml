@@ -89,16 +89,16 @@
     <string name="BAIA4">Severely – it bothered me a lot.</string>
     <string name="BAIRESULT1">A grand sum between 0 – 21 indicates very low anxiety. That is usually a good thing. However, it is
                             possible that you might be unrealistic in either your assessment which would be denial or that you have
-                            learned to “mask” the symptoms commonly associated with anxiety. Too little “anxiety” could indicate that
+                            learned to “mask” the symptoms commonly associated with anxiety. \n Too little “anxiety” could indicate that
                             you are detached from yourself, others, or your environment. </string>
     <string name="BAIRESULT2">A grand sum between 22 – 35 indicates moderate anxiety. Your body is trying to tell you something. Look
                         for patterns as to when and why you experience the symptoms described above. For example, if it occurs
                         prior to public speaking and your job requires a lot of presentations you may want to find ways to calm
-                        yourself before speaking or let others do some of the presentations. You may have some conflict issues that
-                        need to be resolved. Clearly, it is not “panic” time but you want to find ways to manage the stress you feel</string>
+                        yourself before speaking or let others do some of the presentations. \n You may have some conflict issues that
+                        need to be resolved. Clearly, it is not “panic” time but you want to find ways to manage the stress you feel. </string>
     <string name="BAIRESULT3">A grand sum that exceeds 36 is a potential cause for concern. Again, look for patterns or times when you
                         tend to feel the symptoms you have circled. Persistent and high anxiety is not a sign of personal weakness or
-                        failure. It is, however, something that needs to be proactively treated or there could be significant impacts to
+                        failure. \n It is, however, something that needs to be proactively treated or there could be significant impacts to
                         you mentally and physically. You may want to consult a counselor if the feelings persist. </string>
     <string name="bai_test_score">Your total score : </string>
     <string name="bai_test_anxiety">The severity of anxiety : </string>

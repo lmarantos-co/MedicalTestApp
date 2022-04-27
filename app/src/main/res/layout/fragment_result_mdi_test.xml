@@ -173,388 +173,359 @@
 
     </RelativeLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/resultScrollView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id='@+id/scrollViewConLayout'
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fadeScrollbars="false"
-        android:fillViewport="true"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mdiTestTitleRelLayout">
+        app:layout_constraintTop_toBottomOf="@+id/mdiTestTitleRelLayout">
 
-        <RelativeLayout
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/resultProgressBarHGLT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.52" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/titleScrollVGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/titleScrollVGL2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/resultScrollProgressBarVGL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/scrollViewReLayout">
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <RelativeLayout
+            android:id="@+id/MDItestProgressBarRelLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1"
+            app:layout_constraintTop_toBottomOf="@id/resultProgressBarHGLT" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/resultBarHGLTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/resultBarHGLBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.61" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id='@+id/resultBarModerateDepressionHGL'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id='@+id/resultBarMildDepressionHGL'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.475" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/resultBarNoDepressionHGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4" />
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id='@+id/scrollViewConLayout'
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultProgressBarHGLT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.52" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/titleScrollVGL1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.25" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/titleScrollVGL2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.2" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultScrollProgressBarVGL"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.1" />
-
-                <RelativeLayout
-                    android:id="@+id/MDItestProgressBarRelLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1"
-                    app:layout_constraintTop_toBottomOf="@id/resultProgressBarHGLT" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultBarHGLTop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.55" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultBarHGLBottom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.61" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id='@+id/resultBarModerateDepressionHGL'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.77" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id='@+id/resultBarMildDepressionHGL'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.72" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultBarNoDepressionHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.67" />
-
-
-                <RelativeLayout
-                    android:id='@+id/resultBar'
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
-                    app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1"
-                    app:layout_constraintRight_toLeftOf="@id/titleScrollVGL2"
-                    app:layout_constraintTop_toTopOf="@id/resultBarHGLTop">
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/resultBarNoDepRelLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@color/blue"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
-                    app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1"
-                    app:layout_constraintTop_toTopOf="@id/resultBarHGLTop" />
-
-
-                <RelativeLayout
-                    android:id="@+id/resultBarSevereDepRelLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@color/dark_red"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
-                    app:layout_constraintRight_toLeftOf="@id/titleScrollVGL2"
-                    app:layout_constraintTop_toTopOf="@id/resultBarHGLTop" />
-
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/resultProgressBarRightVGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.24" />
-
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/horGL2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.83" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/horGL3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.82" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/magendaTopHelperHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.44" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/magendaTopHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.48" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/magendaHelperBottomHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.97" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/magendaBottomHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.97" />
-
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id='@+id/magednaRightVGL'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.75" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/severeDeprHelperHGL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.9" />
-
-                <TextView
-                    android:id='@+id/severeDepMaxValueTxtV'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="50"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toTopOf="@+id/magendaBottomHGL"
-                    app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-                    app:layout_constraintTop_toTopOf="@+id/magendaHelperBottomHGL" />
-
-                <RelativeLayout
-                    android:id="@+id/severeDepView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@color/Red"
-                    app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
-                    app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
-                    app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
-                    app:layout_constraintTop_toBottomOf="@id/resultBarModerateDepressionHGL">
-
-                    <TextView
-                        android:id="@+id/severeDepTxtV"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="center"
-                        android:paddingLeft="16dp"
-                        android:text="Severe depression"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/mdiMagendaTextSize" />
-
-                </RelativeLayout>
-
-                <TextView
-                    android:id='@+id/severeDepValueTxtV'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="30"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toTopOf="@+id/horGL3"
-                    app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-                    app:layout_constraintTop_toTopOf="@+id/resultBarMildDepressionHGL" />
-
-                <RelativeLayout
-                    android:id="@+id/moderateDepView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_below="@id/severeDepView"
-                    android:background="@color/orange_5"
-                    app:layout_constraintBottom_toTopOf="@id/resultBarModerateDepressionHGL"
-                    app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
-                    app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
-                    app:layout_constraintTop_toBottomOf="@id/resultBarMildDepressionHGL">
-
-
-                    <TextView
-                        android:id="@+id/moderateDepTxtV"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="center"
-                        android:paddingLeft="16dp"
-                        android:text="Moderate depression"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/mdiMagendaTextSize" />
-
-                </RelativeLayout>
-
-                <TextView
-                    android:id='@+id/moderateDepValueTxtV'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="25"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toTopOf="@+id/resultBarModerateDepressionHGL"
-                    app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-                    app:layout_constraintTop_toTopOf="@+id/resultBarNoDepressionHGL" />
-
-                <RelativeLayout
-                    android:id="@+id/mildDepView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_below="@id/moderateDepView"
-                    android:background="@color/green_5"
-                    app:layout_constraintBottom_toTopOf="@id/resultBarMildDepressionHGL"
-                    app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
-                    app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
-                    app:layout_constraintTop_toBottomOf="@id/resultBarNoDepressionHGL">
-
-                    <TextView
-                        android:id="@+id/mildDepTxtV"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="center"
-                        android:paddingLeft="16dp"
-                        android:text="Mild depression"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/mdiMagendaTextSize" />
-
-                </RelativeLayout>
-
-                <TextView
-                    android:id='@+id/mildDepValueTxtV'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="20"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toTopOf="@+id/resultBarMildDepressionHGL"
-                    app:layout_constraintStart_toEndOf="@+id/mildDepView"
-                    app:layout_constraintTop_toTopOf="@+id/resultBarHGLBottom" />
-
-                <RelativeLayout
-                    android:id="@+id/noDepView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_below="@id/mildDepView"
-                    android:background="@color/blue"
-                    app:layout_constraintBottom_toTopOf="@id/resultBarNoDepressionHGL"
-                    app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
-                    app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
-                    app:layout_constraintTop_toBottomOf="@id/magendaTopHGL">
-
-                    <TextView
-                        android:id="@+id/noDepTxtV"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="center"
-                        android:paddingLeft="16dp"
-                        android:text="No depression"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/mdiMagendaTextSize" />
-
-                </RelativeLayout>
-
-                <TextView
-                    android:id='@+id/noDepValueTxtV'
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="0"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toTopOf="@+id/resultProgressBarHGLT"
-                    app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-                    app:layout_constraintTop_toTopOf="@+id/magendaTopHelperHGL" />
-
-
-                <RelativeLayout
-                    android:id="@+id/surroundResultBar"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@color/black"
-                    app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
-                    app:layout_constraintLeft_toRightOf="@id/resultScrollProgressBarVGL"
-                    app:layout_constraintRight_toLeftOf="@id/resultProgressBarRightVGL"
-                    app:layout_constraintTop_toBottomOf="@id/magendaTopHGL" />
-
-                <RelativeLayout
-                    android:id="@+id/resulVerticalProgressBar"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:elevation="5dp"
-                    app:layout_constraintEnd_toStartOf="@id/resultProgressBarRightVGL"
-                    app:layout_constraintStart_toStartOf="@+id/resultScrollProgressBarVGL"
-                    app:layout_constraintTop_toTopOf="@+id/magendaTopHGL" />
-
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:id='@+id/resultBar'
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
+            app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1"
+            app:layout_constraintRight_toLeftOf="@id/titleScrollVGL2"
+            app:layout_constraintTop_toTopOf="@id/resultBarHGLTop">
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/resultBarNoDepRelLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/blue"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
+            app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1"
+            app:layout_constraintTop_toTopOf="@id/resultBarHGLTop" />
 
 
-    </androidx.core.widget.NestedScrollView>
+        <RelativeLayout
+            android:id="@+id/resultBarSevereDepRelLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/dark_red"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/resultBarHGLBottom"
+            app:layout_constraintRight_toLeftOf="@id/titleScrollVGL2"
+            app:layout_constraintTop_toTopOf="@id/resultBarHGLTop" />
 
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/resultProgressBarRightVGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.24" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.83" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.82" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/magendaTopHelperHGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.44" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/magendaTopHGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/magendaHelperBottomHGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.97" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/magendaBottomHGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id='@+id/magednaRightVGL'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/severeDeprHelperHGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <TextView
+            android:id='@+id/severeDepMaxValueTxtV'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="50"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/magendaBottomHGL"
+            app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
+            app:layout_constraintTop_toTopOf="@+id/magendaHelperBottomHGL" />
+
+        <RelativeLayout
+            android:id="@+id/severeDepView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/Red"
+            app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
+            app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
+            app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
+            app:layout_constraintTop_toBottomOf="@id/resultBarModerateDepressionHGL">
+
+            <TextView
+                android:id="@+id/severeDepTxtV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:text="Severe depression"
+                android:textColor="@color/black"
+                android:textSize="@dimen/mdiMagendaTextSize" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id='@+id/severeDepValueTxtV'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="30"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
+            app:layout_constraintTop_toTopOf="@+id/resultBarHGLTop" />
+
+        <RelativeLayout
+            android:id="@+id/moderateDepView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/severeDepView"
+            android:background="@color/orange_5"
+            app:layout_constraintBottom_toTopOf="@id/resultBarModerateDepressionHGL"
+            app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
+            app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
+            app:layout_constraintTop_toBottomOf="@id/resultBarMildDepressionHGL">
+
+
+            <TextView
+                android:id="@+id/moderateDepTxtV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:text="Moderate depression"
+                android:textColor="@color/black"
+                android:textSize="@dimen/mdiMagendaTextSize" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id='@+id/moderateDepValueTxtV'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="25"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
+            app:layout_constraintTop_toTopOf="@+id/resultBarMildDepressionHGL" />
+
+        <RelativeLayout
+            android:id="@+id/mildDepView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/moderateDepView"
+            android:background="@color/green_5"
+            app:layout_constraintBottom_toTopOf="@id/resultBarMildDepressionHGL"
+            app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
+            app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
+            app:layout_constraintTop_toBottomOf="@id/resultBarNoDepressionHGL">
+
+            <TextView
+                android:id="@+id/mildDepTxtV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:text="Mild depression"
+                android:textColor="@color/black"
+                android:textSize="@dimen/mdiMagendaTextSize" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id='@+id/mildDepValueTxtV'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="20"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
+            app:layout_constraintTop_toTopOf="@+id/resultBarNoDepressionHGL" />
+
+        <RelativeLayout
+            android:id="@+id/noDepView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/mildDepView"
+            android:background="@color/blue"
+            app:layout_constraintBottom_toTopOf="@id/resultBarNoDepressionHGL"
+            app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
+            app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
+            app:layout_constraintTop_toBottomOf="@id/magendaTopHGL">
+
+            <TextView
+                android:id="@+id/noDepTxtV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:text="No depression"
+                android:textColor="@color/black"
+                android:textSize="@dimen/mdiMagendaTextSize" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id='@+id/noDepValueTxtV'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/noDepView"
+            app:layout_constraintTop_toTopOf="@+id/magendaTopHGL" />
+
+
+        <RelativeLayout
+            android:id="@+id/surroundResultBar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
+            app:layout_constraintLeft_toRightOf="@id/resultScrollProgressBarVGL"
+            app:layout_constraintRight_toLeftOf="@id/resultProgressBarRightVGL"
+            app:layout_constraintTop_toBottomOf="@id/magendaTopHGL" />
+
+        <RelativeLayout
+            android:id="@+id/resulVerticalProgressBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            app:layout_constraintEnd_toStartOf="@id/resultProgressBarRightVGL"
+            app:layout_constraintStart_toStartOf="@+id/resultScrollProgressBarVGL"
+            app:layout_constraintTop_toTopOf="@+id/magendaTopHGL" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

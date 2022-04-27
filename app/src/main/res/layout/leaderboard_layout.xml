@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/leaderboardRelLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/very_light_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/leaderBoardTxtV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/leader_top_title_style"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Top Players"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/leader_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/leaderBoardTxtV"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Display1">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/globalTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Global" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/localTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Local" />
+
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/leader_tab_layout"
+            android:id="@+id/leaderPartRelLayout">
+
+            <LinearLayout
+                android:id="@+id/leaderLinLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">>
+
+                <TextView
+                    android:id="@+id/groupAleadTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Group A"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <RelativeLayout
+                    android:id="@+id/groupARelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/part1RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/leader_board_player_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/part1orderTxtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="1."
+                            android:textColor="@color/black"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:id="@+id/part1AvatorImgV"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_toRightOf="@id/part1orderTxtV"
+                            app:srcCompat="@drawable/avatar" />
+
+                        <TextView
+                            android:id="@+id/part1txtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="Participant 1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/part1ScoreRelLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/part1ScoreTxtV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray"
+                                android:padding="8dp"
+                                android:text="8500"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/trophyA"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="false"
+                                android:layout_centerInParent="false"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/part1ScoreTxtV"
+                                app:srcCompat="@drawable/ic_trophy" />
+
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/part2RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/part1RelLayout"
+                        android:background="@drawable/leader_board_player_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/part2orderTxtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="2."
+                            android:textColor="@color/black"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:id="@+id/part2AvatorImgV"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_toRightOf="@id/part2orderTxtV"
+                            app:srcCompat="@drawable/avatar_b" />
+
+                        <TextView
+                            android:id="@+id/part2txtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="Participant 2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/part2ScoreRelLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/part2ScoreTxtV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray"
+                                android:padding="8dp"
+                                android:text="8000"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/trophyB"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="false"
+                                android:layout_centerInParent="false"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/part2ScoreTxtV"
+                                app:srcCompat="@drawable/ic_trophy" />
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/part3RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/part2RelLayout"
+                        android:background="@drawable/leader_board_player_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/part3orderTxtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="3."
+                            android:textColor="@color/black"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:id="@+id/part3AvatorImgV"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_toRightOf="@id/part3orderTxtV"
+                            app:srcCompat="@drawable/beard" />
+
+                        <TextView
+                            android:id="@+id/part3txtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="Participant 3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/part3ScoreRelLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/part3ScoreTxtV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray"
+                                android:padding="8dp"
+                                android:text="7500"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/trophyC"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="false"
+                                android:layout_centerInParent="false"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/part3ScoreTxtV"
+                                app:srcCompat="@drawable/ic_trophy" />
+
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/leaderLinLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leaderLinLayout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/groupBleadTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="8dp"
+                    android:text="Group B"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <RelativeLayout
+                    android:id="@+id/groupBRelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/part4RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/leader_board_player_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/part4orderTxtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="4."
+                            android:textColor="@color/black"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:id="@+id/part4AvatorImgV"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_toRightOf="@id/part4orderTxtV"
+                            app:srcCompat="@drawable/boy" />
+
+                        <TextView
+                            android:id="@+id/part4txtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="Participant 4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/part4ScoreRelLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/part4ScoreTxtV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray"
+                                android:padding="8dp"
+                                android:text="7000"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/trophyD"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="false"
+                                android:layout_centerInParent="false"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/part4ScoreTxtV"
+                                app:srcCompat="@drawable/ic_trophy" />
+
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/part5RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/part4RelLayout"
+                        android:background="@drawable/leader_board_player_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/part5orderTxtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="5."
+                            android:textColor="@color/black"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:id="@+id/part5AvatorImgV"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_toRightOf="@id/part5orderTxtV"
+                            app:srcCompat="@drawable/gamer" />
+
+                        <TextView
+                            android:id="@+id/part5txtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="Participant 5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/part5ScoreRelLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/part5ScoreTxtV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray"
+                                android:padding="8dp"
+                                android:text="6500"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/trophyE"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="false"
+                                android:layout_centerInParent="false"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/part5ScoreTxtV"
+                                app:srcCompat="@drawable/ic_trophy" />
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/part6RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/part5RelLayout"
+                        android:background="@drawable/leader_board_player_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/part6orderTxtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="6."
+                            android:textColor="@color/black"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:id="@+id/part6AvatorImgV"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_toRightOf="@id/part6orderTxtV"
+                            app:srcCompat="@drawable/man" />
+
+                        <TextView
+                            android:id="@+id/part6txtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="Participant 6"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/part6ScoreRelLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/part6ScoreTxtV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray"
+                                android:padding="8dp"
+                                android:text="6000"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/trophyF"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="false"
+                                android:layout_centerInParent="false"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/part6ScoreTxtV"
+                                app:srcCompat="@drawable/ic_trophy" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/leaderLinLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leaderLinLayout2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/groupCleadTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="8dp"
+                    android:text="Group C"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <RelativeLayout
+                    android:id="@+id/groupCRelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/part7RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/leader_board_player_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/part7orderTxtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="7."
+                            android:textColor="@color/black"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:id="@+id/part7AvatorImgV"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_toRightOf="@id/part7orderTxtV"
+                            app:srcCompat="@drawable/man_a" />
+
+                        <TextView
+                            android:id="@+id/part7txtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="Participant 7"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/part7ScoreRelLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/part7ScoreTxtV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray"
+                                android:padding="8dp"
+                                android:text="5500"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/trophyG"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="false"
+                                android:layout_centerInParent="false"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/part7ScoreTxtV"
+                                app:srcCompat="@drawable/ic_trophy" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/part8RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/part7RelLayout"
+                        android:background="@drawable/leader_board_player_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/part8orderTxtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="8."
+                            android:textColor="@color/black"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:id="@+id/part8AvatorImgV"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_toRightOf="@id/part8orderTxtV"
+                            app:srcCompat="@drawable/man_b" />
+
+                        <TextView
+                            android:id="@+id/part8txtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="Participant 8"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/part8ScoreRelLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/part8ScoreTxtV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray"
+                                android:padding="8dp"
+                                android:text="4500"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/trophyH"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="false"
+                                android:layout_centerInParent="false"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/part8ScoreTxtV"
+                                app:srcCompat="@drawable/ic_trophy" />
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/part9RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/part8RelLayout"
+                        android:background="@drawable/leader_board_player_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/part9orderTxtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="6."
+                            android:textColor="@color/black"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:id="@+id/part9AvatorImgV"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_toRightOf="@id/part9orderTxtV"
+                            app:srcCompat="@drawable/womanb" />
+
+                        <TextView
+                            android:id="@+id/part9txtV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="Participant 9"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/part9ScoreRelLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/part9ScoreTxtV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray"
+                                android:padding="8dp"
+                                android:text="4000"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/trophyI"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="false"
+                                android:layout_centerInParent="false"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/part9ScoreTxtV"
+                                app:srcCompat="@drawable/ic_trophy" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
