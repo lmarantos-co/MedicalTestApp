@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var baiCheckFragment: BAICheckFragment
     private lateinit var mdsCheckFragment: medDietTestFragment
     private lateinit var bpiCheckFragment: BPICheckFragment
+    private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
     private lateinit var MTETitleForm : RelativeLayout
     private  var mteTitleFormHeight : Int = 0
@@ -152,6 +153,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         baiCheckFragment = BAICheckFragment.newInstance()
         mdsCheckFragment = medDietTestFragment.newInstance()
         bpiCheckFragment = BPICheckFragment.newInstance()
+        leaderBoardFragment = LeaderBoardFragment.newInstance()
 
         setFragmentContainerConstraint(2)
 
@@ -517,6 +519,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(baiCheckFragment)
         fragmentTransaction.hide(mdsCheckFragment)
         fragmentTransaction.hide(bpiCheckFragment)
+        fragmentTransaction.hide(leaderBoardFragment)
             .commit()
     }
 
@@ -540,6 +543,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is RegisterFragment)
             fragmentTransaction.show(registerFragment)
         if (fragment is BPICheckFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)
 
         fragmentTransaction.replace(R.id.fragmentContainer , fragment).addToBackStack("FRAGMENT").commit()
@@ -646,6 +651,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             R.id.terms_item -> {
                 showTermsOfUseLayout()
             }
+            R.id.leaderboard_item ->
+            {
+                fragmentTransaction(leaderBoardFragment)
+            }
             }
             false
         }
@@ -662,6 +671,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         applyFontToMenuItem(popupMenu.menu.getItem(3) , this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data" , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(4) , "Clear All Data" , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(5) , "Terms Of Use" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(6) ,"LeaderBoard" , applicationContext)
 
 
         // show icons on popup menu

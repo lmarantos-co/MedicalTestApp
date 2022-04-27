@@ -41,6 +41,7 @@ class medDietTestFragment : Fragment() {
     private lateinit var checkMedDietTestViewModelFactory: CheckMedDietTestViewModelFactory
     private lateinit var registerFragment: RegisterFragment
     private lateinit var loginFragment: LoginFragment
+    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popUpMenu: PopUpMenu
     private  var allPatientValues = arrayListOf<Int?>(1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 , 1 ,1)
 
@@ -275,7 +276,7 @@ class medDietTestFragment : Fragment() {
                 .show()
         }
 
-        popUpMenu = PopUpMenu(medDietTestBinding.includePopUpMenu.termsRelLayout , mainActivity , this , loginFragment , registerFragment)
+        popUpMenu = PopUpMenu(medDietTestBinding.includePopUpMenu.termsRelLayout , mainActivity , this , loginFragment , registerFragment , leaderBoardFragment)
 //        medDietTestBinding.includeCvdTitleForm.userIcon.setOnClickListener {
 //            medDietTestBinding.includePopUpMenu.includePopupMenu.visibility = View.VISIBLE
 //        }

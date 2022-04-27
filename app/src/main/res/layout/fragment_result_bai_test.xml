@@ -67,6 +67,20 @@
         app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarVGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarVGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultsTopHGL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -157,7 +171,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/resultBarBOTTOMGL"
         app:layout_constraintEnd_toEndOf="@id/lowAnxietyHGL"
-        app:layout_constraintStart_toStartOf="@id/titleVGL1"
+        app:layout_constraintStart_toStartOf="@id/resultBarVGL1"
         app:layout_constraintTop_toBottomOf="@id/resultBarTOPGL" />
 
     <RelativeLayout
@@ -174,7 +188,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/resultBarBOTTOMGL"
-        app:layout_constraintEnd_toEndOf="@id/titleVGL2"
+        app:layout_constraintEnd_toEndOf="@id/resultBarVGL2"
         app:layout_constraintStart_toStartOf="@id/moderateAnxietyHGL"
         app:layout_constraintTop_toBottomOf="@id/resultBarTOPGL" />
 
@@ -182,13 +196,13 @@
         android:id="@+id/lowAnxietyScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
         android:text="0"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
-        app:layout_constraintStart_toStartOf="@+id/titleVGL1"
-        app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL"
-        app:layout_constraintVertical_bias="0.566" />
+        app:layout_constraintStart_toStartOf="@+id/resultBarVGL1"
+        app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
 
     <TextView
         android:id="@+id/moderateAnxietyScore"
@@ -216,11 +230,12 @@
         android:id="@+id/mostSevereAnxietyScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingRight="8dp"
         android:text="63"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
-        app:layout_constraintStart_toStartOf="@+id/beforeTitleVGL2"
+        app:layout_constraintEnd_toStartOf="@+id/resultBarVGL2"
         app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
 
     <androidx.constraintlayout.widget.Guideline

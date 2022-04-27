@@ -46,6 +46,7 @@ class BPICheckFragment : Fragment() {
     private lateinit var popUpMenu : PopUpMenu
     private lateinit var loginFragment: LoginFragment
     private lateinit var registerFragment: RegisterFragment
+    private lateinit var leaderBoardFragment: LeaderBoardFragment
     private  var allPatientAnswers = arrayListOf<Int?>(1 ,1 ,1, 1, 1, 1, 1, 1, 1, 1, 1 , 1, 1)
     private lateinit var showCircle : Animation
     private var screenWidth : Float = 0f
@@ -109,7 +110,8 @@ class BPICheckFragment : Fragment() {
         }
         loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
-        popUpMenu = PopUpMenu(binding.includePopUpMenu.termsRelLayout , mainActivity , this , loginFragment , registerFragment)
+        leaderBoardFragment = LeaderBoardFragment.newInstance()
+        popUpMenu = PopUpMenu(binding.includePopUpMenu.termsRelLayout , mainActivity , this , loginFragment , registerFragment , leaderBoardFragment)
          binding.includeCvdTitleForm.userIcon.setOnClickListener {
              popUpMenu.showPopUp(it)
         }

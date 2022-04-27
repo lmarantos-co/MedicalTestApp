@@ -34,6 +34,7 @@ class CheckFragment : Fragment() {
 
     private  var loginFragment: LoginFragment = LoginFragment.newInstance()
     private  var registerFragment: RegisterFragment = RegisterFragment.newInstance()
+    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popUpMenuComp: PopUpMenu
     private var mteTitleFormHeight : Int = 0
 
@@ -103,7 +104,7 @@ class CheckFragment : Fragment() {
             popUpMenuComp.showPopUp(checkBinding.includeCvdTitleForm.userIcon)
         }
 
-        popUpMenuComp = PopUpMenu(checkBinding.includePopUpMenu.termsRelLayout , mainActivity , this, loginFragment ,registerFragment )
+        popUpMenuComp = PopUpMenu(checkBinding.includePopUpMenu.termsRelLayout , mainActivity , this, loginFragment ,registerFragment , leaderBoardFragment)
 
         checkBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 

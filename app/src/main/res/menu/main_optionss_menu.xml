@@ -37,5 +37,11 @@
         android:title="Terms Of Use"
         android:icon="@drawable/ic_terms"/>
 
+    <item
+        android:id="@+id/leaderboard_item"
+        app:showAsAction="always"
+        android:title="LeaderBoard"
+        android:icon="@drawable/leaderboard"/>
+
 
 </menu>

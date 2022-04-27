@@ -25,19 +25,21 @@ class PopUpMenu {
     private var prFragment : Fragment
     private var prLoginFragment : LoginFragment?
     private var prRegisterFragment : RegisterFragment?
+    private var prleaderBoardFragment : LeaderBoardFragment?
     //variables to set the menu item titles
     var LOG : String = "Login"
     var USER : String =  "tempUser Data"
     private lateinit var prPopupmenu: PopupMenu
     private lateinit var realm : Realm
 
-    constructor(termsOfUse : RelativeLayout, mainActivity: MainActivity, fragment: Fragment, loginFragment: LoginFragment?, registerFragment: RegisterFragment?)
+    constructor(termsOfUse : RelativeLayout, mainActivity: MainActivity, fragment: Fragment, loginFragment: LoginFragment?, registerFragment: RegisterFragment?, leaderBoardFragment: LeaderBoardFragment?)
     {
         prTermsOfUse = termsOfUse
         prMainActivity = mainActivity
         prFragment = fragment
         prLoginFragment = loginFragment
         prRegisterFragment = registerFragment
+        prleaderBoardFragment = leaderBoardFragment
     }
 
     //behavioral code related with Popup menu
@@ -53,7 +55,7 @@ class PopUpMenu {
                     prMainActivity.backToActivity()
                 }
                 R.id.login_item -> {
-                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) ||(prFragment is ResultFragment))
+                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) ||(prFragment is ResultFragment) || (prleaderBoardFragment is LeaderBoardFragment))
                     {
                         val prefs = prMainActivity.getPreferences(Context.MODE_PRIVATE)
                         val message = prefs.getString("LOG", "Test1")
@@ -66,7 +68,7 @@ class PopUpMenu {
 
                 }
                 R.id.register_item -> {
-                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is LoginFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is ResultFragment))
+                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is LoginFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is LeaderBoardFragment) || (prFragment is ResultFragment))
                     {
                         prMainActivity.backToActivity()
                         prMainActivity.fragmentTransaction(prRegisterFragment!!)
@@ -180,6 +182,11 @@ class PopUpMenu {
                 }
                 R.id.terms_item -> {
                     showTermsOfUseLayout()
+                }
+                R.id.leaderboard_item ->
+                {
+                    prMainActivity.backToActivity()
+                    prMainActivity.fragmentTransaction(prleaderBoardFragment!!)
                 }
             }
             false

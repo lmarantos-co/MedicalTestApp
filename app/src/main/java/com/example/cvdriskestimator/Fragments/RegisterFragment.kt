@@ -27,6 +27,7 @@ class RegisterFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
     private lateinit var registerBinding: FragmentRegisterBinding
     private lateinit var registerViewModel: RegisterPatientViewModel
+    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
 
     private lateinit var popupMenuComp : PopUpMenu
 
@@ -86,7 +87,7 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         loginFragment = LoginFragment.newInstance()
-        popupMenuComp = PopUpMenu(registerBinding.includePopUpMenu.termsRelLayout , mainActivity, this, loginFragment , null)
+        popupMenuComp = PopUpMenu(registerBinding.includePopUpMenu.termsRelLayout , mainActivity, this, loginFragment , null , leaderBoardFragment)
 
         registerBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenuComp.showPopUp(registerBinding.includeCvdTitleForm.userIcon)

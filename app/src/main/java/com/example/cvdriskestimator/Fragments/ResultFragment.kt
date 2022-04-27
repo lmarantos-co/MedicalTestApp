@@ -76,6 +76,7 @@ class ResultFragment : Fragment() {
 
     private var loginFragment: LoginFragment = LoginFragment.newInstance()
     private var registerFragment: RegisterFragment = RegisterFragment.newInstance()
+    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popupMenuComp: PopUpMenu
     private lateinit var closeBtn: ImageView
     private lateinit var formConLayout: ConstraintLayout
@@ -143,6 +144,7 @@ class ResultFragment : Fragment() {
     private lateinit var moderateProgressBar : ProgressBar
     private lateinit var severeProgressBar : ProgressBar
 
+    private lateinit var bpiTestResultTxtV  : TextView
     private lateinit var totalPSSScore : TextView
     private lateinit var totalPISScore : TextView
 
@@ -367,6 +369,8 @@ class ResultFragment : Fragment() {
             moderateProgressBar = view.findViewById(R.id.moderateResultProgressBar)
             severeProgressBar = view.findViewById(R.id.severeResultProgressBar)
 
+            bpiTestResultTxtV = view.findViewById(R.id.testResultTxtV)
+
             totalPSSScore = view.findViewById(R.id.totalPSSScoreDescTxtV)
             totalPISScore = view.findViewById(R.id.totalPISScoreDescTxtV)
 
@@ -442,7 +446,7 @@ class ResultFragment : Fragment() {
 
 
         popupMenuComp =
-            PopUpMenu(termsRelLayout, mainActivity, this, loginFragment, registerFragment)
+            PopUpMenu(termsRelLayout, mainActivity, this, loginFragment, registerFragment , leaderBoardFragment)
 
         userIcon.setOnClickListener {
             popupMenuComp.showPopUp(userIcon)
@@ -560,10 +564,12 @@ class ResultFragment : Fragment() {
             5 ->
             {
                 testHeadling.setBackgroundResource(R.drawable.yellow_mdstest_form_title_style)
+                mdsTestScore.setBackgroundResource(R.drawable.mds_relative_layout)
             }
             6 ->
             {
                 testHeadling.setBackgroundResource(R.drawable.red_bpi_form_style)
+                bpiTestResultTxtV.setBackgroundResource(R.drawable.bpi_result_rel_layout)
             }
         }
     }

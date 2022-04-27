@@ -40,6 +40,7 @@ class BAICheckFragment : Fragment() {
 
     private lateinit var loginFragment: LoginFragment
     private lateinit var registerFragment: RegisterFragment
+    private lateinit var leaderBoardFragment: LeaderBoardFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -138,9 +139,10 @@ class BAICheckFragment : Fragment() {
 
         loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
+        leaderBoardFragment = LeaderBoardFragment.newInstance()
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(baiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment)
+        popupMenu = PopUpMenu(baiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , leaderBoardFragment)
 
         baiCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

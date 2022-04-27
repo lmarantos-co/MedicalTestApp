@@ -26,6 +26,7 @@ class LoginFragment : Fragment() {
     private var mteTitleHieght : Int = 0
 
     private var registerFragment: RegisterFragment = RegisterFragment.newInstance()
+    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,7 +72,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        popUpMenuComp = PopUpMenu(loginBinding.includePopUpMenu.termsRelLayout , mainActivity, this, null, registerFragment)
+        popUpMenuComp = PopUpMenu(loginBinding.includePopUpMenu.termsRelLayout , mainActivity, this, null, registerFragment , leaderBoardFragment)
 
         loginBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popUpMenuComp.showPopUp(loginBinding.includeCvdTitleForm.userIcon)
