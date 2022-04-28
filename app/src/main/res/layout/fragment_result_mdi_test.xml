@@ -180,6 +180,7 @@
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mdiTestTitleRelLayout">
 
 
@@ -244,14 +245,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.475" />
+            app:layout_constraintGuide_percent="0.45" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/resultBarNoDepressionHGL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.4" />
+            app:layout_constraintGuide_percent="0.35" />
 
 
         <RelativeLayout
@@ -322,7 +323,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.05" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/magendaHelperBottomHGL"
@@ -398,6 +399,17 @@
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
             app:layout_constraintTop_toTopOf="@+id/resultBarHGLTop" />
+
+        <TextView
+            android:id='@+id/severeHighDepValueTxtV'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="50"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
+            app:layout_constraintBottom_toTopOf="@+id/magendaBottomHGL" />
 
         <RelativeLayout
             android:id="@+id/moderateDepView"
@@ -505,16 +517,67 @@
             app:layout_constraintStart_toEndOf="@+id/noDepView"
             app:layout_constraintTop_toTopOf="@+id/magendaTopHGL" />
 
+        <View
+            android:id="@+id/noDepResultView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="1dp"
+            android:alpha="0"
+            android:background="@color/blue"
+            app:layout_constraintBottom_toTopOf="@id/resultBarNoDepressionHGL"
+            app:layout_constraintEnd_toEndOf="@id/titleScrollVGL1"
+            app:layout_constraintStart_toStartOf="@id/resulVerticalProgressBar"
+            app:layout_constraintTop_toBottomOf="@id/magendaTopHGL" />
+
+        <View
+            android:id="@+id/mildDepResultView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="1dp"
+            android:alpha="0"
+            android:background="@color/green_5"
+            app:layout_constraintBottom_toTopOf="@id/resultBarMildDepressionHGL"
+            app:layout_constraintEnd_toEndOf="@id/titleScrollVGL1"
+            app:layout_constraintStart_toStartOf="@id/resulVerticalProgressBar"
+            app:layout_constraintTop_toBottomOf="@id/resultBarNoDepressionHGL" />
+
+        <View
+            android:id="@+id/modDepResultView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="1dp"
+            android:alpha="0"
+            android:background="@color/orange_5"
+            app:layout_constraintBottom_toTopOf="@id/resultBarModerateDepressionHGL"
+            app:layout_constraintEnd_toEndOf="@id/titleScrollVGL1"
+            app:layout_constraintStart_toStartOf="@id/resulVerticalProgressBar"
+            app:layout_constraintTop_toBottomOf="@id/resultBarMildDepressionHGL" />
+
+        <View
+            android:id="@+id/severeDepResultView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="1dp"
+            android:alpha="0"
+            android:background="@color/Red"
+            app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
+            app:layout_constraintEnd_toEndOf="@id/titleScrollVGL1"
+            app:layout_constraintStart_toStartOf="@id/resulVerticalProgressBar"
+            app:layout_constraintTop_toBottomOf="@id/resultBarModerateDepressionHGL" />
+
 
         <RelativeLayout
             android:id="@+id/surroundResultBar"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/black"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
             app:layout_constraintLeft_toRightOf="@id/resultScrollProgressBarVGL"
             app:layout_constraintRight_toLeftOf="@id/resultProgressBarRightVGL"
-            app:layout_constraintTop_toBottomOf="@id/magendaTopHGL" />
+            app:layout_constraintTop_toBottomOf="@id/magendaTopHGL">
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/resulVerticalProgressBar"
