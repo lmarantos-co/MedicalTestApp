@@ -92,11 +92,12 @@
         android:id="@+id/mdiTestTitleRelLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="@drawable/relativelayout_style"
         android:gravity="center"
         app:layout_constraintLeft_toRightOf="@id/resultProgressBarVGL"
         app:layout_constraintRight_toLeftOf="@id/mdiResultRightVGL"
-        app:layout_constraintTop_toBottomOf="@id/resultsTopHGL">
+        app:layout_constraintTop_toBottomOf="@+id/mditestTitleTxtV">
 
         <TextView
             android:id='@+id/testResultTxtV'

@@ -289,28 +289,28 @@
                 </RadioGroup>
 
                         <TextView
+                            android:id="@+id/psQLowTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/psQLowTxtV"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:textStyle="italic"
-                            android:paddingLeft="5dp"
-                            android:text="@string/bpi_psscore_low"
                             android:layout_below="@+id/g2_RG"
-                            android:layout_alignParentLeft="true"/>
+                            android:layout_alignParentLeft="true"
+                            android:paddingLeft="10dp"
+                            android:text="@string/bpi_psscore_low"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                         <TextView
+                            android:id="@+id/psQHighTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/psQHighTxtV"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:textStyle="italic"
-                            android:paddingRight="5dp"
-                            android:text="@string/bpi_psscore_high"
                             android:layout_below="@id/g2_RG"
-                            android:layout_alignParentRight="true"/>
+                            android:layout_alignParentRight="true"
+                            android:paddingRight="10dp"
+                            android:text="@string/bpi_psscore_high"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                 </RelativeLayout>
 
@@ -448,28 +448,28 @@
                     </RadioGroup>
 
                         <TextView
+                            android:id="@+id/psQ3LowTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/psQ3LowTxtV"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:textStyle="italic"
-                            android:paddingLeft="5dp"
-                            android:text="@string/bpi_psscore_low"
                             android:layout_below="@+id/q3_RG"
-                            android:layout_alignParentLeft="true"/>
+                            android:layout_alignParentLeft="true"
+                            android:paddingLeft="10dp"
+                            android:text="@string/bpi_psscore_low"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                         <TextView
+                            android:id="@+id/psQ3HighTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/psQ3HighTxtV"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:textStyle="italic"
-                            android:paddingRight="5dp"
-                            android:text="@string/bpi_psscore_high"
                             android:layout_below="@+id/q3_RG"
-                            android:layout_alignParentRight="true"/>
+                            android:layout_alignParentRight="true"
+                            android:paddingRight="10dp"
+                            android:text="@string/bpi_psscore_high"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                     </RelativeLayout>
 
@@ -607,28 +607,28 @@
                         </RadioGroup>
 
                         <TextView
+                            android:id="@+id/psQ4LowTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/psQ4LowTxtV"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:textStyle="italic"
-                            android:paddingLeft="5dp"
-                            android:text="@string/bpi_psscore_low"
                             android:layout_below="@id/q4_RG"
-                            android:layout_alignParentLeft="true"/>
+                            android:layout_alignParentLeft="true"
+                            android:paddingLeft="10dp"
+                            android:text="@string/bpi_psscore_low"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                         <TextView
+                            android:id="@+id/psQ4HighTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/psQ4HighTxtV"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:textStyle="italic"
-                            android:paddingRight="5dp"
-                            android:text="@string/bpi_psscore_high"
                             android:layout_below="@id/q4_RG"
-                            android:layout_alignParentRight="true"/>
+                            android:layout_alignParentRight="true"
+                            android:paddingRight="10dp"
+                            android:text="@string/bpi_psscore_high"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                     </RelativeLayout>
 
@@ -923,28 +923,28 @@
                     </RadioGroup>
 
                         <TextView
+                            android:id="@+id/piQ6LowTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/piQ6LowTxtV"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:textStyle="italic"
-                            android:paddingLeft="5dp"
-                            android:text="@string/bpi_meds_low"
                             android:layout_below="@id/q6_RG"
-                            android:layout_alignParentLeft="true"/>
+                            android:layout_alignParentLeft="true"
+                            android:paddingLeft="10dp"
+                            android:text="@string/bpi_meds_low"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                         <TextView
+                            android:id="@+id/piQ6HighTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/piQ6HighTxtV"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:textStyle="italic"
-                            android:paddingRight="5dp"
-                            android:text="@string/bpi_meds_high"
                             android:layout_below="@id/q6_RG"
-                            android:layout_alignParentRight="true"/>
+                            android:layout_alignParentRight="true"
+                            android:paddingRight="10dp"
+                            android:text="@string/bpi_meds_high"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                     </RelativeLayout>
 
@@ -1848,28 +1848,28 @@
                         </RadioGroup>
 
                         <TextView
+                            android:id="@+id/piQ7LowTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/piQ7LowTxtV"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:textStyle="italic"
-                            android:paddingLeft="5dp"
-                            android:text="@string/bpi_least_interfere"
                             android:layout_below="@id/g7g_RG"
-                            android:layout_alignParentLeft="true"/>
+                            android:layout_alignParentLeft="true"
+                            android:paddingLeft="10dp"
+                            android:text="@string/bpi_least_interfere"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                         <TextView
+                            android:id="@+id/piQ7HighTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/piQ7HighTxtV"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:textStyle="italic"
-                            android:paddingRight="5dp"
-                            android:text="@string/bpi_most_interfere"
                             android:layout_below="@id/g7g_RG"
-                            android:layout_alignParentRight="true"/>
+                            android:layout_alignParentRight="true"
+                            android:paddingRight="10dp"
+                            android:text="@string/bpi_most_interfere"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                     </RelativeLayout>
 

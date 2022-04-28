@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="10dp"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horGL1"
@@ -77,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.38" />
+        app:layout_constraintGuide_percent="0.42" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/moderatePainRightVGL"
@@ -123,6 +123,13 @@
         app:layout_constraintGuide_percent="0.905" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomResultBarHGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.875" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultViewLeftVGL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -139,14 +146,14 @@
     <RelativeLayout
         android:id="@+id/baiTestTitleRelLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/mds_test_result_rel_layout"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/resultsBottomHGL"
         app:layout_constraintLeft_toRightOf="@id/titleVGL1"
         app:layout_constraintRight_toLeftOf="@id/titleVGL2"
-        app:layout_constraintTop_toBottomOf="@id/resultsTopHGL">
+        app:layout_constraintTop_toBottomOf="@+id/bpiTestTitleTxtV">
 
         <TextView
             android:id='@+id/testResultTxtV'
@@ -256,6 +263,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.43" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomBarViewVGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topLowresultHGL"
@@ -413,7 +427,7 @@
         app:layout_constraintBottom_toTopOf="@+id/topResultViewHGL"
         app:layout_constraintLeft_toRightOf="@+id/moderatePainRightVGL"
         app:layout_constraintRight_toLeftOf="@+id/rightViewBarHGL"
-        app:layout_constraintTop_toBottomOf="@+id/bottomBarViewVGL">
+        app:layout_constraintTop_toBottomOf="@id/bottomBarViewVGL2">
 
         <TextView
             android:id="@+id/lowPaintxtV"
@@ -484,7 +498,7 @@
         android:layout_height="0dp"
         android:background="@drawable/red_progressbar_style"
         android:elevation="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomResultBarHGL"
+        app:layout_constraintBottom_toTopOf="@id/bottomResultBarHGL2"
         app:layout_constraintLeft_toRightOf="@+id/moderatePainRightVGL"
         app:layout_constraintRight_toLeftOf="@+id/rightViewBarHGL"
         app:layout_constraintTop_toBottomOf="@+id/modPainBottomHGL">

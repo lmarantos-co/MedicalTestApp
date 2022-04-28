@@ -97,13 +97,14 @@
     <RelativeLayout
         android:id="@+id/baiTestTitleRelLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/relativelayout_style"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/resultsBottomHGL"
         app:layout_constraintLeft_toRightOf="@id/titleVGL1"
         app:layout_constraintRight_toLeftOf="@id/titleVGL2"
-        app:layout_constraintTop_toBottomOf="@id/resultsTopHGL">
+        app:layout_constraintTop_toBottomOf="@+id/baiTestTitleTxtV">
 
         <TextView
             android:id='@+id/testResultTxtV'
@@ -306,7 +307,7 @@
             android:padding="10dp"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

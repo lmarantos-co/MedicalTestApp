@@ -83,19 +83,20 @@
     <RelativeLayout
         android:id="@+id/mdsTestTitleRelLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mds_test_result_rel_layout"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/resultsBottomHGL"
         app:layout_constraintLeft_toRightOf="@id/titleVGL1"
         app:layout_constraintRight_toLeftOf="@id/titleVGL2"
-        app:layout_constraintTop_toBottomOf="@id/resultsTopHGL">
+        app:layout_constraintTop_toBottomOf="@+id/mdsTestTitleTxtV">
 
 
         <TextView
             android:id="@+id/totalPSScore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/mds_relative_layout"
             android:gravity="center"
             android:paddingLeft="5dp"
             android:text="@string/mds_test_score"
@@ -108,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/totalPSScore"
-            android:background="@drawable/relativelayout_style"
+            android:background="@color/light_gray"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingLeft="10dp"
@@ -130,7 +131,7 @@
 
         </LinearLayout>
 
-        </RelativeLayout>
+    </RelativeLayout>
 
 
 

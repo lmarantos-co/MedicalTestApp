@@ -8,14 +8,16 @@
     android:alwaysDrawnWithCache="false"
     android:animateLayoutChanges="false"
     android:animationCache="false"
+    android:background="@color/MidnightBlue"
     android:clipChildren="false"
     android:contextClickable="false"
+    android:filterTouchesWhenObscured="false"
     android:fitsSystemWindows="false">
 
     <include
         android:id="@+id/medicalEstimatorForm"
         layout="@layout/cvd_title_form"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/horGL1"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +28,7 @@
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horGL1"
@@ -39,7 +41,11 @@
         android:id="@+id/leaderboardRelLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/very_light_gray"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/leaderbard_full_rel_layout_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/medicalEstimatorForm">
 
@@ -50,20 +56,22 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/leader_top_title_style"
+            android:background="@color/white"
             android:gravity="center"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:text="Top Players"
-            android:textSize="40sp"
+            android:text="Activity For Breast Cancer"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/leader_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="false"
             android:layout_below="@+id/leaderBoardTxtV"
-            app:tabTextAppearance="@style/TextAppearance.AppCompat.Display1">
+            android:fillViewport="false"
+            app:tabTextAppearance="@style/TabLayoutStyle">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/globalTab"
@@ -75,7 +83,7 @@
                 android:id="@+id/localTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Local" />
+                android:text="My Country" />
 
 
         </com.google.android.material.tabs.TabLayout>
@@ -84,7 +92,11 @@
             android:id="@+id/leaderPartRelLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/leader_tab_layout">
+            android:layout_below="@+id/leader_tab_layout"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="24dp">
 
             <LinearLayout
                 android:id="@+id/leaderLinLayout"
@@ -115,7 +127,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/leader_board_player_layout"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
                         <TextView
                             android:id="@+id/part1orderTxtV"
@@ -157,7 +171,6 @@
                                 android:id="@+id/part1ScoreTxtV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray"
                                 android:padding="8dp"
                                 android:text="8500"
                                 android:textColor="@color/white"
@@ -185,7 +198,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/part1RelLayout"
                         android:background="@drawable/leader_board_player_layout"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
                         <TextView
                             android:id="@+id/part2orderTxtV"
@@ -227,7 +242,6 @@
                                 android:id="@+id/part2ScoreTxtV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray"
                                 android:padding="8dp"
                                 android:text="8000"
                                 android:textColor="@color/white"
@@ -254,7 +268,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/part2RelLayout"
                         android:background="@drawable/leader_board_player_layout"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
                         <TextView
                             android:id="@+id/part3orderTxtV"
@@ -296,7 +312,6 @@
                                 android:id="@+id/part3ScoreTxtV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray"
                                 android:padding="8dp"
                                 android:text="7500"
                                 android:textColor="@color/white"
@@ -349,7 +364,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/leader_board_player_layout"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
                         <TextView
                             android:id="@+id/part4orderTxtV"
@@ -391,7 +408,6 @@
                                 android:id="@+id/part4ScoreTxtV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray"
                                 android:padding="8dp"
                                 android:text="7000"
                                 android:textColor="@color/white"
@@ -419,7 +435,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/part4RelLayout"
                         android:background="@drawable/leader_board_player_layout"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
                         <TextView
                             android:id="@+id/part5orderTxtV"
@@ -461,7 +479,6 @@
                                 android:id="@+id/part5ScoreTxtV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray"
                                 android:padding="8dp"
                                 android:text="6500"
                                 android:textColor="@color/white"
@@ -488,7 +505,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/part5RelLayout"
                         android:background="@drawable/leader_board_player_layout"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
                         <TextView
                             android:id="@+id/part6orderTxtV"
@@ -530,7 +549,6 @@
                                 android:id="@+id/part6ScoreTxtV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray"
                                 android:padding="8dp"
                                 android:text="6000"
                                 android:textColor="@color/white"
@@ -582,7 +600,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/leader_board_player_layout"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
                         <TextView
                             android:id="@+id/part7orderTxtV"
@@ -624,7 +644,6 @@
                                 android:id="@+id/part7ScoreTxtV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray"
                                 android:padding="8dp"
                                 android:text="5500"
                                 android:textColor="@color/white"
@@ -651,7 +670,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/part7RelLayout"
                         android:background="@drawable/leader_board_player_layout"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
                         <TextView
                             android:id="@+id/part8orderTxtV"
@@ -693,7 +714,6 @@
                                 android:id="@+id/part8ScoreTxtV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray"
                                 android:padding="8dp"
                                 android:text="4500"
                                 android:textColor="@color/white"
@@ -720,7 +740,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/part8RelLayout"
                         android:background="@drawable/leader_board_player_layout"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
                         <TextView
                             android:id="@+id/part9orderTxtV"
@@ -729,7 +751,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="10dp"
-                            android:text="6."
+                            android:text="9."
                             android:textColor="@color/black"
                             android:textSize="24sp" />
 
@@ -762,7 +784,6 @@
                                 android:id="@+id/part9ScoreTxtV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray"
                                 android:padding="8dp"
                                 android:text="4000"
                                 android:textColor="@color/white"
