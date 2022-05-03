@@ -1,14 +1,19 @@
 package com.example.cvdriskestimator.Fragments
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.RelativeLayout
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.CustomClasses.leaderBoardRecyclerAdapter
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 
@@ -30,6 +35,11 @@ class LeaderBoardFragment : Fragment() {
     private lateinit var registerFragment: RegisterFragment
     private lateinit var mainActivity: MainActivity
     private lateinit var popUpMenu: PopUpMenu
+
+    private lateinit var leaderboardRecyclerView: RecyclerView
+    private lateinit var leaderBoardRecyclerAdapter: leaderBoardRecyclerAdapter
+    private var participantNames = ArrayList<String>()
+    private var participantAvatars = ArrayList<Drawable>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,6 +77,49 @@ class LeaderBoardFragment : Fragment() {
         medTestForm.setOnClickListener {
             mainActivity.backToActivity()
         }
+
+        initLeaderRecyclerView(view)
+
+    }
+
+    private fun initLeaderRecyclerView(view : View)
+    {
+        leaderboardRecyclerView = view.findViewById(R.id.leaderBoardRecyclerView)
+        populateDataForRecyclerView()
+        leaderBoardRecyclerAdapter = leaderBoardRecyclerAdapter()
+        leaderBoardRecyclerAdapter.setActivity(mainActivity)
+        leaderBoardRecyclerAdapter.nameDataSet = participantNames
+        leaderBoardRecyclerAdapter.participantAvatars = participantAvatars
+        leaderboardRecyclerView.apply {
+            adapter = leaderBoardRecyclerAdapter
+        }
+        var linearLayoutManager = LinearLayoutManager(mainActivity.applicationContext)
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        leaderboardRecyclerView.layoutManager = linearLayoutManager
+    }
+
+    private fun populateDataForRecyclerView()
+    {
+        participantNames.add("Lamrpos")
+        participantNames.add("Chris")
+        participantNames.add("Dimitris")
+        participantNames.add("Kostas")
+        participantNames.add("Panagiotis")
+        participantNames.add("Nikoleta")
+        participantNames.add("Dimitra")
+        participantNames.add("Kyriakos")
+        participantNames.add("Giannis")
+
+        participantAvatars.add(mainActivity.resources.getDrawable(R.drawable.avatar))
+        participantAvatars.add(mainActivity.resources.getDrawable(R.drawable.avatar_b))
+        participantAvatars.add(mainActivity.resources.getDrawable(R.drawable.beard))
+        participantAvatars.add(mainActivity.resources.getDrawable(R.drawable.boy))
+        participantAvatars.add(mainActivity.resources.getDrawable(R.drawable.gamer))
+        participantAvatars.add(mainActivity.resources.getDrawable(R.drawable.woman))
+        participantAvatars.add(mainActivity.resources.getDrawable(R.drawable.womanb))
+        participantAvatars.add(mainActivity.resources.getDrawable(R.drawable.man_a))
+        participantAvatars.add(mainActivity.resources.getDrawable(R.drawable.man_b))
+
     }
 
     override fun onAttach(context: Context) {

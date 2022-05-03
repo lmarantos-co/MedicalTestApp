@@ -52,16 +52,16 @@
 
         <TextView
             android:id="@+id/leaderBoardTxtV"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:background="@color/white"
             android:gravity="center"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:text="Activity For Breast Cancer"
-            android:textSize="30sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <com.google.android.material.tabs.TabLayout
@@ -88,6 +88,8 @@
 
         </com.google.android.material.tabs.TabLayout>
 
+
+
         <RelativeLayout
             android:id="@+id/leaderPartRelLayout"
             android:layout_width="match_parent"
@@ -98,10 +100,19 @@
             android:layout_marginRight="24dp"
             android:layout_marginBottom="24dp">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/leaderBoardRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="false" />
+
             <LinearLayout
                 android:id="@+id/leaderLinLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="vertical">>
 
                 <TextView
@@ -115,7 +126,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="Group A"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <RelativeLayout
                     android:id="@+id/groupARelLayout"
@@ -123,7 +134,7 @@
                     android:layout_height="wrap_content">
 
                     <RelativeLayout
-                        android:id="@+id/part1RelLayout"
+                        android:id="@+id/partRelLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/leader_board_player_layout"
@@ -132,7 +143,7 @@
                         android:paddingRight="8dp">
 
                         <TextView
-                            android:id="@+id/part1orderTxtV"
+                            android:id="@+id/partorderTxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -140,35 +151,35 @@
                             android:layout_marginEnd="10dp"
                             android:text="1."
                             android:textColor="@color/black"
-                            android:textSize="24sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
-                            android:id="@+id/part1AvatorImgV"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:id="@+id/partAvatorImgV"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginLeft="16dp"
-                            android:layout_toRightOf="@id/part1orderTxtV"
+                            android:layout_toRightOf="@id/partorderTxtV"
                             app:srcCompat="@drawable/avatar" />
 
                         <TextView
-                            android:id="@+id/part1txtV"
+                            android:id="@+id/parttxtV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             android:text="Participant 1"
                             android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <RelativeLayout
-                            android:id="@+id/part1ScoreRelLayout"
+                            android:id="@+id/partScoreRelLayout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginEnd="16dp">
 
                             <TextView
-                                android:id="@+id/part1ScoreTxtV"
+                                android:id="@+id/partScoreTxtV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="8dp"
@@ -178,12 +189,12 @@
 
                             <ImageView
                                 android:id="@+id/trophyA"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_alignParentRight="false"
                                 android:layout_centerInParent="false"
                                 android:layout_centerVertical="true"
-                                android:layout_toRightOf="@id/part1ScoreTxtV"
+                                android:layout_toRightOf="@id/partScoreTxtV"
                                 app:srcCompat="@drawable/ic_trophy" />
 
 
@@ -196,7 +207,7 @@
                         android:id="@+id/part2RelLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/part1RelLayout"
+                        android:layout_below="@id/partRelLayout"
                         android:background="@drawable/leader_board_player_layout"
                         android:orientation="horizontal"
                         android:paddingLeft="8dp"
@@ -211,7 +222,7 @@
                             android:layout_marginEnd="10dp"
                             android:text="2."
                             android:textColor="@color/black"
-                            android:textSize="24sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
                             android:id="@+id/part2AvatorImgV"
@@ -229,7 +240,7 @@
                             android:layout_gravity="center"
                             android:text="Participant 2"
                             android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <RelativeLayout
                             android:id="@+id/part2ScoreRelLayout"
@@ -249,8 +260,8 @@
 
                             <ImageView
                                 android:id="@+id/trophyB"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_alignParentRight="false"
                                 android:layout_centerInParent="false"
                                 android:layout_centerVertical="true"
@@ -281,7 +292,7 @@
                             android:layout_marginEnd="10dp"
                             android:text="3."
                             android:textColor="@color/black"
-                            android:textSize="24sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
                             android:id="@+id/part3AvatorImgV"
@@ -299,7 +310,7 @@
                             android:layout_gravity="center"
                             android:text="Participant 3"
                             android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <RelativeLayout
                             android:id="@+id/part3ScoreRelLayout"
@@ -319,8 +330,8 @@
 
                             <ImageView
                                 android:id="@+id/trophyC"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_alignParentRight="false"
                                 android:layout_centerInParent="false"
                                 android:layout_centerVertical="true"
@@ -342,6 +353,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/leaderLinLayout"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <TextView
@@ -352,7 +364,7 @@
                     android:layout_margin="8dp"
                     android:text="Group B"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <RelativeLayout
                     android:id="@+id/groupBRelLayout"
@@ -377,12 +389,12 @@
                             android:layout_marginEnd="10dp"
                             android:text="4."
                             android:textColor="@color/black"
-                            android:textSize="24sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
                             android:id="@+id/part4AvatorImgV"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginLeft="16dp"
                             android:layout_toRightOf="@id/part4orderTxtV"
                             app:srcCompat="@drawable/boy" />
@@ -395,7 +407,7 @@
                             android:layout_gravity="center"
                             android:text="Participant 4"
                             android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <RelativeLayout
                             android:id="@+id/part4ScoreRelLayout"
@@ -415,8 +427,8 @@
 
                             <ImageView
                                 android:id="@+id/trophyD"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_alignParentRight="false"
                                 android:layout_centerInParent="false"
                                 android:layout_centerVertical="true"
@@ -448,12 +460,12 @@
                             android:layout_marginEnd="10dp"
                             android:text="5."
                             android:textColor="@color/black"
-                            android:textSize="24sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
                             android:id="@+id/part5AvatorImgV"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginLeft="16dp"
                             android:layout_toRightOf="@id/part5orderTxtV"
                             app:srcCompat="@drawable/gamer" />
@@ -466,7 +478,7 @@
                             android:layout_gravity="center"
                             android:text="Participant 5"
                             android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <RelativeLayout
                             android:id="@+id/part5ScoreRelLayout"
@@ -486,8 +498,8 @@
 
                             <ImageView
                                 android:id="@+id/trophyE"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_alignParentRight="false"
                                 android:layout_centerInParent="false"
                                 android:layout_centerVertical="true"
@@ -518,12 +530,12 @@
                             android:layout_marginEnd="10dp"
                             android:text="6."
                             android:textColor="@color/black"
-                            android:textSize="24sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
                             android:id="@+id/part6AvatorImgV"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginLeft="16dp"
                             android:layout_toRightOf="@id/part6orderTxtV"
                             app:srcCompat="@drawable/man" />
@@ -536,7 +548,7 @@
                             android:layout_gravity="center"
                             android:text="Participant 6"
                             android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <RelativeLayout
                             android:id="@+id/part6ScoreRelLayout"
@@ -556,8 +568,8 @@
 
                             <ImageView
                                 android:id="@+id/trophyF"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_alignParentRight="false"
                                 android:layout_centerInParent="false"
                                 android:layout_centerVertical="true"
@@ -578,6 +590,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/leaderLinLayout2"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <TextView
@@ -588,7 +601,7 @@
                     android:layout_margin="8dp"
                     android:text="Group C"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <RelativeLayout
                     android:id="@+id/groupCRelLayout"
@@ -613,12 +626,12 @@
                             android:layout_marginEnd="10dp"
                             android:text="7."
                             android:textColor="@color/black"
-                            android:textSize="24sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
                             android:id="@+id/part7AvatorImgV"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginLeft="16dp"
                             android:layout_toRightOf="@id/part7orderTxtV"
                             app:srcCompat="@drawable/man_a" />
@@ -631,7 +644,7 @@
                             android:layout_gravity="center"
                             android:text="Participant 7"
                             android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <RelativeLayout
                             android:id="@+id/part7ScoreRelLayout"
@@ -651,8 +664,8 @@
 
                             <ImageView
                                 android:id="@+id/trophyG"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_alignParentRight="false"
                                 android:layout_centerInParent="false"
                                 android:layout_centerVertical="true"
@@ -683,12 +696,12 @@
                             android:layout_marginEnd="10dp"
                             android:text="8."
                             android:textColor="@color/black"
-                            android:textSize="24sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
                             android:id="@+id/part8AvatorImgV"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginLeft="16dp"
                             android:layout_toRightOf="@id/part8orderTxtV"
                             app:srcCompat="@drawable/man_b" />
@@ -701,7 +714,7 @@
                             android:layout_gravity="center"
                             android:text="Participant 8"
                             android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <RelativeLayout
                             android:id="@+id/part8ScoreRelLayout"
@@ -721,8 +734,8 @@
 
                             <ImageView
                                 android:id="@+id/trophyH"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_alignParentRight="false"
                                 android:layout_centerInParent="false"
                                 android:layout_centerVertical="true"
@@ -753,12 +766,12 @@
                             android:layout_marginEnd="10dp"
                             android:text="9."
                             android:textColor="@color/black"
-                            android:textSize="24sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
                             android:id="@+id/part9AvatorImgV"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginLeft="16dp"
                             android:layout_toRightOf="@id/part9orderTxtV"
                             app:srcCompat="@drawable/womanb" />
@@ -771,7 +784,7 @@
                             android:layout_gravity="center"
                             android:text="Participant 9"
                             android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <RelativeLayout
                             android:id="@+id/part9ScoreRelLayout"
@@ -791,8 +804,8 @@
 
                             <ImageView
                                 android:id="@+id/trophyI"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_alignParentRight="false"
                                 android:layout_centerInParent="false"
                                 android:layout_centerVertical="true"
@@ -809,6 +822,7 @@
             </LinearLayout>
 
         </RelativeLayout>
+
 
 
     </RelativeLayout>
