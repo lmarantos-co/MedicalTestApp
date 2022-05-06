@@ -942,7 +942,7 @@ suspend fun showMDIResultBarViews()
                 var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
                 scaleLowAnimation.fillAfter = true
                 scaleLowAnimation.duration = 400
-                mildResultView.startAnimation(scaleLowAnimation)
+                mildDepressionResultView.startAnimation(scaleLowAnimation)
                 scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
                 {
                     override fun onAnimationStart(p0: Animation?) {

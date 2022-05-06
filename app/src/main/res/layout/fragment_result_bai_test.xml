@@ -67,6 +67,13 @@
         app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarNumVGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultBarVGL1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,11 +81,32 @@
         app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarNumVGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarNumVGL2b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultBarVGL2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarNumVGL2c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.88" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/resultsTopHGL"
@@ -197,12 +225,12 @@
         android:id="@+id/lowAnxietyScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
         android:text="0"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
-        app:layout_constraintStart_toStartOf="@+id/resultBarVGL1"
+        app:layout_constraintEnd_toStartOf="@+id/resultBarNumVGL2"
+        app:layout_constraintStart_toStartOf="@+id/resultBarNumVGL1"
         app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
 
     <TextView
@@ -213,6 +241,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
+        app:layout_constraintEnd_toStartOf="@+id/afterLowAnxietyHGL"
         app:layout_constraintStart_toStartOf="@+id/beforeLowAnxietyHGL"
         app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
 
@@ -224,20 +253,28 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
-        app:layout_constraintStart_toStartOf="@+id/beforeModerateAnxietyHGL"
-        app:layout_constraintTop_toBottomOf="@id/severeAnxietyResultBar" />
+        app:layout_constraintEnd_toStartOf="@+id/beforeModerateNumAnxietyHGL2"
+        app:layout_constraintStart_toStartOf="@+id/beforeModerateNumAnxietyHGL"
+        app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
 
     <TextView
         android:id="@+id/mostSevereAnxietyScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="8dp"
         android:text="63"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
-        app:layout_constraintEnd_toStartOf="@+id/resultBarVGL2"
+        app:layout_constraintEnd_toStartOf="@+id/resultBarNumVGL2c"
+        app:layout_constraintStart_toStartOf="@+id/resultBarNumVGL2b"
         app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeLowAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.32" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/lowAnxietyHGL"
@@ -247,11 +284,32 @@
         app:layout_constraintGuide_percent="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/afterLowAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.38" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeModerateNumAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/moderateAnxietyHGL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.58" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeModerateNumAnxietyHGL2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.61" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/beforeTitleVGL1"
@@ -266,20 +324,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.92" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/beforeLowAnxietyHGL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.32" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/beforeModerateAnxietyHGL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.55" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -302,10 +346,9 @@
             android:id="@+id/BAItestSummary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:justificationMode="inter_word"
             android:padding="10dp"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/black"
             android:textSize="16sp" />
 

@@ -106,7 +106,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentRight="false" />
+                android:layout_alignParentRight="false"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
             <LinearLayout
                 android:id="@+id/leaderLinLayout"

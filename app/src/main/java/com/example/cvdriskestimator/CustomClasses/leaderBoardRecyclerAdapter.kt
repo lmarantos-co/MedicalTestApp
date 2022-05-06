@@ -34,7 +34,7 @@ class leaderBoardRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
             return VIEW_HEADER
         else
             return  VIEW_ITEM
-        return VIEW_ITEM
+        return VIEW_HEADER
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -71,6 +71,7 @@ class leaderBoardRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
             1 ->
             {
                 var leaderHeaderViewHolder = holder as leaderHeaderViewHolder
+                currentPartId ++
                 leaderHeaderViewHolder.leader_header_txtV.text = leaderHeaderViewHolder.setGroupLetter(currentPartId-1)
             }
         }

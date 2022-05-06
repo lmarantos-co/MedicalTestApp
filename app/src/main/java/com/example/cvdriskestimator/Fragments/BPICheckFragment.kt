@@ -54,6 +54,7 @@ class BPICheckFragment : Fragment() {
     private var redCircleX : Float? = null
     private var redCircleY : Float? = null
     private var CircleCoordinates = arrayListOf<Float?>(0f, 0f)
+    private  var TempuserInitialised = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,8 +81,8 @@ class BPICheckFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initUI()
         initRadioGroups()
-
     }
+
 
     private fun initUI()
     {
@@ -326,6 +327,11 @@ class BPICheckFragment : Fragment() {
         bpiPatientViewModel.patientData.observe(viewLifecycleOwner) {
             setPatientDataOnForm(it!!)
         }
+    }
+
+    fun setPatientInitialisedStatus(status : Boolean)
+    {
+        TempuserInitialised = status
     }
 
     private fun drawCircleOnHumanBody(x : Float , y : Float , radius : Float, canvasBitmap: Bitmap)

@@ -10,8 +10,11 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.RelativeLayout
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.arasthel.spannedgridlayoutmanager.SpanSize
+import com.arasthel.spannedgridlayoutmanager.SpannedGridLayoutManager
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.CustomClasses.leaderBoardRecyclerAdapter
 import com.example.cvdriskestimator.MainActivity
@@ -93,9 +96,11 @@ class LeaderBoardFragment : Fragment() {
         leaderboardRecyclerView.apply {
             adapter = leaderBoardRecyclerAdapter
         }
-        var linearLayoutManager = LinearLayoutManager(mainActivity.applicationContext)
-        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        leaderboardRecyclerView.layoutManager = linearLayoutManager
+//        var GridLayoutManager = GridLayoutManager(mainActivity.applicationContext , 1 , GridLayoutManager.VERTICAL, false)
+//        var spannedGridLayoutManager = SpannedGridLayoutManager(SpannedGridLayoutManager.Orientation.VERTICAL, 4)
+//        spannedGridLayoutManager = spannedGridLayoutManager.spanSizeLookup = { position ->
+//             SpanSize(2, 2);
+//        }
     }
 
     private fun populateDataForRecyclerView()

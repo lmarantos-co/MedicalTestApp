@@ -547,7 +547,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)
 
-        fragmentTransaction.replace(R.id.fragmentContainer , fragment).addToBackStack("FRAGMENT").commit()
+        if (fragment.isAdded)
+        {
+            fragmentTransaction.remove(fragment)
+        }
+        fragmentTransaction.add(R.id.fragmentContainer , fragment).addToBackStack("FRAGMENT").commit()
     }
 
     //behavioral code related with Popup menu

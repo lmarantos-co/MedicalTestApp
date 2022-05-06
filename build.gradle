@@ -3,6 +3,8 @@ buildscript {
     ext {
         kotlin_version = '1.5.30'
         android_plugin_version = '4.0.0'
+        compose_version = '1.1.1'
+
 
         pluginDependencies = [
                 android      : "com.android.tools.build:gradle:$android_plugin_version",
@@ -20,7 +22,7 @@ buildscript {
 
     //...
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath 'com.android.tools.build:gradle:7.1.3'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
         classpath "io.realm:realm-gradle-plugin:10.7.0"
     }

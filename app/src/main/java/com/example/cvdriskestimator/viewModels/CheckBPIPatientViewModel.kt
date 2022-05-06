@@ -112,22 +112,23 @@ class CheckBPIPatientViewModel : ViewModel() {
     fun storePatientDataOnRealmDB(allPatientData : ArrayList<Int?> , circleCoordinates: ArrayList<Float?>)
     {
         realm.executeTransaction {
-            var patient = Patient()
-            patient.patientBPIQ1 = allPatientData[0]
-            patient.patientBPIQ2 = allPatientData[1]
-            patient.patientBPIQ3 = allPatientData[2]
-            patient.patientBPIQ4 = allPatientData[3]
-            patient.patientBPIQ5 = allPatientData[4]
-            patient.patientBPIQ6 = allPatientData[5]
-            patient.patientBPIQ7 = allPatientData[6]
-            patient.patientBPIQ8 = allPatientData[7]
-            patient.patientBPIQ9 = allPatientData[8]
-            patient.patientBPIQ10 = allPatientData[9]
-            patient.patientBPIQ11 = allPatientData[10]
-            patient.patientBPIQ12 = allPatientData[11]
-            patient.patientBPIcircleX = circleCoordinates[0]
-            patient.patientBPIcircleY = circleCoordinates[1]
-            realm.copyToRealmOrUpdate(patient)
+            var username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
+            var patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
+            patient!!.patientBPIQ1 = allPatientData[0]
+            patient!!.patientBPIQ2 = allPatientData[1]
+            patient!!.patientBPIQ3 = allPatientData[2]
+            patient!!.patientBPIQ4 = allPatientData[3]
+            patient!!.patientBPIQ5 = allPatientData[4]
+            patient!!.patientBPIQ6 = allPatientData[5]
+            patient!!.patientBPIQ7 = allPatientData[6]
+            patient!!.patientBPIQ8 = allPatientData[7]
+            patient!!.patientBPIQ9 = allPatientData[8]
+            patient!!.patientBPIQ10 = allPatientData[9]
+            patient!!.patientBPIQ11 = allPatientData[10]
+            patient!!.patientBPIQ12 = allPatientData[11]
+            patient!!.patientBPIcircleX = circleCoordinates[0]
+            patient!!.patientBPIcircleY = circleCoordinates[1]
+            realm.insertOrUpdate(patient)
         }
     }
 

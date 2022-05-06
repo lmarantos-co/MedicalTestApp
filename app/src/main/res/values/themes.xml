@@ -16,18 +16,18 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="MainTextViewStyle" parent="TextAppearance.AppCompat" >
+    <style name="MainTextViewStyle" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="CVDTestTextViewStyle" parent="TextAppearance.AppCompat" >
+    <style name="CVDTestTextViewStyle" parent="TextAppearance.AppCompat">
         <item name="background">@drawable/gradient_text_view_style_b</item>
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="DiabetesTextViewStyle" parent="TextAppearance.AppCompat" >
+    <style name="DiabetesTextViewStyle" parent="TextAppearance.AppCompat">
         <item name="background">@drawable/gradient_text_view_style</item>
         <item name="android:textSize">20sp</item>
     </style>
@@ -37,12 +37,14 @@
         <item name="android:popupMenuStyle">@style/PopupMenu</item>
         <!-- if using android.support.v7.widget.PopupMenu -->
         <item name="popupMenuStyle">@style/PopupMenu</item>
-        <item name="android:textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>
-        <item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge
+        </item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall
+        </item>
     </style>
 
     <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
-<!--        <item name="android:popupBackground">@color/DarkBlue</item>-->
+        <!--        <item name="android:popupBackground">@color/DarkBlue</item>-->
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
         <item name="android:itemBackground">@drawable/pop_up_background</item>
