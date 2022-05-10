@@ -452,7 +452,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:paddingLeft="16dp"
+                android:paddingLeft="15dp"
                 android:text="Severe depression"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
@@ -501,8 +501,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:paddingLeft="16dp"
-                android:text="Moderate depression"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:text="Moderate Depression"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
@@ -537,7 +538,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:paddingLeft="16dp"
+                android:paddingLeft="15dp"
                 android:text="Mild depression"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
@@ -573,7 +574,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:paddingLeft="16dp"
+                android:paddingLeft="15dp"
                 android:text="No depression"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />

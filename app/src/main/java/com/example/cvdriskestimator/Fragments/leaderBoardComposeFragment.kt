@@ -223,7 +223,7 @@ class leaderBoardComposeFragment : Fragment() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight(),
-                horizontalArrangement = Arrangement.SpaceAround,
+                horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
             )
             {

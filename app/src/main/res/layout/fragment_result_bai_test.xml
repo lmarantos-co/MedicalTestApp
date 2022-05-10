@@ -338,6 +338,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bai_test_summary_rel_layout"
+        android:gravity="left"
+        android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="@id/titleVGL2"
         app:layout_constraintStart_toStartOf="@id/titleVGL1"
         app:layout_constraintTop_toBottomOf="@id/AnxietyresultTopGL">

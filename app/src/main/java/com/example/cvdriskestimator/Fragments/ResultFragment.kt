@@ -12,6 +12,7 @@ import android.view.*
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import android.widget.*
+import androidx.compose.ui.text.android.style.TypefaceSpan
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.Guideline
@@ -396,22 +397,24 @@ class ResultFragment : Fragment() {
                 mildProgressViewHeight = mildResultView.height
                 moderateProgressViewHeight = moderateResultView.height
                 severeProgreessViewHeight = severeResultView.height
-            }
 
-            //coroutine implementation of BPI Bar view
-            var runningTest: Int = 0
-            var counter : Int = 0
-            GlobalScope.launch(Dispatchers.Main) {
-                // Do something here on the main thread
-                while (counter < 1000000) {
+                //coroutine implementation of BPI Bar view
+                var runningTest: Int = 0
+                var counter : Int = 0
+                GlobalScope.launch(Dispatchers.Main) {
+                    // Do something here on the main thread
+                    while (counter < 1000000) {
 //                    createBPIResultBarViews(runningTest)
 //                    showBPIProgressBar(runningTest)
 //                    highlightPainViews(runningTest)
-                    showBPIResultBArViews(runningTest)
-                    counter++
-                    runningTest = Math.floorMod(counter, 2)
+                        showBPIResultBArViews(runningTest)
+                        counter++
+                        runningTest = Math.floorMod(counter, 2)
+                    }
                 }
             }
+
+
 
 
 // Create the Handler object (on the main thread by default)
@@ -886,7 +889,7 @@ suspend fun showMDIResultBarViews()
             if (userMDIResult < 20)
             {
                 mainActivity.runOnUiThread {
-                    var newNoViewHeight = userMDIResult.toFloat() * noDepViewHeight
+                    var newNoViewHeight = userMDIResult.toFloat() / 20 * noDepViewHeight
                     var lowY = noDepressionLayout.y
                     noDepressionResultView.updateLayoutParams {
                         height = newNoViewHeight.toInt()
@@ -942,7 +945,7 @@ suspend fun showMDIResultBarViews()
                 var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
                 scaleLowAnimation.fillAfter = true
                 scaleLowAnimation.duration = 400
-                mildDepressionResultView.startAnimation(scaleLowAnimation)
+                noDepressionResultView.startAnimation(scaleLowAnimation)
                 scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
                 {
                     override fun onAnimationStart(p0: Animation?) {
@@ -1309,6 +1312,24 @@ suspend fun showMDIResultBarViews()
         val userPSSResult = (arguments!!.getDouble(ARG_PARAM1) * 1)
         val userPISResult = (arguments!!.getDouble(ARG_PARAM2) * 1)
         var barHeightSet = false
+
+        //re set the height for each resultView
+        lowResultView.updateLayoutParams {
+            height = lowProgressViewHeight
+        }
+
+        mildResultView.updateLayoutParams {
+            height = mildProgressViewHeight
+        }
+
+        moderateResultView.updateLayoutParams {
+            height = moderateProgressViewHeight
+        }
+
+        severeResultView.updateLayoutParams {
+            height = severeProgreessViewHeight
+        }
+
         when(runningResult)
         {
             0 ->
@@ -2934,6 +2955,9 @@ suspend fun showMDIResultBarViews()
         if ((testSum >=0) && (testSum <= 21))
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT1)
+            baiTestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
             lowAnxietyRelLayout.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
             moderateAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
             severeAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
@@ -2941,6 +2965,9 @@ suspend fun showMDIResultBarViews()
         if ((testSum >=22) && (testSum < 35))
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT2)
+            baiTestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
             lowAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
             moderateAnxietyRelLayout.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
             severeAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
@@ -2948,6 +2975,9 @@ suspend fun showMDIResultBarViews()
         if (testSum >=36)
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT3)
+            baiTestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
             lowAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
             moderateAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
             severeAnxietyRelLayout.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
