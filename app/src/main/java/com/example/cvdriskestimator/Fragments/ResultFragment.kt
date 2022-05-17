@@ -105,6 +105,7 @@ class ResultFragment : Fragment() {
     private lateinit var depressionProgressBar: RelativeLayout
 
     private lateinit var baiTestSummary: TextView
+    private lateinit var baiTestSummaryB: TextView
     private lateinit var lowAnxietyRelLayout : RelativeLayout
     private lateinit var moderateAnxietyRelLayout : RelativeLayout
     private lateinit var severeAnxietyRelLayout : RelativeLayout
@@ -315,6 +316,7 @@ class ResultFragment : Fragment() {
             val score = arguments!!.getDouble(ARG_PARAM1).toInt()
             totalScore.setText(score.toString())
             baiTestSummary = view.findViewById(R.id.BAItestSummary)
+            baiTestSummaryB = view.findViewById(R.id.BAItestSummaryB)
             lowAnxietyRelLayout = view.findViewById(R.id.lowAnxietyResultBar)
             moderateAnxietyRelLayout = view.findViewById(R.id.moderateAnxietyResultBar)
             severeAnxietyRelLayout = view.findViewById(R.id.severeAnxietyResultBar)
@@ -2955,7 +2957,11 @@ suspend fun showMDIResultBarViews()
         if ((testSum >=0) && (testSum <= 21))
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT1)
+            baiTestSummaryB.text = mainActivity.resources.getString(R.string.BAIRESULT1B)
             baiTestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+            baiTestSummaryB.apply {
                 textAlignment = View.TEXT_ALIGNMENT_TEXT_START
             }
             lowAnxietyRelLayout.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
@@ -2965,7 +2971,11 @@ suspend fun showMDIResultBarViews()
         if ((testSum >=22) && (testSum < 35))
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT2)
+            baiTestSummaryB.text = mainActivity.resources.getString(R.string.BAIRESULT2B)
             baiTestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+            baiTestSummaryB.apply {
                 textAlignment = View.TEXT_ALIGNMENT_TEXT_START
             }
             lowAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
@@ -2975,7 +2985,11 @@ suspend fun showMDIResultBarViews()
         if (testSum >=36)
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT3)
+            baiTestSummaryB.text = mainActivity.resources.getString(R.string.BAIRESULT3B)
             baiTestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+            baiTestSummaryB.apply {
                 textAlignment = View.TEXT_ALIGNMENT_TEXT_START
             }
             lowAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)

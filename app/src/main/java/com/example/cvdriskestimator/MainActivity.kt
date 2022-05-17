@@ -159,8 +159,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         showTermsOfUseLayout()
 
-        hideTermsOfUseLayout()
-
         termsOFUseView.setOnClickListener {
             hideTermsOfUseLayout()
         }

@@ -336,7 +336,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.24" />
+            app:layout_constraintGuide_percent="0.25" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -440,6 +440,7 @@
             android:id="@+id/severeDepView"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="3dp"
             android:background="@color/Red"
             app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
             app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
@@ -452,7 +453,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:paddingLeft="15dp"
                 android:text="Severe depression"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
@@ -488,6 +488,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_below="@id/severeDepView"
+            android:layout_marginStart="3dp"
             android:background="@color/orange_5"
             app:layout_constraintBottom_toTopOf="@id/resultBarModerateDepressionHGL"
             app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
@@ -526,6 +527,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_below="@id/moderateDepView"
+            android:layout_marginStart="3dp"
             android:background="@color/green_5"
             app:layout_constraintBottom_toTopOf="@id/resultBarMildDepressionHGL"
             app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
@@ -562,6 +564,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_below="@id/mildDepView"
+            android:layout_marginStart="3dp"
             android:background="@color/blue"
             app:layout_constraintBottom_toTopOf="@id/resultBarNoDepressionHGL"
             app:layout_constraintEnd_toEndOf="@id/magednaRightVGL"
