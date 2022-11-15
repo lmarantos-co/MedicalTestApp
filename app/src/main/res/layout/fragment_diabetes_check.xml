@@ -44,7 +44,7 @@
             layout="@layout/popup_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VG5"
@@ -185,8 +185,10 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="15dp"
-                            android:text="MALE" />
+                            android:text="MALE"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/femaleRB1"
@@ -194,7 +196,9 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="FEMALE" />
+                            android:minHeight="48dp"
+                            android:text="FEMALE"
+                            android:textSize="20sp" />
                     </RadioGroup>
 
                 </RelativeLayout>
@@ -217,9 +221,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/green_textview_style_4"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:elevation="4dp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
@@ -245,7 +249,9 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
-                            android:text="YES" />
+                            android:minHeight="48dp"
+                            android:text="YES"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/pamnegative"
@@ -253,8 +259,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="5dp"
-                            android:text="NO" />
+                            android:text="NO"
+                            android:textSize="20sp" />
                     </RadioGroup>
 
                 </RelativeLayout>
@@ -279,12 +287,12 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/green_textview_style_4"
                         android:elevation="4dp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:text="@string/steroids"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -306,8 +314,10 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:singleLine="false"
-                            android:text="YES" />
+                            android:text="YES"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/steroidsnegativeRB2"
@@ -315,9 +325,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="5dp"
                             android:singleLine="false"
-                            android:text="NO" />
+                            android:text="NO"
+                            android:textSize="20sp" />
                     </RadioGroup>
 
                 </RelativeLayout>
@@ -355,9 +367,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/ageTxtV"
                         android:layout_centerHorizontal="true"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:ems="10"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="Patient age in years"
                         android:inputType="number"
@@ -401,9 +413,9 @@
                         android:layout_below="@id/bmiTxtV"
                         android:layout_centerHorizontal="true"
                         android:ems="10"
-                        android:gravity="center"
-                        android:focusableInTouchMode="true"
                         android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
                         android:hint="Input your Body Mass Indicator"
                         android:inputType="numberDecimal"
                         android:minHeight="48dp"
@@ -455,6 +467,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:text="@string/diabetes_and_sibling"
                             android:textSize="20sp" />
 
@@ -465,6 +478,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="15dp"
                             android:text="@string/diabetes_or_sibling"
                             android:textSize="20sp" />
@@ -476,6 +490,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="70dp"
                             android:text="No relative with Diabetes"
                             android:textSize="20sp" />
@@ -507,10 +522,10 @@
                         android:layout_centerInParent="false"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="false"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:background="@drawable/green_textview_style_4"
                         android:elevation="4dp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
@@ -535,6 +550,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:text="Current"
                             android:textAlignment="center"
                             android:textSize="20dp" />
@@ -546,6 +562,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="2dp"
                             android:text="Former"
                             android:textAlignment="center"
@@ -557,6 +574,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="13dp"
                             android:text="Never"
                             android:textAlignment="center"

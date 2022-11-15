@@ -4,6 +4,9 @@ import io.realm.RealmModel
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 import io.realm.annotations.Required
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 @RealmClass
 open class Patient() : RealmModel {
@@ -11,11 +14,22 @@ open class Patient() : RealmModel {
     @PrimaryKey
     var id : String = ""
 
+    //User Data
+
     @Required
     var userName : String = ""
 
     @Required
     var password : String = ""
+
+    @Required
+    var dateOfBirth : LocalDate = LocalDate.now()
+
+    @Required
+    var occupation : String = ""
+
+    @Required
+    var yearsOfApprentice : Int = 0
 
     //patient data
 

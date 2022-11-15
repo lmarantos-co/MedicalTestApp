@@ -588,8 +588,9 @@ class BPICheckFragment : Fragment() {
                 if ((patient.patientBPIQ12!! >= 6) && (patient.patientBPIQ12!! <= 10)) {
                     setQuestionOfRadioGroupB(binding.g7gRGb, patient.patientBPIQ12)
                 }
-
-                setRedCircePos(patient.patientBPIcircleX!!, patient.patientBPIcircleY!!)
+                mainActivity.runOnUiThread {
+                    setRedCircePos(patient.patientBPIcircleX!!, patient.patientBPIcircleY!!)
+                }
             }
         } , 1000)
     }
@@ -730,9 +731,9 @@ class BPICheckFragment : Fragment() {
         var circle = binding.redCircleImgV
         circle.x = CircleX
         circle.y = CircleY
-        circle.invalidate()
         circle.animate().alphaBy(1f).duration = 500
         circle.startAnimation(showCircle)
+        circle.invalidate()
     }
 
     fun setErrorOnForm(error : String, questionNo : Int)

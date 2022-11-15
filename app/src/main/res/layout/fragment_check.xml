@@ -40,7 +40,7 @@
             layout="@layout/popup_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <!--        application menu panel-->
 
@@ -288,10 +288,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/orange_textview_4"
-                        android:gravity="center"
-                        android:minHeight="48dp"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="48dp"
                         android:text="Race"
                         android:textSize="20sp" />
 

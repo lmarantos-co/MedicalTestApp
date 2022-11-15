@@ -142,6 +142,30 @@ class PopUpMenu {
                                     patient!!.patientBAIQ20 = null
                                     patient!!.patientBAIQ21 = null
 
+                                    patient!!.patientMDSQ1 = null
+                                    patient!!.patientMDSQ2 = null
+                                    patient!!.patientMDSQ3 = null
+                                    patient!!.patientMDSQ4 = null
+                                    patient!!.patientMDSQ5 = null
+                                    patient!!.patientMDSQ6 = null
+                                    patient!!.patientMDSQ7 = null
+                                    patient!!.patientMDSQ8 = null
+                                    patient!!.patientMDSQ9 = null
+                                    patient!!.patientMDSQ10 = null
+                                    patient!!.patientMDSQ11 = null
+
+                                    patient!!.patientBPIQ1 = null
+                                    patient!!.patientBPIQ2= null
+                                    patient!!.patientBPIQ3 = null
+                                    patient!!.patientBPIQ4 = null
+                                    patient!!.patientBPIQ5 = null
+                                    patient!!.patientBPIQ6 = null
+                                    patient!!.patientBPIQ7 = null
+                                    patient!!.patientBPIQ8 = null
+                                    patient!!.patientBPIQ9 = null
+                                    patient!!.patientBPIQ10 = null
+                                    patient!!.patientBPIQ11 = null
+                                    patient!!.patientBPIQ12 = null
                                 }
 
                                 if (prFragment is CheckFragment)

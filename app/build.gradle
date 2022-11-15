@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.cvdriskestimator"
-        minSdk 24
+        minSdk 26
         targetSdk 31
         versionCode 2
         versionName '1.0'

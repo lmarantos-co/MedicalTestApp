@@ -97,7 +97,7 @@
         android:gravity="center"
         app:layout_constraintLeft_toRightOf="@id/resultProgressBarVGL"
         app:layout_constraintRight_toLeftOf="@id/mdiResultRightVGL"
-        app:layout_constraintTop_toBottomOf="@+id/mditestTitleTxtV">
+        app:layout_constraintTop_toBottomOf="@+id/resultsTopHGL">
 
         <TextView
             android:id='@+id/testResultTxtV'
