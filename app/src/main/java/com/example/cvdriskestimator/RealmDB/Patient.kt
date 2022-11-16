@@ -23,12 +23,11 @@ open class Patient() : RealmModel {
     var password : String = ""
 
     @Required
-    var dateOfBirth : LocalDate = LocalDate.now()
+    var dateOfBirth : String = ""
 
     @Required
     var occupation : String = ""
 
-    @Required
     var yearsOfApprentice : Int = 0
 
     //patient data
@@ -226,6 +225,37 @@ open class Patient() : RealmModel {
     var patientBPIcircleX : Float? = null
 
     var patientBPIcircleY : Float? = null
+
+    //variables related with GDS Test
+    var patientGDSQ1 : Int? = null
+
+    var patientGDSQ2 : Int? = null
+
+    var patientGDSQ3 : Int? = null
+
+    var patientGDSQ4 : Int? = null
+
+    var patientGDSQ5 : Int? = null
+
+    var patientGDSQ6 : Int? = null
+
+    var patientGDSQ7 : Int? = null
+
+    var patientGDSQ8 : Int? = null
+
+    var patientGDSQ9 : Int? = null
+
+    var patientGDSQ10 : Int? = null
+
+    var patientGDSQ11 : Int? = null
+
+    var patientGDSQ12 : Int? = null
+
+    var patientGDSQ13 : Int? = null
+
+    var patientGDSQ14 : Int? = null
+
+    var patientGDSQ15 : Int? = null
 
 
 }

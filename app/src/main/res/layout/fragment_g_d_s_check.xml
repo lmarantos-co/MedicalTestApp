@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+        <data>
+            <variable
+                name="CheckGDSViewModel"
+                type="com.example.cvdriskestimator.viewModels.CheckGDSViewModel"
+                />
+        </data>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/formConLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/MidnightBlue">
+
+
+            <include
+                android:id="@+id/include_cvd_title_form"
+                layout="@layout/cvd_title_form"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/horGL1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/include_pop_up_menu"
+                layout="@layout/popup_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.14" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:elevation="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horGL1"
+                android:id="@+id/GDSTestTitleLayout">
+
+                <TextView
+                    android:id="@+id/gdsTestTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/purple_mditest_form_title_style"
+                    android:drawableLeft="@drawable/ic_gds_depression__2_24"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:minHeight="48dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:singleLine="false"
+                    android:text="GDS Test"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fadeScrollbars="false"
+            android:fillViewport="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toBottomOf="@id/horGL1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/gdsCheckLinLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:context=".MainActivity">
+
+                <View
+                    android:id="@+id/pillowVIew"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/formTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/gds_test_intro_text"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ1RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ1TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDSQ1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS1QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ1TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS1QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS1QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ2RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ2TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDSQ2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS2QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ2TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS2QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS2QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ3RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ3TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDSQ3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS3QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ3TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS3QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS3QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ4RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ4TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDSQ4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS4QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ4TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS4QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS4QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ5RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ5TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDSQ5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS5QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ5TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS5QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS5QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ6RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ6TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDSQ6"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS6QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ6TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS6QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS6QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ7RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ7TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDSQ7"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS7QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ7TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS7QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS7QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ8RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ8TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDSQ8"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS8QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ8TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS8QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS8QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ9RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ9TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDSQ9"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS9QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ9TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS9QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS9QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ10RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ10TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDSQ2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS10QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ10TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS10QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS10QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ11RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ11TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDS11"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS11QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ11TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS11QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS11QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ12RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ12TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDS12"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS12QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ12TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS12QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS12QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ13RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ13TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDS13"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS13QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ13TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS13QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS13QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ14RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ14TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDS14"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS14QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ14TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS14QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS14QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/GDSQ15RelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/relativelayout_style"
+                        android:elevation="2dp">
+
+                        <TextView
+                            android:id="@+id/GDSQ15TxtV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/purple_textview"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:minHeight="64dp"
+                            android:text="@string/GDS15"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id='@+id/GDS15QRG'
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/GDSQ15TxtV"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/GDS15QRB1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:editable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΝΑΙ"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/GDS15QRB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:clickable="true"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ΟΧΙ"
+                                android:textColor="@color/black" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/testButtonsRelLayoyt">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/submitBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="false"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/mdi_button_rounded_corners"
+                            android:padding="20dp"
+                            android:text="CALCULATE"
+                            android:textSize="20sp"
+                            android:visibility="visible"
+                            tools:ignore="TextContrastCheck" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/clearBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/submitBtn"
+                            android:layout_alignParentLeft="false"
+                            android:layout_alignParentRight="false"
+                            android:layout_alignParentBottom="false"
+                            android:layout_centerVertical="false"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_toLeftOf="@id/submitBtn"
+                            android:background="@drawable/mdi_button_rounded_corners"
+                            android:text="CLEAR DATA" />
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

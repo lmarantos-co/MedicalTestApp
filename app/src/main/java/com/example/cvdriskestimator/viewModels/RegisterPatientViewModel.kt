@@ -24,6 +24,8 @@ import io.realm.kotlin.executeTransactionAwait
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.regex.Pattern
 
 
@@ -34,6 +36,9 @@ class RegisterPatientViewModel : ViewModel() , Observable{
     private var userName : String = ""
     private var userPassword : String = ""
     private var userPassword2 : String = ""
+    private var userDateOfBirth : String = ""
+    private var userOccupation : String = ""
+    private var userYearsOfApprentice : Int = 0
     private  var userDataCorrect : Boolean = true
     private var realm: Realm = Realm.getDefaultInstance()
 
@@ -63,6 +68,15 @@ class RegisterPatientViewModel : ViewModel() , Observable{
 
     @Bindable
     val inputPassValidate = MutableLiveData<String>()
+
+    @Bindable
+    val inputDateOfBirth = MutableLiveData<String>()
+
+    @Bindable
+    val inputOccupation = MutableLiveData<String>()
+
+    @Bindable
+    val inputYearsOfApprenctice = MutableLiveData<String>()
 
     fun setFragment(registerFrag: RegisterFragment)
     {
@@ -157,10 +171,25 @@ class RegisterPatientViewModel : ViewModel() , Observable{
         {
             userPassword2 = inputPassValidate.value!!
         }
+        if (inputDateOfBirth.value != null)
+        {
+            userDateOfBirth = inputDateOfBirth.value!!
+        }
+        if (inputOccupation.value != null)
+        {
+            userOccupation = inputOccupation.value!!
+        }
+        if (inputYearsOfApprenctice.value != null)
+        {
+            userYearsOfApprentice = inputYearsOfApprenctice.value!!.toInt()
+        }
 
         userDataCorrect = userDataCorrect && validateUserName(userName)
         userDataCorrect = userDataCorrect && validatePassword(userPassword)
         userDataCorrect = userDataCorrect && comparePasswords(userPassword, userPassword2)
+        userDataCorrect = userDataCorrect && validateUserDateOfBirth(userDateOfBirth)
+        userDataCorrect = userDataCorrect && validateUserOccupation(userOccupation)
+        userDataCorrect = userDataCorrect && validateUserYearsOfApprentice(userYearsOfApprentice)
 
         if (userDataCorrect) {
             // 1.
@@ -198,6 +227,9 @@ class RegisterPatientViewModel : ViewModel() , Observable{
                         patient.id = (patientNum).toString()
                         patient.userName = userName
                         patient.password = userPassword
+                        patient.dateOfBirth = userDateOfBirth
+                        patient.occupation = userOccupation
+                        patient.yearsOfApprentice = userYearsOfApprentice
                         // 4.
                         realmTransaction.copyToRealmOrUpdate(patient)
                     }
@@ -274,6 +306,47 @@ class RegisterPatientViewModel : ViewModel() , Observable{
         if (!passMatch)
             registerFragment.passwordMatchError("Passwords do not match!")
         return passMatch
+    }
+
+    private fun validateUserDateOfBirth(date : String) : Boolean
+    {
+        var correctDate : Boolean = true
+        var simpleDateFormatter = SimpleDateFormat("yyyy MM dd")
+        try {
+            simpleDateFormatter.parse(date)
+        }
+        catch (e : Exception)
+        {
+            correctDate = false
+            registerFragment.userDateError("Please enter a valid date (year month day!")
+        }
+        return correctDate
+    }
+
+    private fun validateUserOccupation(occupation : String) : Boolean
+    {
+        var correctOccupation : Boolean = true
+        if (occupation.isEmpty())
+        {
+            correctOccupation = false
+            registerFragment.userOccupationError("Field cannot be empty!")
+        }
+        return  correctOccupation
+    }
+
+    private fun validateUserYearsOfApprentice(years : Int) : Boolean
+    {
+        var correctYears : Boolean = false
+        if ((years < 0) || (years == null))
+        {
+            correctYears = false
+            registerFragment.userYearsError("Please enter a valid number!")
+        }
+        else
+        {
+            correctYears = true
+        }
+        return correctYears
     }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {

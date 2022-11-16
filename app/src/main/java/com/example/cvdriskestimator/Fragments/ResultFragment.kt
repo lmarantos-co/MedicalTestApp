@@ -125,6 +125,25 @@ class ResultFragment : Fragment() {
     private lateinit var view10 : View
     private lateinit var view11 : View
 
+    //GDS test score variables
+    private lateinit var gdsTestScore : TextView
+    private lateinit var gdsTestResult : TextView
+    private lateinit var gdsView1 : View
+    private lateinit var gdsView2 : View
+    private lateinit var gdsView3 : View
+    private lateinit var gdsView4 : View
+    private lateinit var gdsView5 : View
+    private lateinit var gdsView6 : View
+    private lateinit var gdsView7 : View
+    private lateinit var gdsView8 : View
+    private lateinit var gdsView9 : View
+    private lateinit var gdsView10 : View
+    private lateinit var gdsView11 : View
+    private lateinit var gdsView12 : View
+    private lateinit var gdsView13 : View
+    private lateinit var gdsView14 : View
+    private lateinit var gdsView15 :  View
+
     //BPI Score Test Result variables
     private lateinit var pssTestScore : TextView
     private lateinit var pssTestResult : TextView
@@ -157,7 +176,6 @@ class ResultFragment : Fragment() {
     private lateinit var bpiTestResultTxtV  : TextView
     private lateinit var totalPSSScore : TextView
     private lateinit var totalPISScore : TextView
-
 
     //screen dimensions
     var screenWidth: Int = 0
@@ -415,31 +433,44 @@ class ResultFragment : Fragment() {
                     }
                 }
             }
+        }
+        if (test_type == 7) {
+            view = inflater.inflate(R.layout.fragment_result_gds_test, container, false)
+            formConLayout = view.findViewById(R.id.results_con_layout_gds_test)
+            MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+            termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+            termsRelLayout.visibility = View.INVISIBLE
+            closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+            companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
+            testHeadling = view.findViewById(R.id.gdsTestTitleTxtV)
+            gdsTestScore = view.findViewById(R.id.totalPSScore)
+            gdsTestResult = view.findViewById(R.id.totalScoreDescTxtV)
+            val score = arguments!!.getDouble(ARG_PARAM1)
+            gdsTestScore.text = (String.format(
+                resources.getString(R.string.mds_test_score),
+                String.format("%.2f", score.toFloat())
+            ))
+            gdsTestResult.text = geGDSResult(score.toInt())
+            gdsView1 = view.findViewById(R.id.view1)
+            gdsView2 = view.findViewById(R.id.view2)
+            gdsView3 = view.findViewById(R.id.view3)
+            gdsView4 = view.findViewById(R.id.view4)
+            gdsView5 = view.findViewById(R.id.view5)
+            gdsView6 = view.findViewById(R.id.view6)
+            gdsView7 = view.findViewById(R.id.view7)
+            gdsView8 = view.findViewById(R.id.view8)
+            gdsView9 = view.findViewById(R.id.view9)
+            gdsView10 = view.findViewById(R.id.view10)
+            gdsView11 = view.findViewById(R.id.view11)
+            gdsView12 = view.findViewById(R.id.view12)
+            gdsView13 = view.findViewById(R.id.view13)
+            gdsView14 = view.findViewById(R.id.view14)
+            gdsView15 = view.findViewById(R.id.view15)
 
 
-
-
-// Create the Handler object (on the main thread by default)
-//            var runningTest: Int = 0
-//            var counter : Int = 0
-//            val handler = Handler()
-//            // Define the code block to be executed
-//
-//
-//
-//            val runnableCode: Runnable = object : Runnable {
-//                override fun run() {
-//                    // Do something here on the main thread
-//                    createBPIResultBarViews(runningTest)
-//                    counter ++
-//                    runningTest = Math.floorMod(counter , 2)
-//                    // Repeat this the same runnable code block again another 2 seconds
-//                    // 'this' is referencing the Runnable object
-//                    handler.postDelayed(this, 2000)
-//                }
-//            }
-//            // Start the initial runnable task by posting through the handler
-//            handler.post(runnableCode)
         }
             return view
         }
@@ -557,6 +588,14 @@ class ResultFragment : Fragment() {
             pssTestScore.text = String.format("%.2f" , arguments!!.getDouble(ARG_PARAM1))
             pisTestScore.text = String.format("%.2f" , arguments!!.getDouble(ARG_PARAM2))
         }
+        if (test_type == 7)
+        {
+            setFormColors(testType = 7)
+            GlobalScope.launch(Dispatchers.Main)
+            {
+                setGDSTestBarColors(arguments!!.getDouble(ARG_PARAM1).toInt())
+            }
+        }
     }
 
     private fun setAltLLayout() {
@@ -592,6 +631,10 @@ class ResultFragment : Fragment() {
             {
                 testHeadling.setBackgroundResource(R.drawable.red_bpi_form_style)
                 bpiTestResultTxtV.setBackgroundResource(R.drawable.bpi_result_rel_layout)
+            }
+            7 -> {
+                testHeadling.setBackgroundResource(R.drawable.purple_mditest_form_title_style)
+                gdsTestScore.setBackgroundResource(R.drawable.mdi_test_relative_layout)
             }
         }
     }
@@ -706,6 +749,132 @@ class ResultFragment : Fragment() {
         if (mdiDepressionInt >= 30) {
             totalScore.setTextColor(resources.getColor(R.color.dark_red))
             depressStatus.setTextColor(resources.getColor(R.color.dark_red))
+        }
+    }
+
+    private fun geGDSResult(score : Int) : String
+    {
+        if ((0 >= score) && (score <= 5))
+        {
+            return "Απουσία Κατάθληψης"
+        }
+        if ((6 >= score) && (score <= 10))
+        {
+            return "Παρουσία ήπιας κατάθληψης. Απαιτείται ιατρική/ψυχιατρική αξιολόγηση"
+        }
+        if (score >= 11)
+        {
+            return "Παρουσία σοβαρής κατάθληψης"
+        }
+        return ""
+    }
+
+    private suspend fun setGDSTestBarColors(score : Int)
+    {
+        var barsRemaining : Int = 0
+        if (score > 0)
+        {
+            gdsView1.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 1)
+        {
+            gdsView2.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 2)
+        {
+            gdsView3.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 3)
+        {
+            gdsView4.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 4)
+        {
+            gdsView5.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 5)
+        {
+            gdsView6.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 6)
+        {
+            gdsView7.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 7)
+        {
+            gdsView8.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 8)
+        {
+            gdsView9.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 9)
+        {
+            gdsView10.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 10)
+        {
+            gdsView11.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 11)
+        {
+            gdsView12.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 12)
+        {
+            gdsView13.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 13)
+        {
+            gdsView14.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+        if (score > 14)
+        {
+            gdsView15.setBackgroundColor(resources.getColor(R.color.purple))
+            delay(100)
+            barsRemaining ++
+        }
+
+        setGDSTestWhiteBarColors(barsRemaining)
+    }
+
+    private suspend fun setGDSTestWhiteBarColors(barsNo: Int)
+    {
+        var viewIDs = intArrayOf(gdsView1.id , gdsView2.id , gdsView3.id , gdsView4.id ,
+        gdsView5.id , gdsView6.id, gdsView7.id , gdsView8.id , gdsView9.id , gdsView10.id,
+        gdsView11.id , gdsView12.id , gdsView13.id , gdsView14.id , gdsView15.id)
+        for (i in barsNo..10)
+        {
+            view?.findViewById<View>(viewIDs.get(i))!!.setBackgroundColor(resources.getColor(R.color.light_gray))
+            delay(100)
         }
     }
 

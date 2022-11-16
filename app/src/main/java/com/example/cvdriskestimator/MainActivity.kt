@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var baiCheckFragment: BAICheckFragment
     private lateinit var mdsCheckFragment: medDietTestFragment
     private lateinit var bpiCheckFragment: BPICheckFragment
+    private lateinit var gdsCheckFragment: GDSCheckFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
     private lateinit var MTETitleForm : RelativeLayout
@@ -66,6 +67,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var anxietyIcon : ImageView
     private lateinit var dietIcon : ImageView
     private lateinit var painIcon : ImageView
+    private lateinit var gdsDepressionIcon : ImageView
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
@@ -108,6 +110,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon = findViewById(R.id.AnxietyImgV)
         dietIcon = findViewById(R.id.dietImgV)
         painIcon = findViewById(R.id.PainImgV)
+        gdsDepressionIcon = findViewById(R.id.gdsIcon)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
         depressionTestTitle = findViewById(R.id.depressionTestTxtView)
@@ -153,6 +156,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         baiCheckFragment = BAICheckFragment.newInstance()
         mdsCheckFragment = medDietTestFragment.newInstance()
         bpiCheckFragment = BPICheckFragment.newInstance()
+        gdsCheckFragment = GDSCheckFragment.newInstance()
         leaderBoardFragment = LeaderBoardFragment.newInstance()
 
         setFragmentContainerConstraint(2)
@@ -263,6 +267,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction(bpiCheckFragment)
         }
 
+        gdsDepressionIcon.setOnClickListener {
+            hideLayoutElements()
+            playSelectTestAudio(8)
+            fragmentTransaction(gdsCheckFragment)
+        }
+
         showMedicalTests()
 
     }
@@ -316,6 +326,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
             7 -> {
                 val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.bpi_test)
+                mediaPlayer.start()
+            }
+            8 -> {
+                val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.gds_speech)
                 mediaPlayer.start()
             }
         }
@@ -406,6 +420,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.VISIBLE
         dietIcon.visibility = View.VISIBLE
         painIcon.visibility = View.VISIBLE
+        gdsDepressionIcon.visibility = View.VISIBLE
         cvdVectorIcon.animate().alpha(1f).duration = 1200
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
         depressionIcon.animate().alpha(1f).duration = 1200
@@ -418,6 +433,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon.startAnimation(bounceTests)
         painTestTitle.animate().alphaBy(1f).duration = 1200
         painIcon.startAnimation(bounceTests)
+        gdsDepressionIcon.animate().alphaBy(1f).duration = 1200
+        gdsDepressionIcon.startAnimation(bounceTests)
 
     }
 
@@ -445,12 +462,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon.visibility = View.INVISIBLE
         painIcon.clearAnimation()
         painIcon.visibility = View.INVISIBLE
+        gdsDepressionIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
         depressionTestTitle.visibility = View.INVISIBLE
         anxietyTestTitle.visibility = View.INVISIBLE
         dietTestTitle.visibility = View.INVISIBLE
         painTestTitle.visibility = View.INVISIBLE
+
     }
 
     private fun showLayoutElements() {
@@ -469,6 +488,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.VISIBLE
         dietIcon.visibility = View.VISIBLE
         painIcon.visibility = View.VISIBLE
+        gdsDepressionIcon.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()
@@ -517,6 +537,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(baiCheckFragment)
         fragmentTransaction.hide(mdsCheckFragment)
         fragmentTransaction.hide(bpiCheckFragment)
+        fragmentTransaction.hide(gdsCheckFragment)
         fragmentTransaction.hide(leaderBoardFragment)
             .commit()
     }
@@ -541,6 +562,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is RegisterFragment)
             fragmentTransaction.show(registerFragment)
         if (fragment is BPICheckFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is GDSCheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)
@@ -641,6 +664,22 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                                 patient!!.patientBAIQ19 = null
                                 patient!!.patientBAIQ20 = null
                                 patient!!.patientBAIQ21 = null
+
+                                patient!!.patientGDSQ1 = null
+                                patient!!.patientGDSQ2 = null
+                                patient!!.patientGDSQ3 = null
+                                patient!!.patientGDSQ4 = null
+                                patient!!.patientGDSQ5 = null
+                                patient!!.patientGDSQ6 = null
+                                patient!!.patientGDSQ7 = null
+                                patient!!.patientGDSQ8 = null
+                                patient!!.patientGDSQ9 = null
+                                patient!!.patientGDSQ10 = null
+                                patient!!.patientGDSQ11 = null
+                                patient!!.patientGDSQ12 = null
+                                patient!!.patientGDSQ13 = null
+                                patient!!.patientGDSQ14 = null
+                                patient!!.patientGDSQ15 = null
 
                             }
 

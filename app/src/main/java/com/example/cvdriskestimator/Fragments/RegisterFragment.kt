@@ -156,6 +156,25 @@ class RegisterFragment : Fragment() {
         registerBinding.editTextTextValidatePassword.error = error
     }
 
+    fun userDateError(error : String)
+    {
+        registerBinding.userDateOfBirthEditText.requestFocus()
+        registerBinding.userDateOfBirthEditText.error = error
+    }
+
+    fun userOccupationError(error : String)
+    {
+        registerBinding.userOccupationEditText.requestFocus()
+        registerBinding.userOccupationEditText.error = error
+    }
+
+    fun userYearsError (error : String)
+    {
+        registerBinding.userYearsOfApprenticeEditText.requestFocus()
+        registerBinding.userYearsOfApprenticeEditText.error = error
+    }
+
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity

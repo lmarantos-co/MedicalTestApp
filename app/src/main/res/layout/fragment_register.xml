@@ -30,14 +30,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.24" />
+            app:layout_constraintGuide_percent="0.2" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/barHG4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.25" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horGL4"
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.4" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horGL7"
@@ -104,7 +104,7 @@
             layout="@layout/popup_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VG5"
@@ -244,6 +244,82 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/userExtraInfoRelLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/relativelayout_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userpassRelLayout">
+
+            <TextView
+                android:id="@+id/userExtraUbfiTxtV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/gray_textview_style"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="Enter your account info  :"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/userDateOfBirthEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userExtraUbfiTxtV"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:editable="true"
+                android:ems="10"
+                android:enabled="true"
+                android:hint="Enter Your Date Of Birth"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:paddingStart="4dp"
+                android:text="@={registerViewModel.inputDateOfBirth}"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/userOccupationEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userDateOfBirthEditText"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:editable="true"
+                android:ems="10"
+                android:enabled="true"
+                android:hint="Enter Your Occupation"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:paddingStart="4dp"
+                android:text="@={registerViewModel.inputOccupation}"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/userYearsOfApprenticeEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userOccupationEditText"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:editable="true"
+                android:ems="10"
+                android:enabled="true"
+                android:hint="Enter Your Years of Apprentice"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:paddingStart="4dp"
+                android:text="@={registerViewModel.inputYearsOfApprenctice}"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/verGL3"
             android:layout_width="wrap_content"
@@ -262,7 +338,7 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userpassRelLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/userExtraInfoRelLayout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
