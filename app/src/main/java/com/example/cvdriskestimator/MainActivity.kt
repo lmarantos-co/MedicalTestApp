@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var mdsCheckFragment: medDietTestFragment
     private lateinit var bpiCheckFragment: BPICheckFragment
     private lateinit var gdsCheckFragment: GDSCheckFragment
+    private lateinit var pdqCheckFragment: PDQCheckFirstCategoryFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
     private lateinit var MTETitleForm : RelativeLayout
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var dietIcon : ImageView
     private lateinit var painIcon : ImageView
     private lateinit var gdsDepressionIcon : ImageView
+    private lateinit var pdqIcon : ImageView
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
@@ -111,6 +113,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon = findViewById(R.id.dietImgV)
         painIcon = findViewById(R.id.PainImgV)
         gdsDepressionIcon = findViewById(R.id.gdsIcon)
+        pdqIcon = findViewById(R.id.pdqIcon)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
         depressionTestTitle = findViewById(R.id.depressionTestTxtView)
@@ -157,6 +160,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         mdsCheckFragment = medDietTestFragment.newInstance()
         bpiCheckFragment = BPICheckFragment.newInstance()
         gdsCheckFragment = GDSCheckFragment.newInstance()
+//        pdqCheckFragment = PDQCheckFirstCategoryFragment()
         leaderBoardFragment = LeaderBoardFragment.newInstance()
 
         setFragmentContainerConstraint(2)
@@ -273,6 +277,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction(gdsCheckFragment)
         }
 
+        pdqIcon.setOnClickListener {
+            hideLayoutElements()
+            playSelectTestAudio(9)
+            fragmentTransaction(pdqCheckFragment)
+        }
+
         showMedicalTests()
 
     }
@@ -330,6 +340,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
             8 -> {
                 val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.gds_speech)
+                mediaPlayer.start()
+            }
+            9 -> {
+                val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.pdq_speech)
                 mediaPlayer.start()
             }
         }
@@ -435,6 +449,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         painIcon.startAnimation(bounceTests)
         gdsDepressionIcon.animate().alphaBy(1f).duration = 1200
         gdsDepressionIcon.startAnimation(bounceTests)
+        pdqIcon.animate().alphaBy(1f).duration = 1200
+        pdqIcon.startAnimation(bounceTests)
 
     }
 
@@ -463,6 +479,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         painIcon.clearAnimation()
         painIcon.visibility = View.INVISIBLE
         gdsDepressionIcon.visibility = View.INVISIBLE
+        pdqIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
         depressionTestTitle.visibility = View.INVISIBLE
@@ -489,6 +506,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon.visibility = View.VISIBLE
         painIcon.visibility = View.VISIBLE
         gdsDepressionIcon.visibility = View.VISIBLE
+        pdqIcon.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()
@@ -538,6 +556,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(mdsCheckFragment)
         fragmentTransaction.hide(bpiCheckFragment)
         fragmentTransaction.hide(gdsCheckFragment)
+//        fragmentTransaction.hide(pdqCheckFragment)
         fragmentTransaction.hide(leaderBoardFragment)
             .commit()
     }
@@ -564,6 +583,22 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is BPICheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is GDSCheckFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is PDQCheckFirstCategoryFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is PDQCheckSecondCategoryFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is PDQCheckThridCategoryFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is PDQCheckFourthCategoryFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is PDQCheckFifthCategoryFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is PDQCheckSixthCategoryFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is PDQCheckSeventhCategoryFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is PDQCheckEightCategoryFragment)
             fragmentTransaction.show(fragment)
         if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)
@@ -681,6 +716,44 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                                 patient!!.patientGDSQ14 = null
                                 patient!!.patientGDSQ15 = null
 
+                                patient!!.patientPDQQ1 = null
+                                patient!!.patientPDQQ2 = null
+                                patient!!.patientPDQQ3 = null
+                                patient!!.patientPDQQ4 = null
+                                patient!!.patientPDQQ5 = null
+                                patient!!.patientPDQQ6 = null
+                                patient!!.patientPDQQ7 = null
+                                patient!!.patientPDQQ8 = null
+                                patient!!.patientPDQQ9 = null
+                                patient!!.patientPDQQ10 = null
+                                patient!!.patientPDQQ11 = null
+                                patient!!.patientPDQQ12 = null
+                                patient!!.patientPDQQ13 = null
+                                patient!!.patientPDQQ14 = null
+                                patient!!.patientPDQQ15 = null
+                                patient!!.patientPDQQ16 = null
+                                patient!!.patientPDQQ17 = null
+                                patient!!.patientPDQQ18 = null
+                                patient!!.patientPDQQ19 = null
+                                patient!!.patientPDQQ20 = null
+                                patient!!.patientPDQQ21 = null
+                                patient!!.patientPDQQ22 = null
+                                patient!!.patientPDQQ23 = null
+                                patient!!.patientPDQQ24 = null
+                                patient!!.patientPDQQ25 = null
+                                patient!!.patientPDQQ26 = null
+                                patient!!.patientPDQQ27 = null
+                                patient!!.patientPDQQ28 = null
+                                patient!!.patientPDQQ30 = null
+                                patient!!.patientPDQQ31 = null
+                                patient!!.patientPDQQ32 = null
+                                patient!!.patientPDQQ33 = null
+                                patient!!.patientPDQQ34 = null
+                                patient!!.patientPDQQ35 = null
+                                patient!!.patientPDQQ36 = null
+                                patient!!.patientPDQQ37 = null
+                                patient!!.patientPDQQ38 = null
+                                patient!!.patientPDQQ39 = null
                             }
 
                         }) // A null listener allows the button to dismiss the dialog and take no further action.

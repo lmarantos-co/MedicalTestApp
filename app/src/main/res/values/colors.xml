@@ -60,4 +60,15 @@
     <color name="light_yellow">#EDC001</color>
     <color name="crimson_red">#DC143C</color>
     <color name="trans">#00FFFFFF</color>
+    <color name="brown_1">#bcaaa4</color>
+    <color name="brown_2">#a1887f</color>
+    <color name="brown_3">#8d6e63</color>
+    <color name="brown_4">#795548</color>
+    <color name="brown_5">#6d4c41</color>
+    <color name="gray_1">#b0bec5</color>
+    <color name="gray_2">#90a4ae</color>
+    <color name="gray_3">#78909c</color>
+    <color name="gray_4">#607d8b</color>
+    <color name="gray_5">#546e7a</color>
+
 </resources>

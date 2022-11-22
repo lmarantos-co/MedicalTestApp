@@ -81,7 +81,7 @@
         app:layout_constraintGuide_percent="0.38" />
 
     <RelativeLayout
-        android:id="@+id/mdsTestTitleRelLayout"
+        android:id="@+id/pdqTestTitleRelLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -106,7 +106,7 @@
 
 
         <LinearLayout
-            android:id="@+id/MedDietScoreLinLayout"
+            android:id="@+id/PDQScoreLinLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/totalPSScore"

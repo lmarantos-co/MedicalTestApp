@@ -257,5 +257,83 @@ open class Patient() : RealmModel {
 
     var patientGDSQ15 : Int? = null
 
+    //variables related with the PDQ Test
+    var patientPDQQ1 : Int? = null
+
+    var patientPDQQ2 : Int? = null
+
+    var patientPDQQ3 : Int? = null
+
+    var patientPDQQ4 : Int? = null
+
+    var patientPDQQ5 : Int? = null
+
+    var patientPDQQ6 : Int? = null
+
+    var patientPDQQ7 : Int? = null
+
+    var patientPDQQ8 : Int? = null
+
+    var patientPDQQ9 : Int? = null
+
+    var patientPDQQ10 : Int? = null
+
+    var patientPDQQ11 : Int? = null
+
+    var patientPDQQ12 : Int? = null
+
+    var patientPDQQ13 : Int? = null
+
+    var patientPDQQ14 : Int? = null
+
+    var patientPDQQ15 : Int? = null
+
+    var patientPDQQ16 : Int? = null
+
+    var patientPDQQ17 : Int? = null
+
+    var patientPDQQ18 : Int? = null
+
+    var patientPDQQ19 : Int? = null
+
+    var patientPDQQ20 : Int? = null
+
+    var patientPDQQ21 : Int? = null
+
+    var patientPDQQ22 : Int? = null
+
+    var patientPDQQ23 : Int? = null
+
+    var patientPDQQ24 : Int? = null
+
+    var patientPDQQ25 : Int? = null
+
+    var patientPDQQ26 : Int? = null
+
+    var patientPDQQ27 : Int? = null
+
+    var patientPDQQ28 : Int? = null
+
+    var patientPDQQ29 : Int? = null
+
+    var patientPDQQ30 : Int? = null
+
+    var patientPDQQ31 : Int? = null
+
+    var patientPDQQ32 : Int? = null
+
+    var patientPDQQ33 : Int? = null
+
+    var patientPDQQ34 : Int? = null
+
+    var patientPDQQ35 : Int? = null
+
+    var patientPDQQ36 : Int? = null
+
+    var patientPDQQ37 : Int? = null
+
+    var patientPDQQ38 : Int? = null
+
+    var patientPDQQ39 : Int? = null
 
 }

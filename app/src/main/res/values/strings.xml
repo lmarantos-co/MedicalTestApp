@@ -235,5 +235,65 @@
     <string name="bpi_pss_test_score">Your pain severity score : </string>
     <string name="bpi_pis_test_score">Your pain interference score : </string>
     <string name="title_activity_leader_board">leaderBoardActivity</string>
+    <string name="PDQQ1">1. Είχατε δυσκολία στις δραστηριότητες ελεύθερου χρόνου, στις οποίες επιθυμούσατε να συμμετέχετε?</string>
+    <string name="PDQQ2">2. Είχατε δυσκολία να φροντίσετε το σπίτι σας, π.χ. οικιακές εργασίες, μερεμέτια, μικροβελτιώσεις, μαγείρεμα?</string>
+    <string name="PDQQ3">3. Δυσκολευτήκατε να κουβαλήσετε τσάντες με ψώνια?</string>
+    <string name="PDQQ4">4. Είχατε πρόβλημα να βαδίσετε 1000 μέτρα (1 ΚΜ)?</string>
+    <string name="PDQQ5">5. Είχατε πρόβλημα να βαδίσετε 100 μέτρα?</string>
+    <string name="PDQQ6">6. Είχατε πρόβλημα να κινείστε μέσα στο σπίτι με όση ευκολία θα
+    επιθυμούσατε?</string>
+    <string name="PDQQ7">7. Είχατε δυσκολία να κυκλοφορήσετε σε δημόσιο χώρο?</string>
+    <string name="PDQQ8">8. Χρειάστηκε να σας συνοδεύσει κάποιος άλλος στην έξοδό σας από τo σπίτι?</string>
+    <string name="PDQQ9">9. Φοβηθήκατε ή ανησυχήσατε μήπως πέσετε κάτω σε δημόσιο χώρο?</string>
+    <string name="PDQQ10">10. Περιοριστήκατε μέσα στο σπίτι σας για μεγαλύτερο διάστημα από όσο θα επιθυμούσατε?</string>
+    <string name="PDQQ11">11. Δυσκολευτήκατε να πλυθείτε?</string>
+    <string name="PDQQ12">12. Δυσκολευτήκατε να ντυθείτε?</string>
+    <string name="PDQQ13">13. Είχατε πρόβλημα να κουμπώσετε τα κουμπιά σας ή να δέσετε τα
+κορδόνια των παπουτσιών σας?</string>
+    <string name="PDQQ14">14. Είχατε πρόβλημα να γράψετε καθαρά?</string>
+    <string name="PDQQ15">15. Δυσκολευτήκατε να κόψετε το φαγητό σας?</string>
+    <string name="PDQQ16">16. Δυσκολευτήκατε να κρατήσετε ένα ποτήρι με ποτό χωρίς να το
+χύσετε?</string>
+    <string name="PDQQ17">17. Αισθανθήκατε κατάθλιψη?</string>
+    <string name="PDQQ18">18. Αισθανθήκατε μοναξιά και απομόνωση?</string>
+    <string name="PDQQ19">19. Αισθανθήκατε διάθεση για κλάμματα και βουρκώσατε?</string>
+    <string name="PDQQ20">20. Αισθανθήκατε θυμωμένος/η ή πικραμένος/η?</string>
+    <string name="PDQQ21">21. Αισθανθήκατε αγχωμένος/η?</string>
+    <string name="PDQQ22">22. Αισθανθήκατε ανησυχία για το μέλλον σας?</string>
+    <string name="PDQQ23">23. Αισθανθήκατε ότι έπρεπε να κρύψετε από τους άλλους ότι έχετε
+Πάρκινσον?</string>
+    <string name="PDQQ24">24. Αποφύγατε καταστάσεις όπου έπρεπε να φάτε και να πιείτε
+δημόσια?</string>
+    <string name="PDQQ25">25. Αισθανθήκατε ντροπή δημόσια επειδή έχετε Πάρκινσον?</string>
+    <string name="PDQQ26">26. Στεναχωρηθήκατε από την αντίδραση των άλλων ανθρώπων προς
+εσάς?</string>
+    <string name="PDQQ27">27. Είχατε προβλήματα στις στενές προσωπικές σας σχέσεις?</string>
+    <string name="PDQQ28">28. Σας έλειψε η συμπαράσταση που χρειάζεστε από τον/την
+σύντροφό σας?</string>
+    <string name="PDQQ29">29. Σας έλειψε η συμπαράσταση που χρειάζεστε από την οικογένειά
+σας ή τους στενούς σας φίλους?</string>
+    <string name="PDQQ30">30. Σας πήρε ο ύπνος στη διάρκεια της μέρας χωρίς να το περιμένετε?</string>
+    <string name="PDQQ31">31. Είχατε πρόβλημα να συγκεντρωθείτε π.χ. καθώς διαβάζατε ή
+βλέπατε τηλεόραση?</string>
+    <string name="PDQQ32">32. Αισθανθήκατε ότι η μνήμη σας ήταν κακή?</string>
+    <string name="PDQQ33">33. Είχατε βασανιστικά όνειρα ή ψευδαισθήσεις?</string>
+    <string name="PDQQ34">34. Είχατε δυσκολία στην ομιλία σας?</string>
+    <string name="PDQQ35">35. Αισθανθήκατε ανίκανος/η να επικοινωνήσετε με τους άλλους
+ανθρώπους?</string>
+    <string name="PDQQ36">36. Αισθανθήκατε αγνοημένος/η από τους άλλους ανθρώπους?</string>
+    <string name="PDQQ37">37. Είχατε μυικές κράμπες ή σπασμούς που πονούσαν?</string>
+    <string name="PDQQ38">38. Είχατε διάφορους πόνους στις αρθρώσεις ή στο σώμα σας?</string>
+    <string name="PDQQ39">39. Αισθανθήκατε δυσάρεστα ζεστός/ή ή παγωμένος/η?</string>
+    <string name="PDQA1">ΠΟΤΕ</string>
+    <string name="PDQA2">ΛΙΓΕΣ</string>
+    <string name="PDQA3">ΜΕΡΙΚΕΣ</string>
+    <string name="PDQA4">ΣΥΧΝΑ</string>
+    <string name="PDQA5">ΠΑΝΤΟΤΕ</string>
+    <string name="pdq_test_results">Parkinson Disease Questionnaire Score Results</string>
+    <string name="pdq_test_score">Αποτέλεσμα : %1$s με ποσοστό : %2$s</string>
+    <string name="pdq_test_intro_text">ΕΞΑΙΤΙΑΣ ΤΗΣ ΝΟΣΟΥ ΤΟΥ ΠΑΡΚΙΝΣΟΝ πόσο συχνά είχατε, τον προηγούμενο μήνα, τα παρακάτω;</string>
+    <string name="intro_screen_new_customer">ΝΕΟΣ ΠΕΛΑΤΗΣ</string>
+    <string name="intro_screen_all_customers">ΟΛΟΙ ΟΙ ΠΕΛΑΤΕΣ</string>
+
 
 </resources>

@@ -768,7 +768,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/testButtonsRelLayoyt">
+                    android:id="@+id/arrowButtonsRelLayoyt">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitBtn"
