@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/MidnightBlue">
+
+    <RelativeLayout
+        android:id="@+id/searchCustomersrelLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/intro_screen_panel"
+        app:layout_constraintBottom_toTopOf="@+id/bottomHGL"
+        app:layout_constraintEnd_toStartOf="@+id/rightVGL"
+        app:layout_constraintStart_toStartOf="@+id/leftVGL"
+        app:layout_constraintTop_toTopOf="@+id/topHGL">
+
+        <TextView
+            android:id="@+id/searchCustomersTxtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="ΠΕΛΑΤΕΣ"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <RadioGroup
+            android:id="@+id/customerTypeSelRG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searchCustomersTxtV"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/customerNameRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                tools:text="ΟΝΟΜΑ ΠΕΛΑΤΗ" />
+
+            <RadioButton
+                android:id="@+id/custmerLastNameRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="ΕΠΩΝΥΜΟ ΠΕΛΑΤΗ" />
+        </RadioGroup>
+
+        <SearchView
+            android:id="@+id/customersSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerTypeSelRG"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="false"
+            android:orientation="vertical">
+
+        </SearchView>
+
+        <ListView
+            android:id="@+id/customerListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customersSearchView" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftVGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightVGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <include
+        android:id="@+id/include_cvd_title_form"
+        layout="@layout/cvd_title_form"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/horGL1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

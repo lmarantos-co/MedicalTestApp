@@ -36,6 +36,8 @@ class RegisterPatientViewModel : ViewModel() , Observable{
     private var userName : String = ""
     private var userPassword : String = ""
     private var userPassword2 : String = ""
+    private var patientName : String = ""
+    private var patientLastName : String = ""
     private var userDateOfBirth : String = ""
     private var userOccupation : String = ""
     private var userYearsOfApprentice : Int = 0
@@ -59,6 +61,12 @@ class RegisterPatientViewModel : ViewModel() , Observable{
                 ".{4,}" +  // at least 4 characters
                 "$"
     )
+
+    @Bindable
+    val inputPatientName = MutableLiveData<String>()
+
+    @Bindable
+    val inputPatientLastName = MutableLiveData<String>()
 
     @Bindable
     val inputUserName = MutableLiveData<String>()
@@ -97,6 +105,14 @@ class RegisterPatientViewModel : ViewModel() , Observable{
     {
         userDataCorrect = true
         var userExists = false
+        if (inputPatientName.value != null)
+        {
+            patientName = inputPatientName.value!!
+        }
+        if (inputPatientLastName.value != null)
+        {
+            patientLastName = inputPatientLastName.value!!
+        }
         if (inputUserName.value != null)
         {
             userName = inputUserName.value!!
@@ -109,12 +125,14 @@ class RegisterPatientViewModel : ViewModel() , Observable{
         {
             userPassword2 = inputPassValidate.value!!
         }
+        userDataCorrect = userDataCorrect && validatePatientName(patientName)
+        userDataCorrect = userDataCorrect && (validatePatientLastName(patientLastName))
         userDataCorrect = userDataCorrect && validateUserName(userName)
         userDataCorrect = userDataCorrect && validatePassword(userPassword)
         userDataCorrect = userDataCorrect && comparePasswords(userPassword, userPassword2)
         if (userDataCorrect)
         {
-            var patient = SQLPatient(userName , userPassword, null, null, null, null ,null, null , null, null)
+            var patient = SQLPatient(userName , userPassword, patientName , patientLastName , null, null, null, null ,null, null)
             patient.userName = userName
             patient.password = userPassword
             userExists = InsertDBAsyncTask(patient).execute().get()
@@ -167,6 +185,12 @@ class RegisterPatientViewModel : ViewModel() , Observable{
         if (inputPassword.value != null) {
             userPassword = inputPassword.value!!
         }
+        if (inputPatientName.value != null)
+            patientName = inputPatientName.value!!
+
+        if (inputPatientLastName.value != null)
+            patientName = inputPatientLastName.value!!
+
         if (inputPassValidate.value != null)
         {
             userPassword2 = inputPassValidate.value!!
@@ -184,6 +208,8 @@ class RegisterPatientViewModel : ViewModel() , Observable{
             userYearsOfApprentice = inputYearsOfApprenctice.value!!.toInt()
         }
 
+        userDataCorrect = userDataCorrect && validatePatientName(patientName)
+        userDataCorrect = userDataCorrect && validatePatientLastName(patientLastName)
         userDataCorrect = userDataCorrect && validateUserName(userName)
         userDataCorrect = userDataCorrect && validatePassword(userPassword)
         userDataCorrect = userDataCorrect && comparePasswords(userPassword, userPassword2)
@@ -227,6 +253,8 @@ class RegisterPatientViewModel : ViewModel() , Observable{
                         patient.id = (patientNum).toString()
                         patient.userName = userName
                         patient.password = userPassword
+                        patient.patientName = patientName
+                        patient.patientLastName = patientLastName
                         patient.dateOfBirth = userDateOfBirth
                         patient.occupation = userOccupation
                         patient.yearsOfApprentice = userYearsOfApprentice
@@ -270,6 +298,34 @@ class RegisterPatientViewModel : ViewModel() , Observable{
     fun setActivity(activity: MainActivity)
     {
         mainActivity = activity
+    }
+
+    private fun validatePatientName(name : String) : Boolean {
+        var correctName : Boolean
+        if (name.isNotEmpty())
+        {
+            correctName = true
+        }
+        else
+        {
+            correctName = false
+            registerFragment.userNameError("Patient Name cannot be empty.")
+        }
+        return correctName
+    }
+
+    private fun validatePatientLastName(name : String) : Boolean {
+        var correctName : Boolean
+        if (name.isNotEmpty())
+        {
+            correctName = true
+        }
+        else
+        {
+            correctName = false
+            registerFragment.userNameError("Patient Last Name cannot be empty.")
+        }
+        return correctName
     }
 
     private fun validateUserName(name : String) : Boolean {

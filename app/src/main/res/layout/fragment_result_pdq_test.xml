@@ -1,14 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/results_con_layout_bpi_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/MidnightBlue">>
+    android:background="@color/MidnightBlue">
 
     <!--    covariance title form-->
 

@@ -23,6 +23,12 @@ open class Patient() : RealmModel {
     var password : String = ""
 
     @Required
+    var patientName : String = ""
+
+    @Required
+    var patientLastName : String = ""
+
+    @Required
     var dateOfBirth : String = ""
 
     @Required

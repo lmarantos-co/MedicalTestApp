@@ -30,11 +30,21 @@ import android.content.DialogInterface
 import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
+import android.widget.RadioGroup.OnCheckedChangeListener
 
 
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
 
     private lateinit var constraintLayout : ConstraintLayout
+    private lateinit var introScreenConLayout : ConstraintLayout
+    private lateinit var allCustomersTxtV : TextView
+    private lateinit var introSearchCustomersConLayout : ConstraintLayout
+    private lateinit var customersListView : ListView
+    private lateinit var customerSearchView : SearchView
+    private lateinit var customerRadioGroup : RadioGroup
+    private lateinit var nameArrayAdapter : ArrayAdapter<String>
+    private lateinit var lastNameArrayAdapter : ArrayAdapter<String>
+    private var selectCustomerType : Int = 0
     private lateinit var realmDB: RealmDB
     private lateinit var loginFragment: LoginFragment
     private lateinit var registerFragment: RegisterFragment
@@ -90,9 +100,88 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setContentViewForIntroScreen()
 
+    }
+
+    private fun setContentViewForIntroScreen()
+    {
+
+        setContentView(R.layout.initial_screen)
+        allCustomersTxtV = findViewById<TextView>(R.id.allCustomersTxtV)
+        allCustomersTxtV.setOnClickListener {
+            setContentViewForSearchCustomersScreen()
+        }
+
+    }
+
+    private fun setContentViewForSearchCustomersScreen()
+    {
+        setContentView(R.layout.intro_screen_search_customers)
+        initRealmDB()
+        customersListView = findViewById(R.id.customerListView)
+        customerSearchView = findViewById(R.id.customersSearchView)
+        customerRadioGroup = findViewById(R.id.customerTypeSelRG)
+
+
+
+        var customerNames = ArrayList<String>()
+        var customerLastNames = ArrayList<String>()
+
+        customerRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            val radio: RadioButton = findViewById(checkedId)
+            when (radio) {
+                customerRadioGroup.findViewById<RadioButton>(R.id.customerNameRB)-> {
+                    selectCustomerType = 1
+                    customerNames = getNamesFromRealm()
+                    nameArrayAdapter = ArrayAdapter<String>(this , android.R.layout.simple_list_item_1, customerNames)
+                    customersListView.adapter = nameArrayAdapter
+                }
+                customerRadioGroup.findViewById<RadioButton>(R.id.custmerLastNameRB) -> {
+                    customerLastNames = getLastNamesFromRealm()
+                    lastNameArrayAdapter = ArrayAdapter<String>(this , android.R.layout.simple_list_item_1, customerLastNames)
+                    selectCustomerType = 2
+                    customersListView.adapter = lastNameArrayAdapter
+                }
+            }
+        }
+
+        customerSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                if (selectCustomerType == 1)
+                {
+                    nameArrayAdapter.filter.filter(query)
+                }
+
+                if (selectCustomerType == 2)
+                {
+                    lastNameArrayAdapter.filter.filter(query)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                if (selectCustomerType == 1)
+                {
+                    nameArrayAdapter.filter.filter(newText)
+                }
+
+                if (selectCustomerType == 2)
+                {
+                    lastNameArrayAdapter.filter.filter(newText)
+                }
+                return false
+            }
+        }
+        )
+    }
+
+
+    private fun setContentViewForMainLayout()
+    {
         setContentView(R.layout.activity_main)
-
 
         constraintLayout = findViewById(R.id.mainActiConLayout)
         fragmentContainer = findViewById(R.id.fragmentContainer)
@@ -124,8 +213,30 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         initPrefs()
 
         initUI()
+    }
 
-        initRealmDB()
+    private fun getNamesFromRealm() : ArrayList<String>
+    {
+        var patientNames = ArrayList<String>()
+        var realm = Realm.getDefaultInstance()
+        var allPatientNames = realm.where(Patient::class.java).findAll()
+        for (patient in allPatientNames)
+        {
+            patientNames.add(patient.patientName)
+        }
+        return patientNames
+    }
+
+    private fun getLastNamesFromRealm() : ArrayList<String>
+    {
+        var patientLastNames = ArrayList<String>()
+        var realm = Realm.getDefaultInstance()
+        var allPatientLastNames = realm.where(Patient::class.java).findAll()
+        for (patient in allPatientLastNames)
+        {
+            patientLastNames.add(patient.patientLastName)
+        }
+        return patientLastNames
     }
 
     private fun initUI() {
@@ -166,6 +277,21 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setFragmentContainerConstraint(2)
 
         showTermsOfUseLayout()
+
+        userIconImg.animate().alpha(1F).duration = 1500
+
+        userIconImg.animate()
+            .scaleX(0.5f).scaleY(0.5f) //scale to quarter(half x,half y)
+            .translationY((userIconImg.height / 4).toFloat())
+            .rotation(360f) // one round turns
+            .setDuration(500) // all take 1 seconds
+            .withEndAction {
+                //animation ended
+                userIconImg.animate()
+                    .scaleX(1f).scaleY(1f)
+                    // move to bottom / right
+                    .rotation(360f).duration = 500 // all take 1 seconds
+            }
 
         termsOFUseView.setOnClickListener {
             hideTermsOfUseLayout()
@@ -291,20 +417,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     override fun onStart() {
         super.onStart()
 
-          userIconImg.animate().alpha(1F).duration = 1500
 
-        userIconImg.animate()
-            .scaleX(0.5f).scaleY(0.5f) //scale to quarter(half x,half y)
-            .translationY((userIconImg.height / 4).toFloat())
-            .rotation(360f) // one round turns
-            .setDuration(500) // all take 1 seconds
-            .withEndAction {
-                //animation ended
-                userIconImg.animate()
-                    .scaleX(1f).scaleY(1f)
-                    // move to bottom / right
-                    .rotation(360f).duration = 500 // all take 1 seconds
-            }
     }
 
 
@@ -528,6 +641,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     private fun initRealmDB() {
         realmDB = RealmDB(applicationContext)
+
+        var realm = Realm.getDefaultInstance()
+        var patientCount = realm.where(Patient::class.java).count()
+        if (patientCount < 10)
+            buildRealmDatabase()
+
     }
 
     // this event will enable the back
@@ -543,6 +662,122 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         return super.onOptionsItemSelected(item)
     }
 
+    private fun buildRealmDatabase()
+    {
+        var patient1 = Patient()
+        patient1.id = 1.toString()
+        patient1.userName = "lampros_1"
+        patient1.password = "lampros#1"
+        patient1.patientName = "Lampros"
+        patient1.patientLastName = "Marantos"
+        patient1.dateOfBirth = "1983 04 01"
+        patient1.occupation = "Programmer"
+        patient1.yearsOfApprentice = 2
+
+        var patient2 = Patient()
+        patient2.id = 2.toString()
+        patient2.userName = "vaslis_1"
+        patient2.password = "vasilis#1"
+        patient2.patientName = "Vasilis"
+        patient2.patientLastName = "Marantos"
+        patient2.dateOfBirth = "1981 05 11"
+        patient2.occupation = "Logistics"
+        patient2.yearsOfApprentice = 4
+
+        var patient3 = Patient()
+        patient3.id = 3.toString()
+        patient3.userName = "george_1"
+        patient3.password = "george#1"
+        patient3.patientName = "George"
+        patient3.patientLastName = "Papadopoulos"
+        patient3.dateOfBirth = "1975 02 17"
+        patient3.occupation = "Student"
+        patient3.yearsOfApprentice = 5
+
+        var patient4 = Patient()
+        patient4.id = 4.toString()
+        patient4.userName = "nick_1"
+        patient4.password = "nick#1"
+        patient4.patientName = "Nick"
+        patient4.patientLastName = "Melanitis"
+        patient4.dateOfBirth = "1970 01 10"
+        patient4.occupation = "Freelancer"
+        patient4.yearsOfApprentice = 3
+
+        var patient5 = Patient()
+        patient5.id = 5.toString()
+        patient5.userName = "dimitris_2"
+        patient5.password = "dimitris#2"
+        patient5.patientName = "Dimitris"
+        patient5.patientLastName = "Zikos"
+        patient5.dateOfBirth = "1964 12 10"
+        patient5.occupation = "Freelancer"
+        patient5.yearsOfApprentice = 3
+
+        var patient6 = Patient()
+        patient6.id = 6.toString()
+        patient6.userName = "elena_1"
+        patient6.password = "elena#1"
+        patient6.patientName = "Elena"
+        patient6.patientLastName = "Christodoulopoulou"
+        patient6.dateOfBirth = "1982 08 10"
+        patient6.occupation = "Accountant"
+        patient6.yearsOfApprentice = 7
+
+        var patient7 = Patient()
+        patient7.id = 7.toString()
+        patient7.userName = "dimitris_1"
+        patient7.password = "dimitris#1"
+        patient7.patientName = "Dimitris"
+        patient7.patientLastName = "Marantos"
+        patient7.dateOfBirth = "1984 11 15"
+        patient7.occupation = "Driver"
+        patient7.yearsOfApprentice = 6
+
+        var patient8 = Patient()
+        patient8.id = 8.toString()
+        patient8.userName = "kostas_1"
+        patient8.password = "kostas#1"
+        patient8.patientName = "Kostas"
+        patient8.patientLastName = "Nikolaou"
+        patient8.dateOfBirth = "1972 03 09"
+        patient8.occupation = "singer"
+        patient8.yearsOfApprentice = 10
+
+        var patient9 = Patient()
+        patient9.id = 9.toString()
+        patient9.userName = "petros_1"
+        patient9.password = "petros#1"
+        patient9.patientName = "Petros"
+        patient9.patientLastName = "zikos"
+        patient9.dateOfBirth = "1968 05 17"
+        patient9.occupation = "Financial Manager"
+        patient9.yearsOfApprentice = 4
+
+        var patient10 = Patient()
+        patient10.id = 10.toString()
+        patient10.userName = "maria_1"
+        patient10.password = "maria#1"
+        patient10.patientName = "Maria"
+        patient10.patientLastName = "Vasilogiannakopoulou"
+        patient10.dateOfBirth = "1982 04 17"
+        patient10.occupation = "Shop Owner"
+        patient10.yearsOfApprentice = 4
+
+        var realm = Realm.getDefaultInstance()
+        realm.executeTransaction {
+            it.insert(patient1)
+            it.insert(patient2)
+            it.insert(patient3)
+            it.insert(patient4)
+            it.insert(patient5)
+            it.insert(patient6)
+            it.insert(patient7)
+            it.insert(patient8)
+            it.insert(patient9)
+            it.insert(patient10)
+        }
+    }
 
     private fun hideFragmentVisibility()
     {
