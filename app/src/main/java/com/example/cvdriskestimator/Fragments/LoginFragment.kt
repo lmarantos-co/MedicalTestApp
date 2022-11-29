@@ -1,20 +1,18 @@
 package com.example.cvdriskestimator.Fragments
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.view.*
-import android.widget.PopupMenu
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.databinding.FragmentLoginBinding
-import com.example.cvdriskestimator.viewModels.LoginPatientViewModelFactory
 import com.example.cvdriskestimator.viewModels.LoginPatientViewModel
-import java.lang.reflect.Method
+import com.example.cvdriskestimator.viewModels.LoginPatientViewModelFactory
 
 
 class LoginFragment : Fragment() {
@@ -72,7 +70,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        popUpMenuComp = PopUpMenu(loginBinding.includePopUpMenu.termsRelLayout , mainActivity, this, null, registerFragment , leaderBoardFragment)
+        popUpMenuComp = PopUpMenu(loginBinding.includePopUpMenu.termsRelLayout , mainActivity, this, null, registerFragment , null ,  leaderBoardFragment)
 
         loginBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popUpMenuComp.showPopUp(loginBinding.includeCvdTitleForm.userIcon)
@@ -138,8 +136,8 @@ class LoginFragment : Fragment() {
     }
 
     fun passwordError(error : String){
-        loginBinding.editTextTextPassword.requestFocus()
-        loginBinding.editTextTextPassword.setError(error)
+        loginBinding.editTextPassword.requestFocus()
+        loginBinding.editTextPassword.setError(error)
     }
 
 

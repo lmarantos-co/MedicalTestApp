@@ -27,34 +27,11 @@
             android:textColor="@color/black"
             android:textSize="24sp" />
 
-        <RadioGroup
-            android:id="@+id/customerTypeSelRG"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/searchCustomersTxtV"
-            android:gravity="center">
-
-            <RadioButton
-                android:id="@+id/customerNameRB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                tools:text="ΟΝΟΜΑ ΠΕΛΑΤΗ" />
-
-            <RadioButton
-                android:id="@+id/custmerLastNameRB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="ΕΠΩΝΥΜΟ ΠΕΛΑΤΗ" />
-        </RadioGroup>
-
         <SearchView
             android:id="@+id/customersSearchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/customerTypeSelRG"
+            android:layout_below="@+id/searchCustomersTxtV"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="false"
             android:orientation="vertical">

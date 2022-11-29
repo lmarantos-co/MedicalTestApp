@@ -142,7 +142,7 @@ class BAICheckFragment : Fragment() {
         leaderBoardFragment = LeaderBoardFragment.newInstance()
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(baiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , leaderBoardFragment)
+        popupMenu = PopUpMenu(baiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , null , leaderBoardFragment)
 
         baiCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

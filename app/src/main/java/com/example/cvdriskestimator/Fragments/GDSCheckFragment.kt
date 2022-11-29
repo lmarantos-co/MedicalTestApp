@@ -130,7 +130,7 @@ class GDSCheckFragment : Fragment() {
         gdsCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(gdsCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , leaderBoardFragment)
+        popupMenu = PopUpMenu(gdsCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , null ,leaderBoardFragment)
 
         gdsCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

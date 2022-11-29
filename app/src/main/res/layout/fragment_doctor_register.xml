@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="registerDoctorViewModel"
+            type="com.example.cvdriskestimator.viewModels.RegisterDoctorViewModel"
+            />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inclusiveConLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MidnightBlue">
+
+        <!--    covariance title form-->
+
+        <include
+            android:id="@+id/include_cvd_title_form"
+            layout="@layout/cvd_title_form"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/horGL1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/topHorGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottomHorGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/formConLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/MidnightBlue"
+            tools:context=".Fragments.LoginFragment"
+            tools:layout_editor_absoluteY="102dp">
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/barHG4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.18" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.62" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.34" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.7" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.79" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.84" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/VG5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.2" />
+
+            <TextView
+                android:id="@+id/formTxtV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/register_title"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/verGl2"
+                app:layout_constraintStart_toStartOf="@+id/verGL1"
+                app:layout_constraintTop_toTopOf="@+id/horGL2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/verGL1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.15" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/verGl2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.85" />
+
+            <RelativeLayout
+                android:id="@+id/userNameRegisterRelLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/relativelayout_style"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/barHG4">
+
+                <TextView
+                    android:id="@+id/userNameTxtV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/gray_textview_style"
+                    android:gravity="center"
+                    android:minHeight="48dp"
+                    android:text="UserName  :"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/userNameRegisterEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/userNameTxtV"
+                    android:layout_centerInParent="true"
+                    android:clickable="true"
+                    android:editable="true"
+                    android:ems="10"
+                    android:enabled="true"
+                    android:hint="Enter Your Username"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:paddingStart="4dp"
+                    android:text="@={registerDoctorViewModel.inputDoctorName}"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/userpassRelLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/relativelayout_style"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/horGL6">
+
+
+                <TextView
+                    android:id="@+id/passwordTxtV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/gray_textview_style"
+                    android:gravity="center"
+                    android:minHeight="48dp"
+                    android:text="Password : "
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editTextRegisterPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/passwordTxtV"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="false"
+                    android:clickable="true"
+                    android:editable="true"
+                    android:ems="10"
+                    android:enabled="true"
+                    android:hint="Enter Your Password"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"
+                    android:paddingStart="4dp"
+                    android:password="true"
+                    android:text="@={registerDoctorViewModel.inputDoctorPassword}"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editTextValidateRegisterPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/editTextRegisterPassword"
+                    android:layout_centerInParent="true"
+                    android:clickable="true"
+                    android:editable="true"
+                    android:ems="10"
+                    android:enabled="true"
+                    android:hint="Re-enter Your Password"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"
+                    android:paddingStart="4dp"
+                    android:password="true"
+                    android:text="@={registerDoctorViewModel.inputPasswordValidate}"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/verGL3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.75" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/registerSbmBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/login_register_textview_style"
+            android:padding="20dp"
+            android:text="REGISTER"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

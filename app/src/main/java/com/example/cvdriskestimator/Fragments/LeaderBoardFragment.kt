@@ -67,7 +67,7 @@ class LeaderBoardFragment : Fragment() {
         medTestForm.findViewById<View>(R.id.userIcon).alpha = 1f
         loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
-        popUpMenu = PopUpMenu(termsOfUse.findViewById(R.id.termsRelLayout) , mainActivity , this , loginFragment , registerFragment , this  )
+        popUpMenu = PopUpMenu(termsOfUse.findViewById(R.id.termsRelLayout) , mainActivity , this , loginFragment , registerFragment , null ,this  )
 
         medTestForm.findViewById<View>(R.id.userIcon).setOnClickListener {
             popUpMenu.showPopUp(view)

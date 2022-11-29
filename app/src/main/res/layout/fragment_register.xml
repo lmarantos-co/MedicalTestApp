@@ -34,6 +34,13 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.14" />
 
+        <include
+            android:id="@+id/include_pop_up_menu"
+            layout="@layout/popup_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/topHorGL"
             android:layout_width="wrap_content"
@@ -50,15 +57,15 @@
 
         <androidx.core.widget.NestedScrollView
             android:id='@+id/registerScrollView'
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:fadeScrollbars="false"
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
+            app:layout_constraintBottom_toTopOf="@id/bottomHorGL"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/bottomHorGL"
             app:layout_constraintTop_toBottomOf="@id/topHorGL">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -130,14 +137,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="1"/>
+                    app:layout_constraintGuide_percent="1" />
 
-                <include
-                    android:id="@+id/include_pop_up_menu"
-                    layout="@layout/popup_menu"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="invisible" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/VG5"
@@ -196,7 +197,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/userNameEditText"
+                        android:id="@+id/userNameRegEditText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/userNameTxtV"
@@ -239,7 +240,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/editTextTextPassword"
+                        android:id="@+id/editTextRegPassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/passwordTxtV"
@@ -258,10 +259,10 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/editTextTextValidatePassword"
+                        android:id="@+id/editTextRegValidatePassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextTextPassword"
+                        android:layout_below="@id/editTextRegPassword"
                         android:layout_centerInParent="true"
                         android:clickable="true"
                         android:editable="true"
@@ -309,6 +310,7 @@
                         android:clickable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:text="@={registerViewModel.inputPatientName}"
                         android:hint="Enter Your Name"
                         android:inputType="text"
                         android:minHeight="48dp"
@@ -325,6 +327,7 @@
                         android:ems="10"
                         android:enabled="true"
                         android:hint="Enter Your Last Name"
+                        android:text="@={registerViewModel.inputPatientLastName}"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"

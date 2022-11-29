@@ -25,6 +25,7 @@ class PopUpMenu {
     private var prFragment : Fragment
     private var prLoginFragment : LoginFragment?
     private var prRegisterFragment : RegisterFragment?
+    private var prRegisterDoctorFragment : RegisterDoctorFragment? = null
     private var prleaderBoardFragment : LeaderBoardFragment?
     //variables to set the menu item titles
     var LOG : String = "Login"
@@ -32,13 +33,14 @@ class PopUpMenu {
     private lateinit var prPopupmenu: PopupMenu
     private lateinit var realm : Realm
 
-    constructor(termsOfUse : RelativeLayout, mainActivity: MainActivity, fragment: Fragment, loginFragment: LoginFragment?, registerFragment: RegisterFragment?, leaderBoardFragment: LeaderBoardFragment?)
+    constructor(termsOfUse : RelativeLayout, mainActivity: MainActivity, fragment: Fragment, loginFragment: LoginFragment?, registerFragment: RegisterFragment?, registerDoctorFragment : RegisterDoctorFragment? ,leaderBoardFragment: LeaderBoardFragment?)
     {
         prTermsOfUse = termsOfUse
         prMainActivity = mainActivity
         prFragment = fragment
         prLoginFragment = loginFragment
         prRegisterFragment = registerFragment
+        prRegisterDoctorFragment = registerDoctorFragment
         prleaderBoardFragment = leaderBoardFragment
     }
 
@@ -166,6 +168,62 @@ class PopUpMenu {
                                     patient!!.patientBPIQ10 = null
                                     patient!!.patientBPIQ11 = null
                                     patient!!.patientBPIQ12 = null
+
+                                    patient!!.patientGDSQ1 = null
+                                    patient!!.patientGDSQ2 = null
+                                    patient!!.patientGDSQ3 = null
+                                    patient!!.patientGDSQ4 = null
+                                    patient!!.patientGDSQ5 = null
+                                    patient!!.patientGDSQ6 = null
+                                    patient!!.patientGDSQ2 = null
+                                    patient!!.patientGDSQ8 = null
+                                    patient!!.patientGDSQ9 = null
+                                    patient!!.patientGDSQ10 = null
+                                    patient!!.patientGDSQ11 = null
+                                    patient!!.patientGDSQ12 = null
+                                    patient!!.patientGDSQ13 = null
+                                    patient!!.patientGDSQ14 = null
+                                    patient!!.patientGDSQ15 = null
+
+                                    patient!!.patientPDQQ1 = null
+                                    patient!!.patientPDQQ2 = null
+                                    patient!!.patientPDQQ3 = null
+                                    patient!!.patientPDQQ4 = null
+                                    patient!!.patientPDQQ5 = null
+                                    patient!!.patientPDQQ6 = null
+                                    patient!!.patientPDQQ7 = null
+                                    patient!!.patientPDQQ8 = null
+                                    patient!!.patientPDQQ9 = null
+                                    patient!!.patientPDQQ10 = null
+                                    patient!!.patientPDQQ11 = null
+                                    patient!!.patientPDQQ12 = null
+                                    patient!!.patientPDQQ13 = null
+                                    patient!!.patientPDQQ14 = null
+                                    patient!!.patientPDQQ15 = null
+                                    patient!!.patientPDQQ16 = null
+                                    patient!!.patientPDQQ17 = null
+                                    patient!!.patientPDQQ18 = null
+                                    patient!!.patientPDQQ19 = null
+                                    patient!!.patientPDQQ20 = null
+                                    patient!!.patientPDQQ21 = null
+                                    patient!!.patientPDQQ22 = null
+                                    patient!!.patientPDQQ23 = null
+                                    patient!!.patientPDQQ24 = null
+                                    patient!!.patientPDQQ25 = null
+                                    patient!!.patientPDQQ26 = null
+                                    patient!!.patientPDQQ27 = null
+                                    patient!!.patientPDQQ28 = null
+                                    patient!!.patientPDQQ29 = null
+                                    patient!!.patientPDQQ30 = null
+                                    patient!!.patientPDQQ31 = null
+                                    patient!!.patientPDQQ32 = null
+                                    patient!!.patientPDQQ33 = null
+                                    patient!!.patientPDQQ34 = null
+                                    patient!!.patientPDQQ35 = null
+                                    patient!!.patientPDQQ36 = null
+                                    patient!!.patientPDQQ37 = null
+                                    patient!!.patientPDQQ38 = null
+                                    patient!!.patientPDQQ39 = null
                                 }
 
                                 if (prFragment is CheckFragment)
@@ -196,6 +254,51 @@ class PopUpMenu {
                                 if (prFragment is BPICheckFragment)
                                 {
                                     (prFragment as medDietTestFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is GDSCheckFragment)
+                                {
+                                    (prFragment as GDSCheckFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is PDQCheckFirstCategoryFragment)
+                                {
+                                    (prFragment as PDQCheckFirstCategoryFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is PDQCheckSecondCategoryFragment)
+                                {
+                                    (prFragment as PDQCheckSecondCategoryFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is PDQCheckThridCategoryFragment)
+                                {
+                                    (prFragment as PDQCheckThridCategoryFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is PDQCheckFourthCategoryFragment)
+                                {
+                                    (prFragment as PDQCheckFourthCategoryFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is PDQCheckFifthCategoryFragment)
+                                {
+                                    (prFragment as PDQCheckFifthCategoryFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is PDQCheckSixthCategoryFragment)
+                                {
+                                    (prFragment as PDQCheckSixthCategoryFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is PDQCheckSeventhCategoryFragment)
+                                {
+                                    (prFragment as PDQCheckSeventhCategoryFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is PDQCheckEightCategoryFragment)
+                                {
+                                    (prFragment as PDQCheckEightCategoryFragment).initialisePatientData()
                                 }
 
                             }) // A null listener allows the button to dismiss the dialog and take no further action.

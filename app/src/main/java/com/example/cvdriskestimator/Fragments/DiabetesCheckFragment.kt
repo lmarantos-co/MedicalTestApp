@@ -184,7 +184,7 @@ class DiabetesCheckFragment : Fragment() {
         }
 
         //initialize popUpMenu Component
-        popUpMenu = PopUpMenu(diabetesCheckBinding.includePopUpMenu.termsRelLayout, mainActivity, this, loginFragment, registerFragment , leaderBoardFragment)
+        popUpMenu = PopUpMenu(diabetesCheckBinding.includePopUpMenu.termsRelLayout, mainActivity, this, loginFragment, registerFragment , null ,leaderBoardFragment)
 
         diabetesCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popUpMenu.showPopUp(diabetesCheckBinding.includeCvdTitleForm.userIcon)

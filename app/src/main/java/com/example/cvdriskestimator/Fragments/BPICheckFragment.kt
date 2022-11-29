@@ -112,7 +112,7 @@ class BPICheckFragment : Fragment() {
         loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
         leaderBoardFragment = LeaderBoardFragment.newInstance()
-        popUpMenu = PopUpMenu(binding.includePopUpMenu.termsRelLayout , mainActivity , this , loginFragment , registerFragment , leaderBoardFragment)
+        popUpMenu = PopUpMenu(binding.includePopUpMenu.termsRelLayout , mainActivity , this , loginFragment , registerFragment , null ,leaderBoardFragment)
          binding.includeCvdTitleForm.userIcon.setOnClickListener {
              popUpMenu.showPopUp(it)
         }

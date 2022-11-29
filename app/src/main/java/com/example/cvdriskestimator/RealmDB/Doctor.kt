@@ -1,5 +1,6 @@
 package com.example.cvdriskestimator.RealmDB
 
+import io.realm.RealmList
 import io.realm.RealmModel
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
@@ -18,5 +19,5 @@ open class Doctor() : RealmModel {
     var doctorPassword : String = ""
 
     @Required
-    lateinit var doctorCustomers : ArrayList<String>
+    var doctorCustomers : RealmList<String>? = null
 }

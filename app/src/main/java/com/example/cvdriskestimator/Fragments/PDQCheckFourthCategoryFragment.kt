@@ -123,7 +123,7 @@ class PDQCheckFourthCategoryFragment : Fragment() {
         pdqCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(pdqCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , leaderBoardFragment)
+        popupMenu = PopUpMenu(pdqCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , null ,leaderBoardFragment)
 
         pdqCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

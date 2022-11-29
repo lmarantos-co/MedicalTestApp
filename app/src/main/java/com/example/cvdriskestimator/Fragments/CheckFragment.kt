@@ -104,7 +104,7 @@ class CheckFragment : Fragment() {
             popUpMenuComp.showPopUp(checkBinding.includeCvdTitleForm.userIcon)
         }
 
-        popUpMenuComp = PopUpMenu(checkBinding.includePopUpMenu.termsRelLayout , mainActivity , this, loginFragment ,registerFragment , leaderBoardFragment)
+        popUpMenuComp = PopUpMenu(checkBinding.includePopUpMenu.termsRelLayout , mainActivity , this, loginFragment ,registerFragment , null, leaderBoardFragment)
 
         checkBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 

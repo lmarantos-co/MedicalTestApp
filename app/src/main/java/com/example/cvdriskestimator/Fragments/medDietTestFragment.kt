@@ -276,7 +276,7 @@ class medDietTestFragment : Fragment() {
                 .show()
         }
 
-        popUpMenu = PopUpMenu(medDietTestBinding.includePopUpMenu.termsRelLayout , mainActivity , this , loginFragment , registerFragment , leaderBoardFragment)
+        popUpMenu = PopUpMenu(medDietTestBinding.includePopUpMenu.termsRelLayout , mainActivity , this , loginFragment , registerFragment , null , leaderBoardFragment)
 //        medDietTestBinding.includeCvdTitleForm.userIcon.setOnClickListener {
 //            medDietTestBinding.includePopUpMenu.includePopupMenu.visibility = View.VISIBLE
 //        }

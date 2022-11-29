@@ -2,15 +2,19 @@ package com.example.cvdriskestimator.MedicalTestAlgorithms
 
 class PDQTestEstimator(allPatientAnswers: ArrayList<Int?>) {
 
-    private var pdqAllPatientAnswers = arrayListOf<Int?>()
+    private var pdqAllPatientAnswers = IntArray(8)
 
     init {
-        pdqAllPatientAnswers = allPatientAnswers
+        for (i in 0..allPatientAnswers.size)
+        {
+            pdqAllPatientAnswers[0] = allPatientAnswers.get(i)!!
+        }
+
     }
 
-    fun calculateAllCategoriesPercentages() : ArrayList<Int>
+    fun calculateAllCategoriesPercentages() : IntArray
     {
-        var allAnswersPercentage = arrayListOf<Int>()
+        var allAnswersPercentage = IntArray(8)
         var firstCategoryPercentage : Int = 0
         var secondCategoryPercentage : Int = 0
         var thirdCategoryPercentage : Int = 0
@@ -29,52 +33,52 @@ class PDQTestEstimator(allPatientAnswers: ArrayList<Int?>) {
         {
             secondCategoryPercentage += (pdqAllPatientAnswers.get(i)!! + 1 * 20)
         }
-        secondCategoryPercentage /= 10
+        secondCategoryPercentage /= 6
 
         for (i in 17..22)
         {
             thirdCategoryPercentage += (pdqAllPatientAnswers.get(i)!! + 1 * 20)
         }
-        thirdCategoryPercentage /= 10
+        thirdCategoryPercentage /= 6
 
         for (i in 23..26)
         {
             fourthCategoryPercentage += (pdqAllPatientAnswers.get(i)!! + 1 * 20)
         }
-        fourthCategoryPercentage /= 10
+        fourthCategoryPercentage /= 4
 
         for (i in 27..29)
         {
             fifthCategoryPercentage += (pdqAllPatientAnswers.get(i)!! + 1 * 20)
         }
-        fifthCategoryPercentage /= 10
+        fifthCategoryPercentage /= 3
 
         for (i in 30..33)
         {
             sixthCategoryPercentage += (pdqAllPatientAnswers.get(i)!! + 1 * 20)
         }
-        sixthCategoryPercentage /= 10
+        sixthCategoryPercentage /= 4
 
         for (i in 34..36)
         {
             seventhCategoryPercentage += (pdqAllPatientAnswers.get(i)!! + 1 * 20)
         }
-        seventhCategoryPercentage /= 10
+        seventhCategoryPercentage /= 3
 
         for (i in 37..39)
         {
             eightCategoryPercentage += (pdqAllPatientAnswers.get(i)!! + 1 * 20)
         }
-        eightCategoryPercentage /= 10
+        eightCategoryPercentage /= 3
 
-        allAnswersPercentage.add(firstCategoryPercentage)
-        allAnswersPercentage.add(secondCategoryPercentage)
-        allAnswersPercentage.add(thirdCategoryPercentage)
-        allAnswersPercentage.add(fourthCategoryPercentage)
-        allAnswersPercentage.add(fifthCategoryPercentage)
-        allAnswersPercentage.add(sixthCategoryPercentage)
-        allAnswersPercentage.add(seventhCategoryPercentage)
-        allAnswersPercentage.add(eightCategoryPercentage)
+        allAnswersPercentage[0] = (firstCategoryPercentage)
+        allAnswersPercentage[1] = (secondCategoryPercentage)
+        allAnswersPercentage[2] = (thirdCategoryPercentage)
+        allAnswersPercentage[3] = (fourthCategoryPercentage)
+        allAnswersPercentage[4] = (fifthCategoryPercentage)
+        allAnswersPercentage[5] = (sixthCategoryPercentage)
+        allAnswersPercentage[6] = (seventhCategoryPercentage)
+        allAnswersPercentage[7] = (eightCategoryPercentage)
         return allAnswersPercentage
     }
 

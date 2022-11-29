@@ -1,6 +1,7 @@
 package com.example.cvdriskestimator.viewModels
 
 import android.app.Activity
+import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.Bindable
@@ -16,6 +17,7 @@ import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MySQLDatabase.InsertDBAsyncTask
 import com.example.cvdriskestimator.MySQLDatabase.SQLPatient
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.RealmDB.Doctor
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.SQLDatabase.SQLRepository
 import io.realm.Realm
@@ -189,7 +191,7 @@ class RegisterPatientViewModel : ViewModel() , Observable{
             patientName = inputPatientName.value!!
 
         if (inputPatientLastName.value != null)
-            patientName = inputPatientLastName.value!!
+            patientLastName = inputPatientLastName.value!!
 
         if (inputPassValidate.value != null)
         {
@@ -260,7 +262,26 @@ class RegisterPatientViewModel : ViewModel() , Observable{
                         patient.yearsOfApprentice = userYearsOfApprentice
                         // 4.
                         realmTransaction.copyToRealmOrUpdate(patient)
-                    }
+                        //add the patient to the patientList of the doctor
+                        var doctor = Doctor()
+                        val doctorUserName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("doctorUserName" , "tempDoctor")
+                        doctor = realmTransaction.where(Doctor::class.java).equalTo("doctorUserName", doctorUserName).findFirst()!!
+                        var patientList = ArrayList<String>()
+                        if (doctor.doctorCustomers != null)
+                        {
+                            for (i in 0 until doctor.doctorCustomers!!.size)
+                            {
+                                patientList.add(doctor.doctorCustomers!!.get(i)!!)
+                            }
+                            patientList.add(patient.patientLastName)
+                            doctor.doctorCustomers = null
+                        }
+                        for (i in 0 until patientList.size)
+                        {
+                            doctor.doctorCustomers!!.add(patientList.get(i))
+                        }
+                        realmTransaction.insertOrUpdate(doctor)
+                        }
                     Toast.makeText(mainActivity.applicationContext, mainActivity.resources.getString(R.string.register_success) , Toast.LENGTH_LONG).show()
                     hideSoftInputKeyboard()
                     mainActivity.backToActivity()
@@ -309,7 +330,7 @@ class RegisterPatientViewModel : ViewModel() , Observable{
         else
         {
             correctName = false
-            registerFragment.userNameError("Patient Name cannot be empty.")
+            registerFragment.patientNameError("Patient Name cannot be empty.")
         }
         return correctName
     }
@@ -323,7 +344,7 @@ class RegisterPatientViewModel : ViewModel() , Observable{
         else
         {
             correctName = false
-            registerFragment.userNameError("Patient Last Name cannot be empty.")
+            registerFragment.patientLastNameError("Patient Last Name cannot be empty.")
         }
         return correctName
     }

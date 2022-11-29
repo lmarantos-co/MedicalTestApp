@@ -126,7 +126,7 @@ class MDICheckFragment : Fragment() {
         mdiCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(mdiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , leaderBoardFragment)
+        popupMenu = PopUpMenu(mdiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , null ,leaderBoardFragment)
 
         mdiCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

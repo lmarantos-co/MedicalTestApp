@@ -30,7 +30,11 @@ import android.content.DialogInterface
 import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
+import android.util.Log
 import android.widget.RadioGroup.OnCheckedChangeListener
+import androidx.core.view.get
+import com.example.cvdriskestimator.RealmDB.Doctor
+import io.realm.RealmList
 
 
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -48,6 +52,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var realmDB: RealmDB
     private lateinit var loginFragment: LoginFragment
     private lateinit var registerFragment: RegisterFragment
+    private lateinit var loginDoctorFragment: LoginDoctorFragment
+    private lateinit var registerDoctorFragment: RegisterDoctorFragment
+    private lateinit var loginDoctorButton : TextView
+    private lateinit var registerDoctorButton : TextView
     private lateinit var checkFragment: CheckFragment
     private lateinit var checkDiabetesFragment : DiabetesCheckFragment
     private lateinit var mdiCheckFragment: MDICheckFragment
@@ -56,6 +64,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var bpiCheckFragment: BPICheckFragment
     private lateinit var gdsCheckFragment: GDSCheckFragment
     private lateinit var pdqCheckFragment: PDQCheckFirstCategoryFragment
+    private lateinit var pdqResultFragment : ResultExtraFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
     private lateinit var MTETitleForm : RelativeLayout
@@ -100,14 +109,38 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentViewForIntroScreen()
 
+        setContentViewForFirstAppScreen()
+    }
+
+    private fun setContentViewForFirstAppScreen()
+    {
+        setContentView(R.layout.app_first_screen)
+
+        initRealmDB()
+
+        loginDoctorButton = findViewById(R.id.loginDoctorTxtV)
+        loginDoctorButton.setOnClickListener {
+            setContentViewForMainLayout()
+            loginDoctorFragment = LoginDoctorFragment.newInstance()
+            hideLayoutElements()
+            fragmentTransaction(loginDoctorFragment)
+        }
+
+        registerDoctorButton = findViewById(R.id.registerDoctorTxtV)
+        registerDoctorButton.setOnClickListener {
+            setContentViewForMainLayout()
+            registerDoctorFragment = RegisterDoctorFragment.newInstance()
+            hideLayoutElements()
+            fragmentTransaction(registerDoctorFragment)
+        }
     }
 
     private fun setContentViewForIntroScreen()
     {
 
         setContentView(R.layout.initial_screen)
+
         allCustomersTxtV = findViewById<TextView>(R.id.allCustomersTxtV)
         allCustomersTxtV.setOnClickListener {
             setContentViewForSearchCustomersScreen()
@@ -115,67 +148,95 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     }
 
-    private fun setContentViewForSearchCustomersScreen()
-    {
+    private fun setContentViewForSearchCustomersScreen() {
         setContentView(R.layout.intro_screen_search_customers)
-        initRealmDB()
         customersListView = findViewById(R.id.customerListView)
         customerSearchView = findViewById(R.id.customersSearchView)
-        customerRadioGroup = findViewById(R.id.customerTypeSelRG)
 
 
+        //get the doctor file from realm
+        val doctorName = getPreferences(Context.MODE_PRIVATE).getString("doctorUserName" , "tempDoctor")
+        var doctor = Doctor()
+        var lastnames = ArrayList<String>()
+        var realm = Realm.getDefaultInstance()
+        realm.executeTransaction {
+            doctor= realm.where(Doctor::class.java).equalTo("doctorUserName" , doctorName).findFirst()!!
+            //set a set of customer for the doctor
+            for (i in 0..doctor!!.doctorCustomers!!.size -1)
+            {
+                lastnames.add(doctor!!.doctorCustomers!!.get(i)!!)
+            }
 
-        var customerNames = ArrayList<String>()
+            lastnames.apply {
+                this.add("Papadopoulos")
+                this.add("Marantos")
+                this.add("Christodoulopoulou")
+                this.add("zikos")
+            }
+
+            var patientList = RealmList<String>()
+            for (i in 0..lastnames.size -1)
+            {
+                patientList.add(lastnames.get(i))
+            }
+            doctor!!.doctorCustomers = patientList
+
+            it.insertOrUpdate(doctor)
+        }
+
         var customerLastNames = ArrayList<String>()
 
-        customerRadioGroup.setOnCheckedChangeListener { _, checkedId ->
-            val radio: RadioButton = findViewById(checkedId)
-            when (radio) {
-                customerRadioGroup.findViewById<RadioButton>(R.id.customerNameRB)-> {
-                    selectCustomerType = 1
-                    customerNames = getNamesFromRealm()
-                    nameArrayAdapter = ArrayAdapter<String>(this , android.R.layout.simple_list_item_1, customerNames)
-                    customersListView.adapter = nameArrayAdapter
-                }
-                customerRadioGroup.findViewById<RadioButton>(R.id.custmerLastNameRB) -> {
-                    customerLastNames = getLastNamesFromRealm()
-                    lastNameArrayAdapter = ArrayAdapter<String>(this , android.R.layout.simple_list_item_1, customerLastNames)
-                    selectCustomerType = 2
-                    customersListView.adapter = lastNameArrayAdapter
-                }
+        customerLastNames = getLastNamesFromRealm()
+
+        var doctorPatients = ArrayList<String>()
+
+
+        for (name in customerLastNames)
+        {
+            if (lastnames.contains(name))
+            {
+                doctorPatients.add(name)
             }
         }
+
+        lastNameArrayAdapter =
+            ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, doctorPatients)
+        customersListView.adapter = lastNameArrayAdapter
+
 
         customerSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
 
-                if (selectCustomerType == 1)
-                {
-                    nameArrayAdapter.filter.filter(query)
-                }
 
-                if (selectCustomerType == 2)
-                {
-                    lastNameArrayAdapter.filter.filter(query)
-                }
+                lastNameArrayAdapter.filter.filter(query)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-
-                if (selectCustomerType == 1)
-                {
-                    nameArrayAdapter.filter.filter(newText)
-                }
-
-                if (selectCustomerType == 2)
-                {
-                    lastNameArrayAdapter.filter.filter(newText)
-                }
+                lastNameArrayAdapter.filter.filter(newText)
                 return false
             }
+        })
+        customersListView.setOnItemClickListener { parent, view, position, id ->
+            var customerLastname = lastNameArrayAdapter.getItem(position).toString()
+            //query realm database
+            var realm = Realm.getDefaultInstance()
+            realm.executeTransaction {
+                val patient: Patient? = it.where(Patient::class.java).equalTo("patientLastName", customerLastname).findFirst()
+                Log.d("LOGIN" , patient!!.userName)
+                //save the username in shared preferences
+                val sharedPref = getPreferences(Context.MODE_PRIVATE)
+                with (sharedPref.edit()) {
+                    putString("userName", patient.userName)
+                    putString("MSG", "Welcome " + patient.userName.toString())
+                    apply()
+                }
+//                    mainActivity.setLoginItemTitle()
+                hideSoftInputKeyboard()
+                setContentViewForMainLayout()
+            }
         }
-        )
+
     }
 
 
@@ -213,6 +274,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         initPrefs()
 
         initUI()
+    }
+
+    fun loadMedicalAppScreen()
+    {
+        setContentViewForIntroScreen()
+    }
+
+    fun loadLoginDoctorFragment()
+    {
+        loginDoctorFragment = LoginDoctorFragment.newInstance()
+        fragmentTransaction(loginDoctorFragment)
     }
 
     private fun getNamesFromRealm() : ArrayList<String>
@@ -272,6 +344,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         bpiCheckFragment = BPICheckFragment.newInstance()
         gdsCheckFragment = GDSCheckFragment.newInstance()
 //        pdqCheckFragment = PDQCheckFirstCategoryFragment()
+        var resultsArray = IntArray(8)
+        resultsArray[0] = 40
+        resultsArray[1] = 55
+        resultsArray[2] = 70
+        resultsArray[3] = 25
+        resultsArray[4] = 75
+        resultsArray[5] = 90
+        resultsArray[6] = 15
+        resultsArray[7] = 20
+        pdqResultFragment = ResultExtraFragment.newInstance(resultsArray)
         leaderBoardFragment = LeaderBoardFragment.newInstance()
 
         setFragmentContainerConstraint(2)
@@ -341,7 +423,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         with (sharedPref.edit()) {
             putString("LOG" , "Login")
             putString("MSG" , "Medical Test Estimator")
-            putString("userName" , "tempUser")
+            if (sharedPref.getString("userName", "tempUser") == "tempUser")
+                putString("userName" , "tempUser")
             apply()
         }
     }
@@ -406,7 +489,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         pdqIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(9)
-            fragmentTransaction(pdqCheckFragment)
+            fragmentTransaction(pdqResultFragment)
         }
 
         showMedicalTests()
@@ -641,7 +724,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     private fun initRealmDB() {
         realmDB = RealmDB(applicationContext)
-
+        Realm.init(applicationContext)
         var realm = Realm.getDefaultInstance()
         var patientCount = realm.where(Patient::class.java).count()
         if (patientCount < 10)
@@ -798,7 +881,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
     fun fragmentTransaction(fragment : Fragment) {
-        hideLayoutElements()
+        if (!(fragment is LoginDoctorFragment) && !(fragment is RegisterDoctorFragment))
+            hideLayoutElements()
         setFragmentContainerConstraint(1)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         if (fragment is CheckFragment)
@@ -815,10 +899,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction.show(loginFragment)
         if (fragment is RegisterFragment)
             fragmentTransaction.show(registerFragment)
+        if (fragment is LoginDoctorFragment)
+            fragmentTransaction.show(loginDoctorFragment)
+        if (fragment is RegisterDoctorFragment)
+            fragmentTransaction.show(registerDoctorFragment)
         if (fragment is BPICheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is GDSCheckFragment)
             fragmentTransaction.show(fragment)
+        if (fragment is ResultExtraFragment)
+            fragmentTransaction.show(pdqResultFragment)
         if (fragment is PDQCheckFirstCategoryFragment)
             fragmentTransaction.show(fragment)
         if (fragment is PDQCheckSecondCategoryFragment)

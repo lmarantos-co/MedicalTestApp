@@ -499,7 +499,7 @@ class ResultFragment : Fragment() {
 
 
         popupMenuComp =
-            PopUpMenu(termsRelLayout, mainActivity, this, loginFragment, registerFragment , leaderBoardFragment)
+            PopUpMenu(termsRelLayout, mainActivity, this, loginFragment, registerFragment , null ,leaderBoardFragment)
 
         userIcon.setOnClickListener {
             popupMenuComp.showPopUp(userIcon)
