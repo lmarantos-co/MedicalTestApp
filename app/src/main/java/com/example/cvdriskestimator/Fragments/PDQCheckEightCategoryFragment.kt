@@ -18,6 +18,7 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.*
 import com.example.cvdriskestimator.viewModels.CheckGPDQPatientViewModelFactory
 import com.example.cvdriskestimator.viewModels.PDQCheckViewModel
@@ -87,7 +88,11 @@ class PDQCheckEightCategoryFragment : Fragment() {
         }
 
         pdqPatientViewModel.patientData.observe(viewLifecycleOwner) {
-            setPatientData(it)
+        }
+
+        pdqPatientViewModel.testData.observe(viewLifecycleOwner) {
+            if (it != null)
+                setPatientData(it)
         }
 
         pdqCheckBinding.clearBtn.setOnClickListener {
@@ -155,14 +160,14 @@ class PDQCheckEightCategoryFragment : Fragment() {
         }
     }
 
-    private fun setPatientData(patient : Patient)
+    private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()
             //show all the data on the UI
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ37RG , patient.patientPDQQ37)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ38RG , patient.patientPDQQ38)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ39RG , patient.patientPDQQ39)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ37RG , test.patientPDQQ37)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ38RG , test.patientPDQQ38)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ39RG , test.patientPDQQ39)
 
         } , 1000)
     }

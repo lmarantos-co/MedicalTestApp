@@ -19,6 +19,7 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentBAICheckBinding
 import com.example.cvdriskestimator.databinding.FragmentCheckBinding
 import com.example.cvdriskestimator.viewModels.CheckBAIPatientViewModel
@@ -85,7 +86,11 @@ class BAICheckFragment : Fragment() {
 
         //set the observer for the patient mutable live data
         baiPatientViewModel.patientData.observe(viewLifecycleOwner) {
-            setPatientData(it)
+        }
+
+        baiPatientViewModel.testDATA.observe(viewLifecycleOwner) {
+            if (it != null)
+                setPatientData(it)
         }
 
         baiCheckBinding.clearBtn.setOnClickListener {
@@ -162,34 +167,38 @@ class BAICheckFragment : Fragment() {
             mainActivity.backToActivity()
 
         }
+
+        baiCheckBinding.historyBtn.setOnClickListener {
+            baiPatientViewModel.history()
+        }
     }
 
-    private fun setPatientData(patient : Patient)
+    private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()
             //show all the data on the UI
-            setQuestionRadioGroup(baiCheckBinding.BAIQ1RG , patient.patientBAIQ1)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ2RG , patient.patientBAIQ2)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ3RG , patient.patientBAIQ3)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ4RG , patient.patientBAIQ4)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ5RG , patient.patientBAIQ5)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ6RG , patient.patientBAIQ6)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ7RG , patient.patientBAIQ7)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ8RG , patient.patientBAIQ8)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ9RG , patient.patientBAIQ9)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ10RG , patient.patientBAIQ10)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ11RG , patient.patientBAIQ11)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ12RG , patient.patientBAIQ12)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ13RG , patient.patientBAIQ13)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ14RG , patient.patientBAIQ14)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ15RG , patient.patientBAIQ15)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ16RG , patient.patientBAIQ16)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ17RG , patient.patientBAIQ17)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ18RG , patient.patientBAIQ18)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ19RG , patient.patientBAIQ19)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ20RG , patient.patientBAIQ20)
-            setQuestionRadioGroup(baiCheckBinding.BAIQ21RG , patient.patientBAIQ21)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ1RG , test.patientBAIQ1)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ2RG , test.patientBAIQ2)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ3RG , test.patientBAIQ3)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ4RG , test.patientBAIQ4)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ5RG , test.patientBAIQ5)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ6RG , test.patientBAIQ6)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ7RG , test.patientBAIQ7)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ8RG , test.patientBAIQ8)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ9RG , test.patientBAIQ9)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ10RG , test.patientBAIQ10)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ11RG , test.patientBAIQ11)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ12RG , test.patientBAIQ12)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ13RG , test.patientBAIQ13)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ14RG , test.patientBAIQ14)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ15RG , test.patientBAIQ15)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ16RG , test.patientBAIQ16)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ17RG , test.patientBAIQ17)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ18RG , test.patientBAIQ18)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ19RG , test.patientBAIQ19)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ20RG , test.patientBAIQ20)
+            setQuestionRadioGroup(baiCheckBinding.BAIQ21RG , test.patientBAIQ21)
         } , 1000)
     }
 

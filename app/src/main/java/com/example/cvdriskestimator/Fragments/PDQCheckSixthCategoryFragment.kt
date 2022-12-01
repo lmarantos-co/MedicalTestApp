@@ -16,6 +16,7 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentPDQCheckFifthCategoryBinding
 import com.example.cvdriskestimator.databinding.FragmentPDQCheckSixthCategoryBinding
 import com.example.cvdriskestimator.databinding.FragmentPDQCheckThridCategoryBinding
@@ -89,7 +90,11 @@ class PDQCheckSixthCategoryFragment : Fragment() {
         }
 
         pdqPatientViewModel.patientData.observe(viewLifecycleOwner) {
-            setPatientData(it)
+        }
+
+        pdqPatientViewModel.testData.observe(viewLifecycleOwner) {
+            if (it != null)
+                setPatientData(it)
         }
 
         pdqCheckBinding.leftArrowImgV.setOnClickListener {
@@ -156,15 +161,15 @@ class PDQCheckSixthCategoryFragment : Fragment() {
 
     }
 
-    private fun setPatientData(patient : Patient)
+    private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()
             //show all the data on the UI
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ30RG , patient.patientPDQQ30)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ31RG , patient.patientPDQQ31)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ32RG , patient.patientPDQQ32)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ33RG , patient.patientPDQQ33)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ30RG , test.patientPDQQ30)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ31RG , test.patientPDQQ31)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ32RG , test.patientPDQQ32)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ33RG , test.patientPDQQ33)
 
         } , 1000)
     }

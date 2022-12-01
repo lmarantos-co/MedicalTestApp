@@ -1,19 +1,27 @@
 package com.example.cvdriskestimator.viewModels
 
 import android.content.Context
+import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cvdriskestimator.Fragments.GDSCheckFragment
+import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.MDICheckFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.MDITestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
+import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CheckGDSViewModel : ViewModel() {
 
@@ -23,9 +31,11 @@ class CheckGDSViewModel : ViewModel() {
     private  var realmDAO =  RealmDAO()
     private var mdiTestEstimator = MDITestEstimator()
     private lateinit var resultFragment : ResultFragment
+    private lateinit var historyFragment: HistoryFragment
 
     //mutable data that hold the patient data
     var patientData = MutableLiveData<Patient>()
+    var testData = MutableLiveData<Test>()
 
     fun passActivity(activity : MainActivity)
     {
@@ -50,7 +60,7 @@ class CheckGDSViewModel : ViewModel() {
     fun setUserDummyData()
     {
         realm.executeTransaction {
-            var dummyPatient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , "tempUser").findFirst()
+            var dummyPatient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , "tempUser").findFirst()
             if (dummyPatient == null)
             {
                 val patient = Patient()
@@ -69,7 +79,9 @@ class CheckGDSViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
+        testData = realmDAO.fetchTestData(patientData.value!!.patientId ,  "GDS")
         patientData.postValue(patientData.value)
+        testData.postValue(testData.value)
     }
 
     fun checkGDSTestPatient(allPatientSelections : ArrayList<Int?>)
@@ -82,12 +94,30 @@ class CheckGDSViewModel : ViewModel() {
             && (checkQuestionForInputError(allPatientSelections[10]  , 11)) && (checkQuestionForInputError(allPatientSelections[11]  , 12))
             && (checkQuestionForInputError(allPatientSelections[12]  , 13)))
         {
-            storePatientOnRealm(allPatientSelections)
             val result = mdiTestEstimator.calculateMDI(allPatientSelections[0]!!, allPatientSelections[1]!!, allPatientSelections[2]!!, allPatientSelections[3]!!, allPatientSelections[4]!! ,
                 allPatientSelections[5]!! , allPatientSelections[6]!!, allPatientSelections[7]!! , allPatientSelections[8]!! , allPatientSelections[9]!! ,
                 allPatientSelections[10]!! , allPatientSelections[11]!! , allPatientSelections[12]!!)
+            storePatientOnRealm(allPatientSelections , result)
             openResultFragment(result)
         }
+    }
+
+    fun history()
+    {
+        var patientId : String = ""
+        var testName : String = ""
+        realm.executeTransaction {
+            val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+            var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
+            patientId = patient!!.patientId
+            testName = "Gediatric Depression Scale"
+        }
+        val bundle = Bundle()
+        bundle.putString("patientId" , patientId)
+        bundle.putString("testName" , testName)
+        historyFragment = HistoryFragment()
+        historyFragment.arguments = bundle
+        mainActivity.fragmentTransaction(historyFragment)
     }
 
     private fun openResultFragment(testResult : Int)
@@ -109,35 +139,82 @@ class CheckGDSViewModel : ViewModel() {
         return correctData
     }
 
-    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int?>) : Job =
+    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int?> , result : Int) : Job =
         viewModelScope.launch{
-            storePatientOnDB(allPatientSelections)
+            storePatientOnDB(allPatientSelections , result)
         }
 
-    private fun storePatientOnDB(allPatientSelections: ArrayList<Int?>)
+    private fun storePatientOnDB(allPatientSelections: ArrayList<Int?> , result : Int)
     {
         //execute transaction on realm
         realm.executeTransaction {
 
             //store the patient data on the database
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
-            val patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
+            val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
+            var currentTest = Test()
+            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
+            val currentDate = sdf.format(Date())
+            //check if the current date is already in the test database
+            val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
+            if (dateCount > 0)
+            {
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
+            }
 
-            patient!!.patientGDSQ1 = allPatientSelections[0]
-            patient!!.patientGDSQ2 = allPatientSelections[1]
-            patient!!.patientGDSQ3 = allPatientSelections[2]
-            patient!!.patientGDSQ4 = allPatientSelections[3]
-            patient!!.patientGDSQ5 = allPatientSelections[4]
-            patient!!.patientGDSQ6 = allPatientSelections[5]
-            patient!!.patientGDSQ7 = allPatientSelections[6]
-            patient!!.patientGDSQ8 = allPatientSelections[7]
-            patient!!.patientGDSQ9 = allPatientSelections[8]
-            patient!!.patientGDSQ10 = allPatientSelections[9]
-            patient!!.patientGDSQ11 = allPatientSelections[10]
-            patient!!.patientGDSQ12 = allPatientSelections[11]
-            patient!!.patientGDSQ13 = allPatientSelections[12]
-            patient!!.patientGDSQ14 = allPatientSelections[13]
-            patient!!.patientGDSQ15 = allPatientSelections[14]
+
+            currentTest!!.patientGDSQ1 = allPatientSelections[0]
+            currentTest!!.patientGDSQ2 = allPatientSelections[1]
+            currentTest!!.patientGDSQ3 = allPatientSelections[2]
+            currentTest!!.patientGDSQ4 = allPatientSelections[3]
+            currentTest!!.patientGDSQ5 = allPatientSelections[4]
+            currentTest!!.patientGDSQ6 = allPatientSelections[5]
+            currentTest!!.patientGDSQ7 = allPatientSelections[6]
+            currentTest!!.patientGDSQ8 = allPatientSelections[7]
+            currentTest!!.patientGDSQ9 = allPatientSelections[8]
+            currentTest!!.patientGDSQ10 = allPatientSelections[9]
+            currentTest!!.patientGDSQ11 = allPatientSelections[10]
+            currentTest!!.patientGDSQ12 = allPatientSelections[11]
+            currentTest!!.patientGDSQ13 = allPatientSelections[12]
+            currentTest!!.patientGDSQ14 = allPatientSelections[13]
+            currentTest!!.patientGDSQ15 = allPatientSelections[14]
+            currentTest!!.patientGDSTestResult = result
+            currentTest!!.patientId = patient!!.patientId
+            currentTest.testDate = currentDate
+            currentTest.testName = "Gediatric Depression Scale"
+
+            var testId : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId = testList.get(testList.size -1)!!.testId.toInt()
+                    testId += 1
+                    currentTest.testId = testId.toString()
+                }
+                else
+                {
+                    testId = 1
+                    currentTest.testId = testId.toString()
+                }
+            }
+
+            var listOftests = ArrayList<Test>()
+            if (patient!!.listOfTests!! != null)
+            {
+                for (i in 0 until patient!!.listOfTests!!.size -1)
+                {
+                    listOftests[i] = patient!!.listOfTests!!.get(i)!!
+                }
+                listOftests.add(currentTest)
+                patient!!.listOfTests = null
+                for (i in 0 until listOftests.size -1)
+                {
+                    patient.listOfTests!![i] = listOftests.get(i)
+                }
+            }
+            realm.insertOrUpdate(currentTest)
 
             realm.insertOrUpdate(patient)
 

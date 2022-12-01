@@ -12,9 +12,15 @@ import com.example.cvdriskestimator.MedicalTestAlgorithms.MDITestEstimator
 import com.example.cvdriskestimator.MedicalTestAlgorithms.PDQTestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
+import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class PDQCheckViewModel : ViewModel() {
 
@@ -27,6 +33,9 @@ class PDQCheckViewModel : ViewModel() {
 
     //mutable data that hold the patient data
     var patientData = MutableLiveData<Patient>()
+    var testData = MutableLiveData<Test>()
+
+
 
     //mutable data to hold the all patient data in between fragment transactions
     var allPatientData = MutableLiveData<IntArray>()
@@ -60,7 +69,7 @@ class PDQCheckViewModel : ViewModel() {
     fun setUserDummyData()
     {
         realm.executeTransaction {
-            var dummyPatient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , "tempUser").findFirst()
+            var dummyPatient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , "tempUser").findFirst()
             if (dummyPatient == null)
             {
                 val patient = Patient()
@@ -79,7 +88,9 @@ class PDQCheckViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
+        testData = realmDAO.fetchTestData(patientData.value!!.patientId , "PDQ")
         patientData.postValue(patientData.value)
+        testData.postValue(testData.value)
     }
 
     fun checkPDQTestPatient(allPatientSelections : IntArray) : Boolean
@@ -102,45 +113,68 @@ class PDQCheckViewModel : ViewModel() {
         var userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userame" , "tempUser")
         realm.executeTransaction {
             var patient = realm.where(Patient::class.java).equalTo("userName" , userName).findFirst()
-            patient!!.patientPDQQ1 = null
-            patient!!.patientPDQQ2 = null
-            patient!!.patientPDQQ3 = null
-            patient!!.patientPDQQ4 = null
-            patient!!.patientPDQQ5 = null
-            patient!!.patientPDQQ6 = null
-            patient!!.patientPDQQ7 = null
-            patient!!.patientPDQQ8 = null
-            patient!!.patientPDQQ9 = null
-            patient!!.patientPDQQ10 = null
-            patient!!.patientPDQQ11 = null
-            patient!!.patientPDQQ12 = null
-            patient!!.patientPDQQ13 = null
-            patient!!.patientPDQQ14 = null
-            patient!!.patientPDQQ15 = null
-            patient!!.patientPDQQ16 = null
-            patient!!.patientPDQQ17 = null
-            patient!!.patientPDQQ18 = null
-            patient!!.patientPDQQ19 = null
-            patient!!.patientPDQQ20 = null
-            patient!!.patientPDQQ21 = null
-            patient!!.patientPDQQ22 = null
-            patient!!.patientPDQQ23 = null
-            patient!!.patientPDQQ24 = null
-            patient!!.patientPDQQ25 = null
-            patient!!.patientPDQQ26 = null
-            patient!!.patientPDQQ27 = null
-            patient!!.patientPDQQ28 = null
-            patient!!.patientPDQQ29 = null
-            patient!!.patientPDQQ30 = null
-            patient!!.patientPDQQ31 = null
-            patient!!.patientPDQQ32 = null
-            patient!!.patientPDQQ33 = null
-            patient!!.patientPDQQ34 = null
-            patient!!.patientPDQQ35 = null
-            patient!!.patientPDQQ36 = null
-            patient!!.patientPDQQ37 = null
-            patient!!.patientPDQQ38 = null
-            patient!!.patientPDQQ39 = null
+
+            var PDQTest = Test()
+            PDQTest!!.patientPDQQ1 = null
+            PDQTest!!.patientPDQQ2 = null
+            PDQTest!!.patientPDQQ3 = null
+            PDQTest!!.patientPDQQ4 = null
+            PDQTest!!.patientPDQQ5 = null
+            PDQTest!!.patientPDQQ6 = null
+            PDQTest!!.patientPDQQ7 = null
+            PDQTest!!.patientPDQQ8 = null
+            PDQTest!!.patientPDQQ9 = null
+            PDQTest!!.patientPDQQ10 = null
+            PDQTest!!.patientPDQQ11 = null
+            PDQTest!!.patientPDQQ12 = null
+            PDQTest!!.patientPDQQ13 = null
+            PDQTest!!.patientPDQQ14 = null
+            PDQTest!!.patientPDQQ15 = null
+            PDQTest!!.patientPDQQ16 = null
+            PDQTest!!.patientPDQQ17 = null
+            PDQTest!!.patientPDQQ18 = null
+            PDQTest!!.patientPDQQ19 = null
+            PDQTest!!.patientPDQQ20 = null
+            PDQTest!!.patientPDQQ21 = null
+            PDQTest!!.patientPDQQ22 = null
+            PDQTest!!.patientPDQQ23 = null
+            PDQTest!!.patientPDQQ24 = null
+            PDQTest!!.patientPDQQ25 = null
+            PDQTest!!.patientPDQQ26 = null
+            PDQTest!!.patientPDQQ27 = null
+            PDQTest!!.patientPDQQ28 = null
+            PDQTest!!.patientPDQQ29 = null
+            PDQTest!!.patientPDQQ30 = null
+            PDQTest!!.patientPDQQ31 = null
+            PDQTest!!.patientPDQQ32 = null
+            PDQTest!!.patientPDQQ33 = null
+            PDQTest!!.patientPDQQ34 = null
+            PDQTest!!.patientPDQQ35 = null
+            PDQTest!!.patientPDQQ36 = null
+            PDQTest!!.patientPDQQ37 = null
+            PDQTest!!.patientPDQQ38 = null
+            PDQTest!!.patientPDQQ39 = null
+
+            //set the date for the test
+            var dateFormatter = DateTimeFormatter.ofPattern("yyyy MM dd")
+            var testDate = dateFormatter.parse(LocalDateTime.now().toString()).toString()
+
+            var listOftests = ArrayList<Test>()
+            if (patient!!.listOfTests!! != null)
+            {
+                for (i in 0 until patient!!.listOfTests!!.size)
+                {
+                    listOftests[i] = patient!!.listOfTests!!.get(i)!!
+                }
+                listOftests.add(PDQTest)
+                patient!!.listOfTests = null
+                for (i in 0 until listOftests.size)
+                {
+                    patient.listOfTests!![i] = listOftests.get(i)
+                }
+            }
+            realm.insert(PDQTest)
+
             realm.insertOrUpdate(patient)
         }
     }
@@ -187,45 +221,89 @@ class PDQCheckViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             val patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
 
-            patient!!.patientPDQQ1 = allPatientSelections[0]
-            patient!!.patientPDQQ2 = allPatientSelections[1]
-            patient!!.patientPDQQ3 = allPatientSelections[2]
-            patient!!.patientPDQQ4 = allPatientSelections[3]
-            patient!!.patientPDQQ5 = allPatientSelections[4]
-            patient!!.patientPDQQ6 = allPatientSelections[5]
-            patient!!.patientPDQQ7 = allPatientSelections[6]
-            patient!!.patientPDQQ8 = allPatientSelections[7]
-            patient!!.patientPDQQ9 = allPatientSelections[8]
-            patient!!.patientPDQQ10 = allPatientSelections[9]
-            patient!!.patientPDQQ11 = allPatientSelections[10]
-            patient!!.patientPDQQ12 = allPatientSelections[11]
-            patient!!.patientPDQQ13 = allPatientSelections[12]
-            patient!!.patientPDQQ14 = allPatientSelections[13]
-            patient!!.patientPDQQ15 = allPatientSelections[14]
-            patient!!.patientPDQQ16 = allPatientSelections[15]
-            patient!!.patientPDQQ17 = allPatientSelections[16]
-            patient!!.patientPDQQ18 = allPatientSelections[17]
-            patient!!.patientPDQQ19 = allPatientSelections[18]
-            patient!!.patientPDQQ20 = allPatientSelections[19]
-            patient!!.patientPDQQ21 = allPatientSelections[20]
-            patient!!.patientPDQQ22 = allPatientSelections[21]
-            patient!!.patientPDQQ23 = allPatientSelections[22]
-            patient!!.patientPDQQ24 = allPatientSelections[23]
-            patient!!.patientPDQQ25 = allPatientSelections[24]
-            patient!!.patientPDQQ26 = allPatientSelections[25]
-            patient!!.patientPDQQ27 = allPatientSelections[26]
-            patient!!.patientPDQQ28 = allPatientSelections[27]
-            patient!!.patientPDQQ29 = allPatientSelections[28]
-            patient!!.patientPDQQ30 = allPatientSelections[29]
-            patient!!.patientPDQQ31 = allPatientSelections[30]
-            patient!!.patientPDQQ32 = allPatientSelections[31]
-            patient!!.patientPDQQ33 = allPatientSelections[32]
-            patient!!.patientPDQQ34 = allPatientSelections[33]
-            patient!!.patientPDQQ35 = allPatientSelections[34]
-            patient!!.patientPDQQ36 = allPatientSelections[35]
-            patient!!.patientPDQQ37 = allPatientSelections[36]
-            patient!!.patientPDQQ38 = allPatientSelections[37]
-            patient!!.patientPDQQ39 = allPatientSelections[38]
+            var currentTest = Test()
+            val sdf = SimpleDateFormat("dd/M/yyyy hh")
+            val currentDate = sdf.format(Date())
+
+            val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
+            if (dateCount > 0)
+            {
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
+            }
+            currentTest!!.patientPDQQ1 = allPatientSelections[0]
+            currentTest!!.patientPDQQ2 = allPatientSelections[1]
+            currentTest!!.patientPDQQ3 = allPatientSelections[2]
+            currentTest!!.patientPDQQ4 = allPatientSelections[3]
+            currentTest!!.patientPDQQ5 = allPatientSelections[4]
+            currentTest!!.patientPDQQ6 = allPatientSelections[5]
+            currentTest!!.patientPDQQ7 = allPatientSelections[6]
+            currentTest!!.patientPDQQ8 = allPatientSelections[7]
+            currentTest!!.patientPDQQ9 = allPatientSelections[8]
+            currentTest!!.patientPDQQ10 = allPatientSelections[9]
+            currentTest!!.patientPDQQ11 = allPatientSelections[10]
+            currentTest!!.patientPDQQ12 = allPatientSelections[11]
+            currentTest!!.patientPDQQ13 = allPatientSelections[12]
+            currentTest!!.patientPDQQ14 = allPatientSelections[13]
+            currentTest!!.patientPDQQ15 = allPatientSelections[14]
+            currentTest!!.patientPDQQ16 = allPatientSelections[15]
+            currentTest!!.patientPDQQ17 = allPatientSelections[16]
+            currentTest!!.patientPDQQ18 = allPatientSelections[17]
+            currentTest!!.patientPDQQ19 = allPatientSelections[18]
+            currentTest!!.patientPDQQ20 = allPatientSelections[19]
+            currentTest!!.patientPDQQ21 = allPatientSelections[20]
+            currentTest!!.patientPDQQ22 = allPatientSelections[21]
+            currentTest!!.patientPDQQ23 = allPatientSelections[22]
+            currentTest!!.patientPDQQ24 = allPatientSelections[23]
+            currentTest!!.patientPDQQ25 = allPatientSelections[24]
+            currentTest!!.patientPDQQ26 = allPatientSelections[25]
+            currentTest!!.patientPDQQ27 = allPatientSelections[26]
+            currentTest!!.patientPDQQ28 = allPatientSelections[27]
+            currentTest!!.patientPDQQ29 = allPatientSelections[28]
+            currentTest!!.patientPDQQ30 = allPatientSelections[29]
+            currentTest!!.patientPDQQ31 = allPatientSelections[30]
+            currentTest!!.patientPDQQ32 = allPatientSelections[31]
+            currentTest!!.patientPDQQ33 = allPatientSelections[32]
+            currentTest!!.patientPDQQ34 = allPatientSelections[33]
+            currentTest!!.patientPDQQ35 = allPatientSelections[34]
+            currentTest!!.patientPDQQ36 = allPatientSelections[35]
+            currentTest!!.patientPDQQ37 = allPatientSelections[36]
+            currentTest!!.patientPDQQ38 = allPatientSelections[37]
+            currentTest!!.patientPDQQ39 = allPatientSelections[38]
+            currentTest!!.patientId = patient!!.patientId
+            currentTest.testDate = currentDate
+
+            var testId : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 1)
+                {
+                    testId = testList.get(testList.size -1)!!.testId.toInt()
+                    testId += 1
+                    currentTest.testId = testId.toString()
+                }
+                else
+                {
+                    testId = 1
+                    currentTest.testId = testId.toString()
+                }
+            }
+
+            var listOftests = ArrayList<Test>()
+            if (patient!!.listOfTests!! != null)
+            {
+                for (i in 0 until patient!!.listOfTests!!.size -1)
+                {
+                    listOftests[i] = patient!!.listOfTests!!.get(i)!!
+                }
+                listOftests.add(currentTest)
+                patient!!.listOfTests = null
+                for (i in 0 until listOftests.size -1)
+                {
+                    patient.listOfTests!![i] = listOftests.get(i)
+                }
+            }
+            realm.insertOrUpdate(currentTest)
 
             realm.insertOrUpdate(patient)
 

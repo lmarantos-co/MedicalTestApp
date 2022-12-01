@@ -9,9 +9,6 @@ import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.example.cvdriskestimator.Fragments.RegisterFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MySQLDatabase.InsertDBAsyncTask
@@ -27,7 +24,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.regex.Pattern
 
 
@@ -231,7 +227,7 @@ class RegisterPatientViewModel : ViewModel() , Observable{
                 realm.executeTransactionAwait(Dispatchers.IO) { realmTransaction ->
                     // 3.
                     val patient = Patient()
-                    patient.id = "0"
+                    patient.patientId = "0"
                     patient.userName = "tempUser"
                     patient.password = "dummy#1"
                     // 4.
@@ -252,7 +248,7 @@ class RegisterPatientViewModel : ViewModel() , Observable{
                     realm.executeTransactionAwait(Dispatchers.IO) { realmTransaction ->
                         // 3.
                         val patient = Patient()
-                        patient.id = (patientNum).toString()
+                        patient.patientId = (patientNum).toString()
                         patient.userName = userName
                         patient.password = userPassword
                         patient.patientName = patientName

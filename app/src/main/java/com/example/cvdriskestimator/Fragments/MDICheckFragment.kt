@@ -20,6 +20,7 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentMDICheckBinding
 import com.example.cvdriskestimator.viewModels.CheckMDIPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckMDIPatientViewModelFactory
@@ -82,7 +83,11 @@ class MDICheckFragment : Fragment() {
 
         //set the observer for the patient mutable live data
         mdiPatientViewModel.patientData.observe(viewLifecycleOwner) {
-            setPatientData(it)
+        }
+
+        mdiPatientViewModel.testData.observe(viewLifecycleOwner) {
+            if (it != null)
+                setPatientData(it)
         }
 
         mdiCheckBinding.clearBtn.setOnClickListener {
@@ -146,26 +151,30 @@ class MDICheckFragment : Fragment() {
             mainActivity.backToActivity()
 
         }
+
+        mdiCheckBinding.historyBtn.setOnClickListener {
+            mdiPatientViewModel.history()
+        }
     }
 
-    private fun setPatientData(patient : Patient)
+    private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()
             //show all the data on the UI
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ1RG , patient.patientMDIQ1)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ2RG , patient.patientMDIQ2)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ3RG , patient.patientMDIQ3)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ4RG , patient.patientMDIQ4)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ5RG , patient.patientMDIQ5)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ6RG , patient.patientMDIQ6)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ7RG , patient.patientMDIQ7)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ8RG , patient.patientMDIQ8)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ9RG , patient.patientMDIQ9)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ10RG , patient.patientMDIQ10)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ11RG , patient.patientMDIQ11)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ12RG , patient.patientMDIQ12)
-            setQuestionRadioGroup(mdiCheckBinding.MDIQ13RG , patient.patientMDIQ13)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ1RG , test.patientMDIQ1)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ2RG , test.patientMDIQ2)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ3RG , test.patientMDIQ3)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ4RG , test.patientMDIQ4)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ5RG , test.patientMDIQ5)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ6RG , test.patientMDIQ6)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ7RG , test.patientMDIQ7)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ8RG , test.patientMDIQ8)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ9RG , test.patientMDIQ9)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ10RG , test.patientMDIQ10)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ11RG , test.patientMDIQ11)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ12RG , test.patientMDIQ12)
+            setQuestionRadioGroup(mdiCheckBinding.MDIQ13RG , test.patientMDIQ13)
 
         } , 1000)
     }

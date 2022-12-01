@@ -16,6 +16,7 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentPDQCheckThridCategoryBinding
 import com.example.cvdriskestimator.databinding.FragmentPDQSecondCategoryCheckBinding
 import com.example.cvdriskestimator.viewModels.CheckGPDQPatientViewModelFactory
@@ -86,7 +87,11 @@ class PDQCheckThridCategoryFragment : Fragment() {
         }
 
         pdqPatientViewModel.patientData.observe(viewLifecycleOwner) {
-            setPatientData(it)
+        }
+
+        pdqPatientViewModel.testData.observe(viewLifecycleOwner) {
+            if (it != null)
+                setPatientData(it)
         }
 
         pdqCheckBinding.leftArrowImgV.setOnClickListener {
@@ -142,17 +147,17 @@ class PDQCheckThridCategoryFragment : Fragment() {
         }
     }
 
-    private fun setPatientData(patient : Patient)
+    private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()
             //show all the data on the UI
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ17RG , patient.patientPDQQ17)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ18RG , patient.patientPDQQ18)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ19RG , patient.patientPDQQ19)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ20RG , patient.patientPDQQ20)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ21RG , patient.patientPDQQ21)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ22RG , patient.patientPDQQ22)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ17RG , test.patientPDQQ17)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ18RG , test.patientPDQQ18)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ19RG , test.patientPDQQ19)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ20RG , test.patientPDQQ20)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ21RG , test.patientPDQQ21)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ22RG , test.patientPDQQ22)
         } , 1000)
     }
 

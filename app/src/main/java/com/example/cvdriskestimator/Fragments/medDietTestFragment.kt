@@ -22,6 +22,7 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentMedDietTestBinding
 import com.example.cvdriskestimator.viewModels.CheckMDIPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckMedDietTestViewModel
@@ -88,7 +89,11 @@ class medDietTestFragment : Fragment() {
 
         //set the observer for the patient data coming from view model
         medDietTestViewModel.patientData.observe(viewLifecycleOwner) {
-            setPatientData(it)
+        }
+
+        medDietTestViewModel.testData.observe(viewLifecycleOwner) {
+            if (it != null)
+                setPatientData(it)
         }
 
         medDietTestBinding.includeCvdTitleForm.MTEConLayout.setOnClickListener {
@@ -99,22 +104,22 @@ class medDietTestFragment : Fragment() {
 
 
 
-    private fun setPatientData(patient : Patient)
+    private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()
             //show all the data on the UI
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ1 , patient.patientMDSQ1)
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ2 , patient.patientMDSQ2)
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ3 , patient.patientMDSQ3)
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ4 , patient.patientMDSQ4)
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ5 , patient.patientMDSQ5)
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ6 , patient.patientMDSQ6)
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ7 , patient.patientMDSQ7)
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ8 , patient.patientMDSQ8)
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ9 , patient.patientMDSQ9)
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ10 , patient.patientMDSQ10)
-            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ11 , patient.patientMDSQ11)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ1 , test.patientMDSQ1)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ2 , test.patientMDSQ2)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ3 , test.patientMDSQ3)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ4 , test.patientMDSQ4)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ5 , test.patientMDSQ5)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ6 , test.patientMDSQ6)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ7 , test.patientMDSQ7)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ8 , test.patientMDSQ8)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ9 , test.patientMDSQ9)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ10 , test.patientMDSQ10)
+            setQuestionRadioGroup(medDietTestBinding.medDietScoreRGQ11 , test.patientMDSQ11)
         } , 1000)
     }
 

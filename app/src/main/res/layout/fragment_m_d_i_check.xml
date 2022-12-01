@@ -72,6 +72,19 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
+            <Button
+                android:id="@+id/historyBtn"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/mdiTestTitle"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@color/purple_3"
+                android:text="HISTORY"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
         </RelativeLayout>
 
         <androidx.core.widget.NestedScrollView

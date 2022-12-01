@@ -19,6 +19,7 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentGDSCheckBinding
 import com.example.cvdriskestimator.databinding.FragmentMDICheckBinding
 import com.example.cvdriskestimator.viewModels.CheckGDSPatientViewModelFactory
@@ -84,7 +85,11 @@ class GDSCheckFragment : Fragment() {
 
         //set the observer for the patient mutable live data
         gdsPatientViewModel.patientData.observe(viewLifecycleOwner) {
-            setPatientData(it)
+        }
+
+        gdsPatientViewModel.testData.observe(viewLifecycleOwner) {
+            if (it != null)
+                setPatientData(it)
         }
 
         gdsCheckBinding.clearBtn.setOnClickListener {
@@ -150,28 +155,32 @@ class GDSCheckFragment : Fragment() {
             mainActivity.backToActivity()
 
         }
+
+        gdsCheckBinding.historyBtn.setOnClickListener {
+            gdsPatientViewModel.history()
+        }
     }
 
-    private fun setPatientData(patient : Patient)
+    private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()
             //show all the data on the UI
-            setQuestionRadioGroup(gdsCheckBinding.GDS1QRG , patient.patientGDSQ1)
-            setQuestionRadioGroup(gdsCheckBinding.GDS2QRG , patient.patientGDSQ2)
-            setQuestionRadioGroup(gdsCheckBinding.GDS3QRG , patient.patientGDSQ3)
-            setQuestionRadioGroup(gdsCheckBinding.GDS4QRG , patient.patientGDSQ4)
-            setQuestionRadioGroup(gdsCheckBinding.GDS5QRG , patient.patientGDSQ5)
-            setQuestionRadioGroup(gdsCheckBinding.GDS6QRG , patient.patientGDSQ6)
-            setQuestionRadioGroup(gdsCheckBinding.GDS7QRG , patient.patientGDSQ7)
-            setQuestionRadioGroup(gdsCheckBinding.GDS8QRG , patient.patientGDSQ8)
-            setQuestionRadioGroup(gdsCheckBinding.GDS9QRG , patient.patientGDSQ9)
-            setQuestionRadioGroup(gdsCheckBinding.GDS10QRG , patient.patientGDSQ10)
-            setQuestionRadioGroup(gdsCheckBinding.GDS11QRG , patient.patientGDSQ11)
-            setQuestionRadioGroup(gdsCheckBinding.GDS12QRG , patient.patientGDSQ12)
-            setQuestionRadioGroup(gdsCheckBinding.GDS13QRG , patient.patientGDSQ13)
-            setQuestionRadioGroup(gdsCheckBinding.GDS14QRG , patient.patientGDSQ14)
-            setQuestionRadioGroup(gdsCheckBinding.GDS15QRG , patient.patientGDSQ15)
+            setQuestionRadioGroup(gdsCheckBinding.GDS1QRG , test.patientGDSQ1)
+            setQuestionRadioGroup(gdsCheckBinding.GDS2QRG , test.patientGDSQ2)
+            setQuestionRadioGroup(gdsCheckBinding.GDS3QRG , test.patientGDSQ3)
+            setQuestionRadioGroup(gdsCheckBinding.GDS4QRG , test.patientGDSQ4)
+            setQuestionRadioGroup(gdsCheckBinding.GDS5QRG , test.patientGDSQ5)
+            setQuestionRadioGroup(gdsCheckBinding.GDS6QRG , test.patientGDSQ6)
+            setQuestionRadioGroup(gdsCheckBinding.GDS7QRG , test.patientGDSQ7)
+            setQuestionRadioGroup(gdsCheckBinding.GDS8QRG , test.patientGDSQ8)
+            setQuestionRadioGroup(gdsCheckBinding.GDS9QRG , test.patientGDSQ9)
+            setQuestionRadioGroup(gdsCheckBinding.GDS10QRG , test.patientGDSQ10)
+            setQuestionRadioGroup(gdsCheckBinding.GDS11QRG , test.patientGDSQ11)
+            setQuestionRadioGroup(gdsCheckBinding.GDS12QRG , test.patientGDSQ12)
+            setQuestionRadioGroup(gdsCheckBinding.GDS13QRG , test.patientGDSQ13)
+            setQuestionRadioGroup(gdsCheckBinding.GDS14QRG , test.patientGDSQ14)
+            setQuestionRadioGroup(gdsCheckBinding.GDS15QRG , test.patientGDSQ15)
 
         } , 1000)
     }

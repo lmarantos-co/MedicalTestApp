@@ -31,8 +31,6 @@ import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
 import android.util.Log
-import android.widget.RadioGroup.OnCheckedChangeListener
-import androidx.core.view.get
 import com.example.cvdriskestimator.RealmDB.Doctor
 import io.realm.RealmList
 
@@ -162,10 +160,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         realm.executeTransaction {
             doctor= realm.where(Doctor::class.java).equalTo("doctorUserName" , doctorName).findFirst()!!
             //set a set of customer for the doctor
-            for (i in 0..doctor!!.doctorCustomers!!.size -1)
+            if (doctor!!.doctorCustomers != null)
             {
-                lastnames.add(doctor!!.doctorCustomers!!.get(i)!!)
+                for (i in 0 until doctor!!.doctorCustomers!!.size -1)
+                {
+                    lastnames.add(doctor!!.doctorCustomers!!.get(i)!!)
+                }
             }
+
 
             lastnames.apply {
                 this.add("Papadopoulos")
@@ -748,7 +750,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private fun buildRealmDatabase()
     {
         var patient1 = Patient()
-        patient1.id = 1.toString()
+        patient1.patientId = 1.toString()
         patient1.userName = "lampros_1"
         patient1.password = "lampros#1"
         patient1.patientName = "Lampros"
@@ -758,7 +760,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         patient1.yearsOfApprentice = 2
 
         var patient2 = Patient()
-        patient2.id = 2.toString()
+        patient2.patientId = 2.toString()
         patient2.userName = "vaslis_1"
         patient2.password = "vasilis#1"
         patient2.patientName = "Vasilis"
@@ -768,7 +770,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         patient2.yearsOfApprentice = 4
 
         var patient3 = Patient()
-        patient3.id = 3.toString()
+        patient3.patientId = 3.toString()
         patient3.userName = "george_1"
         patient3.password = "george#1"
         patient3.patientName = "George"
@@ -778,7 +780,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         patient3.yearsOfApprentice = 5
 
         var patient4 = Patient()
-        patient4.id = 4.toString()
+        patient4.patientId = 4.toString()
         patient4.userName = "nick_1"
         patient4.password = "nick#1"
         patient4.patientName = "Nick"
@@ -788,7 +790,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         patient4.yearsOfApprentice = 3
 
         var patient5 = Patient()
-        patient5.id = 5.toString()
+        patient5.patientId = 5.toString()
         patient5.userName = "dimitris_2"
         patient5.password = "dimitris#2"
         patient5.patientName = "Dimitris"
@@ -798,7 +800,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         patient5.yearsOfApprentice = 3
 
         var patient6 = Patient()
-        patient6.id = 6.toString()
+        patient6.patientId = 6.toString()
         patient6.userName = "elena_1"
         patient6.password = "elena#1"
         patient6.patientName = "Elena"
@@ -808,7 +810,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         patient6.yearsOfApprentice = 7
 
         var patient7 = Patient()
-        patient7.id = 7.toString()
+        patient7.patientId = 7.toString()
         patient7.userName = "dimitris_1"
         patient7.password = "dimitris#1"
         patient7.patientName = "Dimitris"
@@ -818,7 +820,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         patient7.yearsOfApprentice = 6
 
         var patient8 = Patient()
-        patient8.id = 8.toString()
+        patient8.patientId = 8.toString()
         patient8.userName = "kostas_1"
         patient8.password = "kostas#1"
         patient8.patientName = "Kostas"
@@ -828,7 +830,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         patient8.yearsOfApprentice = 10
 
         var patient9 = Patient()
-        patient9.id = 9.toString()
+        patient9.patientId = 9.toString()
         patient9.userName = "petros_1"
         patient9.password = "petros#1"
         patient9.patientName = "Petros"
@@ -838,7 +840,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         patient9.yearsOfApprentice = 4
 
         var patient10 = Patient()
-        patient10.id = 10.toString()
+        patient10.patientId = 10.toString()
         patient10.userName = "maria_1"
         patient10.password = "maria#1"
         patient10.patientName = "Maria"
@@ -927,7 +929,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction.show(fragment)
         if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)
-
+        if (fragment is HistoryFragment)
+        {
+            hideFragmentVisibility()
+            fragmentTransaction.show(fragment)
+        }
         if (fragment.isAdded)
         {
             fragmentTransaction.remove(fragment)
@@ -976,109 +982,111 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                             realm.executeTransaction {
                                 val username = getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
                                 val patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
-                                //initaalize all patient data fields
-                                patient!!.patientAge = ""
-                                patient!!.smoker = ""
-                                patient!!.patientSiblings = ""
-                                patient!!.patientBMI = ""
-                                patient!!.patientSex = ""
-                                patient!!.patientSteroids = ""
-                                patient!!.patientPAM = ""
-                                patient!!.SSB = ""
-                                patient!!.HDL = ""
-                                patient!!.TCH = ""
-                                patient!!.treatment = ""
-                                patient!!.patientRace = ""
+                                //get the last recorded
 
-                                patient!!.patientMDIQ1 = null
-                                patient!!.patientMDIQ2 = null
-                                patient!!.patientMDIQ3 = null
-                                patient!!.patientMDIQ5 = null
-                                patient!!.patientMDIQ6 = null
-                                patient!!.patientMDIQ7 = null
-                                patient!!.patientMDIQ8 = null
-                                patient!!.patientMDIQ5 = null
-                                patient!!.patientMDIQ10 = null
-                                patient!!.patientMDIQ11 = null
-                                patient!!.patientMDIQ12 = null
-                                patient!!.patientMDIQ13 = null
-
-                                patient!!.patientBAIQ1 = null
-                                patient!!.patientBAIQ2 = null
-                                patient!!.patientBAIQ3 = null
-                                patient!!.patientBAIQ4 = null
-                                patient!!.patientBAIQ5 = null
-                                patient!!.patientBAIQ6 = null
-                                patient!!.patientBAIQ7 = null
-                                patient!!.patientBAIQ8 = null
-                                patient!!.patientBAIQ9 = null
-                                patient!!.patientBAIQ10 = null
-                                patient!!.patientBAIQ11 = null
-                                patient!!.patientBAIQ12 = null
-                                patient!!.patientBAIQ13 = null
-                                patient!!.patientBAIQ14 = null
-                                patient!!.patientBAIQ15 = null
-                                patient!!.patientBAIQ16 = null
-                                patient!!.patientBAIQ17 = null
-                                patient!!.patientBAIQ18 = null
-                                patient!!.patientBAIQ19 = null
-                                patient!!.patientBAIQ20 = null
-                                patient!!.patientBAIQ21 = null
-
-                                patient!!.patientGDSQ1 = null
-                                patient!!.patientGDSQ2 = null
-                                patient!!.patientGDSQ3 = null
-                                patient!!.patientGDSQ4 = null
-                                patient!!.patientGDSQ5 = null
-                                patient!!.patientGDSQ6 = null
-                                patient!!.patientGDSQ7 = null
-                                patient!!.patientGDSQ8 = null
-                                patient!!.patientGDSQ9 = null
-                                patient!!.patientGDSQ10 = null
-                                patient!!.patientGDSQ11 = null
-                                patient!!.patientGDSQ12 = null
-                                patient!!.patientGDSQ13 = null
-                                patient!!.patientGDSQ14 = null
-                                patient!!.patientGDSQ15 = null
-
-                                patient!!.patientPDQQ1 = null
-                                patient!!.patientPDQQ2 = null
-                                patient!!.patientPDQQ3 = null
-                                patient!!.patientPDQQ4 = null
-                                patient!!.patientPDQQ5 = null
-                                patient!!.patientPDQQ6 = null
-                                patient!!.patientPDQQ7 = null
-                                patient!!.patientPDQQ8 = null
-                                patient!!.patientPDQQ9 = null
-                                patient!!.patientPDQQ10 = null
-                                patient!!.patientPDQQ11 = null
-                                patient!!.patientPDQQ12 = null
-                                patient!!.patientPDQQ13 = null
-                                patient!!.patientPDQQ14 = null
-                                patient!!.patientPDQQ15 = null
-                                patient!!.patientPDQQ16 = null
-                                patient!!.patientPDQQ17 = null
-                                patient!!.patientPDQQ18 = null
-                                patient!!.patientPDQQ19 = null
-                                patient!!.patientPDQQ20 = null
-                                patient!!.patientPDQQ21 = null
-                                patient!!.patientPDQQ22 = null
-                                patient!!.patientPDQQ23 = null
-                                patient!!.patientPDQQ24 = null
-                                patient!!.patientPDQQ25 = null
-                                patient!!.patientPDQQ26 = null
-                                patient!!.patientPDQQ27 = null
-                                patient!!.patientPDQQ28 = null
-                                patient!!.patientPDQQ30 = null
-                                patient!!.patientPDQQ31 = null
-                                patient!!.patientPDQQ32 = null
-                                patient!!.patientPDQQ33 = null
-                                patient!!.patientPDQQ34 = null
-                                patient!!.patientPDQQ35 = null
-                                patient!!.patientPDQQ36 = null
-                                patient!!.patientPDQQ37 = null
-                                patient!!.patientPDQQ38 = null
-                                patient!!.patientPDQQ39 = null
+                                //initialize all patient data fields
+//                                patient!!.patientAge = ""
+//                                patient!!.smoker = ""
+//                                patient!!.patientSiblings = ""
+//                                patient!!.patientBMI = ""
+//                                patient!!.patientSex = ""
+//                                patient!!.patientSteroids = ""
+//                                patient!!.patientPAM = ""
+//                                patient!!.SSB = ""
+//                                patient!!.HDL = ""
+//                                patient!!.TCH = ""
+//                                patient!!.treatment = ""
+//                                patient!!.patientRace = ""
+//
+//                                patient!!.patientMDIQ1 = null
+//                                patient!!.patientMDIQ2 = null
+//                                patient!!.patientMDIQ3 = null
+//                                patient!!.patientMDIQ5 = null
+//                                patient!!.patientMDIQ6 = null
+//                                patient!!.patientMDIQ7 = null
+//                                patient!!.patientMDIQ8 = null
+//                                patient!!.patientMDIQ5 = null
+//                                patient!!.patientMDIQ10 = null
+//                                patient!!.patientMDIQ11 = null
+//                                patient!!.patientMDIQ12 = null
+//                                patient!!.patientMDIQ13 = null
+//
+//                                patient!!.patientBAIQ1 = null
+//                                patient!!.patientBAIQ2 = null
+//                                patient!!.patientBAIQ3 = null
+//                                patient!!.patientBAIQ4 = null
+//                                patient!!.patientBAIQ5 = null
+//                                patient!!.patientBAIQ6 = null
+//                                patient!!.patientBAIQ7 = null
+//                                patient!!.patientBAIQ8 = null
+//                                patient!!.patientBAIQ9 = null
+//                                patient!!.patientBAIQ10 = null
+//                                patient!!.patientBAIQ11 = null
+//                                patient!!.patientBAIQ12 = null
+//                                patient!!.patientBAIQ13 = null
+//                                patient!!.patientBAIQ14 = null
+//                                patient!!.patientBAIQ15 = null
+//                                patient!!.patientBAIQ16 = null
+//                                patient!!.patientBAIQ17 = null
+//                                patient!!.patientBAIQ18 = null
+//                                patient!!.patientBAIQ19 = null
+//                                patient!!.patientBAIQ20 = null
+//                                patient!!.patientBAIQ21 = null
+//
+//                                patient!!.patientGDSQ1 = null
+//                                patient!!.patientGDSQ2 = null
+//                                patient!!.patientGDSQ3 = null
+//                                patient!!.patientGDSQ4 = null
+//                                patient!!.patientGDSQ5 = null
+//                                patient!!.patientGDSQ6 = null
+//                                patient!!.patientGDSQ7 = null
+//                                patient!!.patientGDSQ8 = null
+//                                patient!!.patientGDSQ9 = null
+//                                patient!!.patientGDSQ10 = null
+//                                patient!!.patientGDSQ11 = null
+//                                patient!!.patientGDSQ12 = null
+//                                patient!!.patientGDSQ13 = null
+//                                patient!!.patientGDSQ14 = null
+//                                patient!!.patientGDSQ15 = null
+//
+//                                patient!!.patientPDQQ1 = null
+//                                patient!!.patientPDQQ2 = null
+//                                patient!!.patientPDQQ3 = null
+//                                patient!!.patientPDQQ4 = null
+//                                patient!!.patientPDQQ5 = null
+//                                patient!!.patientPDQQ6 = null
+//                                patient!!.patientPDQQ7 = null
+//                                patient!!.patientPDQQ8 = null
+//                                patient!!.patientPDQQ9 = null
+//                                patient!!.patientPDQQ10 = null
+//                                patient!!.patientPDQQ11 = null
+//                                patient!!.patientPDQQ12 = null
+//                                patient!!.patientPDQQ13 = null
+//                                patient!!.patientPDQQ14 = null
+//                                patient!!.patientPDQQ15 = null
+//                                patient!!.patientPDQQ16 = null
+//                                patient!!.patientPDQQ17 = null
+//                                patient!!.patientPDQQ18 = null
+//                                patient!!.patientPDQQ19 = null
+//                                patient!!.patientPDQQ20 = null
+//                                patient!!.patientPDQQ21 = null
+//                                patient!!.patientPDQQ22 = null
+//                                patient!!.patientPDQQ23 = null
+//                                patient!!.patientPDQQ24 = null
+//                                patient!!.patientPDQQ25 = null
+//                                patient!!.patientPDQQ26 = null
+//                                patient!!.patientPDQQ27 = null
+//                                patient!!.patientPDQQ28 = null
+//                                patient!!.patientPDQQ30 = null
+//                                patient!!.patientPDQQ31 = null
+//                                patient!!.patientPDQQ32 = null
+//                                patient!!.patientPDQQ33 = null
+//                                patient!!.patientPDQQ34 = null
+//                                patient!!.patientPDQQ35 = null
+//                                patient!!.patientPDQQ36 = null
+//                                patient!!.patientPDQQ37 = null
+//                                patient!!.patientPDQQ38 = null
+//                                patient!!.patientPDQQ39 = null
                             }
 
                         }) // A null listener allows the button to dismiss the dialog and take no further action.

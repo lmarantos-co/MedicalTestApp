@@ -1,22 +1,30 @@
 package com.example.cvdriskestimator.viewModels
 
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cvdriskestimator.Fragments.BPICheckFragment
+import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.BPITestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
+import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CheckBPIPatientViewModel : ViewModel() {
 
@@ -26,8 +34,11 @@ class CheckBPIPatientViewModel : ViewModel() {
     private var realmDAO = RealmDAO()
     private lateinit var bpiTestEstimator : BPITestEstimator
     private lateinit var resultFragment: ResultFragment
+    private lateinit var historyFragment: HistoryFragment
 
     var patientData = MutableLiveData<Patient>()
+    var testData = MutableLiveData<Test>()
+
 
     //pass the main activity instance
     fun passActivity(activity: MainActivity)
@@ -58,7 +69,7 @@ class CheckBPIPatientViewModel : ViewModel() {
     {
         realm.executeTransaction {
             var patient: Patient? =
-                realm.where(Patient::class.java).isNotNull("id").equalTo("userName", "tempUser")
+                realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName", "tempUser")
                     .findFirst()
             if (patient == null) {
                 patient = Patient()
@@ -67,6 +78,24 @@ class CheckBPIPatientViewModel : ViewModel() {
             }
             realm.insertOrUpdate(patient)
         }
+    }
+
+    fun history()
+    {
+        var patientId : String = ""
+        var testName : String = ""
+        realm.executeTransaction {
+            val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+            var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
+            patientId = patient!!.patientId
+            testName = "BPI"
+        }
+        val bundle = Bundle()
+        bundle.putString("patientId" , patientId)
+        bundle.putString("testName" , testName)
+        historyFragment = HistoryFragment()
+        historyFragment.arguments = bundle
+        mainActivity.fragmentTransaction(historyFragment)
     }
 
     fun checkBPITestPAtient(allPatientValues : ArrayList<Int?> , circleCoordinates : ArrayList<Float?>)
@@ -80,11 +109,11 @@ class CheckBPIPatientViewModel : ViewModel() {
             && (checkCircleCoordinates(circleCoordinates))){
             //all data input is correct
             GlobalScope.launch(Dispatchers.Main) {
-                storePatientDataOnRealmDB(allPatientValues , circleCoordinates)
                 //calculate the pain scores
                 bpiTestEstimator = BPITestEstimator(allPatientValues)
                 var scoreResults = bpiTestEstimator.calculatePainScores()
 
+                storePatientDataOnRealmDB(allPatientValues , circleCoordinates  , scoreResults)
                 resultFragment = ResultFragment.newInstance(
                     scoreResults[0].toDouble(),
                     scoreResults[1].toDouble(),
@@ -109,25 +138,76 @@ class CheckBPIPatientViewModel : ViewModel() {
         return result
     }
 
-    fun storePatientDataOnRealmDB(allPatientData : ArrayList<Int?> , circleCoordinates: ArrayList<Float?>)
+    fun storePatientDataOnRealmDB(allPatientData : ArrayList<Int?> , circleCoordinates: ArrayList<Float?> , scoreResults : ArrayList<Float>)
     {
         realm.executeTransaction {
             var username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
-            var patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
-            patient!!.patientBPIQ1 = allPatientData[0]
-            patient!!.patientBPIQ2 = allPatientData[1]
-            patient!!.patientBPIQ3 = allPatientData[2]
-            patient!!.patientBPIQ4 = allPatientData[3]
-            patient!!.patientBPIQ5 = allPatientData[4]
-            patient!!.patientBPIQ6 = allPatientData[5]
-            patient!!.patientBPIQ7 = allPatientData[6]
-            patient!!.patientBPIQ8 = allPatientData[7]
-            patient!!.patientBPIQ9 = allPatientData[8]
-            patient!!.patientBPIQ10 = allPatientData[9]
-            patient!!.patientBPIQ11 = allPatientData[10]
-            patient!!.patientBPIQ12 = allPatientData[11]
-            patient!!.patientBPIcircleX = circleCoordinates[0]
-            patient!!.patientBPIcircleY = circleCoordinates[1]
+            var patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
+
+            var currentTest = Test()
+            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
+            val currentDate = sdf.format(Date())
+            //check if the current date is already in the test database
+            val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
+            if (dateCount > 0)
+            {
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
+            }
+
+            currentTest!!.patientBPIQ1 = allPatientData[0]
+            currentTest!!.patientBPIQ2 = allPatientData[1]
+            currentTest!!.patientBPIQ3 = allPatientData[2]
+            currentTest!!.patientBPIQ4 = allPatientData[3]
+            currentTest!!.patientBPIQ5 = allPatientData[4]
+            currentTest!!.patientBPIQ6 = allPatientData[5]
+            currentTest!!.patientBPIQ7 = allPatientData[6]
+            currentTest!!.patientBPIQ8 = allPatientData[7]
+            currentTest!!.patientBPIQ9 = allPatientData[8]
+            currentTest!!.patientBPIQ10 = allPatientData[9]
+            currentTest!!.patientBPIQ11 = allPatientData[10]
+            currentTest!!.patientBPIQ12 = allPatientData[11]
+            currentTest!!.patientBPIcircleX = circleCoordinates[0]
+            currentTest!!.patientBPIcircleY = circleCoordinates[1]
+            currentTest!!.patientId = patient!!.patientId
+            currentTest!!.patientBPITestInterferenceResult = scoreResults.get(0)
+            currentTest!!.patientBPITestSeverityResult = scoreResults.get(1)
+            currentTest.testDate = currentDate
+            currentTest.testName = "Brief Pain Inventory"
+
+            var testId : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId = testList.get(testList.size -1)!!.testId.toInt()
+                    testId += 1
+                    currentTest.testId = testId.toString()
+                }
+                else
+                {
+                    testId = 1
+                    currentTest.testId = testId.toString()
+                }
+            }
+
+            var listOftest = ArrayList<Test>()
+
+            //add the test to the patient table
+            if (patient!!.listOfTests != null)
+            {
+                for (i in 0 until patient!!.listOfTests!!.size -1)
+                listOftest[i] = patient!!.listOfTests!!.get(i)!!
+
+                patient!!.listOfTests = null
+                for (i in 0 until listOftest.size -1)
+                {
+                    patient!!.listOfTests!![i] = listOftest.get(i)
+                }
+            }
+            listOftest.add(currentTest)
+            realm.insertOrUpdate(currentTest)
+
             realm.insertOrUpdate(patient)
         }
     }
@@ -153,6 +233,7 @@ class CheckBPIPatientViewModel : ViewModel() {
     private fun getPatientData(username : String)
     {
         patientData = realmDAO.fetchPatientData(username)
+        testData = realmDAO.fetchTestData(patientData.value!!.patientId , "BPI")
         patientData.postValue(patientData!!.value)
     }
 

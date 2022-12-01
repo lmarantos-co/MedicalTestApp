@@ -16,6 +16,7 @@ import android.widget.Toast
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentPDQFirstCategoryCheckBinding
 import com.example.cvdriskestimator.viewModels.PDQCheckViewModel
 import com.example.cvdriskestimator.viewModels.CheckGPDQPatientViewModelFactory
@@ -92,9 +93,12 @@ class PDQCheckFirstCategoryFragment : Fragment() {
 
 
         pdqPatientViewModel.patientData.observe(viewLifecycleOwner) {
-            setPatientData(it)
         }
 
+        pdqPatientViewModel.testData.observe(viewLifecycleOwner) {
+            if (it != null)
+                setPatientData(it)
+        }
 
         pdqCheckBinding.rightArrowImgV.setOnClickListener {
           allPatientSelections[0] = getAnswerFromRadioGroup(pdqCheckBinding.pdqQ1RG)
@@ -144,21 +148,21 @@ class PDQCheckFirstCategoryFragment : Fragment() {
         }
     }
 
-    private fun setPatientData(patient : Patient)
+    private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()
             //show all the data on the UI
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ1RG , patient.patientPDQQ1)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ2RG , patient.patientPDQQ2)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ3RG , patient.patientPDQQ3)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ4RG , patient.patientPDQQ4)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ5RG , patient.patientPDQQ5)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ6RG , patient.patientPDQQ6)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ7RG , patient.patientPDQQ7)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ8RG , patient.patientPDQQ8)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ9RG , patient.patientPDQQ9)
-            setQuestionRadioGroup(pdqCheckBinding.pdqQ10RG , patient.patientPDQQ10)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ1RG , test.patientPDQQ1)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ2RG , test.patientPDQQ2)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ3RG , test.patientPDQQ3)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ4RG , test.patientPDQQ4)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ5RG , test.patientPDQQ5)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ6RG , test.patientPDQQ6)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ7RG , test.patientPDQQ7)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ8RG , test.patientPDQQ8)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ9RG , test.patientPDQQ9)
+            setQuestionRadioGroup(pdqCheckBinding.pdqQ10RG , test.patientPDQQ10)
         } , 1000)
     }
 

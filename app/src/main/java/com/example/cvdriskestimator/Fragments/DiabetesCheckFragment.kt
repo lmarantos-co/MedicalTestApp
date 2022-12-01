@@ -20,6 +20,7 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentDiabetesCheckBinding
 import com.example.cvdriskestimator.viewModels.CheckDiabetesPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckDiabetesPatientViewModelFactory
@@ -90,6 +91,10 @@ class DiabetesCheckFragment : Fragment() {
 
         //observe live data change
         checkDiabetesPatientViewModel.patientDATA.observe(viewLifecycleOwner) {
+        }
+
+        checkDiabetesPatientViewModel.testDATA.observe(viewLifecycleOwner) {
+            if (it != null)
             setPatientData(it)
         }
 
@@ -196,7 +201,9 @@ class DiabetesCheckFragment : Fragment() {
             hideTermsOfUseLayout()
         }
 
-
+        diabetesCheckBinding.historyBtn.setOnClickListener {
+            checkDiabetesPatientViewModel.history()
+        }
 
     }
 
@@ -337,18 +344,18 @@ class DiabetesCheckFragment : Fragment() {
         diabetesCheckBinding.SmokeRGr.clearCheck()
     }
 
-    private fun setPatientData(patient : Patient)
+    private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed(kotlinx.coroutines.Runnable {
             initPatientData()
-            val sex = patient.patientSex
+            val sex = test.patientSex
             //set sex on UI
             if (sex == "MALE")
                 diabetesCheckBinding.sexRG.check(R.id.maleRB1)
             if (sex == "FEMALE")
                 diabetesCheckBinding.sexRG.check(R.id.femaleRB1)
 
-            val pam = patient.patientPAM
+            val pam = test.patientPAM
             if (pam == "YES")
             {
                 diabetesCheckBinding.pamRG.check(R.id.pampositiveRB1)
@@ -356,7 +363,7 @@ class DiabetesCheckFragment : Fragment() {
             if (pam == "NO")
                 diabetesCheckBinding.pamRG.check(R.id.pamnegative)
 
-            val steroids = patient.patientSteroids
+            val steroids = test.patientSteroids
             if (steroids == "YES")
             {
                 diabetesCheckBinding.steroidsRG.check(R.id.steroidspositiveRB1)
@@ -365,13 +372,13 @@ class DiabetesCheckFragment : Fragment() {
                 diabetesCheckBinding.steroidsRG.check(R.id.steroidsnegativeRB2)
 
 
-            var BMI = patient.patientBMI
+            var BMI = test.patientBMI
             diabetesCheckBinding.editTextBMI.setText(BMI.toString())
 
-            var age = patient.patientAge
+            var age = test.patientAge
             diabetesCheckBinding.editTextAge.setText(age.toString())
 
-            var siblings = patient.patientSiblings
+            var siblings = test.patientSiblings
             if (siblings == "Parent And Sibling With Diabetes")
             {
                 diabetesCheckBinding.siblingsRG.check(R.id.siblingsYesBothRB)
@@ -385,7 +392,7 @@ class DiabetesCheckFragment : Fragment() {
                 diabetesCheckBinding.siblingsRG.check(R.id.siblingsNoRB)
             }
 
-            var smokingStatus = patient.smoker
+            var smokingStatus = test.smoker
             if (smokingStatus == "Current")
             {
                 diabetesCheckBinding.SmokeRGr.check(R.id.smokeRB1)

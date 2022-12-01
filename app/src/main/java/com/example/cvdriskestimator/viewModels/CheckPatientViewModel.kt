@@ -1,6 +1,7 @@
 package com.example.cvdriskestimator.viewModels
 
 import android.content.Context
+import android.os.Bundle
 import android.text.TextUtils
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -10,14 +11,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cvdriskestimator.MedicalTestAlgorithms.CVDRiskEstimator
 import com.example.cvdriskestimator.Fragments.CheckFragment
+import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
+import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
+import io.realm.kotlin.where
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CheckPatientViewModel : ViewModel() , Observable {
 
@@ -26,6 +35,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
     private lateinit var resultFragment: ResultFragment
     private lateinit var mainActivity: MainActivity
     private lateinit var cvdRiskEstimator: CVDRiskEstimator
+    private lateinit var historyFragment: HistoryFragment
     private var allDataCorrect : Boolean = false
     private var sexStatus : String =""
     private var smokingStatus : String =""
@@ -35,6 +45,8 @@ class CheckPatientViewModel : ViewModel() , Observable {
 
     //mutable live data from realm database
     var patientDATA = MutableLiveData<Patient>()
+
+    var testDATA = MutableLiveData<Test>()
 
     fun setFragment(chckFragment: CheckFragment)
     {
@@ -51,6 +63,24 @@ class CheckPatientViewModel : ViewModel() , Observable {
         viewModelScope.launch {
             initialiseUserDummy()
         }
+
+    fun history()
+    {
+        var patientId : String = ""
+        var testName : String = ""
+        realm.executeTransaction {
+            val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+            var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
+            patientId = patient!!.patientId
+            testName = "CardioVascularDisease"
+        }
+        val bundle = Bundle()
+        bundle.putString("patientId" , patientId)
+        bundle.putString("testName" , testName)
+        historyFragment = HistoryFragment()
+        historyFragment.arguments = bundle
+        mainActivity.fragmentTransaction(historyFragment)
+    }
 
     private fun initialiseUserDummy() {
         realm.executeTransaction {
@@ -243,7 +273,8 @@ class CheckPatientViewModel : ViewModel() , Observable {
         if (allDataCorrect)
             //save the user data for form pre-sets
         {
-            savePatient(sexStatus, age, sbp, TCH, HDL, smokingStatus, treatmentStatus)
+            val riskResult = cvdRiskEstimator.calculateCVDRisk(sexStatus , age.toInt() , sbp.toInt() , TCH.toInt() , HDL.toInt() , smokingStatus , treatmentStatus)
+            savePatient(sexStatus, age, sbp, TCH, HDL, smokingStatus, treatmentStatus , riskResult)
             calculateCVDRisk(
                 sexStatus,
                 age.toInt(),
@@ -261,16 +292,18 @@ class CheckPatientViewModel : ViewModel() , Observable {
         val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
         val username = prefs.getString("userName" , "tempUser")
         patientDATA = realmDAO.fetchPatientData(username!!)
+        testDATA = realmDAO.fetchTestData(patientDATA.value!!.patientId , "CVD")
         patientDATA.postValue(patientDATA.value)
+        testDATA.postValue(testDATA.value)
     }
 
-    fun savePatient(sex : String, age : String, sbp : String, TCH : String, HDL : String, smokingStatus : String, treatmentStatus : String) : Job =
+    fun savePatient(sex : String, age : String, sbp : String, TCH : String, HDL : String, smokingStatus : String, treatmentStatus : String , score : Int) : Job =
         viewModelScope.launch {
-            saveUserDataToDB(sex , age , sbp, TCH , HDL , smokingStatus , treatmentStatus)
+            saveUserDataToDB(sex , age , sbp, TCH , HDL , smokingStatus , treatmentStatus , score)
         }
 
 
-    private  fun saveUserDataToDB(sex : String, age : String, sbp : String, TCH : String, HDL : String, smokingStatus: String, treatmentStatus: String)
+    private  fun saveUserDataToDB(sex : String, age : String, sbp : String, TCH : String, HDL : String, smokingStatus: String, treatmentStatus: String , score : Int)
     {
         val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
         val username = prefs.getString("userName", "tempUser")
@@ -280,14 +313,60 @@ class CheckPatientViewModel : ViewModel() , Observable {
         realm.executeTransaction { realmTransaction ->
             val patient : Patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()!!
             //update the user record with the relevant data
-            patient.patientSex = sex
-            patient.patientAge = age
-            patient.SSB = sbp
-            patient.TCH = TCH
-            patient.HDL = HDL
-            patient.smoker = smokingStatus
-            patient.treatment = treatmentStatus
 
+            var currentTest = Test()
+            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
+            val currentDate = sdf.format(Date())
+            //check if the current date is already in the test database
+            val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
+            if (dateCount > 0)
+            {
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
+            }
+            currentTest.patientSex = sex
+            currentTest.patientAge = age
+            currentTest.SSB = sbp
+            currentTest.TCH = TCH
+            currentTest.HDL = HDL
+            currentTest.smoker = smokingStatus
+            currentTest.treatment = treatmentStatus
+            currentTest.patientId = patient.patientId
+            currentTest!!.testDate = currentDate
+            currentTest!!.cvdTestResult = score
+            currentTest!!.testName = "CardioVascularDisease"
+            var testId : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId = testList.get(testList.size -1)!!.testId.toInt()
+                    testId += 1
+                    currentTest.testId = testId.toString()
+                }
+                else
+                {
+                    testId = 1
+                    currentTest.testId = testId.toString()
+                }
+            }
+
+            //add the test to the patient test list
+            var testList = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    testList.add(patient.listOfTests!!.get(i)!!)
+                }
+                testList.add(currentTest)
+                patient.listOfTests = null
+                for (i in 0 until testList.size -1)
+                {
+                    patient.listOfTests!![i] = testList.get(i)
+                }
+            }
+            realm.insertOrUpdate(currentTest)
             //update the user record within realm database
             realm.copyToRealmOrUpdate(patient)
         }

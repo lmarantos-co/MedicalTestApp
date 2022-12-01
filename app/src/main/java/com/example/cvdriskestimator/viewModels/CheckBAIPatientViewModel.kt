@@ -1,19 +1,27 @@
 package com.example.cvdriskestimator.viewModels
 
 import android.content.Context
+import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cvdriskestimator.Fragments.BAICheckFragment
+import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.BAITestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
+import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CheckBAIPatientViewModel : ViewModel() {
 
@@ -24,8 +32,11 @@ class CheckBAIPatientViewModel : ViewModel() {
     private lateinit var baiTestEstimator : BAITestEstimator
     private var realmDAO = RealmDAO()
     private lateinit var resultFragment: ResultFragment
+    private lateinit var historyFragment: HistoryFragment
 
     var patientData = MutableLiveData<Patient>()
+    var testDATA = MutableLiveData<Test>()
+
 
     fun passActivity(activity: MainActivity)
     {
@@ -51,7 +62,7 @@ class CheckBAIPatientViewModel : ViewModel() {
     fun setUserDummyData()
     {
         realm.executeTransaction {
-            var dummyPatient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , "tempUser").findFirst()
+            var dummyPatient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , "tempUser").findFirst()
             if (dummyPatient == null)
             {
                 val patient = Patient()
@@ -70,7 +81,9 @@ class CheckBAIPatientViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
+        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "BAI")
         patientData.postValue(patientData.value)
+        testDATA.postValue(testDATA.value)
     }
 
     fun checkBAITestPatient(allPatientSelections : ArrayList<Int?>)
@@ -87,12 +100,12 @@ class CheckBAIPatientViewModel : ViewModel() {
             && (checkQuestionForInputError(allPatientSelections[18]  , 19)) && (checkQuestionForInputError(allPatientSelections[19]  , 20))
             && (checkQuestionForInputError(allPatientSelections[20]  , 21)))
         {
-            storePatientOnRealm(allPatientSelections)
             val result = baiTestEstimator.calculateBAIndex(allPatientSelections[0]!!, allPatientSelections[1]!!, allPatientSelections[2]!!, allPatientSelections[3]!!, allPatientSelections[4]!! ,
                 allPatientSelections[5]!! , allPatientSelections[6]!!, allPatientSelections[7]!! , allPatientSelections[8]!! , allPatientSelections[9]!! ,
                 allPatientSelections[10]!! , allPatientSelections[11]!! , allPatientSelections[12]!! , allPatientSelections[13]!! , allPatientSelections[14]!!,
                 allPatientSelections[15]!! , allPatientSelections[16]!! , allPatientSelections[17]!! , allPatientSelections[18]!! , allPatientSelections[19]!!
                 , allPatientSelections[20]!!)
+            storePatientOnRealm(allPatientSelections , result)
             openResultFragment(result)
         }
     }
@@ -116,43 +129,109 @@ class CheckBAIPatientViewModel : ViewModel() {
         return correctData
     }
 
-    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int?>) : Job =
+    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int?> , score : Int) : Job =
         viewModelScope.launch{
-            storePatientOnDB(allPatientSelections)
+            storePatientOnDB(allPatientSelections , score)
         }
 
-    private fun storePatientOnDB(allPatientSelections: ArrayList<Int?>)
+    fun history()
+    {
+        var patientId : String = ""
+        var testName : String = ""
+        realm.executeTransaction {
+            val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+            var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
+            patientId = patient!!.patientId
+            testName = "BAI"
+        }
+        val bundle = Bundle()
+        bundle.putString("patientId" , patientId)
+        bundle.putString("testName" , testName)
+        historyFragment = HistoryFragment()
+        historyFragment.arguments = bundle
+        mainActivity.fragmentTransaction(historyFragment)
+    }
+
+    private fun storePatientOnDB(allPatientSelections: ArrayList<Int?> , score : Int)
     {
         //execute transaction on realm
         realm.executeTransaction {
 
             //store the patient data on the database
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
-            val patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
+            val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
 
-            patient!!.patientBAIQ1 = allPatientSelections[0]
-            patient!!.patientBAIQ2 = allPatientSelections[1]
-            patient!!.patientBAIQ3 = allPatientSelections[2]
-            patient!!.patientBAIQ4 = allPatientSelections[3]
-            patient!!.patientBAIQ5 = allPatientSelections[4]
-            patient!!.patientBAIQ6 = allPatientSelections[5]
-            patient!!.patientBAIQ7 = allPatientSelections[6]
-            patient!!.patientBAIQ8 = allPatientSelections[7]
-            patient!!.patientBAIQ9 = allPatientSelections[8]
-            patient!!.patientBAIQ10 = allPatientSelections[9]
-            patient!!.patientBAIQ11 = allPatientSelections[10]
-            patient!!.patientBAIQ12 = allPatientSelections[11]
-            patient!!.patientBAIQ13 = allPatientSelections[12]
-            patient!!.patientBAIQ14 = allPatientSelections[13]
-            patient!!.patientBAIQ15 = allPatientSelections[14]
-            patient!!.patientBAIQ16 = allPatientSelections[15]
-            patient!!.patientBAIQ17 = allPatientSelections[16]
-            patient!!.patientBAIQ18 = allPatientSelections[17]
-            patient!!.patientBAIQ19 = allPatientSelections[18]
-            patient!!.patientBAIQ20 = allPatientSelections[19]
-            patient!!.patientBAIQ21 = allPatientSelections[20]
+            var currentTest = Test()
+            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
+            val currentDate = sdf.format(Date())
+            //check if the current date is already in the test database
+            val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
+            if (dateCount > 0)
+            {
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
+            }
 
-            realm.insertOrUpdate(patient)
+            currentTest!!.patientBAIQ1 = allPatientSelections[0]
+            currentTest!!.patientBAIQ2 = allPatientSelections[1]
+            currentTest!!.patientBAIQ3 = allPatientSelections[2]
+            currentTest!!.patientBAIQ4 = allPatientSelections[3]
+            currentTest!!.patientBAIQ5 = allPatientSelections[4]
+            currentTest!!.patientBAIQ6 = allPatientSelections[5]
+            currentTest!!.patientBAIQ7 = allPatientSelections[6]
+            currentTest!!.patientBAIQ8 = allPatientSelections[7]
+            currentTest!!.patientBAIQ9 = allPatientSelections[8]
+            currentTest!!.patientBAIQ10 = allPatientSelections[9]
+            currentTest!!.patientBAIQ11 = allPatientSelections[10]
+            currentTest!!.patientBAIQ12 = allPatientSelections[11]
+            currentTest!!.patientBAIQ13 = allPatientSelections[12]
+            currentTest!!.patientBAIQ14 = allPatientSelections[13]
+            currentTest!!.patientBAIQ15 = allPatientSelections[14]
+            currentTest!!.patientBAIQ16 = allPatientSelections[15]
+            currentTest!!.patientBAIQ17 = allPatientSelections[16]
+            currentTest!!.patientBAIQ18 = allPatientSelections[17]
+            currentTest!!.patientBAIQ19 = allPatientSelections[18]
+            currentTest!!.patientBAIQ20 = allPatientSelections[19]
+            currentTest!!.patientBAIQ21 = allPatientSelections[20]
+            currentTest!!.patientId = patient!!.patientId
+            currentTest!!.testDate = currentDate
+            currentTest!!.testName = "Beck Anxiety Index"
+            currentTest!!.patientBAITestResult = score
+
+            var testId : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId = testList.get(testList.size -1)!!.testId.toInt()
+                    testId += 1
+                    currentTest.testId = testId.toString()
+                }
+                else
+                {
+                    testId = 1
+                    currentTest.testId = testId.toString()
+                }
+            }
+
+            //add the test to the patient test list
+            var testList = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    testList.add(patient.listOfTests!!.get(i)!!)
+                }
+                testList.add(currentTest)
+                patient.listOfTests = null
+                for (i in 0 until testList.size -1)
+                {
+                    patient.listOfTests!![i] = testList.get(i)
+                }
+            }
+            realm.insertOrUpdate(currentTest)
+            //update the user record within realm database
+            realm.copyToRealmOrUpdate(patient)
 
         }
     }

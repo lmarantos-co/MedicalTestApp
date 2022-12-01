@@ -19,6 +19,7 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentCheckBinding
 import com.example.cvdriskestimator.viewModels.CheckPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckPatientViewModelFactory
@@ -31,6 +32,7 @@ class CheckFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
     private lateinit var checkBinding: FragmentCheckBinding
     private lateinit var checkPatientViewModel: CheckPatientViewModel
+    private lateinit var historyFragment: HistoryFragment
 
     private  var loginFragment: LoginFragment = LoginFragment.newInstance()
     private  var registerFragment: RegisterFragment = RegisterFragment.newInstance()
@@ -91,7 +93,11 @@ class CheckFragment : Fragment() {
 
         //observe live data change
         checkPatientViewModel.patientDATA.observe(viewLifecycleOwner , Observer {
-            setPatientData(it)
+        })
+
+        checkPatientViewModel.testDATA.observe(viewLifecycleOwner , Observer {
+            if (it != null)
+                setPatientData(it)
         })
 
         checkBinding.formConLayout.setBackgroundColor(mainActivity.resources.getColor(R.color.MidnightBlue))
@@ -110,6 +116,10 @@ class CheckFragment : Fragment() {
 
         checkBinding.includePopUpMenu.termsRelLayout.setOnClickListener {
             hideTermsOfUseLayout()
+        }
+
+        checkBinding.historyBtn.setOnClickListener {
+            checkPatientViewModel.history()
         }
 
     }
@@ -230,19 +240,19 @@ class CheckFragment : Fragment() {
         checkBinding.TreatRadioGroup.clearCheck()
     }
 
-    private fun setPatientData(patient : Patient)
+    private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initPatientData()
-            checkBinding.ageEdTxt.setText(patient.patientAge)
+            checkBinding.ageEdTxt.setText(test.patientAge)
             checkBinding.ageEdTxt.invalidate()
-            setRaceStatus(patient.patientRace)
-            setSexStatus(patient.patientSex)
-            checkBinding.sbbEdTxt.setText(patient.SSB)
-            checkBinding.tchEdTxt.setText(patient.TCH)
-            checkBinding.hchEdTxt.setText(patient.HDL)
-            setSmokingStatus(patient.smoker)
-            setTreatmentStatus(patient.treatment)
+            setRaceStatus(test.patientRace)
+            setSexStatus(test.patientSex)
+            checkBinding.sbbEdTxt.setText(test.SSB)
+            checkBinding.tchEdTxt.setText(test.TCH)
+            checkBinding.hchEdTxt.setText(test.HDL)
+            setSmokingStatus(test.smoker)
+            setTreatmentStatus(test.treatment)
         }, 1000)
 
     }

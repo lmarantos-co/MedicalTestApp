@@ -1,6 +1,7 @@
 package com.example.cvdriskestimator.viewModels
 
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import android.widget.RadioGroup
 import androidx.lifecycle.ViewModel
@@ -8,15 +9,20 @@ import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.cvdriskestimator.Fragments.DiabetesCheckFragment
+import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.Diabetes2Estimator
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
+import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class CheckDiabetesPatientViewModel : ViewModel() , Observable {
@@ -25,12 +31,14 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
     private lateinit var diabetesCheckFragment: DiabetesCheckFragment
     private  var diabetes2Estimator = Diabetes2Estimator()
     private lateinit var resultFragment: ResultFragment
+    private lateinit var historyFragment: HistoryFragment
     private lateinit var realm: Realm
     private lateinit var realmDAO : RealmDAO
 
 
     // Mutable Live Data for Patient
     var patientDATA = MutableLiveData<Patient>()
+    var testDATA = MutableLiveData<Test>()
 
 
     fun setMainActivity(activity: MainActivity)
@@ -72,6 +80,24 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             }
 
         }
+    }
+
+    fun history()
+    {
+        var patientId : String = ""
+        var testName : String = ""
+        realm.executeTransaction {
+            val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+            var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
+            patientId = patient!!.patientId
+            testName = "DIABETES"
+        }
+        val bundle = Bundle()
+        bundle.putString("patientId" , patientId)
+        bundle.putString("testName" , testName)
+        historyFragment = HistoryFragment()
+        historyFragment.arguments = bundle
+        mainActivity.fragmentTransaction(historyFragment)
     }
 
     private fun checkAgeAndBMI(age : String,  BMI : String) : Boolean {
@@ -137,7 +163,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
                 familyStatus,
                 SmokingStatus
             )
-            registerOrUpdatePatient(sex, pam, Steroids, age, BMI, familyStatus, SmokingStatus)
+            registerOrUpdatePatient(sex, pam, Steroids, age, BMI, familyStatus, SmokingStatus, result)
             Log.d(
                 "DIABETES",
                 result.toString()
@@ -151,26 +177,78 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
         val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
         val username = prefs.getString("userName" , "tempUser")
         patientDATA = realmDAO.fetchPatientData(username!!)
-        patientDATA.postValue(patientDATA.value)    }
-
-    fun registerOrUpdatePatient(sex : String , pam : String, Steroids : String , age : String , BMI : String , familyStatus : String , SmokingStatus : String) : Job =
-        viewModelScope.launch {
-            registerPatient(sex , pam , Steroids , age , BMI  , familyStatus  , SmokingStatus)
+        testDATA = realmDAO.fetchTestData(patientDATA.value!!.patientId , "DIABETES")
+        patientDATA.postValue(patientDATA.value)
+        testDATA.postValue(testDATA.value)
     }
 
-    private fun registerPatient(sex : String, pam : String, Steroids : String, age : String, BMI : String, familyStatus : String, SmokingStatus : String)
+    fun registerOrUpdatePatient(sex : String , pam : String, Steroids : String , age : String , BMI : String , familyStatus : String , SmokingStatus : String , result : Double) : Job =
+        viewModelScope.launch {
+            registerPatient(sex , pam , Steroids , age , BMI  , familyStatus  , SmokingStatus , result)
+    }
+
+    private fun registerPatient(sex : String, pam : String, Steroids : String, age : String, BMI : String, familyStatus : String, SmokingStatus : String , result : Double)
     {
         var prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
         var userName = prefs.getString("userName", "tempUser")
         realm.executeTransaction {
             var patient : Patient = realm.where(Patient::class.java).equalTo("userName" , userName).findFirst()!!
-                patient.patientAge = age
-                patient.patientPAM = pam
-                patient.patientSteroids = Steroids
-                patient.patientSex = sex
-                patient.patientBMI = BMI
-                patient.patientSiblings = familyStatus
-                patient.smoker = SmokingStatus
+
+            var currentTest = Test()
+            val sdf = SimpleDateFormat("dd/M/yyyy hh::mm")
+            val currentDate = sdf.format(Date())
+            //check if the current date is already in the test database
+            val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
+            if (dateCount > 0)
+            {
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
+            }
+
+            currentTest.patientAge = age
+            currentTest.patientPAM = pam
+            currentTest.patientSteroids = Steroids
+            currentTest.patientSex = sex
+            currentTest.patientBMI = BMI
+            currentTest.patientSiblings = familyStatus
+            currentTest.smoker = SmokingStatus
+            currentTest.patientId = patient.patientId
+            currentTest.testDate = currentDate
+            currentTest.diabetesTestResult = result
+            currentTest.testName = "DIABETES"
+
+            var testId : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId = testList.get(testList.size -1)!!.testId.toInt()
+                    testId += 1
+                    currentTest.testId = testId.toString()
+                }
+                else
+                {
+                    testId = 1
+                    currentTest.testId = testId.toString()
+                }
+            }
+
+            var listOfTest = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    listOfTest[i] = patient.listOfTests!!.get(i)!!
+                }
+                patient.listOfTests = null
+                listOfTest.add(currentTest)
+                for (i in 0 until listOfTest.size -1)
+                {
+                    patient.listOfTests?.set(i, listOfTest.get(i))
+                }
+            }
+            realm.insertOrUpdate(currentTest)
+
             realm.insertOrUpdate(patient)
          }
     }

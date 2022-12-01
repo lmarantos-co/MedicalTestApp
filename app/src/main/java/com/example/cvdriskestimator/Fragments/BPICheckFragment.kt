@@ -27,6 +27,7 @@ import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentBPICheckBinding
 import com.example.cvdriskestimator.viewModels.CheckBPIPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckPatientBPIViewModelFactory
@@ -325,7 +326,14 @@ class BPICheckFragment : Fragment() {
         }
 
         bpiPatientViewModel.patientData.observe(viewLifecycleOwner) {
-            setPatientDataOnForm(it!!)
+        }
+        bpiPatientViewModel.testData.observe(viewLifecycleOwner) {
+            if (it != null)
+                setPatientDataOnForm(it!!)
+        }
+
+        binding.historyBtn.setOnClickListener {
+            bpiPatientViewModel.history()
         }
     }
 
@@ -500,96 +508,96 @@ class BPICheckFragment : Fragment() {
     }
 
 
-    private fun setPatientDataOnForm(patient : Patient)
+    private fun setPatientDataOnForm(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialiseFormData()
-            if (patient.patientBPIQ1 != null) {
-                if ((patient.patientBPIQ1!! >= 0) && (patient.patientBPIQ1!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.g2RGa, patient.patientBPIQ1)
+            if (test.patientBPIQ1 != null) {
+                if ((test.patientBPIQ1!! >= 0) && (test.patientBPIQ1!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.g2RGa, test.patientBPIQ1)
                 }
-                if ((patient.patientBPIQ1!! >= 6) && (patient.patientBPIQ1!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.g2RGb, patient.patientBPIQ1)
-                }
-
-                if ((patient.patientBPIQ2!! >= 0) && (patient.patientBPIQ2!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.q3RGa, patient.patientBPIQ2)
-                }
-                if ((patient.patientBPIQ2!! >= 6) && (patient.patientBPIQ2!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.q3RGb, patient.patientBPIQ2)
+                if ((test.patientBPIQ1!! >= 6) && (test.patientBPIQ1!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.g2RGb, test.patientBPIQ1)
                 }
 
-                if ((patient.patientBPIQ3!! >= 0) && (patient.patientBPIQ3!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.q4aRG, patient.patientBPIQ3)
+                if ((test.patientBPIQ2!! >= 0) && (test.patientBPIQ2!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.q3RGa, test.patientBPIQ2)
                 }
-                if ((patient.patientBPIQ3!! >= 6) && (patient.patientBPIQ3!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.q4RGb, patient.patientBPIQ3)
-                }
-
-                if ((patient.patientBPIQ4!! >= 0) && (patient.patientBPIQ4!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.q5RGa, patient.patientBPIQ4)
-                }
-                if ((patient.patientBPIQ4!! >= 6) && (patient.patientBPIQ4!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.q5RGb, patient.patientBPIQ4)
+                if ((test.patientBPIQ2!! >= 6) && (test.patientBPIQ2!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.q3RGb, test.patientBPIQ2)
                 }
 
-                if ((patient.patientBPIQ5!! >= 0) && (patient.patientBPIQ5!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.q6RGa, patient.patientBPIQ5)
+                if ((test.patientBPIQ3!! >= 0) && (test.patientBPIQ3!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.q4aRG, test.patientBPIQ3)
                 }
-                if ((patient.patientBPIQ5!! >= 6) && (patient.patientBPIQ5!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.q6RGb, patient.patientBPIQ4)
-                }
-
-                if ((patient.patientBPIQ6!! >= 0) && (patient.patientBPIQ6!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.g7aRGa, patient.patientBPIQ6)
-                }
-                if ((patient.patientBPIQ6!! >= 6) && (patient.patientBPIQ6!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.g7aRGb, patient.patientBPIQ6)
+                if ((test.patientBPIQ3!! >= 6) && (test.patientBPIQ3!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.q4RGb, test.patientBPIQ3)
                 }
 
-                if ((patient.patientBPIQ7!! >= 0) && (patient.patientBPIQ7!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.g7bRGa, patient.patientBPIQ7)
+                if ((test.patientBPIQ4!! >= 0) && (test.patientBPIQ4!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.q5RGa, test.patientBPIQ4)
                 }
-                if ((patient.patientBPIQ7!! >= 6) && (patient.patientBPIQ7!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.g7bRGb, patient.patientBPIQ7)
-                }
-
-                if ((patient.patientBPIQ8!! >= 0) && (patient.patientBPIQ8!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.g7cRGa, patient.patientBPIQ8)
-                }
-                if ((patient.patientBPIQ8!! >= 6) && (patient.patientBPIQ8!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.g7cRGb, patient.patientBPIQ8)
+                if ((test.patientBPIQ4!! >= 6) && (test.patientBPIQ4!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.q5RGb, test.patientBPIQ4)
                 }
 
-                if ((patient.patientBPIQ9!! >= 0) && (patient.patientBPIQ9!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.g7dRGa, patient.patientBPIQ9)
+                if ((test.patientBPIQ5!! >= 0) && (test.patientBPIQ5!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.q6RGa, test.patientBPIQ5)
                 }
-                if ((patient.patientBPIQ9!! >= 6) && (patient.patientBPIQ9!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.g7dRGb, patient.patientBPIQ9)
-                }
-
-                if ((patient.patientBPIQ10!! >= 0) && (patient.patientBPIQ10!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.g7eRGa, patient.patientBPIQ10)
-                }
-                if ((patient.patientBPIQ10!! >= 6) && (patient.patientBPIQ10!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.g7eRGb, patient.patientBPIQ10)
+                if ((test.patientBPIQ5!! >= 6) && (test.patientBPIQ5!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.q6RGb, test.patientBPIQ5)
                 }
 
-                if ((patient.patientBPIQ11!! >= 0) && (patient.patientBPIQ11!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.g7fRGa, patient.patientBPIQ11)
+                if ((test.patientBPIQ6!! >= 0) && (test.patientBPIQ6!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.g7aRGa, test.patientBPIQ6)
                 }
-                if ((patient.patientBPIQ11!! >= 6) && (patient.patientBPIQ11!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.g7fRGb, patient.patientBPIQ11)
+                if ((test.patientBPIQ6!! >= 6) && (test.patientBPIQ6!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.g7aRGb, test.patientBPIQ6)
                 }
 
-                if ((patient.patientBPIQ12!! >= 0) && (patient.patientBPIQ12!! <= 5)) {
-                    setQuestionOfRadioGroupA(binding.g7gRGa, patient.patientBPIQ12)
+                if ((test.patientBPIQ7!! >= 0) && (test.patientBPIQ7!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.g7bRGa, test.patientBPIQ7)
                 }
-                if ((patient.patientBPIQ12!! >= 6) && (patient.patientBPIQ12!! <= 10)) {
-                    setQuestionOfRadioGroupB(binding.g7gRGb, patient.patientBPIQ12)
+                if ((test.patientBPIQ7!! >= 6) && (test.patientBPIQ7!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.g7bRGb, test.patientBPIQ7)
+                }
+
+                if ((test.patientBPIQ8!! >= 0) && (test.patientBPIQ8!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.g7cRGa, test.patientBPIQ8)
+                }
+                if ((test.patientBPIQ8!! >= 6) && (test.patientBPIQ8!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.g7cRGb, test.patientBPIQ8)
+                }
+
+                if ((test.patientBPIQ9!! >= 0) && (test.patientBPIQ9!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.g7dRGa, test.patientBPIQ9)
+                }
+                if ((test.patientBPIQ9!! >= 6) && (test.patientBPIQ9!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.g7dRGb, test.patientBPIQ9)
+                }
+
+                if ((test.patientBPIQ10!! >= 0) && (test.patientBPIQ10!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.g7eRGa, test.patientBPIQ10)
+                }
+                if ((test.patientBPIQ10!! >= 6) && (test.patientBPIQ10!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.g7eRGb, test.patientBPIQ10)
+                }
+
+                if ((test.patientBPIQ11!! >= 0) && (test.patientBPIQ11!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.g7fRGa, test.patientBPIQ11)
+                }
+                if ((test.patientBPIQ11!! >= 6) && (test.patientBPIQ11!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.g7fRGb, test.patientBPIQ11)
+                }
+
+                if ((test.patientBPIQ12!! >= 0) && (test.patientBPIQ12!! <= 5)) {
+                    setQuestionOfRadioGroupA(binding.g7gRGa, test.patientBPIQ12)
+                }
+                if ((test.patientBPIQ12!! >= 6) && (test.patientBPIQ12!! <= 10)) {
+                    setQuestionOfRadioGroupB(binding.g7gRGb, test.patientBPIQ12)
                 }
                 mainActivity.runOnUiThread {
-                    setRedCircePos(patient.patientBPIcircleX!!, patient.patientBPIcircleY!!)
+                    setRedCircePos(test.patientBPIcircleX!!, test.patientBPIcircleY!!)
                 }
             }
         } , 1000)
@@ -632,23 +640,23 @@ class BPICheckFragment : Fragment() {
         {
 
             6-> {
-                (rg.getChildAt(6) as RadioButton).isChecked = true
+                (rg.getChildAt(0) as RadioButton).isChecked = true
             }
 
             7 -> {
-                (rg.getChildAt(7) as RadioButton).isChecked = true
+                (rg.getChildAt(1) as RadioButton).isChecked = true
             }
 
             8 -> {
-                (rg.getChildAt(8) as RadioButton).isChecked = true
+                (rg.getChildAt(2) as RadioButton).isChecked = true
             }
 
             9 -> {
-                (rg.getChildAt(9) as RadioButton).isChecked = true
+                (rg.getChildAt(3) as RadioButton).isChecked = true
             }
 
             10 -> {
-                (rg.getChildAt(10) as RadioButton).isChecked = true
+                (rg.getChildAt(4) as RadioButton).isChecked = true
             }
         }
     }
