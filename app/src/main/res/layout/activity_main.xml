@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:srcCompat="@drawable/ic_px_parkinson" />
@@ -22,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:srcCompat="@drawable/ic_gds_depression__2_" />
@@ -34,6 +36,30 @@
         app:layout_constraintBottom_toTopOf="@id/horGL1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include_all_patient_list_test"
+        layout="@layout/all_tests_results_of_patient_layou"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="5dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragmentContainer"
+        app:layout_constraintTop_toTopOf="@+id/include_cvd_title_form" />
+
+    <include
+        android:id="@+id/initial_test_screen_popup"
+        layout="@layout/initial_popup_test_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/include_all_patient_list_test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include_cvd_title_form" />
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
@@ -193,7 +219,7 @@
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/VGL1"

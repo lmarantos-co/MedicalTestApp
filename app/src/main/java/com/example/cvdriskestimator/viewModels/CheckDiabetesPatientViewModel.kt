@@ -3,26 +3,23 @@ package com.example.cvdriskestimator.viewModels
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.widget.RadioGroup
-import androidx.lifecycle.ViewModel
 import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cvdriskestimator.Fragments.DiabetesCheckFragment
 import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.Diabetes2Estimator
-import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class CheckDiabetesPatientViewModel : ViewModel() , Observable {
@@ -98,6 +95,16 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
         historyFragment = HistoryFragment()
         historyFragment.arguments = bundle
         mainActivity.fragmentTransaction(historyFragment)
+    }
+
+    fun fetchHistoryTest(patientId : String, testDate : Date) : Test
+    {
+        var test = Test()
+        realm.executeTransaction {
+            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , test.testDate).equalTo("testName" , "DIABETES").findFirst()!!
+        }
+
+        return test
     }
 
     private fun checkAgeAndBMI(age : String,  BMI : String) : Boolean {
@@ -195,9 +202,16 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             var patient : Patient = realm.where(Patient::class.java).equalTo("userName" , userName).findFirst()!!
 
             var currentTest = Test()
-            val sdf = SimpleDateFormat("dd/M/yyyy hh::mm")
-            val currentDate = sdf.format(Date())
+            val date = Date()
+            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             //check if the current date is already in the test database
+            val calendar: Calendar = Calendar.getInstance()
+            calendar.set(Calendar.YEAR , date.year)
+            calendar.set(Calendar.MONTH , date.month)
+            calendar.set(Calendar.DAY_OF_MONTH , date.day)
+    //        calendar.set(Calendar.HOUR_OF_DAY, date.hours)
+    //        calendar.set(Calendar.MINUTE, date.minutes)
+    //        calendar.set(Calendar.SECOND, date.seconds)
             val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
             if (dateCount > 0)
             {
@@ -212,7 +226,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             currentTest.patientSiblings = familyStatus
             currentTest.smoker = SmokingStatus
             currentTest.patientId = patient.patientId
-            currentTest.testDate = currentDate
+            currentTest.testDate = calendar.time
             currentTest.diabetesTestResult = result
             currentTest.testName = "DIABETES"
 
@@ -251,6 +265,10 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
 
             realm.insertOrUpdate(patient)
          }
+    }
+
+    fun convertDate(dateString: String): Date? {
+        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(dateString)
     }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {

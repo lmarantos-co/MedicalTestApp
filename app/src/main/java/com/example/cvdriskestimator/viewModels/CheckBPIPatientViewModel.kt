@@ -98,11 +98,24 @@ class CheckBPIPatientViewModel : ViewModel() {
         mainActivity.fragmentTransaction(historyFragment)
     }
 
+
+    fun fetchHistoryTest(patientId : String, testDate : Date) : Test
+    {
+        var test = Test()
+        realm.executeTransaction {
+
+            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Brief Pain Index").findFirst()!!
+        }
+
+        return test
+    }
+
     fun checkBPITestPAtient(allPatientValues : ArrayList<Int?> , circleCoordinates : ArrayList<Float?>)
     {
         if ((checkQuestionForInputError(allPatientValues[0] , 2)) && (checkQuestionForInputError(allPatientValues[1]  , 3))
             && (checkQuestionForInputError(allPatientValues[2]  , 4)) && (checkQuestionForInputError(allPatientValues[3]  , 5))
             && (checkQuestionForInputError(allPatientValues[4]  , 6))
+            && (checkQuestionForInputError(allPatientValues[5] , 7))
             && (checkQuestionForInputError(allPatientValues[6]  , 8)) && (checkQuestionForInputError(allPatientValues[7]  , 9))
             && (checkQuestionForInputError(allPatientValues[8]  , 10)) && (checkQuestionForInputError(allPatientValues[9]  , 11))
             && (checkQuestionForInputError(allPatientValues[10]  , 12)) && (checkQuestionForInputError(allPatientValues[11]  , 13))
@@ -145,8 +158,15 @@ class CheckBPIPatientViewModel : ViewModel() {
             var patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
 
             var currentTest = Test()
-            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
-            val currentDate = sdf.format(Date())
+            val date = Date()
+            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
+            val calendar: Calendar = Calendar.getInstance()
+            calendar.set(Calendar.YEAR , date.year)
+            calendar.set(Calendar.MONTH , date.month)
+            calendar.set(Calendar.DAY_OF_MONTH , date.day)
+//            calendar.set(Calendar.HOUR_OF_DAY, date.hours)
+//            calendar.set(Calendar.MINUTE, date.minutes)
+//            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
             val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
             if (dateCount > 0)
@@ -171,7 +191,7 @@ class CheckBPIPatientViewModel : ViewModel() {
             currentTest!!.patientId = patient!!.patientId
             currentTest!!.patientBPITestInterferenceResult = scoreResults.get(0)
             currentTest!!.patientBPITestSeverityResult = scoreResults.get(1)
-            currentTest.testDate = currentDate
+            currentTest.testDate = calendar.time
             currentTest.testName = "Brief Pain Inventory"
 
             var testId : Int = 0
@@ -208,6 +228,168 @@ class CheckBPIPatientViewModel : ViewModel() {
             listOftest.add(currentTest)
             realm.insertOrUpdate(currentTest)
 
+            val calendar1: Calendar = Calendar.getInstance()
+            calendar1.set(Calendar.YEAR , 2021)
+            calendar1.set(Calendar.MONTH , 5)
+            calendar1.set(Calendar.DAY_OF_MONTH , 15)
+
+            currentTest!!.patientBPIQ1 = allPatientData[0]
+            currentTest!!.patientBPIQ2 = allPatientData[1]
+            currentTest!!.patientBPIQ3 = allPatientData[2]
+            currentTest!!.patientBPIQ4 = allPatientData[3]
+            currentTest!!.patientBPIQ5 = allPatientData[4]
+            currentTest!!.patientBPIQ6 = allPatientData[5]
+            currentTest!!.patientBPIQ7 = allPatientData[6]
+            currentTest!!.patientBPIQ8 = allPatientData[7]
+            currentTest!!.patientBPIQ9 = allPatientData[8]
+            currentTest!!.patientBPIQ10 = allPatientData[9]
+            currentTest!!.patientBPIQ11 = allPatientData[10]
+            currentTest!!.patientBPIQ12 = allPatientData[11]
+            currentTest!!.patientBPIcircleX = circleCoordinates[0]
+            currentTest!!.patientBPIcircleY = circleCoordinates[1]
+            currentTest!!.patientId = patient!!.patientId
+            currentTest!!.patientBPITestInterferenceResult = 4f
+            currentTest!!.patientBPITestSeverityResult = 7f
+            currentTest.testDate = calendar1.time
+            currentTest.testName = "Brief Pain Inventory"
+
+            realm.insertOrUpdate(currentTest)
+
+            val calendar2: Calendar = Calendar.getInstance()
+            calendar2.set(Calendar.YEAR , 2021)
+            calendar2.set(Calendar.MONTH , 6)
+            calendar2.set(Calendar.DAY_OF_MONTH , 15)
+
+            currentTest!!.patientBPIQ1 = allPatientData[0]
+            currentTest!!.patientBPIQ2 = allPatientData[1]
+            currentTest!!.patientBPIQ3 = allPatientData[2]
+            currentTest!!.patientBPIQ4 = allPatientData[3]
+            currentTest!!.patientBPIQ5 = allPatientData[4]
+            currentTest!!.patientBPIQ6 = allPatientData[5]
+            currentTest!!.patientBPIQ7 = allPatientData[6]
+            currentTest!!.patientBPIQ8 = allPatientData[7]
+            currentTest!!.patientBPIQ9 = allPatientData[8]
+            currentTest!!.patientBPIQ10 = allPatientData[9]
+            currentTest!!.patientBPIQ11 = allPatientData[10]
+            currentTest!!.patientBPIQ12 = allPatientData[11]
+            currentTest!!.patientBPIcircleX = circleCoordinates[0]
+            currentTest!!.patientBPIcircleY = circleCoordinates[1]
+            currentTest!!.patientId = patient!!.patientId
+            currentTest!!.patientBPITestInterferenceResult = 2f
+            currentTest!!.patientBPITestSeverityResult = 8f
+            currentTest.testDate = calendar2.time
+            currentTest.testName = "Brief Pain Inventory"
+
+            realm.insertOrUpdate(currentTest)
+
+            val calendar3: Calendar = Calendar.getInstance()
+            calendar3.set(Calendar.YEAR , 2021)
+            calendar3.set(Calendar.MONTH , 6)
+            calendar3.set(Calendar.DAY_OF_MONTH , 30)
+
+            currentTest!!.patientBPIQ1 = allPatientData[0]
+            currentTest!!.patientBPIQ2 = allPatientData[1]
+            currentTest!!.patientBPIQ3 = allPatientData[2]
+            currentTest!!.patientBPIQ4 = allPatientData[3]
+            currentTest!!.patientBPIQ5 = allPatientData[4]
+            currentTest!!.patientBPIQ6 = allPatientData[5]
+            currentTest!!.patientBPIQ7 = allPatientData[6]
+            currentTest!!.patientBPIQ8 = allPatientData[7]
+            currentTest!!.patientBPIQ9 = allPatientData[8]
+            currentTest!!.patientBPIQ10 = allPatientData[9]
+            currentTest!!.patientBPIQ11 = allPatientData[10]
+            currentTest!!.patientBPIQ12 = allPatientData[11]
+            currentTest!!.patientBPIcircleX = circleCoordinates[0]
+            currentTest!!.patientBPIcircleY = circleCoordinates[1]
+            currentTest!!.patientId = patient!!.patientId
+            currentTest!!.patientBPITestInterferenceResult = 2f
+            currentTest!!.patientBPITestSeverityResult = 8f
+            currentTest.testDate = calendar3.time
+            currentTest.testName = "Brief Pain Inventory"
+
+            realm.insertOrUpdate(currentTest)
+
+            val calendar4: Calendar = Calendar.getInstance()
+            calendar4.set(Calendar.YEAR , 2021)
+            calendar4.set(Calendar.MONTH , 7)
+            calendar4.set(Calendar.DAY_OF_MONTH , 5)
+
+            currentTest!!.patientBPIQ1 = allPatientData[0]
+            currentTest!!.patientBPIQ2 = allPatientData[1]
+            currentTest!!.patientBPIQ3 = allPatientData[2]
+            currentTest!!.patientBPIQ4 = allPatientData[3]
+            currentTest!!.patientBPIQ5 = allPatientData[4]
+            currentTest!!.patientBPIQ6 = allPatientData[5]
+            currentTest!!.patientBPIQ7 = allPatientData[6]
+            currentTest!!.patientBPIQ8 = allPatientData[7]
+            currentTest!!.patientBPIQ9 = allPatientData[8]
+            currentTest!!.patientBPIQ10 = allPatientData[9]
+            currentTest!!.patientBPIQ11 = allPatientData[10]
+            currentTest!!.patientBPIQ12 = allPatientData[11]
+            currentTest!!.patientBPIcircleX = circleCoordinates[0]
+            currentTest!!.patientBPIcircleY = circleCoordinates[1]
+            currentTest!!.patientId = patient!!.patientId
+            currentTest!!.patientBPITestInterferenceResult = 5f
+            currentTest!!.patientBPITestSeverityResult = 4f
+            currentTest.testDate = calendar4.time
+            currentTest.testName = "Brief Pain Inventory"
+
+            realm.insertOrUpdate(currentTest)
+
+            val calendar5: Calendar = Calendar.getInstance()
+            calendar5.set(Calendar.YEAR , 2021)
+            calendar5.set(Calendar.MONTH , 7)
+            calendar5.set(Calendar.DAY_OF_MONTH , 25)
+
+            currentTest!!.patientBPIQ1 = allPatientData[0]
+            currentTest!!.patientBPIQ2 = allPatientData[1]
+            currentTest!!.patientBPIQ3 = allPatientData[2]
+            currentTest!!.patientBPIQ4 = allPatientData[3]
+            currentTest!!.patientBPIQ5 = allPatientData[4]
+            currentTest!!.patientBPIQ6 = allPatientData[5]
+            currentTest!!.patientBPIQ7 = allPatientData[6]
+            currentTest!!.patientBPIQ8 = allPatientData[7]
+            currentTest!!.patientBPIQ9 = allPatientData[8]
+            currentTest!!.patientBPIQ10 = allPatientData[9]
+            currentTest!!.patientBPIQ11 = allPatientData[10]
+            currentTest!!.patientBPIQ12 = allPatientData[11]
+            currentTest!!.patientBPIcircleX = circleCoordinates[0]
+            currentTest!!.patientBPIcircleY = circleCoordinates[1]
+            currentTest!!.patientId = patient!!.patientId
+            currentTest!!.patientBPITestInterferenceResult = 5f
+            currentTest!!.patientBPITestSeverityResult = 4f
+            currentTest.testDate = calendar5.time
+            currentTest.testName = "Brief Pain Inventory"
+
+            realm.insertOrUpdate(currentTest)
+
+            val calendar6: Calendar = Calendar.getInstance()
+            calendar6.set(Calendar.YEAR , 2021)
+            calendar6.set(Calendar.MONTH , 7)
+            calendar6.set(Calendar.DAY_OF_MONTH , 25)
+
+            currentTest!!.patientBPIQ1 = allPatientData[0]
+            currentTest!!.patientBPIQ2 = allPatientData[1]
+            currentTest!!.patientBPIQ3 = allPatientData[2]
+            currentTest!!.patientBPIQ4 = allPatientData[3]
+            currentTest!!.patientBPIQ5 = allPatientData[4]
+            currentTest!!.patientBPIQ6 = allPatientData[5]
+            currentTest!!.patientBPIQ7 = allPatientData[6]
+            currentTest!!.patientBPIQ8 = allPatientData[7]
+            currentTest!!.patientBPIQ9 = allPatientData[8]
+            currentTest!!.patientBPIQ10 = allPatientData[9]
+            currentTest!!.patientBPIQ11 = allPatientData[10]
+            currentTest!!.patientBPIQ12 = allPatientData[11]
+            currentTest!!.patientBPIcircleX = circleCoordinates[0]
+            currentTest!!.patientBPIcircleY = circleCoordinates[1]
+            currentTest!!.patientId = patient!!.patientId
+            currentTest!!.patientBPITestInterferenceResult = 1f
+            currentTest!!.patientBPITestSeverityResult = 3f
+            currentTest.testDate = calendar6.time
+            currentTest.testName = "Brief Pain Inventory"
+
+            realm.insertOrUpdate(currentTest)
+
             realm.insertOrUpdate(patient)
         }
     }
@@ -235,6 +417,11 @@ class CheckBPIPatientViewModel : ViewModel() {
         patientData = realmDAO.fetchPatientData(username)
         testData = realmDAO.fetchTestData(patientData.value!!.patientId , "BPI")
         patientData.postValue(patientData!!.value)
+        testData.postValue(testData.value)
+    }
+
+    fun convertDate(dateString: String): Date? {
+        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(dateString)
     }
 
 }

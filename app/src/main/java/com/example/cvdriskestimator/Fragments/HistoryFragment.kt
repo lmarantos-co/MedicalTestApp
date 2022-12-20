@@ -6,10 +6,14 @@ import android.os.Bundle
 import android.text.Html
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.example.cvdriskestimator.CustomClasses.CustomAdapter
+import com.example.cvdriskestimator.CustomClasses.RecyclerItemClickListenr
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
@@ -23,7 +27,13 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter
 import io.realm.Realm
+import io.realm.RealmList
 import io.realm.RealmResults
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,6 +49,23 @@ class HistoryFragment : Fragment() {
     private lateinit var testResultsChart: com.github.mikephil.charting.charts.LineChart
     private lateinit var realm : Realm
     private lateinit var mainActivity: MainActivity
+    private lateinit var checkFragment: CheckFragment
+    private lateinit var diabetesCheckFragment: DiabetesCheckFragment
+    private lateinit var gdsCheckFragment: GDSCheckFragment
+    private lateinit var mdiCheckFragment: MDICheckFragment
+    private lateinit var medDietTestFragment: medDietTestFragment
+    private lateinit var baiCheckFragment: BAICheckFragment
+    private lateinit var bpiCheckFragment: BPICheckFragment
+    private var dateFromPicked : Boolean = false
+    private var dateToPicked : Boolean = false
+    private var openDatePicker : Boolean = false
+    private var minDateString : String = ""
+    private var maxDateString : String = ""
+    private var lineChartXPos : Int = 0
+    private var lineChartYPos : Int = 0
+    private var lineChartWidth : Int = 0
+    private var lineChartHeight : Int = 0
+
 
     private var SCREEN_HEIGHT : Int = 0
 
@@ -61,49 +88,294 @@ class HistoryFragment : Fragment() {
 
         param1 = this.arguments!!.getString("patientId")!!
         param2 = this.arguments!!.getString("testName")
+
+        bindingHistoryFragment.datePickerButton.setOnClickListener {
+            if (!openDatePicker)
+            {
+                bindingHistoryFragment.datePickerLinLayout.visibility = View.VISIBLE
+                bindingHistoryFragment.fromDatePicker.visibility = View.VISIBLE
+            }
+            else
+                bindingHistoryFragment.datePickerLinLayout.visibility = View.GONE
+            openDatePicker = !openDatePicker
+        }
+
+        bindingHistoryFragment.includeCvdTitleForm.MTEConLayout.setOnClickListener {
+            mainActivity.backToActivity()
+        }
+
+        setColorOnTestTitle()
+
+        var today = Calendar.getInstance()
+        var fromSelectDate : Date? = null
+        var toSelectDate : Date? = null
+        bindingHistoryFragment.fromDatePicker.init(today.get(Calendar.YEAR) , today.get(Calendar.MONTH) , today.get(Calendar.DAY_OF_MONTH))
+        { view, year, month, day ->
+            val month = month + 1
+            val msg = "You Selected: $day/$month/$year"
+            fromSelectDate = Date(year , month , day)
+            val calendar0: Calendar = Calendar.getInstance()
+            calendar0.set(Calendar.YEAR , year)
+            calendar0.set(Calendar.MONTH , month)
+            calendar0.set(Calendar.DAY_OF_MONTH , day)
+            fromSelectDate = calendar0.time
+//            calendar0.set(Calendar.HOUR_OF_DAY, fromSelectDate!!.hours)
+//            calendar0.set(Calendar.MINUTE, fromSelectDate!!.minutes)
+//            calendar0.set(Calendar.SECOND, fromSelectDate!!.seconds)
+            dateFromPicked = true
+            bindingHistoryFragment.toDatePicker.visibility = View.VISIBLE
+            bindingHistoryFragment.fromDatePicker.visibility = View.GONE
+            if (dateFromPicked && dateToPicked)
+            {
+                var allTests = getAllTests(fromSelectDate , toSelectDate)
+                dateFromPicked = false
+                dateToPicked = false
+            }
+        }
+
+
+        bindingHistoryFragment.toDatePicker.init(today.get(Calendar.YEAR) , today.get(Calendar.MONTH) , today.get(Calendar.DAY_OF_MONTH))
+        { view, year, month, day ->
+            val month = month + 1
+            val msg = "You Selected: $day/$month/$year"
+            toSelectDate = Date(year, month, day)
+            val calendar0: Calendar = Calendar.getInstance()
+            calendar0.set(Calendar.YEAR, year)
+            calendar0.set(Calendar.MONTH, month)
+            calendar0.set(Calendar.DAY_OF_MONTH, day)
+            toSelectDate = calendar0.time
+//            calendar0.set(Calendar.HOUR_OF_DAY, toSelectDate!!.hours)
+//            calendar0.set(Calendar.MINUTE, toSelectDate!!.minutes)
+//            calendar0.set(Calendar.SECOND, toSelectDate!!.seconds)
+            dateToPicked = true
+            if (dateFromPicked && dateToPicked) {
+                if (dateFromPicked && dateToPicked) {
+                    var allTests = getAllTests(fromSelectDate, toSelectDate)
+                    dateFromPicked = false
+                    dateToPicked = false
+                }
+                bindingHistoryFragment.toDatePicker.visibility = View.GONE
+
+            }
+
+        }
+
+//        bindingHistoryFragment.testResultsLineChart.post{
+//            lineChartXPos = bindingHistoryFragment.testResultsLineChart.x.toInt()
+//            lineChartYPos = bindingHistoryFragment.testResultsLineChart.y.toInt()
+//            lineChartHeight = bindingHistoryFragment.testResultsLineChart.height
+//            lineChartWidth = bindingHistoryFragment.testResultsLineChart.width
+//
+//            testResultsChart.getDescription().setEnabled(true);
+//            var description : Description = Description()
+//
+//            description.setText("${minDateString} --- ${maxDateString}");
+//            description.setTextSize(15f);
+//            description.xOffset = - (mainActivity.resources.displayMetrics.widthPixels / 2 * mainActivity.resources.displayMetrics.scaledDensity)
+//    //        description.setPosition((lineChartXPos + 10).toFloat() , (lineChartHeight - 100).toFloat())
+//            testResultsChart.description = description
+//
+//        }
+
         calculateScreenHeight()
-        getAllTests()
+
+        bindingHistoryFragment.testResultsLineChart.layoutParams.height = SCREEN_HEIGHT / 3
+
+        bindingHistoryFragment.testResultDateListView.layoutParams.height = (SCREEN_HEIGHT / 3.5).toInt()
+
+        getAllTests(null , null)
     }
 
-    private fun getAllTests()
+    private fun getAllTests(fromDate : Date?  , toDate : Date?) : RealmResults<Test>
     {
         realm = Realm.getDefaultInstance()
         //get all the tests related with the specific test and patient
         var tests : RealmResults<Test>? = null
+        var last10Tests : RealmResults<Test>? = null
+
         when (param2)
         {
             "CardioVascularDisease" ->
             {
+                bindingHistoryFragment.testNameTxtV.setText("CardioVascularDisease")
                 tests = realm.where(Test::class.java).isNotNull("SSB") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+//                if (tests.size > 10)
+//                {
+//
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//
+//                }
+
+                setDatesFromTestsToChartSubTitle(tests)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("SSB").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
             }
             "DIABETES" ->
             {
+                bindingHistoryFragment.testNameTxtV.setText("DIABETES")
                 tests = realm.where(Test::class.java).isNotNull("patientPAM") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+//                if (tests.size > 10)
+//                {
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//                }
+                setDatesFromTestsToChartSubTitle(tests!!)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("patientPAM").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
             }
             "Major Depression Index" ->
             {
+                bindingHistoryFragment.testNameTxtV.setText("Major Depression Index")
                 tests = realm.where(Test::class.java).isNotNull("patientMDIQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+//                if (tests.size > 10)
+//                {
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//                }
+                setDatesFromTestsToChartSubTitle(tests!!)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("patientMDIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
             }
             "Beck Anxiety Index" ->
             {
+                bindingHistoryFragment.testNameTxtV.setText("Beck Anxiety Index")
                 tests = realm.where(Test::class.java).isNotNull("patientBAIQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+//                if (tests.size > 10)
+//                {
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//                }
+                setDatesFromTestsToChartSubTitle(tests!!)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("patientBAIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
             }
             "Mediterranean Diet Test" ->
             {
+                bindingHistoryFragment.testNameTxtV.setText("Mediterranean Diet Test")
                 tests = realm.where(Test::class.java).isNotNull("patientMDSQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+//                if (tests.size > 10)
+//                {
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//                }
+                setDatesFromTestsToChartSubTitle(tests!!)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("patientMDSQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
             }
             "Brief Pain Inventory" ->
             {
+                bindingHistoryFragment.testNameTxtV.setText("Brief Pain Inventory")
                 tests = realm.where(Test::class.java).isNotNull("patientBPIQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+//                if (tests.size > 10)
+//                {
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//                }
+                setDatesFromTestsToChartSubTitle(tests!!)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("patientBPIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
             }
-            "Geriatric Deprression Scale" ->
+            "Geriatric Depression Scale" ->
             {
+                bindingHistoryFragment.testNameTxtV.setText("Geriatric Depression Scale")
                 tests = realm.where(Test::class.java).isNotNull("patientGDSQ6") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+//                if (tests.size > 10)
+//                {
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//                }
+                setDatesFromTestsToChartSubTitle(tests!!)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("patientGDSQ6").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
             }
         }
         bindingHistoryFragment.testResultsLineChart.layoutParams.height = SCREEN_HEIGHT / 4
         initTestResultsScopeDataChart(tests!!)
         initTestResultsListView(tests!!)
+        return tests!!
+    }
+
+    private fun setDatesFromTestsToChartSubTitle(tests : RealmResults<Test>)
+    {
+        var maxDate = Date(1990 , 1 ,1)
+        var minDate : Date = Calendar.getInstance().getTime()
+
+        val calendar1: Calendar = Calendar.getInstance()
+        calendar1.set(Calendar.YEAR , minDate.year)
+        calendar1.set(Calendar.MONTH , minDate.month)
+        calendar1.set(Calendar.DAY_OF_MONTH , minDate.day)
+        minDate = calendar1.time
+
+        val calendar2: Calendar = Calendar.getInstance()
+        calendar2.set(Calendar.YEAR , maxDate.year)
+        calendar2.set(Calendar.MONTH , maxDate.month)
+        calendar2.set(Calendar.DAY_OF_MONTH , maxDate.day)
+        maxDate = calendar2.time
+
+        for (test in tests)
+        {
+            if (test.testDate!!.before(minDate))
+            {
+                minDate = test.testDate!!
+            }
+
+            if (test.testDate!!.after(maxDate))
+            {
+                maxDate = test.testDate!!
+            }
+        }
+        val lMindate: LocalDate = LocalDate.from(minDate.toInstant().atZone(ZoneOffset.UTC))
+        val lMaxdate: LocalDate = LocalDate.from(maxDate.toInstant().atZone(ZoneOffset.UTC))
+        val sMinDate = DateTimeFormatter.ISO_DATE.format(lMindate) // uuuu-MM-dd
+        val sMaxDate = DateTimeFormatter.ISO_DATE.format(lMaxdate) // uuuu-MM-dd
+        minDateString = sMinDate
+        maxDateString = sMaxDate
+
+   //     bindingHistoryFragment.testDates.setText(sMinDate + "   " + sMaxDate)
+
     }
 
     private fun initTestResultsScopeDataChart(allTests : RealmResults<Test>)
@@ -149,16 +421,34 @@ class HistoryFragment : Fragment() {
                 }
             }
 
+            if (minPSScore > 1)
+                minPSScore -= 1
+            else
+                minPSScore = 0f
+            if (minPIScore > 1)
+                minPIScore -= 1
+            else
+                minPIScore = 0f
+            if (maxPSScore < 9)
+                maxPSScore += 1
+            else
+                maxPSScore = 10f
+            if (maxPIScore < 9)
+                maxPIScore += 1
+            else
+                maxPIScore = 10f
+
             //create the data set
             dataSet1 = LineDataSet(null, Html.fromHtml("PSS").toString())
             dataSet1.axisDependency = YAxis.AxisDependency.LEFT
             dataSet1.lineWidth = 2f
             dataSet1.color = Color.MAGENTA
             dataSet1.isHighlightEnabled = false
-            dataSet1.setDrawValues(true)
             dataSet1.setDrawCircles(false)
+            dataSet1.setDrawValues(false)
             dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
             dataSet1.cubicIntensity = 0.2f
+            dataSet1.clear()
 
             for (i in 0 until allTests.size)
             {
@@ -171,19 +461,21 @@ class HistoryFragment : Fragment() {
             dataSet2.lineWidth = 2f
             dataSet2.color = Color.BLUE
             dataSet2.isHighlightEnabled = false
-            dataSet2.setDrawValues(true)
             dataSet2.setDrawCircles(false)
+            dataSet2.setDrawValues(false)
             dataSet2.mode = LineDataSet.Mode.CUBIC_BEZIER
             dataSet2.cubicIntensity = 0.2f
+            dataSet2.clear()
 
             for (i in 0 until allTests.size)
             {
                 var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBPITestInterferenceResult!!)
-                dataSet1.addEntry(entry)
+                dataSet2.addEntry(entry)
             }
 
             data.addDataSet(dataSet1)
             data.addDataSet(dataSet2)
+            data.notifyDataChanged()
 
         }
         else
@@ -204,16 +496,27 @@ class HistoryFragment : Fragment() {
                            maxScore = test.cvdTestResult!!.toFloat()
                        }
                    }
+
+                   if (minScore > 10)
+                       minScore -= 10
+                   else
+                       minScore = 0f
+                   if (maxScore < 90)
+                       maxScore += 10
+                   else
+                       maxScore = 100f
+
                    //create the data set
                    dataSet1 = LineDataSet(null, Html.fromHtml("CVD %").toString())
                    dataSet1.axisDependency = YAxis.AxisDependency.LEFT
                    dataSet1.lineWidth = 2f
                    dataSet1.color = Color.BLUE
                    dataSet1.isHighlightEnabled = false
-                   dataSet1.setDrawValues(true)
                    dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
                    dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
                    dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
 
                    for (i in 0 until allTests.size)
                    {
@@ -222,6 +525,7 @@ class HistoryFragment : Fragment() {
                    }
 
                    data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
 
                }
 
@@ -240,16 +544,26 @@ class HistoryFragment : Fragment() {
                        }
                    }
 
+                   if (minScore > 10)
+                       minScore -= 10
+                   else
+                       minScore = 0f
+                   if (maxScore < 90)
+                       maxScore += 10
+                   else
+                       maxScore = 100f
+
                    //create the data set
                    dataSet1 = LineDataSet(null, Html.fromHtml("DIABETES %").toString())
                    dataSet1.axisDependency = YAxis.AxisDependency.LEFT
                    dataSet1.lineWidth = 2f
                    dataSet1.color = Color.BLUE
                    dataSet1.isHighlightEnabled = false
-                   dataSet1.setDrawValues(true)
                    dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
                    dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
                    dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
 
                    for (i in 0 until allTests.size)
                    {
@@ -258,10 +572,10 @@ class HistoryFragment : Fragment() {
                    }
 
                    data.addDataSet(dataSet1)
-
+                   data.notifyDataChanged()
                }
 
-               "Major Derpression Index" ->
+               "Major Depression Index" ->
                {
                    for (test in allTests)
                    {
@@ -275,16 +589,27 @@ class HistoryFragment : Fragment() {
                            maxScore = test.patientMDITestResult!!.toFloat()
                        }
                    }
+
+                   if (minScore > 5)
+                       minScore -= 5
+                   else
+                       minScore = 0f
+                   if (maxScore < 50)
+                       maxScore += 5
+                   else
+                       maxScore = 55f
+
                    //create the data set
                    dataSet1 = LineDataSet(null, Html.fromHtml("MDI").toString())
                    dataSet1.axisDependency = YAxis.AxisDependency.LEFT
                    dataSet1.lineWidth = 2f
                    dataSet1.color = Color.BLUE
                    dataSet1.isHighlightEnabled = false
-                   dataSet1.setDrawValues(true)
+                   dataSet1.setDrawValues(false)
                    dataSet1.setDrawCircles(false)
                    dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
                    dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
 
                    for (i in 0 until allTests.size)
                    {
@@ -293,6 +618,7 @@ class HistoryFragment : Fragment() {
                    }
 
                    data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
 
                }
 
@@ -309,6 +635,15 @@ class HistoryFragment : Fragment() {
                        {
                            maxScore = test.patientBAITestResult!!.toFloat()
                        }
+
+                       if (minScore > 5)
+                           minScore -= 5
+                       else
+                           minScore = 0f
+                       if (maxScore < 55)
+                           maxScore += 5
+                       else
+                           maxScore = 63f
                    }
 
                    //create the data set
@@ -317,10 +652,11 @@ class HistoryFragment : Fragment() {
                    dataSet1.lineWidth = 2f
                    dataSet1.color = Color.BLUE
                    dataSet1.isHighlightEnabled = false
-                   dataSet1.setDrawValues(true)
                    dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
                    dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
                    dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
 
                    for (i in 0 until allTests.size)
                    {
@@ -329,6 +665,7 @@ class HistoryFragment : Fragment() {
                    }
 
                    data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
 
                }
 
@@ -345,6 +682,14 @@ class HistoryFragment : Fragment() {
                        {
                            maxScore = test.patientMDSTestResult!!.toFloat()
                        }
+                       if (minScore > 5)
+                           minScore -= 5
+                       else
+                           minScore = 0f
+                       if (maxScore < 50)
+                           maxScore += 5
+                       else
+                           maxScore = 55f
                    }
 
                    //create the data set
@@ -353,10 +698,11 @@ class HistoryFragment : Fragment() {
                    dataSet1.lineWidth = 2f
                    dataSet1.color = Color.BLUE
                    dataSet1.isHighlightEnabled = false
-                   dataSet1.setDrawValues(true)
                    dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
                    dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
                    dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
 
                    for (i in 0 until allTests.size)
                    {
@@ -365,6 +711,7 @@ class HistoryFragment : Fragment() {
                    }
 
                    data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
 
                }
 
@@ -381,6 +728,15 @@ class HistoryFragment : Fragment() {
                        {
                            maxScore = test.patientGDSTestResult!!.toFloat()
                        }
+
+                       if (minScore > 3)
+                           minScore -= 2
+                       else
+                           minScore = 0f
+                       if (maxScore < 12)
+                           maxScore += 2
+                       else
+                           maxScore = 15f
                    }
 
                    //create the data set
@@ -389,10 +745,11 @@ class HistoryFragment : Fragment() {
                    dataSet1.lineWidth = 2f
                    dataSet1.color = Color.BLUE
                    dataSet1.isHighlightEnabled = false
-                   dataSet1.setDrawValues(true)
                    dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
                    dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
                    dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
 
                    for (i in 0 until allTests.size)
                    {
@@ -401,6 +758,7 @@ class HistoryFragment : Fragment() {
                    }
 
                    data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
                }
            }
         }
@@ -409,7 +767,9 @@ class HistoryFragment : Fragment() {
         // enable description text
         testResultsChart.description.isEnabled = true
         val chartDescription = Description()
-        chartDescription.text = "${param2} Test Results (OVER TIME)"
+        chartDescription.text = "${minDateString} ------------ ${maxDateString}"
+        chartDescription.textSize = 15f
+        chartDescription.yOffset = - 5f
         testResultsChart.description = chartDescription
 
         // enable touch gestures
@@ -450,6 +810,7 @@ class HistoryFragment : Fragment() {
         xl.setDrawGridLines(true)
         xl.setAvoidFirstLastClipping(true)
         xl.isEnabled = true
+        xl.setDrawLabels(false)
 
         val leftAxis: YAxis = testResultsChart.axisLeft
         leftAxis.textColor = Color.BLACK
@@ -476,22 +837,26 @@ class HistoryFragment : Fragment() {
         leftAxis.setDrawGridLines(true)
         leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART)
         leftAxis.valueFormatter = DefaultAxisValueFormatter(4)
+        leftAxis.spaceMin = 50f
+        leftAxis.isGranularityEnabled = true
+        leftAxis.granularity = 20f
+
 
         val rightAxis: YAxis = testResultsChart.axisRight
         rightAxis.isEnabled = false
 
         testResultsChart.axisLeft.setDrawGridLines(false)
+
+
         testResultsChart.xAxis.setDrawGridLines(false)
         testResultsChart.setDrawBorders(false)
+        testResultsChart.invalidate()
     }
 
     private fun initTestResultsListView(allTests : RealmResults<Test>)
     {
         var dateArrayList = ArrayList<String>()
-        for (test in allTests)
-        {
-            dateArrayList.add("${test.testDate}")
-        }
+
 
         var scoreArrayList = ArrayList<String>()
         when (param2)
@@ -500,49 +865,56 @@ class HistoryFragment : Fragment() {
             {
                 for (test in allTests)
                 {
-                    scoreArrayList.add("${test.cvdTestResult} %")
+                    val format = SimpleDateFormat("yyy MM dd")
+                    dateArrayList.add("${format.format(test.testDate)}                      ${test.cvdTestResult} %")
                 }
             }
             "DIABETES" ->
             {
                 for (test in allTests)
                 {
-                    scoreArrayList.add("${test.diabetesTestResult} %")
+                    val format = SimpleDateFormat("yyy MM dd")
+                    dateArrayList.add("${format.format(test.testDate)}                      ${test.diabetesTestResult} %")
                 }
             }
             "Major Depression Index" ->
             {
                 for (test in allTests)
                 {
-                    scoreArrayList.add("${test.patientMDITestResult}")
+                    val format = SimpleDateFormat("yyy MM dd")
+                    dateArrayList.add("${format.format(test.testDate)}                      ${test.patientMDITestResult}")
                 }
             }
             "Beck Anxiety Index" ->
             {
                 for (test in allTests)
                 {
-                    scoreArrayList.add("${test.patientBAITestResult}")
+                    val format = SimpleDateFormat("yyy MM dd")
+                    dateArrayList.add("${format.format(test.testDate)}                      ${test.patientBAITestResult}")
                 }
             }
             "Mediterranean Diet Test" ->
             {
                 for (test in allTests)
                 {
-                    scoreArrayList.add("${test.patientMDSTestResult}")
+                    val format = SimpleDateFormat("yyy MM dd")
+                    dateArrayList.add("${format.format(test.testDate)}                      ${test.patientMDSTestResult}")
                 }
             }
             "Brief Pain Inventory" ->
             {
                 for (test in allTests)
                 {
-                    scoreArrayList.add("PSS : ${test.patientBPITestSeverityResult} , PIS : ${test.patientBPITestInterferenceResult}")
+                    val format = SimpleDateFormat("yyy MM dd")
+                    dateArrayList.add("${format.format(test.testDate)} - PSS : ${test.patientBPITestSeverityResult} , PIS : ${test.patientBPITestInterferenceResult}")
                 }
             }
             "Geriatric Deprression Scale" ->
             {
                 for (test in allTests)
                 {
-                    scoreArrayList.add("${test.patientGDSTestResult}")
+                    val format = SimpleDateFormat("yyy MM dd")
+                    dateArrayList.add("${format.format(test.testDate)}                      ${test.patientGDSTestResult}")
                 }
             }
         }
@@ -550,8 +922,144 @@ class HistoryFragment : Fragment() {
         val dateAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textcenter, dateArrayList)
         val scoreAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textcenter, scoreArrayList)
 
+        dateAdapter.notifyDataSetChanged()
+        scoreAdapter.notifyDataSetChanged()
+
+//        var customRecViewAdapter = CustomAdapter(dateArrayList , scoreArrayList)
+//        bindingHistoryFragment.testResultDateRecycleView.adapter = customRecViewAdapter
+
+
         bindingHistoryFragment.testResultDateListView.adapter = dateAdapter
         bindingHistoryFragment.testResultScoreListView.adapter = scoreAdapter
+
+//        bindingHistoryFragment.testResultDateRecycleView.addOnItemTouchListener(
+//            RecyclerItemClickListenr(mainActivity.applicationContext, bindingHistoryFragment.testResultDateRecycleView, object : RecyclerItemClickListenr.OnItemClickListener {
+//
+//            override fun onItemClick(view: View, position: Int) {
+//                //do your work here..
+//            }
+//            override fun onItemLongClick(view: View?, position: Int) {
+//            }
+//        })
+//        )
+
+//        bindingHistoryFragment.testResultScoreListView.setOnItemClickListener { parent, view, position, id ->
+//            var testDate = allTests.get(position)!!.testDate.toString()
+//            showPatientTest(param1!! , testDate , param2!!)
+//        }
+//
+        bindingHistoryFragment.testResultDateListView.setOnItemClickListener { parent, view, position, id ->
+            var testDate = allTests.get(position)!!.testDate.toString()
+            showPatientTest(param1!! , testDate , param2!!)
+        }
+    }
+
+    private fun setColorOnTestTitle()
+    {
+        var testName = param2!!
+        when (testName)
+        {
+            "CardioVascularDisease" ->
+            {
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.orange_6))
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.orange_6))
+
+            }
+            "DIABETES" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.green_5))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.green_5))
+
+            }
+            "Major Depression Index" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.purple_3))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.purple_3))
+
+
+            }
+            "Beck Anxiety Index" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.light_blue))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_blue))
+
+            }
+            "Mediterranean Diet Test" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.light_blue))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_blue))
+
+            }
+            "Brief Pain Inventory" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.light_yellow))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_yellow))
+
+            }
+            "Geriatric Deprression Scale" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.purple_3))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.purple_3))
+            }
+        }
+    }
+
+    private fun showPatientTest(patientId : String , testDate : String , testName : String)
+    {
+        //fetch the test from realm database
+        realm.executeTransaction {
+            var bundle = Bundle()
+            bundle.putString("patientId" , patientId)
+            bundle.putString("testDate" , testDate)
+            var testName = param2!!
+            when (testName)
+            {
+                "CardioVascularDisease" ->
+                {
+                    checkFragment = CheckFragment()
+                    checkFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(checkFragment)
+                }
+                "DIABETES" ->
+                {
+                    diabetesCheckFragment = DiabetesCheckFragment()
+                    diabetesCheckFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(diabetesCheckFragment)
+                }
+                "Major Depression Index" ->
+                {
+                    mdiCheckFragment = MDICheckFragment()
+                    mdiCheckFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(mdiCheckFragment)
+                }
+                "Beck Anxiety Index" ->
+                {
+                    baiCheckFragment = BAICheckFragment()
+                    baiCheckFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(baiCheckFragment)
+                }
+                "Mediterranean Diet Test" ->
+                {
+                    medDietTestFragment = medDietTestFragment()
+                    medDietTestFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(medDietTestFragment)
+                }
+                "Brief Pain Inventory" ->
+                {
+                    bpiCheckFragment = BPICheckFragment()
+                    bpiCheckFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(medDietTestFragment)
+                }
+                "Geriatric Deprression Scale" ->
+                {
+                    gdsCheckFragment = GDSCheckFragment()
+                    gdsCheckFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(medDietTestFragment)
+
+                }
+            }
+
+        }
 
     }
 

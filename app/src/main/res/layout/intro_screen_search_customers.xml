@@ -10,7 +10,7 @@
         android:id="@+id/searchCustomersrelLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/intro_screen_panel"
+        android:background="@drawable/gray_result_title_style"
         app:layout_constraintBottom_toTopOf="@+id/bottomHGL"
         app:layout_constraintEnd_toStartOf="@+id/rightVGL"
         app:layout_constraintStart_toStartOf="@+id/leftVGL"

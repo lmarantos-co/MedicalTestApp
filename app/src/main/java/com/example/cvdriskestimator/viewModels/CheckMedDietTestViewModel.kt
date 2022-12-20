@@ -16,6 +16,7 @@ import io.realm.Realm
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -121,6 +122,17 @@ class CheckMedDietTestViewModel : ViewModel(){
         mainActivity.fragmentTransaction(historyFragment)
     }
 
+    fun fetchHistoryTest(patientId : String, testDate : Date) : Test
+    {
+        var test = Test()
+        realm.executeTransaction {
+
+            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Mediterranean Diet Test").findFirst()!!
+        }
+
+        return test
+    }
+
     fun openResultFragment(score : Int)
     {
         resultFragment = ResultFragment.newInstance(score.toDouble() , 0.0 ,  5)
@@ -148,9 +160,15 @@ class CheckMedDietTestViewModel : ViewModel(){
             var patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName", userName).findFirst()
 
             var currentTest = Test()
-            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
-            val currentDate = sdf.format(Date())
-
+            val date = Date()
+            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
+            val calendar: Calendar = Calendar.getInstance()
+            calendar.set(Calendar.YEAR , date.year)
+            calendar.set(Calendar.MONTH , date.month)
+            calendar.set(Calendar.DAY_OF_MONTH , date.day)
+//            calendar.set(Calendar.HOUR_OF_DAY, date.hours)
+//            calendar.set(Calendar.MINUTE, date.minutes)
+//            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
             val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
             if (dateCount > 0)
@@ -169,7 +187,7 @@ class CheckMedDietTestViewModel : ViewModel(){
             currentTest!!.patientMDSQ10 = medDietScoreValues.get(9)
             currentTest!!.patientMDSQ11 = medDietScoreValues.get(10)
             currentTest!!.patientId = patient!!.patientId
-            currentTest.testDate = currentDate
+            currentTest.testDate = calendar.time
             currentTest!!.patientMDSTestResult = score
 
             var testId : Int = 0
@@ -210,5 +228,8 @@ class CheckMedDietTestViewModel : ViewModel(){
         }
     }
 
+    fun convertDate(dateString: String): Date? {
+        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(dateString)
+    }
 
 }

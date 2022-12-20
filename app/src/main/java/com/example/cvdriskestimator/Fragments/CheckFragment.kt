@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.Helpers.Utils
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
@@ -25,6 +26,10 @@ import com.example.cvdriskestimator.viewModels.CheckPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckPatientViewModelFactory
 import io.realm.Realm
 import java.lang.reflect.Method
+import java.sql.Date
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class CheckFragment : Fragment() {
@@ -33,6 +38,7 @@ class CheckFragment : Fragment() {
     private lateinit var checkBinding: FragmentCheckBinding
     private lateinit var checkPatientViewModel: CheckPatientViewModel
     private lateinit var historyFragment: HistoryFragment
+    private var selectedPatientTest = Test()
 
     private  var loginFragment: LoginFragment = LoginFragment.newInstance()
     private  var registerFragment: RegisterFragment = RegisterFragment.newInstance()
@@ -84,11 +90,36 @@ class CheckFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initUI(view)
         val userName = activity!!.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
-        if (userName != "tempUser")
-            checkPatientViewModel.setPatientDataOnForm()
-        else {
-            checkPatientViewModel.setUserDummyData()
-            checkPatientViewModel.setPatientDataOnForm()
+
+        var patientId = this.arguments!!.getString("patientId")
+        var testDate = this.arguments!!.getString("testDate")
+        var openType = this.arguments!!.getString("openType")
+
+        var historyTest = Test()
+        if (patientId != "")
+        {
+            var date = convertStringToDate(testDate!!)
+            historyTest = checkPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+        }
+        if (historyTest.cvdTestResult != null)
+        {
+            setPatientData(historyTest)
+        }
+        else
+        {
+            if (openType == "updatelast")
+            {
+                checkPatientViewModel.setPatientDataOnForm()
+            }
+            if (openType == "addNew")
+            {
+                checkPatientViewModel.setUserDummyData()
+                checkPatientViewModel.setPatientDataOnForm()
+            }
+            if (openType == "history")
+            {
+                checkPatientViewModel.history()
+            }
         }
 
         //observe live data change
@@ -118,9 +149,6 @@ class CheckFragment : Fragment() {
             hideTermsOfUseLayout()
         }
 
-        checkBinding.historyBtn.setOnClickListener {
-            checkPatientViewModel.history()
-        }
 
     }
 
@@ -388,11 +416,71 @@ class CheckFragment : Fragment() {
         }
     }
 
+    private fun convertStringToDate(date: String): java.util.Date {
+        var allDateParts = date.split(" ")
+        var monthName = allDateParts.get(1)
+        var monthNo: Int = 0
+        when (monthName) {
+            "Jan" -> {
+                monthNo = 0
+            }
+            "Feb" -> {
+                monthNo = 1
+            }
+            "Mar" -> {
+                monthNo = 2
+            }
+            "Apr" -> {
+                monthNo = 3
+            }
+            "May" -> {
+                monthNo = 4
+            }
+            "Jun" -> {
+                monthNo = 5
+            }
+            "Jul" -> {
+                monthNo = 6
+            }
+            "Aug" -> {
+                monthNo = 7
+            }
+            "Sep" -> {
+                monthNo = 8
+            }
+            "Oct" -> {
+                monthNo = 9
+            }
+            "Nov" -> {
+                monthNo = 10
+            }
+            "Dec" -> {
+                monthNo = 11
+            }
+        }
+        var dateName = allDateParts.get(2)
+        var time = allDateParts.get(3).toString().split(":")
+        var hour = time.get(0)
+        var min = time.get(1)
+        var sec = time.get(2)
+        var year = allDateParts.get(5)
+        //var date = Date(year.toInt(), monthNo, dateName.toInt())
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.set(Calendar.YEAR , year.toInt())
+        calendar.set(Calendar.MONTH , monthNo)
+        calendar.set(Calendar.DAY_OF_MONTH , dateName.toInt())
+        calendar.set(Calendar.HOUR_OF_DAY, hour.toInt())
+        calendar.set(Calendar.MINUTE, min.toInt())
+        calendar.set(Calendar.SECOND, sec.toInt())
+        var date = calendar.time
+        return calendar.time
+    }
 
     private fun showTermsOfUseLayout() {
 
         checkBinding.includePopUpMenu.termsRelLayout.visibility = View.VISIBLE
     }
+
 
     private fun hideTermsOfUseLayout() {
         checkBinding.includePopUpMenu.termsRelLayout.visibility = View.GONE

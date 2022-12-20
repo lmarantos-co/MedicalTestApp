@@ -76,6 +76,14 @@ class PopUpMenu {
                         prMainActivity.fragmentTransaction(prRegisterFragment!!)
                     }
                 }
+//                R.id.doctor_logout_item ->
+//                {
+//                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is LoginFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is LeaderBoardFragment) || (prFragment is ResultFragment))
+//                    {
+//                        prMainActivity.backToActivity()
+//                        prMainActivity.logOutDoctor()
+//                    }
+//                }
                 R.id.user_item -> {
 
                 }

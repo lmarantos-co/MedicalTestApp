@@ -2,95 +2,224 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <RelativeLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/historyConLayout"
         android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragments.HistoryFragment">
+        android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/include_cvd_title_form"
+            layout="@layout/cvd_title_form"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/horGL1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/testNameTxtV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="testName"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
-
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/testResultsLineChart"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_below="@id/testNameTxtV"
-            android:layout_alignParentTop="false"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp">
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
 
-        </com.github.mikephil.charting.charts.LineChart>
+<!--        <androidx.core.widget.NestedScrollView-->
+<!--            android:id="@+id/historyScrollView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:fadeScrollbars="false"-->
+<!--            android:fillViewport="true"-->
+<!--            android:scrollbarAlwaysDrawVerticalTrack="false"-->
+<!--            android:scrollbars="vertical"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/horGL1">-->
 
-        <LinearLayout
-            android:id="@+id/testReulstLinLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/testResultsLineChart"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/gray_result_title_style"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/dateTxtV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/history_test_result__caption_txtv_style"
-                android:gravity="center"
-                android:text="DATE"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/scoreTxtV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/history_test_result_txtv_caption_style_left"
-                android:gravity="center"
-                android:text="SCORE"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horGL1">
+                tools:context=".Fragments.HistoryFragment">
 
 
-        <LinearLayout
-            android:id="@+id/recycerViewLinLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/testReulstLinLayout"
-            android:layout_centerInParent="false"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/gray_result_title_style"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/testNameTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/history_txtview"
+                    android:padding="8dp"
+                    android:text="testName"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
-            <ListView
-                android:id="@+id/testResultDateListView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1" />
+                <RelativeLayout
+                    android:id="@+id/lineChartRelLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/testNameTxtV"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/white_result_title_style">
 
-            <ListView
-                android:id="@+id/testResultScoreListView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
-        </LinearLayout>
-</RelativeLayout>
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/testResultsLineChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignWithParentIfMissing="false"
+                        android:layout_alignParentTop="false"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp">
+
+                    </com.github.mikephil.charting.charts.LineChart>
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/datePickerButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lineChartRelLayout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/light_gray"
+                    android:clickable="true"
+                    android:enabled="true"
+                    android:text="Select Dates"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:id="@+id/datePickerLinLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/testNameTxtV"
+                    android:layout_centerInParent="false"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/gray_result_title_style"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+
+                    <DatePicker
+                        android:id="@+id/fromDatePicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:calendarViewShown="false"
+                        android:datePickerMode="calendar"
+                        android:visibility="visible" />
+
+
+                    <DatePicker
+                        android:id="@+id/toDatePicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:calendarViewShown="false"
+                        android:datePickerMode="calendar"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/testReulstLinLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/datePickerButton"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/gray_result_title_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dateTxtV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/history_test_result__caption_txtv_style"
+                        android:gravity="center"
+                        android:text="DATE"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/scoreTxtV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/history_test_result_txtv_caption_style_left"
+                        android:gravity="center"
+                        android:text="SCORE"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/recycerViewLinLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/testReulstLinLayout"
+                    android:layout_centerInParent="false"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/gray_result_title_style"
+                    android:orientation="horizontal"
+                    android:scrollbars="vertical">
+
+                    <!--                <ListView-->
+                    <!--                    android:id="@+id/testResultDateListView"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="match_parent"-->
+                    <!--                    android:layout_gravity="left"-->
+                    <!--                    android:layout_weight="1"-->
+                    <!--                    android:isScrollContainer="true"-->
+                    <!--                    android:scrollbarAlwaysDrawVerticalTrack="true"-->
+                    <!--                    android:scrollbars="vertical" />-->
+
+                    <!--                    <androidx.recyclerview.widget.RecyclerView-->
+                    <!--                        android:id="@+id/testResultDateRecycleView"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="match_parent"-->
+                    <!--                        android:layout_gravity="left" />-->
+
+                    <ListView
+                        android:id="@+id/testResultDateListView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:scrollbars="vertical"
+                        android:transcriptMode="alwaysScroll"
+                        android:visibility="visible" />
+
+                    <ListView
+                        android:id="@+id/testResultScoreListView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:scrollbars="vertical"
+                        android:transcriptMode="alwaysScroll"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+<!--        </androidx.core.widget.NestedScrollView>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

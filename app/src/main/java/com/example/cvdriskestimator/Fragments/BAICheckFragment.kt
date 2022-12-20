@@ -6,7 +6,6 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,16 +13,16 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.core.view.get
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.R
-import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentBAICheckBinding
-import com.example.cvdriskestimator.databinding.FragmentCheckBinding
 import com.example.cvdriskestimator.viewModels.CheckBAIPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckBAIPatientViewModelFactory
+import java.sql.Date
+import java.util.*
 
 
 /**
@@ -74,15 +73,39 @@ class BAICheckFragment : Fragment() {
         baiCheckBinding.includeCvdTitleForm.userIcon.alpha = 1f
 
         val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
-        if (userName != "tempUser")
+
+        var patientId = this.arguments!!.getString("patientId")
+        var testDate = this.arguments!!.getString("testDate")
+        var openType = this.arguments!!.getString("openType")
+
+
+        var historyTest = Test()
+        if (patientId != "")
         {
-            baiPatientViewModel.setPatientDataOnForm(userName!!)
+            var date = convertStringToDate(testDate!!)
+            historyTest = baiPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+        }
+        if (historyTest.cvdTestResult != null)
+        {
+            setPatientData(historyTest)
         }
         else
         {
-            baiPatientViewModel.setUserDummyData()
-            baiPatientViewModel.setPatientDataOnForm(userName)
+            if (openType == "updatelast")
+            {
+                baiPatientViewModel.setPatientDataOnForm()
+            }
+            if (openType == "addNew")
+            {
+                baiPatientViewModel.setUserDummyData()
+                baiPatientViewModel.setPatientDataOnForm()
+            }
+            if (openType == "history")
+            {
+                baiPatientViewModel.history()
+            }
         }
+
 
         //set the observer for the patient mutable live data
         baiPatientViewModel.patientData.observe(viewLifecycleOwner) {
@@ -168,9 +191,6 @@ class BAICheckFragment : Fragment() {
 
         }
 
-        baiCheckBinding.historyBtn.setOnClickListener {
-            baiPatientViewModel.history()
-        }
     }
 
     private fun setPatientData(test : Test)
@@ -385,6 +405,63 @@ class BAICheckFragment : Fragment() {
             }
 
         }
+    }
+
+    private fun convertStringToDate(date: String): java.util.Date {
+        var allDateParts = date.split(" ")
+        var monthName = allDateParts.get(1)
+        var monthNo: Int = 0
+        when (monthName) {
+            "Jan" -> {
+                monthNo = 0
+            }
+            "Feb" -> {
+                monthNo = 1
+            }
+            "Mar" -> {
+                monthNo = 2
+            }
+            "Apr" -> {
+                monthNo = 3
+            }
+            "May" -> {
+                monthNo = 4
+            }
+            "Jun" -> {
+                monthNo = 5
+            }
+            "Jul" -> {
+                monthNo = 6
+            }
+            "Aug" -> {
+                monthNo = 7
+            }
+            "Sep" -> {
+                monthNo = 8
+            }
+            "Oct" -> {
+                monthNo = 9
+            }
+            "Nov" -> {
+                monthNo = 10
+            }
+            "Dec" -> {
+                monthNo = 11
+            }
+        }
+        var dateName = allDateParts.get(2)
+        var time = allDateParts.get(3).toString().split(":")
+        var hour = time.get(0)
+        var min = time.get(1)
+        var sec = time.get(2)
+        var year = date.get(5)
+        var date = Date(year.toInt(), monthNo, dateName.toInt())
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.setTime(date)
+        calendar.set(Calendar.HOUR_OF_DAY, hour.toInt())
+        calendar.set(Calendar.MINUTE, min.toInt())
+        calendar.set(Calendar.SECOND, sec.toInt())
+        return calendar.time
     }
 
     override fun onAttach(context: Context) {

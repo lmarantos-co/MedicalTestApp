@@ -53,16 +53,12 @@ class LoginDoctorFragment : Fragment() {
         loginDoctorBinding.lifecycleOwner = this
         loginDoctorViewModel.setActivity(mainActivity)
         loginDoctorViewModel.setFragment(this)
-        setTitleBarListener()
+//        setTitleBarListener()
 //        setUserIconDimens()
         loginDoctorBinding.loginSbmBtn.setOnClickListener {
             loginDoctorViewModel.loginUser()
         }
-        loginDoctorBinding.includePopUpMenu.termsRelLayout.setOnClickListener {
-            hideTermsOfUseLayout()
-        }
 
-        loginDoctorBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
         return loginDoctorBinding.root
     }
@@ -70,11 +66,11 @@ class LoginDoctorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        popUpMenuComp = PopUpMenu(loginDoctorBinding.includePopUpMenu.termsRelLayout , mainActivity, this, null, registerFragment , null ,leaderBoardFragment)
+//        popUpMenuComp = PopUpMenu(loginDoctorBinding.includePopUpMenu.termsRelLayout , mainActivity, this, null, registerFragment , null ,leaderBoardFragment)
 
-        loginDoctorBinding.includeCvdTitleForm.userIcon.setOnClickListener {
-            popUpMenuComp.showPopUp(loginDoctorBinding.includeCvdTitleForm.userIcon)
-        }
+//        loginDoctorBinding.includeCvdTitleForm.userIcon.setOnClickListener {
+//            popUpMenuComp.showPopUp(loginDoctorBinding.includeCvdTitleForm.userIcon)
+//        }
 
         loginDoctorBinding.includeCvdTitleForm.userIcon.alpha = 1f
 
@@ -82,13 +78,17 @@ class LoginDoctorFragment : Fragment() {
             mteTitleHieght = loginDoctorBinding.includeCvdTitleForm.cvdTitleForm.layoutParams.height
         }
 
-        loginDoctorBinding.includePopUpMenu.closeBtn.setOnClickListener {
-            hideTermsOfUseLayout()
+//        loginDoctorBinding.includePopUpMenu.closeBtn.setOnClickListener {
+//            hideTermsOfUseLayout()
+//        }
+
+
+        loginDoctorBinding.userNameLoginEditText.requestFocus()
+
+        loginDoctorBinding.includeCvdTitleForm.MTEConLayout.setOnClickListener {
+            mainActivity.setContentViewForFirstAppScreen()
         }
 
-        loginDoctorBinding.formConLayout.setOnClickListener {
-            hideTermsOfUseLayout()
-        }
     }
 
     private fun setSharedPrefs(){
@@ -134,18 +134,6 @@ class LoginDoctorFragment : Fragment() {
     }
 
 
-    private fun showTermsOfUseLayout() {
-
-        loginDoctorBinding.includePopUpMenu.termsRelLayout.visibility = View.VISIBLE
-    }
-
-    private fun hideTermsOfUseLayout() {
-        loginDoctorBinding.includePopUpMenu.termsRelLayout.visibility = View.GONE
-//        termsOFUseView.animate().scaleX(0f).scaleY(0f).setDuration(1000).withEndAction {
-////            termsOFUseView.visibility = View.GONE
-//        }
-
-    }
 
     companion object {
 

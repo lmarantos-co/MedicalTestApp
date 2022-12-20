@@ -88,13 +88,6 @@
 
         <!--    covariance title form-->
 
-        <include
-            android:id="@+id/include_pop_up_menu"
-            layout="@layout/popup_menu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VG5"
             android:layout_width="wrap_content"

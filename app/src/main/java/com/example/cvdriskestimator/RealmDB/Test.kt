@@ -16,9 +16,7 @@ open class Test : RealmModel
     @Required
     var patientId : String = ""
 
-
-    @Required
-    var testDate : String = ""
+    var testDate : Date? = null
 
     @Required
     var testName : String = ""

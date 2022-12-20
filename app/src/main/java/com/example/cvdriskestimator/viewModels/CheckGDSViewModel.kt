@@ -17,6 +17,7 @@ import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -79,7 +80,7 @@ class CheckGDSViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testData = realmDAO.fetchTestData(patientData.value!!.patientId ,  "GDS")
+        testData = realmDAO.fetchTestData(patientData.value!!.patientId ,  "Geriatric Depression Scale")
         patientData.postValue(patientData.value)
         testData.postValue(testData.value)
     }
@@ -120,6 +121,17 @@ class CheckGDSViewModel : ViewModel() {
         mainActivity.fragmentTransaction(historyFragment)
     }
 
+    fun fetchHistoryTest(patientId : String, testDate : Date) : Test
+    {
+        var test = Test()
+        realm.executeTransaction {
+
+            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Geriatric Deprression Scale").findFirst()!!
+        }
+
+        return test
+    }
+
     private fun openResultFragment(testResult : Int)
     {
         resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 , 7)
@@ -153,14 +165,21 @@ class CheckGDSViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
             var currentTest = Test()
-            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
-            val currentDate = sdf.format(Date())
+            val date = Date()
+            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             //check if the current date is already in the test database
             val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
             if (dateCount > 0)
             {
                 currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
             }
+            val calendar: Calendar = Calendar.getInstance()
+            calendar.set(Calendar.YEAR , date.year)
+            calendar.set(Calendar.MONTH , date.month)
+            calendar.set(Calendar.DAY_OF_MONTH , date.day)
+//            calendar.set(Calendar.HOUR_OF_DAY, date.hours)
+//            calendar.set(Calendar.MINUTE, date.minutes)
+//            calendar.set(Calendar.SECOND, date.seconds)
 
 
             currentTest!!.patientGDSQ1 = allPatientSelections[0]
@@ -180,7 +199,7 @@ class CheckGDSViewModel : ViewModel() {
             currentTest!!.patientGDSQ15 = allPatientSelections[14]
             currentTest!!.patientGDSTestResult = result
             currentTest!!.patientId = patient!!.patientId
-            currentTest.testDate = currentDate
+            currentTest.testDate = calendar.time
             currentTest.testName = "Gediatric Depression Scale"
 
             var testId : Int = 0
@@ -219,6 +238,10 @@ class CheckGDSViewModel : ViewModel() {
             realm.insertOrUpdate(patient)
 
         }
+    }
+
+    fun convertDate(dateString: String): Date? {
+        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(dateString)
     }
 
 }

@@ -24,6 +24,9 @@ import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentMDICheckBinding
 import com.example.cvdriskestimator.viewModels.CheckMDIPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckMDIPatientViewModelFactory
+import java.sql.Date
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MDICheckFragment : Fragment() {
@@ -71,15 +74,34 @@ class MDICheckFragment : Fragment() {
         mdiCheckBinding.includeCvdTitleForm.userIcon.alpha = 1f
 
         val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
-        if (userName != "tempUser")
+
+        var patientId = this.arguments!!.getString("patientId")
+        var testDate = this.arguments!!.getString("testDate")
+
+
+        var historyTest = Test()
+        if (patientId != "")
         {
-            mdiPatientViewModel.setPatientDataOnForm(userName!!)
+            var date = convertStringToDate(testDate!!)
+            historyTest = mdiPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+        }
+        if (historyTest.cvdTestResult != null)
+        {
+            setPatientData(historyTest)
         }
         else
         {
-            mdiPatientViewModel.setUserDummyData()
-            mdiPatientViewModel.setPatientDataOnForm(userName)
+            if (userName != "tempUser")
+            {
+                mdiPatientViewModel.setPatientDataOnForm(userName!!)
+            }
+            else
+            {
+                mdiPatientViewModel.setUserDummyData()
+                mdiPatientViewModel.setPatientDataOnForm(userName)
+            }
         }
+
 
         //set the observer for the patient mutable live data
         mdiPatientViewModel.patientData.observe(viewLifecycleOwner) {
@@ -330,6 +352,63 @@ class MDICheckFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
+    }
+
+    private fun convertStringToDate(date: String): java.util.Date {
+        var allDateParts = date.split(" ")
+        var monthName = allDateParts.get(1)
+        var monthNo: Int = 0
+        when (monthName) {
+            "Jan" -> {
+                monthNo = 0
+            }
+            "Feb" -> {
+                monthNo = 1
+            }
+            "Mar" -> {
+                monthNo = 2
+            }
+            "Apr" -> {
+                monthNo = 3
+            }
+            "May" -> {
+                monthNo = 4
+            }
+            "Jun" -> {
+                monthNo = 5
+            }
+            "Jul" -> {
+                monthNo = 6
+            }
+            "Aug" -> {
+                monthNo = 7
+            }
+            "Sep" -> {
+                monthNo = 8
+            }
+            "Oct" -> {
+                monthNo = 9
+            }
+            "Nov" -> {
+                monthNo = 10
+            }
+            "Dec" -> {
+                monthNo = 11
+            }
+        }
+        var dateName = allDateParts.get(2)
+        var time = allDateParts.get(3).toString().split(":")
+        var hour = time.get(0)
+        var min = time.get(1)
+        var sec = time.get(2)
+        var year = date.get(5)
+        var date = Date(year.toInt(), monthNo, dateName.toInt())
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.setTime(date)
+        calendar.set(Calendar.HOUR_OF_DAY, hour.toInt())
+        calendar.set(Calendar.MINUTE, min.toInt())
+        calendar.set(Calendar.SECOND, sec.toInt())
+        return calendar.time
     }
 
     companion object {

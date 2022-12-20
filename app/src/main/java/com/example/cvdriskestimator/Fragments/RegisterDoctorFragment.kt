@@ -55,7 +55,7 @@ class RegisterDoctorFragment : Fragment() {
 
         val factory = RegisterDoctorViewModelFactory()
         setSharedPrefs()
-        setTitleFormListener()
+//        setTitleFormListener()
         registerViewModel = ViewModelProvider(this , factory)[RegisterDoctorViewModel::class.java]
         registerDoctorBinding.registerDoctorViewModel = registerViewModel
         registerDoctorBinding.lifecycleOwner = this
@@ -92,6 +92,9 @@ class RegisterDoctorFragment : Fragment() {
             mteTitleHeight = registerDoctorBinding.includeCvdTitleForm.cvdTitleForm.layoutParams.height
         }
 
+        registerDoctorBinding.includeCvdTitleForm.MTEConLayout.setOnClickListener {
+            mainActivity.setContentViewForFirstAppScreen()
+        }
 
 
     }

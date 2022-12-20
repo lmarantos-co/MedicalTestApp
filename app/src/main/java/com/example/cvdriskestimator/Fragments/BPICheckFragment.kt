@@ -31,6 +31,9 @@ import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentBPICheckBinding
 import com.example.cvdriskestimator.viewModels.CheckBPIPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckPatientBPIViewModelFactory
+import java.sql.Date
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -101,15 +104,39 @@ class BPICheckFragment : Fragment() {
         }
         val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
 
-        Log.d("THREAD" , Thread.currentThread().name)
-        if (username != "tempUser")
+
+        var patientId = this.arguments!!.getString("patientId")
+        var testDate = this.arguments!!.getString("testDate")
+        var openType = this.arguments!!.getString("openType")
+
+
+        var historyTest = Test()
+        if (patientId != "")
         {
-            bpiPatientViewModel.setPatientDataOnForm(username!!)
+            var date = convertStringToDate(testDate!!)
+            historyTest = bpiPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+        }
+        if (historyTest.cvdTestResult != null)
+        {
+            setPatientDataOnForm(historyTest)
         }
         else
         {
-            bpiPatientViewModel.initPatientData()
+            if (openType == "updatelast")
+            {
+                bpiPatientViewModel.setPatientDataOnForm()
+            }
+            if (openType == "addNew")
+            {
+                bpiPatientViewModel.setUserDummyData()
+                bpiPatientViewModel.setPatientDataOnForm()
+            }
+            if (openType == "history")
+            {
+                bpiPatientViewModel.history()
+            }
         }
+
         loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
         leaderBoardFragment = LeaderBoardFragment.newInstance()
@@ -328,7 +355,7 @@ class BPICheckFragment : Fragment() {
         bpiPatientViewModel.patientData.observe(viewLifecycleOwner) {
         }
         bpiPatientViewModel.testData.observe(viewLifecycleOwner) {
-            if (it != null)
+            if (it.patientBPIQ1 != null)
                 setPatientDataOnForm(it!!)
         }
 
@@ -803,6 +830,63 @@ class BPICheckFragment : Fragment() {
         }
     }
 
+    private fun convertStringToDate(date: String): java.util.Date {
+        var allDateParts = date.split(" ")
+        var monthName = allDateParts.get(1)
+        var monthNo: Int = 0
+        when (monthName) {
+            "Jan" -> {
+                monthNo = 0
+            }
+            "Feb" -> {
+                monthNo = 1
+            }
+            "Mar" -> {
+                monthNo = 2
+            }
+            "Apr" -> {
+                monthNo = 3
+            }
+            "May" -> {
+                monthNo = 4
+            }
+            "Jun" -> {
+                monthNo = 5
+            }
+            "Jul" -> {
+                monthNo = 6
+            }
+            "Aug" -> {
+                monthNo = 7
+            }
+            "Sep" -> {
+                monthNo = 8
+            }
+            "Oct" -> {
+                monthNo = 9
+            }
+            "Nov" -> {
+                monthNo = 10
+            }
+            "Dec" -> {
+                monthNo = 11
+            }
+        }
+        var dateName = allDateParts.get(2)
+        var time = allDateParts.get(3).toString().split(":")
+        var hour = time.get(0)
+        var min = time.get(1)
+        var sec = time.get(2)
+        var year = date.get(5)
+        var date = Date(year.toInt(), monthNo, dateName.toInt())
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.setTime(date)
+        calendar.set(Calendar.HOUR_OF_DAY, hour.toInt())
+        calendar.set(Calendar.MINUTE, min.toInt())
+        calendar.set(Calendar.SECOND, sec.toInt())
+        return calendar.time
+    }
+
     fun hidePopPutermsLayout()
     {
         binding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
@@ -812,6 +896,10 @@ class BPICheckFragment : Fragment() {
         super.onAttach(context)
         mainActivity = context as MainActivity
 
+    }
+
+    fun convertDate(dateString: String): java.util.Date? {
+        return SimpleDateFormat("yyyy MM dd HH:mm:ss").parse(dateString)
     }
 
     private fun getSceenDimensions()

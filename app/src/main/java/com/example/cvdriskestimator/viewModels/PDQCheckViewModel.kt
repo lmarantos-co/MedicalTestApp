@@ -179,6 +179,8 @@ class PDQCheckViewModel : ViewModel() {
         }
     }
 
+
+
     private fun checkQuestionForInputError(value : Int?, questionNO: Int) : Boolean
     {
         var correctData : Boolean = false
@@ -222,13 +224,12 @@ class PDQCheckViewModel : ViewModel() {
             val patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
 
             var currentTest = Test()
-            val sdf = SimpleDateFormat("dd/M/yyyy hh")
-            val currentDate = sdf.format(Date())
+            val date = Date.from(Calendar.getInstance().toInstant())
 
-            val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
+            val dateCount = realm.where(Test::class.java).equalTo("testDate" , date).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , date).findFirst()!!
             }
             currentTest!!.patientPDQQ1 = allPatientSelections[0]
             currentTest!!.patientPDQQ2 = allPatientSelections[1]
@@ -270,7 +271,7 @@ class PDQCheckViewModel : ViewModel() {
             currentTest!!.patientPDQQ38 = allPatientSelections[37]
             currentTest!!.patientPDQQ39 = allPatientSelections[38]
             currentTest!!.patientId = patient!!.patientId
-            currentTest.testDate = currentDate
+            currentTest.testDate = date
 
             var testId : Int = 0
             if (dateCount.toInt() == 0)

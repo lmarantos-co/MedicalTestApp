@@ -18,6 +18,7 @@ import io.realm.Realm
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -86,7 +87,7 @@ class CheckMDIPatientViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
             patientId = patient!!.patientId
-            testName = "Major Derpression Index"
+            testName = "Major Depression Index"
         }
         val bundle = Bundle()
         bundle.putString("patientId" , patientId)
@@ -94,6 +95,17 @@ class CheckMDIPatientViewModel : ViewModel() {
         historyFragment = HistoryFragment()
         historyFragment.arguments = bundle
         mainActivity.fragmentTransaction(historyFragment)
+    }
+
+    fun fetchHistoryTest(patientId : String, testDate : Date) : Test
+    {
+        var test = Test()
+        realm.executeTransaction {
+
+            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Major Depression Index").findFirst()!!
+        }
+
+        return test
     }
 
     private fun fetchPatientData(username : String) {
@@ -155,9 +167,15 @@ class CheckMDIPatientViewModel : ViewModel() {
             val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
 
             var currentTest = Test()
-            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
-            val currentDate = sdf.format(Date())
-
+            val date = Date()
+            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
+            val calendar: Calendar = Calendar.getInstance()
+            calendar.set(Calendar.YEAR , date.year)
+            calendar.set(Calendar.MONTH , date.month)
+            calendar.set(Calendar.DAY_OF_MONTH , date.day)
+//            calendar.set(Calendar.HOUR_OF_DAY, date.hours)
+//            calendar.set(Calendar.MINUTE, date.minutes)
+//            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
             val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
             if (dateCount > 0)
@@ -179,9 +197,9 @@ class CheckMDIPatientViewModel : ViewModel() {
             currentTest!!.patientMDIQ12 = allPatientSelections[11]
             currentTest!!.patientMDIQ13 = allPatientSelections[12]
             currentTest!!.patientId = patient!!.patientId
-            currentTest.testDate = currentDate
+            currentTest.testDate = calendar.time
             currentTest!!.patientMDITestResult = result
-            currentTest!!.testName = "Major Derpression Index"
+            currentTest!!.testName = "Major Depression Index"
 
             var testId : Int = 0
             if (dateCount.toInt() == 0)
@@ -221,5 +239,8 @@ class CheckMDIPatientViewModel : ViewModel() {
         }
     }
 
+    fun convertDate(dateString: String): Date? {
+        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(dateString)
+    }
 
 }

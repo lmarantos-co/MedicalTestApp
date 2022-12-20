@@ -19,6 +19,12 @@
         android:title="Register"
         android:icon="@drawable/ic_registration_icon_24"/>
 
+<!--    <item-->
+<!--        android:id="@+id/doctor_logout_item"-->
+<!--        app:showAsAction="always"-->
+<!--        android:title="Log Out Doctor"-->
+<!--        android:icon="@drawable/ic_log_out_doctor_24"/>-->
+
     <item
         android:id="@+id/user_item"
         app:showAsAction="always"
@@ -42,6 +48,5 @@
         app:showAsAction="always"
         android:title="LeaderBoard"
         android:icon="@drawable/leaderboard"/>
-
 
 </menu>

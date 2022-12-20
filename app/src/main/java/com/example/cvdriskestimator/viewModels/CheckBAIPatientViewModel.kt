@@ -142,7 +142,7 @@ class CheckBAIPatientViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
             patientId = patient!!.patientId
-            testName = "BAI"
+            testName = "Beck Anxiety Index"
         }
         val bundle = Bundle()
         bundle.putString("patientId" , patientId)
@@ -150,6 +150,17 @@ class CheckBAIPatientViewModel : ViewModel() {
         historyFragment = HistoryFragment()
         historyFragment.arguments = bundle
         mainActivity.fragmentTransaction(historyFragment)
+    }
+
+    fun fetchHistoryTest(patientId : String, testDate : Date) : Test
+    {
+        var test = Test()
+        realm.executeTransaction {
+
+            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Beck Anxiety Index").findFirst()!!
+        }
+
+        return test
     }
 
     private fun storePatientOnDB(allPatientSelections: ArrayList<Int?> , score : Int)
@@ -162,8 +173,15 @@ class CheckBAIPatientViewModel : ViewModel() {
             val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
 
             var currentTest = Test()
-            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
-            val currentDate = sdf.format(Date())
+            val date = Date()
+            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
+            val calendar: Calendar = Calendar.getInstance()
+            calendar.set(Calendar.YEAR , date.year)
+            calendar.set(Calendar.MONTH , date.month)
+            calendar.set(Calendar.DAY_OF_MONTH , date.day)
+//            calendar.set(Calendar.HOUR_OF_DAY, date.hours)
+//            calendar.set(Calendar.MINUTE, date.minutes)
+//            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
             val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
             if (dateCount > 0)
@@ -193,7 +211,7 @@ class CheckBAIPatientViewModel : ViewModel() {
             currentTest!!.patientBAIQ20 = allPatientSelections[19]
             currentTest!!.patientBAIQ21 = allPatientSelections[20]
             currentTest!!.patientId = patient!!.patientId
-            currentTest!!.testDate = currentDate
+            currentTest!!.testDate = calendar.time
             currentTest!!.testName = "Beck Anxiety Index"
             currentTest!!.patientBAITestResult = score
 
@@ -234,6 +252,10 @@ class CheckBAIPatientViewModel : ViewModel() {
             realm.copyToRealmOrUpdate(patient)
 
         }
+    }
+
+    fun formatDate(date: Date): String {
+        return SimpleDateFormat("yyyy MM dd hh:mm:ss").format(date)
     }
 
 }

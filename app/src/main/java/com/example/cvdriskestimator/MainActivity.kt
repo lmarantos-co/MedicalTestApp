@@ -4,35 +4,41 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.graphics.Typeface
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material.TextFieldDefaults
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.cvdriskestimator.Fragments.*
+import com.example.cvdriskestimator.RealmDB.Doctor
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDB
+import com.example.cvdriskestimator.RealmDB.Test
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import io.realm.Realm
-import java.lang.reflect.Method
-import android.content.DialogInterface
-import android.graphics.Typeface
-import android.text.Spannable
-import android.text.SpannableString
-import android.util.Log
-import com.example.cvdriskestimator.RealmDB.Doctor
 import io.realm.RealmList
+import io.realm.kotlin.where
+import java.lang.reflect.Method
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -40,6 +46,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var constraintLayout : ConstraintLayout
     private lateinit var introScreenConLayout : ConstraintLayout
     private lateinit var allCustomersTxtV : TextView
+    private lateinit var newCustomerTxtV : TextView
     private lateinit var introSearchCustomersConLayout : ConstraintLayout
     private lateinit var customersListView : ListView
     private lateinit var customerSearchView : SearchView
@@ -63,8 +70,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var gdsCheckFragment: GDSCheckFragment
     private lateinit var pdqCheckFragment: PDQCheckFirstCategoryFragment
     private lateinit var pdqResultFragment : ResultExtraFragment
+    private lateinit var timelineFragment: ResultTimelineFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
+    private lateinit var allPatientResultsPopUp : ConstraintLayout
+    private lateinit var allPatientResultsConLayout : ConstraintLayout
+    private lateinit var allPatientstestListView : ListView
+    private lateinit var patienTestListOkBtn : Button
+    private lateinit var includeTestOptionsPopup : LinearLayout
+    private lateinit var addNewTxtV : TextView
+    private lateinit var updateLastTxtV : TextView
+    private lateinit var historyTxtV : TextView
     private lateinit var MTETitleForm : RelativeLayout
     private  var mteTitleFormHeight : Int = 0
     private lateinit var userIconImg : ImageView
@@ -111,11 +127,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setContentViewForFirstAppScreen()
     }
 
-    private fun setContentViewForFirstAppScreen()
+    fun setContentViewForFirstAppScreen()
     {
         setContentView(R.layout.app_first_screen)
 
         initRealmDB()
+
+        MTETitle = findViewById(R.id.include_cvd_title_form)
+        MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
+
+
+        MTETitleForm.setOnClickListener {
+            setContentViewForFirstAppScreen()
+        }
 
         loginDoctorButton = findViewById(R.id.loginDoctorTxtV)
         loginDoctorButton.setOnClickListener {
@@ -139,10 +163,26 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         setContentView(R.layout.initial_screen)
 
+
+        MTETitle = findViewById(R.id.include_cvd_title_form)
+        MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
+
+        MTETitleForm.setOnClickListener {
+            setContentViewForFirstAppScreen()
+        }
+
         allCustomersTxtV = findViewById<TextView>(R.id.allCustomersTxtV)
         allCustomersTxtV.setOnClickListener {
             setContentViewForSearchCustomersScreen()
         }
+
+        newCustomerTxtV = findViewById<TextView>(R.id.newCustomerTxtV)
+        newCustomerTxtV.setOnClickListener {
+            registerFragment = RegisterFragment()
+            setContentViewForMainLayout()
+            fragmentTransaction(registerFragment)
+        }
+
 
     }
 
@@ -150,6 +190,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setContentView(R.layout.intro_screen_search_customers)
         customersListView = findViewById(R.id.customerListView)
         customerSearchView = findViewById(R.id.customersSearchView)
+
+        MTETitle = findViewById(R.id.include_cvd_title_form)
+        MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
+
+
+        MTETitleForm.setOnClickListener {
+            setContentViewForFirstAppScreen()
+        }
 
 
         //get the doctor file from realm
@@ -162,19 +210,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             //set a set of customer for the doctor
             if (doctor!!.doctorCustomers != null)
             {
-                for (i in 0 until doctor!!.doctorCustomers!!.size -1)
+                for (i in 0 until doctor!!.doctorCustomers!!.size)
                 {
                     lastnames.add(doctor!!.doctorCustomers!!.get(i)!!)
                 }
             }
 
 
-            lastnames.apply {
-                this.add("Papadopoulos")
-                this.add("Marantos")
-                this.add("Christodoulopoulou")
-                this.add("zikos")
-            }
+//            lastnames.apply {
+//                this.add("Papadopoulos")
+//                this.add("Marantos")
+//                this.add("Christodoulopoulou")
+//                this.add("zikos")
+//            }
 
             var patientList = RealmList<String>()
             for (i in 0..lastnames.size -1)
@@ -221,6 +269,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         })
         customersListView.setOnItemClickListener { parent, view, position, id ->
             var customerLastname = lastNameArrayAdapter.getItem(position).toString()
+            setContentViewForMainLayout()
             //query realm database
             var realm = Realm.getDefaultInstance()
             realm.executeTransaction {
@@ -235,7 +284,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 }
 //                    mainActivity.setLoginItemTitle()
                 hideSoftInputKeyboard()
-                setContentViewForMainLayout()
             }
         }
 
@@ -246,9 +294,43 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     {
         setContentView(R.layout.activity_main)
 
+        initRealmDB()
+
+        //initialize the all patienttestlistview
+        allPatientResultsPopUp = findViewById(R.id.include_all_patient_list_test)
+        patienTestListOkBtn = allPatientResultsPopUp.findViewById(R.id.okBtn)
+        allPatientstestListView = findViewById(R.id.alltestsResultsistView)
+//        allPatientResultsConLayout = findViewById(R.id.alltestResultsConLayout)
+        patienTestListOkBtn.setOnClickListener {
+            allPatientResultsPopUp.visibility = View.GONE
+        }
+
+
+//
+//        var allPatientTestArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient())
+//
+//        allPatientstestListView.adapter = allPatientTestArrayAdapter
+//        allPatientstestListView.invalidate()
+
+
+
         constraintLayout = findViewById(R.id.mainActiConLayout)
         fragmentContainer = findViewById(R.id.fragmentContainer)
         bottomNavigationView = findViewById(R.id.appBottomnavigationView)
+        includeTestOptionsPopup = findViewById(R.id.initial_test_screen_popup)
+        includeTestOptionsPopup.visibility = View.INVISIBLE
+        addNewTxtV = includeTestOptionsPopup.findViewById(R.id.addNewTxtV)
+        updateLastTxtV = includeTestOptionsPopup.findViewById(R.id.updateLastTxtV)
+        historyTxtV = includeTestOptionsPopup.findViewById(R.id.historyTxtV)
+        addNewTxtV.setOnClickListener {
+            addNewTest()
+        }
+        updateLastTxtV.setOnClickListener {
+            updateLastTest()
+        }
+        historyTxtV.setOnClickListener {
+            historyTxtV
+        }
         MTETitle = findViewById(R.id.include_cvd_title_form)
         MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
         userIconImg = MTETitle.findViewById(R.id.userIcon)
@@ -276,6 +358,187 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         initPrefs()
 
         initUI()
+    }
+
+    private fun updateLastTest(testName : String) {
+        when(testName)
+        {
+            "CardioVascularDisease" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                checkFragment = CheckFragment()
+                checkFragment.arguments = bundle
+                fragmentTransaction(checkFragment)
+            }
+            "DIABETES" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                openTestPopUp("DIABETES")
+                checkDiabetesFragment = DiabetesCheckFragment()
+                checkDiabetesFragment.arguments = bundle
+                fragmentTransaction(checkDiabetesFragment)
+            }
+            "Major Depression Index" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                openTestPopUp("Major Depression Index")
+                mdiCheckFragment = MDICheckFragment()
+                mdiCheckFragment.arguments = bundle
+                fragmentTransaction(mdiCheckFragment)
+            }
+            "Beck Anxiety Index" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                openTestPopUp("Beck Anxiety Index")
+                baiCheckFragment = BAICheckFragment()
+                baiCheckFragment.arguments = bundle
+                fragmentTransaction(baiCheckFragment)
+            }
+            "Mediterranean Diet Score" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                mdsCheckFragment = medDietTestFragment()
+                mdsCheckFragment.arguments = bundle
+                fragmentTransaction(mdsCheckFragment)
+            }
+        }
+    }
+
+    private fun addNewTest(testName : String) {
+        when (testName)
+        {
+            "CardioVascularDisease" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                checkFragment = CheckFragment()
+                checkFragment.arguments = bundle
+                fragmentTransaction(checkFragment)
+            }
+
+            "DIABETES" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                openTestPopUp("DIABETES")
+                checkDiabetesFragment = DiabetesCheckFragment()
+                checkDiabetesFragment.arguments = bundle
+                fragmentTransaction(checkDiabetesFragment)
+            }
+            "Major Depression Index" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                openTestPopUp("Major Depression Index")
+                mdiCheckFragment = MDICheckFragment()
+                mdiCheckFragment.arguments = bundle
+                fragmentTransaction(mdiCheckFragment)
+            }
+            "Beck Anxiety Index" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                openTestPopUp("Beck Anxiety Index")
+                baiCheckFragment = BAICheckFragment()
+                baiCheckFragment.arguments = bundle
+                fragmentTransaction(baiCheckFragment)
+            }
+            "Mediterranean Diet Score" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                openTestPopUp("Mediterranean Diet Score")
+                mdsCheckFragment = medDietTestFragment()
+                mdsCheckFragment.arguments = bundle
+                fragmentTransaction(mdsCheckFragment)
+            }
+        }
+    }
+
+    private fun openHistory(testName : String) {
+        when (testName)
+        {
+            "CardioVascularDisease" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                checkFragment = CheckFragment()
+                checkFragment.arguments = bundle
+                fragmentTransaction(checkFragment)
+            }
+
+            "DIABETES" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                openTestPopUp("DIABETES")
+                checkDiabetesFragment = DiabetesCheckFragment()
+                checkDiabetesFragment.arguments = bundle
+                fragmentTransaction(checkDiabetesFragment)
+            }
+            "Major Depression Index" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                openTestPopUp("Major Depression Index")
+                mdiCheckFragment = MDICheckFragment()
+                mdiCheckFragment.arguments = bundle
+                fragmentTransaction(mdiCheckFragment)
+            }
+            "Beck Anxiety Index" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                openTestPopUp("Beck Anxiety Index")
+                baiCheckFragment = BAICheckFragment()
+                baiCheckFragment.arguments = bundle
+                fragmentTransaction(baiCheckFragment)
+            }
+            "Mediterranean Diet Score" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                openTestPopUp("Mediterranean Diet Score")
+                mdsCheckFragment = medDietTestFragment()
+                mdsCheckFragment.arguments = bundle
+                fragmentTransaction(mdsCheckFragment)
+            }
+        }
     }
 
     fun loadMedicalAppScreen()
@@ -338,7 +601,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
-        checkFragment = CheckFragment.newInstance()
+        checkFragment = CheckFragment()
         checkDiabetesFragment = DiabetesCheckFragment.newInstance()
         mdiCheckFragment = MDICheckFragment.newInstance()
         baiCheckFragment = BAICheckFragment.newInstance()
@@ -425,8 +688,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         with (sharedPref.edit()) {
             putString("LOG" , "Login")
             putString("MSG" , "Medical Test Estimator")
-            if (sharedPref.getString("userName", "tempUser") == "tempUser")
-                putString("userName" , "tempUser")
+            putString("userName" , "tempUser")
             apply()
         }
     }
@@ -446,45 +708,52 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         cvdVectorIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(2)
-            checkFragment = CheckFragment.newInstance()
-            fragmentTransaction(checkFragment)
+            openTestPopUp("CardioVascularDisease")
+
         }
         diabetesVectorIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(3)
-            checkDiabetesFragment = DiabetesCheckFragment.newInstance()
-            fragmentTransaction(checkDiabetesFragment)
+            openTestPopUp("DIABETES")
+
         }
 
         depressionIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(4)
-            mdiCheckFragment = MDICheckFragment.newInstance()
-            fragmentTransaction(mdiCheckFragment)
+            openTestPopUp("Major Depression Index")
+
         }
 
         anxietyIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(5)
-            baiCheckFragment = BAICheckFragment.newInstance()
-            fragmentTransaction(baiCheckFragment)
+            openTestPopUp("Beck Anxiety Index")
+
         }
 
         dietIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(6)
-            fragmentTransaction(mdsCheckFragment)
+            openTestPopUp("Mediterranean Diet Score")
+
         }
 
         painIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(7)
-            fragmentTransaction(bpiCheckFragment)
+            openTestPopUp("Brief Pain Inventory")
+
         }
 
         gdsDepressionIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(8)
+            var bundle = Bundle()
+            bundle.putString("patientId" , "")
+            bundle.putString("testDate" , "")
+            gdsCheckFragment = GDSCheckFragment()
+            gdsCheckFragment.arguments = bundle
             fragmentTransaction(gdsCheckFragment)
         }
 
@@ -496,6 +765,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         showMedicalTests()
 
+    }
+
+    private fun openTestPopUp(testName: String) {
+
+        includeTestOptionsPopup.visibility = View.VISIBLE
     }
 
 
@@ -593,6 +867,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 //        disableCheckButton()
     }
 
+    fun logOutDoctor()
+    {
+        val shared = getPreferences(Context.MODE_PRIVATE) ?: return
+        with (shared.edit())
+        {
+            putString("doctorUserName" , "tempDoctor")
+        }
+        setContentViewForFirstAppScreen()
+    }
+
     fun backToActivity() {
         onBackPressed()
     }
@@ -632,7 +916,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.VISIBLE
         dietIcon.visibility = View.VISIBLE
         painIcon.visibility = View.VISIBLE
-        gdsDepressionIcon.visibility = View.VISIBLE
+        //gdsDepressionIcon.visibility = View.VISIBLE
         cvdVectorIcon.animate().alpha(1f).duration = 1200
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
         depressionIcon.animate().alpha(1f).duration = 1200
@@ -645,10 +929,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon.startAnimation(bounceTests)
         painTestTitle.animate().alphaBy(1f).duration = 1200
         painIcon.startAnimation(bounceTests)
-        gdsDepressionIcon.animate().alphaBy(1f).duration = 1200
-        gdsDepressionIcon.startAnimation(bounceTests)
-        pdqIcon.animate().alphaBy(1f).duration = 1200
-        pdqIcon.startAnimation(bounceTests)
+        //gdsDepressionIcon.animate().alphaBy(1f).duration = 1200
+        //gdsDepressionIcon.startAnimation(bounceTests)
+        //pdqIcon.animate().alphaBy(1f).duration = 1200
+        //pdqIcon.startAnimation(bounceTests)
 
     }
 
@@ -676,14 +960,15 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon.visibility = View.INVISIBLE
         painIcon.clearAnimation()
         painIcon.visibility = View.INVISIBLE
-        gdsDepressionIcon.visibility = View.INVISIBLE
-        pdqIcon.visibility = View.INVISIBLE
+        //gdsDepressionIcon.visibility = View.INVISIBLE
+        //pdqIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
         depressionTestTitle.visibility = View.INVISIBLE
         anxietyTestTitle.visibility = View.INVISIBLE
         dietTestTitle.visibility = View.INVISIBLE
         painTestTitle.visibility = View.INVISIBLE
+
 
     }
 
@@ -703,8 +988,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.VISIBLE
         dietIcon.visibility = View.VISIBLE
         painIcon.visibility = View.VISIBLE
-        gdsDepressionIcon.visibility = View.VISIBLE
-        pdqIcon.visibility = View.VISIBLE
+        //gdsDepressionIcon.visibility = View.VISIBLE
+        //pdqIcon.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()
@@ -729,10 +1014,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         Realm.init(applicationContext)
         var realm = Realm.getDefaultInstance()
         var patientCount = realm.where(Patient::class.java).count()
-        if (patientCount < 10)
-            buildRealmDatabase()
-
-    }
+//        if (patientCount < 10)
+//            buildRealmDatabase()
+        }
 
     // this event will enable the back
     // function to the button on press
@@ -932,6 +1216,25 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is HistoryFragment)
         {
             hideFragmentVisibility()
+            val fm: FragmentManager = this.getSupportFragmentManager()
+
+            for (i in 0 until fm.backStackEntryCount)
+            {
+                fm.popBackStack()
+            }
+
+            fragmentTransaction.show(fragment)
+        }
+        if (fragment is ResultTimelineFragment)
+        {
+            hideFragmentVisibility()
+            val fm: FragmentManager = this.getSupportFragmentManager()
+
+            for (i in 0 until fm.backStackEntryCount)
+            {
+                fm.popBackStack()
+            }
+
             fragmentTransaction.show(fragment)
         }
         if (fragment.isAdded)
@@ -965,6 +1268,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                     hideLayoutElements()
                     fragmentTransaction(registerFragment)
             }
+//            R.id.doctor_logout_item -> {
+//                logOutDoctor()
+//            }
             R.id.user_item -> {
             }
             R.id.clear_data -> {
@@ -1115,6 +1421,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         applyFontToMenuItem(popupMenu.menu.getItem(0) , "Home" , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(1) , this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Login")!! , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(2) , "Register" , applicationContext )
+//        applyFontToMenuItem(popupMenu.menu.getItem(3) , "Doctor Log Out" , applicationContext)
         applyFontToMenuItem(popupMenu.menu.getItem(3) , this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data" , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(4) , "Clear All Data" , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(5) , "Terms Of Use" , applicationContext )
@@ -1157,6 +1464,61 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         var string  = SpannableString(menuTitle)
         string.setSpan(typeface, 0, menuTitle.length - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         menuItem.title = menuTitle
+    }
+
+    private fun setTestDataListForPatient() : ArrayList<String>
+    {
+        //get all tests related with the patient
+        Realm.init(applicationContext)
+        var realm = Realm.getDefaultInstance()
+        var patientUserName = getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
+        //fetch patientId related with patient username
+        var patient = realm.where(Patient::class.java).equalTo("userName" , patientUserName).findFirst()
+        var currentDate = Date()
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.set(Calendar.YEAR , currentDate.year)
+        calendar.set(Calendar.MONTH , currentDate.month)
+        calendar.set(Calendar.DAY_OF_MONTH , currentDate.day)
+        var allCVDTest = realm.where(Test::class.java).isNotNull("SSB").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+        var allCVDTestSize = allCVDTest.get(allCVDTest.size -1)
+        var CVDTestResult = "CardioVascularDisease - ${allCVDTestSize!!.testDate}"
+
+        var allDiabetesTest = realm.where(Test::class.java).isNotNull("patientPAM").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+        var allDiabetesSize = allDiabetesTest.get(allDiabetesTest.size -1)
+        var DiabetesTestResult = "DIABETES - ${allDiabetesSize!!.testDate}"
+
+        var allMDITest = realm.where(Test::class.java).isNotNull("patientMDIQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+        var allMDISize = allMDITest.get(allMDITest.size -1)
+        var MDITestResult = "MDI - ${allMDISize!!.testDate}"
+
+        var allBAITest = realm.where(Test::class.java).isNotNull("patientBAIQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+        var allBAISize = allBAITest.get(allBAITest.size -1)
+        var BAITestResult = "BAI - ${allBAISize!!.testDate}"
+
+        var allMDSTest = realm.where(Test::class.java).isNotNull("patientMDSQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+        var allMDSSize = allMDSTest.get(allMDSTest.size -1)
+        var MDSTestResult = "MDS - ${allMDSSize!!.testDate}"
+
+//        var allBPITest = realm.where(Test::class.java).isNotNull("patientBPIQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+//        var allBPiSize = allMDSTest.get(allBPITest.size -1)
+//        var BPITestResult = "BPI - ${allBPiSize!!.testDate}"
+
+//        var allGDSTest = realm.where(Test::class.java).isNotNull("patientGDSQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+//        var allGDSSize = allMDSTest.get(allGDSTest.size -1)
+//        var GDSTestResult = "GDS - ${allGDSSize!!.testDate}"
+
+        allPatientstestListView = findViewById(R.id.alltestsResultsistView)
+
+        var allPatientTestData = ArrayList<String>()
+        allPatientTestData.add(CVDTestResult)
+        allPatientTestData.add(DiabetesTestResult)
+        allPatientTestData.add(MDITestResult)
+        allPatientTestData.add(BAITestResult)
+        allPatientTestData.add(MDSTestResult)
+//        allPatientTestData.add(BPITestResult)
+//        allPatientTestData.add(GDSTestResult)
+
+        return allPatientTestData
     }
 
 
