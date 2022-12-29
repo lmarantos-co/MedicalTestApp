@@ -12,10 +12,11 @@
         android:id="@+id/pdqIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/VGL2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VGL4"
+        app:layout_constraintTop_toTopOf="@+id/horGLImg"
         app:srcCompat="@drawable/ic_px_parkinson" />
 
     <ImageView
@@ -23,10 +24,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
+        app:layout_constraintTop_toTopOf="@+id/horGLImg"
         app:srcCompat="@drawable/ic_gds_depression__2_" />
+
+    <ImageView
+        android:id="@+id/bdiIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/horGLImg"
+        app:srcCompat="@drawable/ic_bdi_depression" />
 
     <include
         android:id="@+id/include_cvd_title_form"
@@ -219,7 +232,7 @@
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/VGL1"

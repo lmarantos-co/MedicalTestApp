@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var gdsCheckFragment: GDSCheckFragment
     private lateinit var pdqCheckFragment: PDQCheckFirstCategoryFragment
     private lateinit var pdqResultFragment : ResultExtraFragment
+    private lateinit var bDIFragment: BeckDepressionInventoryFragment
     private lateinit var timelineFragment: ResultTimelineFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
@@ -78,9 +79,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var allPatientstestListView : ListView
     private lateinit var patienTestListOkBtn : Button
     private lateinit var includeTestOptionsPopup : LinearLayout
+    private var showPatientLasttest : Boolean = false
     private lateinit var addNewTxtV : TextView
     private lateinit var updateLastTxtV : TextView
     private lateinit var historyTxtV : TextView
+    private var testName : String = ""
     private lateinit var MTETitleForm : RelativeLayout
     private  var mteTitleFormHeight : Int = 0
     private lateinit var userIconImg : ImageView
@@ -103,6 +106,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var painIcon : ImageView
     private lateinit var gdsDepressionIcon : ImageView
     private lateinit var pdqIcon : ImageView
+    private lateinit var bdiIcon : ImageView
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
@@ -143,6 +147,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         loginDoctorButton = findViewById(R.id.loginDoctorTxtV)
         loginDoctorButton.setOnClickListener {
+            showPatientLasttest = false
             setContentViewForMainLayout()
             loginDoctorFragment = LoginDoctorFragment.newInstance()
             hideLayoutElements()
@@ -151,6 +156,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         registerDoctorButton = findViewById(R.id.registerDoctorTxtV)
         registerDoctorButton.setOnClickListener {
+            showPatientLasttest = false
             setContentViewForMainLayout()
             registerDoctorFragment = RegisterDoctorFragment.newInstance()
             hideLayoutElements()
@@ -179,6 +185,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         newCustomerTxtV = findViewById<TextView>(R.id.newCustomerTxtV)
         newCustomerTxtV.setOnClickListener {
             registerFragment = RegisterFragment()
+            showPatientLasttest = false
             setContentViewForMainLayout()
             fragmentTransaction(registerFragment)
         }
@@ -269,6 +276,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         })
         customersListView.setOnItemClickListener { parent, view, position, id ->
             var customerLastname = lastNameArrayAdapter.getItem(position).toString()
+            showPatientLasttest = false
             setContentViewForMainLayout()
             //query realm database
             var realm = Realm.getDefaultInstance()
@@ -306,13 +314,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
 
 
-//
-//        var allPatientTestArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient())
-//
-//        allPatientstestListView.adapter = allPatientTestArrayAdapter
-//        allPatientstestListView.invalidate()
-
-
+        if (showPatientLasttest == true)
+        {
+            var allPatientTestArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient())
+            allPatientstestListView.adapter = allPatientTestArrayAdapter //
+            showPatientLasttest = false
+            allPatientstestListView.invalidate()
+        }
 
         constraintLayout = findViewById(R.id.mainActiConLayout)
         fragmentContainer = findViewById(R.id.fragmentContainer)
@@ -329,7 +337,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             updateLastTest()
         }
         historyTxtV.setOnClickListener {
-            historyTxtV
+            openHistory()
         }
         MTETitle = findViewById(R.id.include_cvd_title_form)
         MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
@@ -348,6 +356,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         painIcon = findViewById(R.id.PainImgV)
         gdsDepressionIcon = findViewById(R.id.gdsIcon)
         pdqIcon = findViewById(R.id.pdqIcon)
+        bdiIcon = findViewById(R.id.bdiIcon)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
         depressionTestTitle = findViewById(R.id.depressionTestTxtView)
@@ -360,7 +369,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         initUI()
     }
 
-    private fun updateLastTest(testName : String) {
+    private fun updateLastTest() {
+        includeTestOptionsPopup.visibility = View.INVISIBLE
         when(testName)
         {
             "CardioVascularDisease" ->
@@ -379,7 +389,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "updateLast")
-                openTestPopUp("DIABETES")
                 checkDiabetesFragment = DiabetesCheckFragment()
                 checkDiabetesFragment.arguments = bundle
                 fragmentTransaction(checkDiabetesFragment)
@@ -390,7 +399,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "updateLast")
-                openTestPopUp("Major Depression Index")
                 mdiCheckFragment = MDICheckFragment()
                 mdiCheckFragment.arguments = bundle
                 fragmentTransaction(mdiCheckFragment)
@@ -401,10 +409,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "updateLast")
-                openTestPopUp("Beck Anxiety Index")
                 baiCheckFragment = BAICheckFragment()
                 baiCheckFragment.arguments = bundle
                 fragmentTransaction(baiCheckFragment)
+            }
+            "Brief Pain Inventory" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                bpiCheckFragment = BPICheckFragment()
+                baiCheckFragment.arguments = bundle
+                fragmentTransaction(bpiCheckFragment)
             }
             "Mediterranean Diet Score" ->
             {
@@ -416,10 +433,22 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 mdsCheckFragment.arguments = bundle
                 fragmentTransaction(mdsCheckFragment)
             }
+
+            "Beck Depression Index" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                bDIFragment = BeckDepressionInventoryFragment()
+                bDIFragment.arguments = bundle
+                fragmentTransaction(bDIFragment)
+            }
         }
     }
 
-    private fun addNewTest(testName : String) {
+    private fun addNewTest() {
+        includeTestOptionsPopup.visibility = View.INVISIBLE
         when (testName)
         {
             "CardioVascularDisease" ->
@@ -439,7 +468,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "addNew")
-                openTestPopUp("DIABETES")
                 checkDiabetesFragment = DiabetesCheckFragment()
                 checkDiabetesFragment.arguments = bundle
                 fragmentTransaction(checkDiabetesFragment)
@@ -450,7 +478,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "addNew")
-                openTestPopUp("Major Depression Index")
                 mdiCheckFragment = MDICheckFragment()
                 mdiCheckFragment.arguments = bundle
                 fragmentTransaction(mdiCheckFragment)
@@ -461,10 +488,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "addNew")
-                openTestPopUp("Beck Anxiety Index")
                 baiCheckFragment = BAICheckFragment()
                 baiCheckFragment.arguments = bundle
                 fragmentTransaction(baiCheckFragment)
+            }
+            "Brief Pain Inventory" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                bpiCheckFragment = BPICheckFragment()
+                baiCheckFragment.arguments = bundle
+                fragmentTransaction(bpiCheckFragment)
             }
             "Mediterranean Diet Score" ->
             {
@@ -472,15 +508,25 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "addNew")
-                openTestPopUp("Mediterranean Diet Score")
                 mdsCheckFragment = medDietTestFragment()
                 mdsCheckFragment.arguments = bundle
                 fragmentTransaction(mdsCheckFragment)
             }
+            "Beck Depression Index" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                bDIFragment = BeckDepressionInventoryFragment()
+                bDIFragment.arguments = bundle
+                fragmentTransaction(bDIFragment)
+            }
         }
     }
 
-    private fun openHistory(testName : String) {
+    private fun openHistory() {
+        includeTestOptionsPopup.visibility = View.INVISIBLE
         when (testName)
         {
             "CardioVascularDisease" ->
@@ -500,7 +546,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "history")
-                openTestPopUp("DIABETES")
                 checkDiabetesFragment = DiabetesCheckFragment()
                 checkDiabetesFragment.arguments = bundle
                 fragmentTransaction(checkDiabetesFragment)
@@ -511,7 +556,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "history")
-                openTestPopUp("Major Depression Index")
                 mdiCheckFragment = MDICheckFragment()
                 mdiCheckFragment.arguments = bundle
                 fragmentTransaction(mdiCheckFragment)
@@ -522,10 +566,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "history")
-                openTestPopUp("Beck Anxiety Index")
                 baiCheckFragment = BAICheckFragment()
                 baiCheckFragment.arguments = bundle
                 fragmentTransaction(baiCheckFragment)
+            }
+            "Brief Pain Inventory" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                bpiCheckFragment = BPICheckFragment()
+                baiCheckFragment.arguments = bundle
+                fragmentTransaction(bpiCheckFragment)
             }
             "Mediterranean Diet Score" ->
             {
@@ -533,10 +586,20 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "history")
-                openTestPopUp("Mediterranean Diet Score")
                 mdsCheckFragment = medDietTestFragment()
                 mdsCheckFragment.arguments = bundle
                 fragmentTransaction(mdsCheckFragment)
+            }
+
+            "Beck Depression Index" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                bDIFragment = BeckDepressionInventoryFragment()
+                bDIFragment.arguments = bundle
+                fragmentTransaction(bDIFragment)
             }
         }
     }
@@ -609,6 +672,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         bpiCheckFragment = BPICheckFragment.newInstance()
         gdsCheckFragment = GDSCheckFragment.newInstance()
 //        pdqCheckFragment = PDQCheckFirstCategoryFragment()
+        bDIFragment = BeckDepressionInventoryFragment.newInstance()
         var resultsArray = IntArray(8)
         resultsArray[0] = 40
         resultsArray[1] = 55
@@ -618,7 +682,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         resultsArray[5] = 90
         resultsArray[6] = 15
         resultsArray[7] = 20
-        pdqResultFragment = ResultExtraFragment.newInstance(resultsArray)
+//        pdqResultFragment = ResultExtraFragment.newInstance(resultsArray)
         leaderBoardFragment = LeaderBoardFragment.newInstance()
 
         setFragmentContainerConstraint(2)
@@ -750,26 +814,28 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             hideLayoutElements()
             playSelectTestAudio(8)
             var bundle = Bundle()
-            bundle.putString("patientId" , "")
-            bundle.putString("testDate" , "")
-            gdsCheckFragment = GDSCheckFragment()
-            gdsCheckFragment.arguments = bundle
             fragmentTransaction(gdsCheckFragment)
         }
 
-        pdqIcon.setOnClickListener {
+//        pdqIcon.setOnClickListener {
+//            hideLayoutElements()
+//            playSelectTestAudio(9)
+//            fragmentTransaction(pdqCheckFragment)
+//        }
+
+        bdiIcon.setOnClickListener {
             hideLayoutElements()
-            playSelectTestAudio(9)
-            fragmentTransaction(pdqResultFragment)
+            openTestPopUp("Beck Depression Index")
         }
 
         showMedicalTests()
 
     }
 
-    private fun openTestPopUp(testName: String) {
+    private fun openTestPopUp(test: String) {
 
         includeTestOptionsPopup.visibility = View.VISIBLE
+        testName = test
     }
 
 
@@ -886,7 +952,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentContainer.setBackgroundColor(getColor(R.color.MidnightBlue))
         fragmentContainer.visibility = View.VISIBLE
         hideFragmentVisibility()
-        setFragmentContainerConstraint(2)
+        includeTestOptionsPopup.visibility = View.INVISIBLE
+        setFragmentContainerConstraint(1)
         supportFragmentManager.popBackStack()
         showLayoutElements()
     }
@@ -929,10 +996,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon.startAnimation(bounceTests)
         painTestTitle.animate().alphaBy(1f).duration = 1200
         painIcon.startAnimation(bounceTests)
-        //gdsDepressionIcon.animate().alphaBy(1f).duration = 1200
-        //gdsDepressionIcon.startAnimation(bounceTests)
-        //pdqIcon.animate().alphaBy(1f).duration = 1200
-        //pdqIcon.startAnimation(bounceTests)
+        gdsDepressionIcon.animate().alphaBy(1f).duration = 1200
+        gdsDepressionIcon.startAnimation(bounceTests)
+        pdqIcon.animate().alphaBy(1f).duration = 1200
+        pdqIcon.startAnimation(bounceTests)
 
     }
 
@@ -960,8 +1027,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon.visibility = View.INVISIBLE
         painIcon.clearAnimation()
         painIcon.visibility = View.INVISIBLE
-        //gdsDepressionIcon.visibility = View.INVISIBLE
-        //pdqIcon.visibility = View.INVISIBLE
+        gdsDepressionIcon.visibility = View.INVISIBLE
+        pdqIcon.visibility = View.INVISIBLE
+        bdiIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
         depressionTestTitle.visibility = View.INVISIBLE
@@ -988,8 +1056,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.VISIBLE
         dietIcon.visibility = View.VISIBLE
         painIcon.visibility = View.VISIBLE
-        //gdsDepressionIcon.visibility = View.VISIBLE
-        //pdqIcon.visibility = View.VISIBLE
+        gdsDepressionIcon.visibility = View.VISIBLE
+        pdqIcon.visibility = View.VISIBLE
+        bdiIcon.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()
@@ -1160,6 +1229,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(mdsCheckFragment)
         fragmentTransaction.hide(bpiCheckFragment)
         fragmentTransaction.hide(gdsCheckFragment)
+        fragmentTransaction.hide(bDIFragment)
 //        fragmentTransaction.hide(pdqCheckFragment)
         fragmentTransaction.hide(leaderBoardFragment)
             .commit()
@@ -1210,6 +1280,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is PDQCheckSeventhCategoryFragment)
             fragmentTransaction.show(fragment)
         if (fragment is PDQCheckEightCategoryFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is BeckDepressionInventoryFragment)
             fragmentTransaction.show(fragment)
         if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)

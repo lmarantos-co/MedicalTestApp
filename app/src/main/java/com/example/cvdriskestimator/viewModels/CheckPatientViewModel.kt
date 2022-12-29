@@ -111,7 +111,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
 
     private fun initialiseUserDummy() {
         realm.executeTransaction {
-            val dummyPatient : Patient? =  realm.where(Patient::class.java).isNotNull("id") .equalTo("userName" , "tempUser").findFirst()
+            val dummyPatient : Patient? =  realm.where(Patient::class.java).isNotNull("patientId") .equalTo("userName" , "tempUser").findFirst()
             if (dummyPatient == null)
             {
                 val patient = Patient()

@@ -91,14 +91,14 @@ class BAICheckFragment : Fragment() {
         }
         else
         {
-            if (openType == "updatelast")
+            if (openType == "updateLast")
             {
-                baiPatientViewModel.setPatientDataOnForm()
+                baiPatientViewModel.setPatientDataOnForm(userName!!)
             }
             if (openType == "addNew")
             {
                 baiPatientViewModel.setUserDummyData()
-                baiPatientViewModel.setPatientDataOnForm()
+                //baiPatientViewModel.setPatientDataOnForm(userName!!)
             }
             if (openType == "history")
             {

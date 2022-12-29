@@ -61,8 +61,9 @@ class CheckMDIPatientViewModel : ViewModel() {
 
     fun setUserDummyData()
     {
+        realm = Realm.getDefaultInstance()
         realm.executeTransaction {
-            var dummyPatient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , "tempUser").findFirst()
+            var dummyPatient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , "tempUser").findFirst()
             if (dummyPatient == null)
             {
                 val patient = Patient()

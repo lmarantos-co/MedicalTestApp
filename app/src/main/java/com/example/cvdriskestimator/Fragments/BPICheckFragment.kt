@@ -122,14 +122,14 @@ class BPICheckFragment : Fragment() {
         }
         else
         {
-            if (openType == "updatelast")
+            if (openType == "updateLast")
             {
                 bpiPatientViewModel.setPatientDataOnForm()
             }
             if (openType == "addNew")
             {
-                bpiPatientViewModel.setUserDummyData()
-                bpiPatientViewModel.setPatientDataOnForm()
+                bpiPatientViewModel.initPatientData()
+//                bpiPatientViewModel.setPatientDataOnForm()
             }
             if (openType == "history")
             {

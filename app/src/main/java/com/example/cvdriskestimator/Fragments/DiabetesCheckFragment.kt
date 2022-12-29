@@ -89,6 +89,7 @@ class DiabetesCheckFragment : Fragment() {
 
         var patientId = this.arguments!!.getString("patientId")
         var testDate = this.arguments!!.getString("testDate")
+        var openType = this.arguments!!.getString("openType")
 
 
         var historyTest = Test()
@@ -103,11 +104,18 @@ class DiabetesCheckFragment : Fragment() {
         }
         else
         {
-            if (userName != "tempUser")
+            if (openType == "updateLast")
+            {
                 checkDiabetesPatientViewModel.setPatientDataOnForm()
-            else {
-                checkDiabetesPatientViewModel.setUserDummyData()
-                checkDiabetesPatientViewModel.setPatientDataOnForm()
+            }
+            if (openType == "addNew")
+            {
+                checkDiabetesPatientViewModel.initialiseUserDummy()
+//                checkDiabetesPatientViewModel.setPatientDataOnForm()
+            }
+            if (openType == "history")
+            {
+                checkDiabetesPatientViewModel.history()
             }
         }
 

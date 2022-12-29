@@ -12,12 +12,10 @@ import android.view.*
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import android.widget.*
-import androidx.compose.ui.text.android.style.TypefaceSpan
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.Guideline
 import androidx.core.view.updateLayoutParams
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.palette.graphics.Palette
 import com.example.cvdriskestimator.CustomClasses.PopUpMenu
@@ -87,20 +85,24 @@ class ResultFragment : Fragment() {
     private lateinit var mildDepressionLayout: RelativeLayout
     private lateinit var moderateDepressionLayout: RelativeLayout
     private lateinit var servereDepressionLayout: RelativeLayout
+    private lateinit var mostSevereDepressionLayout : RelativeLayout
     private lateinit var noDepressionResultView : View
     private lateinit var mildDepressionResultView : View
     private lateinit var moderateDepressionView : View
     private lateinit var severeDepressionView : View
+    private lateinit var mostSevereDepressionView : View
     private var noDepViewHeight : Int = 0
     private var mildDepViewHeight : Int = 0
     private var modDepViewHeight : Int = 0
     private var sevDepViewHeight : Int = 0
+    private var moreSevDepViewHeight : Int = 0
     private lateinit var totalScore: TextView
     private lateinit var depressStatus: TextView
     private var noDepressionFormWidth: Int = 0
     private var mildDepressionFormWidth: Int = 0
     private var moderateDepressionFormWidth: Int = 0
     private var severeDepressionFormWidth: Int = 0
+    private var mostSevereDepressionFormWidth : Int = 0
     private var depressionResultBarHeight: Int = 0
     private lateinit var depressionProgressBar: RelativeLayout
 
@@ -260,7 +262,7 @@ class ResultFragment : Fragment() {
         }
         if (test_type == 3) {
             view = inflater.inflate(R.layout.fragment_result_mdi_test, container, false) as View
-            formConLayout = view.findViewById(R.id.results_con_layout_mdi_test)
+            formConLayout = view.findViewById(R.id.results_con_layout_bdi_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -435,6 +437,67 @@ class ResultFragment : Fragment() {
             }
         }
         if (test_type == 7) {
+            if (test_type == 3) {
+                view = inflater.inflate(R.layout.fragment_result_mdi_test, container, false) as View
+                formConLayout = view.findViewById(R.id.results_con_layout_bdi_test)
+                MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+                menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+                termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+                termsRelLayout.visibility = View.INVISIBLE
+                closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+                companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+                userIcon = MTEtitle.findViewById(R.id.userIcon)
+                userIcon.alpha = 1f
+                testHeadling = view.findViewById(R.id.mditestTitleTxtV)
+                riskResultTxtV = view.findViewById(R.id.testResultTxtV)
+                depressionProgressBar = RelativeLayout(mainActivity.applicationContext)
+                depressionProgressBar = view.findViewById(R.id.resulVerticalProgressBar)
+                noDepressionLayout = view.findViewById(R.id.noDepView)
+                mildDepressionLayout = view.findViewById(R.id.mildDepView)
+                moderateDepressionLayout = view.findViewById(R.id.moderateDepView)
+                servereDepressionLayout = view.findViewById(R.id.severeDepView)
+                mostSevereDepressionLayout = view.findViewById(R.id.mostSevereDepView)
+                noDepressionResultView = view.findViewById(R.id.noDepResultView)
+                mildDepressionResultView = view.findViewById(R.id.mildDepResultView)
+                moderateDepressionView = view.findViewById(R.id.modDepResultView)
+                severeDepressionView = view.findViewById(R.id.severeDepResultView)
+                totalScore = view.findViewById(R.id.totalScore)
+                depressStatus = view.findViewById(R.id.depressionStatus)
+                setMDIResultsOnForm(
+                    arguments!!.getDouble(ARG_PARAM1).toInt(),
+                    getMDIResult(arguments!!.getDouble(ARG_PARAM1).toInt())
+                )
+
+                noDepressionLayout.post {
+                    noDepressionFormWidth = noDepressionLayout.width
+                    depressionResultBarHeight = noDepressionLayout.height
+                    noDepViewHeight = noDepressionLayout.height
+                }
+
+
+                mildDepressionLayout.post {
+                    mildDepressionFormWidth = mildDepressionLayout.width
+                    mildDepViewHeight = mildDepressionLayout.height
+
+                }
+
+
+                moderateDepressionLayout.post {
+                    moderateDepressionFormWidth = moderateDepressionLayout.width
+                    modDepViewHeight = moderateDepressionLayout.height
+                }
+
+
+                servereDepressionLayout.post {
+                    severeDepressionFormWidth = servereDepressionLayout.width
+                    sevDepViewHeight = servereDepressionLayout.height
+                    GlobalScope.launch(Dispatchers.Main) {
+//                    setDimensionsForDepressionViews()
+                        showMDIResultBarViews()
+                    }
+                }
+
+            }
             view = inflater.inflate(R.layout.fragment_result_gds_test, container, false)
             formConLayout = view.findViewById(R.id.results_con_layout_gds_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
@@ -472,8 +535,78 @@ class ResultFragment : Fragment() {
 
 
         }
+
+        if (test_type == 8) {
+            view = inflater.inflate(R.layout.fragment_result_bdi_test, container, false) as View
+            formConLayout = view.findViewById(R.id.results_con_layout_bdi_test)
+            MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+            termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+            termsRelLayout.visibility = View.INVISIBLE
+            closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+            companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
+            testHeadling = view.findViewById(R.id.bditestTitleTxtV)
+            riskResultTxtV = view.findViewById(R.id.testResultTxtV)
+            depressionProgressBar = RelativeLayout(mainActivity.applicationContext)
+            depressionProgressBar = view.findViewById(R.id.resulVerticalProgressBar)
+            noDepressionLayout = view.findViewById(R.id.noDepView)
+            mildDepressionLayout = view.findViewById(R.id.mildDepView)
+            moderateDepressionLayout = view.findViewById(R.id.moderateDepView)
+            servereDepressionLayout = view.findViewById(R.id.severeDepView)
+            mostSevereDepressionLayout = view.findViewById(R.id.mostSevereDepView)
+            noDepressionResultView = view.findViewById(R.id.noDepResultView)
+            mildDepressionResultView = view.findViewById(R.id.mildDepResultView)
+            moderateDepressionView = view.findViewById(R.id.modDepResultView)
+            severeDepressionView = view.findViewById(R.id.severeDepResultView)
+            mostSevereDepressionView = view.findViewById(R.id.mostSevereDepResultView)
+            totalScore = view.findViewById(R.id.totalScore)
+            depressStatus = view.findViewById(R.id.depressionStatus)
+            setBDIResultsOnForm(
+                arguments!!.getDouble(ARG_PARAM1).toInt(),
+                getBDIResult(arguments!!.getDouble(ARG_PARAM1).toInt())
+            )
+
+            noDepressionLayout.post {
+                noDepressionFormWidth = noDepressionLayout.width
+                depressionResultBarHeight = noDepressionLayout.height
+                noDepViewHeight = noDepressionLayout.height
+            }
+
+
+            mildDepressionLayout.post {
+                mildDepressionFormWidth = mildDepressionLayout.width
+                mildDepViewHeight = mildDepressionLayout.height
+
+            }
+
+
+            moderateDepressionLayout.post {
+                moderateDepressionFormWidth = moderateDepressionLayout.width
+                modDepViewHeight = moderateDepressionLayout.height
+            }
+
+
+            servereDepressionLayout.post {
+                severeDepressionFormWidth = servereDepressionLayout.width
+                sevDepViewHeight = servereDepressionLayout.height
+            }
+
+            mostSevereDepressionLayout.post {
+                mostSevereDepressionFormWidth = mostSevereDepressionLayout.width
+                moreSevDepViewHeight = mostSevereDepressionLayout.height
+                GlobalScope.launch(Dispatchers.Main) {
+//                    setDimensionsForDepressionViews()
+                    showBDIResultBarViews()
+                }
+            }
+
+        }
             return view
         }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -596,6 +729,17 @@ class ResultFragment : Fragment() {
                 setGDSTestBarColors(arguments!!.getDouble(ARG_PARAM1).toInt())
             }
         }
+        if (test_type == 3) {
+            setFormColors(3)
+            testHeadling.setText("BDI Test")
+            riskResultTxtV.setText("Result")
+            testHeadling.setCompoundDrawablesWithIntrinsicBounds(
+                mainActivity.getDrawable(R.drawable.ic_depression_24),
+                null,
+                null,
+                null
+            )
+        }
     }
 
     private fun setAltLLayout() {
@@ -635,6 +779,10 @@ class ResultFragment : Fragment() {
             7 -> {
                 testHeadling.setBackgroundResource(R.drawable.purple_mditest_form_title_style)
                 gdsTestScore.setBackgroundResource(R.drawable.mdi_test_relative_layout)
+            }
+            3 -> {
+                testHeadling.setBackgroundResource(R.drawable.purple_mditest_form_title_style)
+                riskResultTxtV.setBackgroundResource(R.drawable.mdi_test_relative_layout)
             }
         }
     }
@@ -727,9 +875,35 @@ class ResultFragment : Fragment() {
         return ""
     }
 
+    private fun getBDIResult(mdiResult: Int): String {
+        if ((mdiResult >= 0) && (mdiResult < 9)) {
+            return "ΕΛΑΧΙΣΤΗ ΚΑΤΑΘΛΙΨΗ"
+        }
+        if ((mdiResult >= 10) && (mdiResult <= 18)) {
+            return "ΗΠΙΑ ΚΑΤΑΘΛΙΨΗ"
+        }
+        if ((mdiResult >= 19) && (mdiResult <= 29)) {
+            return "ΜΕΤΡΙΑ ΚΑΤΑΘΛΙΨΗ"
+        }
+        if ((mdiResult >= 30) && (mdiResult <= 63)) {
+            return "ΣΟΒΑΡΗ ΚΑΤΑΘΛΙΨΗ"
+        }
+        if ((mdiResult >= 64) && (mdiResult <= 75)) {
+            return "ΠΙΟ ΣΟΒΑΡΗ ΚΑΤΑΘΛΙΨΗ"
+        }
+        return ""
+    }
+
+
     private fun setMDIResultsOnForm(mdiDepressionInt: Int, mdiDepressionType: String) {
         totalScore.text = Html.fromHtml("<b>" + mdiDepressionInt.toString() + "</b>")
         depressStatus.text = Html.fromHtml("<b>" + mdiDepressionType+ "</b>")
+//        setMDIResultTextViewColors(mdiDepressionInt)
+    }
+
+    private fun setBDIResultsOnForm(bdiDepressionInt: Int, bdiDepressionType: String) {
+        totalScore.text = Html.fromHtml("<b>" + bdiDepressionInt.toString() + "</b>")
+        depressStatus.text = Html.fromHtml("<b>" + bdiDepressionType+ "</b>")
 //        setMDIResultTextViewColors(mdiDepressionInt)
     }
 
@@ -758,7 +932,7 @@ class ResultFragment : Fragment() {
         {
             return "Απουσία Κατάθληψης"
         }
-        if ((6 >= score) && (score <= 10))
+        if ((6 <= score) && (score <= 10))
         {
             return "Παρουσία ήπιας κατάθληψης. Απαιτείται ιατρική/ψυχιατρική αξιολόγηση"
         }
@@ -871,7 +1045,7 @@ class ResultFragment : Fragment() {
         var viewIDs = intArrayOf(gdsView1.id , gdsView2.id , gdsView3.id , gdsView4.id ,
         gdsView5.id , gdsView6.id, gdsView7.id , gdsView8.id , gdsView9.id , gdsView10.id,
         gdsView11.id , gdsView12.id , gdsView13.id , gdsView14.id , gdsView15.id)
-        for (i in barsNo..10)
+        for (i in barsNo..14)
         {
             view?.findViewById<View>(viewIDs.get(i))!!.setBackgroundColor(resources.getColor(R.color.light_gray))
             delay(100)
@@ -1053,7 +1227,7 @@ class ResultFragment : Fragment() {
 
     }
 
-suspend fun showMDIResultBarViews()
+fun showMDIResultBarViews()
 {
     val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1)
     var barHeightSet = false
@@ -1474,6 +1648,618 @@ suspend fun showMDIResultBarViews()
 
                 })
             }
+    }
+
+
+    private fun showBDIResultBarViews() {
+        val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1)
+        var barHeightSet = false
+        if (userMDIResult < 9)
+        {
+            mainActivity.runOnUiThread {
+                var newNoViewHeight = userMDIResult.toFloat() / 9 * noDepViewHeight
+                var lowY = noDepressionLayout.y
+                noDepressionResultView.updateLayoutParams {
+                    height = newNoViewHeight.toInt()
+                }
+                val noLayoutParams = noDepressionResultView.layoutParams as ConstraintLayout.LayoutParams
+                noLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                noDepressionResultView.y = lowY
+                barHeightSet =true
+                var scaleAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                scaleAnimation.fillAfter = true
+                scaleAnimation.duration = 400
+                noDepressionResultView.startAnimation(scaleAnimation)
+                scaleAnimation.setAnimationListener(object : Animation.AnimationListener
+                {
+                    override fun onAnimationStart(p0: Animation?) {
+                        noDepressionResultView.alpha = 1f
+                    }
+
+                    override fun onAnimationEnd(p0: Animation?) {
+                    }
+
+                    override fun onAnimationRepeat(p0: Animation?) {
+                    }
+
+                })
+            }
+
+        }
+        if ((userMDIResult == 9.0) && (!barHeightSet))
+        {
+            mainActivity.runOnUiThread {
+                noDepressionResultView.alpha = 1f
+            }
+            barHeightSet = true
+            var scaleAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+            scaleAnimation.fillAfter = true
+            scaleAnimation.duration = 400
+            noDepressionResultView.startAnimation(scaleAnimation)
+        }
+        if ((userMDIResult < 18) && (!barHeightSet))
+        {
+            mainActivity.runOnUiThread {
+                var newMildViewHeight : Float = (userMDIResult.toFloat() - 9f ) / 9 * mildProgressViewHeight
+                var mildY = mildDepressionLayout.y
+                mildDepressionResultView.updateLayoutParams {
+                    height = newMildViewHeight.toInt()
+                }
+                val mildLayoutParams = mildDepressionResultView.layoutParams as ConstraintLayout.LayoutParams
+                mildLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                mildDepressionResultView.y = mildY
+            }
+            barHeightSet = true
+            var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+            scaleLowAnimation.fillAfter = true
+            scaleLowAnimation.duration = 400
+            noDepressionResultView.startAnimation(scaleLowAnimation)
+            scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+            {
+                override fun onAnimationStart(p0: Animation?) {
+                    noDepressionResultView.alpha = 1f
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                    scaleMildAnimation.fillAfter = true
+                    scaleMildAnimation.duration = 400
+                    mildDepressionResultView.startAnimation(scaleMildAnimation)
+                    scaleMildAnimation.setAnimationListener(object : Animation.AnimationListener{
+
+                        override fun onAnimationStart(p0: Animation?) {
+                            mildDepressionResultView.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+
+                override fun onAnimationRepeat(p0: Animation?) {
+                }
+
+            })
+        }
+        if ((userMDIResult == 18.0) && (!barHeightSet))
+        {
+            mainActivity.runOnUiThread {
+                noDepressionResultView.alpha = 1f
+                mildDepressionResultView.alpha = 1f
+            }
+            barHeightSet = true
+            var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+            scaleLowAnimation.fillAfter = true
+            scaleLowAnimation.duration = 400
+            noDepressionResultView.startAnimation(scaleLowAnimation)
+            scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+            {
+                override fun onAnimationStart(p0: Animation?) {
+                    noDepressionResultView.alpha = 1f
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                    scaleMildAnimation.fillAfter = true
+                    scaleMildAnimation.duration = 400
+                    mildDepressionResultView.startAnimation(scaleMildAnimation)
+                    scaleMildAnimation.setAnimationListener(object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            mildDepressionResultView.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+
+                override fun onAnimationRepeat(p0: Animation?) {
+                }
+
+            })
+        }
+        if ((userMDIResult < 29) && (!barHeightSet))
+        {
+            mainActivity.runOnUiThread {
+                var newModViewHeight : Float = (userMDIResult.toFloat() - 18) / 11 * modDepViewHeight
+                var modY = moderateDepressionLayout.y
+                moderateDepressionView.updateLayoutParams{
+                    height = newModViewHeight.toInt()
+                }
+                val modLayoutParams = moderateDepressionView.layoutParams as ConstraintLayout.LayoutParams
+                modLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                moderateDepressionView.y = modY
+            }
+            barHeightSet = true
+            var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+            scaleLowAnimation.fillAfter = true
+            scaleLowAnimation.duration = 400
+            noDepressionResultView.startAnimation(scaleLowAnimation)
+            scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+            {
+                override fun onAnimationStart(p0: Animation?) {
+                    noDepressionResultView.alpha = 1f
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                    scaleMildAnimation.fillAfter = true
+                    scaleMildAnimation.duration = 400
+                    mildDepressionResultView.startAnimation(scaleMildAnimation)
+
+                    scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            mildDepressionResultView.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleModerateAnimation.fillAfter = true
+                            scaleModerateAnimation.duration = 400
+                            moderateDepressionView.startAnimation(scaleModerateAnimation)
+                            scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    moderateDepressionView.alpha =1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+
+                override fun onAnimationRepeat(p0: Animation?) {
+                }
+
+            })
+        }
+        if ((userMDIResult == 29.0) && (!barHeightSet))
+        {
+            mainActivity.runOnUiThread {
+            }
+            barHeightSet = true
+            var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+            scaleLowAnimation.fillAfter = true
+            scaleLowAnimation.duration = 400
+            noDepressionResultView.startAnimation(scaleLowAnimation)
+            scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+            {
+                override fun onAnimationStart(p0: Animation?) {
+                    noDepressionResultView.alpha = 1f
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                    scaleMildAnimation.fillAfter = true
+                    scaleMildAnimation.duration = 400
+                    mildDepressionResultView.startAnimation(scaleMildAnimation)
+
+                    scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            mildResultView.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleModerateAnimation.fillAfter = true
+                            scaleModerateAnimation.duration = 400
+                            moderateDepressionView.startAnimation(scaleModerateAnimation)
+                            scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    moderateDepressionView.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+
+                override fun onAnimationRepeat(p0: Animation?) {
+                }
+
+            })
+        }
+        if ((userMDIResult < 63) && (!barHeightSet))
+        {
+            mainActivity.runOnUiThread {
+                var newSevViewHeight : Float = (userMDIResult.toFloat() - 29) / 34 * sevDepViewHeight
+                var severeY = servereDepressionLayout.y
+                severeDepressionView.updateLayoutParams{
+                    height = newSevViewHeight.toInt()
+                }
+                val sevLayoutParams = severeDepressionView.layoutParams as ConstraintLayout.LayoutParams
+                sevLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                severeDepressionView.y = severeY
+            }
+            barHeightSet = true
+            var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+            scaleLowAnimation.fillAfter = true
+            scaleLowAnimation.duration = 400
+            noDepressionResultView.startAnimation(scaleLowAnimation)
+            scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+            {
+                override fun onAnimationStart(p0: Animation?) {
+                    noDepressionResultView.alpha = 1f
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                    scaleMildAnimation.fillAfter = true
+                    scaleMildAnimation.duration = 400
+                    mildDepressionResultView.startAnimation(scaleMildAnimation)
+
+                    scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            mildDepressionResultView.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleModerateAnimation.fillAfter = true
+                            scaleModerateAnimation.duration = 400
+                            moderateDepressionView.startAnimation(scaleModerateAnimation)
+                            scaleModerateAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    moderateDepressionView.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleSevereAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleSevereAnimation.fillAfter = true
+                                    scaleSevereAnimation.duration = 400
+                                    severeDepressionView.startAnimation(scaleSevereAnimation)
+                                    scaleSevereAnimation.setAnimationListener(object : Animation.AnimationListener {
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            severeDepressionView.alpha = 1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+
+                override fun onAnimationRepeat(p0: Animation?) {
+                }
+
+            })
+        }
+        if ((userMDIResult == 63.0) && (!barHeightSet))
+        {
+            mainActivity.runOnUiThread {
+
+            }
+            var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+            scaleLowAnimation.fillAfter = true
+            scaleLowAnimation.duration = 400
+            noDepressionResultView.startAnimation(scaleLowAnimation)
+            scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+            {
+                override fun onAnimationStart(p0: Animation?) {
+                    noDepressionResultView.alpha = 1f
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                    scaleMildAnimation.fillAfter = true
+                    scaleMildAnimation.duration = 400
+                    mildDepressionResultView.startAnimation(scaleMildAnimation)
+
+                    scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            mildDepressionResultView.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleModerateAnimation.fillAfter = true
+                            scaleModerateAnimation.duration = 400
+                            moderateDepressionView.startAnimation(scaleModerateAnimation)
+                            scaleModerateAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    moderateDepressionView.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleSevereAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleSevereAnimation.fillAfter = true
+                                    scaleSevereAnimation.duration = 400
+                                    severeDepressionView.startAnimation(scaleSevereAnimation)
+                                    scaleSevereAnimation.setAnimationListener(object : Animation.AnimationListener{
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            severeDepressionView.alpha = 1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+
+                override fun onAnimationRepeat(p0: Animation?) {
+                }
+
+            })
+        }
+        if ((userMDIResult > 63) && (!barHeightSet))
+        {
+            mainActivity.runOnUiThread {
+                var newSevViewHeight : Float = (userMDIResult.toFloat() - 63) / 11 * moreSevDepViewHeight
+                var severeY = mostSevereDepressionLayout.y
+                mostSevereDepressionView.updateLayoutParams{
+                    height = newSevViewHeight.toInt()
+                }
+                val sevLayoutParams = mostSevereDepressionView.layoutParams as ConstraintLayout.LayoutParams
+                sevLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                mostSevereDepressionView.y = severeY
+            }
+            barHeightSet = true
+            var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+            scaleLowAnimation.fillAfter = true
+            scaleLowAnimation.duration = 400
+            noDepressionResultView.startAnimation(scaleLowAnimation)
+            scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+            {
+                override fun onAnimationStart(p0: Animation?) {
+                    noDepressionResultView.alpha = 1f
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                    scaleMildAnimation.fillAfter = true
+                    scaleMildAnimation.duration = 400
+                    mildDepressionResultView.startAnimation(scaleMildAnimation)
+
+                    scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            mildDepressionResultView.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleModerateAnimation.fillAfter = true
+                            scaleModerateAnimation.duration = 400
+                            moderateDepressionView.startAnimation(scaleModerateAnimation)
+                            scaleModerateAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    moderateDepressionView.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleSevereAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleSevereAnimation.fillAfter = true
+                                    scaleSevereAnimation.duration = 400
+                                    severeDepressionView.startAnimation(scaleSevereAnimation)
+                                    scaleSevereAnimation.setAnimationListener(object : Animation.AnimationListener {
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            severeDepressionView.alpha = 1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+
+                                            var scaleMostSevereAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                            scaleMostSevereAnimation.fillAfter = true
+                                            scaleMostSevereAnimation.duration = 400
+                                            mostSevereDepressionView.startAnimation(scaleMostSevereAnimation)
+                                            scaleMostSevereAnimation.setAnimationListener(object : Animation.AnimationListener{
+                                                override fun onAnimationStart(p0: Animation?) {
+                                                    mostSevereDepressionView.alpha = 1f
+                                                }
+
+                                                override fun onAnimationEnd(p0: Animation?) {
+                                                }
+
+                                                override fun onAnimationRepeat(p0: Animation?) {
+                                                }
+
+                                            })
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+
+                override fun onAnimationRepeat(p0: Animation?) {
+                }
+
+            })
+        }
+        if ((userMDIResult == 73.0) && (!barHeightSet))
+        {
+            mainActivity.runOnUiThread {
+
+            }
+            var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+            scaleLowAnimation.fillAfter = true
+            scaleLowAnimation.duration = 400
+            noDepressionResultView.startAnimation(scaleLowAnimation)
+            scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+            {
+                override fun onAnimationStart(p0: Animation?) {
+                    noDepressionResultView.alpha = 1f
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                    scaleMildAnimation.fillAfter = true
+                    scaleMildAnimation.duration = 400
+                    mildDepressionResultView.startAnimation(scaleMildAnimation)
+
+                    scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            mildDepressionResultView.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleModerateAnimation.fillAfter = true
+                            scaleModerateAnimation.duration = 400
+                            moderateDepressionView.startAnimation(scaleModerateAnimation)
+                            scaleModerateAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    moderateDepressionView.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleSevereAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleSevereAnimation.fillAfter = true
+                                    scaleSevereAnimation.duration = 400
+                                    severeDepressionView.startAnimation(scaleSevereAnimation)
+                                    scaleSevereAnimation.setAnimationListener(object : Animation.AnimationListener{
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            severeDepressionView.alpha = 1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+                                            var mostScaleSevereAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                            mostScaleSevereAnimation.fillAfter = true
+                                            mostScaleSevereAnimation.duration = 400
+                                            mostSevereDepressionView.startAnimation(mostScaleSevereAnimation)
+                                            mostScaleSevereAnimation.setAnimationListener(object : Animation.AnimationListener{
+                                                override fun onAnimationStart(p0: Animation?) {
+                                                    mostSevereDepressionView.alpha = 1f
+                                                }
+
+                                                override fun onAnimationEnd(p0: Animation?) {
+                                                }
+
+                                                override fun onAnimationRepeat(p0: Animation?) {
+                                                }
+
+                                            })
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+
+                override fun onAnimationRepeat(p0: Animation?) {
+                }
+
+            })
+        }
     }
 
 

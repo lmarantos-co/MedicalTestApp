@@ -77,6 +77,7 @@ class MDICheckFragment : Fragment() {
 
         var patientId = this.arguments!!.getString("patientId")
         var testDate = this.arguments!!.getString("testDate")
+        var openType = this.arguments!!.getString("openType")
 
 
         var historyTest = Test()
@@ -91,14 +92,18 @@ class MDICheckFragment : Fragment() {
         }
         else
         {
-            if (userName != "tempUser")
+            if (openType == "updatLast")
             {
                 mdiPatientViewModel.setPatientDataOnForm(userName!!)
             }
-            else
+            if (openType == "addNew")
             {
-                mdiPatientViewModel.setUserDummyData()
-                mdiPatientViewModel.setPatientDataOnForm(userName)
+                mdiPatientViewModel.initialiseUserDummy()
+//                mdiPatientViewModel.setPatientDataOnForm(userName!!)
+            }
+            if (openType == "history")
+            {
+                mdiPatientViewModel.history()
             }
         }
 

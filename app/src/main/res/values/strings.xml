@@ -64,8 +64,10 @@
     <string name="MDIA6">At No Time</string>
     <string name="mdi_test_score">Your total score : </string>
     <string name="mdi_test_depression">The severity of depression : </string>
+    <string name="bdi_test_score">Το συνολικό σκόρ : </string>
+    <string name="bdi_test_depression">Η σοβαρότητα της καταθλιψης : </string>
     <string name="gds_test_intro_text">Επέλεξε την καλύτερη απάντηση για το πως ένοιωθες την τελευταία εβδομάδα</string>
-    <string name="GDSQ1">Είστε ικαοποιημένος από τη ζωή σας</string>
+    <string name="GDSQ1">Είστε ικανοποιημένος από τη ζωή σας</string>
     <string name="GDSQ2">Έχουν ατονίσει αρκετές από τις δραστηριότητες-ενδιαφέροντα σας</string>
     <string name="GDSQ3">Αισθάνεστε ότι η ζωή σας είναι άδεια</string>
     <string name="GDSQ4">Συχνά νοιώθετε ότι βαριέσθε</string>
@@ -296,6 +298,151 @@
     <string name="pdq_test_intro_text">ΕΞΑΙΤΙΑΣ ΤΗΣ ΝΟΣΟΥ ΤΟΥ ΠΑΡΚΙΝΣΟΝ πόσο συχνά είχατε, τον προηγούμενο μήνα, τα παρακάτω;</string>
     <string name="intro_screen_new_customer">ΝΕΟΣ ΠΕΛΑΤΗΣ</string>
     <string name="intro_screen_all_customers">ΟΛΟΙ ΟΙ ΠΕΛΑΤΕΣ</string>
+
+    <string name="bdi_test_intro_text">Kυκλώστε τον αριθμό δίπλα από την δήλωση που περιγράφει καλύτερα τον τρόπο
+        που έχετε αισθανθεί την από την προηγούμενη εβδομάδα έως την ημέρα που διεξάγεται το ερωτηματολόγιο.</string>
+
+    <string name="BDI_question_Α">Συναίσθηµα</string>
+    <string name="BDI_answer_Α1">Δεν αισθάνοµαι λυπηµένος</string>
+    <string name="BDI_answer_Α2">Αισθάνοµαι λυπηµένος ή µελαγχολικός</string>
+    <string name="BDI_answer_Α3">Είµαι λυπηµένος ή µελαγχολικός συνεχώς και δεν µπορώ να απαλλαγώ από αυτό</string>
+    <string name="BDI_answer_Α4">Ειµαι τόσο µελαγχολικός ή δυστυχισµένος ώστε αυτο µου προξενεί πόνο</string>
+    <string name="BDI_answer_Α5">Είµαι τόσο µελαγχολικός ή δυστυχισµένος ώστε δεν µπορώ να το αντέξω</string>
+
+    <string name="BDI_question_Β">Απαισιοδοξία</string>
+    <string name="BDI_answer_Β1">∆εν είµαι ιδιαίτερα απιασιόδοξος ή αποθαρρυµένος για το µέλλον</string>
+    <string name="BDI_answer_Β2">Αισθάνοµαι χωρίς θάρρος για το µέλλον</string>
+    <string name="BDI_answer_Β3">Μου φαίνεται οτι δεν έχω τίποτα καλό να περιµένω απο το µέλλον</string>
+    <string name="BDI_answer_Β4">Μου φαίνεται οτι δεν θα ξεπεράσω τις δυσκολίες µου</string>
+    <string name="BDI_answer_Β5">Μου φαίνεται οτι το µέλλον είναι χωρίς ελπίδα και οτι τα πράγµατα δεν µπορεί να
+φτιάξουν</string>
+
+    <string name="BDI_question_C">Αίσθηµα αποτυχίας</string>
+    <string name="BDI_answer_C1">∆εν αισθάνοµαι αποτυχηµένος</string>
+    <string name="BDI_answer_C2">Μου φαίνεται οτι ειµαι αποτυχηµένος περισσότερο απο τους άλλους ανθρώπους </string>
+    <string name="BDI_answer_C3">Αισθάνοµαι οτι έχω πετύχει στη ζωή µου πολύ λίγα πράγµατα άξια λόγου</string>
+    <string name="BDI_answer_C4">Καθώς σκέπτοµαι τη ζωή µου µέχρι τώρα το µόνο που βλέπω είναι πολλές αποτυχίες</string>
+    <string name="BDI_answer_C5">Αισθάνοµαι οτι είµαι τελείως αποτυχηµένος σαν άτοµο (σύζυγος – πατέρας)</string>
+
+    <string name="BDI_question_D">Απώλεια ικανοποίησης </string>
+    <string name="BDI_answer_D1">∆εν αισθάνοµαι ιδιαίτερα δυσαρεστηµένος</string>
+    <string name="BDI_answer_D2">Αισθάνοµαι βαρυεστηµένος σχεδόν όλη την ώρα</string>
+    <string name="BDI_answer_D3">∆εν απολαµβάνω τα πράγµατα όπως πρώτα</string>
+    <string name="BDI_answer_D4">∆εν µε ευχαριστεί πια τίποτα </string>
+    <string name="BDI_answer_D5">Αισθάνοµαι δυασαρεστηµένος µε το κάθε τι </string>
+
+    <string name="BDI_question_E">Αίσθηµα ενοχής </string>
+    <string name="BDI_answer_E1">∆εν αισθάνοµαι ιδιαίτερα ένοχο τον εαυτο µου </string>
+    <string name="BDI_answer_E2">Πολλές φορές αισθάνοµαι κακός ή χωρίς αξία</string>
+    <string name="BDI_answer_E3">Αισθάνοµαι πολύ ένοχος </string>
+    <string name="BDI_answer_E4">Τον τελευταίο καιρό αισθάνοµαι κακός ή χωρίς αξία σχεδόν όλη την ώρα</string>
+    <string name="BDI_answer_E5">Αισθάνοµαι οτι ειµαι πολύ κακός ή ανάξιος</string>
+
+    <string name="BDI_question_F">Αίσθηµα τιµωρίας </string>
+    <string name="BDI_answer_F1">∆εν αισθάνοµαι οτι τιµωρούµαι</string>
+    <string name="BDI_answer_F2">Αισθάνοµαι οτι κάτι κακό µπορεί να µου συµβεί </string>
+    <string name="BDI_answer_F3">Αισθάνοµαι οτι τιµωρούµαι ή οτι θα τιµωρηθώ </string>
+    <string name="BDI_answer_F4">Αισθάνοµαι οτι µου αξίζει να τιµωρηθώ </string>
+    <string name="BDI_answer_F5">Θέλω να τιµωρηθώ</string>
+
+    <string name="BDI_question_G">Μίσος για τον εαυτό</string>
+    <string name="BDI_answer_G1">∆εν αισθάνοµαι απογοητευµένος απο τον εαυτό µου</string>
+    <string name="BDI_answer_G2">Αισθάνοµαι απογοητευµένος απο τον εαυτό µου</string>
+    <string name="BDI_answer_G3">∆εν µου αρέσει ο εαυτός µου</string>
+    <string name="BDI_answer_G4">Σιχαίνοµαι τον εαυτό µου</string>
+    <string name="BDI_answer_G5">Μισώ τον εαυτό µου </string>
+
+    <string name="BDI_question_H">Αυτοµοµφή </string>
+    <string name="BDI_answer_H1">∆εν αισθάνοµαι οτι είµαι χειρότερος από τους άλλους</string>
+    <string name="BDI_answer_H2">Είµαι αυστηρός µε τον εαυτό µου για τις αδυναµίες µου</string>
+    <string name="BDI_answer_H3">Κατηγορώ τον εαυτό µου για τα λάθη µου</string>
+    <string name="BDI_answer_H4">Κατηγορώ τον εαυτό µου για κάθε κακό που µου συµβαίνει</string>
+
+    <string name="BDI_question_I">Ευχές αυτοτιµωρίας</string>
+    <string name="BDI_answer_I1">∆εν µου έρχονται σκέψεις να κάνω κακό στον εαυτό µου</string>
+    <string name="BDI_answer_I2">Μου έρχονται σκέψεις να κάνω κακό στον εαυτό µου αλλά ποτέ δεν θα έκανα κάτι
+τέτοιο </string>
+    <string name="BDI_answer_I3">Μου φαίνεται οτι θα ήταν καλύτερα να πέθαινα</string>
+    <string name="BDI_answer_I4">Μου φαίνεται οτι η οικογενια µου θα ήταν καλύτερα αν πέθαινα </string>
+    <string name="BDI_answer_I5">Έχω συγκεκριµένα σχέδια αυτοκτονίας</string>
+    <string name="BDI_answer_I6">Θα αυτοκτονούσα αν µπορούσα</string>
+
+    <string name="BDI_question_K">Κλάµα</string>
+    <string name="BDI_answer_K1">∆εν κλαίω περισσότερο απο το συνηθισµένο</string>
+    <string name="BDI_answer_K2">Κλαίω τώρα περισσότερο απ’ οτι συνήθως</string>
+    <string name="BDI_answer_K3">Κλαίω συνεχώς, δεν µπορώ να το σταµατήσω</string>
+    <string name="BDI_answer_K4">Άλλοτε µπορούσα να κλάψω αλλά τώρα µου είναι αδύνατο να κλάψω αν και το θέλω </string>
+
+    <string name="BDI_question_L">Ευερεθιστότητα</string>
+    <string name="BDI_answer_L1">∆εν είµαι περισσότερο εκνευρισµένος τώρα απ’ οτι συνήθως</string>
+    <string name="BDI_answer_L2">Ενοχλούµαι ή εκνευρίζοµαι περισσότερο απ’ οτι συνήθως
+</string>
+    <string name="BDI_answer_L3">Αισθάνοµαι διαρκώς εκνευρισµένος </string>
+    <string name="BDI_answer_L4">∆εν εκνευρίζοµαι τώρα για πράγµατα που µε νευρίαζαν συνήθως</string>
+
+    <string name="BDI_question_M">Κοινωνική απόσυρση</string>
+    <string name="BDI_answer_M1">∆εν έχω χάσει το ενδιαφέρον µου για τους άλλους ανθρώπους </string>
+    <string name="BDI_answer_M2">Ενδιαφέροµαι τώρα λιγότερο για τους άλλους ανθρώπους απ’ ότι παλαιότερα </string>
+    <string name="BDI_answer_M3">Έχω χάσει το περισσότερο ενδιαφέρον µου για τους άλλους ανθρώπους και τα
+        αισθήµατα µου για αυτούς έχουν λιγοστέψει</string>
+    <string name="BDI_answer_M4">Έχω χάσει όλο το ενδιαφέρον µου για τους άλλους ανθρώπους και δεν νοιάζοµαι
+καθόλου για αυτούς</string>
+
+    <string name="BDI_question_N">Αναποφασιστικότητα</string>
+    <string name="BDI_answer_N1">Είµαι το ίδιο αποφασιστικός όπως πάντα</string>
+    <string name="BDI_answer_N2">Τελευταία αναβάλω το να παίρνω αποφάσεις</string>
+    <string name="BDI_answer_N3">Έχω µεγάλη δυσκολία στο να παίρνω αποφάσεις</string>
+    <string name="BDI_answer_N4">∆εν µπορώ να πάρω πια καµία απόφαση</string>
+
+    <string name="BDI_question_O">Σωµατικό εγώ</string>
+    <string name="BDI_answer_O1">∆εν µου φαίνεται οτι η εµφάνιση µου ειναι χειρότερη απο ποτέ</string>
+    <string name="BDI_answer_O2">Ανησυχώ µήπως µοιάζω γερασµένος και αντιπαθητικός</string>
+    <string name="BDI_answer_O3">Αισθάνοµαι οτι έγινε τέτοια αλλαγή επάνω µου, ώστε να φαίνοµαι αντιπαθητικός</string>
+    <string name="BDI_answer_O4">Μου φαίνεται οτι είµαι άσχηµος και αποκρουστικός</string>
+
+    <string name="BDI_question_P">Μείωση της παραγωγικότητας</string>
+    <string name="BDI_answer_P1">Χρειάζεται να κάνω ιδιαίτερη προσπάθεια για ν’ αρχίσω κάποια δουλεία</string>
+    <string name="BDI_answer_P2">∆εν τα καταφέρνω στην δουλειά µου όπως πρώτα</string>
+    <string name="BDI_answer_P3">Χρειάζεται να πιέσω τον εαυτό µου για να κάνω κάτι </string>
+    <string name="BDI_answer_P4">Μου είναι αδύνατο να εργαστώ</string>
+
+    <string name="BDI_question_Q">∆ιαταραχές του ύπνου</string>
+    <string name="BDI_answer_Q1">Κοιµάµαι τόσο καλά όσο συνήθως</string>
+    <string name="BDI_answer_Q2">Ξυπνώ το πρωί πιο κουρασµένος απο άλλοτε</string>
+    <string name="BDI_answer_Q3">Ξυπνώ το πρωί 2-3 ώρες νωρίτερα απο άλλοτε και δυσκολεύοµαι να ξανακοιµηθώ </string>
+    <string name="BDI_answer_Q4">Ξυπνώ νωρίς κάθε µέρα και δεν µπορώ να κοιµηθώ πάνω από 5 ώρες το 24ωρο</string>
+
+    <string name="BDI_question_R">Εύκολη κόπωση</string>
+    <string name="BDI_answer_R1">∆εν κουράζοµαι ευκολότερα απ’ οτι συνήθως </string>
+    <string name="BDI_answer_R2">Κουράζοµαι τώρα ευκολότερα απο πρώτα</string>
+    <string name="BDI_answer_R3">Κουράζοµαι µε το παραµικρό που κάνω</string>
+    <string name="BDI_answer_R4">Κουράζοµαι τόσο εύκολα ώστε δεν µπορώ να κάνω τίποτα</string>
+
+    <string name="BDI_question_S">Απώλεια όρεξης </string>
+    <string name="BDI_answer_S1">Η όρεξή µου δεν είναι χειρότερη απο άλλοτε</string>
+    <string name="BDI_answer_S2">Η ορεξή µου δεν είναι τοσο καλή όσο άλλοτε </string>
+    <string name="BDI_answer_S3">Η ορεξή µου είναι πολύ χειρότερη τώρα</string>
+    <string name="BDI_answer_S4">∆εν έχω πια καθολου όρεξη </string>
+
+    <string name="BDI_question_T">Απώλεια βάρους </string>
+    <string name="BDI_answer_T1">Έχω χάσει περισσότερο απο 2 κιλά</string>
+    <string name="BDI_answer_T2">Έχω χάσει περισσότερο απο 4 κιλά</string>
+    <string name="BDI_answer_T3">Έχω χάσει περισσότερο απο 7 κιλά</string>
+
+    <string name="BDI_question_U">Υποχονδριακές ενασχολήσεις</string>
+    <string name="BDI_answer_U1">∆εν µε απασχολεί η υγεία µου περισσότερο απο άλλοτε</string>
+    <string name="BDI_answer_U2">Με απασχολούν πόνοι ή βαρυστοµαχία ή δυσκοιλιότητα</string>
+    <string name="BDI_answer_U3">Με απασχολεί τοσο πολύ το πως αισθάνοµαι ή το τι αισθάνοµαι ώστε µου ειναι δύσκολο
+να σκεφθώ τίποτε άλλο</string>
+    <string name="BDI_answer_U4">Είµαι εντελώς απορροφηµένος µε το τι αισθάνοµαι</string>
+
+    <string name="BDI_question_V">Απώλεια της Libido</string>
+    <string name="BDI_answer_V1">∆εν έχω προσέξει τελευταία καµµιά αλλαγή στο ενδιαφέρον µου για το σεξ (για τις
+γυναίκες) </string>
+    <string name="BDI_answer_V2">Ενδιαφέροµαι τώρα λιγότερο για το σεξ (για τις γυναίκες) απ’ οτι συνήθως</string>
+    <string name="BDI_answer_V3">Ενδιαφέροµαι πολύ λιγότερο τώρα για το σεξ (για τις γυναίκες) </string>
+    <string name="BDI_answer_V4">Έχω χάσει τελείως το ενδιαφέρον µου για το σεξ (για τις γυναίκες) </string>
+    
 
 
 </resources>

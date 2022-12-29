@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 
 const val PARAM1 : String = "pdqTestResults"
 
-
 class ResultExtraFragment : Fragment() {
 
 

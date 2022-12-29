@@ -107,14 +107,14 @@ class CheckFragment : Fragment() {
         }
         else
         {
-            if (openType == "updatelast")
+            if (openType == "updateLast")
             {
                 checkPatientViewModel.setPatientDataOnForm()
             }
             if (openType == "addNew")
             {
                 checkPatientViewModel.setUserDummyData()
-                checkPatientViewModel.setPatientDataOnForm()
+               // checkPatientViewModel.setPatientDataOnForm()
             }
             if (openType == "history")
             {

@@ -83,6 +83,7 @@ class medDietTestFragment : Fragment() {
 
         var patientId = this.arguments!!.getString("patientId")
         var testDate = this.arguments!!.getString("testDate")
+        var openType = this.arguments!!.getString("openType")
 
 
         var historyTest = Test()
@@ -97,14 +98,18 @@ class medDietTestFragment : Fragment() {
         }
         else
         {
-            if (userName != "tempUser")
+            if (openType == "updateLast")
             {
                 medDietTestViewModel.setPatientDataOnForm(userName!!)
             }
-            else
+            if (openType == "addNew")
             {
-                medDietTestViewModel.setUserDummyData()
-                medDietTestViewModel.setPatientDataOnForm(userName)
+                medDietTestViewModel.initialiseUserDummy()
+//                medDietTestViewModel.setPatientDataOnForm(userName!!)
+            }
+            if (openType == "history")
+            {
+                medDietTestViewModel.history()
             }
         }
 

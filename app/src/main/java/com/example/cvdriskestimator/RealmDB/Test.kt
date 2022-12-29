@@ -348,5 +348,70 @@ open class Test : RealmModel
 
     var patientPDQQ39 : Int? = null
 
+    //variables related with Beck Depression Inventory Test
+
+    var patientBDIQ1 : Int? = null
+
+
+    var patientBDIQ2 : Int? = null
+
+
+    var patientBDIQ3 : Int? = null
+
+
+    var patientBDIQ4 : Int? = null
+
+
+    var patientBDIQ5 : Int? = null
+
+
+    var patientBDIQ6 : Int? = null
+
+
+    var patientBDIQ7 : Int? = null
+
+
+    var patientBDIQ8 : Int? = null
+
+
+    var patientBDIQ9 : Int? = null
+
+
+    var patientBDIQ10 : Int? = null
+
+
+    var patientBDIQ11 : Int? = null
+
+
+    var patientBDIQ12 : Int? = null
+
+
+    var patientBDIQ13 : Int? = null
+
+    var patientBDIQ14 : Int? = null
+
+
+    var patientBDIQ15 : Int? = null
+
+
+    var patientBDIQ16 : Int? = null
+
+
+    var patientBDIQ17 : Int? = null
+
+
+    var patientBDIQ18 : Int? = null
+
+
+    var patientBDIQ19 : Int? = null
+
+
+    var patientBDIQ20 : Int? = null
+
+
+    var patientBDIQ21 : Int? = null
+
+    var patientBDITestResult : Int? = null
+
 
 }

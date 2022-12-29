@@ -461,11 +461,12 @@
 
     <View
         android:id="@+id/view12"
-        android:layout_width="165dp"
-        android:layout_height="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/horGlViewFor12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/horGLview10"
         app:layout_constraintEnd_toStartOf="@+id/rightHGLresultBar"
-        app:layout_constraintTop_toTopOf="@+id/horGlViewFor13" />
+        app:layout_constraintStart_toStartOf="@+id/leftHGLresultBar"
+        app:layout_constraintTop_toTopOf="@+id/horGlViewFor12" />
 
     <TextView
         android:id="@+id/eleventhTxtV"
@@ -474,19 +475,19 @@
         android:text="12"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/horGLview10"
+        app:layout_constraintBottom_toTopOf="@+id/tenthTxtV"
         app:layout_constraintEnd_toStartOf="@+id/rightHGLresultBar"
-        app:layout_constraintStart_toStartOf="@+id/leftHGLresultBar"
-        app:layout_constraintTop_toBottomOf="@+id/view12" />
+        app:layout_constraintStart_toStartOf="@+id/view12"
+        app:layout_constraintTop_toTopOf="@+id/view12" />
 
     <View
         android:id="@+id/view13"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/view11"
+        app:layout_constraintBottom_toTopOf="@+id/horGlViewFor12"
         app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
         app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
-        app:layout_constraintTop_toBottomOf="@id/horGLview10" />
+        app:layout_constraintTop_toTopOf="@+id/twelveTxtV" />
 
     <TextView
         android:id="@+id/twelveTxtV"
@@ -495,19 +496,19 @@
         android:text="13"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/eleventhTxtV"
+        app:layout_constraintBottom_toTopOf="@+id/horGlViewFor12"
         app:layout_constraintEnd_toEndOf="@+id/view12"
         app:layout_constraintStart_toStartOf="@+id/leftHGLresultBar"
         app:layout_constraintTop_toTopOf="@+id/horGlViewFor13" />
 
     <View
         android:id="@+id/view14"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/view11"
-        app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
-        app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
-        app:layout_constraintTop_toBottomOf="@id/horGLview10" />
+        android:layout_width="165dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/view13"
+        app:layout_constraintEnd_toStartOf="@+id/rightHGLresultBar"
+        app:layout_constraintStart_toStartOf="@+id/leftHGLresultBar"
+        app:layout_constraintTop_toBottomOf="@+id/fourtheenTxtV" />
 
     <TextView
         android:id="@+id/thirteenTxtV"
@@ -525,10 +526,10 @@
         android:id="@+id/view15"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/view11"
+        app:layout_constraintBottom_toTopOf="@+id/view14"
         app:layout_constraintLeft_toRightOf="@+id/leftHGLresultBar"
         app:layout_constraintRight_toLeftOf="@+id/rightHGLresultBar"
-        app:layout_constraintTop_toBottomOf="@id/horGLview10" />
+        app:layout_constraintTop_toTopOf="@+id/horGlViewFor15" />
 
     <TextView
         android:id="@+id/fourtheenTxtV"
