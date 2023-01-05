@@ -41,6 +41,16 @@
         app:layout_constraintTop_toTopOf="@+id/horGLImg"
         app:srcCompat="@drawable/ic_bdi_depression" />
 
+    <ImageView
+        android:id="@+id/hamDepIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/initial_test_screen_popup"
+        app:layout_constraintEnd_toStartOf="@+id/VGL2"
+        app:layout_constraintStart_toStartOf="@+id/include_all_patient_list_test"
+        app:layout_constraintTop_toTopOf="@+id/initial_test_screen_popup"
+        app:srcCompat="@drawable/avatar" />
+
     <include
         android:id="@+id/include_cvd_title_form"
         layout="@layout/cvd_title_form"
@@ -56,7 +66,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:elevation="5dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/fragmentContainer"

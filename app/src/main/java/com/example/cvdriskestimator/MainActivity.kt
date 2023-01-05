@@ -37,6 +37,9 @@ import io.realm.Realm
 import io.realm.RealmList
 import io.realm.kotlin.where
 import java.lang.reflect.Method
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -71,6 +74,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var pdqCheckFragment: PDQCheckFirstCategoryFragment
     private lateinit var pdqResultFragment : ResultExtraFragment
     private lateinit var bDIFragment: BeckDepressionInventoryFragment
+    private lateinit var hamDFragment : HamiltonDepressionFragment
     private lateinit var timelineFragment: ResultTimelineFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
@@ -107,6 +111,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var gdsDepressionIcon : ImageView
     private lateinit var pdqIcon : ImageView
     private lateinit var bdiIcon : ImageView
+    private lateinit var hamDIcon : ImageView
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
@@ -276,8 +281,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         })
         customersListView.setOnItemClickListener { parent, view, position, id ->
             var customerLastname = lastNameArrayAdapter.getItem(position).toString()
-            showPatientLasttest = false
-            setContentViewForMainLayout()
+
             //query realm database
             var realm = Realm.getDefaultInstance()
             realm.executeTransaction {
@@ -293,6 +297,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 //                    mainActivity.setLoginItemTitle()
                 hideSoftInputKeyboard()
             }
+            showPatientLasttest = true
+            setContentViewForMainLayout()
         }
 
     }
@@ -357,6 +363,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         gdsDepressionIcon = findViewById(R.id.gdsIcon)
         pdqIcon = findViewById(R.id.pdqIcon)
         bdiIcon = findViewById(R.id.bdiIcon)
+        hamDIcon = findViewById(R.id.hamDepIcon)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
         depressionTestTitle = findViewById(R.id.depressionTestTxtView)
@@ -444,6 +451,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bDIFragment.arguments = bundle
                 fragmentTransaction(bDIFragment)
             }
+
+            "Hammilton Depression" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                hamDFragment = HamiltonDepressionFragment()
+                hamDFragment.arguments = bundle
+                fragmentTransaction(hamDFragment)
+            }
         }
     }
 
@@ -521,6 +539,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bDIFragment = BeckDepressionInventoryFragment()
                 bDIFragment.arguments = bundle
                 fragmentTransaction(bDIFragment)
+            }
+            "Hammilton Depression" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                hamDFragment = HamiltonDepressionFragment()
+                hamDFragment.arguments = bundle
+                fragmentTransaction(hamDFragment)
             }
         }
     }
@@ -601,6 +629,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bDIFragment.arguments = bundle
                 fragmentTransaction(bDIFragment)
             }
+            "Hammilton Depression" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                hamDFragment = HamiltonDepressionFragment()
+                hamDFragment.arguments = bundle
+                fragmentTransaction(hamDFragment)
+            }
         }
     }
 
@@ -673,6 +711,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         gdsCheckFragment = GDSCheckFragment.newInstance()
 //        pdqCheckFragment = PDQCheckFirstCategoryFragment()
         bDIFragment = BeckDepressionInventoryFragment.newInstance()
+        hamDFragment = HamiltonDepressionFragment.newInstance()
         var resultsArray = IntArray(8)
         resultsArray[0] = 40
         resultsArray[1] = 55
@@ -826,6 +865,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         bdiIcon.setOnClickListener {
             hideLayoutElements()
             openTestPopUp("Beck Depression Index")
+        }
+
+        hamDIcon.setOnClickListener {
+            hideLayoutElements()
+            openTestPopUp("Hammilton Depression")
         }
 
         showMedicalTests()
@@ -1000,7 +1044,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         gdsDepressionIcon.startAnimation(bounceTests)
         pdqIcon.animate().alphaBy(1f).duration = 1200
         pdqIcon.startAnimation(bounceTests)
-
+        hamDIcon.animate().alphaBy(1f).duration = 1200
+        hamDIcon.startAnimation(bounceTests)
     }
 
 
@@ -1030,6 +1075,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         gdsDepressionIcon.visibility = View.INVISIBLE
         pdqIcon.visibility = View.INVISIBLE
         bdiIcon.visibility = View.INVISIBLE
+        hamDIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
         depressionTestTitle.visibility = View.INVISIBLE
@@ -1059,6 +1105,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         gdsDepressionIcon.visibility = View.VISIBLE
         pdqIcon.visibility = View.VISIBLE
         bdiIcon.visibility = View.VISIBLE
+        hamDIcon.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()
@@ -1230,6 +1277,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(bpiCheckFragment)
         fragmentTransaction.hide(gdsCheckFragment)
         fragmentTransaction.hide(bDIFragment)
+        fragmentTransaction.hide(hamDFragment)
 //        fragmentTransaction.hide(pdqCheckFragment)
         fragmentTransaction.hide(leaderBoardFragment)
             .commit()
@@ -1282,6 +1330,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is PDQCheckEightCategoryFragment)
             fragmentTransaction.show(fragment)
         if (fragment is BeckDepressionInventoryFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is HamiltonDepressionFragment)
             fragmentTransaction.show(fragment)
         if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)
@@ -1552,24 +1602,49 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         calendar.set(Calendar.MONTH , currentDate.month)
         calendar.set(Calendar.DAY_OF_MONTH , currentDate.day)
         var allCVDTest = realm.where(Test::class.java).isNotNull("SSB").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
-        var allCVDTestSize = allCVDTest.get(allCVDTest.size -1)
-        var CVDTestResult = "CardioVascularDisease - ${allCVDTestSize!!.testDate}"
+        var CVDTestResult = ""
+        if (allCVDTest.size > 0)
+        {
+            var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+
+            var allCVDTestSize = allCVDTest.get(allCVDTest.size -1)
+            CVDTestResult = "CardioVascularDisease - ${dateFormat.format(allCVDTestSize!!.testDate)}"
+        }
 
         var allDiabetesTest = realm.where(Test::class.java).isNotNull("patientPAM").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
-        var allDiabetesSize = allDiabetesTest.get(allDiabetesTest.size -1)
-        var DiabetesTestResult = "DIABETES - ${allDiabetesSize!!.testDate}"
+        var DiabetesTestResult = ""
+        if (allDiabetesTest.size > 0)
+        {
+            var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+            var allDiabetesSize = allDiabetesTest.get(allDiabetesTest.size -1)
+            DiabetesTestResult = "DIABETES - ${dateFormat.format(allDiabetesSize!!.testDate)}"
+        }
+
 
         var allMDITest = realm.where(Test::class.java).isNotNull("patientMDIQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
-        var allMDISize = allMDITest.get(allMDITest.size -1)
-        var MDITestResult = "MDI - ${allMDISize!!.testDate}"
+       var MDITestResult = ""
+        if (allMDITest.size > 0)
+        {
+            var allMDISize = allMDITest.get(allMDITest.size -1)
+            MDITestResult = "MDI - ${allMDISize!!.testDate}"
+        }
+
 
         var allBAITest = realm.where(Test::class.java).isNotNull("patientBAIQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
-        var allBAISize = allBAITest.get(allBAITest.size -1)
-        var BAITestResult = "BAI - ${allBAISize!!.testDate}"
+        var BAITestResult = ""
+        if (allBAITest.size > 0)
+        {
+            var allBAISize = allBAITest.get(allBAITest.size -1)
+            BAITestResult = "BAI - ${allBAISize!!.testDate}"
+        }
 
         var allMDSTest = realm.where(Test::class.java).isNotNull("patientMDSQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
-        var allMDSSize = allMDSTest.get(allMDSTest.size -1)
-        var MDSTestResult = "MDS - ${allMDSSize!!.testDate}"
+        var MDSTestResult = ""
+        if (allMDSTest.size > 0)
+        {
+            var allMDSSize = allMDSTest.get(allMDSTest.size -1)
+            MDSTestResult = "MDS - ${allMDSSize!!.testDate}"
+        }
 
 //        var allBPITest = realm.where(Test::class.java).isNotNull("patientBPIQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
 //        var allBPiSize = allMDSTest.get(allBPITest.size -1)
@@ -1582,11 +1657,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         allPatientstestListView = findViewById(R.id.alltestsResultsistView)
 
         var allPatientTestData = ArrayList<String>()
-        allPatientTestData.add(CVDTestResult)
-        allPatientTestData.add(DiabetesTestResult)
-        allPatientTestData.add(MDITestResult)
-        allPatientTestData.add(BAITestResult)
-        allPatientTestData.add(MDSTestResult)
+        if (CVDTestResult != "")
+            allPatientTestData.add(CVDTestResult)
+        if (DiabetesTestResult != "")
+            allPatientTestData.add(DiabetesTestResult)
+        if (MDITestResult != "")
+            allPatientTestData.add(MDITestResult)
+        if (BAITestResult != "")
+            allPatientTestData.add(BAITestResult)
+        if (MDSTestResult != "")
+            allPatientTestData.add(MDSTestResult)
 //        allPatientTestData.add(BPITestResult)
 //        allPatientTestData.add(GDSTestResult)
 
