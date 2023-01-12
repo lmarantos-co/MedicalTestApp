@@ -80,14 +80,17 @@ class GDSCheckFragment : Fragment() {
 
 
         var patientId = this.arguments!!.getString("patientId")
-        var testDate = this.arguments!!.getString("testDate")
+        var testDate = this.arguments!!.getString("testDate" , "")
 
 
         var historyTest = Test()
         if (patientId != "")
         {
-            var date = convertStringToDate(testDate!!)
-            historyTest = gdsPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+            if (testDate != "")
+            {
+                var date = convertStringToDate(testDate!!)
+                historyTest = gdsPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+            }
         }
         if (historyTest.cvdTestResult != null)
         {

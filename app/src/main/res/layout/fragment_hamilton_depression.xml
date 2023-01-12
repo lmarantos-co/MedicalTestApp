@@ -87,7 +87,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="16dp"
-                android:backgroundTint="@color/light_blue"
+                android:backgroundTint="@color/HAM_pink"
                 android:text="HISTORY"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -163,12 +163,12 @@
                         android:id="@+id/HAMDQ1ExtraTxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ham_pink_textview"
+                        android:layout_below="@+id/HAMDQ1TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:layout_below="@+id/HAMDQ1TxtV"
                         android:text="@string/HAM_Q1_extra"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -177,7 +177,7 @@
                         android:id="@+id/HAMDQ1RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/HAMDQ1TxtV">
+                        android:layout_below="@id/HAMDQ1ExtraTxtV">
 
                         <RadioButton
                             android:id="@+id/HAMDQ1RB1"
@@ -185,6 +185,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/HAMDQ1TxtV"
                             android:layout_gravity="center|left"
+                            android:layout_marginTop="8dp"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q1A1"
@@ -235,6 +236,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q1A5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -280,6 +282,7 @@
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/HAM_Q2A1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -328,6 +331,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q1A5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -372,6 +376,7 @@
                             android:layout_below="@id/HAMDQ3TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
+                            android:layout_marginTop="8dp"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q3A1"
                             android:textColor="@color/black"
@@ -421,6 +426,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q3A5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -462,6 +468,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/HAMDQ4TxtV"
+                            android:layout_marginTop="8dp"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
@@ -488,6 +495,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/HAMDQ4RB2"
+                            android:layout_marginBottom="8dp"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
@@ -534,6 +542,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/HAMDQ5TxtV"
                             android:layout_gravity="left"
+                            android:layout_marginTop="8dp"
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q5A1"
@@ -562,6 +571,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q5A3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -606,6 +616,7 @@
                             android:layout_below="@id/HAMDQ6TxtV"
                             android:layout_gravity="left"
                             android:gravity="left"
+                            android:layout_marginTop="8dp"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q6A1"
                             android:textColor="@color/black"
@@ -633,6 +644,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q6A2"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -678,6 +690,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/HAM_Q7A1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -717,6 +730,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q7A4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -752,12 +766,12 @@
                         android:id="@+id/HAMDQ8ExtraTxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ham_pink_textview"
+                        android:layout_below="@+id/HAMDQ8TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:layout_below="@+id/HAMDQ8TxtV"
                         android:text="@string/HAM_Q8_Intro"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -766,7 +780,7 @@
                         android:id="@+id/HAMDQ8RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/HAMDQ8TxtV">
+                        android:layout_below="@id/HAMDQ8ExtraTxtV">
 
                         <RadioButton
                             android:id="@+id/HAMDQ8RB1"
@@ -776,6 +790,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/HAM_Q8A1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -827,6 +842,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q8A5"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -862,12 +878,12 @@
                         android:id="@+id/HAMDQ9ExtraTxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ham_pink_textview"
+                        android:layout_below="@+id/HAMD9TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:layout_below="@+id/HAMD9TxtV"
                         android:text="@string/HAM_Q9_Intro"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -876,7 +892,7 @@
                         android:id="@+id/HAMDQ9RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/HAMD9TxtV">
+                        android:layout_below="@id/HAMDQ9ExtraTxtV">
 
                         <RadioButton
                             android:id="@+id/HAMDQ9RB1"
@@ -887,6 +903,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q9A1"
+                            android:layout_marginTop="8dp"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             />
@@ -939,6 +956,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q9A5"
+                            android:layout_marginBottom="8dp"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             />
@@ -983,6 +1001,7 @@
                             android:layout_below="@id/HAMDQ10TxtV"
                             android:layout_gravity="left"
                             android:gravity="left"
+                            android:layout_marginTop="8dp"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q10A1"
                             android:textColor="@color/black"
@@ -1037,6 +1056,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q10A5"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1072,12 +1092,12 @@
                         android:id="@+id/HAMDQ11ExtraTxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ham_pink_textview"
+                        android:layout_below="@+id/HAMDQ11TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:layout_below="@+id/HAMDQ11TxtV"
                         android:text="@string/HAM_Q9_Intro"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -1086,7 +1106,7 @@
                         android:id="@+id/HAMDQ11RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/HAMDQ11TxtV">
+                        android:layout_below="@id/HAMDQ11ExtraTxtV">
 
                         <RadioButton
                             android:id="@+id/HAMDQ11RB1"
@@ -1096,6 +1116,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/HAM_Q11A1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1149,6 +1170,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q11A5"
+                            android:layout_marginBottom="8dp"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             />
@@ -1183,12 +1205,12 @@
                         android:id="@+id/HAMDQ12ExtraTxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ham_pink_textview"
+                        android:layout_below="@+id/HAMDQ12TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:layout_below="@+id/HAMDQ12TxtV"
                         android:text="@string/HAM_Q12_Intro"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -1207,6 +1229,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/HAM_Q12A1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1233,6 +1256,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q12A3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1268,12 +1292,12 @@
                         android:id="@+id/HAMDQ13ExtraTxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ham_pink_textview"
+                        android:layout_below="@+id/HAMDQ13TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:layout_below="@+id/HAMDQ13TxtV"
                         android:text="@string/HAM_Q13_Intro"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -1282,7 +1306,7 @@
                         android:id="@+id/HAMDQ13RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/HAMDQ13TxtV">
+                        android:layout_below="@id/HAMDQ13ExtraTxtV">
 
                         <RadioButton
                             android:id="@+id/HAMDQ13RB1"
@@ -1292,6 +1316,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/HAM_Q13A1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1318,6 +1343,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q13A3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1353,12 +1379,12 @@
                         android:id="@+id/HAMDQ14ExtraTxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ham_pink_textview"
+                        android:layout_below="@+id/HAMDQ14TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:layout_below="@+id/HAMDQ14TxtV"
                         android:text="@string/HAM_Q14_Intro"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -1367,7 +1393,7 @@
                         android:id="@+id/HAMDQ14RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/HAMDQ14TxtV">
+                        android:layout_below="@id/HAMDQ14ExtraTxtV">
 
                         <RadioButton
                             android:id="@+id/HAMDQ14RB1"
@@ -1377,6 +1403,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/HAM_Q14A1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1413,6 +1440,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q14A3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1457,6 +1485,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/HAMDQ15TxtV"
                             android:layout_gravity="left"
+                            android:layout_marginTop="8dp"
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q15A1"
@@ -1498,6 +1527,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q15A4"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1544,6 +1574,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/HAM_Q16A1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1570,6 +1601,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q16A3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1615,6 +1647,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/HAM_Q17A1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1641,6 +1674,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q17A3"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1664,7 +1698,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
-                        android:background="@drawable/bai_button_rounded_corners"
+                        android:background="@drawable/ham_button_rounded_corners"
                         android:padding="20dp"
                         android:text="CALCULATE"
                         android:textSize="20sp"
@@ -1683,7 +1717,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
-                        android:background="@drawable/bai_button_rounded_corners"
+                        android:background="@drawable/ham_button_rounded_corners"
                         android:text="CLEAR DATA" />
 
 

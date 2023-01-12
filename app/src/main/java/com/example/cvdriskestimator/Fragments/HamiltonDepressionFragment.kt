@@ -75,15 +75,18 @@ class HamiltonDepressionFragment : Fragment() {
         val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
 
         var patientId = this.arguments!!.getString("patientId")
-        var testDate = this.arguments!!.getString("testDate")
+        var testDate = this.arguments!!.getString("testDate" , "")
         var openType = this.arguments!!.getString("openType")
 
 
         var historyTest = Test()
         if (patientId != "")
         {
-            var date = convertStringToDate(testDate!!)
-            historyTest = hadmPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+            if (testDate != "")
+            {
+                var date = convertStringToDate(testDate!!)
+                historyTest = hadmPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+            }
         }
         if (historyTest.cvdTestResult != null)
         {
@@ -154,7 +157,7 @@ class HamiltonDepressionFragment : Fragment() {
             allPatientSelections[15] = getAsnwerFromRadioGroup(hamDCheckBinding.HAMDQ16RG)
             allPatientSelections[16] = getAsnwerFromRadioGroup(hamDCheckBinding.HAMDQ17RG)
 
-//            hadmPatientViewModel.checkBDITestPatient(allPatientSelections)
+            hadmPatientViewModel.checkHAMDTestPatient(allPatientSelections)
         }
 
         hamDCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE

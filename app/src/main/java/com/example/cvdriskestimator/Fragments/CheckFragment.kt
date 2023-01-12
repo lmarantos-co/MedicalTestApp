@@ -92,14 +92,17 @@ class CheckFragment : Fragment() {
         val userName = activity!!.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
 
         var patientId = this.arguments!!.getString("patientId")
-        var testDate = this.arguments!!.getString("testDate")
+        var testDate = this.arguments!!.getString("testDate" , "")
         var openType = this.arguments!!.getString("openType")
 
         var historyTest = Test()
         if (patientId != "")
         {
-            var date = convertStringToDate(testDate!!)
-            historyTest = checkPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+            if (testDate != "")
+            {
+                var date = convertStringToDate(testDate!!)
+                historyTest = checkPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+            }
         }
         if (historyTest.cvdTestResult != null)
         {

@@ -443,6 +443,7 @@
     <string name="BDI_answer_V3">Ενδιαφέροµαι πολύ λιγότερο τώρα για το σεξ (για τις γυναίκες) </string>
     <string name="BDI_answer_V4">Έχω χάσει τελείως το ενδιαφέρον µου για το σεξ (για τις γυναίκες) </string>
 
+    <string name="ham_test_results">Hammilton Depression Test results</string>
     <string name="HAM_TEST_Intro">Για κάθε ερώτηση, επιλέξτε τον αριθµό εκείνο που αντιπροσωπεύει καλύτερα τον/την ασθενή κατά τη
         διάρκεια του προηγούµενου µήνα και σηµειώστε το νούµερο αυτό στο κουτί βαθµολόγησης που
         βρίσκεται στα δεξιά κάθε ερώτησης. </string>
@@ -630,6 +631,71 @@
     ανάπαυση κ.ά.
     </string>
     <string name="HAM_Q17A3">2. Αρνείται εντελώς ότι είναι άρρωστος.</string>
+    <string name="stai_test_title">STAI Test Results</string>
+    <string name="stai_test_results">The results of the STAI Score are : </string>
+    <string name="stai_staiState_test_score">Your STAI anxiety state score : </string>
+    <string name="stai_staiTrait_test_score">Your STAI anxiety trait score : </string>
+    <string name="STAI_STATE_test_Info">
+    Διαβάστε κάθε φράση
+    και μετά βάλτε σε κύκλο τον αντίστοιχο αριθμό στα δεξιά της φράσεως για
+    να δείξετε πως αισθάνεστε τώρα, δηλαδή α υ τ ή τ η σ τ ι γ μ ή.
+    </string>
+    <string name="STAI_SANXIETY_Q1">1. Αισθάνομαι ήρεμος</string>
+    <string name="STAI_SANXIETY_Q2">2. Αισθάνομαι ασφαλής </string>
+    <string name="STAI_SANXIETY_Q3">3. Νοιώθω μια εσωτερική ένταση </string>
+    <string name="STAI_SANXIETY_Q4">4. Έχω αγωνία </string>
+    <string name="STAI_SANXIETY_Q5">5. Αισθάνομαι άνετα </string>
+    <string name="STAI_SANXIETY_Q6">6. Αισθάνομαι αναστατωμένος </string>
+    <string name="STAI_SANXIETY_Q7">7. Ανησυχώ αυτή τη στιγμή για ενδεχόμενες ατυχίες</string>
+    <string name="STAI_SANXIETY_Q8">8. Αισθάνομαι αναπαυμένος</string>
+    <string name="STAI_SANXIETY_Q9">9. Αισθάνομαι άγχος</string>
+    <string name="STAI_SANXIETY_Q10">10. Αισθάνομαι βολικά</string>
+    <string name="STAI_SANXIETY_Q11">11. Αισθάνομαι αυτοπεποίθηση</string>
+    <string name="STAI_SANXIETY_Q12">12. Αισθάνομαι νευρικότητα</string>
+    <string name="STAI_SANXIETY_Q13">13. Αισθάνομαι ήσυχος</string>
+    <string name="STAI_SANXIETY_Q14">14. Βρίσκομαι σε διέγερση</string>
+    <string name="STAI_SANXIETY_Q15">15. Είμαι χαλαρωμένος</string>
+    <string name="STAI_SANXIETY_Q16">16. Αισθάνομαι ικανοποιημένος </string>
+    <string name="STAI_SANXIETY_Q17">17. Ανησυχώ </string>
+    <string name="STAI_SANXIETY_Q18">18. Αισθάνομαι έξαψη και ταραχή </string>
+    <string name="STAI_SANXIETY_Q19">19. Αισθάνομαι υπερένταση </string>
+    <string name="STAI_SANXIETY_Q20">20. Αισθάνομαι ευχάριστα</string>
+    <string name="STAI_SANXIETY_A1">καθόλου</string>
+    <string name="STAI_SANXIETY_A2">κάπως</string>
+    <string name="STAI_SANXIETY_A3">μετρίως</string>
+    <string name="STAI_SANXIETY_A4">πολύ</string>
+
+    <string name="STAI_TRAIT_test_Info">
+        Διαβάστε κάθε φράση και μετά βάλτε
+        σε κύκλο τον αντίστοιχο αριθμό στα δεξιά της φράσεως για να δείξετε πως
+        αισθάνεστε τώρα, δηλαδή σ υ ν ή θ ω ς.
+    </string>
+    <string name="STAI_TANXIETY_Q21">21. Αισθάνομαι ευχάριστα</string>
+    <string name="STAI_TANXIETY_Q22">22. Κουράζομαι εύκολα</string>
+    <string name="STAI_TANXIETY_Q23">23. Βρίσκομαι σε συνεχή αγωνία</string>
+    <string name="STAI_TANXIETY_Q24">24. Εύχομαι να μπορούσα να είμαι τόσο ευτυχισμένος όσο οι άλλοι φαίνονται να είναι</string>
+    <string name="STAI_TANXIETY_Q25">25. Μένω πίσω στις δουλειές μου, γιατί δεν μπορώ να αποφασίσω αρκετά γρήγορα </string>
+    <string name="STAI_TANXIETY_Q26">26. Αισθάνομαι αναπαυμένος </string>
+    <string name="STAI_TANXIETY_Q27">27. Είμαι ήρεμος, ψύχραιμος και συγκεντρωμένος</string>
+    <string name="STAI_TANXIETY_Q28">28. Αισθάνομαι πως οι δυσκολίες συσσωρεύονται ώστε να μην μπορώ να τις ξεπεράσω</string>
+    <string name="STAI_TANXIETY_Q29">29. Ανησυχώ πάρα πολύ για κάτι που στην πραγματικότητα δεν έχει σημασία </string>
+    <string name="STAI_TANXIETY_Q30">30. Βρίσκομαι σε συνεχή υπερένταση </string>
+    <string name="STAI_TANXIETY_Q31">31. Έχω την τάση να βλέπω τα πράγματα δύσκολα</string>
+    <string name="STAI_TANXIETY_Q32">32. Μου λείπει η αυτοπεποίθηση</string>
+    <string name="STAI_TANXIETY_Q33">33. Αισθάνομαι ασφαλής</string>
+    <string name="STAI_TANXIETY_Q34">34. Προσπαθώ να αποφεύγω την αντιμετώπιση μιας κρίσεως ή δυσκολίας</string>
+    <string name="STAI_TANXIETY_Q35">35. Βρίσκομαι σε υπερδιέγερση</string>
+    <string name="STAI_TANXIETY_Q36">36. Είμαι ικανοποιημένος</string>
+    <string name="STAI_TANXIETY_Q37">37. Κάποια ασήμαντη σκέψη μου περνά από το μυαλό και μ’ ενοχλεί</string>
+    <string name="STAI_TANXIETY_Q38">38. Παίρνω τις απογοητεύσεις τόσο πολύ στα σοβαρά ώστε δεν μπορώ να τις διώξω
+        από τη σκέψη μου</string>
+    <string name="STAI_TANXIETY_Q39">39. Είμαι ένας σταθερός χαρακτήρας</string>
+    <string name="STAI_TANXIETY_Q40">40. Έρχομαι σε μια κατάσταση εντάσεως ή αναστατώσεως όταν σκέπτομαι τις
+    τρέχουσες ασχολίες και τα ενδιαφέροντά μου</string>
+    <string name="STAI_TANXIETY_A1">Σχεδόν ποτέ</string>
+    <string name="STAI_TANXIETY_A2">μερικές φορές</string>
+    <string name="STAI_TANXIETY_A3">Συχνά</string>
+    <string name="STAI_TANXIETY_A4">Σχεδόν πάντα</string>
 
 
 </resources>

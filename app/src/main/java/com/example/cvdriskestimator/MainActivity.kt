@@ -31,6 +31,7 @@ import com.example.cvdriskestimator.RealmDB.Doctor
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDB
 import com.example.cvdriskestimator.RealmDB.Test
+import com.example.cvdriskestimator.viewModels.CheckSTAIPatientViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import io.realm.Realm
@@ -75,6 +76,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var pdqResultFragment : ResultExtraFragment
     private lateinit var bDIFragment: BeckDepressionInventoryFragment
     private lateinit var hamDFragment : HamiltonDepressionFragment
+    private lateinit var staiCheckFragment: STAICheckFragment
     private lateinit var timelineFragment: ResultTimelineFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
@@ -112,6 +114,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var pdqIcon : ImageView
     private lateinit var bdiIcon : ImageView
     private lateinit var hamDIcon : ImageView
+    private lateinit var staiAnxietyIcon : ImageView
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
@@ -364,6 +367,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         pdqIcon = findViewById(R.id.pdqIcon)
         bdiIcon = findViewById(R.id.bdiIcon)
         hamDIcon = findViewById(R.id.hamDepIcon)
+        staiAnxietyIcon = findViewById(R.id.staiAnxietyIcon)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
         depressionTestTitle = findViewById(R.id.depressionTestTxtView)
@@ -462,6 +466,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 hamDFragment.arguments = bundle
                 fragmentTransaction(hamDFragment)
             }
+
+            "STAI" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                staiCheckFragment = STAICheckFragment.newInstance()
+                staiCheckFragment.arguments = bundle
+                fragmentTransaction(staiCheckFragment)
+            }
         }
     }
 
@@ -549,6 +564,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 hamDFragment = HamiltonDepressionFragment()
                 hamDFragment.arguments = bundle
                 fragmentTransaction(hamDFragment)
+            }
+
+            "STAI" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                staiCheckFragment = STAICheckFragment.newInstance()
+                staiCheckFragment.arguments = bundle
+                fragmentTransaction(staiCheckFragment)
             }
         }
     }
@@ -638,6 +664,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 hamDFragment = HamiltonDepressionFragment()
                 hamDFragment.arguments = bundle
                 fragmentTransaction(hamDFragment)
+            }
+
+            "STAI" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                staiCheckFragment = STAICheckFragment.newInstance()
+                staiCheckFragment.arguments = bundle
+                fragmentTransaction(staiCheckFragment)
             }
         }
     }
@@ -872,6 +909,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             openTestPopUp("Hammilton Depression")
         }
 
+        staiAnxietyIcon.setOnClickListener {
+            hideLayoutElements()
+            openTestPopUp("STAI")
+        }
+
         showMedicalTests()
 
     }
@@ -1027,6 +1069,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.VISIBLE
         dietIcon.visibility = View.VISIBLE
         painIcon.visibility = View.VISIBLE
+        staiAnxietyIcon.visibility = View.VISIBLE
         //gdsDepressionIcon.visibility = View.VISIBLE
         cvdVectorIcon.animate().alpha(1f).duration = 1200
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
@@ -1035,6 +1078,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         depressionIcon.startAnimation(bounceTests)
         anxietyIcon.animate().alphaBy(1f).duration = 1200
         anxietyIcon.startAnimation(bounceTests)
+        staiAnxietyIcon.animate().alphaBy(1f).duration = 1200
+        staiAnxietyIcon.startAnimation(bounceTests)
         cvdVectorIcon.startAnimation(bounceTests)
         diabetesVectorIcon.startAnimation(bounceTests)
         dietIcon.startAnimation(bounceTests)
@@ -1068,6 +1113,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         depressionIcon.visibility = View.INVISIBLE
         anxietyIcon.clearAnimation()
         anxietyIcon.visibility = View.INVISIBLE
+        staiAnxietyIcon.clearAnimation()
+        staiAnxietyIcon.visibility = View.INVISIBLE
         dietIcon.clearAnimation()
         dietIcon.visibility = View.INVISIBLE
         painIcon.clearAnimation()
@@ -1106,6 +1153,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         pdqIcon.visibility = View.VISIBLE
         bdiIcon.visibility = View.VISIBLE
         hamDIcon.visibility = View.VISIBLE
+        staiAnxietyIcon.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()
@@ -1611,7 +1659,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             CVDTestResult = "CardioVascularDisease - ${dateFormat.format(allCVDTestSize!!.testDate)}"
         }
 
-        var allDiabetesTest = realm.where(Test::class.java).isNotNull("patientPAM").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+         var allDiabetesTest = realm.where(Test::class.java).isNotNull("patientPAM").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
         var DiabetesTestResult = ""
         if (allDiabetesTest.size > 0)
         {
