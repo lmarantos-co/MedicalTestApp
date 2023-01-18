@@ -109,7 +109,7 @@ class CheckHAMDPatientViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Int)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  9)
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  9 , null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

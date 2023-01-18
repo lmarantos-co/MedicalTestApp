@@ -628,7 +628,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
 //        Toast.makeText(mainActivity.applicationContext , "The Framingham Risk Score for you is : " + cvdRiskEstimator.calculateCVDRisk(sex , age , sbp , TCH , HDL , smokingStatus , treatmentStatus) + " % \n" + mainActivity.resources.getString(
 //            R.string.cvd_response_text), Toast.LENGTH_LONG ).show()
         val riskResult = cvdRiskEstimator.calculateCVDRisk(sex , age , sbp , TCH , HDL , smokingStatus , treatmentStatus)
-        resultFragment = ResultFragment.newInstance(riskResult.toDouble(),0.0 ,  1)
+        resultFragment = ResultFragment.newInstance(riskResult.toDouble(),0.0 ,  1 , null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

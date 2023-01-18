@@ -175,7 +175,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
                 "DIABETES",
                 result.toString()
             )
-            resultFragment = ResultFragment.newInstance(result , 0.0 , 2)
+            resultFragment = ResultFragment.newInstance(result , 0.0 , 2 , null)
             mainActivity.fragmentTransaction(resultFragment)
         }
     }

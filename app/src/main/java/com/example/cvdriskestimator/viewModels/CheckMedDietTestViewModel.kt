@@ -136,7 +136,7 @@ class CheckMedDietTestViewModel : ViewModel(){
 
     fun openResultFragment(score : Int)
     {
-        resultFragment = ResultFragment.newInstance(score.toDouble() , 0.0 ,  5)
+        resultFragment = ResultFragment.newInstance(score.toDouble() , 0.0 ,  5, null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

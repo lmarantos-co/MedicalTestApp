@@ -1,16 +1,16 @@
 package com.example.cvdriskestimator.viewModels
 
+
 import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cvdriskestimator.Fragments.BAICheckFragment
+import com.example.cvdriskestimator.Fragments.DASSCheckFragment
 import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.MedicalTestAlgorithms.BAITestEstimator
+import com.example.cvdriskestimator.MedicalTestAlgorithms.DASSTestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
@@ -18,18 +18,15 @@ import io.realm.Realm
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
-class CheckBAIPatientViewModel : ViewModel() {
+class CheckDASSPatientViewModel : ViewModel() {
 
 
     private lateinit var mainActivity: MainActivity
-    private lateinit var baiCheckFragment: BAICheckFragment
+    private lateinit var dassCheckFragment: DASSCheckFragment
     private lateinit var realm : Realm
-    private lateinit var baiTestEstimator : BAITestEstimator
+    private lateinit var dassTestEstimator : DASSTestEstimator
     private var realmDAO = RealmDAO()
     private lateinit var resultFragment: ResultFragment
     private lateinit var historyFragment: HistoryFragment
@@ -41,12 +38,11 @@ class CheckBAIPatientViewModel : ViewModel() {
     fun passActivity(activity: MainActivity)
     {
         mainActivity = activity
-        baiTestEstimator = BAITestEstimator(activity)
     }
 
-    fun passFragment(BAICheckFragment: BAICheckFragment)
+    fun passFragment(DASSCheckFragment: DASSCheckFragment)
     {
-        baiCheckFragment = BAICheckFragment
+        dassCheckFragment = DASSCheckFragment
     }
 
     fun initialiseRealm()
@@ -81,12 +77,12 @@ class CheckBAIPatientViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "BAI")
+        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "DASS")
         patientData.postValue(patientData.value)
         testDATA.postValue(testDATA.value)
     }
 
-    fun checkBAITestPatient(allPatientSelections : ArrayList<Int?>)
+    fun checkDASSTestPatient(allPatientSelections : ArrayList<Int?>)
     {
         if ((checkQuestionForInputError(allPatientSelections[0] , 1)) && (checkQuestionForInputError(allPatientSelections[1]  , 2))
             && (checkQuestionForInputError(allPatientSelections[2]  , 3)) && (checkQuestionForInputError(allPatientSelections[3]  , 4))
@@ -100,19 +96,16 @@ class CheckBAIPatientViewModel : ViewModel() {
             && (checkQuestionForInputError(allPatientSelections[18]  , 19)) && (checkQuestionForInputError(allPatientSelections[19]  , 20))
             && (checkQuestionForInputError(allPatientSelections[20]  , 21)))
         {
-            val result = baiTestEstimator.calculateBAIndex(allPatientSelections[0]!!, allPatientSelections[1]!!, allPatientSelections[2]!!, allPatientSelections[3]!!, allPatientSelections[4]!! ,
-                allPatientSelections[5]!! , allPatientSelections[6]!!, allPatientSelections[7]!! , allPatientSelections[8]!! , allPatientSelections[9]!! ,
-                allPatientSelections[10]!! , allPatientSelections[11]!! , allPatientSelections[12]!! , allPatientSelections[13]!! , allPatientSelections[14]!!,
-                allPatientSelections[15]!! , allPatientSelections[16]!! , allPatientSelections[17]!! , allPatientSelections[18]!! , allPatientSelections[19]!!
-                , allPatientSelections[20]!!)
+            dassTestEstimator = DASSTestEstimator(allPatientSelections)
+            val result = dassTestEstimator.DASSScorEstimator()
             storePatientOnRealm(allPatientSelections , result)
             openResultFragment(result)
         }
     }
 
-    private fun openResultFragment(testResult : Int)
+    private fun openResultFragment(testResult : Triple<Int , Int , Int>)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  4 , null)
+        resultFragment = ResultFragment.newInstance(testResult.first.toDouble() , testResult.second.toDouble() ,  11 , testResult.third.toDouble())
         mainActivity.fragmentTransaction(resultFragment)
     }
 
@@ -121,7 +114,7 @@ class CheckBAIPatientViewModel : ViewModel() {
         var correctData : Boolean = false
         if (value == null)
         {
-            baiCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO , questionNO)
+            dassCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO , questionNO)
             correctData = false
         }
         else
@@ -129,7 +122,7 @@ class CheckBAIPatientViewModel : ViewModel() {
         return correctData
     }
 
-    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int?> , score : Int) : Job =
+    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int?> , score : Triple<Int , Int , Int>) : Job =
         viewModelScope.launch{
             storePatientOnDB(allPatientSelections , score)
         }
@@ -142,7 +135,7 @@ class CheckBAIPatientViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
             patientId = patient!!.patientId
-            testName = "Beck Anxiety Index"
+            testName = "DASS"
         }
         val bundle = Bundle()
         bundle.putString("patientId" , patientId)
@@ -157,13 +150,13 @@ class CheckBAIPatientViewModel : ViewModel() {
         var test = Test()
         realm.executeTransaction {
 
-            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Beck Anxiety Index").findFirst()!!
+            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "DASS").findFirst()!!
         }
 
         return test
     }
 
-    private fun storePatientOnDB(allPatientSelections: ArrayList<Int?> , score : Int)
+    private fun storePatientOnDB(allPatientSelections: ArrayList<Int?> , score : Triple<Int , Int , Int>)
     {
         //execute transaction on realm
         realm.executeTransaction {
@@ -189,31 +182,33 @@ class CheckBAIPatientViewModel : ViewModel() {
                 currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
             }
 
-            currentTest!!.patientBAIQ1 = allPatientSelections[0]
-            currentTest!!.patientBAIQ2 = allPatientSelections[1]
-            currentTest!!.patientBAIQ3 = allPatientSelections[2]
-            currentTest!!.patientBAIQ4 = allPatientSelections[3]
-            currentTest!!.patientBAIQ5 = allPatientSelections[4]
-            currentTest!!.patientBAIQ6 = allPatientSelections[5]
-            currentTest!!.patientBAIQ7 = allPatientSelections[6]
-            currentTest!!.patientBAIQ8 = allPatientSelections[7]
-            currentTest!!.patientBAIQ9 = allPatientSelections[8]
-            currentTest!!.patientBAIQ10 = allPatientSelections[9]
-            currentTest!!.patientBAIQ11 = allPatientSelections[10]
-            currentTest!!.patientBAIQ12 = allPatientSelections[11]
-            currentTest!!.patientBAIQ13 = allPatientSelections[12]
-            currentTest!!.patientBAIQ14 = allPatientSelections[13]
-            currentTest!!.patientBAIQ15 = allPatientSelections[14]
-            currentTest!!.patientBAIQ16 = allPatientSelections[15]
-            currentTest!!.patientBAIQ17 = allPatientSelections[16]
-            currentTest!!.patientBAIQ18 = allPatientSelections[17]
-            currentTest!!.patientBAIQ19 = allPatientSelections[18]
-            currentTest!!.patientBAIQ20 = allPatientSelections[19]
-            currentTest!!.patientBAIQ21 = allPatientSelections[20]
+            currentTest!!.patientDASSQ1 = allPatientSelections[0]
+            currentTest!!.patientDASSQ2 = allPatientSelections[1]
+            currentTest!!.patientDASSQ3 = allPatientSelections[2]
+            currentTest!!.patientDASSQ4 = allPatientSelections[3]
+            currentTest!!.patientDASSQ5 = allPatientSelections[4]
+            currentTest!!.patientDASSQ6 = allPatientSelections[5]
+            currentTest!!.patientDASSQ7 = allPatientSelections[6]
+            currentTest!!.patientDASSQ8 = allPatientSelections[7]
+            currentTest!!.patientDASSQ9 = allPatientSelections[8]
+            currentTest!!.patientDASSQ10 = allPatientSelections[9]
+            currentTest!!.patientDASSQ11 = allPatientSelections[10]
+            currentTest!!.patientDASSQ12 = allPatientSelections[11]
+            currentTest!!.patientDASSQ13 = allPatientSelections[12]
+            currentTest!!.patientDASSQ14 = allPatientSelections[13]
+            currentTest!!.patientDASSQ15 = allPatientSelections[14]
+            currentTest!!.patientDASSQ16 = allPatientSelections[15]
+            currentTest!!.patientDASSQ17 = allPatientSelections[16]
+            currentTest!!.patientDASSQ18 = allPatientSelections[17]
+            currentTest!!.patientDASSQ19 = allPatientSelections[18]
+            currentTest!!.patientDASSQ20 = allPatientSelections[19]
+            currentTest!!.patientDASSQ21 = allPatientSelections[20]
             currentTest!!.patientId = patient!!.patientId
             currentTest!!.testDate = calendar.time
-            currentTest!!.testName = "Beck Anxiety Index"
-            currentTest!!.patientBAITestResult = score
+            currentTest!!.testName = "DASS"
+            currentTest!!.dassAnxietyResult = score.first
+            currentTest!!.dassDepressionResult = score.second
+            currentTest!!.dassStressResult = score.third
 
             var testId : Int = 0
             if (dateCount.toInt() == 0)

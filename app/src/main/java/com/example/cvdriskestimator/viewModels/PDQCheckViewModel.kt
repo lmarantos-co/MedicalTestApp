@@ -104,7 +104,7 @@ class PDQCheckViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Int)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 , 8)
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 , 8, null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

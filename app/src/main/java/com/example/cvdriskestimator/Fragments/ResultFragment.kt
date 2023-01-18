@@ -33,6 +33,7 @@ import java.util.*
  */
 private const val ARG_PARAM1 = "risk_result1"
 private const val ARG_PARAM2 = "risk_result2"
+private const val ARG_PARAM4 = "risk_result4"
 private const val ARG_PARAM3 = "test_type"
 
 
@@ -183,6 +184,28 @@ class ResultFragment : Fragment() {
     private lateinit var staiStateAScore : TextView
     private lateinit var staiTraitAScore : TextView
     private lateinit var staiResultBar : RelativeLayout
+
+    //DASS Test
+
+    private lateinit var dassNormalDepression : TextView
+    private lateinit var dassNormalAnxiety : TextView
+    private lateinit var dassNormalStress : TextView
+
+    private lateinit var dassMildDepression : TextView
+    private lateinit var dassMildAnxiety : TextView
+    private lateinit var dassMildStress : TextView
+
+    private lateinit var dassModerateDepression : TextView
+    private lateinit var dassModerateAnxiety : TextView
+    private lateinit var dassModerateStress : TextView
+
+    private lateinit var dassSevereDepression : TextView
+    private lateinit var dassSevereAnxiety : TextView
+    private lateinit var dassSevereStress : TextView
+
+    private lateinit var dassExtSevereDepression : TextView
+    private lateinit var dassExtSevereAnxiety : TextView
+    private lateinit var dassExtSevereStress : TextView
 
     //screen dimensions
     var screenWidth: Int = 0
@@ -726,9 +749,105 @@ class ResultFragment : Fragment() {
             }
         }
 
-            return view
-        }
+        if (test_type == 11) {
 
+            view = inflater.inflate(R.layout.fragment_dass_result, container, false)
+            MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
+            menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+            closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+            companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+            termsRelLayout.visibility = View.INVISIBLE
+            dassNormalAnxiety = view.findViewById(R.id.anxietyNormalTxtV)
+            dassNormalDepression = view.findViewById(R.id.anxietyNormalTxtV)
+            dassNormalStress = view.findViewById(R.id.stressNormaTxtV)
+            dassMildAnxiety = view.findViewById(R.id.anxietyMildTxtV)
+            dassMildDepression = view.findViewById(R.id.depressionMildTxtV)
+            dassMildStress = view.findViewById(R.id.stressMildTxtV)
+            dassModerateAnxiety = view.findViewById(R.id.anxietyModerateTxtV)
+            dassModerateDepression = view.findViewById(R.id.depressionModerateTxtV)
+            dassModerateStress = view.findViewById(R.id.stressModerateTxtV)
+            dassSevereAnxiety = view.findViewById(R.id.anxietySevereTxtV)
+            dassSevereDepression = view.findViewById(R.id.depressionSevereTxtV)
+            dassSevereStress = view.findViewById(R.id.stressSevereTxtV)
+            dassExtSevereAnxiety = view.findViewById(R.id.anxietyExtSevereTxtV)
+            dassExtSevereDepression = view.findViewById(R.id.depressionExtSevereTxtV)
+            dassExtSevereStress = view.findViewById(R.id.stressExtSevereTxtV)
+            higlightDASSTxtViewsWithScore()
+        }
+        return view
+    }
+
+    private fun higlightDASSTxtViewsWithScore() {
+
+        //anxiety score
+        var anxietyScore = arguments!!.getDouble(ARG_PARAM1)
+        var scressScore = arguments!!.getDouble(ARG_PARAM2)
+        var depressionScore = arguments!!.getDouble(ARG_PARAM4)
+        if ((anxietyScore > 0) && (anxietyScore <= 7))
+        {
+            dassNormalAnxiety.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((anxietyScore >= 8) && (anxietyScore <= 9))
+        {
+            dassMildAnxiety.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((anxietyScore >= 10) && (anxietyScore <= 14))
+        {
+            dassModerateAnxiety.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((anxietyScore >= 15) && (anxietyScore <= 19))
+        {
+            dassSevereAnxiety.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if (anxietyScore >= 20)
+        {
+            dassExtSevereAnxiety.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((depressionScore > 0) && (depressionScore <= 9))
+        {
+            dassNormalDepression.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((depressionScore >= 10) && (depressionScore <= 13))
+        {
+            dassMildDepression.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((depressionScore >= 14) && (depressionScore <= 20))
+        {
+            dassModerateDepression.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((depressionScore >= 21) && (depressionScore <= 27))
+        {
+            dassSevereDepression.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if (depressionScore >= 28)
+        {
+            dassExtSevereDepression.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((scressScore > 0) && (scressScore <= 14))
+        {
+            dassNormalStress.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((scressScore >= 15) && (scressScore <= 18))
+        {
+            dassMildStress.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((scressScore >= 19) && (scressScore <= 25))
+        {
+            dassModerateStress.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if ((scressScore >= 26) && (scressScore <= 33))
+        {
+            dassSevereStress.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+        if (scressScore >= 34)
+        {
+            dassExtSevereStress.setBackgroundColor(resources.getColor(R.color.green_dass))
+        }
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -4450,11 +4569,13 @@ fun showMDIResultBarViews()
 
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: Double, param2: Double , param3: Int) =
+        fun newInstance(param1: Double, param2: Double , param3: Int , param4 : Double?) =
             ResultFragment().apply {
                 arguments = Bundle().apply {
                     putDouble(ARG_PARAM1, param1)
                     putDouble(ARG_PARAM2 , param2)
+                    if (param4 != null)
+                        putDouble(ARG_PARAM4 , param4!!)
                     putInt(ARG_PARAM3 , param3)
                 }
             }

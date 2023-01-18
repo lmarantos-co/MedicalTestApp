@@ -130,7 +130,7 @@ class CheckBPIPatientViewModel : ViewModel() {
                 resultFragment = ResultFragment.newInstance(
                     scoreResults[0].toDouble(),
                     scoreResults[1].toDouble(),
-                    6
+                    6 , null
                 )
                 mainActivity.fragmentTransaction(resultFragment)
             }

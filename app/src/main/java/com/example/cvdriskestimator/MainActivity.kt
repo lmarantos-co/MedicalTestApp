@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var bDIFragment: BeckDepressionInventoryFragment
     private lateinit var hamDFragment : HamiltonDepressionFragment
     private lateinit var staiCheckFragment: STAICheckFragment
+    private lateinit var dassCheckFragment : DASSCheckFragment
     private lateinit var timelineFragment: ResultTimelineFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
@@ -115,6 +116,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var bdiIcon : ImageView
     private lateinit var hamDIcon : ImageView
     private lateinit var staiAnxietyIcon : ImageView
+    private lateinit var dassIcon : ImageView
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
@@ -367,6 +369,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         pdqIcon = findViewById(R.id.pdqIcon)
         bdiIcon = findViewById(R.id.bdiIcon)
         hamDIcon = findViewById(R.id.hamDepIcon)
+        dassIcon = findViewById(R.id.dassImgV)
         staiAnxietyIcon = findViewById(R.id.staiAnxietyIcon)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
@@ -431,7 +434,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "addNew")
                 bpiCheckFragment = BPICheckFragment()
-                baiCheckFragment.arguments = bundle
+                bpiCheckFragment.arguments = bundle
                 fragmentTransaction(bpiCheckFragment)
             }
             "Mediterranean Diet Score" ->
@@ -476,6 +479,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 staiCheckFragment = STAICheckFragment.newInstance()
                 staiCheckFragment.arguments = bundle
                 fragmentTransaction(staiCheckFragment)
+            }
+
+            "DASS" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                dassCheckFragment = DASSCheckFragment.newInstance()
+                dassCheckFragment.arguments = bundle
+                fragmentTransaction(dassCheckFragment)
             }
         }
     }
@@ -532,7 +546,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "addNew")
                 bpiCheckFragment = BPICheckFragment()
-                baiCheckFragment.arguments = bundle
+                bpiCheckFragment.arguments = bundle
                 fragmentTransaction(bpiCheckFragment)
             }
             "Mediterranean Diet Score" ->
@@ -575,6 +589,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 staiCheckFragment = STAICheckFragment.newInstance()
                 staiCheckFragment.arguments = bundle
                 fragmentTransaction(staiCheckFragment)
+            }
+
+            "DASS" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                dassCheckFragment = DASSCheckFragment.newInstance()
+                dassCheckFragment.arguments = bundle
+                fragmentTransaction(dassCheckFragment)
             }
         }
     }
@@ -629,9 +654,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 var bundle = Bundle()
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
-                bundle.putString("openType" , "addNew")
+                bundle.putString("openType" , "history")
                 bpiCheckFragment = BPICheckFragment()
-                baiCheckFragment.arguments = bundle
+                bpiCheckFragment.arguments = bundle
                 fragmentTransaction(bpiCheckFragment)
             }
             "Mediterranean Diet Score" ->
@@ -675,6 +700,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 staiCheckFragment = STAICheckFragment.newInstance()
                 staiCheckFragment.arguments = bundle
                 fragmentTransaction(staiCheckFragment)
+            }
+
+            "DASS" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                dassCheckFragment = DASSCheckFragment.newInstance()
+                dassCheckFragment.arguments = bundle
+                fragmentTransaction(dassCheckFragment)
             }
         }
     }
@@ -914,6 +950,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             openTestPopUp("STAI")
         }
 
+        dassIcon.setOnClickListener {
+            hideLayoutElements()
+            openTestPopUp("DASS")
+        }
+
         showMedicalTests()
 
     }
@@ -1115,6 +1156,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.INVISIBLE
         staiAnxietyIcon.clearAnimation()
         staiAnxietyIcon.visibility = View.INVISIBLE
+        dassIcon.visibility = View.INVISIBLE
         dietIcon.clearAnimation()
         dietIcon.visibility = View.INVISIBLE
         painIcon.clearAnimation()
@@ -1154,6 +1196,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         bdiIcon.visibility = View.VISIBLE
         hamDIcon.visibility = View.VISIBLE
         staiAnxietyIcon.visibility = View.VISIBLE
+        dassIcon.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()
