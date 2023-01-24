@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/results_con_layout_hamm_test"
+    android:id="@+id/results_con_layout_zung_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/MidnightBlue">
@@ -26,7 +26,7 @@
         android:visibility="invisible" />
 
     <TextView
-        android:id="@+id/bditestTitleTxtV"
+        android:id="@+id/zungTestTitleTxtV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -89,7 +89,7 @@
         app:layout_constraintGuide_percent="0.25" />
 
     <RelativeLayout
-        android:id="@+id/bdiTestTitleRelLayout"
+        android:id="@+id/zungTestTitleRelLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -182,7 +182,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bdiTestTitleRelLayout">
+        app:layout_constraintTop_toBottomOf="@+id/zungTestTitleRelLayout">
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -214,7 +214,7 @@
             app:layout_constraintGuide_percent="0.1" />
 
         <RelativeLayout
-            android:id="@+id/BDItestProgressBarRelLayout"
+            android:id="@+id/ZUNGtestProgressBarRelLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1"

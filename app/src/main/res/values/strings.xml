@@ -733,4 +733,32 @@
     <string name="DASS_Q20a">20. Ένιωσα φοβισµένος χωρίς να υπάρχει λόγος</string>
     <string name="DASS_Q21d">21. Ένιωσα πως η ζωή δεν είχε νόηµα</string>
     <string name="DASS_Test">DASS Test</string>
+    <string name="ZUNG_SRDS">Διαβάστε κάθε μία από τις 20 προτάσεις που ακολουθούν και επιλέξτε αντίστοιχα,
+        πόσο συχνά την εβδομάδα, η πρόταση αυτή περιγράφει πώς αισθάνεσθε.
+        Περιοριστείτε μόνο σε ότι ισχύει την τελευταία εβδομάδα.</string>
+    <string name="ZUNG_SRDS_Q1">1. Αισθάνομαι αποθαρρυμένος και στεναχωρημένος.</string>
+    <string name="ZUNG_SRDS_Q2">2. Το πρωί αισθάνομαι καλύτερα.</string>
+    <string name="ZUNG_SRDS_Q3">3. Κλαίω ή αισθάνομαι ότι θα κλάψω.</string>
+    <string name="ZUNG_SRDS_Q4">4. Τη νύχτα έχω αϋπνίες.</string>
+    <string name="ZUNG_SRDS_Q5">5. Η όρεξή μου για φαγητό είναι η ίδια. Τρώω όσο και παλαιότερα.</string>
+    <string name="ZUNG_SRDS_Q6">6. Απολαμβάνω το sex.</string>
+    <string name="ZUNG_SRDS_Q7">7. Παρατηρώ ότι χάνω το βάρος.</string>
+    <string name="ZUNG_SRDS_Q8">8. Έχω πρόβλημα δυσκοιλιότητας.</string>
+    <string name="ZUNG_SRDS_Q9">9. Η καρδιά μου κτυπά γρηγορότερα από το συνηθισμένο.</string>
+    <string name="ZUNG_SRDS_Q10">10. Αισθάνομαι κούραση χωρίς λόγο.</string>
+    <string name="ZUNG_SRDS_Q11">11. Το μυαλό μου είναι τόσο ξάστερο, όσο και παλαιότερα.</string>
+    <string name="ZUNG_SRDS_Q12">12. Κάνω εύκολα τα πράγματα που έκανα και παλαιότερα.</string>
+    <string name="ZUNG_SRDS_Q13">13. Είμαι ανήσυχος και δεν μπορώ να κάτσω ήσυχα.</string>
+    <string name="ZUNG_SRDS_Q14">14. Αισθάνομαι αισιόδοξα για το μέλλον.</string>
+    <string name="ZUNG_SRDS_Q15">15. Είμαι πιο οξύθυμος από συνήθως.</string>
+    <string name="ZUNG_SRDS_Q16">16. Μου είναι εύκολο να λαμβάνω αποφάσεις, στα καθημερινά θέματα.</string>
+    <string name="ZUNG_SRDS_Q17">17. Αισθάνομαι χρήσιμος και αναγκαίος για τους άλλους.</string>
+    <string name="ZUNG_SRDS_Q18">18. Αισθάνομαι ότι η ζωή μου είναι αρκετά ικανοποιητική.</string>
+    <string name="ZUNG_SRDS_Q19">19. Αισθάνομαι ότι οι άλλοι θα ήταν καλύτερα, εάν είχα πεθάνει.</string>
+    <string name="ZUNG_SRDS_Q20">20. Απολαμβάνω ακόμα τα πράγματα που έκανα παλαιότερα.</string>
+    <string name="ZUNG_SRDS_A1">1. Σπάνια ή καθόλου</string>
+    <string name="ZUNG_SRDS_A2">2. Συχνά</string>
+    <string name="ZUNG_SRDS_A3">3. Πολύ Συχνά</string>
+    <string name="ZUNG_SRDS_A4">4. Συνεχώς</string>
+    <string name="ZUNG_TEST">ZUNG TEST</string>
 </resources>

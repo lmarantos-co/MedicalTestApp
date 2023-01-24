@@ -81,6 +81,7 @@ class GDSCheckFragment : Fragment() {
 
         var patientId = this.arguments!!.getString("patientId")
         var testDate = this.arguments!!.getString("testDate" , "")
+        var openType = this.arguments!!.getString("openType")
 
 
         var historyTest = Test()
@@ -98,14 +99,18 @@ class GDSCheckFragment : Fragment() {
         }
         else
         {
-            if (userName != "tempUser")
+            if (openType == "updateLast")
             {
                 gdsPatientViewModel.setPatientDataOnForm(userName!!)
             }
-            else
+            if (openType == "addNew")
             {
-                gdsPatientViewModel.setUserDummyData()
-                gdsPatientViewModel.setPatientDataOnForm(userName)
+                gdsPatientViewModel.initialiseUserDummy()
+//                bpiPatientViewModel.setPatientDataOnForm()
+            }
+            if (openType == "history")
+            {
+                gdsPatientViewModel.history()
             }
         }
 

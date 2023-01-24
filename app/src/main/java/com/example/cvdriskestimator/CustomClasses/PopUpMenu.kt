@@ -57,7 +57,7 @@ class PopUpMenu {
                     prMainActivity.backToActivity()
                 }
                 R.id.login_item -> {
-                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) ||(prFragment is ResultFragment) || (prleaderBoardFragment is LeaderBoardFragment))
+                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is BeckDepressionInventoryFragment) || (prFragment is HamiltonDepressionFragment) || (prFragment is GDSCheckFragment)|| (prFragment is STAICheckFragment) || (prFragment is CheckZUNGFragment)  ||(prFragment is ResultFragment) || (prleaderBoardFragment is LeaderBoardFragment))
                     {
                         val prefs = prMainActivity.getPreferences(Context.MODE_PRIVATE)
                         val message = prefs.getString("LOG", "Test1")
@@ -259,14 +259,30 @@ class PopUpMenu {
                                     (prFragment as medDietTestFragment).initialisePatientData()
                                 }
 
-                                if (prFragment is BPICheckFragment)
-                                {
-                                    (prFragment as medDietTestFragment).initialisePatientData()
-                                }
 
                                 if (prFragment is GDSCheckFragment)
                                 {
                                     (prFragment as GDSCheckFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is HamiltonDepressionFragment)
+                                {
+                                    (prFragment as HamiltonDepressionFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is HamiltonDepressionFragment)
+                                {
+                                    (prFragment as HamiltonDepressionFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is STAICheckFragment)
+                                {
+                                    (prFragment as STAICheckFragment).initialisePatientData()
+                                }
+
+                                if (prFragment is CheckZUNGFragment)
+                                {
+                                    (prFragment as CheckZUNGFragment).initialisePatientData()
                                 }
 
                                 if (prFragment is PDQCheckFirstCategoryFragment)

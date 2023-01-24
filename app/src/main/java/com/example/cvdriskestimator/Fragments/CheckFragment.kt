@@ -123,6 +123,10 @@ class CheckFragment : Fragment() {
             {
                 checkPatientViewModel.history()
             }
+            if (openType == "open_history")
+            {
+                checkPatientViewModel.history()
+            }
         }
 
         //observe live data change

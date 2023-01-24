@@ -1,19 +1,17 @@
 package com.example.cvdriskestimator.viewModels
 
 
+
 import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cvdriskestimator.Fragments.BAICheckFragment
-import com.example.cvdriskestimator.Fragments.HamiltonDepressionFragment
+import com.example.cvdriskestimator.Fragments.CheckZUNGFragment
 import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.MedicalTestAlgorithms.BAITestEstimator
-import com.example.cvdriskestimator.MedicalTestAlgorithms.HammitlonTestEstimator
+import com.example.cvdriskestimator.MedicalTestAlgorithms.ZUNGTestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
@@ -21,18 +19,15 @@ import io.realm.Realm
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
-class CheckHAMDPatientViewModel : ViewModel() {
+class CheckZUNGPatientViewModel : ViewModel() {
 
 
     private lateinit var mainActivity: MainActivity
-    private lateinit var hamdCheckFragment: HamiltonDepressionFragment
+    private lateinit var zungCheckFragment: CheckZUNGFragment
     private lateinit var realm : Realm
-    private lateinit var hammTestEstimator : HammitlonTestEstimator
+    private lateinit var zungTestEstimator : ZUNGTestEstimator
     private var realmDAO = RealmDAO()
     private lateinit var resultFragment: ResultFragment
     private lateinit var historyFragment: HistoryFragment
@@ -46,9 +41,9 @@ class CheckHAMDPatientViewModel : ViewModel() {
         mainActivity = activity
     }
 
-    fun passFragment(hamdFrag: HamiltonDepressionFragment)
+    fun passFragment(zungFrag: CheckZUNGFragment)
     {
-        hamdCheckFragment = hamdFrag
+        zungCheckFragment = zungFrag
     }
 
     fun initialiseRealm()
@@ -83,12 +78,12 @@ class CheckHAMDPatientViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "Hammilton Depression")
+        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "ZUNG")
         patientData.postValue(patientData.value)
         testDATA.postValue(testDATA.value)
     }
 
-    fun checkHAMDTestPatient(allPatientSelections : ArrayList<Int?>)
+    fun checkZUNGTestPatient(allPatientSelections : ArrayList<Int?>)
     {
         if ((checkQuestionForInputError(allPatientSelections[0] , 1)) && (checkQuestionForInputError(allPatientSelections[1]  , 2))
             && (checkQuestionForInputError(allPatientSelections[2]  , 3)) && (checkQuestionForInputError(allPatientSelections[3]  , 4))
@@ -98,10 +93,11 @@ class CheckHAMDPatientViewModel : ViewModel() {
             && (checkQuestionForInputError(allPatientSelections[10]  , 11)) && (checkQuestionForInputError(allPatientSelections[11]  , 12))
             && (checkQuestionForInputError(allPatientSelections[12]  , 13)) && (checkQuestionForInputError(allPatientSelections[13]  , 14))
             && (checkQuestionForInputError(allPatientSelections[14]  , 15)) && (checkQuestionForInputError(allPatientSelections[15]  , 16))
-            && (checkQuestionForInputError(allPatientSelections[16]  , 17)))
+            && (checkQuestionForInputError(allPatientSelections[16]  , 17))&& (checkQuestionForInputError(allPatientSelections[17]  , 18))
+            && (checkQuestionForInputError(allPatientSelections[19]  , 20)))
         {
-            var hammitlonTestEstimator = HammitlonTestEstimator(allPatientSelections)
-            val result = hammitlonTestEstimator.hamTestEstimator()
+            zungTestEstimator = ZUNGTestEstimator(allPatientSelections)
+            val result = zungTestEstimator.zungTestEstimator()
             storePatientOnRealm(allPatientSelections , result)
             openResultFragment(result)
         }
@@ -109,7 +105,7 @@ class CheckHAMDPatientViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Int)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  9 , null)
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  12 , null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 
@@ -118,7 +114,7 @@ class CheckHAMDPatientViewModel : ViewModel() {
         var correctData : Boolean = false
         if (value == null)
         {
-            hamdCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO , questionNO)
+            zungCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO , questionNO)
             correctData = false
         }
         else
@@ -139,7 +135,7 @@ class CheckHAMDPatientViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
             patientId = patient!!.patientId
-            testName = "Hammilton Depression"
+            testName = "ZUNG"
         }
         val bundle = Bundle()
         bundle.putString("patientId" , patientId)
@@ -154,7 +150,7 @@ class CheckHAMDPatientViewModel : ViewModel() {
         var test = Test()
         realm.executeTransaction {
 
-            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Beck Anxiety Index").findFirst()!!
+            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "ZUNG").findFirst()!!
         }
 
         return test
@@ -186,27 +182,30 @@ class CheckHAMDPatientViewModel : ViewModel() {
                 currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
             }
 
-            currentTest!!.patientHAMDQ1 = allPatientSelections[0]
-            currentTest!!.patientHAMDQ2 = allPatientSelections[1]
-            currentTest!!.patientHAMDQ3 = allPatientSelections[2]
-            currentTest!!.patientHAMDQ4 = allPatientSelections[3]
-            currentTest!!.patientHAMDQ5 = allPatientSelections[4]
-            currentTest!!.patientHAMDQ6 = allPatientSelections[5]
-            currentTest!!.patientHAMDQ7 = allPatientSelections[6]
-            currentTest!!.patientHAMDQ8 = allPatientSelections[7]
-            currentTest!!.patientHAMDQ9 = allPatientSelections[8]
-            currentTest!!.patientHAMDQ10 = allPatientSelections[9]
-            currentTest!!.patientHAMDQ11 = allPatientSelections[10]
-            currentTest!!.patientHAMDQ12 = allPatientSelections[11]
-            currentTest!!.patientHAMDQ13 = allPatientSelections[12]
-            currentTest!!.patientHAMDQ14 = allPatientSelections[13]
-            currentTest!!.patientHAMDQ15 = allPatientSelections[14]
-            currentTest!!.patientHAMDQ16 = allPatientSelections[15]
-            currentTest!!.patientHAMDQ17 = allPatientSelections[16]
+            currentTest!!.patientZUNGQ1 = allPatientSelections[0]
+            currentTest!!.patientZUNGQ2 = allPatientSelections[1]
+            currentTest!!.patientZUNGQ3 = allPatientSelections[2]
+            currentTest!!.patientZUNGQ4 = allPatientSelections[3]
+            currentTest!!.patientZUNGQ5 = allPatientSelections[4]
+            currentTest!!.patientZUNGQ6 = allPatientSelections[5]
+            currentTest!!.patientZUNGQ7 = allPatientSelections[6]
+            currentTest!!.patientZUNGQ8 = allPatientSelections[7]
+            currentTest!!.patientZUNGQ9 = allPatientSelections[8]
+            currentTest!!.patientZUNGQ10 = allPatientSelections[9]
+            currentTest!!.patientZUNGQ11 = allPatientSelections[10]
+            currentTest!!.patientZUNGQ12 = allPatientSelections[11]
+            currentTest!!.patientZUNGQ13 = allPatientSelections[12]
+            currentTest!!.patientZUNGQ14 = allPatientSelections[13]
+            currentTest!!.patientZUNGQ15 = allPatientSelections[14]
+            currentTest!!.patientZUNGQ16 = allPatientSelections[15]
+            currentTest!!.patientZUNGQ17 = allPatientSelections[16]
+            currentTest!!.patientZUNGQ18 = allPatientSelections[17]
+            currentTest!!.patientZUNGQ19 = allPatientSelections[18]
+            currentTest!!.patientZUNGQ20 = allPatientSelections[19]
             currentTest!!.patientId = patient!!.patientId
             currentTest!!.testDate = calendar.time
-            currentTest!!.testName = "Hammilton Depression"
-            currentTest!!.patientHAMDTestResult = score
+            currentTest!!.testName = "ZUNG"
+            currentTest!!.zungTestReesult = score
 
             var testId : Int = 0
             if (dateCount.toInt() == 0)

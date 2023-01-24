@@ -26,19 +26,19 @@
         android:visibility="invisible" />
 
     <TextView
-        android:id="@+id/mditestTitleTxtV"
+        android:id="@+id/zungTestTitleTxtV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@color/trans"
-        android:drawableLeft="@drawable/ic_depression_24"
+        android:background="@drawable/zung_test_results_style"
+        android:drawableLeft="@drawable/ic_zung_depression_24"
         android:drawablePadding="8dp"
         android:elevation="4dp"
         android:gravity="center"
         android:minHeight="48dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:text="@string/cvd_test_results"
+        android:text="@string/ZUNG_TEST"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
         app:layout_constraintGuide_percent="0.25" />
 
     <RelativeLayout
-        android:id="@+id/mdiTestTitleRelLayout"
+        android:id="@+id/zungTestTitleRelLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -103,6 +103,7 @@
             android:id='@+id/testResultTxtV'
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/zung_test_results_style_sub"
             android:gravity="center"
             android:minHeight="48dp"
             android:textColor="@color/black"
@@ -125,7 +126,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="false"
                 android:gravity="center"
-                android:text="@string/mdi_test_score"
+                android:text="@string/bdi_test_score"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -181,7 +182,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mdiTestTitleRelLayout">
+        app:layout_constraintTop_toBottomOf="@+id/zungTestTitleRelLayout">
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -213,7 +214,7 @@
             app:layout_constraintGuide_percent="0.1" />
 
         <RelativeLayout
-            android:id="@+id/MDItestProgressBarRelLayout"
+            android:id="@+id/ZUNGtestProgressBarRelLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toRightOf="@id/titleScrollVGL1"
@@ -245,7 +246,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.55" />
+            app:layout_constraintGuide_percent="0.71375" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id='@+id/resultBarModerateDepressionNumbHGL2'
@@ -259,14 +260,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.43" />
+            app:layout_constraintGuide_percent="0.60125" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id='@+id/resultBarMildDepressionHGL'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.45" />
+            app:layout_constraintGuide_percent="0.60125" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id='@+id/resultBarMildDepressionNumbHGL2'
@@ -287,7 +288,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35" />
+            app:layout_constraintGuide_percent="0.32" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/resultBarNoDepressionNumbHGL2"
@@ -393,21 +394,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.97" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/magendaHelperNumbBottomHGL2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="1.00" />
+            app:layout_constraintGuide_percent="0.95" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/magendaBottomHGL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.95" />
+            app:layout_constraintGuide_percent="0.82625" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -423,6 +417,29 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.9" />
+
+        <RelativeLayout
+            android:id="@+id/mostSevereDepView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="3dp"
+            android:background="@color/crimson_red"
+            app:layout_constraintBottom_toTopOf="@+id/magendaHelperBottomHGL"
+            app:layout_constraintEnd_toStartOf="@+id/magednaRightVGL"
+            app:layout_constraintStart_toStartOf="@id/titleScrollVGL1"
+            app:layout_constraintTop_toTopOf="@+id/horGL3">
+
+            <TextView
+                android:id="@+id/mostSevereDepTxtV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="ΠΙΟ ΣΑΒΑΡΗ ΚΑΤΑΘΛΙΨΗ"
+                android:textColor="@color/black"
+                android:textSize="@dimen/mdiMagendaTextSize" />
+
+        </RelativeLayout>
 
         <TextView
             android:id='@+id/severeDepMaxValueTxtV'
@@ -453,35 +470,11 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="Severe depression"
+                android:text="ΣΟΒΑΡΗ ΚΑΤΑΘΛΙΨΗ"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
         </RelativeLayout>
-
-        <TextView
-            android:id='@+id/severeDepValueTxtV'
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="30"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/resultBarModerateDepressionNumbHGL2"
-            app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-            app:layout_constraintTop_toTopOf="@+id/resultBarModerateDepressionNumbHGL" />
-
-        <TextView
-            android:id='@+id/severeHighDepValueTxtV'
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="50"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/magendaHelperBottomHGL"
-            app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-            app:layout_constraintTop_toTopOf="@+id/magendaHelperNumbBottomHGL" />
 
         <RelativeLayout
             android:id="@+id/moderateDepView"
@@ -504,23 +497,11 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
-                android:text="Moderate Depression"
+                android:text="ΜΕΤΡΙΑ ΚΑΤΑΘΛΙΨΗ"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
         </RelativeLayout>
-
-        <TextView
-            android:id='@+id/moderateDepValueTxtV'
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="25"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/resultBarMildDepressionNumbHGL2"
-            app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-            app:layout_constraintTop_toTopOf="@+id/resultBarMildDepressionNumbHGL" />
 
         <RelativeLayout
             android:id="@+id/mildDepView"
@@ -541,23 +522,11 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:paddingLeft="15dp"
-                android:text="Mild depression"
+                android:text="ΦΥΣΙΟΛΟΓΙΚΗ ΚΑΤΑΣΤΑΣΗ"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
         </RelativeLayout>
-
-        <TextView
-            android:id='@+id/mildDepValueTxtV'
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="20"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/resultBarNoDepressionNumbHGL2"
-            app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-            app:layout_constraintTop_toTopOf="@+id/resultBarNoDepressionNumbHGL" />
 
         <RelativeLayout
             android:id="@+id/noDepView"
@@ -578,23 +547,11 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:paddingLeft="15dp"
-                android:text="No depression"
+                android:text="ΚΑΘΟΛΟΥ ΚΑΤΑΘΛΙΨΗ"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
         </RelativeLayout>
-
-        <TextView
-            android:id='@+id/noDepValueTxtV'
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="0"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/magendaTopNumbHGL2"
-            app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
-            app:layout_constraintTop_toTopOf="@+id/magendaTopNumbHGL" />
 
         <View
             android:id="@+id/noDepResultView"
@@ -644,6 +601,18 @@
             app:layout_constraintStart_toStartOf="@id/resulVerticalProgressBar"
             app:layout_constraintTop_toBottomOf="@id/resultBarModerateDepressionHGL" />
 
+        <View
+            android:id="@+id/mostSevereDepResultView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="1dp"
+            android:alpha="0"
+            android:background="@color/crimson_red"
+            app:layout_constraintBottom_toTopOf="@id/magendaHelperBottomHGL"
+            app:layout_constraintEnd_toEndOf="@id/titleScrollVGL1"
+            app:layout_constraintStart_toStartOf="@id/resulVerticalProgressBar"
+            app:layout_constraintTop_toBottomOf="@id/magendaBottomHGL" />
+
 
         <RelativeLayout
             android:id="@+id/surroundResultBar"
@@ -652,9 +621,11 @@
             android:background="@color/black"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@id/magendaBottomHGL"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@id/resultScrollProgressBarVGL"
             app:layout_constraintRight_toLeftOf="@id/resultProgressBarRightVGL"
-            app:layout_constraintTop_toBottomOf="@id/magendaTopHGL">
+            app:layout_constraintTop_toBottomOf="@id/magendaTopHGL"
+            app:layout_constraintVertical_bias="0.0">
 
         </RelativeLayout>
 

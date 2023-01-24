@@ -155,10 +155,11 @@ class CheckMedDietTestViewModel : ViewModel(){
 
     private fun storePatientData(medDietScoreValues : ArrayList<Int?> , score : Int)
     {
-        realm.executeTransaction {
+        var defaultInstance = Realm.getDefaultInstance()
+        defaultInstance.executeTransaction {
 
             var userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
-            var patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName", userName).findFirst()
+            var patient = defaultInstance.where(Patient::class.java).isNotNull("patientId").equalTo("userName", userName).findFirst()
 
             var currentTest = Test()
             val date = Date()
@@ -171,10 +172,10 @@ class CheckMedDietTestViewModel : ViewModel(){
 //            calendar.set(Calendar.MINUTE, date.minutes)
 //            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
-            val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
+            val dateCount = defaultInstance.where(Test::class.java).equalTo("testDate" , currentDate).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
+                currentTest = defaultInstance.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
             }
             currentTest!!.patientMDSQ1 = medDietScoreValues.get(0)
             currentTest!!.patientMDSQ2 = medDietScoreValues.get(1)
@@ -194,7 +195,7 @@ class CheckMedDietTestViewModel : ViewModel(){
             var testId : Int = 0
             if (dateCount.toInt() == 0)
             {
-                var testList = realm.where(Test::class.java).findAll()
+                var testList = defaultInstance.where(Test::class.java).findAll()
                 if (testList.size > 0)
                 {
                     testId = testList.get(testList.size -1)!!.testId.toInt()
@@ -222,8 +223,8 @@ class CheckMedDietTestViewModel : ViewModel(){
                     patient.listOfTests!![i] = listOftests.get(i)
                 }
             }
-            realm.insertOrUpdate(currentTest)
-            realm.copyToRealmOrUpdate(patient)
+            defaultInstance.insertOrUpdate(currentTest)
+            defaultInstance.copyToRealmOrUpdate(patient)
 
 
         }
