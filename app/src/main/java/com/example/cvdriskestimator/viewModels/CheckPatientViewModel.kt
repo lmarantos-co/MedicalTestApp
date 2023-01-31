@@ -624,6 +624,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
         return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(dateString)
     }
 
+
     private fun calculateCVDRisk(sex : String , age : Int , sbp : Int, TCH : Int, HDL : Int , smokingStatus : String , treatmentStatus : String) {
 //        Toast.makeText(mainActivity.applicationContext , "The Framingham Risk Score for you is : " + cvdRiskEstimator.calculateCVDRisk(sex , age , sbp , TCH , HDL , smokingStatus , treatmentStatus) + " % \n" + mainActivity.resources.getString(
 //            R.string.cvd_response_text), Toast.LENGTH_LONG ).show()

@@ -95,18 +95,21 @@ class CheckFragment : Fragment() {
         var testDate = this.arguments!!.getString("testDate" , "")
         var openType = this.arguments!!.getString("openType")
 
-        var historyTest = Test()
-        if (patientId != "")
+        if (openType == "open_history")
         {
-            if (testDate != "")
+            var historyTest = Test()
+            if (patientId != "")
             {
-                var date = convertStringToDate(testDate!!)
-                historyTest = checkPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+                if (testDate != "")
+                {
+                    var date = convertStringToDate(testDate!!)
+                    historyTest = checkPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+                }
             }
-        }
-        if (historyTest.cvdTestResult != null)
-        {
-            setPatientData(historyTest)
+            if (historyTest.cvdTestResult != null)
+            {
+                setPatientData(historyTest)
+            }
         }
         else
         {
@@ -120,10 +123,6 @@ class CheckFragment : Fragment() {
                // checkPatientViewModel.setPatientDataOnForm()
             }
             if (openType == "history")
-            {
-                checkPatientViewModel.history()
-            }
-            if (openType == "open_history")
             {
                 checkPatientViewModel.history()
             }
@@ -476,9 +475,9 @@ class CheckFragment : Fragment() {
         calendar.set(Calendar.YEAR , year.toInt())
         calendar.set(Calendar.MONTH , monthNo)
         calendar.set(Calendar.DAY_OF_MONTH , dateName.toInt())
-        calendar.set(Calendar.HOUR_OF_DAY, hour.toInt())
-        calendar.set(Calendar.MINUTE, min.toInt())
-        calendar.set(Calendar.SECOND, sec.toInt())
+//        calendar.set(Calendar.HOUR_OF_DAY, hour.toInt())
+//        calendar.set(Calendar.MINUTE, min.toInt())
+//        calendar.set(Calendar.SECOND, sec.toInt())
         var date = calendar.time
         return calendar.time
     }

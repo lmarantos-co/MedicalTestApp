@@ -68,7 +68,6 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/ham_test_form_title_style"
-                android:drawableLeft="@drawable/ic_depression_hamilton_24"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:minHeight="48dp"
@@ -615,13 +614,13 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/HAMDQ6TxtV"
                             android:layout_gravity="left"
-                            android:gravity="left"
                             android:layout_marginTop="8dp"
+                            android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
                             android:text="@string/HAM_Q6A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/HAMDQ6RB2"
@@ -631,6 +630,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
                             android:text="@string/HAM_Q6A2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -641,13 +641,13 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/HAMDQ6RB2"
                             android:layout_gravity="left"
+                            android:layout_marginBottom="8dp"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:layout_marginBottom="8dp"
+                            android:paddingRight="8dp"
                             android:text="@string/HAM_Q6A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -687,13 +687,13 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/HAMDQ7TxtV"
                             android:layout_gravity="left"
+                            android:layout_marginTop="8dp"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:layout_marginTop="8dp"
+                            android:paddingRight="8dp"
                             android:text="@string/HAM_Q7A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/HAMDQ7RB2"
@@ -702,11 +702,12 @@
                             android:layout_below="@id/HAMDQ7RB1"
                             android:layout_gravity="left"
                             android:gravity="left"
+                            android:justificationMode="inter_word"
                             android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
                             android:text="@string/HAM_Q7A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/HAMDQ7RB3"
@@ -715,11 +716,12 @@
                             android:layout_below="@id/HAMDQ7RB2"
                             android:layout_gravity="left"
                             android:gravity="left"
+                            android:justificationMode="inter_word"
                             android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
                             android:text="@string/HAM_Q7A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/HAMDQ7RB4"
@@ -727,13 +729,14 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/HAMDQ7RB3"
                             android:layout_gravity="left"
-                            android:gravity="left"
-                            android:paddingLeft="8dp"
                             android:layout_marginBottom="8dp"
+                            android:gravity="left"
+                            android:justificationMode="inter_word"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
                             android:text="@string/HAM_Q7A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 

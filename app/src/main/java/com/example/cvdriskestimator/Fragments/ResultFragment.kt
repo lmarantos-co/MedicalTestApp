@@ -540,11 +540,11 @@ class ResultFragment : Fragment() {
             gdsTestScore = view.findViewById(R.id.totalPSScore)
             gdsTestResult = view.findViewById(R.id.totalScoreDescTxtV)
             val score = arguments!!.getDouble(ARG_PARAM1)
-            gdsTestScore.text = (String.format(
+            gdsTestResult.text = (String.format(
                 resources.getString(R.string.mds_test_score),
-                String.format("%.2f", score.toFloat())
-            ))
-            gdsTestResult.text = geGDSResult(score.toInt())
+                score.toFloat())
+            )
+//            gdsTestResult.text = geGDSResult(score.toInt())
             gdsView1 = view.findViewById(R.id.view1)
             gdsView2 = view.findViewById(R.id.view2)
             gdsView3 = view.findViewById(R.id.view3)

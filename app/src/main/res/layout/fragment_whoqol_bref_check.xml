@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="CheckDASSPatientViewModel"
-            type="com.example.cvdriskestimator.viewModels.CheckDASSPatientViewModel" />
+            name="CheckWHOQOLPatientViewModel"
+            type="com.example.cvdriskestimator.viewModels.CheckWHOQOLPatientViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formConLayout"
@@ -56,10 +56,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/horGL1"
-            android:id="@+id/BAITestTitleLayout">
+            android:id="@+id/whoqolTestTitleLayout">
 
             <TextView
-                android:id="@+id/dassTestTitle"
+                android:id="@+id/whoqolTestTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -74,7 +74,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:singleLine="false"
-                android:text="DASS Test"
+                android:text="WHO QOL BREF Test"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -82,7 +82,7 @@
                 android:id="@+id/historyBtn"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:layout_alignRight="@id/dassTestTitle"
+                android:layout_alignRight="@id/whoqolTestTitle"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="16dp"
@@ -107,7 +107,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
-                android:id="@+id/dassCheckLinLayout"
+                android:id="@+id/whoqol_bref_CheckLinLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -120,7 +120,7 @@
                     android:layout_height="50dp" />
 
                 <TextView
-                    android:id="@+id/formTxtV"
+                    android:id="@+id/formTxtV1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -128,7 +128,73 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="@string/DASS_text_desc"
+                    android:text="@string/whoqql_bref_test_intro_string_1"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/pillowVIew2"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+
+                <TextView
+                    android:id="@+id/formTxtV2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:text="@string/whoqql_bref_test_intro_string_2"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/pillowVIew3"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+
+                <TextView
+                    android:id="@+id/formTxtV3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:text="@string/whoqql_bref_test_intro_string_3"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/pillowVIew4"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+
+                <TextView
+                    android:id="@+id/formTxtV4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:text="@string/whoqql_bref_test_intro_string_4"
                     android:justificationMode="inter_word"
                     android:textColor="@color/white"
                     android:textSize="20sp"
@@ -137,7 +203,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ1RelLayout"
+                    android:id="@+id/WHOQOLQ1RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -146,7 +212,7 @@
                     android:background="@drawable/relativelayout_style">
 
                     <TextView
-                        android:id="@+id/DASSQ1TxtV"
+                        android:id="@+id/WHOCategory1TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -154,61 +220,88 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q1s"
+                        android:text="@string/category_1_text"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
-                    <RadioGroup
-                        android:id="@+id/DASSQ1RG"
+                    <TextView
+                        android:id="@+id/WHOQ1TxtV"
+                        android:layout_below="@+id/WHOCategory1TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ1TxtV">
+                        android:background="@drawable/light_green_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/WHOQ1"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <RadioGroup
+                        android:id="@+id/WHOQ1RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/WHOQ1TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ1RB1"
+                            android:id="@+id/WHOQ1RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ1TxtV"
+                            android:layout_below="@id/WHOQ1TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ1RB2"
+                            android:id="@+id/WHOQ1RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ1RB1"
+                            android:layout_below="@id/WHOQ1RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ1RB3"
+                            android:id="@+id/WHOQ1RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ1RB2"
+                            android:layout_below="@id/WHOQ1RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ1RB4"
+                            android:id="@+id/WHOQ1RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ1RB3"
+                            android:layout_below="@id/WHOQ1RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ1RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ1RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -217,7 +310,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ2RelLayout"
+                    android:id="@+id/WHOQOLQ2RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -225,8 +318,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ2TxtV"
+                        android:id="@+id/WHOQ2TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -234,61 +328,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q2a"
+                        android:text="@string/WHOQ2"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ2RG"
+                        android:id="@+id/WHOQ2RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ2TxtV">
+                        android:layout_below="@id/WHOQ2TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ2RB1"
+                            android:id="@+id/WHOQ2RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ2TxtV"
+                            android:layout_below="@id/WHOQ2TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ2RB2"
+                            android:id="@+id/WHOQ2RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ2RB1"
+                            android:layout_below="@id/WHOQ2RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ2RB3"
+                            android:id="@+id/WHOQ2RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ2RB2"
+                            android:layout_below="@id/WHOQ2RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ2RB4"
+                            android:id="@+id/WHOQ2RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ1RB3"
+                            android:layout_below="@id/WHOQ2RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ2RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ2RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -297,7 +404,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ3RelLayout"
+                    android:id="@+id/WHOQOLQ3RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -305,8 +412,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ3TxtV"
+                        android:id="@+id/WHOQ3TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -314,61 +422,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q3d"
+                        android:text="@string/WHOQ3"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ3RG"
+                        android:id="@+id/WHOQ3RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ3TxtV">
+                        android:layout_below="@id/WHOQ3TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ3RB1"
+                            android:id="@+id/WHOQ3RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ3TxtV"
+                            android:layout_below="@id/WHOQ3TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ3RB2"
+                            android:id="@+id/WHOQ3RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ3RB1"
+                            android:layout_below="@id/WHOQ3RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ3RB3"
+                            android:id="@+id/WHOQ3RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ3RB2"
+                            android:layout_below="@id/WHOQ3RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ3RB4"
+                            android:id="@+id/WHOQ3RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ3RB3"
+                            android:layout_below="@id/WHOQ3RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ3RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ3RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -377,7 +498,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ4RelLayout"
+                    android:id="@+id/WHOQOLQ4RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -385,8 +506,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ4TxtV"
+                        android:id="@+id/WHOQ4TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -394,61 +516,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q4a"
+                        android:text="@string/WHOQ4"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ4RG"
+                        android:id="@+id/WHOQ4RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ4TxtV">
+                        android:layout_below="@id/WHOQ4TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ4RB1"
+                            android:id="@+id/WHOQ4RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ4TxtV"
+                            android:layout_below="@id/WHOQ4TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ4RB2"
+                            android:id="@+id/WHOQ4RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ4RB1"
+                            android:layout_below="@id/WHOQ4RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ4RB3"
+                            android:id="@+id/WHOQ4RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ4RB2"
+                            android:layout_below="@id/WHOQ4RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ4RB4"
+                            android:id="@+id/WHOQ4RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ4RB3"
+                            android:layout_below="@id/WHOQ4RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ4RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ4RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -457,7 +592,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ5RelLayout"
+                    android:id="@+id/WHOQOLQ5RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -465,8 +600,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ5TxtV"
+                        android:id="@+id/WHOQ5TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -474,63 +610,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:text="@string/DASS_Q5d"
+                        android:text="@string/WHOQ5"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ5RG"
+                        android:id="@+id/WHOQ5RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ5TxtV">
+                        android:layout_below="@id/WHOQ5TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ5RB1"
+                            android:id="@+id/WHOQ5RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ5TxtV"
+                            android:layout_below="@id/WHOQ5TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ5RB2"
+                            android:id="@+id/WHOQ5RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ5RB1"
+                            android:layout_below="@id/WHOQ5RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ5RB3"
+                            android:id="@+id/WHOQ5RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ5RB2"
+                            android:layout_below="@id/WHOQ5RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ5RB4"
+                            android:id="@+id/WHOQ5RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ5RB3"
+                            android:layout_below="@id/WHOQ5RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ5RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ5RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -539,7 +686,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ6RelLayout"
+                    android:id="@+id/WHOQOLQ6RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -547,8 +694,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ6TxtV"
+                        android:id="@+id/WHOQ6TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -556,63 +704,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:text="@string/DASS_Q6s"
+                        android:text="@string/WHOQ6"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ6RG"
+                        android:id="@+id/WHOQ6RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ6TxtV">
+                        android:layout_below="@id/WHOQ6TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ6RB1"
+                            android:id="@+id/WHOQ6RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ6TxtV"
+                            android:layout_below="@id/WHOQ6TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ6RB2"
+                            android:id="@+id/WHOQ6RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ6RB1"
+                            android:layout_below="@id/WHOQ6RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ6RB3"
+                            android:id="@+id/WHOQ6RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ6RB2"
+                            android:layout_below="@id/WHOQ6RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ6RB4"
+                            android:id="@+id/WHOQ6RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ6RB3"
+                            android:layout_below="@id/WHOQ6RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ6RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ6RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -621,7 +780,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ7RelLayout"
+                    android:id="@+id/WHOQOLQ7RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -629,8 +788,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ7TxtV"
+                        android:id="@+id/WHOQ7TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -638,61 +798,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q7a"
+                        android:text="@string/WHOQ7"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ7RG"
+                        android:id="@+id/WHOQ7RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ7TxtV">
+                        android:layout_below="@id/WHOQ7TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ7RB1"
+                            android:id="@+id/WHOQ7RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ7TxtV"
+                            android:layout_below="@id/WHOQ7TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ7RB2"
+                            android:id="@+id/WHOQ7RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ7RB1"
+                            android:layout_below="@id/WHOQ7RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ7RB3"
+                            android:id="@+id/WHOQ7RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ7RB2"
+                            android:layout_below="@id/WHOQ7RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ7RB4"
+                            android:id="@+id/WHOQ7RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ7RB3"
+                            android:layout_below="@id/WHOQ7RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ7RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ7RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -701,7 +874,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ8RelLayout"
+                    android:id="@+id/WHOQOLQ8RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -709,8 +882,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ8TxtV"
+                        android:id="@+id/WHOQ8TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -718,61 +892,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q8s"
+                        android:text="@string/WHOQ8"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ8RG"
+                        android:id="@+id/WHOQ8RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ8TxtV">
+                        android:layout_below="@id/WHOQ8TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ8RB1"
+                            android:id="@+id/WHOQ8RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ8TxtV"
+                            android:layout_below="@id/WHOQ8TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ8RB2"
+                            android:id="@+id/WHOQ8RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ8RB1"
+                            android:layout_below="@id/WHOQ8RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ8RB3"
+                            android:id="@+id/WHOQ8RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ8RB2"
+                            android:layout_below="@id/WHOQ8RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ8RB4"
+                            android:id="@+id/WHOQ8RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ7RB3"
+                            android:layout_below="@id/WHOQ8RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ8RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ8RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -781,7 +968,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ9RelLayout"
+                    android:id="@+id/WHOQOL9QRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -789,8 +976,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ9TxtV"
+                        android:id="@+id/WHOQ9TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -798,63 +986,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:paddingLeft="9dp"
-                        android:paddingRight="8dp"
-                        android:text="@string/DASS_Q9a"
+                        android:text="@string/WHOQ9"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ9RG"
+                        android:id="@+id/WHOQ9RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ9TxtV">
+                        android:layout_below="@id/WHOQ9TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ9RB1"
+                            android:id="@+id/WHOQ9RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ9TxtV"
+                            android:layout_below="@id/WHOQ8TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ9RB2"
+                            android:id="@+id/WHOQ9RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ9RB1"
+                            android:layout_below="@id/WHOQ9RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ9RB3"
+                            android:id="@+id/WHOQ9RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ9RB2"
+                            android:layout_below="@id/WHOQ9RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ9RB4"
+                            android:id="@+id/WHOQ9RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ9RB3"
+                            android:layout_below="@id/WHOQ9RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ9RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ9RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -863,7 +1062,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ10RelLayout"
+                    android:id="@+id/WHOQOLQ10RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -872,7 +1071,7 @@
                     android:background="@drawable/relativelayout_style">
 
                     <TextView
-                        android:id="@+id/DASSQ10TxtV"
+                        android:id="@+id/WHOCategory2TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -880,61 +1079,88 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q10d"
+                        android:text="@string/category_2_text"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
-                    <RadioGroup
-                        android:id="@+id/DASSQ10RG"
+                    <TextView
+                        android:id="@+id/WHOQ10TxtV"
+                        android:layout_below="@+id/WHOCategory2TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ10TxtV">
+                        android:background="@drawable/light_green_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/WHOQ10"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <RadioGroup
+                        android:id="@+id/WHOQ10RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/WHOQ10TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ10RB1"
+                            android:id="@+id/WHOQ10RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ10TxtV"
+                            android:layout_below="@id/WHOQ10TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ10RB2"
+                            android:id="@+id/WHOQ10RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ10RB1"
+                            android:layout_below="@id/WHOQ10RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ10RB3"
+                            android:id="@+id/WHOQ10RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ10RB2"
+                            android:layout_below="@id/WHOQ10RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ10RB4"
+                            android:id="@+id/WHOQ10RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ10RB3"
+                            android:layout_below="@id/WHOQ10RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ10RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ10RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -943,7 +1169,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ11RelLayout"
+                    android:id="@+id/WHOQOLQ11RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -951,8 +1177,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ11TxtV"
+                        android:id="@+id/WHOQ11TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -960,61 +1187,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q11s"
+                        android:text="@string/WHOQ11"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ11RG"
+                        android:id="@+id/WHOQ11RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ11TxtV">
+                        android:layout_below="@id/WHOQ11TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ11RB1"
+                            android:id="@+id/WHOQ11RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ11TxtV"
+                            android:layout_below="@id/WHOQ11TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ11RB2"
+                            android:id="@+id/WHOQ11RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ11RB1"
+                            android:layout_below="@id/WHOQ11RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ11RB3"
+                            android:id="@+id/WHOQ11RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ11RB2"
+                            android:layout_below="@id/WHOQ11RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ11RB4"
+                            android:id="@+id/WHOQ11RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ11RB3"
+                            android:layout_below="@id/WHOQ11RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ11RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ11RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1023,7 +1263,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ12RelLayout"
+                    android:id="@+id/WHOQOLQ12RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -1031,8 +1271,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ12TxtV"
+                        android:id="@+id/WHOQ12TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -1040,61 +1281,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q12s"
+                        android:text="@string/WHOQ12"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ12RG"
+                        android:id="@+id/WHOQ12RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ12TxtV">
+                        android:layout_below="@id/WHOQ12TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ12RB1"
+                            android:id="@+id/WHOQ12RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ12TxtV"
+                            android:layout_below="@id/WHOQ12TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ12RB2"
+                            android:id="@+id/WHOQ12RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ12RB1"
+                            android:layout_below="@id/WHOQ12RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ12RB3"
+                            android:id="@+id/WHOQ12RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ12RB2"
+                            android:layout_below="@id/WHOQ12RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ12RB4"
+                            android:id="@+id/WHOQ12RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ12RB3"
+                            android:layout_below="@id/WHOQ12RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ12RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ12RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1103,7 +1357,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ13RelLayout"
+                    android:id="@+id/WHOQOLQ13RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -1111,8 +1365,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ13TxtV"
+                        android:id="@+id/WHOQ13TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -1120,61 +1375,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q13d"
+                        android:text="@string/WHOQ13"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ13RG"
+                        android:id="@+id/WHOQ13RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ13TxtV">
+                        android:layout_below="@id/WHOQ13TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ13RB1"
+                            android:id="@+id/WHOQ13RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ13TxtV"
+                            android:layout_below="@id/WHOQ13TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ13RB2"
+                            android:id="@+id/WHOQ13RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ13RB1"
+                            android:layout_below="@id/WHOQ13RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ13RB3"
+                            android:id="@+id/WHOQ13RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ13RB2"
+                            android:layout_below="@id/WHOQ13RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ13RB4"
+                            android:id="@+id/WHOQ13RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ13RB3"
+                            android:layout_below="@id/WHOQ13RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ13RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ13RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1183,7 +1451,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ14RelLayout"
+                    android:id="@+id/WHOQOLQ14RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -1191,8 +1459,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ14TxtV"
+                        android:id="@+id/WHOQ14TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -1200,63 +1469,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:text="@string/DASS_Q14s"
+                        android:text="@string/WHOQ14"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ14RG"
+                        android:id="@+id/WHOQ14RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ14TxtV">
+                        android:layout_below="@id/WHOQ14TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ14RB1"
+                            android:id="@+id/WHOQ14RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ14TxtV"
+                            android:layout_below="@id/WHOQ14TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ14RB2"
+                            android:id="@+id/WHOQ14RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ14RB1"
+                            android:layout_below="@id/WHOQ14RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ14RB3"
+                            android:id="@+id/WHOQ14RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ14RB2"
+                            android:layout_below="@id/WHOQ14RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ14RB4"
+                            android:id="@+id/WHOQ14RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ14RB3"
+                            android:layout_below="@id/WHOQ14RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ14RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ14RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1265,7 +1545,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ15RelLayout"
+                    android:id="@+id/WHOQOLQ15RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -1273,8 +1553,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ15TxtV"
+                        android:id="@+id/WHOQ15TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -1282,61 +1563,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q15a"
+                        android:text="@string/WHOQ15"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ15RG"
+                        android:id="@+id/WHOQ15RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ15TxtV">
+                        android:layout_below="@id/WHOQ15TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ15RB1"
+                            android:id="@+id/WHOQ15RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ15TxtV"
+                            android:layout_below="@id/WHOQ15TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ15RB2"
+                            android:id="@+id/WHOQ15RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ15RB1"
+                            android:layout_below="@id/WHOQ15RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ15RB3"
+                            android:id="@+id/WHOQ15RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ15RB2"
+                            android:layout_below="@id/WHOQ15RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ15RB4"
+                            android:id="@+id/WHOQ15RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ15RB3"
+                            android:layout_below="@id/WHOQ15RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ15RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ15RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1345,7 +1639,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ16RelLayout"
+                    android:id="@+id/WHOQOLQ16RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -1354,7 +1648,7 @@
                     android:background="@drawable/relativelayout_style">
 
                     <TextView
-                        android:id="@+id/DASSQ16TxtV"
+                        android:id="@+id/WHOCategory3TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -1362,61 +1656,88 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q16d"
+                        android:text="@string/category_3_text"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
-                    <RadioGroup
-                        android:id="@+id/DASSQ16RG"
+                    <TextView
+                        android:id="@+id/WHOQ16TxtV"
+                        android:layout_below="@+id/WHOCategory3TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ16TxtV">
+                        android:background="@drawable/light_green_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/WHOQ16"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <RadioGroup
+                        android:id="@+id/WHOQ16RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/WHOQ16TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ16RB1"
+                            android:id="@+id/WHOQ16RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ16TxtV"
+                            android:layout_below="@id/WHOQ16TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ16RB2"
+                            android:id="@+id/WHOQ16RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ16RB1"
+                            android:layout_below="@id/WHOQ16RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ16RB3"
+                            android:id="@+id/WHOQ16RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ16RB2"
+                            android:layout_below="@id/WHOQ16RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ16RB4"
+                            android:id="@+id/WHOQ16RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ16RB3"
+                            android:layout_below="@id/WHOQ16RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ16RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ16RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1425,7 +1746,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ17RelLayout"
+                    android:id="@+id/WHOQOLQ17RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -1433,8 +1754,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ17TxtV"
+                        android:id="@+id/WHOQ17TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -1442,61 +1764,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q17d"
+                        android:text="@string/WHOQ17"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ17RG"
+                        android:id="@+id/WHOQ17RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ17TxtV">
+                        android:layout_below="@id/WHOQ17TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ17RB1"
+                            android:id="@+id/WHOQ17RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ17TxtV"
+                            android:layout_below="@id/WHOQ17TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ17RB2"
+                            android:id="@+id/WHOQ17RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ17RB1"
+                            android:layout_below="@id/WHOQ17RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ17RB3"
+                            android:id="@+id/WHOQ17RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ17RB2"
+                            android:layout_below="@id/WHOQ17RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ17RB4"
+                            android:id="@+id/WHOQ17RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ17RB3"
+                            android:layout_below="@id/WHOQ17RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ17RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ15RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1505,7 +1840,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ18RelLayout"
+                    android:id="@+id/WHOQOLQ18RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -1513,8 +1848,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ18TxtV"
+                        android:id="@+id/WHOQ18TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -1522,61 +1858,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q18s"
+                        android:text="@string/WHOQ18"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ18RG"
+                        android:id="@+id/WHOQ18RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ18TxtV">
+                        android:layout_below="@id/WHOQ18TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ18RB1"
+                            android:id="@+id/WHOQ18RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ18TxtV"
+                            android:layout_below="@id/WHOQ18TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ18RB2"
+                            android:id="@+id/WHOQ18RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ18RB1"
+                            android:layout_below="@id/WHOQ18RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ18RB3"
+                            android:id="@+id/WHOQ18RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ18RB2"
+                            android:layout_below="@id/WHOQ18RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ18RB4"
+                            android:id="@+id/WHOQ18RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ18RB3"
+                            android:layout_below="@id/WHOQ18RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ18RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ18RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1585,7 +1934,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ19RelLayout"
+                    android:id="@+id/WHOQOLQ19RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -1593,8 +1942,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ19TxtV"
+                        android:id="@+id/WHOQ19TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -1602,61 +1952,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q19a"
+                        android:text="@string/WHOQ19"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ19RG"
+                        android:id="@+id/WHOQ19RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ19TxtV">
+                        android:layout_below="@id/WHOQ19TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ19RB1"
+                            android:id="@+id/WHOQ19RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ19TxtV"
+                            android:layout_below="@id/WHOQ19TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ19RB2"
+                            android:id="@+id/WHOQ19RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ19RB1"
+                            android:layout_below="@id/WHOQ19RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ19RB3"
+                            android:id="@+id/WHOQ19RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ19RB2"
+                            android:layout_below="@id/WHOQ19RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ19RB4"
+                            android:id="@+id/WHOQ19RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ19RB3"
+                            android:layout_below="@id/WHOQ19RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ19RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ19RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1665,7 +2028,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ20RelLayout"
+                    android:id="@+id/WHOQOLQ20RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -1673,8 +2036,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ20TxtV"
+                        android:id="@+id/WHOQ20TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -1682,61 +2046,74 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q20a"
+                        android:text="@string/WHOQ20"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ20RG"
+                        android:id="@+id/WHOQ20RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ20TxtV">
+                        android:layout_below="@id/WHOQ20TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ20RB1"
+                            android:id="@+id/WHOQ20RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ20TxtV"
+                            android:layout_below="@id/WHOQ20TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ20RB2"
+                            android:id="@+id/WHOQ20RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ20RB1"
+                            android:layout_below="@id/WHOQ20RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ20RB3"
+                            android:id="@+id/WHOQ20RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ20RB2"
+                            android:layout_below="@id/WHOQ20RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ20RB4"
+                            android:id="@+id/WHOQ20RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ20RB3"
+                            android:layout_below="@id/WHOQ20RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ20RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ20RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1745,7 +2122,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/DASSQ21RelLayout"
+                    android:id="@+id/WHOQOLQ21RelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -1753,8 +2130,9 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
+
                     <TextView
-                        android:id="@+id/DASSQ21TxtV"
+                        android:id="@+id/WHOQ21TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_green_txtview"
@@ -1762,61 +2140,450 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/DASS_Q21d"
+                        android:text="@string/WHOQ21"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
+
                     <RadioGroup
-                        android:id="@+id/DASSQ21RG"
+                        android:id="@+id/WHOQ21RG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/DASSQ21TxtV">
+                        android:layout_below="@id/WHOQ21TxtV">
 
                         <RadioButton
-                            android:id="@+id/DASSQ21RB1"
+                            android:id="@+id/WHOQ21RB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ21TxtV"
+                            android:layout_below="@id/WHOQ21TxtV"
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A1"
+                            android:text="@string/WHOA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ21RB2"
+                            android:id="@+id/WHOQ21RB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ21RB1"
+                            android:layout_below="@id/WHOQ21RB1"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A2"
+                            android:text="@string/WHOA2"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ21RB3"
+                            android:id="@+id/WHOQ21RB3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ21RB2"
+                            android:layout_below="@id/WHOQ21RB2"
                             android:layout_gravity="left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A3"
+                            android:text="@string/WHOA3"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <RadioButton
-                            android:id="@+id/DASSQ21RB4"
+                            android:id="@+id/WHOQ21RB4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/DASSQ21RB3"
+                            android:layout_below="@id/WHOQ21RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/DASS_A4"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ21RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ21RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/WHOQOLQ22RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+
+                    <TextView
+                        android:id="@+id/WHOQ22TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_green_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/WHOQ22"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <RadioGroup
+                        android:id="@+id/WHOQ22RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/WHOQ22TxtV">
+
+                        <RadioButton
+                            android:id="@+id/WHOQ22RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ22TxtV"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ22RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ22RB1"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ22RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ22RB2"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ22RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ22RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ22RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ22RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/WHOQOLQ23RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+
+                    <TextView
+                        android:id="@+id/WHOQ23TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_green_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/WHOQ23"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <RadioGroup
+                        android:id="@+id/WHOQ23RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/WHOQ23TxtV">
+
+                        <RadioButton
+                            android:id="@+id/WHOQ23RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ23TxtV"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ23RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ23RB1"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ23RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ23RB2"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ23RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ23RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ23RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ23RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/WHOQOLQ24RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+
+                    <TextView
+                        android:id="@+id/WHOQ24TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_green_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/WHOQ24"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <RadioGroup
+                        android:id="@+id/WHOQ24RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/WHOQ24TxtV">
+
+                        <RadioButton
+                            android:id="@+id/WHOQ24RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ24TxtV"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ24RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ24RB1"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ24RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ24RB2"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ24RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ23RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ24RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ24RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/WHOQOLQ25RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+
+                    <TextView
+                        android:id="@+id/WHOQ25TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_green_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/WHOQ25"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <RadioGroup
+                        android:id="@+id/WHOQ25RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/WHOQ25TxtV">
+
+                        <RadioButton
+                            android:id="@+id/WHOQ25RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ25TxtV"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ25RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ25RB1"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ25RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ25RB2"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ25RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ25RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/WHOQ25RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/WHOQ25RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/WHOA5"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 

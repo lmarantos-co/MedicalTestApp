@@ -1041,26 +1041,31 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         bdiIcon.setOnClickListener {
             hideLayoutElements()
+            playSelectTestAudio(10)
             openTestPopUp("Beck Depression Index")
         }
 
         hamDIcon.setOnClickListener {
             hideLayoutElements()
+            playSelectTestAudio(13)
             openTestPopUp("Hammilton Depression")
         }
 
         staiAnxietyIcon.setOnClickListener {
             hideLayoutElements()
+            playSelectTestAudio(11)
             openTestPopUp("STAI")
         }
 
         dassIcon.setOnClickListener {
             hideLayoutElements()
+            playSelectTestAudio(12)
             openTestPopUp("DASS")
         }
 
         zungIcon.setOnClickListener {
             hideLayoutElements()
+            playSelectTestAudio(14)
             openTestPopUp("ZUNG")
         }
 
@@ -1118,6 +1123,26 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
             9 -> {
                 val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.pdq_speech)
+                mediaPlayer.start()
+            }
+            10 -> {
+                val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.beck_derpession)
+                mediaPlayer.start()
+            }
+            11 -> {
+                val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.stai_speech)
+                mediaPlayer.start()
+            }
+            12 -> {
+                val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.dass_speech)
+                mediaPlayer.start()
+            }
+            13 -> {
+                val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.hammilton_speech)
+                mediaPlayer.start()
+            }
+            14 -> {
+                val mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.zung_speech)
                 mediaPlayer.start()
             }
         }
@@ -1237,8 +1262,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         painIcon.startAnimation(bounceTests)
         gdsDepressionIcon.animate().alphaBy(1f).duration = 1200
         gdsDepressionIcon.startAnimation(bounceTests)
-        pdqIcon.animate().alphaBy(1f).duration = 1200
-        pdqIcon.startAnimation(bounceTests)
         hamDIcon.animate().alphaBy(1f).duration = 1200
         hamDIcon.startAnimation(bounceTests)
         zungIcon.animate().alphaBy(1f).duration = 1200
@@ -1273,7 +1296,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         painIcon.clearAnimation()
         painIcon.visibility = View.INVISIBLE
         gdsDepressionIcon.visibility = View.INVISIBLE
-        pdqIcon.visibility = View.INVISIBLE
         bdiIcon.visibility = View.INVISIBLE
         hamDIcon.visibility = View.INVISIBLE
         zungIcon.visibility = View.INVISIBLE
@@ -1308,15 +1330,23 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.VISIBLE
         depressionIcon.clearAnimation()
         depressionIcon.visibility = View.VISIBLE
+        anxietyIcon.clearAnimation()
         anxietyIcon.visibility = View.VISIBLE
+        dietIcon.clearAnimation()
         dietIcon.visibility = View.VISIBLE
+        painIcon.clearAnimation()
         painIcon.visibility = View.VISIBLE
+        gdsDepressionIcon.clearAnimation()
         gdsDepressionIcon.visibility = View.VISIBLE
-        pdqIcon.visibility = View.VISIBLE
+        bdiIcon.clearAnimation()
         bdiIcon.visibility = View.VISIBLE
+        hamDIcon.clearAnimation()
         hamDIcon.visibility = View.VISIBLE
+        staiAnxietyIcon.clearAnimation()
         staiAnxietyIcon.visibility = View.VISIBLE
+        dassIcon.clearAnimation()
         dassIcon.visibility = View.VISIBLE
+        zungIcon.clearAnimation()
         zungIcon.visibility = View.VISIBLE
     }
 

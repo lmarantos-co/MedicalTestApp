@@ -259,10 +259,22 @@ class GDSCheckFragment : Fragment() {
     {
         var result : Int? = null
         val radioButtonId = rg.checkedRadioButtonId
-        if (rg.get(1).id == radioButtonId)
-            result = 1
-        if (rg.get(0).id == radioButtonId)
-            result = 0
+        if ((rg.id != gdsCheckBinding.GDS1QRG.id) && (rg.id != gdsCheckBinding.GDS5QRG.id)
+            && (rg.id != gdsCheckBinding.GDS7QRG.id) && (rg.id != gdsCheckBinding.GDS11QRG.id)
+            && (rg.id != gdsCheckBinding.GDS13QRG.id))
+        {
+            if (rg.get(1).id == radioButtonId)
+                result = 1
+            if (rg.get(0).id == radioButtonId)
+                result = 0
+        }
+        else
+        {
+            if (rg.get(1).id == radioButtonId)
+                result = 0
+            if (rg.get(0).id == radioButtonId)
+                result = 1
+        }
         return result
     }
 

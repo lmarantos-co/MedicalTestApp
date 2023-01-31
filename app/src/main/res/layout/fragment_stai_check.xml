@@ -2009,6 +2009,8 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
                         android:text="@string/STAI_TANXIETY_Q24"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -3291,6 +3293,8 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
                         android:text="@string/STAI_TANXIETY_Q40"
                         android:textColor="@color/black"
                         android:textSize="20sp" />

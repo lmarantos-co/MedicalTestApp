@@ -38,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/trans"
-        android:drawableLeft="@drawable/ic_gds_depression__2_24"
         android:drawablePadding="8dp"
         android:elevation="4dp"
         android:gravity="center"
@@ -100,7 +99,6 @@
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="@string/mds_test_score"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
