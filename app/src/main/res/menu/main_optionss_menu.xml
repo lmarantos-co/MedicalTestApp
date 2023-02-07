@@ -8,15 +8,26 @@
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item
-        android:id="@+id/login_item"
+        android:id="@+id/questions"
         app:showAsAction="always"
-        android:title="Login"
+        android:title="Questionaries"
+        android:icon="@drawable/questionary"/>
+
+    <item
+        android:id="@+id/doctor_item"
+        app:showAsAction="always"
+        android:title="Doctor Logout"
+        android:icon="@drawable/doctor_logout"  />
+    <item
+        android:id="@+id/customer_change_item"
+        app:showAsAction="always"
+        android:title="Customer Change"
         android:icon="@drawable/ic_sign_in__24"/>
 
     <item
-        android:id="@+id/register_item"
+        android:id="@+id/customer_add_item"
         app:showAsAction="always"
-        android:title="Register"
+        android:title="Customer Add"
         android:icon="@drawable/ic_registration_icon_24"/>
 
 <!--    <item-->

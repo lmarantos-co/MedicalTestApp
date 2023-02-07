@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainActiConLayout"
@@ -56,7 +57,7 @@
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toTopOf="@+id/horGLImg"
-        app:srcCompat="@drawable/avatar_b" />
+        app:srcCompat="@drawable/beck_depression_icon" />
 
     <TextView
         android:id="@+id/bdiTxtV"
@@ -134,7 +135,7 @@
         android:id="@+id/initial_test_screen_popup"
         layout="@layout/initial_popup_test_layout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:elevation="5dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/include_all_patient_list_test"
@@ -194,10 +195,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:alpha="1"
         android:background="@color/trans"
         android:cropToPadding="false"
         android:scaleType="centerInside"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toTopOf="@+id/horGL2"
@@ -224,6 +225,7 @@
         android:background="@color/trans"
         android:cropToPadding="false"
         android:scaleType="centerInside"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toTopOf="@+id/horGL2"

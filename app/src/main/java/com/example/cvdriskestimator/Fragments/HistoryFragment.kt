@@ -2,6 +2,7 @@ package com.example.cvdriskestimator.Fragments
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Paint
 import android.os.Bundle
 import android.text.Html
 import android.util.DisplayMetrics
@@ -68,6 +69,7 @@ class HistoryFragment : Fragment() {
 
 
     private var SCREEN_HEIGHT : Int = 0
+    private var SCREEN_WIDTH : Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,6 +90,8 @@ class HistoryFragment : Fragment() {
 
         param1 = this.arguments!!.getString("patientId")!!
         param2 = this.arguments!!.getString("testName")
+
+        bindingHistoryFragment.datePickerLinLayout.visibility = View.GONE
 
         bindingHistoryFragment.datePickerButton.setOnClickListener {
             if (!openDatePicker)
@@ -177,6 +181,7 @@ class HistoryFragment : Fragment() {
 //
 //        }
 
+        calculateScreenWidth()
         calculateScreenHeight()
 
         bindingHistoryFragment.testResultsLineChart.layoutParams.height = SCREEN_HEIGHT / 3
@@ -951,9 +956,15 @@ class HistoryFragment : Fragment() {
     private fun initTestResultsListView(allTests : RealmResults<Test>)
     {
         var dateArrayList = ArrayList<String>()
-
-
         var scoreArrayList = ArrayList<String>()
+        var sizeOfSpaceCharacter = getStringSize(" ")
+        var numOfSpaces : Int = 0
+        if (SCREEN_WIDTH < 1000)
+            numOfSpaces = ((SCREEN_WIDTH / (2)) / sizeOfSpaceCharacter)
+        if (SCREEN_WIDTH > 1000)
+            numOfSpaces = ((SCREEN_WIDTH / (4)).toInt() / sizeOfSpaceCharacter)
+
+
         when (param2)
         {
             "CardioVascularDisease" ->
@@ -961,7 +972,12 @@ class HistoryFragment : Fragment() {
                 for (test in allTests)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
-                    dateArrayList.add("${format.format(test.testDate)}                      ${test.cvdTestResult} %")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.cvdTestResult} %")
                 }
             }
             "DIABETES" ->
@@ -969,7 +985,12 @@ class HistoryFragment : Fragment() {
                 for (test in allTests)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
-                    dateArrayList.add("${format.format(test.testDate)}                      ${test.diabetesTestResult} %")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.diabetesTestResult} %")
                 }
             }
             "Major Depression Index" ->
@@ -977,7 +998,12 @@ class HistoryFragment : Fragment() {
                 for (test in allTests)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
-                    dateArrayList.add("${format.format(test.testDate)}                      ${test.patientMDITestResult}")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.patientMDITestResult}")
                 }
             }
             "Beck Anxiety Index" ->
@@ -985,7 +1011,12 @@ class HistoryFragment : Fragment() {
                 for (test in allTests)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
-                    dateArrayList.add("${format.format(test.testDate)}                      ${test.patientBAITestResult}")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.patientBAITestResult}")
                 }
             }
             "Mediterranean Diet Test" ->
@@ -993,7 +1024,12 @@ class HistoryFragment : Fragment() {
                 for (test in allTests)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
-                    dateArrayList.add("${format.format(test.testDate)}                      ${test.patientMDSTestResult}")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.patientMDSTestResult}")
                 }
             }
             "Brief Pain Inventory" ->
@@ -1009,7 +1045,12 @@ class HistoryFragment : Fragment() {
                 for (test in allTests)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
-                    dateArrayList.add("${format.format(test.testDate)}                      ${test.patientGDSTestResult}")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.patientGDSTestResult}")
                 }
             }
         }
@@ -1162,6 +1203,19 @@ class HistoryFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
+    }
+
+    private fun getStringSize(string : String) : Int
+    {
+        val Paint = Paint()
+        var textWidth = Paint.measureText(string)
+        return textWidth.toInt()
+    }
+
+    private fun calculateScreenWidth()    {
+        val displayMetrics = DisplayMetrics()
+        mainActivity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics)
+        SCREEN_WIDTH = displayMetrics.widthPixels
     }
 
     private fun calculateScreenHeight()

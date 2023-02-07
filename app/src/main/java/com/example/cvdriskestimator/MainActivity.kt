@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private var HammiltonTestDate : String = ""
     private var ZungTestDate : String = ""
     private lateinit var patienTestListOkBtn : Button
-    private lateinit var includeTestOptionsPopup : LinearLayout
+    private lateinit var includeTestOptionsPopup : ConstraintLayout
     private var showPatientLasttest : Boolean = false
     private lateinit var addNewTxtV : TextView
     private lateinit var updateLastTxtV : TextView
@@ -363,8 +363,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (showPatientLasttest == true)
         {
             var allPatientTestNameArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(1))
+            allPatientsTestNameListView.invalidate()
             allPatientsTestNameListView.adapter = allPatientTestNameArrayAdapter
             var allPatientTestDAteArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(2))
+            allPatientTestDateLisView.invalidate()
             allPatientTestDateLisView.adapter = allPatientTestDAteArrayAdapter
             showPatientLasttest = false
             allPatientsTestNameListView.invalidate()
@@ -817,6 +819,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
     }
 
+
+
     fun loadMedicalAppScreen()
     {
         setContentViewForIntroScreen()
@@ -865,6 +869,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
         }
 
+        var mteConLayout = includeTestOptionsPopup.findViewById<ConstraintLayout>(R.id.include_cvd_title_form)
+        mteConLayout.setOnClickListener {
+            setContentViewForMainLayout()
+        }
 
         MTETitle.setOnClickListener {
             hideSoftInputKeyboard()
@@ -948,7 +956,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         animationHideTest = AnimationUtils.loadAnimation(applicationContext, R.anim.hidetest)
 
         bounceTests = AnimationUtils.loadAnimation(applicationContext, R.anim.bounce_tests)
-        initTestsRelLayouts()
 
 
         //bounce the userIcon
@@ -966,7 +973,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     {
         val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
         with (sharedPref.edit()) {
-            putString("LOG" , "Login")
+            putString("LOG" , "Customer Change")
             putString("MSG" , "Medical Test Estimator")
 //            putString("userName" , "tempUser")
             apply()
@@ -1179,14 +1186,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         with(shared.edit())
         {
             putString("MSG" , "Medical Test Estimator")
-            putString("LOG" , "Login")
+            putString("LOG" , "Customer Change")
             putString("userName" , "tempUser")
             apply()
         }
         val message = shared.getString("MSG" , "Test 1")
         val login = shared.getString("LOG" , "Test 2")
         val popUpmenu = popupMenu.menu
-        popUpmenu.getItem(1).setTitle("login")
+        popUpmenu.getItem(1).setTitle("Customer Change")
         //set register button message
         popUpmenu.getItem(3).setTitle("tempUser Data")
 
@@ -1244,7 +1251,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.VISIBLE
         dietIcon.visibility = View.VISIBLE
         painIcon.visibility = View.VISIBLE
-        staiAnxietyIcon.visibility = View.VISIBLE
         //gdsDepressionIcon.visibility = View.VISIBLE
         cvdVectorIcon.animate().alpha(1f).duration = 1200
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
@@ -1260,12 +1266,24 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon.startAnimation(bounceTests)
         painTestTitle.animate().alphaBy(1f).duration = 1200
         painIcon.startAnimation(bounceTests)
+        bdiIcon.animate().alphaBy(1f).duration = 1200
+        bdiIcon.startAnimation(bounceTests)
         gdsDepressionIcon.animate().alphaBy(1f).duration = 1200
         gdsDepressionIcon.startAnimation(bounceTests)
+        gdsDepressionIcon.visibility = View.VISIBLE
         hamDIcon.animate().alphaBy(1f).duration = 1200
         hamDIcon.startAnimation(bounceTests)
+        hamDIcon.visibility = View.VISIBLE
+        dassIcon.animate().alphaBy(1f).duration = 1200
+        dassIcon.startAnimation(bounceTests)
+        dassIcon.visibility = View.VISIBLE
         zungIcon.animate().alphaBy(1f).duration = 1200
         zungIcon.startAnimation(bounceTests)
+        zungIcon.visibility = View.VISIBLE
+        bdiIcon.visibility = View.VISIBLE
+        staiAnxietyIcon.visibility = View.VISIBLE
+
+
     }
 
 
@@ -1315,19 +1333,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     private fun showLayoutElements() {
         MTETitle.visibility = View.VISIBLE
+        cvdVectorIcon.clearAnimation()
         cvdVectorIcon.visibility = View.VISIBLE
+        diabetesVectorIcon.clearAnimation()
         diabetesVectorIcon.visibility = View.VISIBLE
-        cvdTestTitle.visibility = View.VISIBLE
-        diabetestestTitle.visibility = View.VISIBLE
-        depressionTestTitle.visibility = View.VISIBLE
-        anxietyTestTitle.visibility = View.VISIBLE
-        dietTestTitle.visibility = View.VISIBLE
-        painTestTitle.visibility = View.VISIBLE
-        beckDeprTxtV.visibility = View.VISIBLE
-        gerDepTxtV.visibility = View.VISIBLE
-        staiTxtV.visibility = View.VISIBLE
-        dassTxtV.visibility = View.VISIBLE
-        anxietyIcon.visibility = View.VISIBLE
         depressionIcon.clearAnimation()
         depressionIcon.visibility = View.VISIBLE
         anxietyIcon.clearAnimation()
@@ -1348,6 +1357,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dassIcon.visibility = View.VISIBLE
         zungIcon.clearAnimation()
         zungIcon.visibility = View.VISIBLE
+        cvdVectorIcon.visibility = View.VISIBLE
+        diabetesVectorIcon.visibility = View.VISIBLE
+        cvdTestTitle.visibility = View.VISIBLE
+        diabetestestTitle.visibility = View.VISIBLE
+        depressionTestTitle.visibility = View.VISIBLE
+        anxietyTestTitle.visibility = View.VISIBLE
+        dietTestTitle.visibility = View.VISIBLE
+        painTestTitle.visibility = View.VISIBLE
+        beckDeprTxtV.visibility = View.VISIBLE
+        gerDepTxtV.visibility = View.VISIBLE
+        staiTxtV.visibility = View.VISIBLE
+        dassTxtV.visibility = View.VISIBLE
+        anxietyIcon.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()
@@ -1626,16 +1648,25 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 R.id.home_item -> {
                     playSelectTestAudio(1)
                     showMedicalTests()
-                }R.id.login_item -> {
+                }
+                R.id.questions ->
+                {
+                    backToActivity()
+                }
+                R.id.doctor_item ->
+                {
+                    logOutDoctor()
+                }
+                R.id.customer_change_item -> {
                     val prefs = getPreferences(Context.MODE_PRIVATE)
                     val message = prefs.getString("LOG", "Test1")
-                    if (message == "Login") {
+                    if (message == "Customer Change") {
                         hideLayoutElements()
                         fragmentTransaction(loginFragment)
                 } else
                     logOutUser()
             }
-                R.id.register_item -> {
+                R.id.customer_add_item -> {
                     hideLayoutElements()
                     fragmentTransaction(registerFragment)
             }
@@ -1784,19 +1815,21 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
         val inflater : MenuInflater = popupMenu.menuInflater
         inflater.inflate(R.menu.main_optionss_menu , popupMenu.menu)
-        popupMenu.menu.getItem(1).title =
-            this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Login")
-        popupMenu.menu.getItem(3).title =
+        popupMenu.menu.getItem(2).title =
+            this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Customer Change")
+        popupMenu.menu.getItem(4).title =
             this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data"
         //aplly font to all menu item
         applyFontToMenuItem(popupMenu.menu.getItem(0) , "Home" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(1) , this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Login")!! , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(2) , "Register" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(1) , "All Tests" , applicationContext)
+        applyFontToMenuItem(popupMenu.menu.getItem(2) , "LogOut Doctor" , applicationContext)
+        applyFontToMenuItem(popupMenu.menu.getItem(3) , this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Customer Change")!! , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(4) , "Customer Add" , applicationContext )
 //        applyFontToMenuItem(popupMenu.menu.getItem(3) , "Doctor Log Out" , applicationContext)
-        applyFontToMenuItem(popupMenu.menu.getItem(3) , this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(4) , "Clear All Data" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(5) , "Terms Of Use" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(6) ,"LeaderBoard" , applicationContext)
+        applyFontToMenuItem(popupMenu.menu.getItem(5) , this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(6) , "Clear All Data" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(7) , "Terms Of Use" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(8) ,"LeaderBoard" , applicationContext)
 
 
         // show icons on popup menu
