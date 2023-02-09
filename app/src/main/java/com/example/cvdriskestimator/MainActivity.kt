@@ -189,9 +189,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         loginDoctorButton = findViewById(R.id.loginDoctorTxtV)
         loginDoctorButton.setOnClickListener {
             showPatientLasttest = false
-            setContentViewForMainLayout()
+            setContentView(R.layout.activity_main)
             loginDoctorFragment = LoginDoctorFragment.newInstance()
-            hideLayoutElements()
+//            hideLayoutElements()
             fragmentTransaction(loginDoctorFragment)
         }
 
@@ -857,6 +857,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     private fun initUI() {
+
 
         MTETitleForm.post {
             mteTitleFormHeight = MTETitleForm.height

@@ -962,7 +962,7 @@ class HistoryFragment : Fragment() {
         if (SCREEN_WIDTH < 1000)
             numOfSpaces = ((SCREEN_WIDTH / (2)) / sizeOfSpaceCharacter)
         if (SCREEN_WIDTH > 1000)
-            numOfSpaces = ((SCREEN_WIDTH / (4)).toInt() / sizeOfSpaceCharacter)
+            numOfSpaces = ((SCREEN_WIDTH / (5)).toInt() / sizeOfSpaceCharacter)
 
 
         when (param2)
