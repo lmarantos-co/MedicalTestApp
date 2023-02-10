@@ -69,9 +69,8 @@ class PopUpMenu {
                     {
                         val prefs = prMainActivity.getPreferences(Context.MODE_PRIVATE)
                         val message = prefs.getString("LOG", "Test1")
-                        if (message == "Login") {
-                            prMainActivity.backToActivity()
-                            prMainActivity.fragmentTransaction(prLoginFragment!!)
+                        if (message == "Customer Change") {
+                            prMainActivity.setContentViewForSearchCustomersScreen()
                         } else
                             prMainActivity.logOutUser()
                     }

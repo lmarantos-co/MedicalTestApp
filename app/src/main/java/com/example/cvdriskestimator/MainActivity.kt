@@ -234,7 +234,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     }
 
-    private fun setContentViewForSearchCustomersScreen() {
+    fun setContentViewForSearchCustomersScreen() {
         setContentView(R.layout.intro_screen_search_customers)
         customersListView = findViewById(R.id.customerListView)
         customerSearchView = findViewById(R.id.customersSearchView)
@@ -968,6 +968,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         animationSlideBottomToTop = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_bottom_to_top)
 
+        initTestsRelLayouts()
+
+
     }
 
     private fun initPrefs()
@@ -1082,7 +1085,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     private fun openTestPopUp(test: String) {
-
+        setFragmentContainerConstraint(1)
         includeTestOptionsPopup.visibility = View.VISIBLE
         testName = test
     }
@@ -1236,7 +1239,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragContainerConstraintSet.connect(fragmentContainer.id , ConstraintSet.TOP , ConstraintSet.PARENT_ID, ConstraintSet.TOP)
             fragContainerConstraintSet.applyTo(constraintLayout)
         }
-        if (action == 2)
+        if ((action == 2) && (includeTestOptionsPopup.visibility == View.VISIBLE))
         {
             fragContainerConstraintSet = ConstraintSet()
             fragContainerConstraintSet.clone(constraintLayout)
@@ -1555,7 +1558,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     fun fragmentTransaction(fragment : Fragment) {
         if (!(fragment is LoginDoctorFragment) && !(fragment is RegisterDoctorFragment))
             hideLayoutElements()
-        setFragmentContainerConstraint(1)
+        if (!(fragment is LoginDoctorFragment))
+            setFragmentContainerConstraint(1)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         if (fragment is CheckFragment)
             fragmentTransaction.show(fragment)
@@ -1662,8 +1666,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                     val prefs = getPreferences(Context.MODE_PRIVATE)
                     val message = prefs.getString("LOG", "Test1")
                     if (message == "Customer Change") {
-                        hideLayoutElements()
-                        fragmentTransaction(loginFragment)
+                        setContentViewForSearchCustomersScreen()
                 } else
                     logOutUser()
             }
