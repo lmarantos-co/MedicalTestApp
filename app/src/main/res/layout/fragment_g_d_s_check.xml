@@ -51,6 +51,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/purple_mditest_form_title_style"
+                    android:drawableLeft="@drawable/ic_gds_depression_24_post"
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:minHeight="48dp"
@@ -432,6 +433,8 @@
                             android:focusableInTouchMode="true"
                             android:gravity="center"
                             android:minHeight="64dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
                             android:text="@string/GDSQ6"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -606,6 +609,8 @@
                             android:focusableInTouchMode="true"
                             android:gravity="center"
                             android:minHeight="64dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
                             android:text="@string/GDSQ9"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -780,6 +785,8 @@
                             android:focusableInTouchMode="true"
                             android:gravity="center"
                             android:minHeight="64dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
                             android:text="@string/GDS12"
                             android:textColor="@color/black"
                             android:textSize="20sp" />

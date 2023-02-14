@@ -68,6 +68,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/ham_test_form_title_style"
+                android:drawableLeft="@drawable/ic_hammilton_depression_small_24_post"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:minHeight="48dp"
@@ -262,7 +263,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/HAM_Q1"
+                        android:text="@string/HAM_Q2"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -982,11 +983,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q10"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1369,11 +1370,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q14"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1430,23 +1431,9 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-                            android:text="@string/HAM_Q14A2"
-                            android:textColor="@color/black"
-                            android:textSize="20sp" />
-
-                        <RadioButton
-                            android:id="@+id/HAMDQ14RB4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/HAMDQ14RB3"
-                            android:layout_gravity="left"
-                            android:gravity="left"
-                            android:paddingLeft="8dp"
-                            android:layout_marginBottom="8dp"
                             android:text="@string/HAM_Q14A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1627,11 +1614,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q17"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

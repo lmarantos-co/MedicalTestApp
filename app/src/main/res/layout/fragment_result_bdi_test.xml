@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bdi_test_results_style"
-        android:drawableLeft="@drawable/ic_depression_24"
+        android:drawableLeft="@drawable/ic_bdi_depression_24_post"
         android:drawablePadding="8dp"
         android:elevation="4dp"
         android:gravity="center"

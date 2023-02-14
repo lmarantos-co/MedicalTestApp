@@ -439,8 +439,12 @@
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_anxiety_icon.xml" value="0.1" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.101" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_bdi_depression.xml" value="0.1" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_bdi_depression_24_post.xml" value="0.1355" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_bdi_depression_post.xml" value="0.156" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_bdi_deression_24.xml" value="0.1" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_beck_derpession_score.xml" value="0.1" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_dass_depression_24_post.xml" value="0.156" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_dass_depression_post.xml" value="0.156" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_dass_derpession.xml" value="0.109" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_dass_derpession_24.xml" value="0.126" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_depression.xml" value="0.226" />
@@ -452,16 +456,23 @@
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_diet_24dp.xml" value="0.276" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_favorite_black_24dp.xml" value="0.1" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_favorite_white_48dp.xml" value="0.276" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_gds_depression_24_post.xml" value="0.156" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_gds_depression__2_.xml" value="0.226" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_gds_depression__2_24.xml" value="0.226" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_gds_depression_post.xml" value="0.15" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_hamilton_3.xml" value="0.1" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_hamitlon_depression_2.xml" value="0.1" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_hamitlon_derpession.xml" value="0.1" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_hammilton.xml" value="0.1135" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_hammilton_depression_24__post.xml" value="0.156" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_hammilton_depression_2__post.xml" value="0.156" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_hammilton_depression_small_24_post.xml" value="0.156" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_hammilton_depression_small_post.xml" value="0.156" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_hammilton_derpession.xml" value="0.1375" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_heart.xml" value="0.1135" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_left_arrow.xml" value="0.2585" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_log_out_doctor.xml" value="0.101" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_log_out_doctor_24.xml" value="0.148" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_nose.xml" value="0.2675" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_pain__24dp.xml" value="0.2675" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_pain__2_.xml" value="0.2675" />
@@ -471,6 +482,9 @@
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_person_outline_white_24dp.xml" value="0.1105" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_px_parkinson.xml" value="0.226" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_px_parkinson_24.xml" value="0.226" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_px_parkinson_24_post.xml" value="0.15" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_px_parkinson_post.xml" value="0.156" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_questions_menu_icon.xml" value="0.148" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_reg_icon_24_black.xml" value="0.16" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_registration_icon.xml" value="0.226" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_registration_icon_24.xml" value="0.226" />
@@ -482,10 +496,16 @@
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_sign_in__24.xml" value="0.276" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_stai_anxiety.xml" value="0.1375" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_stai_anxiety_24.xml" value="0.1375" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_stai_anxiety_icon.xml" value="0.156" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_stai_anxiety_icon_24.xml" value="0.156" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_stai_anxiety_post.xml" value="0.15" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_stai_anxietyr.xml" value="0.1285" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_terms.xml" value="0.276" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_user_icon_24.xml" value="0.276" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_zung_depression_24.xml" value="0.104" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_zung_depression_24_post.xml" value="0.156" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_zung_depression_face_post.xml" value="0.156" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_zung_depression_post.xml" value="0.156" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/ic_zung_derpession.xml" value="0.104" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/intro_screen_panel.xml" value="0.264" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/leader_board_player_layout.xml" value="0.2" />
@@ -507,6 +527,7 @@
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/purple_mditest_form_title_style.xml" value="0.2675" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/purple_textview.xml" value="0.2675" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/purple_zung_test_form_tite.xml" value="0.159" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/questionary.xml" value="0.148" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/radiobutton_style.xml" value="0.268" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/red_bpi_form_style.xml" value="0.2675" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/red_progressbar_style.xml" value="0.233" />
@@ -523,7 +544,7 @@
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/zung_purple_txtview.xml" value="0.159" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/zung_test_results_style.xml" value="0.105" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/drawable/zung_test_results_style_sub.xml" value="0.105" />
-        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/all_patient_data_recycler_txtv.xml" value="0.18" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/all_tests_results_of_patient_layou.xml" value="0.25" />
         <entry key="..\:/Users/user5/Documents/GitHub/medical-test-app/app/src/main/res/layout/app_first_screen.xml" value="0.25" />

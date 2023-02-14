@@ -154,6 +154,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var gerDepTxtV : TextView
     private lateinit var staiTxtV : TextView
     private lateinit var dassTxtV : TextView
+    private lateinit var hamiltonTxtV : TextView
+    private lateinit var zungTxtV : TextView
     private lateinit var animationZoomIn : Animation
     private lateinit var animationBounce : Animation
     private lateinit var animationSlideLeftToRight : Animation
@@ -357,14 +359,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 //        allPatientResultsConLayout = findViewById(R.id.alltestResultsConLayout)
         patienTestListOkBtn.setOnClickListener {
             allPatientResultsPopUp.visibility = View.GONE
+            showLayoutElements()
+            showMedicalTests()
         }
 
 
         if (showPatientLasttest == true)
         {
             var allPatientTestNameArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(1))
-            allPatientsTestNameListView.invalidate()
             allPatientsTestNameListView.adapter = allPatientTestNameArrayAdapter
+            allPatientsTestNameListView.invalidate()
             var allPatientTestDAteArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(2))
             allPatientTestDateLisView.invalidate()
             allPatientTestDateLisView.adapter = allPatientTestDAteArrayAdapter
@@ -421,6 +425,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyTestTitle = findViewById(R.id.anxietyTestTxtView)
         dietTestTitle = findViewById(R.id.medDietScoreTxtView)
         painTestTitle = findViewById(R.id.painTxtView)
+        zungTxtV = findViewById(R.id.zungTxtV)
+        hamiltonTxtV = findViewById(R.id.hammTxtV)
 
         initPrefs()
 
@@ -859,6 +865,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private fun initUI() {
 
 
+        showLayoutElements()
+
         MTETitleForm.post {
             mteTitleFormHeight = MTETitleForm.height
         }
@@ -874,6 +882,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         mteConLayout.setOnClickListener {
             setContentViewForMainLayout()
         }
+
+        includeTestOptionsPopup.findViewById<ImageView>(R.id.userIcon).setOnClickListener {
+            showPopUp(userIconImg)
+        }
+
 
         MTETitle.setOnClickListener {
             hideSoftInputKeyboard()
@@ -945,9 +958,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 //        setAllViewsDimens()
 
 
-        cvdVectorIcon.visibility = View.INVISIBLE
-        diabetesVectorIcon.visibility = View.INVISIBLE
 
+        hideLayoutElements()
         //set the animation for the check button
         animationZoomIn = AnimationUtils.loadAnimation(applicationContext, R.anim.zoom_in)
         animationBounce  = AnimationUtils.loadAnimation(applicationContext, R.anim.bounce)
@@ -1080,7 +1092,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             openTestPopUp("ZUNG")
         }
 
-        showMedicalTests()
 
     }
 
@@ -1249,29 +1260,32 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     private fun showMedicalTests() {
-        cvdVectorIcon.visibility = View.VISIBLE
-        diabetesVectorIcon.visibility = View.VISIBLE
-        depressionIcon.visibility = View.VISIBLE
-        anxietyIcon.visibility = View.VISIBLE
-        dietIcon.visibility = View.VISIBLE
-        painIcon.visibility = View.VISIBLE
+
         //gdsDepressionIcon.visibility = View.VISIBLE
+        MTETitle.visibility = View.VISIBLE
         cvdVectorIcon.animate().alpha(1f).duration = 1200
+        cvdVectorIcon.startAnimation(bounceTests)
+        cvdVectorIcon.visibility = View.VISIBLE
         diabetesVectorIcon.animate().alpha(1f).duration = 1200
+        diabetesVectorIcon.startAnimation(bounceTests)
+        diabetesVectorIcon.visibility = View.VISIBLE
         depressionIcon.animate().alpha(1f).duration = 1200
-        dietIcon.animate().alpha(1f).duration = 1200
         depressionIcon.startAnimation(bounceTests)
+        dietIcon.animate().alpha(1f).duration = 1200
+        dietIcon.startAnimation(bounceTests)
+        dietIcon.visibility = View.VISIBLE
         anxietyIcon.animate().alphaBy(1f).duration = 1200
         anxietyIcon.startAnimation(bounceTests)
+        anxietyIcon.visibility = View.VISIBLE
         staiAnxietyIcon.animate().alphaBy(1f).duration = 1200
         staiAnxietyIcon.startAnimation(bounceTests)
-        cvdVectorIcon.startAnimation(bounceTests)
-        diabetesVectorIcon.startAnimation(bounceTests)
-        dietIcon.startAnimation(bounceTests)
-        painTestTitle.animate().alphaBy(1f).duration = 1200
+        staiAnxietyIcon.visibility = View.VISIBLE
+        painIcon.animate().alphaBy(1f).duration = 1200
         painIcon.startAnimation(bounceTests)
+        painIcon.visibility = View.VISIBLE
         bdiIcon.animate().alphaBy(1f).duration = 1200
         bdiIcon.startAnimation(bounceTests)
+        bdiIcon.visibility = View.VISIBLE
         gdsDepressionIcon.animate().alphaBy(1f).duration = 1200
         gdsDepressionIcon.startAnimation(bounceTests)
         gdsDepressionIcon.visibility = View.VISIBLE
@@ -1284,8 +1298,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         zungIcon.animate().alphaBy(1f).duration = 1200
         zungIcon.startAnimation(bounceTests)
         zungIcon.visibility = View.VISIBLE
-        bdiIcon.visibility = View.VISIBLE
-        staiAnxietyIcon.visibility = View.VISIBLE
 
 
     }
@@ -1327,11 +1339,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyTestTitle.visibility = View.INVISIBLE
         dietTestTitle.visibility = View.INVISIBLE
         painTestTitle.visibility = View.INVISIBLE
-        beckDeprTxtV.visibility = View.VISIBLE
-        gerDepTxtV.visibility = View.VISIBLE
-        staiTxtV.visibility = View.VISIBLE
-        dassTxtV.visibility = View.VISIBLE
-
+        beckDeprTxtV.visibility = View.INVISIBLE
+        gerDepTxtV.visibility = View.INVISIBLE
+        staiTxtV.visibility = View.INVISIBLE
+        dassTxtV.visibility = View.INVISIBLE
+        zungTxtV.visibility = View.INVISIBLE
+        hamiltonTxtV.visibility = View.INVISIBLE
 
     }
 
@@ -1374,6 +1387,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         staiTxtV.visibility = View.VISIBLE
         dassTxtV.visibility = View.VISIBLE
         anxietyIcon.visibility = View.VISIBLE
+        zungTxtV.visibility = View.VISIBLE
+        hamiltonTxtV.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()
@@ -1819,9 +1834,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
         val inflater : MenuInflater = popupMenu.menuInflater
         inflater.inflate(R.menu.main_optionss_menu , popupMenu.menu)
-        popupMenu.menu.getItem(2).title =
+        popupMenu.menu.getItem(3).title =
             this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Customer Change")
-        popupMenu.menu.getItem(4).title =
+        popupMenu.menu.getItem(5).title =
             this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data"
         //aplly font to all menu item
         applyFontToMenuItem(popupMenu.menu.getItem(0) , "Home" , applicationContext )

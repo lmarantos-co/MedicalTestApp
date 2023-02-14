@@ -64,7 +64,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/blue_baitest_form_title_style"
-                android:drawableLeft="@drawable/ic_anxiety_24_black"
+                android:drawableLeft="@drawable/ic_stai_anxiety_icon_24"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:minHeight="48dp"

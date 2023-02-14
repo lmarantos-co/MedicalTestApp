@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/zung_test_results_style"
+        android:drawableLeft="@drawable/ic_zung_depression_face_24_post"
         android:drawablePadding="8dp"
         android:elevation="4dp"
         android:gravity="center"

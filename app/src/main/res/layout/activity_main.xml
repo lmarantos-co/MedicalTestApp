@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainActiConLayout"
@@ -13,10 +12,11 @@
         android:id="@+id/staiAnxietyIcon"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toTopOf="@+id/barHGL6"
-        app:srcCompat="@drawable/beard" />
+        app:srcCompat="@drawable/ic_stai_anxiety_icon" />
 
     <TextView
         android:id="@+id/staTxtV"
@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         android:text="STAI Test"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toBottomOf="@+id/staiAnxietyIcon" />
@@ -33,11 +34,11 @@
         android:id="@+id/gdsIcon"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toTopOf="@+id/horGLImg"
-        app:srcCompat="@drawable/avatar" />
+        app:srcCompat="@drawable/ic_gds_depression_post" />
 
     <TextView
         android:id="@+id/gdsTxtV"
@@ -45,7 +46,8 @@
         android:layout_height="wrap_content"
         android:text="Geriatric  Depression"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toBottomOf="@+id/gdsIcon" />
@@ -54,9 +56,11 @@
         android:id="@+id/bdiIcon"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
-        app:layout_constraintTop_toTopOf="@+id/horGLImg" />
+        app:layout_constraintTop_toTopOf="@+id/horGLImg"
+        app:srcCompat="@drawable/ic_bdi_depression_post" />
 
     <TextView
         android:id="@+id/bdiTxtV"
@@ -64,7 +68,8 @@
         android:layout_height="wrap_content"
         android:text="Beck Depression"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toBottomOf="@+id/bdiIcon" />
@@ -73,30 +78,55 @@
         android:id="@+id/hamDepIcon"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toTopOf="@+id/horGL4"
-        app:srcCompat="@drawable/gamer" />
+        app:srcCompat="@drawable/ic_hammilton_depression_small_post" />
+
+    <TextView
+        android:id="@+id/zungTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zung Depression"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/VGL2"
+        app:layout_constraintStart_toStartOf="@+id/VGL4"
+        app:layout_constraintTop_toBottomOf="@+id/zungIcon" />
+
+    <TextView
+        android:id="@+id/hammTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hammilton Depression"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/VGL4"
+        app:layout_constraintStart_toStartOf="@+id/VGL1"
+        app:layout_constraintTop_toBottomOf="@+id/hamDepIcon" />
 
     <ImageView
         android:id="@+id/zungIcon"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/VGL2"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
-        app:layout_constraintTop_toBottomOf="@+id/dassTxtV"
-        app:srcCompat="@drawable/boy" />
+        app:layout_constraintTop_toTopOf="@+id/horGL4"
+        app:srcCompat="@drawable/ic_zung_depression_face_post" />
 
     <ImageView
         android:id="@+id/dassImgV"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toTopOf="@+id/barHGL6"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/ic_dass_depression_post" />
 
     <TextView
         android:id="@+id/dassTxtV"
@@ -104,7 +134,8 @@
         android:layout_height="wrap_content"
         android:text="DASS TEST"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toBottomOf="@+id/dassImgV" />
@@ -136,6 +167,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="5dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/include_all_patient_list_test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -210,7 +242,8 @@
         android:fontFamily="sans-serif"
         android:text="CVD Test"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toBottomOf="@+id/cvdTestImgV" />
@@ -236,7 +269,8 @@
         android:layout_marginTop="8dp"
         android:text="Diabetes Test"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toBottomOf="@+id/diabetesTestImgV" />
@@ -245,11 +279,13 @@
         android:id="@+id/depressionImgV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:adjustViewBounds="true"
         android:alpha="1"
         android:background="@color/trans"
         android:cropToPadding="false"
         android:scaleType="centerInside"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toTopOf="@+id/barHG5"
@@ -263,7 +299,8 @@
         android:layout_marginTop="8dp"
         android:text="Derpession Test"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toBottomOf="@+id/depressionImgV" />
@@ -278,6 +315,7 @@
         android:background="@color/trans"
         android:cropToPadding="false"
         android:scaleType="centerInside"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toTopOf="@+id/barHG4"
@@ -290,7 +328,8 @@
         android:layout_marginTop="8dp"
         android:text="Anxiety Test"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toBottomOf="@+id/AnxietyImgV" />
@@ -344,7 +383,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
+        app:layout_constraintGuide_percent="0.53" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -352,21 +391,21 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.28" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/barHG5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.41" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/barHGL6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.67" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/barHGL7"
@@ -383,6 +422,7 @@
         android:background="@color/trans"
         android:cropToPadding="false"
         android:scaleType="centerInside"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toTopOf="@+id/barHG4"
@@ -396,7 +436,8 @@
         android:layout_marginTop="8dp"
         android:text="MedDietScore Test"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL4"
         app:layout_constraintStart_toStartOf="@+id/VGL1"
         app:layout_constraintTop_toBottomOf="@+id/dietImgV" />
@@ -406,11 +447,13 @@
         android:id="@+id/PainImgV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:adjustViewBounds="true"
         android:alpha="1"
         android:background="@color/trans"
         android:cropToPadding="false"
         android:scaleType="centerInside"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toTopOf="@+id/barHG5"
@@ -423,7 +466,8 @@
         android:layout_marginTop="8dp"
         android:text="Pain Test"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/VGL2"
         app:layout_constraintStart_toStartOf="@+id/VGL4"
         app:layout_constraintTop_toBottomOf="@+id/PainImgV" />
@@ -452,7 +496,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.87" />
+        app:layout_constraintGuide_percent="0.82" />
 
 
     <!--    <TextView-->
