@@ -213,7 +213,7 @@
                         android:layout_weight="1"
                         android:scrollbars="vertical"
                         android:transcriptMode="alwaysScroll"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                 </LinearLayout>
             </RelativeLayout>

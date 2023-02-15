@@ -977,7 +977,8 @@ class HistoryFragment : Fragment() {
                     {
                         emptyString += " "
                     }
-                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.cvdTestResult} %")
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.cvdTestResult} %")
                 }
             }
             "DIABETES" ->
@@ -990,7 +991,8 @@ class HistoryFragment : Fragment() {
                     {
                         emptyString += " "
                     }
-                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.diabetesTestResult} %")
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.diabetesTestResult} %")
                 }
             }
             "Major Depression Index" ->
@@ -1003,7 +1005,8 @@ class HistoryFragment : Fragment() {
                     {
                         emptyString += " "
                     }
-                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.patientMDITestResult}")
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.patientMDITestResult}")
                 }
             }
             "Beck Anxiety Index" ->
@@ -1016,7 +1019,8 @@ class HistoryFragment : Fragment() {
                     {
                         emptyString += " "
                     }
-                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.patientBAITestResult}")
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add(("${test.patientBAITestResult}"))
                 }
             }
             "Mediterranean Diet Test" ->
@@ -1029,7 +1033,8 @@ class HistoryFragment : Fragment() {
                     {
                         emptyString += " "
                     }
-                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.patientMDSTestResult}")
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.patientMDSTestResult}")
                 }
             }
             "Brief Pain Inventory" ->
@@ -1050,13 +1055,14 @@ class HistoryFragment : Fragment() {
                     {
                         emptyString += " "
                     }
-                    dateArrayList.add("${format.format(test.testDate)}${emptyString}${test.patientGDSTestResult}")
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.patientGDSTestResult}")
                 }
             }
         }
 
-        val dateAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textcenter, dateArrayList)
-        val scoreAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textcenter, scoreArrayList)
+        val dateAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textvview_history_xml, dateArrayList)
+        val scoreAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textview_history_right, scoreArrayList)
 
         dateAdapter.notifyDataSetChanged()
         scoreAdapter.notifyDataSetChanged()

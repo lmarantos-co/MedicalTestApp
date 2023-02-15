@@ -368,10 +368,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         {
             var allPatientTestNameArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(1))
             allPatientsTestNameListView.adapter = allPatientTestNameArrayAdapter
-            allPatientsTestNameListView.invalidate()
+            allPatientTestNameArrayAdapter.notifyDataSetChanged()
             var allPatientTestDAteArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(2))
-            allPatientTestDateLisView.invalidate()
             allPatientTestDateLisView.adapter = allPatientTestDAteArrayAdapter
+            allPatientTestDAteArrayAdapter.notifyDataSetChanged()
+            allPatientTestDateLisView.invalidate()
             showPatientLasttest = false
             allPatientsTestNameListView.invalidate()
             allPatientTestDateLisView.invalidate()
@@ -1299,7 +1300,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         zungIcon.startAnimation(bounceTests)
         zungIcon.visibility = View.VISIBLE
 
-
     }
 
 
@@ -1324,14 +1324,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         anxietyIcon.visibility = View.INVISIBLE
         staiAnxietyIcon.clearAnimation()
         staiAnxietyIcon.visibility = View.INVISIBLE
+        dassIcon.clearAnimation()
         dassIcon.visibility = View.INVISIBLE
         dietIcon.clearAnimation()
         dietIcon.visibility = View.INVISIBLE
         painIcon.clearAnimation()
         painIcon.visibility = View.INVISIBLE
+        gdsDepressionIcon.clearAnimation()
         gdsDepressionIcon.visibility = View.INVISIBLE
+        bdiIcon.clearAnimation()
         bdiIcon.visibility = View.INVISIBLE
+        hamDIcon.clearAnimation()
         hamDIcon.visibility = View.INVISIBLE
+        zungIcon.clearAnimation()
         zungIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
@@ -1880,6 +1885,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         popupMenu.show()
     }
 
+    fun hideResultFragment(resultFragment: ResultFragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+            fragmentTransaction.hide(resultFragment)
+                .commit()
+    }
+
     //function to apply font family to menu items
     private fun applyFontToMenuItem(menuItem: MenuItem, menuTitle : String, mContext : Context)
     {
@@ -2142,6 +2153,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
         return true
     }
+
+
 
 
 }

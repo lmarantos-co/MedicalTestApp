@@ -928,6 +928,7 @@ class ResultFragment : Fragment() {
         }
 
         MTEtitle.setOnClickListener {
+            mainActivity.hideResultFragment(this@ResultFragment)
             mainActivity.backToActivity()
         }
 
