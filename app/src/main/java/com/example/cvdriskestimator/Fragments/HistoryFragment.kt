@@ -9,12 +9,11 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
+import android.widget.AbsListView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import com.example.cvdriskestimator.CustomClasses.CustomAdapter
-import com.example.cvdriskestimator.CustomClasses.RecyclerItemClickListenr
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
@@ -28,13 +27,13 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter
 import io.realm.Realm
-import io.realm.RealmList
 import io.realm.RealmResults
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,9 +66,12 @@ class HistoryFragment : Fragment() {
     private var lineChartWidth : Int = 0
     private var lineChartHeight : Int = 0
 
-
     private var SCREEN_HEIGHT : Int = 0
     private var SCREEN_WIDTH : Int = 0
+
+    var clickSource: View? = null
+    var touchSource: View? = null
+    var offset = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -187,6 +189,8 @@ class HistoryFragment : Fragment() {
         bindingHistoryFragment.testResultsLineChart.layoutParams.height = SCREEN_HEIGHT / 3
 
         bindingHistoryFragment.testResultDateListView.layoutParams.height = (SCREEN_HEIGHT / 3.5).toInt()
+
+        setUniformMotionForListViews()
 
         getAllTests(null , null)
     }
@@ -951,6 +955,70 @@ class HistoryFragment : Fragment() {
         testResultsChart.xAxis.setDrawGridLines(false)
         testResultsChart.setDrawBorders(false)
         testResultsChart.invalidate()
+    }
+
+    private fun setUniformMotionForListViews()
+    {
+
+        bindingHistoryFragment.testResultDateListView.setOnTouchListener(OnTouchListener { v, event ->
+            if (touchSource == null) touchSource = v
+            if (v === touchSource) {
+                bindingHistoryFragment.testResultScoreListView.dispatchTouchEvent(event)
+                if (event.action == MotionEvent.ACTION_UP) {
+                    clickSource = v
+                    touchSource = null
+                }
+            }
+            false
+        })
+
+        bindingHistoryFragment.testResultScoreListView.setOnTouchListener(OnTouchListener { v, event ->
+            if (touchSource == null) touchSource = v
+            if (v === touchSource) {
+                bindingHistoryFragment.testResultDateListView.dispatchTouchEvent(event)
+                if (event.action == MotionEvent.ACTION_UP) {
+                    clickSource = v
+                    touchSource = null
+                }
+            }
+            false
+        })
+
+        bindingHistoryFragment.testResultDateListView.setOnScrollListener(object :
+            AbsListView.OnScrollListener {
+
+            override fun onScroll(
+                view: AbsListView,
+                firstVisibleItem: Int,
+                visibleItemCount: Int,
+                totalItemCount: Int
+            ) {
+                if (view === clickSource) bindingHistoryFragment.testResultScoreListView.setSelectionFromTop(
+                    firstVisibleItem,
+                    view.getChildAt(0).top + offset
+                )
+            }
+
+           override fun onScrollStateChanged(view: AbsListView?, scrollState: Int) {}
+        })
+
+        bindingHistoryFragment.testResultScoreListView.setOnScrollListener(object :
+            AbsListView.OnScrollListener {
+
+            override fun onScroll(
+                view: AbsListView,
+                firstVisibleItem: Int,
+                visibleItemCount: Int,
+                totalItemCount: Int
+            ) {
+                if (view === clickSource) bindingHistoryFragment.testResultDateListView.setSelectionFromTop(
+                    firstVisibleItem,
+                    view.getChildAt(0).top + offset
+                )
+            }
+
+            override fun onScrollStateChanged(view: AbsListView?, scrollState: Int) {}
+        })
     }
 
     private fun initTestResultsListView(allTests : RealmResults<Test>)

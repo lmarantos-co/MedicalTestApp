@@ -1380,8 +1380,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         zungIcon.clearAnimation()
         zungIcon.visibility = View.VISIBLE
         cvdVectorIcon.visibility = View.VISIBLE
-        diabetesVectorIcon.visibility = View.VISIBLE
         cvdTestTitle.visibility = View.VISIBLE
+        diabetesVectorIcon.visibility = View.VISIBLE
         diabetestestTitle.visibility = View.VISIBLE
         depressionTestTitle.visibility = View.VISIBLE
         anxietyTestTitle.visibility = View.VISIBLE
@@ -1391,7 +1391,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         gerDepTxtV.visibility = View.VISIBLE
         staiTxtV.visibility = View.VISIBLE
         dassTxtV.visibility = View.VISIBLE
-        anxietyIcon.visibility = View.VISIBLE
         zungTxtV.visibility = View.VISIBLE
         hamiltonTxtV.visibility = View.VISIBLE
     }
