@@ -131,19 +131,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var MTETitle : ConstraintLayout
     private lateinit var fragContainerConstraintSet: ConstraintSet
-    private lateinit var cvdVectorIcon : ImageView
-    private lateinit var diabetesVectorIcon : ImageView
-    private lateinit var depressionIcon : ImageView
-    private lateinit var anxietyIcon : ImageView
-    private lateinit var dietIcon : ImageView
-    private lateinit var painIcon : ImageView
-    private lateinit var gdsDepressionIcon : ImageView
-    private lateinit var pdqIcon : ImageView
-    private lateinit var bdiIcon : ImageView
-    private lateinit var hamDIcon : ImageView
-    private lateinit var staiAnxietyIcon : ImageView
-    private lateinit var dassIcon : ImageView
-    private lateinit var zungIcon : ImageView
+    private lateinit var cvdVectorIcon : View
+    private lateinit var diabetesVectorIcon : View
+    private lateinit var depressionIcon : View
+    private lateinit var anxietyIcon : View
+    private lateinit var dietIcon : View
+    private lateinit var painIcon : View
+    private lateinit var gdsDepressionIcon : View
+    private lateinit var pdqIcon : View
+    private lateinit var bdiIcon : View
+    private lateinit var hamDIcon : View
+    private lateinit var staiAnxietyIcon : View
+    private lateinit var dassIcon : View
+    private lateinit var zungIcon : View
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
@@ -182,6 +182,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         MTETitle = findViewById(R.id.include_cvd_title_form)
         MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
+        var menuIcon = MTETitle.findViewById<ImageView>(R.id.userIcon)
+        menuIcon.visibility = View.INVISIBLE
 
 
         MTETitleForm.setOnClickListener {
@@ -216,6 +218,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         MTETitle = findViewById(R.id.include_cvd_title_form)
         MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
 
+
+        var menuIcon = MTETitle.findViewById<ImageView>(R.id.userIcon)
+        menuIcon.visibility = View.INVISIBLE
+
         MTETitleForm.setOnClickListener {
             setContentViewForFirstAppScreen()
         }
@@ -244,6 +250,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         MTETitle = findViewById(R.id.include_cvd_title_form)
         MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
 
+        var menuIcon = MTETitle.findViewById<ImageView>(R.id.userIcon)
+        menuIcon.visibility = View.INVISIBLE
 
         MTETitleForm.setOnClickListener {
             setContentViewForFirstAppScreen()
@@ -404,18 +412,18 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         termsConLayout = findViewById(R.id.include_popup_menu)
         termsOFUseView = termsConLayout.findViewById(R.id.termsRelLayout)
         termsCloseBtn = termsConLayout.findViewById(R.id.closeBtn)
-        cvdVectorIcon = findViewById(R.id.cvdTestImgV)
-        diabetesVectorIcon = findViewById(R.id.diabetesTestImgV)
-        depressionIcon = findViewById(R.id.depressionImgV)
-        anxietyIcon = findViewById(R.id.AnxietyImgV)
-        dietIcon = findViewById(R.id.dietImgV)
-        painIcon = findViewById(R.id.PainImgV)
-        gdsDepressionIcon = findViewById(R.id.gdsIcon)
-        bdiIcon = findViewById(R.id.bdiIcon)
-        hamDIcon = findViewById(R.id.hamDepIcon)
-        dassIcon = findViewById(R.id.dassImgV)
-        staiAnxietyIcon = findViewById(R.id.staiAnxietyIcon)
-        zungIcon = findViewById(R.id.zungIcon)
+        cvdVectorIcon = findViewById(R.id.cvdPanel)
+        diabetesVectorIcon = findViewById(R.id.diabetesPanel)
+        depressionIcon = findViewById(R.id.depressionPanel)
+        anxietyIcon = findViewById(R.id.anxietyPanel)
+        dietIcon = findViewById(R.id.dietPanel)
+        painIcon = findViewById(R.id.painPanel)
+        gdsDepressionIcon = findViewById(R.id.gdPanel)
+        bdiIcon = findViewById(R.id.bdiPanel)
+        hamDIcon = findViewById(R.id.hammPanel)
+        dassIcon = findViewById(R.id.dassPanel)
+        staiAnxietyIcon = findViewById(R.id.staiPanel)
+        zungIcon = findViewById(R.id.zungPanel)
         beckDeprTxtV = findViewById(R.id.bdiTxtV)
         gerDepTxtV = findViewById(R.id.gdsTxtV)
         staiTxtV = findViewById(R.id.staTxtV)

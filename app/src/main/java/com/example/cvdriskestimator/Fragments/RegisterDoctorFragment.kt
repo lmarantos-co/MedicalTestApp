@@ -86,7 +86,7 @@ class RegisterDoctorFragment : Fragment() {
 //            popupMenuComp.showPopUp(registerDoctorBinding.includeCvdTitleForm.userIcon)
 //        }
 
-        registerDoctorBinding.includeCvdTitleForm.userIcon.alpha = 1f
+        registerDoctorBinding.includeCvdTitleForm.userIcon.alpha = 0f
 
         registerDoctorBinding.includeCvdTitleForm.cvdTitleForm.post {
             mteTitleHeight = registerDoctorBinding.includeCvdTitleForm.cvdTitleForm.layoutParams.height

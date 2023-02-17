@@ -11,7 +11,7 @@
     />
 
 <solid
-    android:color="@color/intro_screen_gray2"
+    android:color="@color/panel_test_color_2"
     />
 
 <stroke

@@ -72,7 +72,7 @@ class LoginDoctorFragment : Fragment() {
 //            popUpMenuComp.showPopUp(loginDoctorBinding.includeCvdTitleForm.userIcon)
 //        }
 
-        loginDoctorBinding.includeCvdTitleForm.userIcon.alpha = 1f
+        loginDoctorBinding.includeCvdTitleForm.userIcon.alpha = 0f
 
         loginDoctorBinding.includeCvdTitleForm.cvdTitleForm.post {
             mteTitleHieght = loginDoctorBinding.includeCvdTitleForm.cvdTitleForm.layoutParams.height
