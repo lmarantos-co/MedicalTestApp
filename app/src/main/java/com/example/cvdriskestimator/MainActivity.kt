@@ -1332,8 +1332,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         includeTestOptionsPopup.visibility = View.INVISIBLE
         setFragmentContainerConstraint(1)
         supportFragmentManager.popBackStack()
-        showLayoutElements()
-        showMedicalTests()
+//        showLayoutElements()
+//        showMedicalTests()
+        setContentViewForMainLayout()
     }
 
     private fun setScrolViewConstraint(index : Int)
@@ -1366,6 +1367,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragContainerConstraintSet.clone(constraintLayout)
             fragContainerConstraintSet.connect(fragmentContainer.id , ConstraintSet.TOP , ConstraintSet.PARENT_ID, ConstraintSet.TOP)
             fragContainerConstraintSet.applyTo(constraintLayout)
+            fragmentContainer.elevation = 0f
         }
         if ((action == 2) && (includeTestOptionsPopup.visibility == View.VISIBLE))
         {
@@ -1373,6 +1375,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragContainerConstraintSet.clone(constraintLayout)
             fragContainerConstraintSet.connect(fragmentContainer.id , ConstraintSet.TOP , R.id.horGL1, ConstraintSet.BOTTOM)
             fragContainerConstraintSet.applyTo(constraintLayout)
+            fragmentContainer.elevation = 10f
         }
     }
 

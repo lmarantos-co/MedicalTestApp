@@ -111,7 +111,7 @@ class CheckGDSViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
             patientId = patient!!.patientId
-            testName = "Gediatric Depression Scale"
+            testName = "Geriatric Depression Scale"
         }
         val bundle = Bundle()
         bundle.putString("patientId" , patientId)
@@ -126,7 +126,7 @@ class CheckGDSViewModel : ViewModel() {
         var test = Test()
         realm.executeTransaction {
 
-            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Geriatric Deprression Scale").findFirst()!!
+            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Geriatric Depression Scale").findFirst()!!
         }
 
         return test
@@ -200,7 +200,7 @@ class CheckGDSViewModel : ViewModel() {
             currentTest!!.patientGDSTestResult = result
             currentTest!!.patientId = patient!!.patientId
             currentTest.testDate = calendar.time
-            currentTest.testName = "Gediatric Depression Scale"
+            currentTest.testName = "Geriatric Depression Scale"
 
             var testId : Int = 0
             if (dateCount.toInt() == 0)

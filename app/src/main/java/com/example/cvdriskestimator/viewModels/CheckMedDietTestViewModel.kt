@@ -113,7 +113,7 @@ class CheckMedDietTestViewModel : ViewModel(){
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             var patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()
             patientId = patient!!.patientId
-            testName = "Mediterranean Diet Test"
+            testName = "MDS"
         }
         val bundle = Bundle()
         bundle.putString("patientId" , patientId)
@@ -128,7 +128,7 @@ class CheckMedDietTestViewModel : ViewModel(){
         var test = Test()
         realm.executeTransaction {
 
-            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Mediterranean Diet Test").findFirst()!!
+            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "MDS").findFirst()!!
         }
 
         return test
