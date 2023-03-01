@@ -14,7 +14,8 @@
         android:id="@+id/inclusiveConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@color/MidnightBlue"
+        android:elevation="5dp">
 
         <!--    covariance title form-->
 
@@ -55,8 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/MidnightBlue"
-            app:layout_constraintTop_toBottomOf="@id/include_cvd_title_form"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/include_cvd_title_form"
             tools:context=".Fragments.LoginFragment">
 
 

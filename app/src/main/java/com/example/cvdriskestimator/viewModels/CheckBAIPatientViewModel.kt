@@ -81,7 +81,7 @@ class CheckBAIPatientViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "BAI")
+        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "Beck Anxiety Index")
         patientData.postValue(patientData.value)
         testDATA.postValue(testDATA.value)
     }

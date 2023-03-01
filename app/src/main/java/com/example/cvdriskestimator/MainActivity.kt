@@ -5,6 +5,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Color
 import android.graphics.Typeface
 import android.media.MediaPlayer
 import android.os.Build
@@ -19,10 +20,10 @@ import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.TextFieldDefaults
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.GravityCompat
+import androidx.core.widget.NestedScrollView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -31,18 +32,13 @@ import com.example.cvdriskestimator.RealmDB.Doctor
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDB
 import com.example.cvdriskestimator.RealmDB.Test
-import com.example.cvdriskestimator.viewModels.CheckSTAIPatientViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import io.realm.Realm
 import io.realm.RealmList
-import io.realm.kotlin.where
 import java.lang.reflect.Method
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -84,8 +80,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var popupMenu: PopupMenu
     private lateinit var allPatientResultsPopUp : ConstraintLayout
     private lateinit var allPatientResultsConLayout : ConstraintLayout
+    private lateinit var mainConLayout : ConstraintLayout
+    private lateinit var mainScrollView : NestedScrollView
+    private lateinit var scrollViewConstrainSet : ConstraintSet
     private lateinit var allPatientsTestNameListView : ListView
     private lateinit var allPatientTestDateLisView : ListView
+    private lateinit var allPatienttestNameTextView : TextView
+    private lateinit var allPatienttestDateTextView : TextView
     private var CVDTestName : String = ""
     private var DiabetesTestName : String = ""
     private var MDITestName : String = ""
@@ -131,6 +132,18 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var MTETitle : ConstraintLayout
     private lateinit var fragContainerConstraintSet: ConstraintSet
+    private lateinit var cvdPanel : View
+    private lateinit var dibetesPanel : View
+    private lateinit var depressionPanel : View
+    private lateinit var anxietyPanel : View
+    private lateinit var painPanel : View
+    private lateinit var dietPanel : View
+    private lateinit var beckDeprPanel : View
+    private lateinit var geriatricPanel : View
+    private lateinit var staiPanel : View
+    private lateinit var zungPanel : View
+    private lateinit var hammiltonPanel : View
+    private lateinit var dassPanel : View
     private lateinit var cvdVectorIcon : View
     private lateinit var diabetesVectorIcon : View
     private lateinit var depressionIcon : View
@@ -364,9 +377,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         patienTestListOkBtn = allPatientResultsPopUp.findViewById(R.id.okBtn)
         allPatientsTestNameListView = findViewById(R.id.alltestsNameResultsistView)
         allPatientTestDateLisView = findViewById(R.id.alltestsDatesResultsistView)
-//        allPatientResultsConLayout = findViewById(R.id.alltestResultsConLayout)
+        allPatienttestNameTextView = findViewById(R.id.testNamesTxtV)
+        allPatienttestDateTextView = findViewById(R.id.testDatesTxtV)
+        allPatientTestDateLisView = findViewById(R.id.alltestsDatesResultsistView)
+//        allPatientResultsConLayout = allPatientResultsPopUp.findViewById(R.id.alltestResultsConLayout)
         patienTestListOkBtn.setOnClickListener {
-            allPatientResultsPopUp.visibility = View.GONE
+            allPatientResultsPopUp.visibility = View.INVISIBLE
+            mainScrollView.visibility =View.VISIBLE
+            setScrolViewConstraint(1)
             showLayoutElements()
             showMedicalTests()
         }
@@ -386,7 +404,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             allPatientTestDateLisView.invalidate()
         }
 
-        constraintLayout = findViewById(R.id.mainActiConLayout)
+        constraintLayout = findViewById(R.id.mainConLayout)
+        mainConLayout = findViewById(R.id.mainConLayout)
+        mainScrollView = mainConLayout.findViewById(R.id.mainScrollView)
+        mainScrollView.visibility = View.INVISIBLE
         fragmentContainer = findViewById(R.id.fragmentContainer)
         bottomNavigationView = findViewById(R.id.appBottomnavigationView)
         includeTestOptionsPopup = findViewById(R.id.initial_test_screen_popup)
@@ -404,6 +425,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             openHistory()
         }
         MTETitle = findViewById(R.id.include_cvd_title_form)
+        MTETitle.post {
+
+        }
         MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
         userIconImg = MTETitle.findViewById(R.id.userIcon)
         companyLogo = MTETitle.findViewById(R.id.covariance_logo)
@@ -878,9 +902,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         MTETitleForm.post {
             mteTitleFormHeight = MTETitleForm.height
+//            val layoutParams = mainScrollView
+//                .getLayoutParams() as ConstraintLayout.LayoutParams
+//
+//            layoutParams.setMargins(0, 0, 0, mteTitleFormHeight)
+//            mainScrollView.layoutParams = layoutParams
         }
 
-        constraintLayout.setOnClickListener {
+        mainConLayout.setOnClickListener {
             if (termsOFUseView.visibility == View.VISIBLE)
             {
                 termsOFUseView.visibility = View.INVISIBLE
@@ -905,6 +934,61 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             playSelectTestAudio(1)
             showMedicalTests()
         }
+
+        //set the view references for the panels
+        cvdPanel = findViewById(R.id.cvdPanel)
+        dibetesPanel = findViewById(R.id.diabetesPanel)
+        depressionPanel = findViewById(R.id.depressionPanel)
+        anxietyPanel = findViewById(R.id.anxietyPanel)
+        painPanel = findViewById(R.id.painPanel)
+        dietPanel = findViewById(R.id.dietPanel)
+        beckDeprPanel = findViewById(R.id.bdiPanel)
+        geriatricPanel = findViewById(R.id.gdPanel)
+        staiPanel = findViewById(R.id.staiPanel)
+        zungPanel = findViewById(R.id.zungPanel)
+        hammiltonPanel = findViewById(R.id.hammPanel)
+        dassPanel = findViewById(R.id.dassPanel)
+
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val width = displayMetrics.widthPixels
+        val height = displayMetrics.heightPixels
+
+        cvdPanel.layoutParams.height = height / 5
+        cvdPanel.layoutParams.width = (width / 2.3).toInt()
+
+        dibetesPanel.layoutParams.height = height / 5
+        dibetesPanel.layoutParams.width = (width / 2.3).toInt()
+
+        depressionPanel.layoutParams.height = height / 5
+        depressionPanel.layoutParams.width = (width / 2.3).toInt()
+
+        anxietyPanel.layoutParams.height = height / 5
+        anxietyPanel.layoutParams.width = (width / 2.3).toInt()
+
+        painPanel.layoutParams.height = height / 5
+        painPanel.layoutParams.width = (width / 2.3).toInt()
+
+        dietPanel.layoutParams.height = height / 5
+        dietPanel.layoutParams.width = (width / 2.3).toInt()
+
+        beckDeprPanel.layoutParams.height = height / 5
+        beckDeprPanel.layoutParams.width = (width / 2.3).toInt()
+
+        geriatricPanel.layoutParams.height = height / 5
+        geriatricPanel.layoutParams.width = (width / 2.3).toInt()
+
+        staiPanel.layoutParams.height = height / 5
+        staiPanel.layoutParams.width = (width / 2.3).toInt()
+
+        zungPanel.layoutParams.height = height / 5
+        zungPanel.layoutParams.width = (width / 2.3).toInt()
+
+        hammiltonPanel.layoutParams.height = height / 5
+        hammiltonPanel.layoutParams.width = (width / 2.3).toInt()
+
+        dassPanel.layoutParams.height = height / 5
+        dassPanel.layoutParams.width = (width / 2.3).toInt()
 
         loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
@@ -1106,6 +1190,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     private fun openTestPopUp(test: String) {
         setFragmentContainerConstraint(1)
+        setScrolViewConstraint(2)
         includeTestOptionsPopup.visibility = View.VISIBLE
         testName = test
     }
@@ -1248,6 +1333,29 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setFragmentContainerConstraint(1)
         supportFragmentManager.popBackStack()
         showLayoutElements()
+        showMedicalTests()
+    }
+
+    private fun setScrolViewConstraint(index : Int)
+    {
+        when(index)
+        {
+            1 ->
+            {
+                scrollViewConstrainSet = ConstraintSet()
+                scrollViewConstrainSet.clone(mainConLayout)
+                scrollViewConstrainSet.connect(mainScrollView.id , ConstraintSet.TOP , R.id.include_cvd_title_form , ConstraintSet.BOTTOM)
+                scrollViewConstrainSet.applyTo(mainConLayout)
+            }
+            2 ->
+            {
+                scrollViewConstrainSet = ConstraintSet()
+                scrollViewConstrainSet.clone(mainConLayout)
+                scrollViewConstrainSet.connect(mainScrollView.id , ConstraintSet.TOP , ConstraintSet.PARENT_ID , ConstraintSet.BOTTOM)
+                scrollViewConstrainSet.applyTo(mainConLayout)
+            }
+        }
+
     }
 
     private fun setFragmentContainerConstraint(action : Int)
@@ -1363,6 +1471,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     private fun showLayoutElements() {
         MTETitle.visibility = View.VISIBLE
+        mainScrollView.visibility = View.VISIBLE
         cvdVectorIcon.clearAnimation()
         cvdVectorIcon.visibility = View.VISIBLE
         diabetesVectorIcon.clearAnimation()
@@ -1910,6 +2019,21 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private fun setTestDataListForPatient(testReturnType : Int) : ArrayList<String>
     {
         //get all tests related with the patient
+
+        var allPatientTestNames : String = ""
+        var allPatientTestDates : String = ""
+
+        runOnUiThread {
+
+            allPatientTestNames = ""
+            allPatientTestDates = ""
+            allPatienttestNameTextView.text = ""
+            allPatienttestDateTextView.text = ""
+            allPatienttestNameTextView.postInvalidate()
+            allPatienttestDateTextView.postInvalidate()
+        }
+
+
         Realm.init(applicationContext)
         var realm = Realm.getDefaultInstance()
         var patientUserName = getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
@@ -2073,62 +2197,100 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         {
             allPatientTestNameData.add(CVDTestName)
             allPatientTestDateData.add(CVDTestDate)
+            allPatientTestNames += CVDTestName +"\n"
+            allPatientTestDates += CVDTestDate + "\n"
         }
         if (DiabetesTestName != "")
         {
             allPatientTestNameData.add(DiabetesTestName)
             allPatientTestDateData.add(DiabetesTestDate)
+            allPatientTestNames += DiabetesTestName +"\n"
+            allPatientTestDates += DiabetesTestDate + "\n"
         }
         if (MDITestName != "")
         {
             allPatientTestNameData.add(MDITestName)
             allPatientTestDateData.add(MDITestDate)
+            allPatientTestNames += MDITestName +"\n"
+            allPatientTestDates += MDITestDate + "\n"
         }
         if (BAITestName != "")
         {
             allPatientTestNameData.add(BAITestName)
             allPatientTestDateData.add(BAITestDate)
+            allPatientTestNames += BAITestName +"\n"
+            allPatientTestDates += BAITestDate + "\n"
         }
         if (BPITestName != "")
         {
             allPatientTestNameData.add(BPITestName)
             allPatientTestDateData.add(BPITestDate)
+            allPatientTestNames += BPITestName +"\n"
+            allPatientTestDates += BPITestDate + "\n"
         }
         if (MDTTestName != "")
         {
             allPatientTestNameData.add(MDTTestName)
             allPatientTestDateData.add(MDTTestDate)
+            allPatientTestNames += MDTTestName +"\n"
+            allPatientTestDates += MDTTestDate + "\n"
         }
         if (GDSTestName != "")
         {
             allPatientTestNameData.add(GDSTestName)
             allPatientTestDateData.add(GDSTestDate)
+            allPatientTestNames += GDSTestName +"\n"
+            allPatientTestDates += GDSTestDate + "\n"
         }
         if (BDITestName != "")
         {
             allPatientTestNameData.add(BDITestName)
             allPatientTestDateData.add(BDITestDate)
+            allPatientTestNames += BDITestName +"\n"
+            allPatientTestDates += BDITestDate + "\n"
         }
         if (STAITestName != "")
         {
             allPatientTestNameData.add(STAITestName)
             allPatientTestDateData.add(STAITestDate)
+            allPatientTestNames += STAITestName +"\n"
+            allPatientTestDates += STAITestDate + "\n"
         }
         if (HammiltonTestName != "")
         {
             allPatientTestNameData.add(HammiltonTestName)
             allPatientTestDateData.add(HammiltonTestDate)
+            allPatientTestNames += HammiltonTestName +"\n"
+            allPatientTestDates += HammiltonTestDate + "\n"
         }
         if (DASSTestName != "")
         {
             allPatientTestNameData.add(DASSTestName)
             allPatientTestDateData.add(DASSTestDate)
+            allPatientTestNames += DASSTestName +"\n"
+            allPatientTestDates += DASSTestDate + "\n"
         }
         if (ZungTestName != "")
         {
             allPatientTestNameData.add(ZungTestName)
             allPatientTestDateData.add(ZungTestDate)
+            allPatientTestNames += ZungTestName +"\n"
+            allPatientTestDates += ZungTestDate + "\n"
         }
+
+        runOnUiThread {
+            allPatienttestNameTextView.text = allPatientTestNames
+            allPatienttestDateTextView.text = allPatientTestDates
+            allPatienttestNameTextView.postInvalidate()
+            allPatienttestDateTextView.postInvalidate()
+            allPatienttestNameTextView.requestLayout()
+            allPatienttestDateTextView.requestLayout()
+            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).invalidate()
+            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).requestLayout()
+            allPatientResultsPopUp.postInvalidate()
+            allPatientResultsPopUp.requestLayout()
+        }
+
 //        allPatientTestData.add(BPITestResult)
 //        allPatientTestData.add(GDSTestResult)
         when (testReturnType)
@@ -2139,6 +2301,26 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 return allPatientTestDateData
         }
         return allPatientTestNameData
+    }
+
+    private fun populateWithTextViews(allTestNames : ArrayList<String>, allTestDates : ArrayList<String>)
+    {
+        var linearLayout = allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout)
+
+        //remove all elements
+        linearLayout.removeAllViews()
+        //add name and date textviews
+        var dummyLinearLayout = LinearLayout(applicationContext)
+        var testNamesDummyTextView = TextView(applicationContext)
+        var testDateDummyTextView = TextView(applicationContext)
+        testNamesDummyTextView.textSize = 20f
+        testNamesDummyTextView.setTextColor(Color.BLACK)
+        testNamesDummyTextView.gravity = Gravity.CENTER
+        testNamesDummyTextView.setText("Test Data")
+        testDateDummyTextView.textSize = 20f
+        testDateDummyTextView.setTextColor(Color.BLACK)
+        testDateDummyTextView.gravity = Gravity.CENTER
+        testDateDummyTextView.setText("Test Date")
     }
 
 

@@ -319,7 +319,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
         val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
         val username = prefs.getString("userName" , "tempUser")
         patientDATA = realmDAO.fetchPatientData(username!!)
-        testDATA = realmDAO.fetchTestData(patientDATA.value!!.patientId , "CVD")
+        testDATA = realmDAO.fetchTestData(patientDATA.value!!.patientId , "CardioVascularDisease")
         patientDATA.postValue(patientDATA.value)
         testDATA.postValue(testDATA.value)
     }
