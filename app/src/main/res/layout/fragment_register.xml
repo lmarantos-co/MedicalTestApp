@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:elevation="15dp">
+
     <data>
+
         <variable
             name="registerViewModel"
-            type="com.example.cvdriskestimator.viewModels.RegisterPatientViewModel"
-        />
+            type="com.example.cvdriskestimator.viewModels.RegisterPatientViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -310,11 +311,11 @@
                         android:clickable="true"
                         android:ems="10"
                         android:enabled="true"
-                        android:text="@={registerViewModel.inputPatientName}"
                         android:hint="Enter Your Name"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
+                        android:text="@={registerViewModel.inputPatientName}"
                         android:textSize="20sp" />
 
                     <EditText
@@ -327,10 +328,10 @@
                         android:ems="10"
                         android:enabled="true"
                         android:hint="Enter Your Last Name"
-                        android:text="@={registerViewModel.inputPatientLastName}"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
+                        android:text="@={registerViewModel.inputPatientLastName}"
                         android:textSize="20sp" />
 
                     <EditText

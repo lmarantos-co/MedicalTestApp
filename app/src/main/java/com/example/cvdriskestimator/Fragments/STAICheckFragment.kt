@@ -890,27 +890,34 @@ class STAICheckFragment : Fragment() {
 
     private fun setQuestionRadioGroup(rg : RadioGroup, answer : Int?)
     {
-        when (answer) {
-            null ->
-            {
-
-            }
-            1 ->
-            {
+        if ((rg.id == SQ1RG.id) || (rg.id == SQ2RG.id)
+            || (rg.id == SQ5RG.id)|| (rg.id ==SQ8RG.id)
+            || (rg.id == SQ10RG.id)|| (rg.id == SQ11RG.id)
+            || (rg.id == SQ13RG.id)|| (rg.id == SQ15RG.id)
+            || (rg.id == SQ16RG.id)|| (rg.id == SQ20RG.id)
+            ||    (rg.id == TQ21RG.id) || (rg.id == TQ26RG.id)
+            || (rg.id == TQ27RG.id)|| (rg.id == TQ33RG.id)
+            || (rg.id == TQ36RG.id)|| (rg.id == TQ39RG.id))
+        {
+            if (answer == 4)
                 (rg.getChildAt(0) as RadioButton).isChecked = true
-            }
-            12 ->
-            {
+            if (answer == 3)
                 (rg.getChildAt(1) as RadioButton).isChecked = true
-            }
-            3 ->
-            {
+            if (answer == 2)
                 (rg.getChildAt(2) as RadioButton).isChecked = true
-            }
-            4->
-            {
+            if (answer == 1)
                 (rg.getChildAt(3) as RadioButton).isChecked = true
-            }
+        }
+        else
+        {
+            if (answer == 1)
+                (rg.getChildAt(3) as RadioButton).isChecked = true
+            if (answer == 2)
+                (rg.getChildAt(2) as RadioButton).isChecked = true
+            if (answer == 3)
+                (rg.getChildAt(1) as RadioButton).isChecked = true
+            if (answer == 4)
+                (rg.getChildAt(0) as RadioButton).isChecked = true
         }
     }
 

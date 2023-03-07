@@ -67,6 +67,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <include
+        android:id="@+id/include_popup_menu"
+        layout="@layout/popup_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:layout_editor_absoluteY="921dp" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/mainScrollView"
         android:layout_width="0dp"
@@ -496,13 +504,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" />
 
-
-            <include
-                android:id="@+id/include_popup_menu"
-                layout="@layout/popup_menu"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/VGL1"

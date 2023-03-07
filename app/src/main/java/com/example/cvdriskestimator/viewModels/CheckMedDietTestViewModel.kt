@@ -190,6 +190,7 @@ class CheckMedDietTestViewModel : ViewModel(){
             currentTest!!.patientMDSQ11 = medDietScoreValues.get(10)
             currentTest!!.patientId = patient!!.patientId
             currentTest.testDate = calendar.time
+            currentTest.testName = "MDS"
             currentTest!!.patientMDSTestResult = score
 
             var testId : Int = 0
