@@ -20,6 +20,7 @@ import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.gestures.Orientation
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.GravityCompat
@@ -27,6 +28,9 @@ import androidx.core.widget.NestedScrollView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.cvdriskestimator.CustomClasses.CustomTestListAdapter
 import com.example.cvdriskestimator.Fragments.*
 import com.example.cvdriskestimator.RealmDB.Doctor
 import com.example.cvdriskestimator.RealmDB.Patient
@@ -79,12 +83,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
     private lateinit var allPatientResultsPopUp : ConstraintLayout
+    private lateinit var allPatientTestNamesAdapter : ArrayAdapter<String>
+    private lateinit var allPatientTestDatesAdapter : ArrayAdapter<String>
+
+    private lateinit var allPatientResultsLinLayout : LinearLayout
     private lateinit var allPatientResultsConLayout : ConstraintLayout
     private lateinit var mainConLayout : ConstraintLayout
     private lateinit var mainScrollView : NestedScrollView
     private lateinit var scrollViewConstrainSet : ConstraintSet
     private lateinit var allPatientsTestNameListView : ListView
     private lateinit var allPatientTestDateLisView : ListView
+    private lateinit var allPatientTestRecyclerView: RecyclerView
     private lateinit var allPatienttestNameTextView : TextView
     private lateinit var allPatienttestDateTextView : TextView
     private var CVDTestName : String = ""
@@ -372,11 +381,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         //initialize the all patienttestlistview
         allPatientResultsPopUp = findViewById(R.id.include_all_patient_list_test)
         allPatientResultsPopUp.visibility = View.VISIBLE
+        allPatientResultsLinLayout = allPatientResultsPopUp.findViewById(R.id.patientTestsLinLayout)
         var patientname = allPatientResultsPopUp.findViewById<TextView>(R.id.patientNameTxtV)
         patientname.setText(getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser"))
         patienTestListOkBtn = allPatientResultsPopUp.findViewById(R.id.okBtn)
         allPatientsTestNameListView = findViewById(R.id.alltestsNameResultsistView)
         allPatientTestDateLisView = findViewById(R.id.alltestsDatesResultsistView)
+        allPatientTestRecyclerView = findViewById(R.id.allPatientTestRecView)
+        allPatientTestRecyclerView.layoutManager = LinearLayoutManager(this)
         allPatienttestNameTextView = findViewById(R.id.testNamesTxtV)
         allPatienttestDateTextView = findViewById(R.id.testDatesTxtV)
         allPatientTestDateLisView = findViewById(R.id.alltestsDatesResultsistView)
@@ -392,17 +404,35 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         if (showPatientLasttest == true)
         {
-            var allPatientTestNameArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(1))
-            allPatientsTestNameListView.adapter = allPatientTestNameArrayAdapter
-            allPatientTestNameArrayAdapter.notifyDataSetChanged()
-            var allPatientTestDAteArrayAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(2))
-            allPatientTestDateLisView.adapter = allPatientTestDAteArrayAdapter
-            allPatientTestDAteArrayAdapter.notifyDataSetChanged()
-            allPatientTestDateLisView.invalidate()
-            showPatientLasttest = false
+            allPatientsTestNameListView.invalidateViews()
             allPatientsTestNameListView.invalidate()
+            allPatientTestNamesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(1))
+            allPatientTestNamesAdapter.clear()
+            allPatientTestNamesAdapter.notifyDataSetChanged()
+            allPatientTestNamesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(1))
+            allPatientTestNamesAdapter.notifyDataSetChanged()
+            allPatientsTestNameListView.adapter = allPatientTestNamesAdapter
             allPatientTestDateLisView.invalidate()
+            allPatientTestDateLisView.invalidateViews()
+            allPatientTestDatesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(2))
+            allPatientTestDatesAdapter.clear()
+            allPatientTestDatesAdapter.notifyDataSetChanged()
+            allPatientTestDatesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(2))
+            allPatientTestDatesAdapter.notifyDataSetChanged()
+            allPatientTestDateLisView.adapter = allPatientTestDatesAdapter
+            val allPatientTestNames = setTestDataListForPatient(1)
+            val allPatientTestDates = setTestDataListForPatient(2)
+            val recyclerAdapter = CustomTestListAdapter(allPatientTestNames , allPatientTestDates)
+            recyclerAdapter.notifyDataSetChanged()
+            allPatientTestRecyclerView.removeAllViews()
+            allPatientTestRecyclerView.adapter = recyclerAdapter
+            showPatientLasttest = false
+//            allPatientsTestNameListView.invalidate()
+//            allPatientTestDateLisView.invalidate()
             allPatientResultsPopUp.visibility = View.VISIBLE
+            allPatientResultsPopUp.invalidate()
+            allPatientResultsLinLayout.invalidate()
+
         }
 
         constraintLayout = findViewById(R.id.mainConLayout)
@@ -2033,15 +2063,15 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         var allPatientTestNameData = ArrayList<String>()
         var allPatientTestDateData = ArrayList<String>()
 
-        runOnUiThread {
-
-            allPatientTestNames = ""
-            allPatientTestDates = ""
-            allPatienttestNameTextView.setText(" ")
-            allPatienttestDateTextView.setText(" ")
-            allPatienttestNameTextView.postInvalidate()
-            allPatienttestDateTextView.postInvalidate()
-        }
+//        runOnUiThread {
+//
+//            allPatientTestNames = ""
+//            allPatientTestDates = ""
+//            allPatienttestNameTextView.setText(" ")
+//            allPatienttestDateTextView.setText(" ")
+//            allPatienttestNameTextView.postInvalidate()
+//            allPatienttestDateTextView.postInvalidate()
+//        }
 
 
         runOnUiThread {
@@ -2199,8 +2229,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 var ZUNGTestResult = "ZUNG - ${dateFormat.format(allZUNGSize!!.testDate)}"
             }
 
-            allPatientsTestNameListView = findViewById(R.id.alltestsNameResultsistView)
-            allPatientTestDateLisView = findViewById(R.id.alltestsDatesResultsistView)
+//            allPatientsTestNameListView = findViewById(R.id.alltestsNameResultsistView)
+//            allPatientTestDateLisView = findViewById(R.id.alltestsDatesResultsistView)
 
             if (CVDTestName != "")
             {
@@ -2290,18 +2320,18 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
         runOnUiThread {
-            allPatienttestNameTextView.setText(allPatientTestNames)
-            allPatienttestDateTextView.setText(allPatientTestDates)
-            allPatienttestNameTextView.postInvalidate()
-            allPatienttestDateTextView.postInvalidate()
-            allPatienttestNameTextView.requestLayout()
-            allPatienttestDateTextView.requestLayout()
+//            allPatienttestNameTextView.setText(allPatientTestNames)
+//            allPatienttestDateTextView.setText(allPatientTestDates)
+//          allPatienttestNameTextView.postInvalidate()
+//            allPatienttestDateTextView.postInvalidate()
+//            allPatienttestNameTextView.requestLayout()
+//            allPatienttestDateTextView.requestLayout()
             allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).invalidate()
             allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).requestLayout()
             allPatientResultsPopUp.postInvalidate()
             allPatientResultsPopUp.requestLayout()
-            var layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , LinearLayout.LayoutParams.WRAP_CONTENT)
-            layoutParams.weight = 1f
+//            var layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , LinearLayout.LayoutParams.WRAP_CONTENT)
+//            layoutParams.weight = 1f
 //            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).layoutParams = layoutParams
 //            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).removeView(allPatienttestNameTextView)
 //            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).removeView(allPatienttestDateTextView)
@@ -2310,7 +2340,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 //            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).invalidate()
 //            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).requestLayout()
         }
-
+//        populateTextForPatientTestList(allPatientTestNameData , allPatientTestDateData)
 //        allPatientTestData.add(BPITestResult)
 //        allPatientTestData.add(GDSTestResult)
         when (testReturnType)
@@ -2323,6 +2353,46 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         return allPatientTestNameData
     }
 
+    private fun populateTextForPatientTestList(allPatientTestNameData : ArrayList<String>, allPatientTestDateData : ArrayList<String>)
+    {
+        allPatientResultsLinLayout.removeAllViews()
+        allPatientResultsLinLayout.invalidate()
+        allPatientResultsLinLayout.requestLayout()
+        var defaultFieldsLinLayout = LinearLayout(applicationContext)
+        defaultFieldsLinLayout.orientation = LinearLayout.HORIZONTAL
+        var testNamesTxtV = TextView(applicationContext)
+        testNamesTxtV.gravity = Gravity.LEFT
+        testNamesTxtV.textSize = 20f
+        testNamesTxtV.setTextColor(Color.BLACK)
+        testNamesTxtV.setText("Test Name")
+        var testDatesTxtV = TextView(applicationContext)
+        testDatesTxtV.gravity = Gravity.RIGHT
+        testDatesTxtV.textSize = 20f
+        testDatesTxtV.setTextColor(Color.BLACK)
+        testDatesTxtV.setText("Test Date")
+        defaultFieldsLinLayout.addView(testNamesTxtV)
+        defaultFieldsLinLayout.addView(testDatesTxtV)
+        allPatientResultsLinLayout.addView(defaultFieldsLinLayout)
+        //populate the linear layout with views
+        for (i in 0 until allPatientTestDateData.size)
+        {
+            var newLinearLayout = LinearLayout(applicationContext)
+            newLinearLayout.orientation = LinearLayout.HORIZONTAL
+            var dummyNameTxtView = TextView(applicationContext)
+            dummyNameTxtView.gravity = Gravity.LEFT
+            dummyNameTxtView.textSize = 16f
+            dummyNameTxtView.setTextColor(Color.BLACK)
+            dummyNameTxtView.setText(allPatientTestNameData.get(i))
+            var dummyDateTxtView = TextView(applicationContext)
+            dummyDateTxtView.gravity = Gravity.RIGHT
+            dummyDateTxtView.textSize = 16f
+            dummyDateTxtView.setTextColor(Color.BLACK)
+            dummyDateTxtView.setText(allPatientTestDateData.get(i))
+            newLinearLayout.addView(dummyNameTxtView)
+            newLinearLayout.addView(dummyDateTxtView)
+            allPatientResultsLinLayout.addView(newLinearLayout)
+        }
+    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

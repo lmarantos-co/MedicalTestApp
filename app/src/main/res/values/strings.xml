@@ -298,7 +298,7 @@
     <string name="pdq_test_intro_text">ΕΞΑΙΤΙΑΣ ΤΗΣ ΝΟΣΟΥ ΤΟΥ ΠΑΡΚΙΝΣΟΝ πόσο συχνά είχατε, τον προηγούμενο μήνα, τα παρακάτω;</string>
     <string name="intro_screen_new_customer">ΝΕΟΣ ΠΕΛΑΤΗΣ</string>
     <string name="intro_screen_all_customers">ΟΛΟΙ ΟΙ ΠΕΛΑΤΕΣ</string>
-
+    <string name="bdi_test_results">BDI Test</string>
     <string name="bdi_test_intro_text">Kυκλώστε τον αριθμό δίπλα από την δήλωση που περιγράφει καλύτερα τον τρόπο
         που έχετε αισθανθεί την από την προηγούμενη εβδομάδα έως την ημέρα που διεξάγεται το ερωτηματολόγιο.</string>
 
