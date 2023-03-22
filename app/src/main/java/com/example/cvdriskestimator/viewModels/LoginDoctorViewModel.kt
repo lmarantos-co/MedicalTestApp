@@ -78,6 +78,7 @@ class LoginDoctorViewModel () : ViewModel() , Observable {
                     prefs.edit().apply {
                         putString("doctorUserName" , doctorName)
                         putString("doctorPasword" , doctorPassword)
+                        putString("userName", "tempUser")
                         apply()
                     }
                     hideSoftInputKeyboard()

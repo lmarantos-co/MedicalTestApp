@@ -256,7 +256,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         newCustomerTxtV = findViewById<TextView>(R.id.newCustomerTxtV)
         newCustomerTxtV.setOnClickListener {
             registerFragment = RegisterFragment()
-            showPatientLasttest = false
+            showPatientLasttest = true
             setContentViewForMainLayout(showPatientLasttest)
             fragmentTransaction(registerFragment)
         }
@@ -1372,7 +1372,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         supportFragmentManager.popBackStack()
 //        showLayoutElements()
 //        showMedicalTests()
-        setContentViewForMainLayout(false)
+        setContentViewForMainLayout(true)
     }
 
     private fun setScrolViewConstraint(index : Int)
@@ -2098,13 +2098,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             var realm = Realm.getDefaultInstance()
             var patientUserName = getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
             //fetch patientId related with patient username
-            var patient = realm.where(Patient::class.java).equalTo("userName" , patientUserName).findFirst()
+            var patient = realm.copyFromRealm(realm.where(Patient::class.java).equalTo("userName" , patientUserName).findFirst())
             var currentDate = Date()
             val calendar: Calendar = Calendar.getInstance()
             calendar.set(Calendar.YEAR , currentDate.year)
             calendar.set(Calendar.MONTH , currentDate.month)
             calendar.set(Calendar.DAY_OF_MONTH , currentDate.day)
-            var allCVDTest = realm.where(Test::class.java).isNotNull("SSB").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allCVDTest = realm.where(Test::class.java).notEqualTo("SSB" , "").equalTo("patientId" , patient!!.patientId).findAll()
             var CVDTestResult = ""
             if (allCVDTest.size > 0)
             {
@@ -2115,7 +2115,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 CVDTestResult = "CardioVascularDis - ${dateFormat.format(allCVDTestSize!!.testDate)}"
             }
 
-            var allDiabetesTest = realm.where(Test::class.java).isNotNull("patientPAM").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allDiabetesTest = realm.where(Test::class.java).notEqualTo("patientPAM" , "").equalTo("patientId" , patient!!.patientId).findAll()
             var DiabetesTestResult = ""
             if (allDiabetesTest.size > 0)
             {
@@ -2127,7 +2127,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
 
 
-            var allMDITest = realm.where(Test::class.java).isNotNull("patientMDIQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allMDITest = realm.where(Test::class.java).isNotNull("patientMDIQ1").equalTo("patientId" , patient!!.patientId).findAll()
             var MDITestResult = ""
             if (allMDITest.size > 0)
             {
@@ -2140,7 +2140,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
 
 
-            var allBAITest = realm.where(Test::class.java).isNotNull("patientBAIQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allBAITest = realm.where(Test::class.java).isNotNull("patientBAIQ1").equalTo("patientId" , patient!!.patientId).findAll()
             var BAITestResult = ""
             if (allBAITest.size > 0)
             {
@@ -2151,7 +2151,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 BAITestResult = "Beck Anxiety - ${dateFormat.format(allBAISize!!.testDate)}"
             }
 
-            var allMDSTest = realm.where(Test::class.java).isNotNull("patientMDSQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allMDSTest = realm.where(Test::class.java).isNotNull("patientMDSQ1").equalTo("patientId" , patient!!.patientId).findAll()
             var MDSTestResult = ""
             if (allMDSTest.size > 0)
             {
@@ -2162,7 +2162,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 MDSTestResult = "Mediterranean Diet - ${dateFormat.format(allMDSSize!!.testDate)}"
             }
 
-            var allBPITest = realm.where(Test::class.java).isNotNull("patientBPIQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allBPITest = realm.where(Test::class.java).isNotNull("patientBPIQ1").equalTo("patientId" , patient!!.patientId).findAll()
             if (allBPITest.size > 0)
             {
                 var dateFormat = SimpleDateFormat("MM/DD/yyyy")
@@ -2172,17 +2172,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 var BPITestResult = "Brief Pain Inv - ${dateFormat.format(allBPiSize!!.testDate)}"
             }
 
-            var allMDTTest = realm.where(Test::class.java).isNotNull("patientMDSQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
-            if (allMDTTest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
-                var allMDTSize = allMDSTest.get(allMDTTest.size -1)
-                MDITestName = "Major Depression"
-                MDITestDate = dateFormat.format(allMDTSize!!.testDate)
-                var MDITestResult = "Major Depression - ${dateFormat.format(allMDTSize!!.testDate)}"
-            }
-
-            var allBDITest = realm.where(Test::class.java).isNotNull("patientBDIQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allBDITest = realm.where(Test::class.java).isNotNull("patientBDIQ1").equalTo("patientId" , patient!!.patientId).findAll()
 
             if (allBDITest.size > 0)
             {
@@ -2193,7 +2183,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 var BDITestResult = "Beck Depression - ${dateFormat.format(allBDISize!!.testDate)}"
             }
 
-            var allGDSTest = realm.where(Test::class.java).isNotNull("patientGDSQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allGDSTest = realm.where(Test::class.java).isNotNull("patientGDSQ1").equalTo("patientId" , patient!!.patientId).findAll()
 
             if (allGDSTest.size > 0)
             {
@@ -2204,7 +2194,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 var GDSTestResult = "Geriatric Depression - ${dateFormat.format(allGDSSize!!.testDate)}"
             }
 
-            var allSTAIOnTest = realm.where(Test::class.java).isNotNull("patientSTAISQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allSTAIOnTest = realm.where(Test::class.java).isNotNull("patientSTAISQ1").equalTo("patientId" , patient!!.patientId).findAll()
 
             if (allSTAIOnTest.size > 0)
             {
@@ -2215,7 +2205,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 var STAITestResult = "STAI - ${dateFormat.format(allSTAISize!!.testDate)}"
             }
 
-            var allHAMMILTOnTest = realm.where(Test::class.java).isNotNull("patientHAMDQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allHAMMILTOnTest = realm.where(Test::class.java).isNotNull("patientHAMDQ1").equalTo("patientId" , patient!!.patientId).findAll()
 
             if (allHAMMILTOnTest.size > 0)
             {
@@ -2226,7 +2216,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 var HammiltonTestResult = "Hammilton - ${dateFormat.format(allHammiltonSize!!.testDate)}"
             }
 
-            var allDASSTest = realm.where(Test::class.java).isNotNull("patientDASSQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allDASSTest = realm.where(Test::class.java).isNotNull("patientDASSQ1").equalTo("patientId" , patient!!.patientId).findAll()
 
             if (allDASSTest.size > 0)
             {
@@ -2237,7 +2227,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 var DASSTestResult = "Dass - ${dateFormat.format(allDASSSize!!.testDate)}"
             }
 
-            var allZUNGTest = realm.where(Test::class.java).isNotNull("patientZUNGQ1").lessThanOrEqualTo("testDate" , calendar.time).equalTo("patientId" , patient!!.patientId).findAll()
+            var allZUNGTest = realm.where(Test::class.java).isNotNull("patientZUNGQ1").equalTo("patientId" , patient!!.patientId).findAll()
 
             if (allZUNGTest.size > 0)
             {

@@ -60,7 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/testNamesTxtV"
@@ -89,15 +90,16 @@
         <LinearLayout
             android:id="@+id/patientListTestLinLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <ListView
                 android:id="@+id/alltestsNameResultsistView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
@@ -110,7 +112,7 @@
             <ListView
                 android:id="@+id/alltestsDatesResultsistView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"

@@ -280,6 +280,12 @@ class RegisterPatientViewModel : ViewModel() , Observable{
                         }
                     Toast.makeText(mainActivity.applicationContext, mainActivity.resources.getString(R.string.register_success) , Toast.LENGTH_LONG).show()
                     hideSoftInputKeyboard()
+                    val sharedPref = mainActivity.getPreferences(Context.MODE_PRIVATE) ?: return
+                    with (sharedPref.edit()) {
+                        putString("userName" , "tempUser")
+//            putString("userName" , "tempUser")
+                        apply()
+                    }
                     mainActivity.backToActivity()
                 }
                 else
