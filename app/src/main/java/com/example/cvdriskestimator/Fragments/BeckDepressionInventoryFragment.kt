@@ -83,12 +83,12 @@ class BeckDepressionInventoryFragment : Fragment() {
         {
             if (testDate != "")
             {
-                var date = convertStringToDate(testDate!!)
+                var date = convertStringToCalenderDate(testDate!!)
                 historyTest = bdiPatientViewModel.fetchHistoryTest(patientId!! , date!!)
             }
 
         }
-        if (historyTest.cvdTestResult != null)
+        if (historyTest.patientBDITestResult != null)
         {
             setPatientData(historyTest)
         }
@@ -275,7 +275,7 @@ class BeckDepressionInventoryFragment : Fragment() {
             }
             4->
             {
-                (rg.getChildAt(4) as RadioButton).isChecked = true
+                 (rg.getChildAt(4) as RadioButton).isChecked = true
             }
             5->
             {
@@ -415,6 +415,60 @@ class BeckDepressionInventoryFragment : Fragment() {
             }
 
         }
+    }
+
+    private fun convertStringToCalenderDate(testDate : String) : java.util.Date
+    {
+        val month = testDate.split(" ")
+        var monthNo : String = ""
+        when (month.get(1))
+        {
+            "Jan" -> {
+                monthNo = "0"
+            }
+            "Feb" -> {
+                monthNo = "1"
+            }
+            "Mar" -> {
+                monthNo = "2"
+            }
+            "Apr" -> {
+                monthNo = "3"
+            }
+            "May" -> {
+                monthNo = "4"
+            }
+            "Jun" -> {
+                monthNo = "5"
+            }
+            "Jul" -> {
+                monthNo = "6"
+            }
+            "Aug" -> {
+                monthNo = "7"
+            }
+            "Sep" -> {
+                monthNo = "8"
+            }
+            "Oct" -> {
+                monthNo = "9"
+            }
+            "Nov" -> {
+                monthNo = "10"
+            }
+            "Dec" -> {
+                monthNo = "11"
+            }
+        }
+        var day = month.get(2)
+        var hour = month.get(3)
+        var year = month.get(5)
+        var date = "${year}-${monthNo}-${day}"
+        val calender = Calendar.getInstance()
+        calender.set(Calendar.YEAR , year.toInt())
+        calender.set(Calendar.MONTH , monthNo.toInt())
+        calender.set(Calendar.DAY_OF_MONTH , day.toInt())
+        return calender.time
     }
 
     private fun convertStringToDate(date: String): java.util.Date {

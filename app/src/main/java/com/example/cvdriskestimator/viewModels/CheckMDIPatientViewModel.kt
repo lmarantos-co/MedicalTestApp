@@ -15,6 +15,7 @@ import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
+import io.realm.RealmResults
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -100,13 +101,33 @@ class CheckMDIPatientViewModel : ViewModel() {
 
     fun fetchHistoryTest(patientId : String, testDate : Date) : Test
     {
-        var test = Test()
+        var tests : RealmResults<Test>? = null
         realm.executeTransaction {
 
-            test = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testDate).equalTo("testName" , "Major Depression Index").findFirst()!!
+            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "Major Depression Index").findAll()
+            var dummyTest = dummyTestList.get(dummyTestList.size -1)
+            var dummyTestDate = Calendar.getInstance()
+            if (testDate.day > 1)
+            {
+                dummyTestDate.set(Calendar.YEAR , testDate.year)
+                dummyTestDate.set(Calendar.MONTH , testDate.month)
+                dummyTestDate.set(Calendar.DAY_OF_MONTH , testDate.day - 1)
+            }
+            else
+            {
+                dummyTestDate.set(Calendar.MONTH , testDate.month -1)
+                dummyTestDate.set(Calendar.DAY_OF_MONTH , testDate.day - 1)
+                if (testDate.month == 1)
+                {
+                    dummyTestDate.set(Calendar.YEAR , testDate.year -1)
+                    dummyTestDate.set(Calendar.MONTH , 12)
+                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
+                }
+            }
+            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).between("testDate" , dummyTestDate.time , testDate).equalTo("testName" , "Major Depression Index").findAll()
         }
 
-        return test
+        return tests!!.get(tests!!.size -1)!!
     }
 
     private fun fetchPatientData(username : String) {
@@ -168,20 +189,20 @@ class CheckMDIPatientViewModel : ViewModel() {
             val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
 
             var currentTest = Test()
-            val date = Date()
-            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
+//            val date = Date()
+//            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             val calendar: Calendar = Calendar.getInstance()
-            calendar.set(Calendar.YEAR , date.year)
-            calendar.set(Calendar.MONTH , date.month)
-            calendar.set(Calendar.DAY_OF_MONTH , date.day)
+//            calendar.set(Calendar.YEAR , date.year)
+//            calendar.set(Calendar.MONTH , date.month)
+//            calendar.set(Calendar.DAY_OF_MONTH , date.day)
 //            calendar.set(Calendar.HOUR_OF_DAY, date.hours)
 //            calendar.set(Calendar.MINUTE, date.minutes)
 //            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
-            val dateCount = realm.where(Test::class.java).equalTo("testDate" , currentDate).count()
+            val dateCount = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , currentDate).findFirst()!!
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
             }
 
             currentTest!!.patientMDIQ1 = allPatientSelections[0]

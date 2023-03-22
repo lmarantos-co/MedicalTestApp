@@ -372,11 +372,11 @@ class STAICheckFragment : Fragment() {
         {
             if (testDate != "")
             {
-                var date = convertStringToDate(testDate!!)
+                var date = convertStringToCalenderDate(testDate!!)
                 historyTest = staiPatientViewModel.fetchHistoryTest(patientId!! , date!!)
             }
         }
-        if (historyTest.cvdTestResult != null)
+        if (historyTest.patientSTAISScore != null)
         {
             setPatientData(historyTest)
         }
@@ -1170,6 +1170,60 @@ class STAICheckFragment : Fragment() {
         }
     }
 
+    private fun convertStringToCalenderDate(testDate : String) : java.util.Date
+    {
+        val month = testDate.split(" ")
+        var monthNo : String = ""
+        when (month.get(1))
+        {
+            "Jan" -> {
+                monthNo = "0"
+            }
+            "Feb" -> {
+                monthNo = "1"
+            }
+            "Mar" -> {
+                monthNo = "2"
+            }
+            "Apr" -> {
+                monthNo = "3"
+            }
+            "May" -> {
+                monthNo = "4"
+            }
+            "Jun" -> {
+                monthNo = "5"
+            }
+            "Jul" -> {
+                monthNo = "6"
+            }
+            "Aug" -> {
+                monthNo = "7"
+            }
+            "Sep" -> {
+                monthNo = "8"
+            }
+            "Oct" -> {
+                monthNo = "9"
+            }
+            "Nov" -> {
+                monthNo = "10"
+            }
+            "Dec" -> {
+                monthNo = "11"
+            }
+        }
+        var day = month.get(2)
+        var hour = month.get(3)
+        var year = month.get(5)
+        var date = "${year}-${monthNo}-${day}"
+        val calender = Calendar.getInstance()
+        calender.set(Calendar.YEAR , year.toInt())
+        calender.set(Calendar.MONTH , monthNo.toInt())
+        calender.set(Calendar.DAY_OF_MONTH , day.toInt())
+        return calender.time
+    }
+
     private fun convertStringToDate(date: String): java.util.Date {
         var allDateParts = date.split(" ")
         var monthName = allDateParts.get(1)
@@ -1217,13 +1271,14 @@ class STAICheckFragment : Fragment() {
         var hour = time.get(0)
         var min = time.get(1)
         var sec = time.get(2)
-        var year = date.get(5)
+        var year = allDateParts.get(allDateParts.size -1)
         var date = Date(year.toInt(), monthNo, dateName.toInt())
         val calendar: Calendar = Calendar.getInstance()
-        calendar.setTime(date)
+        //calendar.setTime(date)
         calendar.set(Calendar.HOUR_OF_DAY, hour.toInt())
         calendar.set(Calendar.MINUTE, min.toInt())
         calendar.set(Calendar.SECOND, sec.toInt())
+        calendar.set(Calendar.YEAR , year.toInt())
         return calendar.time
     }
 

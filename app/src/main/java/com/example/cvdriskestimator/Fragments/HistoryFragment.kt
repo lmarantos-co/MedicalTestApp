@@ -52,10 +52,15 @@ class HistoryFragment : Fragment() {
     private lateinit var checkFragment: CheckFragment
     private lateinit var diabetesCheckFragment: DiabetesCheckFragment
     private lateinit var gdsCheckFragment: GDSCheckFragment
+    private lateinit var hammiltonFragment: HamiltonDepressionFragment
     private lateinit var mdiCheckFragment: MDICheckFragment
     private lateinit var medDietTestFragment: medDietTestFragment
     private lateinit var baiCheckFragment: BAICheckFragment
     private lateinit var bpiCheckFragment: BPICheckFragment
+    private lateinit var beckDepressionInventoryFragment: BeckDepressionInventoryFragment
+    private lateinit var staiCheckFragment: STAICheckFragment
+    private lateinit var dassCheckFragment: DASSCheckFragment
+    private lateinit var zungFragment: CheckZUNGFragment
     private var dateFromPicked : Boolean = false
     private var dateToPicked : Boolean = false
     private var openDatePicker : Boolean = false
@@ -324,7 +329,7 @@ class HistoryFragment : Fragment() {
             "Beck Depression Inventory" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Beck Depression Inventory")
-                tests = realm.where(Test::class.java).isNotNull("patientBPIQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(Test::class.java).isNotNull("patientBDIQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -362,7 +367,7 @@ class HistoryFragment : Fragment() {
             "Hammilton Depression" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Hammilton Depression")
-                tests = realm.where(Test::class.java).isNotNull("patientGDSQ6") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(Test::class.java).isNotNull("patientHAMDQ3") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -374,14 +379,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientGDSQ6").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(Test::class.java).isNotNull("patientHAMDQ3").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "STAI" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("STAI")
-                tests = realm.where(Test::class.java).isNotNull("patientGDSQ6") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(Test::class.java).isNotNull("patientSTAISQ3") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -393,14 +398,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientGDSQ6").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(Test::class.java).isNotNull("patientSTAISQ3").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "DASS" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("DASS")
-                tests = realm.where(Test::class.java).isNotNull("patientGDSQ6") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(Test::class.java).isNotNull("patientDASSQ3") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -412,14 +417,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientGDSQ6").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(Test::class.java).isNotNull("patientDASSQ3").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "ZUNG" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("ZUNG")
-                tests = realm.where(Test::class.java).isNotNull("patientGDSQ6") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(Test::class.java).isNotNull("patientZUNGQ3") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -431,7 +436,7 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientGDSQ6").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(Test::class.java).isNotNull("patientZUNGQ3").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
@@ -448,16 +453,16 @@ class HistoryFragment : Fragment() {
         var minDate : Date = Calendar.getInstance().getTime()
 
         val calendar1: Calendar = Calendar.getInstance()
-        calendar1.set(Calendar.YEAR , minDate.year)
-        calendar1.set(Calendar.MONTH , minDate.month)
-        calendar1.set(Calendar.DAY_OF_MONTH , minDate.day)
-        minDate = calendar1.time
+        calendar1.set(Calendar.YEAR , 1990)
+        calendar1.set(Calendar.MONTH , 1)
+        calendar1.set(Calendar.DAY_OF_MONTH , 1)
+        maxDate = calendar1.time
 
         val calendar2: Calendar = Calendar.getInstance()
-        calendar2.set(Calendar.YEAR , maxDate.year)
-        calendar2.set(Calendar.MONTH , maxDate.month)
-        calendar2.set(Calendar.DAY_OF_MONTH , maxDate.day)
-        maxDate = calendar2.time
+//        calendar2.set(Calendar.YEAR , maxDate.year)
+//        calendar2.set(Calendar.MONTH , maxDate.month)
+//        calendar2.set(Calendar.DAY_OF_MONTH , maxDate.day)
+        minDate = calendar2.time
 
         for (test in tests)
         {
@@ -494,10 +499,13 @@ class HistoryFragment : Fragment() {
         var minPIScore : Float = 1000f
         var maxPIScore : Float= -100F
 
+
+
         val data = LineData()
 
         var dataSet1 : LineDataSet
         var dataSet2 : LineDataSet
+        var dataSet3 : LineDataSet
 
 
         if (param2 == "BPI")
@@ -773,6 +781,144 @@ class HistoryFragment : Fragment() {
 
                }
 
+               "BPI" ->
+               {
+                   for (test in allTests)
+                   {
+                       if (minScore > test.patientBPITestSeverityResult!!)
+                       {
+                           minScore = test.patientBPITestSeverityResult!!.toFloat()
+                       }
+
+                       if (maxScore < test.patientBPITestSeverityResult!!)
+                       {
+                           maxScore = test.patientBPITestSeverityResult!!.toFloat()
+                       }
+
+                       if (minScore > 10)
+                           minScore -= 5
+                       else
+                           minScore = 0f
+                       if (maxScore < 30)
+                           maxScore += 5
+                       else
+                           maxScore = 40f
+                   }
+
+                   //create the data set
+                   dataSet1 = LineDataSet(null, Html.fromHtml("BPI Severity").toString())
+                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet1.lineWidth = 2f
+                   dataSet1.color = Color.BLUE
+                   dataSet1.isHighlightEnabled = false
+                   dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
+                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBPITestSeverityResult!!.toFloat())
+                       dataSet1.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
+
+                   for (test in allTests)
+                   {
+                       if (minScore > test.patientBPITestInterferenceResult!!)
+                       {
+                           minScore = test.patientBPITestInterferenceResult!!.toFloat()
+                       }
+
+                       if (maxScore < test.patientBPITestInterferenceResult!!)
+                       {
+                           maxScore = test.patientBPITestInterferenceResult!!.toFloat()
+                       }
+
+                       if (minScore > 10)
+                           minScore -= 5
+                       else
+                           minScore = 0f
+                       if (maxScore < 60)
+                           maxScore += 5
+                       else
+                           maxScore = 70f
+                   }
+
+                   //create the data set
+                   dataSet1 = LineDataSet(null, Html.fromHtml("BPI Interference").toString())
+                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet1.lineWidth = 2f
+                   dataSet1.color = Color.GREEN
+                   dataSet1.isHighlightEnabled = false
+                   dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
+                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBPITestInterferenceResult!!.toFloat())
+                       dataSet1.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
+
+               }
+
+
+               "Beck Depression Inventory" ->
+               {
+                   for (test in allTests)
+                   {
+                       if (minScore > test.patientBDITestResult!!)
+                       {
+                           minScore = test.patientBDITestResult!!.toFloat()
+                       }
+
+                       if (maxScore < test.patientBDITestResult!!)
+                       {
+                           maxScore = test.patientBDITestResult!!.toFloat()
+                       }
+
+                       if (minScore > 10)
+                           minScore -= 5
+                       else
+                           minScore = 0f
+                       if (maxScore < 100)
+                           maxScore += 5
+                       else
+                           maxScore = 110f
+                   }
+
+                   //create the data set
+                   dataSet1 = LineDataSet(null, Html.fromHtml("BDI").toString())
+                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet1.lineWidth = 2f
+                   dataSet1.color = Color.BLUE
+                   dataSet1.isHighlightEnabled = false
+                   dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
+                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBDITestResult!!.toFloat())
+                       dataSet1.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
+
+               }
+
                "Mediterranean Diet Test" ->
                {
                    for (test in allTests)
@@ -864,6 +1010,324 @@ class HistoryFragment : Fragment() {
                    data.addDataSet(dataSet1)
                    data.notifyDataChanged()
                }
+
+               "Hammilton Depression" ->
+               {
+                   for (test in allTests)
+                   {
+                       if (minScore > test.patientHAMDTestResult!!)
+                       {
+                           minScore = test.patientHAMDTestResult!!.toFloat()
+                       }
+
+                       if (maxScore < test.patientHAMDTestResult!!)
+                       {
+                           maxScore = test.patientHAMDTestResult!!.toFloat()
+                       }
+                   }
+
+                   if (minScore > 10)
+                       minScore -= 5
+                   else
+                       minScore = 0f
+                   if (maxScore < 75)
+                       maxScore += 10
+                   else
+                       maxScore = 85f
+
+                   //create the data set
+                   dataSet1 = LineDataSet(null, Html.fromHtml("Hammilton").toString())
+                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet1.lineWidth = 2f
+                   dataSet1.color = Color.BLUE
+                   dataSet1.isHighlightEnabled = false
+                   dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
+                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientHAMDTestResult!!.toFloat())
+                       dataSet1.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
+
+               }
+
+               "DASS" ->
+               {
+                   for (test in allTests)
+                   {
+                       if (minScore > test.dassAnxietyResult!!)
+                       {
+                           minScore = test.dassAnxietyResult!!.toFloat()
+                       }
+
+                       if (maxScore < test.dassAnxietyResult!!)
+                       {
+                           maxScore = test.dassAnxietyResult!!.toFloat()
+                       }
+                   }
+
+                   if (minScore > 8)
+                       minScore -= 5
+                   else
+                       minScore = 0f
+                   if (maxScore < 17)
+                       maxScore += 5
+                   else
+                       maxScore = 21f
+
+                   //create the data set
+                   dataSet1 = LineDataSet(null, Html.fromHtml("DASS anxiety").toString())
+                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet1.lineWidth = 2f
+                   dataSet1.color = Color.BLUE
+                   dataSet1.isHighlightEnabled = false
+                   dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
+                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.dassAnxietyResult!!.toFloat())
+                       dataSet1.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
+
+                   for (test in allTests)
+                   {
+                       if (minScore > test.dassStressResult!!)
+                       {
+                           minScore = test.dassStressResult!!.toFloat()
+                       }
+
+                       if (maxScore < test.dassStressResult!!)
+                       {
+                           maxScore = test.dassStressResult!!.toFloat()
+                       }
+                   }
+
+                   if (minScore > 8)
+                       minScore -= 5
+                   else
+                       minScore = 0f
+                   if (maxScore < 17)
+                       maxScore += 5
+                   else
+                       maxScore = 21f
+
+                   //create the data set
+                   dataSet2 = LineDataSet(null, Html.fromHtml("DASS stress").toString())
+                   dataSet2.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet2.lineWidth = 2f
+                   dataSet2.color = Color.GREEN
+                   dataSet2.isHighlightEnabled = false
+                   dataSet2.setDrawCircles(false)
+                   dataSet2.setDrawValues(false)
+                   dataSet2.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet2.cubicIntensity = 0.2f
+                   dataSet2.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.dassStressResult!!.toFloat())
+                       dataSet2.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet2)
+                   data.notifyDataChanged()
+
+                   for (test in allTests)
+                   {
+                       if (minScore > test.dassDepressionResult!!)
+                       {
+                           minScore = test.dassDepressionResult!!.toFloat()
+                       }
+
+                       if (maxScore < test.dassDepressionResult!!)
+                       {
+                           maxScore = test.dassDepressionResult!!.toFloat()
+                       }
+                   }
+
+                   if (minScore > 8)
+                       minScore -= 5
+                   else
+                       minScore = 0f
+                   if (maxScore < 17)
+                       maxScore += 5
+                   else
+                       maxScore = 21f
+
+                   //create the data set
+                   dataSet3 = LineDataSet(null, Html.fromHtml("DASS depression").toString())
+                   dataSet3.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet3.lineWidth = 2f
+                   dataSet3.color = Color.YELLOW
+                   dataSet3.isHighlightEnabled = false
+                   dataSet3.setDrawCircles(false)
+                   dataSet3.setDrawValues(false)
+                   dataSet3.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet3.cubicIntensity = 0.2f
+                   dataSet3.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.dassDepressionResult!!.toFloat())
+                       dataSet3.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet3)
+                   data.notifyDataChanged()
+
+
+               }
+
+               "STAI" ->
+               {
+                   for (test in allTests)
+                   {
+                       if (minScore > test.patientSTAITScore!!)
+                       {
+                           minScore = test.patientSTAITScore!!.toFloat()
+                       }
+
+                       if (maxScore < test.patientSTAITScore!!)
+                       {
+                           maxScore = test.patientSTAITScore!!.toFloat()
+                       }
+                   }
+
+                   if (minScore > 10)
+                       minScore -= 5
+                   else
+                       minScore = 0f
+                   if (maxScore < 65)
+                       maxScore += 10
+                   else
+                       maxScore = 80f
+
+                   //create the data set
+                   dataSet1 = LineDataSet(null, Html.fromHtml("STAI Trait").toString())
+                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet1.lineWidth = 2f
+                   dataSet1.color = Color.BLUE
+                   dataSet1.isHighlightEnabled = false
+                   dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
+                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientSTAITScore!!.toFloat())
+                       dataSet1.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
+
+                   for (test in allTests)
+                   {
+                       if (minScore > test.patientSTAISScore!!)
+                       {
+                           minScore = test.patientSTAISScore!!.toFloat()
+                       }
+
+                       if (maxScore < test.patientSTAISScore!!)
+                       {
+                           maxScore = test.patientSTAISScore!!.toFloat()
+                       }
+                   }
+
+                   if (minScore > 10)
+                       minScore -= 5
+                   else
+                       minScore = 0f
+                   if (maxScore < 65)
+                       maxScore += 10
+                   else
+                       maxScore = 80f
+
+                   //create the data set
+                   dataSet2 = LineDataSet(null, Html.fromHtml("STAI Stress").toString())
+                   dataSet2.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet2.lineWidth = 2f
+                   dataSet2.color = Color.GREEN
+                   dataSet2.isHighlightEnabled = false
+                   dataSet2.setDrawCircles(false)
+                   dataSet2.setDrawValues(false)
+                   dataSet2.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet2.cubicIntensity = 0.2f
+                   dataSet2.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientSTAISScore!!.toFloat())
+                       dataSet2.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet2)
+                   data.notifyDataChanged()
+
+               }
+
+               "ZUNG" ->
+               {
+                   for (test in allTests)
+                   {
+                       if (minScore > test.zungTestReesult!!)
+                       {
+                           minScore = test.zungTestReesult!!.toFloat()
+                       }
+
+                       if (maxScore < test.zungTestReesult!!)
+                       {
+                           maxScore = test.zungTestReesult!!.toFloat()
+                       }
+                   }
+
+                   if (minScore > 10)
+                       minScore -= 5
+                   else
+                       minScore = 0f
+                   if (maxScore < 65)
+                       maxScore += 10
+                   else
+                       maxScore = 80f
+
+                   //create the data set
+                   dataSet1 = LineDataSet(null, Html.fromHtml("ZUNG").toString())
+                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet1.lineWidth = 2f
+                   dataSet1.color = Color.BLUE
+                   dataSet1.isHighlightEnabled = false
+                   dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
+                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.zungTestReesult!!.toFloat())
+                       dataSet1.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
+
+               }
            }
         }
 
@@ -873,7 +1337,7 @@ class HistoryFragment : Fragment() {
         val chartDescription = Description()
         chartDescription.text = "${minDateString} ------------ ${maxDateString}"
         chartDescription.textSize = 15f
-        chartDescription.yOffset = - 5f
+        chartDescription.yOffset =  5f
         testResultsChart.description = chartDescription
 
         // enable touch gestures
@@ -934,9 +1398,10 @@ class HistoryFragment : Fragment() {
         }
         else
         {
-            leftAxis.axisMaximum = maxScore
             leftAxis.axisMinimum = minScore
+            leftAxis.axisMaximum = maxScore
         }
+
 
         leftAxis.setDrawGridLines(true)
         leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART)
@@ -1110,7 +1575,9 @@ class HistoryFragment : Fragment() {
                 for (test in allTests)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
-                    dateArrayList.add("${format.format(test.testDate)} - PSS : ${test.patientBPITestSeverityResult} , PIS : ${test.patientBPITestInterferenceResult}")
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("PSS : ${test.patientBPITestSeverityResult} , PIS : ${test.patientBPITestInterferenceResult}")
+                    bindingHistoryFragment.testResultDateListView
                 }
             }
             "Geriatric Deprression Scale" ->
@@ -1127,10 +1594,97 @@ class HistoryFragment : Fragment() {
                     scoreArrayList.add("${test.patientGDSTestResult}")
                 }
             }
+            "Hammilton Depression" ->
+            {
+                for (test in allTests)
+                {
+                    val format = SimpleDateFormat("yyy MM dd")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.patientHAMDTestResult}")
+                }
+            }
+            "DASS" ->
+            {
+                for (test in allTests)
+                {
+                    val format = SimpleDateFormat("yyy MM dd")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("Stress : ${test.dassStressResult} - Anxiety : ${test.dassAnxietyResult} - Depression : ${test.dassDepressionResult}")
+                }
+            }
+            "STAI" ->
+            {
+                for (test in allTests)
+                {
+                    val format = SimpleDateFormat("yyy MM dd")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("Trait : ${test.patientSTAITScore} - Stress : ${test.patientSTAISScore}")
+                }
+            }
+            "Beck Depression Inventory" ->
+            {
+                for (test in allTests)
+                {
+                    val format = SimpleDateFormat("yyy MM dd")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.patientBDITestResult}")
+                }
+            }
+            "ZUNG" ->
+            {
+                for (test in allTests)
+                {
+                    val format = SimpleDateFormat("yyy MM dd")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.zungTestReesult}")
+                }
+            }
         }
 
         val dateAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textvview_history_xml, dateArrayList)
-        val scoreAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textview_history_right, scoreArrayList)
+        var scoreAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textview_history_right, scoreArrayList)
+        when (param2)
+        {
+            "Brief Pain Inventory" ->
+            {
+                scoreAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.adapter_small_textview, scoreArrayList)
+            }
+
+            "STAI" ->
+            {
+                scoreAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.adapter_small_textview, scoreArrayList)
+            }
+
+            "DASS" ->
+            {
+                scoreAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.adapter_small_textview, scoreArrayList)
+            }
+        }
 
         dateAdapter.notifyDataSetChanged()
         scoreAdapter.notifyDataSetChanged()
@@ -1211,6 +1765,32 @@ class HistoryFragment : Fragment() {
                 bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.purple_3))
                 bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.purple_3))
             }
+            "Hammilton Depression" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.HAM_pink))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.HAM_pink))
+            }
+            "DASS" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.green_dass))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.green_dass))
+            }
+            "STAI" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.light_blue))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_blue))
+            }
+            "ZUNG" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.zung_purple))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.zung_purple))
+            }
+            "Beck Depression Inventory" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.light_blue))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_blue))
+
+            }
         }
     }
 
@@ -1261,12 +1841,41 @@ class HistoryFragment : Fragment() {
                     bpiCheckFragment.arguments = bundle
                     mainActivity.fragmentTransaction(medDietTestFragment)
                 }
-                "Geriatric Deprression Scale" ->
+                "Geriatric Depression Scale" ->
                 {
                     gdsCheckFragment = GDSCheckFragment()
                     gdsCheckFragment.arguments = bundle
                     mainActivity.fragmentTransaction(medDietTestFragment)
-
+                }
+                "Hammilton Depression" ->
+                {
+                    hammiltonFragment = HamiltonDepressionFragment()
+                    hammiltonFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(hammiltonFragment)
+                }
+                "Beck Depression Inventory" ->
+                {
+                    beckDepressionInventoryFragment = BeckDepressionInventoryFragment()
+                    beckDepressionInventoryFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(beckDepressionInventoryFragment)
+                }
+                "DASS" ->
+                {
+                    dassCheckFragment = DASSCheckFragment()
+                    dassCheckFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(dassCheckFragment)
+                }
+                "STAI" ->
+                {
+                    staiCheckFragment = STAICheckFragment()
+                    staiCheckFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(staiCheckFragment)
+                }
+                "ZUNG" ->
+                {
+                    zungFragment = CheckZUNGFragment()
+                    zungFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(zungFragment)
                 }
             }
 

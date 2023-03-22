@@ -85,7 +85,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var allPatientResultsPopUp : ConstraintLayout
     private lateinit var allPatientTestNamesAdapter : ArrayAdapter<String>
     private lateinit var allPatientTestDatesAdapter : ArrayAdapter<String>
-
     private lateinit var allPatientResultsLinLayout : LinearLayout
     private lateinit var allPatientResultsConLayout : ConstraintLayout
     private lateinit var mainConLayout : ConstraintLayout
@@ -93,6 +92,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var scrollViewConstrainSet : ConstraintSet
     private lateinit var allPatientsTestNameListView : ListView
     private lateinit var allPatientTestDateLisView : ListView
+    private lateinit var patietTestListFragment: PatietTestListFragment
     private lateinit var allPatientTestRecyclerView: RecyclerView
     private lateinit var allPatienttestNameTextView : TextView
     private lateinit var allPatienttestDateTextView : TextView
@@ -224,7 +224,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         registerDoctorButton = findViewById(R.id.registerDoctorTxtV)
         registerDoctorButton.setOnClickListener {
             showPatientLasttest = false
-            setContentViewForMainLayout()
+            setContentViewForMainLayout(showPatientLasttest)
             registerDoctorFragment = RegisterDoctorFragment.newInstance()
             hideLayoutElements()
             fragmentTransaction(registerDoctorFragment)
@@ -257,7 +257,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         newCustomerTxtV.setOnClickListener {
             registerFragment = RegisterFragment()
             showPatientLasttest = false
-            setContentViewForMainLayout()
+            setContentViewForMainLayout(showPatientLasttest)
             fragmentTransaction(registerFragment)
         }
 
@@ -366,18 +366,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 hideSoftInputKeyboard()
             }
             showPatientLasttest = true
-            setContentViewForMainLayout()
+            setContentViewForMainLayout(true)
         }
 
     }
 
 
-    private fun setContentViewForMainLayout()
+    private fun setContentViewForMainLayout(showList : Boolean)
     {
         setContentView(R.layout.activity_main)
 
         initRealmDB()
-        showPatientLasttest = true
         //initialize the all patienttestlistview
         allPatientResultsPopUp = findViewById(R.id.include_all_patient_list_test)
         allPatientResultsPopUp.visibility = View.VISIBLE
@@ -402,7 +401,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
 
 
-        if (showPatientLasttest == true)
+        if (showList == true)
         {
             allPatientsTestNameListView.invalidateViews()
             allPatientsTestNameListView.invalidate()
@@ -422,6 +421,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             allPatientTestDateLisView.adapter = allPatientTestDatesAdapter
             val allPatientTestNames = setTestDataListForPatient(1)
             val allPatientTestDates = setTestDataListForPatient(2)
+
+            //open the fragment with the data provided above
+//            patietTestListFragment = PatietTestListFragment.newInstance(allPatientTestNames , allPatientTestDates , patientname.text as String)
+//            fragmentTransaction(patietTestListFragment)
+
             val recyclerAdapter = CustomTestListAdapter(allPatientTestNames , allPatientTestDates)
             recyclerAdapter.notifyDataSetChanged()
             allPatientTestRecyclerView.removeAllViews()
@@ -951,7 +955,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         var mteConLayout = includeTestOptionsPopup.findViewById<ConstraintLayout>(R.id.include_cvd_title_form)
         mteConLayout.setOnClickListener {
-            setContentViewForMainLayout()
+            setContentViewForMainLayout(true)
         }
 
         includeTestOptionsPopup.findViewById<ImageView>(R.id.userIcon).setOnClickListener {
@@ -1368,7 +1372,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         supportFragmentManager.popBackStack()
 //        showLayoutElements()
 //        showMedicalTests()
-        setContentViewForMainLayout()
+        setContentViewForMainLayout(false)
     }
 
     private fun setScrolViewConstraint(index : Int)
@@ -1729,9 +1733,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
     fun fragmentTransaction(fragment : Fragment) {
-        if (!(fragment is LoginDoctorFragment) && !(fragment is RegisterDoctorFragment))
+        if (!(fragment is LoginDoctorFragment) && !(fragment is RegisterDoctorFragment) && !(fragment is PatietTestListFragment))
             hideLayoutElements()
-        if (!(fragment is LoginDoctorFragment))
+        if (!(fragment is LoginDoctorFragment) && !(fragment is PatietTestListFragment))
             setFragmentContainerConstraint(1)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         if (fragment is CheckFragment)
@@ -1752,6 +1756,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction.show(loginDoctorFragment)
         if (fragment is RegisterDoctorFragment)
             fragmentTransaction.show(registerDoctorFragment)
+        if (fragment is PatietTestListFragment)
+            fragmentTransaction.show(patietTestListFragment)
         if (fragment is BPICheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is GDSCheckFragment)
@@ -2062,7 +2068,20 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         var allPatientTestNameData = ArrayList<String>()
         var allPatientTestDateData = ArrayList<String>()
-
+        allPatientTestNameData.clear()
+        allPatientTestDateData.clear()
+        CVDTestName = ""
+        DiabetesTestName = ""
+        MDITestName = ""
+        BAITestName = ""
+        BPITestName = ""
+        BDITestName = ""
+        MDTTestName = ""
+        GDSTestName = ""
+        STAITestName = ""
+        HammiltonTestName = ""
+        DASSTestName = ""
+        ZungTestName = ""
 //        runOnUiThread {
 //
 //            allPatientTestNames = ""
@@ -2138,8 +2157,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             {
                 var dateFormat = SimpleDateFormat("MM/DD/yyyy")
                 var allMDSSize = allMDSTest.get(allMDSTest.size -1)
-                MDITestName = "Mediterranean Diet"
-                MDITestDate = dateFormat.format(allMDSSize!!.testDate)
+                MDTTestName = "Mediterranean Diet"
+                MDTTestDate = dateFormat.format(allMDSSize!!.testDate)
                 MDSTestResult = "Mediterranean Diet - ${dateFormat.format(allMDSSize!!.testDate)}"
             }
 
@@ -2158,8 +2177,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             {
                 var dateFormat = SimpleDateFormat("MM/DD/yyyy")
                 var allMDTSize = allMDSTest.get(allMDTTest.size -1)
-                MDTTestName = "Major Depression"
-                MDTTestDate = dateFormat.format(allMDTSize!!.testDate)
+                MDITestName = "Major Depression"
+                MDITestDate = dateFormat.format(allMDTSize!!.testDate)
                 var MDITestResult = "Major Depression - ${dateFormat.format(allMDTSize!!.testDate)}"
             }
 

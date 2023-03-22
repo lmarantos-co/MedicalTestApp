@@ -92,18 +92,30 @@ class DiabetesCheckFragment : Fragment() {
         var openType = this.arguments!!.getString("openType")
 
 
-        var historyTest = Test()
-        if (patientId != "")
+        if (openType == "open_history")
         {
-            if (testDate != "")
+            var historyTest = Test()
+            if (patientId != "")
             {
-                var date = convertStringToDate(testDate!!)
-                historyTest = checkDiabetesPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+                if (testDate != "")
+                {
+                    //var date = convertStringToDate(testDate!!)
+                    //default time zone
+//                    val defaultZoneId: ZoneId = ZoneId.systemDefault()
+//                    val formatter = DateTimeFormatter.ofPattern("yyyy MM dd")
+                    var testDateFormated = convertStringToCalenderDate(testDate)
+//                    val localDate = LocalDate.parse(testDateFormated)
+//                    val text: String = localDate.format(formatter)
+//                    val parsedDate: LocalDate = LocalDate.parse(text, formatter)
+//                    val covertedDate = java.util.Date.from(localDate.atStartOfDay(defaultZoneId).toInstant())
+//                    val d = SimpleDateFormat("yyyy-MM-dd").parse(localDate.toString())
+                    historyTest = checkDiabetesPatientViewModel.fetchHistoryTest(patientId!! , testDateFormated!!)
+                }
             }
-        }
-        if (historyTest.cvdTestResult != null)
-        {
-            setPatientData(historyTest)
+            if (historyTest.diabetesTestResult != null)
+            {
+                setPatientData(historyTest)
+            }
         }
         else
         {
@@ -444,6 +456,60 @@ class DiabetesCheckFragment : Fragment() {
             }
         } , 1000)
 
+    }
+
+    private fun convertStringToCalenderDate(testDate : String) : java.util.Date
+    {
+        val month = testDate.split(" ")
+        var monthNo : String = ""
+        when (month.get(1))
+        {
+            "Jan" -> {
+                monthNo = "0"
+            }
+            "Feb" -> {
+                monthNo = "1"
+            }
+            "Mar" -> {
+                monthNo = "2"
+            }
+            "Apr" -> {
+                monthNo = "3"
+            }
+            "May" -> {
+                monthNo = "4"
+            }
+            "Jun" -> {
+                monthNo = "5"
+            }
+            "Jul" -> {
+                monthNo = "6"
+            }
+            "Aug" -> {
+                monthNo = "7"
+            }
+            "Sep" -> {
+                monthNo = "8"
+            }
+            "Oct" -> {
+                monthNo = "9"
+            }
+            "Nov" -> {
+                monthNo = "10"
+            }
+            "Dec" -> {
+                monthNo = "11"
+            }
+        }
+        var day = month.get(2)
+        var hour = month.get(3)
+        var year = month.get(5)
+        var date = "${year}-${monthNo}-${day}"
+        val calender = Calendar.getInstance()
+        calender.set(Calendar.YEAR , year.toInt())
+        calender.set(Calendar.MONTH , monthNo.toInt())
+        calender.set(Calendar.DAY_OF_MONTH , day.toInt())
+        return calender.time
     }
 
     private fun convertStringToDate(date: String): java.util.Date {
