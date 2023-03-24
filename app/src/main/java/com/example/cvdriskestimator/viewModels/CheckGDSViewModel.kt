@@ -127,19 +127,27 @@ class CheckGDSViewModel : ViewModel() {
         var tests : RealmResults<Test>? = null
         realm.executeTransaction {
 
-            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "CardioVascularDisease").findAll()
+            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "Geriatric Depression Scale").findAll()
             var dummyTest = dummyTestList.get(dummyTestList.size -1)
-            var dummyTestDate = Date()
+            var dummyTestDate = Calendar.getInstance()
             if (testDate.day > 1)
             {
-                dummyTestDate.date = testDate.day - 1
+                dummyTestDate.set(Calendar.YEAR , testDate.year + 1900)
+                dummyTestDate.set(Calendar.MONTH , testDate.month)
+                dummyTestDate.set(Calendar.DAY_OF_MONTH , testDate.day - 1)
             }
             else
             {
-                dummyTestDate.month = testDate.month -1
-                dummyTestDate.date = testDate.date -1
+                dummyTestDate.set(Calendar.MONTH , testDate.month -1)
+                dummyTestDate.set(Calendar.DAY_OF_MONTH , testDate.day - 1)
+                if (testDate.month == 1)
+                {
+                    dummyTestDate.set(Calendar.YEAR , testDate.year -1 + 1900)
+                    dummyTestDate.set(Calendar.MONTH , 12)
+                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
+                }
             }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).between("testDate" , dummyTestDate , testDate).equalTo("testName" , "CardioVascularDisease").findAll()
+            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).greaterThanOrEqualTo("testDate" , testDate).equalTo("testName" , "Geriatric Depression Scale").findAll()
         }
 
         return tests!!.get(tests!!.size -1)!!

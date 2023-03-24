@@ -159,7 +159,7 @@ class CheckBDIPatientViewModel : ViewModel() {
             var dummyTestDate = Calendar.getInstance()
             if (testDate.day > 1)
             {
-                dummyTestDate.set(Calendar.YEAR , testDate.year)
+                dummyTestDate.set(Calendar.YEAR , testDate.year + 1900)
                 dummyTestDate.set(Calendar.MONTH , testDate.month)
                 dummyTestDate.set(Calendar.DAY_OF_MONTH , testDate.day - 1)
             }
@@ -169,12 +169,12 @@ class CheckBDIPatientViewModel : ViewModel() {
                 dummyTestDate.set(Calendar.DAY_OF_MONTH , testDate.day - 1)
                 if (testDate.month == 1)
                 {
-                    dummyTestDate.set(Calendar.YEAR , testDate.year -1)
+                    dummyTestDate.set(Calendar.YEAR , testDate.year -1 + 1900)
                     dummyTestDate.set(Calendar.MONTH , 12)
                     dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
                 }
             }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).between("testDate" , dummyTestDate.time , testDate).equalTo("testName" , "Beck Depression Inventory").findAll()
+            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).greaterThanOrEqualTo("testDate" , testDate).equalTo("testName" , "Beck Depression Inventory").findAll()
         }
 
         return tests!!.get(tests!!.size -1)!!
