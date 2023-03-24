@@ -818,7 +818,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bpiCheckFragment.arguments = bundle
                 fragmentTransaction(bpiCheckFragment)
             }
-            "Mediterranean Diet Score" ->
+            "Mediterranean Diet Test" ->
             {
                 var bundle = Bundle()
                 bundle.putString("patientId" , "")
@@ -1169,7 +1169,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dietIcon.setOnClickListener {
             hideLayoutElements()
             playSelectTestAudio(6)
-            openTestPopUp("Mediterranean Diet Score")
+            openTestPopUp("Mediterranean Diet Test")
 
         }
 

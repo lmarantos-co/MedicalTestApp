@@ -288,7 +288,7 @@ class HistoryFragment : Fragment() {
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
-            "Mediterranean Diet Test" ->
+            "MDS" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Mediterranean Diet Test")
                 tests = realm.where(Test::class.java).isNotNull("patientMDSQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
@@ -919,7 +919,7 @@ class HistoryFragment : Fragment() {
 
                }
 
-               "Mediterranean Diet Test" ->
+               "MDS" ->
                {
                    for (test in allTests)
                    {
@@ -1556,7 +1556,7 @@ class HistoryFragment : Fragment() {
                     scoreArrayList.add(("${test.patientBAITestResult}"))
                 }
             }
-            "Mediterranean Diet Test" ->
+            "MDS" ->
             {
                 for (test in allTests)
                 {
@@ -1748,7 +1748,7 @@ class HistoryFragment : Fragment() {
                 bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_blue))
 
             }
-            "Mediterranean Diet Test" ->
+            "MDS" ->
             {
                 bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.light_blue))
                 bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_blue))
@@ -1829,7 +1829,7 @@ class HistoryFragment : Fragment() {
                     baiCheckFragment.arguments = bundle
                     mainActivity.fragmentTransaction(baiCheckFragment)
                 }
-                "Mediterranean Diet Test" ->
+                "MDS" ->
                 {
                     medDietTestFragment = medDietTestFragment()
                     medDietTestFragment.arguments = bundle
