@@ -147,7 +147,7 @@ class CheckGDSViewModel : ViewModel() {
                     dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
                 }
             }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).greaterThanOrEqualTo("testDate" , testDate).equalTo("testName" , "Geriatric Depression Scale").findAll()
+            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).lessThanOrEqualTo("testDate" , testDate).equalTo("testName" , "Geriatric Depression Scale").findAll()
         }
 
         return tests!!.get(tests!!.size -1)!!

@@ -20,7 +20,6 @@ import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.gestures.Orientation
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.GravityCompat
@@ -42,6 +41,8 @@ import io.realm.Realm
 import io.realm.RealmList
 import java.lang.reflect.Method
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.*
 
 
@@ -2103,12 +2104,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             val calendar: Calendar = Calendar.getInstance()
             calendar.set(Calendar.YEAR , currentDate.year)
             calendar.set(Calendar.MONTH , currentDate.month)
-            calendar.set(Calendar.DAY_OF_MONTH , currentDate.day)
+            calendar.set(Calendar.DAY_OF_MONTH , LocalDateTime.now().dayOfMonth)
             var allCVDTest = realm.where(Test::class.java).notEqualTo("SSB" , "").equalTo("patientId" , patient!!.patientId).findAll()
             var CVDTestResult = ""
             if (allCVDTest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allCVDTestSize = allCVDTest.get(allCVDTest.size -1)
                 CVDTestName = "CardioVascularDis"
                 CVDTestDate = dateFormat.format(allCVDTestSize!!.testDate)
@@ -2119,7 +2120,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             var DiabetesTestResult = ""
             if (allDiabetesTest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allDiabetesSize = allDiabetesTest.get(allDiabetesTest.size -1)
                 DiabetesTestName = "DIABETES"
                 DiabetesTestDate = dateFormat.format(allDiabetesSize!!.testDate)
@@ -2132,7 +2133,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             if (allMDITest.size > 0)
             {
 
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allMDISize = allMDITest.get(allMDITest.size -1)
                 MDITestName = "Major Depression"
                 MDITestDate = dateFormat.format(allMDISize!!.testDate)
@@ -2144,7 +2145,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             var BAITestResult = ""
             if (allBAITest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allBAISize = allBAITest.get(allBAITest.size -1)
                 BAITestName = "Beck Anxiety"
                 BAITestDate = dateFormat.format(allBAISize!!.testDate)
@@ -2155,7 +2156,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             var MDSTestResult = ""
             if (allMDSTest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allMDSSize = allMDSTest.get(allMDSTest.size -1)
                 MDTTestName = "Mediterranean Diet"
                 MDTTestDate = dateFormat.format(allMDSSize!!.testDate)
@@ -2165,7 +2166,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             var allBPITest = realm.where(Test::class.java).isNotNull("patientBPIQ1").equalTo("patientId" , patient!!.patientId).findAll()
             if (allBPITest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allBPiSize = allMDSTest.get(allBPITest.size -1)
                 BPITestName = "Brief Pain Inv"
                 BPITestDate = dateFormat.format(allBPiSize!!.testDate)
@@ -2176,7 +2177,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
             if (allBDITest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allBDISize = allBDITest.get(allBDITest.size -1)
                 BDITestName = "Beck Depression"
                 BDITestDate = dateFormat.format(allBDISize!!.testDate)
@@ -2187,7 +2188,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
             if (allGDSTest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allGDSSize = allGDSTest.get(allGDSTest.size -1)
                 GDSTestName = "Geriatric Depression"
                 GDSTestDate = dateFormat.format(allGDSSize!!.testDate)
@@ -2198,7 +2199,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
             if (allSTAIOnTest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allSTAISize = allSTAIOnTest.get(allSTAIOnTest.size -1)
                 STAITestName = "STAI"
                 STAITestDate = dateFormat.format(allSTAISize!!.testDate)
@@ -2209,7 +2210,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
             if (allHAMMILTOnTest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allHammiltonSize = allHAMMILTOnTest.get(allHAMMILTOnTest.size -1)
                 HammiltonTestName = "Hammilton"
                 HammiltonTestDate = dateFormat.format(allHammiltonSize!!.testDate)
@@ -2220,7 +2221,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
             if (allDASSTest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allDASSSize = allDASSTest.get(allDASSTest.size -1)
                 DASSTestName = "Dass"
                 DASSTestDate = dateFormat.format(allDASSSize!!.testDate)
@@ -2231,7 +2232,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
             if (allZUNGTest.size > 0)
             {
-                var dateFormat = SimpleDateFormat("MM/DD/yyyy")
+                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                 var allZUNGSize = allZUNGTest.get(allZUNGTest.size -1)
                 ZungTestName = "ZUNG"
                 ZungTestDate = dateFormat.format(allZUNGSize!!.testDate)
