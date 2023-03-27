@@ -3456,7 +3456,7 @@ fun showMDIResultBarViews()
                     scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
                     {
                         override fun onAnimationStart(p0: Animation?) {
-                            mildResultView.alpha = 1f
+                            mildDepressionResultView.alpha = 1f
                         }
 
                         override fun onAnimationEnd(p0: Animation?) {

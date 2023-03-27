@@ -1580,7 +1580,7 @@ class HistoryFragment : Fragment() {
                     bindingHistoryFragment.testResultDateListView
                 }
             }
-            "Geriatric Deprression Scale" ->
+            "Geriatric Depression Scale" ->
             {
                 for (test in allTests)
                 {
@@ -1845,7 +1845,7 @@ class HistoryFragment : Fragment() {
                 {
                     gdsCheckFragment = GDSCheckFragment()
                     gdsCheckFragment.arguments = bundle
-                    mainActivity.fragmentTransaction(medDietTestFragment)
+                    mainActivity.fragmentTransaction(gdsCheckFragment)
                 }
                 "Hammilton Depression" ->
                 {
