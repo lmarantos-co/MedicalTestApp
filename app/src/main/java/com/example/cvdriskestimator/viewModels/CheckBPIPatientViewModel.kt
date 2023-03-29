@@ -3,7 +3,6 @@ package com.example.cvdriskestimator.viewModels
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,8 +21,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -248,6 +245,266 @@ class CheckBPIPatientViewModel : ViewModel() {
             }
             listOftest.add(currentTest)
             realm.insertOrUpdate(currentTest)
+
+            var calendar2 = Calendar.getInstance()
+            calendar2.set(Calendar.YEAR , 2023)
+            calendar2.set(Calendar.MONTH , 2)
+            calendar2.set(Calendar.DAY_OF_MONTH , 18)
+            calendar2.set(Calendar.HOUR_OF_DAY, 12)
+            calendar2.set(Calendar.MINUTE, 0)
+            calendar2.set(Calendar.SECOND, 0)            
+            
+            var dummyTest1 = Test()
+
+            dummyTest1!!.patientBPIQ1 = 3
+            dummyTest1!!.patientBPIQ2 = 4
+            dummyTest1!!.patientBPIQ3 = 2
+            dummyTest1!!.patientBPIQ4 = 4
+            dummyTest1!!.patientBPIQ5 = 1
+            dummyTest1!!.patientBPIQ6 = 3
+            dummyTest1!!.patientBPIQ7 = 2
+            dummyTest1!!.patientBPIQ8 = 1
+            dummyTest1!!.patientBPIQ9 = 4
+            dummyTest1!!.patientBPIQ10 = 2
+            dummyTest1!!.patientBPIQ11 = 1
+            dummyTest1!!.patientBPIQ12 = 4
+            dummyTest1!!.patientBPIcircleX = 3.0f
+            dummyTest1!!.patientBPIcircleY = 5.0f
+            dummyTest1!!.patientId = patient!!.patientId
+            dummyTest1!!.patientBPITestInterferenceResult = 30.0f
+            dummyTest1!!.patientBPITestSeverityResult = 15.0f
+            dummyTest1.testDate = calendar2.time
+            dummyTest1.testName = "Brief Pain Inventory"
+            dummyTest1.testId = (currentTest.testId.toInt() + 1).toString()
+
+            var testId1 : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId1 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId1 += 1
+                    currentTest.testId = testId1.toString()
+                }
+                else
+                {
+                    testId1 = 1
+                    currentTest.testId = testId1.toString()
+                }
+            }
+
+            var listoftest1 = ArrayList<Test>()
+
+            //add the test to the patient table
+            if (patient!!.listOfTests != null)
+            {
+                for (i in 0 until patient!!.listOfTests!!.size -1)
+                    listoftest1[i] = patient!!.listOfTests!!.get(i)!!
+
+                patient!!.listOfTests = null
+                for (i in 0 until listoftest1.size -1)
+                {
+                    patient!!.listOfTests!![i] = listoftest1.get(i)
+                }
+            }
+            listoftest1.add(dummyTest1)
+            realm.insertOrUpdate(dummyTest1)
+
+            var calendar3 = Calendar.getInstance()
+            calendar3.set(Calendar.YEAR , 2023)
+            calendar3.set(Calendar.MONTH , 3)
+            calendar3.set(Calendar.DAY_OF_MONTH , 5)
+            calendar3.set(Calendar.HOUR_OF_DAY, 12)
+            calendar3.set(Calendar.MINUTE, 0)
+            calendar3.set(Calendar.SECOND, 0)
+
+            var dummyTest2 = Test()
+
+            dummyTest2!!.patientBPIQ1 = 1
+            dummyTest2!!.patientBPIQ2 = 2
+            dummyTest2!!.patientBPIQ3 = 3
+            dummyTest2!!.patientBPIQ4 = 4
+            dummyTest2!!.patientBPIQ5 = 5
+            dummyTest2!!.patientBPIQ6 = 2
+            dummyTest2!!.patientBPIQ7 = 3
+            dummyTest2!!.patientBPIQ8 = 2
+            dummyTest2!!.patientBPIQ9 = 3
+            dummyTest2!!.patientBPIQ10 = 1
+            dummyTest2!!.patientBPIQ11 = 4
+            dummyTest2!!.patientBPIQ12 = 5
+            dummyTest2!!.patientBPIcircleX = 3.0f
+            dummyTest2!!.patientBPIcircleY = 5.0f
+            dummyTest2!!.patientId = patient!!.patientId
+            dummyTest2!!.patientBPITestInterferenceResult = 30.0f
+            dummyTest2!!.patientBPITestSeverityResult = 15.0f
+            dummyTest2.testDate = calendar3.time
+            dummyTest2.testName = "Brief Pain Inventory"
+            dummyTest2.testId = (dummyTest1.testId.toInt() + 1).toString()
+
+            var testId2 : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId2 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId2 += 1
+                    currentTest.testId = testId2.toString()
+                }
+                else
+                {
+                    testId2 = 1
+                    currentTest.testId = testId2.toString()
+                }
+            }
+
+            var listoftest2 = ArrayList<Test>()
+
+            //add the test to the patient table
+            if (patient!!.listOfTests != null)
+            {
+                for (i in 0 until patient!!.listOfTests!!.size -1)
+                    listoftest2[i] = patient!!.listOfTests!!.get(i)!!
+
+                patient!!.listOfTests = null
+                for (i in 0 until listoftest2.size -1)
+                {
+                    patient!!.listOfTests!![i] = listoftest2.get(i)
+                }
+            }
+            listoftest2.add(dummyTest2)
+            realm.insertOrUpdate(dummyTest2)
+
+            var calendar4 = Calendar.getInstance()
+            calendar4.set(Calendar.YEAR , 2022)
+            calendar4.set(Calendar.MONTH , 11)
+            calendar4.set(Calendar.DAY_OF_MONTH , 14)
+            calendar4.set(Calendar.HOUR_OF_DAY, 12)
+            calendar4.set(Calendar.MINUTE, 0)
+            calendar4.set(Calendar.SECOND, 0)
+
+            var dummyTest3 = Test()
+
+            dummyTest3!!.patientBPIQ1 = 3
+            dummyTest3!!.patientBPIQ2 = 4
+            dummyTest3!!.patientBPIQ3 = 2
+            dummyTest3!!.patientBPIQ4 = 4
+            dummyTest3!!.patientBPIQ5 = 1
+            dummyTest3!!.patientBPIQ6 = 3
+            dummyTest3!!.patientBPIQ7 = 2
+            dummyTest3!!.patientBPIQ8 = 1
+            dummyTest3!!.patientBPIQ9 = 4
+            dummyTest3!!.patientBPIQ10 = 2
+            dummyTest3!!.patientBPIQ11 = 1
+            dummyTest3!!.patientBPIQ12 = 4
+            dummyTest3!!.patientBPIcircleX = 3.0f
+            dummyTest3!!.patientBPIcircleY = 5.0f
+            dummyTest3!!.patientId = patient!!.patientId
+            dummyTest3!!.patientBPITestInterferenceResult = 20.0f
+            dummyTest3!!.patientBPITestSeverityResult = 10.0f
+            dummyTest3.testDate = calendar4.time
+            dummyTest3.testName = "Brief Pain Inventory"
+            dummyTest3.testId = (dummyTest2.testId.toInt() + 1).toString()
+
+            var testId4 : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId4 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId4 += 1
+                    currentTest.testId = testId4.toString()
+                }
+                else
+                {
+                    testId4 = 1
+                    currentTest.testId = testId4.toString()
+                }
+            }
+
+            var listoftest4 = ArrayList<Test>()
+
+            //add the test to the patient table
+            if (patient!!.listOfTests != null)
+            {
+                for (i in 0 until patient!!.listOfTests!!.size -1)
+                    listoftest4[i] = patient!!.listOfTests!!.get(i)!!
+
+                patient!!.listOfTests = null
+                for (i in 0 until listoftest4.size -1)
+                {
+                    patient!!.listOfTests!![i] = listoftest4.get(i)
+                }
+            }
+            listoftest4.add(dummyTest1)
+            realm.insertOrUpdate(dummyTest1)
+
+            var calendar5 = Calendar.getInstance()
+            calendar5.set(Calendar.YEAR , 2023)
+            calendar5.set(Calendar.MONTH , 1)
+            calendar5.set(Calendar.DAY_OF_MONTH , 5)
+            calendar5.set(Calendar.HOUR_OF_DAY, 12)
+            calendar5.set(Calendar.MINUTE, 0)
+            calendar5.set(Calendar.SECOND, 0)
+
+            var dummyTest4 = Test()
+
+            dummyTest4!!.patientBPIQ1 = 1
+            dummyTest4!!.patientBPIQ2 = 2
+            dummyTest4!!.patientBPIQ3 = 3
+            dummyTest4!!.patientBPIQ4 = 4
+            dummyTest4!!.patientBPIQ5 = 5
+            dummyTest4!!.patientBPIQ6 = 2
+            dummyTest4!!.patientBPIQ7 = 3
+            dummyTest4!!.patientBPIQ8 = 2
+            dummyTest4!!.patientBPIQ9 = 3
+            dummyTest4!!.patientBPIQ10 = 1
+            dummyTest4!!.patientBPIQ11 = 4
+            dummyTest4!!.patientBPIQ12 = 5
+            dummyTest4!!.patientBPIcircleX = 3.0f
+            dummyTest4!!.patientBPIcircleY = 5.0f
+            dummyTest4!!.patientId = patient!!.patientId
+            dummyTest4!!.patientBPITestInterferenceResult = 30.0f
+            dummyTest4!!.patientBPITestSeverityResult = 15.0f
+            dummyTest4.testDate = calendar5.time
+            dummyTest4.testName = "Brief Pain Inventory"
+            dummyTest4.testId = (dummyTest3.testId.toInt() + 1).toString()
+
+            var testId5 : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId5 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId5 += 1
+                    currentTest.testId = testId5.toString()
+                }
+                else
+                {
+                    testId5 = 1
+                    currentTest.testId = testId5.toString()
+                }
+            }
+
+            var listoftest5 = ArrayList<Test>()
+
+            //add the test to the patient table
+            if (patient!!.listOfTests != null)
+            {
+                for (i in 0 until patient!!.listOfTests!!.size -1)
+                    listoftest5[i] = patient!!.listOfTests!!.get(i)!!
+
+                patient!!.listOfTests = null
+                for (i in 0 until listoftest5.size -1)
+                {
+                    patient!!.listOfTests!![i] = listoftest5.get(i)
+                }
+            }
+            listoftest5.add(dummyTest4)
+            realm.insertOrUpdate(dummyTest4)
 //
 //            val calendar1: Calendar = Calendar.getInstance()
 //            calendar1.set(Calendar.YEAR , 2021)

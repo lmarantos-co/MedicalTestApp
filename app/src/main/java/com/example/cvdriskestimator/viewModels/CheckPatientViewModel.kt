@@ -440,123 +440,123 @@ class CheckPatientViewModel : ViewModel() , Observable {
             realm.insertOrUpdate(currentTest)
 
 
-//            //insert dummy tests
-//            var dummytest1 = Test()
-//            //var dummyDate1 = Date(2021 , 5 , 15 , 10 , 30 , 0)
-//            val calendar: Calendar = Calendar.getInstance()
-//            calendar.set(Calendar.YEAR , 2021)
-//            calendar.set(Calendar.MONTH , 5)
-//            calendar.set(Calendar.DAY_OF_MONTH , 15)
-////            calendar.set(Calendar.HOUR_OF_DAY, 10)
-////            calendar.set(Calendar.MINUTE, 30)
-////            calendar.set(Calendar.SECOND, 0)
-//            dummytest1.patientSex = "MALE"
-//            dummytest1.patientAge = "40"
-//            dummytest1.SSB = "100"
-//            dummytest1.TCH = "210"
-//            dummytest1.HDL = "50"
-//            dummytest1.smoker = "Current"
-//            dummytest1.treatment = "yes"
-//            dummytest1.testDate = calendar.time
-//            dummytest1.patientId = patient.patientId
-//            dummytest1!!.cvdTestResult = 60
-//            dummytest1!!.testName = "CardioVascularDisease"
-//            dummytest1!!.testId = ((currentTest!!.testId).toInt() + 1).toString()
-//            realm.insertOrUpdate(dummytest1)
-//
-//            var dummytest2 = Test()
-//            //var dummyDate2 = Date(2022 , 6 , 5 , 18 , 15 , 0)
-//            val calendar2: Calendar = Calendar.getInstance()
-//            calendar2.set(Calendar.YEAR , 2022)
-//            calendar2.set(Calendar.MONTH , 6)
-//            calendar2.set(Calendar.DAY_OF_MONTH , 5)
-////            calendar2.set(Calendar.HOUR_OF_DAY, 18)
-////            calendar2.set(Calendar.MINUTE, 15)
-////            calendar2.set(Calendar.SECOND, 0)
-//            dummytest2.patientSex = "MALE"
-//            dummytest2.patientAge = "40"
-//            dummytest2.SSB = "120"
-//            dummytest2.TCH = "260"
-//            dummytest2.HDL = "40"
-//            dummytest2.smoker = "Current"
-//            dummytest2.patientId = patient.patientId
-//            dummytest2.treatment = "yes"
-//            dummytest2.testDate = calendar2.time
-//            dummytest2!!.cvdTestResult = 40
-//            dummytest2!!.testName = "CardioVascularDisease"
-//            dummytest2!!.testId = ((dummytest1!!.testId).toInt() + 1).toString()
-//
-//            realm.insertOrUpdate(dummytest2)
-//
-//            var dummytest3 = Test()
-//            var dummyDate3 = Date(2022 , 6 , 25 , 18 , 15 , 0)
-//            val calendar3: Calendar = Calendar.getInstance()
-//            calendar3.set(Calendar.YEAR , 2022)
-//            calendar3.set(Calendar.MONTH , 6)
-//            calendar3.set(Calendar.DAY_OF_MONTH , 25)
-////            calendar3.set(Calendar.HOUR_OF_DAY, 18)
-////            calendar3.set(Calendar.MINUTE, 15)
-////            calendar3.set(Calendar.SECOND, 0)
-//            dummytest3.patientSex = "MALE"
-//            dummytest3.patientAge = "40"
-//            dummytest3.SSB = "160"
-//            dummytest3.TCH = "180"
-//            dummytest3.HDL = "70"
-//            dummytest3.patientId = patient.patientId
-//            dummytest3.smoker = "Current"
-//            dummytest3.treatment = "no"
-//            dummytest3.testDate = calendar3.time
-//            dummytest3!!.cvdTestResult = 80
-//            dummytest3!!.testName = "CardioVascularDisease"
-//            dummytest3!!.testId = ((dummytest2!!.testId).toInt() + 1).toString()
-//            realm.insertOrUpdate(dummytest3)
-//
-//            var dummytest4 = Test()
-//            //var dummyDate4 = Date(2022 , 7 , 5 , 18 , 15 , 0)
-//            val calendar4: Calendar = Calendar.getInstance()
-//            calendar4.set(Calendar.YEAR , 2022)
-//            calendar4.set(Calendar.MONTH , 7)
-//            calendar4.set(Calendar.DAY_OF_MONTH , 5)
-////            calendar4.set(Calendar.HOUR_OF_DAY, 18)
-////            calendar4.set(Calendar.MINUTE, 15)
-////            calendar4.set(Calendar.SECOND, 0)
-//            dummytest4.patientSex = "MALE"
-//            dummytest4.patientAge = "40"
-//            dummytest4.SSB = "120"
-//            dummytest4.TCH = "180"
-//            dummytest4.HDL = "70"
-//            dummytest4.patientId = patient.patientId
-//            dummytest4.smoker = "Current"
-//            dummytest4.treatment = "no"
-//            dummytest4.testDate = calendar4.time
-//            dummytest4!!.cvdTestResult = 30
-//            dummytest4!!.testName = "CardioVascularDisease"
-//            dummytest4!!.testId = ((dummytest3!!.testId).toInt() + 1).toString()
-//            realm.insertOrUpdate(dummytest4)
-//
-//            var dummytest5 = Test()
-//            var dummyDate5 = Date(2022 , 8 , 5 , 18 , 15 , 0)
-//            val calendar5: Calendar = Calendar.getInstance()
-//            calendar5.set(Calendar.YEAR , 2022)
-//            calendar5.set(Calendar.MONTH , 8)
-//            calendar5.set(Calendar.DAY_OF_MONTH , 5)
-////            calendar5.set(Calendar.HOUR_OF_DAY, 18)
-////            calendar5.set(Calendar.MINUTE, 15)
-////            calendar5.set(Calendar.SECOND, 0)
-//            dummytest5.patientSex = "MALE"
-//            dummytest5.patientAge = "40"
-//            dummytest5.SSB = "120"
-//            dummytest5.TCH = "180"
-//            dummytest5.HDL = "70"
-//            dummytest5.patientId = patient.patientId
-//            dummytest5.smoker = "Current"
-//            dummytest5.treatment = "no"
-//            dummytest5.testDate = calendar5.time
-//            dummytest5!!.cvdTestResult = 30
-//            dummytest5!!.testName = "CardioVascularDisease"
-//            dummytest5!!.testId = ((dummytest4!!.testId).toInt() + 1).toString()
-//            realm.insertOrUpdate(dummytest5)
-//
+            //insert dummy tests
+            var dummytest1 = Test()
+            //var dummyDate1 = Date(2021 , 5 , 15 , 10 , 30 , 0)
+            val calendar: Calendar = Calendar.getInstance()
+            calendar.set(Calendar.YEAR , 2021)
+            calendar.set(Calendar.MONTH , 5)
+            calendar.set(Calendar.DAY_OF_MONTH , 15)
+            calendar.set(Calendar.HOUR_OF_DAY, 10)
+            calendar.set(Calendar.MINUTE, 30)
+            calendar.set(Calendar.SECOND, 0)
+            dummytest1.patientSex = "MALE"
+            dummytest1.patientAge = "40"
+            dummytest1.SSB = "100"
+            dummytest1.TCH = "210"
+            dummytest1.HDL = "50"
+            dummytest1.smoker = "Current"
+            dummytest1.treatment = "yes"
+            dummytest1.testDate = calendar.time
+            dummytest1.patientId = patient.patientId
+            dummytest1!!.cvdTestResult = 60
+            dummytest1!!.testName = "CardioVascularDisease"
+            dummytest1!!.testId = ((currentTest!!.testId).toInt() + 1).toString()
+            realm.insertOrUpdate(dummytest1)
+////
+            var dummytest2 = Test()
+            //var dummyDate2 = Date(2022 , 6 , 5 , 18 , 15 , 0)
+            val calendar2: Calendar = Calendar.getInstance()
+            calendar2.set(Calendar.YEAR , 2022)
+            calendar2.set(Calendar.MONTH , 8)
+            calendar2.set(Calendar.DAY_OF_MONTH , 10)
+            calendar2.set(Calendar.HOUR_OF_DAY, 18)
+            calendar2.set(Calendar.MINUTE, 15)
+            calendar2.set(Calendar.SECOND, 0)
+            dummytest2.patientSex = "MALE"
+            dummytest2.patientAge = "40"
+            dummytest2.SSB = "120"
+            dummytest2.TCH = "260"
+            dummytest2.HDL = "40"
+            dummytest2.smoker = "Current"
+            dummytest2.patientId = patient.patientId
+            dummytest2.treatment = "yes"
+            dummytest2.testDate = calendar2.time
+            dummytest2!!.cvdTestResult = 40
+            dummytest2!!.testName = "CardioVascularDisease"
+            dummytest2!!.testId = ((dummytest1!!.testId).toInt() + 1).toString()
+////
+            realm.insertOrUpdate(dummytest2)
+////
+            var dummytest3 = Test()
+            var dummyDate3 = Date(2022 , 6 , 25 , 18 , 15 , 0)
+            val calendar3: Calendar = Calendar.getInstance()
+            calendar3.set(Calendar.YEAR , 2022)
+            calendar3.set(Calendar.MONTH , 6)
+            calendar3.set(Calendar.DAY_OF_MONTH , 25)
+            calendar3.set(Calendar.HOUR_OF_DAY, 18)
+            calendar3.set(Calendar.MINUTE, 15)
+            calendar3.set(Calendar.SECOND, 0)
+            dummytest3.patientSex = "MALE"
+            dummytest3.patientAge = "40"
+            dummytest3.SSB = "160"
+            dummytest3.TCH = "180"
+            dummytest3.HDL = "70"
+            dummytest3.patientId = patient.patientId
+            dummytest3.smoker = "Current"
+            dummytest3.treatment = "no"
+            dummytest3.testDate = calendar3.time
+            dummytest3!!.cvdTestResult = 80
+            dummytest3!!.testName = "CardioVascularDisease"
+            dummytest3!!.testId = ((dummytest2!!.testId).toInt() + 1).toString()
+            realm.insertOrUpdate(dummytest3)
+////
+            var dummytest4 = Test()
+            //var dummyDate4 = Date(2022 , 7 , 5 , 18 , 15 , 0)
+            val calendar4: Calendar = Calendar.getInstance()
+            calendar4.set(Calendar.YEAR , 2022)
+            calendar4.set(Calendar.MONTH , 7)
+            calendar4.set(Calendar.DAY_OF_MONTH , 5)
+            calendar4.set(Calendar.HOUR_OF_DAY, 18)
+            calendar4.set(Calendar.MINUTE, 15)
+            calendar4.set(Calendar.SECOND, 0)
+            dummytest4.patientSex = "MALE"
+            dummytest4.patientAge = "40"
+            dummytest4.SSB = "120"
+            dummytest4.TCH = "180"
+            dummytest4.HDL = "70"
+            dummytest4.patientId = patient.patientId
+            dummytest4.smoker = "Current"
+            dummytest4.treatment = "no"
+            dummytest4.testDate = calendar4.time
+            dummytest4!!.cvdTestResult = 30
+            dummytest4!!.testName = "CardioVascularDisease"
+            dummytest4!!.testId = ((dummytest3!!.testId).toInt() + 1).toString()
+            realm.insertOrUpdate(dummytest4)
+////
+////            var dummytest5 = Test()
+////            var dummyDate5 = Date(2022 , 8 , 5 , 18 , 15 , 0)
+////            val calendar5: Calendar = Calendar.getInstance()
+////            calendar5.set(Calendar.YEAR , 2022)
+////            calendar5.set(Calendar.MONTH , 8)
+////            calendar5.set(Calendar.DAY_OF_MONTH , 5)
+//////            calendar5.set(Calendar.HOUR_OF_DAY, 18)
+//////            calendar5.set(Calendar.MINUTE, 15)
+//////            calendar5.set(Calendar.SECOND, 0)
+////            dummytest5.patientSex = "MALE"
+////            dummytest5.patientAge = "40"
+////            dummytest5.SSB = "120"
+////            dummytest5.TCH = "180"
+////            dummytest5.HDL = "70"
+////            dummytest5.patientId = patient.patientId
+////            dummytest5.smoker = "Current"
+////            dummytest5.treatment = "no"
+////            dummytest5.testDate = calendar5.time
+////            dummytest5!!.cvdTestResult = 30
+////            dummytest5!!.testName = "CardioVascularDisease"
+////            dummytest5!!.testId = ((dummytest4!!.testId).toInt() + 1).toString()
+////            realm.insertOrUpdate(dummytest5)
+////
 //            var dummytest6 = Test()
 //            var dummyDate6 = Date(2022 , 9 , 5 , 18 , 15 , 0)
 //            val calendar6: Calendar = Calendar.getInstance()
