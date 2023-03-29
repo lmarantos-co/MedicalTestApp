@@ -5173,7 +5173,7 @@ fun showMDIResultBarViews()
             moderateAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
             severeAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
         }
-        if ((testSum >=22) && (testSum < 35))
+        if ((testSum >=22) && (testSum <= 35))
         {
             baiTestSummary.text = mainActivity.resources.getString(R.string.BAIRESULT2)
             baiTestSummaryB.text = mainActivity.resources.getString(R.string.BAIRESULT2B)

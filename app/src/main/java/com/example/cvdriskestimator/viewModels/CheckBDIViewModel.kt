@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cvdriskestimator.Fragments.BAICheckFragment
 import com.example.cvdriskestimator.Fragments.BeckDepressionInventoryFragment
 import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
@@ -264,9 +263,299 @@ class CheckBDIPatientViewModel : ViewModel() {
                     patient.listOfTests!![i] = testList.get(i)
                 }
             }
+            currentTest.testId = testId.toString()
             realm.insertOrUpdate(currentTest)
             //update the user record within realm database
             realm.copyToRealmOrUpdate(patient)
+
+            var dummyTest1 = Test()
+
+            var calendar2 = Calendar.getInstance()
+            calendar2.set(Calendar.YEAR , 2023)
+            calendar2.set(Calendar.MONTH , 1)
+            calendar2.set(Calendar.DAY_OF_MONTH , 12)
+            calendar2.set(Calendar.HOUR_OF_DAY, 12)
+            calendar2.set(Calendar.MINUTE, 0)
+            calendar2.set(Calendar.SECOND, 0)
+            dummyTest1!!.patientBDIQ1 = 4
+            dummyTest1!!.patientBDIQ2 = 3
+            dummyTest1!!.patientBDIQ3 = 4
+            dummyTest1!!.patientBDIQ4 = 1
+            dummyTest1!!.patientBDIQ5 = 2
+            dummyTest1!!.patientBDIQ6 = 3
+            dummyTest1!!.patientBDIQ7 = 4
+            dummyTest1!!.patientBDIQ8 = 3
+            dummyTest1!!.patientBDIQ9 = 4
+            dummyTest1!!.patientBDIQ10 = 2
+            dummyTest1!!.patientBDIQ11 = 1
+            dummyTest1!!.patientBDIQ12 = 3
+            dummyTest1!!.patientBDIQ13 = 4
+            dummyTest1!!.patientBDIQ14 = 3
+            dummyTest1!!.patientBDIQ15 = 3
+            dummyTest1!!.patientBDIQ16 = 2
+            dummyTest1!!.patientBDIQ17 = 3
+            dummyTest1!!.patientBDIQ18 = 1
+            dummyTest1!!.patientBDIQ19 = 3
+            dummyTest1!!.patientBDIQ20 = 2
+            dummyTest1!!.patientBDIQ21 = 4
+            dummyTest1!!.patientId = patient!!.patientId
+            dummyTest1!!.testDate = calendar2.time
+            dummyTest1!!.testName = "Beck Depression Inventory"
+            dummyTest1.testId = currentTest.testId + 1
+            dummyTest1!!.patientBDITestResult = 65
+
+            var testId1 : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId1 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId1 += 1
+                    currentTest.testId = testId1.toString()
+                }
+                else
+                {
+                    testId1 = 1
+                    currentTest.testId = testId1.toString()
+                }
+            }
+
+            //add the test to the patient test list
+            var testList1 = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    testList1.add(patient.listOfTests!!.get(i)!!)
+                }
+                testList1.add(currentTest)
+                patient.listOfTests = null
+                for (i in 0 until testList1.size -1)
+                {
+                    patient.listOfTests!![i] = testList1.get(i)
+                }
+            }
+            realm.insertOrUpdate(dummyTest1)
+            //update the user record within realm database
+            realm.copyToRealmOrUpdate(patient)
+
+            var dummyTest2 = Test()
+
+            var calendar3 = Calendar.getInstance()
+            calendar3.set(Calendar.YEAR , 2022)
+            calendar3.set(Calendar.MONTH , 11)
+            calendar3.set(Calendar.DAY_OF_MONTH , 12)
+            calendar3.set(Calendar.HOUR_OF_DAY, 12)
+            calendar3.set(Calendar.MINUTE, 0)
+            calendar3.set(Calendar.SECOND, 0)
+            dummyTest2!!.patientBDIQ1 = 4
+            dummyTest2!!.patientBDIQ2 = 3
+            dummyTest2!!.patientBDIQ3 = 4
+            dummyTest2!!.patientBDIQ4 = 2
+            dummyTest2!!.patientBDIQ5 = 1
+            dummyTest2!!.patientBDIQ6 = 4
+            dummyTest2!!.patientBDIQ7 = 1
+            dummyTest2!!.patientBDIQ8 = 2
+            dummyTest2!!.patientBDIQ9 = 1
+            dummyTest2!!.patientBDIQ10 = 3
+            dummyTest2!!.patientBDIQ11 = 2
+            dummyTest2!!.patientBDIQ12 = 1
+            dummyTest2!!.patientBDIQ13 = 2
+            dummyTest2!!.patientBDIQ14 = 2
+            dummyTest2!!.patientBDIQ15 = 2
+            dummyTest2!!.patientBDIQ16 = 1
+            dummyTest2!!.patientBDIQ17 = 2
+            dummyTest2!!.patientBDIQ18 = 1
+            dummyTest2!!.patientBDIQ19 = 3
+            dummyTest2!!.patientBDIQ20 = 2
+            dummyTest2!!.patientBDIQ21 = 4
+            dummyTest2!!.patientId = patient!!.patientId
+            dummyTest2.testId = (dummyTest1.testId + 1).toString()
+            dummyTest2!!.testDate = calendar3.time
+            dummyTest2!!.testName = "Beck Depression Inventory"
+            dummyTest2!!.patientBDITestResult = 55
+
+            var testId2 : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId2 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId2 += 1
+                    currentTest.testId = testId2.toString()
+                }
+                else
+                {
+                    testId2 = 1
+                    currentTest.testId = testId2.toString()
+                }
+            }
+
+            //add the test to the patient test list
+            var testList2 = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    testList2.add(patient.listOfTests!!.get(i)!!)
+                }
+                testList2.add(currentTest)
+                patient.listOfTests = null
+                for (i in 0 until testList2.size -1)
+                {
+                    patient.listOfTests!![i] = testList2.get(i)
+                }
+            }
+            realm.insertOrUpdate(dummyTest1)
+            //update the user record within realm database
+            realm.copyToRealmOrUpdate(patient)
+
+            var dummyTest3 = Test()
+
+            var calendar4 = Calendar.getInstance()
+            calendar4.set(Calendar.YEAR , 2022)
+            calendar4.set(Calendar.MONTH , 10)
+            calendar4.set(Calendar.DAY_OF_MONTH , 11)
+            calendar4.set(Calendar.HOUR_OF_DAY, 22)
+            calendar4.set(Calendar.MINUTE, 0)
+            calendar4.set(Calendar.SECOND, 0)
+            dummyTest3!!.patientBDIQ1 = 4
+            dummyTest3!!.patientBDIQ2 = 3
+            dummyTest3!!.patientBDIQ3 = 4
+            dummyTest3!!.patientBDIQ4 = 2
+            dummyTest3!!.patientBDIQ5 = 1
+            dummyTest3!!.patientBDIQ6 = 4
+            dummyTest3!!.patientBDIQ7 = 1
+            dummyTest3!!.patientBDIQ8 = 2
+            dummyTest3!!.patientBDIQ9 = 1
+            dummyTest3!!.patientBDIQ10 = 3
+            dummyTest3!!.patientBDIQ11 = 2
+            dummyTest3!!.patientBDIQ12 = 1
+            dummyTest3!!.patientBDIQ13 = 2
+            dummyTest3!!.patientBDIQ14 = 2
+            dummyTest3!!.patientBDIQ15 = 2
+            dummyTest3!!.patientBDIQ16 = 1
+            dummyTest3!!.patientBDIQ17 = 2
+            dummyTest3!!.patientBDIQ18 = 1
+            dummyTest3!!.patientBDIQ19 = 3
+            dummyTest3!!.patientBDIQ20 = 2
+            dummyTest3!!.patientBDIQ21 = 4
+            dummyTest3!!.patientId = patient!!.patientId
+            dummyTest3.testId = (dummyTest2.testId + 1).toString()
+            dummyTest3!!.testDate = calendar4.time
+            dummyTest3!!.testName = "Beck Depression Inventory"
+            dummyTest3!!.patientBDITestResult = 35
+
+            var testId4 : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId4 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId4 += 1
+                    currentTest.testId = testId4.toString()
+                }
+                else
+                {
+                    testId4 = 1
+                    currentTest.testId = testId4.toString()
+                }
+            }
+
+            //add the test to the patient test list
+            var testList4 = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    testList4.add(patient.listOfTests!!.get(i)!!)
+                }
+                testList4.add(currentTest)
+                patient.listOfTests = null
+                for (i in 0 until testList4.size -1)
+                {
+                    patient.listOfTests!![i] = testList4.get(i)
+                }
+            }
+            realm.insertOrUpdate(dummyTest1)
+            //update the user record within realm database
+            realm.copyToRealmOrUpdate(patient)
+
+            var dummyTest4 = Test()
+
+            var calendar5 = Calendar.getInstance()
+            calendar5.set(Calendar.YEAR , 2023)
+            calendar5.set(Calendar.MONTH , 2)
+            calendar5.set(Calendar.DAY_OF_MONTH , 7)
+            calendar5.set(Calendar.HOUR_OF_DAY, 18)
+            calendar5.set(Calendar.MINUTE, 0)
+            calendar5.set(Calendar.SECOND, 0)
+            dummyTest4!!.patientBDIQ1 = 4
+            dummyTest4!!.patientBDIQ2 = 3
+            dummyTest4!!.patientBDIQ3 = 4
+            dummyTest4!!.patientBDIQ4 = 2
+            dummyTest4!!.patientBDIQ5 = 1
+            dummyTest4!!.patientBDIQ6 = 4
+            dummyTest4!!.patientBDIQ7 = 1
+            dummyTest4!!.patientBDIQ8 = 2
+            dummyTest4!!.patientBDIQ9 = 1
+            dummyTest4!!.patientBDIQ10 = 3
+            dummyTest4!!.patientBDIQ11 = 2
+            dummyTest4!!.patientBDIQ12 = 1
+            dummyTest4!!.patientBDIQ13 = 2
+            dummyTest4!!.patientBDIQ14 = 2
+            dummyTest4!!.patientBDIQ15 = 2
+            dummyTest4!!.patientBDIQ16 = 1
+            dummyTest4!!.patientBDIQ17 = 2
+            dummyTest4!!.patientBDIQ18 = 1
+            dummyTest4!!.patientBDIQ19 = 3
+            dummyTest4!!.patientBDIQ20 = 2
+            dummyTest4!!.patientBDIQ21 = 4
+            dummyTest4!!.patientId = patient!!.patientId
+            dummyTest4!!.testDate = calendar5.time
+            dummyTest4.testId = (dummyTest3.testId + 1).toString()
+            dummyTest4!!.testName = "Beck Depression Inventory"
+            dummyTest4!!.patientBDITestResult = 35
+
+            var testId3 : Int = 0
+            if (dateCount.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId3 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId3 += 1
+                    currentTest.testId = testId3.toString()
+                }
+                else
+                {
+                    testId3 = 1
+                    currentTest.testId = testId3.toString()
+                }
+            }
+
+            //add the test to the patient test list
+            var testList3 = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    testList3.add(patient.listOfTests!!.get(i)!!)
+                }
+                testList3.add(currentTest)
+                patient.listOfTests = null
+                for (i in 0 until testList3.size -1)
+                {
+                    patient.listOfTests!![i] = testList3.get(i)
+                }
+            }
+            realm.insertOrUpdate(dummyTest1)
+            //update the user record within realm database
+            realm.copyToRealmOrUpdate(patient)
+
 
         }
     }

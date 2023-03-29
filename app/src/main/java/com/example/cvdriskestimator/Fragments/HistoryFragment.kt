@@ -193,7 +193,7 @@ class HistoryFragment : Fragment() {
 
         bindingHistoryFragment.testResultsLineChart.layoutParams.height = SCREEN_HEIGHT / 3
 
-        bindingHistoryFragment.testResultDateListView.layoutParams.height = (SCREEN_HEIGHT / 3.5).toInt()
+//        bindingHistoryFragment.testResultDateListView.layoutParams.height = (SCREEN_HEIGHT / 3.5).toInt()
 
         setUniformMotionForListViews()
 
@@ -1525,7 +1525,7 @@ class HistoryFragment : Fragment() {
                         emptyString += " "
                     }
                     dateArrayList.add("${format.format(test.testDate)}")
-                    scoreArrayList.add("${test.diabetesTestResult} %")
+                    scoreArrayList.add("%,.2f".format(test.diabetesTestResult!!.toFloat()))
                 }
             }
             "Major Depression Index" ->

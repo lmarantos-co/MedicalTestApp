@@ -402,43 +402,54 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
 
 
-        if (showList == true)
+        var patientUserName = getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
+        if (patientUserName!= "tempUser")
         {
-            allPatientsTestNameListView.invalidateViews()
-            allPatientsTestNameListView.invalidate()
-            allPatientTestNamesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(1))
-            allPatientTestNamesAdapter.clear()
-            allPatientTestNamesAdapter.notifyDataSetChanged()
-            allPatientTestNamesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(1))
-            allPatientTestNamesAdapter.notifyDataSetChanged()
-            allPatientsTestNameListView.adapter = allPatientTestNamesAdapter
-            allPatientTestDateLisView.invalidate()
-            allPatientTestDateLisView.invalidateViews()
-            allPatientTestDatesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(2))
-            allPatientTestDatesAdapter.clear()
-            allPatientTestDatesAdapter.notifyDataSetChanged()
-            allPatientTestDatesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(2))
-            allPatientTestDatesAdapter.notifyDataSetChanged()
-            allPatientTestDateLisView.adapter = allPatientTestDatesAdapter
-            val allPatientTestNames = setTestDataListForPatient(1)
-            val allPatientTestDates = setTestDataListForPatient(2)
+            if (showList == true)
+            {
+                allPatientsTestNameListView.invalidateViews()
+                allPatientsTestNameListView.invalidate()
+                allPatientTestNamesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(1))
+                allPatientTestNamesAdapter.clear()
+                allPatientTestNamesAdapter.notifyDataSetChanged()
+                allPatientTestNamesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(1))
+                allPatientTestNamesAdapter.notifyDataSetChanged()
+                allPatientsTestNameListView.adapter = allPatientTestNamesAdapter
+                allPatientTestDateLisView.invalidate()
+                allPatientTestDateLisView.invalidateViews()
+                allPatientTestDatesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(2))
+                allPatientTestDatesAdapter.clear()
+                allPatientTestDatesAdapter.notifyDataSetChanged()
+                allPatientTestDatesAdapter = ArrayAdapter(applicationContext , R.layout.textcenter , setTestDataListForPatient(2))
+                allPatientTestDatesAdapter.notifyDataSetChanged()
+                allPatientTestDateLisView.adapter = allPatientTestDatesAdapter
+                var allPatientTestNames = ArrayList<String>()
+                var allPatientTestDates = ArrayList<String>()
+                if (patientUserName != "tempUser")
+                {
+                    allPatientTestNames = setTestDataListForPatient(1)
+                    allPatientTestDates = setTestDataListForPatient(2)
+                }
 
-            //open the fragment with the data provided above
+
+                //open the fragment with the data provided above
 //            patietTestListFragment = PatietTestListFragment.newInstance(allPatientTestNames , allPatientTestDates , patientname.text as String)
 //            fragmentTransaction(patietTestListFragment)
 
-            val recyclerAdapter = CustomTestListAdapter(allPatientTestNames , allPatientTestDates)
-            recyclerAdapter.notifyDataSetChanged()
-            allPatientTestRecyclerView.removeAllViews()
-            allPatientTestRecyclerView.adapter = recyclerAdapter
-            showPatientLasttest = false
+                val recyclerAdapter = CustomTestListAdapter(allPatientTestNames , allPatientTestDates)
+                recyclerAdapter.notifyDataSetChanged()
+                allPatientTestRecyclerView.removeAllViews()
+                allPatientTestRecyclerView.adapter = recyclerAdapter
+                showPatientLasttest = false
 //            allPatientsTestNameListView.invalidate()
 //            allPatientTestDateLisView.invalidate()
-            allPatientResultsPopUp.visibility = View.VISIBLE
-            allPatientResultsPopUp.invalidate()
-            allPatientResultsLinLayout.invalidate()
+                allPatientResultsPopUp.visibility = View.VISIBLE
+                allPatientResultsPopUp.invalidate()
+                allPatientResultsLinLayout.invalidate()
 
+            }
         }
+
 
         constraintLayout = findViewById(R.id.mainConLayout)
         mainConLayout = findViewById(R.id.mainConLayout)
