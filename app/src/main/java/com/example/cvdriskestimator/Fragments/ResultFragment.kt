@@ -540,7 +540,7 @@ class ResultFragment : Fragment() {
             gdsTestScore = view.findViewById(R.id.totalPSScore)
             gdsTestResult = view.findViewById(R.id.totalScoreDescTxtV)
             val score = arguments!!.getDouble(ARG_PARAM1)
-            gdsTestResult.text = (String.format(
+             gdsTestResult.text = (String.format(
                 resources.getString(R.string.mds_test_score),
                 score.toFloat())
             )

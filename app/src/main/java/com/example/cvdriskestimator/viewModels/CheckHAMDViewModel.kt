@@ -3,16 +3,13 @@ package com.example.cvdriskestimator.viewModels
 
 import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cvdriskestimator.Fragments.BAICheckFragment
 import com.example.cvdriskestimator.Fragments.HamiltonDepressionFragment
 import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.MedicalTestAlgorithms.BAITestEstimator
 import com.example.cvdriskestimator.MedicalTestAlgorithms.HammitlonTestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
@@ -22,8 +19,6 @@ import io.realm.RealmResults
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -262,6 +257,300 @@ class CheckHAMDPatientViewModel : ViewModel() {
                 }
             }
             realm.insertOrUpdate(currentTest)
+            //update the user record within realm database
+            realm.copyToRealmOrUpdate(patient)
+
+
+            var dummyTest1 = Test()
+            val date = Date()
+            val calendar1: Calendar = Calendar.getInstance()
+            calendar1.set(Calendar.YEAR , 2022)
+            calendar1.set(Calendar.MONTH , 11)
+            calendar1.set(Calendar.DAY_OF_MONTH , 5)
+            calendar1.set(Calendar.HOUR_OF_DAY, 10)
+            calendar1.set(Calendar.MINUTE, 0)
+            calendar1.set(Calendar.SECOND,0)
+            //check if the current date is already in the test database
+            val dateCount1 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            if (dateCount1 > 0)
+            {
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+            }
+
+            dummyTest1!!.patientHAMDQ1 = allPatientSelections[0]
+            dummyTest1!!.patientHAMDQ2 = allPatientSelections[1]
+            dummyTest1!!.patientHAMDQ3 = allPatientSelections[2]
+            dummyTest1!!.patientHAMDQ4 = allPatientSelections[3]
+            dummyTest1!!.patientHAMDQ5 = allPatientSelections[4]
+            dummyTest1!!.patientHAMDQ6 = allPatientSelections[5]
+            dummyTest1!!.patientHAMDQ7 = allPatientSelections[6]
+            dummyTest1!!.patientHAMDQ8 = allPatientSelections[7]
+            dummyTest1!!.patientHAMDQ9 = allPatientSelections[8]
+            dummyTest1!!.patientHAMDQ10 = allPatientSelections[9]
+            dummyTest1!!.patientHAMDQ11 = allPatientSelections[10]
+            dummyTest1!!.patientHAMDQ12 = allPatientSelections[11]
+            dummyTest1!!.patientHAMDQ13 = allPatientSelections[12]
+            dummyTest1!!.patientHAMDQ14 = allPatientSelections[13]
+            dummyTest1!!.patientHAMDQ15 = allPatientSelections[14]
+            dummyTest1!!.patientHAMDQ16 = allPatientSelections[15]
+            dummyTest1!!.patientHAMDQ17 = allPatientSelections[16]
+            dummyTest1!!.patientId = patient!!.patientId
+            dummyTest1!!.testDate = calendar1.time
+            dummyTest1!!.testName = "Hammilton Depression"
+            dummyTest1!!.patientHAMDTestResult = 35
+
+            var testId1 : Int = 0
+            if (dateCount1.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId1 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId1 += 1
+                    currentTest.testId = testId1.toString()
+                }
+                else
+                {
+                    testId1 = 1
+                    currentTest.testId = testId1.toString()
+                }
+            }
+
+            //add the test to the patient test list
+            var testList1 = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    testList1.add(patient.listOfTests!!.get(i)!!)
+                }
+                testList1.add(currentTest)
+                patient.listOfTests = null
+                for (i in 0 until testList1.size -1)
+                {
+                    patient.listOfTests!![i] = testList1.get(i)
+                }
+            }
+            realm.insertOrUpdate(dummyTest1)
+
+            var dummyTest2 = Test()
+            val calendar2: Calendar = Calendar.getInstance()
+            calendar2.set(Calendar.YEAR , 2023)
+            calendar2.set(Calendar.MONTH , 2)
+            calendar2.set(Calendar.DAY_OF_MONTH , 10)
+            calendar2.set(Calendar.HOUR_OF_DAY, 10)
+            calendar2.set(Calendar.MINUTE, 0)
+            calendar2.set(Calendar.SECOND,0)
+            //check if the current date is already in the test database
+            val dateCount2 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            if (dateCount2 > 0)
+            {
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+            }
+
+            dummyTest2!!.patientHAMDQ1 = allPatientSelections[0]
+            dummyTest2!!.patientHAMDQ2 = allPatientSelections[1]
+            dummyTest2!!.patientHAMDQ3 = allPatientSelections[2]
+            dummyTest2!!.patientHAMDQ4 = allPatientSelections[3]
+            dummyTest2!!.patientHAMDQ5 = allPatientSelections[4]
+            dummyTest2!!.patientHAMDQ6 = allPatientSelections[5]
+            dummyTest2!!.patientHAMDQ7 = allPatientSelections[6]
+            dummyTest2!!.patientHAMDQ8 = allPatientSelections[7]
+            dummyTest2!!.patientHAMDQ9 = allPatientSelections[8]
+            dummyTest2!!.patientHAMDQ10 = allPatientSelections[9]
+            dummyTest2!!.patientHAMDQ11 = allPatientSelections[10]
+            dummyTest2!!.patientHAMDQ12 = allPatientSelections[11]
+            dummyTest2!!.patientHAMDQ13 = allPatientSelections[12]
+            dummyTest2!!.patientHAMDQ14 = allPatientSelections[13]
+            dummyTest2!!.patientHAMDQ15 = allPatientSelections[14]
+            dummyTest2!!.patientHAMDQ16 = allPatientSelections[15]
+            dummyTest2!!.patientHAMDQ17 = allPatientSelections[16]
+            dummyTest2!!.patientId = patient!!.patientId
+            dummyTest2!!.testDate = calendar2.time
+            dummyTest2!!.testName = "Hammilton Depression"
+            dummyTest2!!.patientHAMDTestResult = 40
+
+            var testId2 : Int = 0
+            if (dateCount2.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId2 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId2 += 1
+                    currentTest.testId = testId2.toString()
+                }
+                else
+                {
+                    testId2 = 1
+                    currentTest.testId = testId2.toString()
+                }
+            }
+
+            //add the test to the patient test list
+            var testList2 = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    testList2.add(patient.listOfTests!!.get(i)!!)
+                }
+                testList2.add(currentTest)
+                patient.listOfTests = null
+                for (i in 0 until testList2.size -1)
+                {
+                    patient.listOfTests!![i] = testList2.get(i)
+                }
+            }
+            realm.insertOrUpdate(dummyTest2)
+
+
+            var dummyTest3 = Test()
+            val calendar3: Calendar = Calendar.getInstance()
+            calendar3.set(Calendar.YEAR , 2022)
+            calendar3.set(Calendar.MONTH , 9)
+            calendar3.set(Calendar.DAY_OF_MONTH , 10)
+            calendar3.set(Calendar.HOUR_OF_DAY, 10)
+            calendar3.set(Calendar.MINUTE, 0)
+            calendar3.set(Calendar.SECOND,0)
+            //check if the current date is already in the test database
+            val dateCount3 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            if (dateCount3 > 0)
+            {
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+            }
+
+            dummyTest3!!.patientHAMDQ1 = allPatientSelections[0]
+            dummyTest3!!.patientHAMDQ2 = allPatientSelections[1]
+            dummyTest3!!.patientHAMDQ3 = allPatientSelections[2]
+            dummyTest3!!.patientHAMDQ4 = allPatientSelections[3]
+            dummyTest3!!.patientHAMDQ5 = allPatientSelections[4]
+            dummyTest3!!.patientHAMDQ6 = allPatientSelections[5]
+            dummyTest3!!.patientHAMDQ7 = allPatientSelections[6]
+            dummyTest3!!.patientHAMDQ8 = allPatientSelections[7]
+            dummyTest3!!.patientHAMDQ9 = allPatientSelections[8]
+            dummyTest3!!.patientHAMDQ10 = allPatientSelections[9]
+            dummyTest3!!.patientHAMDQ11 = allPatientSelections[10]
+            dummyTest3!!.patientHAMDQ12 = allPatientSelections[11]
+            dummyTest3!!.patientHAMDQ13 = allPatientSelections[12]
+            dummyTest3!!.patientHAMDQ14 = allPatientSelections[13]
+            dummyTest3!!.patientHAMDQ15 = allPatientSelections[14]
+            dummyTest3!!.patientHAMDQ16 = allPatientSelections[15]
+            dummyTest3!!.patientHAMDQ17 = allPatientSelections[16]
+            dummyTest3!!.patientId = patient!!.patientId
+            dummyTest3!!.testDate = calendar3.time
+            dummyTest3!!.testName = "Hammilton Depression"
+            dummyTest3!!.patientHAMDTestResult = 22
+
+            var testId3 : Int = 0
+            if (dateCount3.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId3 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId3 += 1
+                    currentTest.testId = testId3.toString()
+                }
+                else
+                {
+                    testId3 = 1
+                    currentTest.testId = testId3.toString()
+                }
+            }
+
+            //add the test to the patient test list
+            var testList3 = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    testList3.add(patient.listOfTests!!.get(i)!!)
+                }
+                testList3.add(currentTest)
+                patient.listOfTests = null
+                for (i in 0 until testList3.size -1)
+                {
+                    patient.listOfTests!![i] = testList3.get(i)
+                }
+            }
+            realm.insertOrUpdate(dummyTest3)
+
+            var dummyTest4 = Test()
+            val calendar4: Calendar = Calendar.getInstance()
+            calendar4.set(Calendar.YEAR , 2023)
+            calendar4.set(Calendar.MONTH , 1)
+            calendar4.set(Calendar.DAY_OF_MONTH , 5)
+            calendar4.set(Calendar.HOUR_OF_DAY, 10)
+            calendar4.set(Calendar.MINUTE, 0)
+            calendar4.set(Calendar.SECOND,0)
+            //check if the current date is already in the test database
+            val dateCount4 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            if (dateCount4 > 0)
+            {
+                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+            }
+
+            dummyTest2!!.patientHAMDQ1 = allPatientSelections[0]
+            dummyTest2!!.patientHAMDQ2 = allPatientSelections[1]
+            dummyTest2!!.patientHAMDQ3 = allPatientSelections[2]
+            dummyTest2!!.patientHAMDQ4 = allPatientSelections[3]
+            dummyTest2!!.patientHAMDQ5 = allPatientSelections[4]
+            dummyTest2!!.patientHAMDQ6 = allPatientSelections[5]
+            dummyTest2!!.patientHAMDQ7 = allPatientSelections[6]
+            dummyTest2!!.patientHAMDQ8 = allPatientSelections[7]
+            dummyTest2!!.patientHAMDQ9 = allPatientSelections[8]
+            dummyTest2!!.patientHAMDQ10 = allPatientSelections[9]
+            dummyTest2!!.patientHAMDQ11 = allPatientSelections[10]
+            dummyTest2!!.patientHAMDQ12 = allPatientSelections[11]
+            dummyTest2!!.patientHAMDQ13 = allPatientSelections[12]
+            dummyTest2!!.patientHAMDQ14 = allPatientSelections[13]
+            dummyTest2!!.patientHAMDQ15 = allPatientSelections[14]
+            dummyTest2!!.patientHAMDQ16 = allPatientSelections[15]
+            dummyTest2!!.patientHAMDQ17 = allPatientSelections[16]
+            dummyTest2!!.patientId = patient!!.patientId
+            dummyTest2!!.testDate = calendar4.time
+            dummyTest2!!.testName = "Hammilton Depression"
+            dummyTest2!!.patientHAMDTestResult = 7
+
+            var testId4 : Int = 0
+            if (dateCount4.toInt() == 0)
+            {
+                var testList = realm.where(Test::class.java).findAll()
+                if (testList.size > 0)
+                {
+                    testId4 = testList.get(testList.size -1)!!.testId.toInt()
+                    testId4 += 1
+                    currentTest.testId = testId4.toString()
+                }
+                else
+                {
+                    testId4 = 1
+                    currentTest.testId = testId4.toString()
+                }
+            }
+
+            //add the test to the patient test list
+            var testList4 = ArrayList<Test>()
+            if (patient.listOfTests != null)
+            {
+                for (i in 0 until patient.listOfTests!!.size -1)
+                {
+                    testList4.add(patient.listOfTests!!.get(i)!!)
+                }
+                testList4.add(currentTest)
+                patient.listOfTests = null
+                for (i in 0 until testList4.size -1)
+                {
+                    patient.listOfTests!![i] = testList4.get(i)
+                }
+            }
+            realm.insertOrUpdate(dummyTest4)
+
+            //update the user record within realm database
+            realm.copyToRealmOrUpdate(patient)
+
+
             //update the user record within realm database
             realm.copyToRealmOrUpdate(patient)
 
