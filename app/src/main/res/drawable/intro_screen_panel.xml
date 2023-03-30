@@ -11,13 +11,9 @@
     />
 
 <solid
-    android:color="@color/panel_test_color_2"
+    android:color="@color/intro_button_colors"
     />
 
-<stroke
-    android:color='@color/black'
-    android:width="1dp" />
 
-    />
 
 </shape>
