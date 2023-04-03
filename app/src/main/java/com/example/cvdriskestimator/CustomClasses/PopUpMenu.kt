@@ -29,7 +29,7 @@ class PopUpMenu {
     private var prleaderBoardFragment : LeaderBoardFragment?
     //variables to set the menu item titles
     var LOG : String = "Login"
-    var USER : String =  "tempUser Data"
+    var USER : String =  "Δεδομένα Χρήστη"
     private lateinit var prPopupmenu: PopupMenu
     private lateinit var realm : Realm
 
@@ -69,7 +69,7 @@ class PopUpMenu {
                     {
                         val prefs = prMainActivity.getPreferences(Context.MODE_PRIVATE)
                         val message = prefs.getString("LOG", "Test1")
-                        if (message == "Customer Change") {
+                        if (message == "Αλλαγή ασθενούς") {
                             prMainActivity.setContentViewForSearchCustomersScreen()
                         } else
                             prMainActivity.logOutUser()
@@ -351,8 +351,8 @@ class PopUpMenu {
         }
         val inflater : MenuInflater = prPopupmenu.menuInflater
         inflater.inflate(R.menu.main_optionss_menu , prPopupmenu.menu)
-        prPopupmenu.menu.getItem(2).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Customer Change"))
-        prPopupmenu.menu.getItem(4).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data")
+        prPopupmenu.menu.getItem(2).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Αλλαγή ασθενούς"))
+        prPopupmenu.menu.getItem(4).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " δεδομένα")
         // show icons on popup menu
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             prPopupmenu.setForceShowIcon(true)

@@ -217,6 +217,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         loginDoctorButton.setOnClickListener {
             showPatientLasttest = false
             setContentView(R.layout.activity_main)
+//            setContentViewForMainLayout(false)
+            constraintLayout = findViewById(R.id.mainConLayout)
+            fragmentContainer = findViewById(R.id.fragmentContainer)
             loginDoctorFragment = LoginDoctorFragment.newInstance()
 //            hideLayoutElements()
             fragmentTransaction(loginDoctorFragment)
@@ -380,7 +383,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         initRealmDB()
         //initialize the all patienttestlistview
         allPatientResultsPopUp = findViewById(R.id.include_all_patient_list_test)
-        allPatientResultsPopUp.visibility = View.VISIBLE
+        if (showList == true)
+            allPatientResultsPopUp.visibility = View.VISIBLE
         allPatientResultsLinLayout = allPatientResultsPopUp.findViewById(R.id.patientTestsLinLayout)
         var patientname = allPatientResultsPopUp.findViewById<TextView>(R.id.patientNameTxtV)
         patientname.setText(getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser"))
@@ -1745,10 +1749,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
     fun fragmentTransaction(fragment : Fragment) {
+            setFragmentContainerConstraint(1)
         if (!(fragment is LoginDoctorFragment) && !(fragment is RegisterDoctorFragment) && !(fragment is PatietTestListFragment))
             hideLayoutElements()
-        if (!(fragment is LoginDoctorFragment) && !(fragment is PatietTestListFragment))
-            setFragmentContainerConstraint(1)
+//        if (!(fragment is LoginDoctorFragment) && !(fragment is PatietTestListFragment))
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         if (fragment is CheckFragment)
             fragmentTransaction.show(fragment)
@@ -1856,7 +1860,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 R.id.customer_change_item -> {
                     val prefs = getPreferences(Context.MODE_PRIVATE)
                     val message = prefs.getString("LOG", "Test1")
-                    if (message == "Customer Change") {
+                    if (message == "Αλλαγή ασθενούς") {
                         setContentViewForSearchCustomersScreen()
                 } else
                     logOutUser()
@@ -2011,20 +2015,20 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         val inflater : MenuInflater = popupMenu.menuInflater
         inflater.inflate(R.menu.main_optionss_menu , popupMenu.menu)
         popupMenu.menu.getItem(3).title =
-            this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Customer Change")
+            this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Αλλαγή ασθενούς")
         popupMenu.menu.getItem(5).title =
-            this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data"
+            this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " δεδομένα"
         //aplly font to all menu item
-        applyFontToMenuItem(popupMenu.menu.getItem(0) , "Home" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(1) , "All Tests" , applicationContext)
-        applyFontToMenuItem(popupMenu.menu.getItem(2) , "LogOut Doctor" , applicationContext)
-        applyFontToMenuItem(popupMenu.menu.getItem(3) , this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Customer Change")!! , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(4) , "Customer Add" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(0) , "Αρχική" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(1) , "Ερωτηματολόγια" , applicationContext)
+        applyFontToMenuItem(popupMenu.menu.getItem(2) , "Έξοδος ιατρού" , applicationContext)
+        applyFontToMenuItem(popupMenu.menu.getItem(3) , this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Αλλαγή ασθνεούς")!! , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(4) , "Προσθήκη Ασθενούς" , applicationContext )
 //        applyFontToMenuItem(popupMenu.menu.getItem(3) , "Doctor Log Out" , applicationContext)
-        applyFontToMenuItem(popupMenu.menu.getItem(5) , this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " data" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(6) , "Clear All Data" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(7) , "Terms Of Use" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(8) ,"LeaderBoard" , applicationContext)
+        applyFontToMenuItem(popupMenu.menu.getItem(5) , this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " δεδομένα" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(6) , "Καθαρισμός δεδομένων" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(7) , "Όρρι Χρήσης" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(8) ,"Πίνακας αποτελεσμάτων" , applicationContext)
 
 
         // show icons on popup menu

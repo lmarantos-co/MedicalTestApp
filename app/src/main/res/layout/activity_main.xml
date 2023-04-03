@@ -32,7 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:elevation="10dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,8 +49,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:visibility="visible">
+        app:layout_constraintVertical_bias="0.0">
 
     </FrameLayout>
 
@@ -60,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:elevation="5dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/fragmentContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,18 +102,18 @@
             <!--                android:background="@color/MidnightBlue"-->
             <!--                android:scrollbars="vertical">-->
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/horGL1b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.01" />
-
 
             <RelativeLayout
                 android:id="@+id/cvdDiabetesRelLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horGL1b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.01" />
 
                 <View
                     android:id="@+id/cvdPanel"

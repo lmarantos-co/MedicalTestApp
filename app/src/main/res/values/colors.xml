@@ -19,6 +19,12 @@
     <color name="Naby">#000080</color>
     <color name="intro_button_colors">#1900db</color>
     <color name="DarkBlue">#00008B</color>
+    <color name="SteelBlue">#4682B4</color>
+    <color name="SeaGreen">#2E8B57</color>
+    <color name="Coral">#FF7F50</color>
+    <color name="Thistle">#D8BFD8</color>
+    <color name="Tan">#D2B48C</color>
+    <color name="DarkSeaGreen">#8FBC8F</color>
     <color name="very_light_gray">#EEEEEE</color>
     <color name="light_gray">#DDDDDD</color>
     <color name="sandy_brown">#F4A460</color>

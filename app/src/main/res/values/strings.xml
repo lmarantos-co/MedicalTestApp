@@ -6,6 +6,8 @@
 			+"Use clinical discretion in regards to patients who use e-cigarettes and other tobacco products.</string>
     <string name="cvd_response_text">Low-risk (less than 5%) \n Borderline risk (5% to 7.4%) \n
         Intermediate risk (7.5% to 19.9%) \n High risk (equal or above 20%) </string>
+    <string name="doctor_screen_message">"Εισοδος στην εφaρμογή"</string>
+    <string name="patient_screen_message">"Ασθενείς"</string>
     <string name="low_Risk"> Low-risk </string>
     <string name="Borderline_Risk">Borderline risk </string>
     <string name="intermediate_Risk">Intermediate risk </string>
@@ -26,8 +28,18 @@
     <string name="diabetes_test_result">The probability of developing Type 2 Diabetes is : </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="login_title">Please Enter Your Login Data :</string>
-    <string name="register_title">Please Enter Your Register Data : </string>
+    <string name="login_title">Παρακαλώ εισάγετε τα δεδομένα εισόδου :</string>
+    <string name="register_title">Παρακαλώ εισάγετε τα δεδομένα εγγραφής : </string>
+    <string name="account_info_text">Εισάγετε τα στοιχεία του λογαριασμού σας</string>
+    <string name="account_info_name">Εισάγετε τα όνομα σας</string>
+    <string name="account_info_lastname">Εισάγετε τα επώνυμο σας</string>
+    <string name="account_info_occupation">Εισάγετε τα επάγγελμα σας</string>
+    <string name="account_info_date_birth">Εισάγετε την ημερομηνία γέννηση σας</string>
+    <string name="account_info_years_of_prof">Xρόνια επαγγέλματος</string>
+    <string name="register_username_hint">Εισάγετε το όνομα χρήστη</string>
+    <string name="register_password">Εισάγετε το κωδικό χρήστη</string>
+    <string name="register_password_hint">Εισάγετε το κωδικό χρήστη</string>
+    <string name="register_re_enterpassword_hint">ξανα εισάγετε το κωδικό</string>
     <string name="medication">Prescribed Antihypertensive Medication</string>
     <string name="steroids">Prescribed Steroids</string>
     <string name="family_history">Family History</string>
@@ -296,8 +308,8 @@
     <string name="pdq_test_results">Parkinson Disease Questionnaire Score Results</string>
     <string name="pdq_test_score">Αποτέλεσμα : Συνολική εκτίμηση με βάση τις 8 κατηγορίες - ποσοστό : %1$s</string>
     <string name="pdq_test_intro_text">ΕΞΑΙΤΙΑΣ ΤΗΣ ΝΟΣΟΥ ΤΟΥ ΠΑΡΚΙΝΣΟΝ πόσο συχνά είχατε, τον προηγούμενο μήνα, τα παρακάτω;</string>
-    <string name="intro_screen_new_customer">ΝΕΟΣ ΠΕΛΑΤΗΣ</string>
-    <string name="intro_screen_all_customers">ΟΛΟΙ ΟΙ ΠΕΛΑΤΕΣ</string>
+    <string name="intro_screen_new_customer">Νέος Πελάτης</string>
+    <string name="intro_screen_all_customers">Όλοι οι πελάτες</string>
     <string name="bdi_test_results">BDI Test</string>
     <string name="bdi_test_intro_text">Kυκλώστε τον αριθμό δίπλα από την δήλωση που περιγράφει καλύτερα τον τρόπο
         που έχετε αισθανθεί την από την προηγούμενη εβδομάδα έως την ημέρα που διεξάγεται το ερωτηματολόγιο.</string>

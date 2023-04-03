@@ -11,7 +11,7 @@
     />
 
 <solid
-    android:color="@color/intro_button_colors"
+    android:color="@color/SteelBlue"
     />
 
 

@@ -4,30 +4,30 @@
     <item
         android:id="@+id/home_item"
         app:showAsAction="always"
-        android:title="Home"
+        android:title="Αρχική"
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item
         android:id="@+id/questions"
         app:showAsAction="always"
-        android:title="Questionaries"
+        android:title="Ερωτηματολόγια"
         android:icon="@drawable/questionary"/>
 
     <item
         android:id="@+id/doctor_item"
         app:showAsAction="always"
-        android:title="Doctor Logout"
+        android:title="Έξοδος Ιατρού"
         android:icon="@drawable/doctor_logout"  />
     <item
         android:id="@+id/customer_change_item"
         app:showAsAction="always"
-        android:title="Customer Change"
+        android:title="Αλλαγή ασθενούς"
         android:icon="@drawable/ic_sign_in__24"/>
 
     <item
         android:id="@+id/customer_add_item"
         app:showAsAction="always"
-        android:title="Customer Add"
+        android:title="Προσθήκη Ασθενούς"
         android:icon="@drawable/ic_registration_icon_24"/>
 
 <!--    <item-->
@@ -39,25 +39,25 @@
     <item
         android:id="@+id/user_item"
         app:showAsAction="always"
-        android:title="tempUser data"
+        android:title="tempUser δεδομένα"
         android:icon="@drawable/ic_person_outline_white_24dp"/>
 
     <item
         android:id="@+id/clear_data"
         app:showAsAction="always"
-        android:title="Clear All Data"
+        android:title="Καθαρισμός δεδομένων"
         android:icon="@drawable/ic_settings" />
 
     <item
         android:id="@+id/terms_item"
         app:showAsAction="always"
-        android:title="Terms Of Use"
+        android:title="Όροι Χρήσης"
         android:icon="@drawable/ic_terms"/>
 
     <item
         android:id="@+id/leaderboard_item"
         app:showAsAction="always"
-        android:title="LeaderBoard"
+        android:title="Πίνακας αποτελεσμάτων"
         android:icon="@drawable/leaderboard"/>
 
 </menu>
