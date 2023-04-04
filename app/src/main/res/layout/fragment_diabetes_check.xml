@@ -94,7 +94,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="16dp"
                 android:backgroundTint="@color/green_5"
-                android:text="HISTORY"
+                android:text="Ιστορικό"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 

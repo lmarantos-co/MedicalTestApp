@@ -39,7 +39,7 @@
     <string name="register_username_hint">Εισάγετε το όνομα χρήστη</string>
     <string name="register_password">Εισάγετε το κωδικό χρήστη</string>
     <string name="register_password_hint">Εισάγετε το κωδικό χρήστη</string>
-    <string name="register_re_enterpassword_hint">ξανα εισάγετε το κωδικό</string>
+    <string name="register_re_enterpassword_hint">Επανάεισάγετε το κωδικό</string>
     <string name="medication">Prescribed Antihypertensive Medication</string>
     <string name="steroids">Prescribed Steroids</string>
     <string name="family_history">Family History</string>

@@ -704,7 +704,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bpiCheckFragment.arguments = bundle
                 fragmentTransaction(bpiCheckFragment)
             }
-            "Mediterranean Diet Score" ->
+            "Mediterranean Diet Test" ->
             {
                 var bundle = Bundle()
                 bundle.putString("patientId" , "")
@@ -1356,7 +1356,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         val message = shared.getString("MSG" , "Test 1")
         val login = shared.getString("LOG" , "Test 2")
         val popUpmenu = popupMenu.menu
-        popUpmenu.getItem(1).setTitle("Customer Change")
+        popUpmenu.getItem(1).setTitle("Αλλαγή ασθενούς")
         //set register button message
         popUpmenu.getItem(3).setTitle("tempUser Data")
 
