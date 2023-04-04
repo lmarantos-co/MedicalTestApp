@@ -302,6 +302,8 @@
                         android:background="@drawable/gray_textview_style"
                         android:gravity="center"
                         android:minHeight="48dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
                         android:text="@string/account_info_text"
                         android:textSize="20sp" />
 

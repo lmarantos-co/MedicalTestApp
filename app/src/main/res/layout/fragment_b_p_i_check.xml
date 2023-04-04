@@ -82,7 +82,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="16dp"
                 android:backgroundTint="@color/crimson_red"
-                android:text="HISTORY"
+                android:text="Ιστορικό"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
