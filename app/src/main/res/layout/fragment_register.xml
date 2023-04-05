@@ -195,6 +195,7 @@
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Όνομα χρήστη  :"
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
@@ -209,6 +210,7 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/register_username_hint"
+                        android:textColorHint="@color/black"
                         android:inputType="textPersonName"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -239,6 +241,7 @@
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Κωδικός"
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
@@ -254,6 +257,7 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/register_password_hint"
+                        android:textColorHint="@color/black"
                         android:inputType="textPassword"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -273,6 +277,7 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/register_re_enterpassword_hint"
+                        android:textColorHint="@color/black"
                         android:inputType="textPassword"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -305,6 +310,7 @@
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
                         android:text="@string/account_info_text"
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
@@ -318,6 +324,7 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/account_info_name"
+                        android:textColorHint="@color/black"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -335,6 +342,7 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/account_info_lastname"
+                        android:textColorHint="@color/black"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
