@@ -1135,7 +1135,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     {
         val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
         with (sharedPref.edit()) {
-            putString("LOG" , "Customer Change")
+            putString("LOG" , "Αλλαγή ασθενούς")
             putString("MSG" , "Medical Test Estimator")
 //            putString("userName" , "tempUser")
             apply()
@@ -1349,7 +1349,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         with(shared.edit())
         {
             putString("MSG" , "Medical Test Estimator")
-            putString("LOG" , "Customer Change")
+            putString("LOG" , "Αλλαγή Ασθενούς")
             putString("userName" , "tempUser")
             apply()
         }
@@ -2027,7 +2027,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 //        applyFontToMenuItem(popupMenu.menu.getItem(3) , "Doctor Log Out" , applicationContext)
         applyFontToMenuItem(popupMenu.menu.getItem(5) , this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " δεδομένα" , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(6) , "Καθαρισμός δεδομένων" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(7) , "Όρρι Χρήσης" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(7) , "Όροι Χρήσης" , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(8) ,"Πίνακας αποτελεσμάτων" , applicationContext)
 
 
