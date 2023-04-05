@@ -32,7 +32,7 @@
             layout="@layout/popup_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horGL1"
@@ -89,6 +89,7 @@
                 android:layout_marginRight="16dp"
                 android:backgroundTint="@color/light_blue"
                 android:text="Ιστορικό"
+                android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -173,6 +174,7 @@
                             android:layout_gravity="center|left"
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -253,6 +255,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -336,6 +339,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -419,10 +423,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ4RB2"
@@ -503,10 +507,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ5RB2"
@@ -587,10 +591,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ6RB2"
@@ -671,10 +675,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ7RB2"
@@ -755,6 +759,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -838,10 +843,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ9RB2"
@@ -922,10 +927,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ10RB2"
@@ -1005,10 +1010,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ11RB2"
@@ -1089,10 +1094,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ12RB2"
@@ -1173,10 +1178,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ13RB2"
@@ -1258,6 +1263,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1342,10 +1348,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ15RB2"
@@ -1427,10 +1433,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ16RB2"
@@ -1512,10 +1518,10 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ17RB2"
@@ -1597,6 +1603,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1682,6 +1689,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -1767,6 +1775,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1849,6 +1858,7 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -1921,6 +1931,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@id/submitBtn"
+                        android:textAllCaps="false"
                         android:layout_alignParentLeft="false"
                         android:layout_alignParentRight="false"
                         android:layout_alignParentBottom="false"

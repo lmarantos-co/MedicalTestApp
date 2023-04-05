@@ -88,6 +88,7 @@
                 android:layout_marginRight="16dp"
                 android:backgroundTint="@color/green_dass"
                 android:text="Ιστορικό"
+                android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -1840,6 +1841,7 @@
                         android:background="@drawable/green_button_rounded_corners"
                         android:padding="20dp"
                         android:text="Υπολογισμός"
+                        android:textAllCaps="true"
                         android:textSize="20sp"
                         android:visibility="visible"
                         tools:ignore="TextContrastCheck" />
@@ -1857,6 +1859,7 @@
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/green_button_rounded_corners"
+                        android:textAllCaps="true"
                         android:text="Καθαρισμός φόρμας" />
 
 

@@ -92,7 +92,7 @@
                     android:backgroundTint="@color/light_gray"
                     android:clickable="true"
                     android:enabled="true"
-                    android:text="Select Dates"
+                    android:text="Επιλογ'η Ημ/νιών"
                     android:textColor="@color/black" />
 
                 <LinearLayout
@@ -149,7 +149,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/history_test_result__caption_txtv_style"
                         android:gravity="center"
-                        android:text="DATE"
+                        android:text="Ημ/νία"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -160,7 +160,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/history_test_result_txtv_caption_style_left"
                         android:gravity="center"
-                        android:text="SCORE"
+                        android:text="Αποτέλεσμα"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 

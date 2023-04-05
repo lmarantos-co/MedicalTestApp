@@ -53,7 +53,7 @@
             android:shadowDx="4"
             android:shadowDy="4"
             android:shadowRadius="4"
-            android:text="ADD NEW"
+            android:text="ΠΡΟΣΘΗΚΗ ΝΕΟΥ"
             android:textColor="@color/black"
             android:textSize="34sp"
             android:textStyle="bold" />
@@ -72,7 +72,7 @@
             android:shadowDx="4"
             android:shadowDy="4"
             android:shadowRadius="4"
-            android:text="UPDATE LAST"
+            android:text="ΕΠΕΞΕΡΓΑΣΙΑ ΤΕΛΕΥΤΑΙΟΥ"
             android:textColor="@color/black"
             android:textSize="34sp"
             android:textStyle="bold" />
@@ -90,7 +90,7 @@
             android:shadowDx="4"
             android:shadowDy="4"
             android:shadowRadius="4"
-            android:text="HISTORY"
+            android:text="ΙΣΤΟΡΙΚΟ"
             android:textColor="@color/black"
             android:textSize="34sp"
             android:textStyle="bold" />

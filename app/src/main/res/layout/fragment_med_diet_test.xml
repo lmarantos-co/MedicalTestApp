@@ -1266,6 +1266,7 @@
                         android:background="@drawable/mds_button_rounded_corners"
                         android:padding="20dp"
                         android:text="Υπολογισμός"
+                        android:textAllCaps="false"
                         android:textSize="20sp"
                         android:visibility="visible"
                         tools:ignore="TextContrastCheck" />
@@ -1283,6 +1284,7 @@
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/mds_button_rounded_corners"
+                        android:textAllCaps="false"
                         android:text="Καθαρισμός δεδομένων" />
                 </RelativeLayout>
 

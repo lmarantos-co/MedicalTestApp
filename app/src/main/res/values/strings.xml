@@ -40,6 +40,11 @@
     <string name="register_password">Εισάγετε το κωδικό χρήστη</string>
     <string name="register_password_hint">Εισάγετε το κωδικό χρήστη</string>
     <string name="register_re_enterpassword_hint">Επανάεισάγετε το κωδικό</string>
+    <string name="register_doctor_username">Όνομα χρήστη</string>
+    <string name="register_doctor_username_hint">Εισάγετε Όνομα χρήστη</string>
+    <string name="register_doctor_ρε_username_hint">Επαναεισάγετε Όνομα χρήστη</string>
+    <string name="register_doctor_password_hint">Εισάγετε Κωδικό χρήστη</string>
+    <string name="register_doctor_ρε_password_hint">Επαναεισάγετε Κωδικό χρήστη</string>
     <string name="medication">Prescribed Antihypertensive Medication</string>
     <string name="steroids">Prescribed Steroids</string>
     <string name="family_history">Family History</string>

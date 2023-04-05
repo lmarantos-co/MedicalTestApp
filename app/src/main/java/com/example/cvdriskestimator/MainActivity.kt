@@ -572,7 +572,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bpiCheckFragment.arguments = bundle
                 fragmentTransaction(bpiCheckFragment)
             }
-            "Mediterranean Diet Score" ->
+            "Mediterranean Diet Test" ->
             {
                 var bundle = Bundle()
                 bundle.putString("patientId" , "")

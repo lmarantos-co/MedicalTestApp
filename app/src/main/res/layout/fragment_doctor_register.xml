@@ -66,14 +66,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.1" />
+                app:layout_constraintGuide_percent="0.07" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/barHG4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.18" />
+                app:layout_constraintGuide_percent="0.16" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/horGL4"
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.34" />
+                app:layout_constraintGuide_percent="0.37" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/horGL7"
@@ -177,12 +177,13 @@
                     android:background="@drawable/gray_textview_style"
                     android:gravity="center"
                     android:minHeight="48dp"
-                    android:text="UserName  :"
+                    android:text="@string/register_doctor_username"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/userNameRegisterEditText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/userNameTxtV"
                     android:layout_centerInParent="true"
@@ -190,7 +191,9 @@
                     android:editable="true"
                     android:ems="10"
                     android:enabled="true"
-                    android:hint="Enter Your Username"
+                    android:gravity="center"
+                    android:hint="@string/register_doctor_username_hint"
+                    android:textColorHint="#000000"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:paddingStart="4dp"
@@ -220,12 +223,13 @@
                     android:background="@drawable/gray_textview_style"
                     android:gravity="center"
                     android:minHeight="48dp"
-                    android:text="Password : "
+                    android:text="Κωδικός"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/editTextRegisterPassword"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/passwordTxtV"
                     android:layout_centerHorizontal="true"
@@ -234,7 +238,9 @@
                     android:editable="true"
                     android:ems="10"
                     android:enabled="true"
-                    android:hint="Enter Your Password"
+                    android:gravity="center"
+                    android:hint="@string/register_doctor_password_hint"
+                    android:textColorHint="#000000"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
                     android:paddingStart="4dp"
@@ -244,7 +250,7 @@
 
                 <EditText
                     android:id="@+id/editTextValidateRegisterPassword"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/editTextRegisterPassword"
                     android:layout_centerInParent="true"
@@ -252,7 +258,9 @@
                     android:editable="true"
                     android:ems="10"
                     android:enabled="true"
-                    android:hint="Re-enter Your Password"
+                    android:gravity="center"
+                    android:hint="@string/register_doctor_ρε_password_hint"
+                    android:textColorHint="#000000"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
                     android:paddingStart="4dp"
@@ -276,10 +284,10 @@
             android:id="@+id/registerSbmBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:background="@drawable/login_register_textview_style"
             android:padding="20dp"
-            android:text="REGISTER"
+            android:text="Υποβολή"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
