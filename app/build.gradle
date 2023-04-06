@@ -7,7 +7,7 @@ plugins {
 
 android {
 
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.example.cvdriskestimator"
@@ -20,6 +20,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        multiDexEnabled true
 
 //        javaCompileOptions {
 //            annotationProcessorOptions {
@@ -147,4 +149,6 @@ dependencies {
 
     //MpAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    implementation 'com.android.support:multidex:2.0.1'
 }
