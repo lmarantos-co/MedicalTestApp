@@ -163,8 +163,8 @@
                 android:background="@drawable/gray_textview_style"
                 android:gravity="center"
                 android:minHeight="48dp"
-                android:text="Όνομα Χρήστη:"
-                android:textColor="@color/black"
+                android:text="Όνομα xρήστη:"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
 
             <EditText
@@ -211,8 +211,8 @@
                 android:background="@drawable/gray_textview_style"
                 android:gravity="center"
                 android:minHeight="48dp"
-                android:text="κωδικός Χρήστη:"
-                android:textColor="@color/black"
+                android:text="Κωδικός χρήστη:"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
 
 
@@ -228,13 +228,13 @@
                 android:ems="10"
                 android:enabled="true"
                 android:hint="Εισάγετε το κωδικό σας"
-                android:textColorHint="#000000"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
                 android:paddingStart="4dp"
                 android:password="true"
                 android:text="@={loginDoctorViewModel.inputPassword}"
                 android:textColor="@color/black"
+                android:textColorHint="#000000"
                 android:textSize="20sp" />
 
         </RelativeLayout>
@@ -256,6 +256,7 @@
             android:backgroundTint="@color/black"
             android:padding="20dp"
             android:text="Είσοδος"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/verGL3"
