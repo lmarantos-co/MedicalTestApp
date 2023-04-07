@@ -20,6 +20,8 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/covariance_logo" />
 
+
+
     <TextView
         android:id="@+id/medicalTxtV"
         android:layout_width="wrap_content"
@@ -49,6 +51,7 @@
         android:textSize="20sp"
         tools:layout_editor_absoluteX="241dp"
         tools:layout_editor_absoluteY="595dp" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftVGL"

@@ -6,7 +6,7 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="3000">
+        motion:duration="2000">
        <KeyFrameSet>
        </KeyFrameSet>
         <OnSwipe
@@ -87,7 +87,8 @@
             android:alpha="0.1"
             android:scaleX="0.1"
             android:scaleY="0.1"
-            android:translationX="-100dp" />
+            android:translationX="-100dp"
+            android:translationY="-100dp" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
