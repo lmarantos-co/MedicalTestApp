@@ -178,7 +178,7 @@
                     android:gravity="center"
                     android:minHeight="48dp"
                     android:text="@string/register_doctor_username"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <EditText
@@ -193,11 +193,11 @@
                     android:enabled="true"
                     android:gravity="center"
                     android:hint="@string/register_doctor_username_hint"
+                    android:textColorHint="#000000"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:paddingStart="4dp"
                     android:text="@={registerDoctorViewModel.inputDoctorName}"
-                    android:textColorHint="#000000"
                     android:textSize="20sp" />
 
             </RelativeLayout>
@@ -224,7 +224,7 @@
                     android:gravity="center"
                     android:minHeight="48dp"
                     android:text="Κωδικός"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <EditText
@@ -287,7 +287,6 @@
             android:background="@drawable/login_register_textview_style"
             android:padding="20dp"
             android:text="Υποβολή"
-            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -6,7 +6,7 @@
 			+"Use clinical discretion in regards to patients who use e-cigarettes and other tobacco products.</string>
     <string name="cvd_response_text">Low-risk (less than 5%) \n Borderline risk (5% to 7.4%) \n
         Intermediate risk (7.5% to 19.9%) \n High risk (equal or above 20%) </string>
-    <string name="doctor_screen_message">"Εισοδος στην εφαρμογή"</string>
+    <string name="doctor_screen_message">"Εισοδος στην εφaρμογή"</string>
     <string name="patient_screen_message">"Ασθενείς"</string>
     <string name="low_Risk"> Low-risk </string>
     <string name="Borderline_Risk">Borderline risk </string>
@@ -41,10 +41,10 @@
     <string name="register_password_hint">Εισάγετε το κωδικό χρήστη</string>
     <string name="register_re_enterpassword_hint">Επανάεισάγετε το κωδικό</string>
     <string name="register_doctor_username">Όνομα χρήστη</string>
-    <string name="register_doctor_username_hint">Εισάγετε όνομα χρήστη</string>
-    <string name="register_doctor_ρε_username_hint">Επαναεισάγετε όνομα χρήστη</string>
-    <string name="register_doctor_password_hint">Εισάγετε κωδικό χρήστη</string>
-    <string name="register_doctor_ρε_password_hint">Επαναεισάγετε κωδικό χρήστη</string>
+    <string name="register_doctor_username_hint">Εισάγετε Όνομα χρήστη</string>
+    <string name="register_doctor_ρε_username_hint">Επαναεισάγετε Όνομα χρήστη</string>
+    <string name="register_doctor_password_hint">Εισάγετε Κωδικό χρήστη</string>
+    <string name="register_doctor_ρε_password_hint">Επαναεισάγετε Κωδικό χρήστη</string>
     <string name="medication">Prescribed Antihypertensive Medication</string>
     <string name="steroids">Prescribed Steroids</string>
     <string name="family_history">Family History</string>
