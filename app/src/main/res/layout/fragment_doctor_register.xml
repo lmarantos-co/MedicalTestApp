@@ -193,11 +193,11 @@
                     android:enabled="true"
                     android:gravity="center"
                     android:hint="@string/register_doctor_username_hint"
-                    android:textColorHint="#000000"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:paddingStart="4dp"
                     android:text="@={registerDoctorViewModel.inputDoctorName}"
+                    android:textColorHint="#000000"
                     android:textSize="20sp" />
 
             </RelativeLayout>

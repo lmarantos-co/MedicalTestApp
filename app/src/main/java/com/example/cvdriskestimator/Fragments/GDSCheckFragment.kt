@@ -276,16 +276,16 @@ class GDSCheckFragment : Fragment() {
             && (rg.id != gdsCheckBinding.GDS13QRG.id))
         {
             if (rg.get(1).id == radioButtonId)
-                result = 1
-            if (rg.get(0).id == radioButtonId)
                 result = 0
+            if (rg.get(0).id == radioButtonId)
+                result = 1
         }
         else
         {
             if (rg.get(1).id == radioButtonId)
-                result = 0
-            if (rg.get(0).id == radioButtonId)
                 result = 1
+            if (rg.get(0).id == radioButtonId)
+                result = 0
         }
         return result
     }

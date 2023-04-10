@@ -298,10 +298,10 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             calendar2.set(Calendar.MINUTE, 0)
             calendar2.set(Calendar.SECOND, 0)
             val dateCount1 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
-            if (dateCount1 > 0)
-            {
-                dummytest1 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
-            }
+//            if (dateCount1 > 0)
+//            {
+//                dummytest1 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+//            }
 
             dummytest1.patientAge = age
             dummytest1.patientPAM = pam
@@ -341,7 +341,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
                     listOfTest1[i] = patient.listOfTests!!.get(i)!!
                 }
                 patient.listOfTests = null
-                listOfTest1.add(currentTest)
+                listOfTest1.add(dummytest1)
                 for (i in 0 until listOfTest1.size -1)
                 {
                     patient.listOfTests?.set(i, listOfTest1.get(i))
@@ -359,11 +359,11 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             calendar3.set(Calendar.HOUR_OF_DAY, 14)
             calendar3.set(Calendar.MINUTE, 0)
             calendar3.set(Calendar.SECOND, 0)
-            val dateCount2 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
-            if (dateCount2 > 0)
-            {
-                dummytest2 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
-            }
+//            val dateCount2 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+//            if (dateCount2 > 0)
+//            {
+//                dummytest2 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+//            }
 
             dummytest2.patientAge = age
             dummytest2.patientPAM = pam
@@ -379,21 +379,21 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             dummytest2.testName = "DIABETES"
 
             var testId3 : Int = 0
-            if (dateCount2.toInt() == 0)
-            {
-                var testList = realm.where(Test::class.java).findAll()
-                if (testList.size > 0)
-                {
-                    testId3 = testList.get(testList.size -1)!!.testId.toInt()
-                    testId3 += 1
-                    currentTest.testId = testId3.toString()
-                }
-                else
-                {
-                    testId3 = 1
-                    currentTest.testId = testId3.toString()
-                }
-            }
+//            if (dateCount2.toInt() == 0)
+//            {
+//                var testList = realm.where(Test::class.java).findAll()
+//                if (testList.size > 0)
+//                {
+//                    testId3 = testList.get(testList.size -1)!!.testId.toInt()
+//                    testId3 += 1
+//                    currentTest.testId = testId3.toString()
+//                }
+//                else
+//                {
+//                    testId3 = 1
+//                    currentTest.testId = testId3.toString()
+//                }
+//            }
 
             var listOfTest3 = ArrayList<Test>()
             if (patient.listOfTests != null)
@@ -421,11 +421,11 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             calendar4.set(Calendar.HOUR_OF_DAY, 14)
             calendar4.set(Calendar.MINUTE, 0)
             calendar4.set(Calendar.SECOND, 0)
-            val dateCount3 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
-            if (dateCount3 > 0)
-            {
-                dummytest3 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
-            }
+//            val dateCount3 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+//            if (dateCount3 > 0)
+//            {
+//                dummytest3 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+//            }
 
             dummytest3.patientAge = age
             dummytest3.patientPAM = pam
@@ -441,21 +441,21 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             dummytest3.testName = "DIABETES"
 
             var testId4 : Int = 0
-            if (dateCount3.toInt() == 0)
-            {
-                var testList = realm.where(Test::class.java).findAll()
-                if (testList.size > 0)
-                {
-                    testId4 = testList.get(testList.size -1)!!.testId.toInt()
-                    testId4 += 1
-                    currentTest.testId = testId4.toString()
-                }
-                else
-                {
-                    testId4 = 1
-                    currentTest.testId = testId4.toString()
-                }
-            }
+//            if (dateCount3.toInt() == 0)
+//            {
+//                var testList = realm.where(Test::class.java).findAll()
+//                if (testList.size > 0)
+//                {
+//                    testId4 = testList.get(testList.size -1)!!.testId.toInt()
+//                    testId4 += 1
+//                    currentTest.testId = testId4.toString()
+//                }
+//                else
+//                {
+//                    testId4 = 1
+//                    currentTest.testId = testId4.toString()
+//                }
+//            }
 
             var listOfTest4 = ArrayList<Test>()
             if (patient.listOfTests != null)
@@ -483,11 +483,11 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             calendar5.set(Calendar.HOUR_OF_DAY, 14)
             calendar5.set(Calendar.MINUTE, 0)
             calendar5.set(Calendar.SECOND, 0)
-            val dateCount4 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
-            if (dateCount4 > 0)
-            {
-                dummytest3 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
-            }
+//            val dateCount4 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+//            if (dateCount4 > 0)
+//            {
+//                dummytest3 = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+//            }
 
             dummytest4.patientAge = age
             dummytest4.patientPAM = pam
@@ -503,21 +503,21 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             dummytest4.testName = "DIABETES"
 
             var testId2 : Int = 0
-            if (dateCount4.toInt() == 0)
-            {
-                var testList = realm.where(Test::class.java).findAll()
-                if (testList.size > 0)
-                {
-                    testId2 = testList.get(testList.size -1)!!.testId.toInt()
-                    testId2 += 1
-                    currentTest.testId = testId2.toString()
-                }
-                else
-                {
-                    testId2 = 1
-                    currentTest.testId = testId2.toString()
-                }
-            }
+//            if (dateCount4.toInt() == 0)
+//            {
+//                var testList = realm.where(Test::class.java).findAll()
+//                if (testList.size > 0)
+//                {
+//                    testId2 = testList.get(testList.size -1)!!.testId.toInt()
+//                    testId2 += 1
+//                    currentTest.testId = testId2.toString()
+//                }
+//                else
+//                {
+//                    testId2 = 1
+//                    currentTest.testId = testId2.toString()
+//                }
+//            }
 
             var listOfTest2 = ArrayList<Test>()
             if (patient.listOfTests != null)
