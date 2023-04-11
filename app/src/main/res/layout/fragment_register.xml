@@ -424,6 +424,8 @@
             android:background="@drawable/login_register_textview_style"
             android:padding="20dp"
             android:text="Εγγραφή"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
