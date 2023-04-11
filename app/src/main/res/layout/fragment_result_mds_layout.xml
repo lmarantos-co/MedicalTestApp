@@ -38,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/trans"
+        android:drawableLeft="@drawable/ic_diet_24dp"
         android:drawablePadding="8dp"
         android:elevation="4dp"
         android:gravity="center"
@@ -47,7 +48,6 @@
         android:text="@string/mds_test_results"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:drawableLeft="@drawable/ic_depression_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/horGL1" />

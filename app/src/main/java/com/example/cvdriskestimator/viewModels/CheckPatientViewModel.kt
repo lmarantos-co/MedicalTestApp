@@ -456,7 +456,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
             dummytest1.TCH = "210"
             dummytest1.HDL = "50"
             dummytest1.smoker = "Current"
-            dummytest1.treatment = "Yes"
+            dummytest1.treatment = "yes"
             dummytest1.testDate = calendar.time
             dummytest1.patientId = patient.patientId
             dummytest1!!.cvdTestResult = 60
@@ -480,7 +480,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
             dummytest2.HDL = "40"
             dummytest2.smoker = "Current"
             dummytest2.patientId = patient.patientId
-            dummytest2.treatment = "Yes"
+            dummytest2.treatment = "yes"
             dummytest2.testDate = calendar2.time
             dummytest2!!.cvdTestResult = 40
             dummytest2!!.testName = "CardioVascularDisease"
@@ -504,7 +504,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
             dummytest3.HDL = "70"
             dummytest3.patientId = patient.patientId
             dummytest3.smoker = "Current"
-            dummytest3.treatment = "No"
+            dummytest3.treatment = "no"
             dummytest3.testDate = calendar3.time
             dummytest3!!.cvdTestResult = 80
             dummytest3!!.testName = "CardioVascularDisease"
@@ -527,7 +527,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
             dummytest4.HDL = "70"
             dummytest4.patientId = patient.patientId
             dummytest4.smoker = "Current"
-            dummytest4.treatment = "No"
+            dummytest4.treatment = "no"
             dummytest4.testDate = calendar4.time
             dummytest4!!.cvdTestResult = 30
             dummytest4!!.testName = "CardioVascularDisease"

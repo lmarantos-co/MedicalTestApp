@@ -68,7 +68,6 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/green_dass_test_form_layout"
-                android:drawableLeft="@drawable/ic_dass_depression_24_post"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:minHeight="48dp"

@@ -258,7 +258,6 @@
             android:text="Είσοδος"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:textAllCaps="false"
             app:layout_constraintEnd_toStartOf="@+id/verGL3"
             app:layout_constraintStart_toStartOf="@+id/VG5"
             app:layout_constraintTop_toTopOf="@+id/horGL6" />
