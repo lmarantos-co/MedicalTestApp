@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/historyConLayout"
         android:layout_width="match_parent"
+        android:background="@color/MidnightBlue"
         android:layout_height="match_parent">
 
         <include
@@ -40,6 +41,7 @@
                 android:layout_height="0dp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:textAllCaps="false"
                 app:layout_constraintTop_toBottomOf="@id/horGL1">
 
                 <TextView
@@ -92,7 +94,8 @@
                     android:backgroundTint="@color/light_gray"
                     android:clickable="true"
                     android:enabled="true"
-                    android:text="Επιλογ'η Ημ/νιών"
+                    android:text="Επιλογή Ημ/νιών"
+                    android:textAllCaps="false"
                     android:textColor="@color/black" />
 
                 <LinearLayout

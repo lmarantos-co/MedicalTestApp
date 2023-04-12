@@ -191,11 +191,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:background="@drawable/gray_textview_style"
+                        android:background="@color/black"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Όνομα χρήστη  :"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="20sp" />
 
                     <EditText
@@ -237,11 +237,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:background="@drawable/gray_textview_style"
+                        android:background="@color/black"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Κωδικός"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="20sp" />
 
                     <EditText
@@ -304,13 +304,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:background="@drawable/gray_textview_style"
+                        android:background="@color/black"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
                         android:text="@string/account_info_text"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="20sp" />
 
                     <EditText
@@ -342,11 +342,11 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/account_info_lastname"
-                        android:textColorHint="@color/black"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
                         android:text="@={registerViewModel.inputPatientLastName}"
+                        android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
@@ -365,6 +365,7 @@
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
                         android:text="@={registerViewModel.inputDateOfBirth}"
+                        android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
@@ -379,6 +380,7 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/account_info_occupation"
+                        android:textColorHint="@color/black"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -397,6 +399,7 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/account_info_years_of_prof"
+                        android:textColorHint="@color/black"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"

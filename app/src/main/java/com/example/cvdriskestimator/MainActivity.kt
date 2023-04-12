@@ -387,7 +387,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             allPatientResultsPopUp.visibility = View.VISIBLE
         allPatientResultsLinLayout = allPatientResultsPopUp.findViewById(R.id.patientTestsLinLayout)
         var patientname = allPatientResultsPopUp.findViewById<TextView>(R.id.patientNameTxtV)
-        patientname.setText(getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser"))
+        var patientNameText = "Τεστ ολοκληρωμένα από το χρήστη " + getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+        patientname.setText(patientNameText)
         patienTestListOkBtn = allPatientResultsPopUp.findViewById(R.id.okBtn)
         allPatientsTestNameListView = findViewById(R.id.alltestsNameResultsistView)
         allPatientTestDateLisView = findViewById(R.id.alltestsDatesResultsistView)

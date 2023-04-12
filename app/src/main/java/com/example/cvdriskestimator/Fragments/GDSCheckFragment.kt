@@ -200,9 +200,6 @@ class GDSCheckFragment : Fragment() {
 
         }
 
-        gdsCheckBinding.historyBtn.setOnClickListener {
-            gdsPatientViewModel.history()
-        }
     }
 
     private fun setPatientData(test : Test)

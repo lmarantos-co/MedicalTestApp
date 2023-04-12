@@ -29,15 +29,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_gravity="center"
+        android:background="@color/MidnightBlue"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/include_cvd_title_form">
 
         <TextView
             android:id="@+id/addNewTxtV"
@@ -47,7 +48,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/gray_result_title_style"
+            android:background="@color/light_gray"
             android:gravity="center"
             android:shadowColor="@android:color/darker_gray"
             android:shadowDx="4"
@@ -55,7 +56,7 @@
             android:shadowRadius="4"
             android:text="ΠΡΟΣΘΗΚΗ ΝΕΟΥ"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
@@ -66,7 +67,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/gray_result_title_style"
+            android:background="@color/light_gray"
             android:gravity="center"
             android:shadowColor="@android:color/darker_gray"
             android:shadowDx="4"
@@ -74,7 +75,7 @@
             android:shadowRadius="4"
             android:text="ΕΠΕΞΕΡΓΑΣΙΑ ΤΕΛΕΥΤΑΙΟΥ"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
@@ -84,7 +85,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:background="@drawable/gray_result_title_style"
+            android:background="@color/light_gray"
             android:gravity="center"
             android:shadowColor="@color/light_gray"
             android:shadowDx="4"
@@ -92,7 +93,7 @@
             android:shadowRadius="4"
             android:text="ΙΣΤΟΡΙΚΟ"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
     </LinearLayout>

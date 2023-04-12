@@ -193,9 +193,6 @@ class MDICheckFragment : Fragment() {
 
         }
 
-        mdiCheckBinding.historyBtn.setOnClickListener {
-            mdiPatientViewModel.history()
-        }
     }
 
     private fun setPatientData(test : Test)

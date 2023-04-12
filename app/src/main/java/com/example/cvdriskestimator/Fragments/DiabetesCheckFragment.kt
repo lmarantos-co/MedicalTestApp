@@ -248,10 +248,6 @@ class DiabetesCheckFragment : Fragment() {
             hideTermsOfUseLayout()
         }
 
-        diabetesCheckBinding.historyBtn.setOnClickListener {
-            checkDiabetesPatientViewModel.history()
-        }
-
     }
 
     private fun hideSoftKeyboard()

@@ -374,9 +374,6 @@ class BPICheckFragment : Fragment() {
                 setPatientDataOnForm(it!!)
         }
 
-        binding.historyBtn.setOnClickListener {
-            bpiPatientViewModel.history()
-        }
     }
 
     fun setPatientInitialisedStatus(status : Boolean)

@@ -32,11 +32,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:elevation="10dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/include_cvd_title_form"
+        app:layout_constraintTop_toTopOf="@+id/horGL1" />
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
@@ -141,7 +142,7 @@
                     android:fontFamily="sans-serif"
                     android:gravity="center"
                     android:text="CVD Test"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -167,7 +168,7 @@
                     android:layout_centerInParent="true"
                     android:gravity="center"
                     android:text="Diabetes Test"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -201,7 +202,7 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:text="Derpession Test"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -227,7 +228,7 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:text="Anxiety Test"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -261,7 +262,7 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:text="Pain Test"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -287,7 +288,7 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:text="MedDietScore \n Test"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -320,7 +321,7 @@
                     android:layout_centerInParent="true"
                     android:gravity="center"
                     android:text="Beck \n Depression"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -345,7 +346,7 @@
                     android:layout_centerInParent="true"
                     android:gravity="center"
                     android:text="Geriatric  \n Depression"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -378,7 +379,7 @@
                     android:layout_centerInParent="true"
                     android:gravity="center"
                     android:text="STAI Test"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -390,12 +391,10 @@
                     android:layout_alignLeft="@id/zungPanel"
                     android:layout_alignParentRight="true"
                     android:layout_centerInParent="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
                     android:elevation="5dp"
                     android:gravity="center"
                     android:text="Zung \n Depression"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -445,7 +444,7 @@
                     android:layout_marginBottom="15dp"
                     android:gravity="center"
                     android:text="Hammilton \n Depression"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -472,7 +471,7 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:text="DASS TEST"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
 

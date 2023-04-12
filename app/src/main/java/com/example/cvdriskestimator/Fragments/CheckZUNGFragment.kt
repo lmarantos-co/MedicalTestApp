@@ -262,19 +262,19 @@ class CheckZUNGFragment : Fragment() {
             {
 
             }
-            0 ->
+            1 ->
             {
                 (rg.getChildAt(0) as RadioButton).isChecked = true
             }
-            1 ->
+            2 ->
             {
                 (rg.getChildAt(1) as RadioButton).isChecked = true
             }
-            2 ->
+            3 ->
             {
                 (rg.getChildAt(2) as RadioButton).isChecked = true
             }
-            3->
+            4->
             {
                 (rg.getChildAt(3) as RadioButton).isChecked = true
             }
