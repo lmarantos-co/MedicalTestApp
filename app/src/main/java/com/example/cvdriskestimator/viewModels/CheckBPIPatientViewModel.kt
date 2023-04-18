@@ -60,14 +60,16 @@ class CheckBPIPatientViewModel : ViewModel() {
     fun initPatientData() : Job =
         viewModelScope.launch(Dispatchers.Main) {
             Log.d("THREAD" , Thread.currentThread().name)
-            setPatientDataOnForm()
+            var username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+            setPatientData(username!!)
         }
 
-    fun setPatientDataOnForm()
+    fun setPatientData(userName : String)
     {
+
         realm.executeTransaction {
             var patient: Patient? =
-                realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName", "tempUser")
+                realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName", userName)
                     .findFirst()
             if (patient == null) {
                 patient = Patient()
@@ -75,6 +77,7 @@ class CheckBPIPatientViewModel : ViewModel() {
                 patient?.password = "dummy#1"
             }
             realm.insertOrUpdate(patient)
+            setPatientDataOnForm(patient.userName)
         }
     }
 
@@ -271,8 +274,8 @@ class CheckBPIPatientViewModel : ViewModel() {
             dummyTest1!!.patientBPIcircleX = 3.0f
             dummyTest1!!.patientBPIcircleY = 5.0f
             dummyTest1!!.patientId = patient!!.patientId
-            dummyTest1!!.patientBPITestInterferenceResult = 30.0f
-            dummyTest1!!.patientBPITestSeverityResult = 15.0f
+            dummyTest1!!.patientBPITestInterferenceResult = 7.0f
+            dummyTest1!!.patientBPITestSeverityResult = 9.0f
             dummyTest1.testDate = calendar2.time
             dummyTest1.testName = "Brief Pain Inventory"
             dummyTest1.testId = (currentTest.testId.toInt() + 1).toString()
@@ -336,8 +339,8 @@ class CheckBPIPatientViewModel : ViewModel() {
             dummyTest2!!.patientBPIcircleX = 3.0f
             dummyTest2!!.patientBPIcircleY = 5.0f
             dummyTest2!!.patientId = patient!!.patientId
-            dummyTest2!!.patientBPITestInterferenceResult = 30.0f
-            dummyTest2!!.patientBPITestSeverityResult = 15.0f
+            dummyTest2!!.patientBPITestInterferenceResult = 5.0f
+            dummyTest2!!.patientBPITestSeverityResult = 10.0f
             dummyTest2.testDate = calendar3.time
             dummyTest2.testName = "Brief Pain Inventory"
             dummyTest2.testId = (dummyTest1.testId.toInt() + 1).toString()
@@ -401,8 +404,8 @@ class CheckBPIPatientViewModel : ViewModel() {
             dummyTest3!!.patientBPIcircleX = 3.0f
             dummyTest3!!.patientBPIcircleY = 5.0f
             dummyTest3!!.patientId = patient!!.patientId
-            dummyTest3!!.patientBPITestInterferenceResult = 20.0f
-            dummyTest3!!.patientBPITestSeverityResult = 10.0f
+            dummyTest3!!.patientBPITestInterferenceResult = 4.0f
+            dummyTest3!!.patientBPITestSeverityResult = 7.0f
             dummyTest3.testDate = calendar4.time
             dummyTest3.testName = "Brief Pain Inventory"
             dummyTest3.testId = (dummyTest2.testId.toInt() + 1).toString()
@@ -466,8 +469,8 @@ class CheckBPIPatientViewModel : ViewModel() {
             dummyTest4!!.patientBPIcircleX = 3.0f
             dummyTest4!!.patientBPIcircleY = 5.0f
             dummyTest4!!.patientId = patient!!.patientId
-            dummyTest4!!.patientBPITestInterferenceResult = 30.0f
-            dummyTest4!!.patientBPITestSeverityResult = 15.0f
+            dummyTest4!!.patientBPITestInterferenceResult = 4.0f
+            dummyTest4!!.patientBPITestSeverityResult = 6.0f
             dummyTest4.testDate = calendar5.time
             dummyTest4.testName = "Brief Pain Inventory"
             dummyTest4.testId = (dummyTest3.testId.toInt() + 1).toString()
@@ -693,7 +696,7 @@ class CheckBPIPatientViewModel : ViewModel() {
     private fun getPatientData(username : String)
     {
         patientData = realmDAO.fetchPatientData(username)
-        testData = realmDAO.fetchTestData(patientData.value!!.patientId , "BPI")
+        testData = realmDAO.fetchTestData(patientData.value!!.patientId , "Brief Pain Inventory")
         patientData.postValue(patientData!!.value)
         testData.postValue(testData.value)
     }

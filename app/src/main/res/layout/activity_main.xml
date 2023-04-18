@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainConLayout"
     android:layout_width="match_parent"
+    android:background="@color/MidnightBlue"
     android:layout_height="match_parent"
     android:visibility="visible">
 
@@ -20,6 +21,7 @@
         layout="@layout/cvd_title_form"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:elevation="15dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/horGL1"
         app:layout_constraintRight_toRightOf="parent"
@@ -30,14 +32,13 @@
         android:id="@+id/include_all_patient_list_test"
         layout="@layout/all_tests_results_of_patient_layou"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:elevation="10dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include_cvd_title_form"
-        app:layout_constraintTop_toTopOf="@+id/horGL1" />
+        app:layout_constraintTop_toBottomOf="@+id/include_cvd_title_form" />
 
     <FrameLayout
         android:id="@+id/fragmentContainer"

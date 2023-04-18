@@ -179,7 +179,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="8dp"
-                    android:background="@drawable/gray_result_title_style"
+                    android:background="@color/light_gray"
                     android:orientation="horizontal"
                     android:scrollbars="vertical">
 

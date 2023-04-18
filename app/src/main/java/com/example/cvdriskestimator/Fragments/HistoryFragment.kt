@@ -269,10 +269,10 @@ class HistoryFragment : Fragment() {
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
-            "Beck Anxiety Index" ->
+            "BPI" ->
             {
-                bindingHistoryFragment.testNameTxtV.setText("Beck Anxiety Index")
-                tests = realm.where(Test::class.java).isNotNull("patientBAIQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                bindingHistoryFragment.testNameTxtV.setText("Brief Pain Inventory")
+                tests = realm.where(Test::class.java).isNotNull("patientBPIQ1") .equalTo("patientId" , param1).equalTo("testName" , "Brief Pain Inventory").findAll()
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -284,7 +284,26 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientBAIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(Test::class.java).isNotNull("patientBPIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
+            }
+            "Beck Anxiety Index" ->
+            {
+                bindingHistoryFragment.testNameTxtV.setText("Beck Anxiety Index")
+                tests = realm.where(Test::class.java).isNotNull("patientBAIQ1") .equalTo("patientId" , param1).equalTo("testName" , "Beck Anxiety Index").findAll()
+//                if (tests.size > 10)
+//                {
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//                }
+                setDatesFromTestsToChartSubTitle(tests!!)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("patientBPIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
@@ -795,14 +814,14 @@ class HistoryFragment : Fragment() {
                            maxScore = test.patientBPITestSeverityResult!!.toFloat()
                        }
 
-                       if (minScore > 10)
-                           minScore -= 5
+                       if (minScore > 2)
+                           minScore -= 1
                        else
                            minScore = 0f
-                       if (maxScore < 30)
-                           maxScore += 5
+                       if (maxScore < 8)
+                           maxScore += 1
                        else
-                           maxScore = 40f
+                           maxScore = 10f
                    }
 
                    //create the data set
@@ -828,45 +847,45 @@ class HistoryFragment : Fragment() {
 
                    for (test in allTests)
                    {
-                       if (minScore > test.patientBPITestInterferenceResult!!)
+                       if (minScore > test.patientBPITestSeverityResult!!)
                        {
-                           minScore = test.patientBPITestInterferenceResult!!.toFloat()
+                           minScore = test.patientBPITestSeverityResult!!.toFloat()
                        }
 
-                       if (maxScore < test.patientBPITestInterferenceResult!!)
+                       if (maxScore < test.patientBPITestSeverityResult!!)
                        {
-                           maxScore = test.patientBPITestInterferenceResult!!.toFloat()
+                           maxScore = test.patientBPITestSeverityResult!!.toFloat()
                        }
 
-                       if (minScore > 10)
-                           minScore -= 5
+                       if (minScore > 2)
+                           minScore -= 1
                        else
                            minScore = 0f
-                       if (maxScore < 60)
-                           maxScore += 5
+                       if (maxScore < 8)
+                           maxScore += 1
                        else
-                           maxScore = 70f
+                           maxScore = 10f
                    }
 
                    //create the data set
-                   dataSet1 = LineDataSet(null, Html.fromHtml("BPI Interference").toString())
-                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
-                   dataSet1.lineWidth = 2f
-                   dataSet1.color = Color.GREEN
-                   dataSet1.isHighlightEnabled = false
-                   dataSet1.setDrawCircles(false)
-                   dataSet1.setDrawValues(false)
-                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
-                   dataSet1.cubicIntensity = 0.2f
-                   dataSet1.clear()
+                   dataSet2 = LineDataSet(null, Html.fromHtml("BPI Interference").toString())
+                   dataSet2.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet2.lineWidth = 2f
+                   dataSet2.color = Color.GREEN
+                   dataSet2.isHighlightEnabled = false
+                   dataSet2.setDrawCircles(false)
+                   dataSet2.setDrawValues(false)
+                   dataSet2.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet2.cubicIntensity = 0.2f
+                   dataSet2.clear()
 
                    for (i in 0 until allTests.size)
                    {
                        var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBPITestInterferenceResult!!.toFloat())
-                       dataSet1.addEntry(entry)
+                       dataSet2.addEntry(entry)
                    }
 
-                   data.addDataSet(dataSet1)
+                   data.addDataSet(dataSet2)
                    data.notifyDataChanged()
 
                }
@@ -1570,7 +1589,7 @@ class HistoryFragment : Fragment() {
                     scoreArrayList.add("${test.patientMDSTestResult}")
                 }
             }
-            "Brief Pain Inventory" ->
+            "BPI" ->
             {
                 for (test in allTests)
                 {
@@ -1670,7 +1689,7 @@ class HistoryFragment : Fragment() {
         var scoreAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textview_history_right, scoreArrayList)
         when (param2)
         {
-            "Brief Pain Inventory" ->
+            "BPI" ->
             {
                 scoreAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.adapter_small_textview, scoreArrayList)
             }
@@ -1754,7 +1773,7 @@ class HistoryFragment : Fragment() {
                 bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_blue))
 
             }
-            "Brief Pain Inventory" ->
+            "BPI" ->
             {
                 bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.light_yellow))
                 bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_yellow))
@@ -1835,11 +1854,11 @@ class HistoryFragment : Fragment() {
                     medDietTestFragment.arguments = bundle
                     mainActivity.fragmentTransaction(medDietTestFragment)
                 }
-                "Brief Pain Inventory" ->
+                "BPI" ->
                 {
                     bpiCheckFragment = BPICheckFragment()
                     bpiCheckFragment.arguments = bundle
-                    mainActivity.fragmentTransaction(medDietTestFragment)
+                    mainActivity.fragmentTransaction(bpiCheckFragment)
                 }
                 "Geriatric Depression Scale" ->
                 {

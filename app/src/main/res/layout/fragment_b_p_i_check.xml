@@ -1154,7 +1154,7 @@
                             android:id="@+id/g7b_RG"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/bpi_q7a_txtV"
+                            android:layout_below="@+id/bpi_q7b_txtV"
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:orientation="vertical">
@@ -1163,7 +1163,7 @@
                                 android:id="@+id/g7b_RGa"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/bpi_q7a_txtV"
+                                android:layout_below="@+id/bpi_q7b_txtV"
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:orientation="horizontal">
@@ -1217,7 +1217,7 @@
                                 android:id="@+id/g7b_RGb"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/bpi_q7a_txtV"
+                                android:layout_below="@+id/bpi_q7b_txtV"
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:orientation="horizontal">

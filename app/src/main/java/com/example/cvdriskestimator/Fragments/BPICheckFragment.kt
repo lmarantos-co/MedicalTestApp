@@ -139,7 +139,7 @@ class BPICheckFragment : Fragment() {
         {
             if (openType == "updateLast")
             {
-                bpiPatientViewModel.setPatientDataOnForm()
+                bpiPatientViewModel.setPatientDataOnForm(username!!)
             }
             if (openType == "addNew")
             {

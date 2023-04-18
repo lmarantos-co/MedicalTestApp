@@ -7,20 +7,36 @@
     android:layout_height="match_parent"
     android:background="@color/MidnightBlue">
 
+    <include
+        android:id="@+id/mainLayout"
+        layout="@layout/cvd_title_form"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/horGL"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
     <TextView
         android:id="@+id/patientNameTxtV"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/history_txtview"
+        android:background="@drawable/paitent_name_txtv"
+        android:gravity="center"
         android:text="Δοκιμαστικός Ασθενής"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="normal"
-        android:gravity="center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/mainLayout" />
 
     <TextView
         android:id="@+id/testDataTxtV"
@@ -38,13 +54,14 @@
         android:id="@+id/testDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
         android:text="Ημ/νια Τέστ"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/patientNameTxtV"
         app:layout_constraintTop_toBottomOf="@+id/patientNameTxtV" />
 
     <LinearLayout
@@ -52,8 +69,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:orientation="vertical"
         android:background="@color/MidnightBlue"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/okBtn"
         app:layout_constraintTop_toBottomOf="@+id/testDate">
 

@@ -35,7 +35,7 @@ class RealmDAO {
             }
             "MDI" ->
             {
-                var testList = realm.where(Test::class.java).isNotNull("patientMDIQ1").equalTo("testName" , testName).equalTo("patientId" , patientId).findAll()
+                var testList = realm.where(Test::class.java).isNotNull("patientMDIQ1").equalTo("testName" , "Major Depression Index").equalTo("patientId" , patientId).findAll()
                 if (testList.size > 0)
                     testdata.value = testList.get(testList.size -1)!!
             }

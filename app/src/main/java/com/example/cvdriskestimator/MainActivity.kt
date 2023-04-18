@@ -381,6 +381,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setContentView(R.layout.activity_main)
 
         initRealmDB()
+
         //initialize the all patienttestlistview
         allPatientResultsPopUp = findViewById(R.id.include_all_patient_list_test)
         if (showList == true)
@@ -449,8 +450,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 //            allPatientsTestNameListView.invalidate()
 //            allPatientTestDateLisView.invalidate()
                 allPatientResultsPopUp.visibility = View.VISIBLE
-                allPatientResultsPopUp.invalidate()
-                allPatientResultsLinLayout.invalidate()
+//                allPatientResultsPopUp.invalidate()
+//                allPatientResultsLinLayout.invalidate()
 
             }
         }
@@ -477,6 +478,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             openHistory()
         }
         MTETitle = findViewById(R.id.include_cvd_title_form)
+        MTETitle.visibility = View.VISIBLE
         MTETitle.post {
 
         }
@@ -517,6 +519,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         initPrefs()
 
         initUI()
+
+//        setScrolViewConstraint(1)
+//        setFragmentContainerConstraint(2)
     }
 
     private fun updateLastTest() {
@@ -2183,7 +2188,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             if (allBPITest.size > 0)
             {
                 var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allBPiSize = allMDSTest.get(allBPITest.size -1)
+                var allBPiSize = allBPITest.get(allBPITest.size -1)
                 BPITestName = "Brief Pain Inv"
                 BPITestDate = dateFormat.format(allBPiSize!!.testDate)
                 var BPITestResult = "Brief Pain Inv - ${dateFormat.format(allBPiSize!!.testDate)}"
@@ -2352,10 +2357,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 //            allPatienttestDateTextView.postInvalidate()
 //            allPatienttestNameTextView.requestLayout()
 //            allPatienttestDateTextView.requestLayout()
-            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).invalidate()
-            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).requestLayout()
-            allPatientResultsPopUp.postInvalidate()
-            allPatientResultsPopUp.requestLayout()
+//            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).invalidate()
+//            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).requestLayout()
+//            allPatientResultsPopUp.postInvalidate()
+//            allPatientResultsPopUp.requestLayout()
 //            var layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , LinearLayout.LayoutParams.WRAP_CONTENT)
 //            layoutParams.weight = 1f
 //            allPatientResultsPopUp.findViewById<LinearLayout>(R.id.patientTestsLinLayout).layoutParams = layoutParams
