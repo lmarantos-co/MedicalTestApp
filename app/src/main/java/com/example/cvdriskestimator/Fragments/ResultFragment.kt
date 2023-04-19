@@ -423,10 +423,10 @@ class ResultFragment : Fragment() {
             bpiresultBar = view.findViewById(R.id.resultBarView)
             moderatePainBar = view.findViewById(R.id.moderatePainRelLayout)
 
-            lowResultView = view.findViewById(R.id.lowResultView)
-            mildResultView = view.findViewById(R.id.mildResultView)
-            moderateResultView = view.findViewById(R.id.moderateResultView)
-            severeResultView = view.findViewById(R.id.severeResultView)
+            lowResultView = view.findViewById(R.id.lowPainRelLayout)
+            mildResultView = view.findViewById(R.id.mildPainRelLayout)
+            moderateResultView = view.findViewById(R.id.moderatePainRelLayout)
+            severeResultView = view.findViewById(R.id.severePainRelLayout)
             lowResultPointer = view.findViewById(R.id.lowResultPointerGL)
             mildResultPointer = view.findViewById(R.id.mildResultPointerGL)
             moderateResultPointer = view.findViewById(R.id.moderateResultPointerGL)
@@ -457,7 +457,7 @@ class ResultFragment : Fragment() {
 //                    createBPIResultBarViews(runningTest)
 //                    showBPIProgressBar(runningTest)
 //                    highlightPainViews(runningTest)
-                        showBPIProgressBar(runningTest)
+                        ResultBPIBArViews(runningTest)
                         counter++
                         runningTest = Math.floorMod(counter, 2)
                     }
@@ -3838,6 +3838,906 @@ fun showMDIResultBarViews()
         }
     }
 
+    suspend fun ResultBPIBArViews(runningResult: Int)
+    {
+        val userBAISeverityResult = (arguments!!.getDouble(ARG_PARAM1) * 1)
+        val userBAIInteferenceResult = (arguments!!.getDouble(ARG_PARAM2) * 1)
+        var barHeightSet = false
+
+        //re set the height for each resultView
+        lowProgressBar.updateLayoutParams {
+            height = lowProgressViewHeight
+        }
+
+        mildProgressBar.updateLayoutParams {
+            height = mildProgressViewHeight
+        }
+
+        moderateProgressBar.updateLayoutParams {
+            height = moderateProgressViewHeight
+        }
+
+        severeProgressBar.updateLayoutParams {
+            height = severeProgreessViewHeight
+        }
+
+        when(runningResult)
+        {
+            0 ->
+            {
+                highlightBPiTextView(1)
+                if (userBAISeverityResult < 1)
+                {
+                    mainActivity.runOnUiThread {
+                        var newLowViewHeight = (userBAISeverityResult.toFloat() / 1)  * lowProgressViewHeight
+                        var lowY = lowProgressBar.y
+                        lowProgressBar.updateLayoutParams {
+                            height = newLowViewHeight.toInt()
+                        }
+                        val lowLayoutParams = lowProgressBar.layoutParams as ConstraintLayout.LayoutParams
+                        lowLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                        lowProgressBar.y = lowY
+                        barHeightSet =true
+                        var scaleAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                        scaleAnimation.fillAfter = true
+                        scaleAnimation.duration = 400
+                        lowProgressBar.startAnimation(scaleAnimation)
+                        scaleAnimation.setAnimationListener(object : Animation.AnimationListener
+                        {
+                            override fun onAnimationStart(p0: Animation?) {
+                                lowProgressBar.alpha = 1f
+                            }
+
+                            override fun onAnimationEnd(p0: Animation?) {
+                            }
+
+                            override fun onAnimationRepeat(p0: Animation?) {
+                            }
+
+                        })
+                    }
+
+                }
+                if ((userBAISeverityResult.toFloat() == 1.0f) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                        lowProgressBar.alpha = 1f
+                    }
+                    barHeightSet = true
+                    var scaleAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleAnimation.fillAfter = true
+                    scaleAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleAnimation)
+                }
+                if ((userBAISeverityResult < 4) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                        var newMildViewHeight : Float = (userBAISeverityResult.toFloat() -1) / 3 * mildProgressViewHeight
+                        var mildY = mildProgressBar.y
+                        mildProgressBar.updateLayoutParams {
+                            height = newMildViewHeight.toInt()
+                        }
+                        val mildLayoutParams = mildProgressBar.layoutParams as ConstraintLayout.LayoutParams
+                        mildLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                        mildProgressBar.y = mildY
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+                            scaleMildAnimation.setAnimationListener(object : Animation.AnimationListener{
+
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                if ((userBAISeverityResult == 4.0) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                        lowProgressBar.alpha = 1f
+                        mildProgressBar.alpha = 1f
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+                            scaleMildAnimation.setAnimationListener(object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                if ((userBAISeverityResult < 7) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                        var newModViewHeight : Float = (userBAISeverityResult.toFloat() - 4) / 3 * moderateProgressViewHeight
+                        var modY = moderateProgressBar.y
+                        moderateProgressBar.updateLayoutParams{
+                            height = newModViewHeight.toInt()
+                        }
+                        val modLayoutParams = moderateProgressBar.layoutParams as ConstraintLayout.LayoutParams
+                        modLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                        moderateProgressBar.y = modY
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+
+                            scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleModerateAnimation.fillAfter = true
+                                    scaleModerateAnimation.duration = 400
+                                    moderateProgressBar.startAnimation(scaleModerateAnimation)
+                                    scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener
+                                    {
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            moderateProgressBar.alpha =1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                if ((userBAISeverityResult == 7.0) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+
+                            scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleModerateAnimation.fillAfter = true
+                                    scaleModerateAnimation.duration = 400
+                                    moderateProgressBar.startAnimation(scaleModerateAnimation)
+                                    scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener {
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            moderateProgressBar.alpha = 1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+
+                if ((userBAISeverityResult < 10) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                        var newModViewHeight : Float = (userBAISeverityResult.toFloat() - 7) / 3 * severeProgreessViewHeight
+                        var modY = severeProgressBar.y
+                        severeProgressBar.updateLayoutParams{
+                            height = newModViewHeight.toInt()
+                        }
+                        val modLayoutParams = severeProgressBar.layoutParams as ConstraintLayout.LayoutParams
+                        modLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                        severeProgressBar.y = modY
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+
+                            scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleModerateAnimation.fillAfter = true
+                                    scaleModerateAnimation.duration = 400
+                                    moderateProgressBar.startAnimation(scaleModerateAnimation)
+                                    scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener
+                                    {
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            lowProgressBar.alpha = 1f
+                                            moderateProgressBar.alpha =1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+                                            var scaleSevereAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                            scaleSevereAnimation.fillAfter = true
+                                            scaleSevereAnimation.duration = 400
+                                            severeProgressBar.startAnimation(scaleSevereAnimation)
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                if ((userBAISeverityResult == 10.0) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+
+                            scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleModerateAnimation.fillAfter = true
+                                    scaleModerateAnimation.duration = 400
+                                    moderateProgressBar.startAnimation(scaleModerateAnimation)
+                                    scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener {
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            moderateProgressBar.alpha = 1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+
+                                            var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                            scaleModerateAnimation.fillAfter = true
+                                            scaleModerateAnimation.duration = 400
+                                            moderateProgressBar.startAnimation(scaleModerateAnimation)
+                                            scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener
+                                            {
+                                                override fun onAnimationStart(p0: Animation?) {
+                                                    moderateProgressBar.alpha =1f
+                                                }
+
+                                                override fun onAnimationEnd(p0: Animation?) {
+                                                    severeProgressBar.alpha =1f
+                                                }
+
+                                                override fun onAnimationRepeat(p0: Animation?) {
+                                                }
+
+                                            })
+
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                delay(4000)
+                lowProgressBar.alpha = 0f
+                mildProgressBar.alpha = 0f
+                moderateProgressBar.alpha = 0f
+                severeProgressBar.alpha = 0f
+                //re set the height for each resultView
+                lowResultView.updateLayoutParams {
+                    height = lowProgressViewHeight
+                }
+
+                mildResultView.updateLayoutParams {
+                    height = mildProgressViewHeight
+                }
+
+                moderateResultView.updateLayoutParams {
+                    height = moderateProgressViewHeight
+                }
+
+
+                severeResultView.updateLayoutParams {
+                    height = severeProgreessViewHeight
+                }
+
+            }
+            1 ->
+            {
+                highlightBPiTextView(2)
+                if (userBAIInteferenceResult < 1)
+                {
+                    mainActivity.runOnUiThread {
+                        var newLowViewHeight = (userBAIInteferenceResult.toFloat() / 1)  * lowProgressViewHeight
+                        var lowY = lowProgressBar.y
+                        lowProgressBar.updateLayoutParams {
+                            height = newLowViewHeight.toInt()
+                        }
+                        val lowLayoutParams = lowProgressBar.layoutParams as ConstraintLayout.LayoutParams
+                        lowLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                        lowProgressBar.y = lowY
+                        barHeightSet =true
+                        var scaleAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                        scaleAnimation.fillAfter = true
+                        scaleAnimation.duration = 400
+                        lowProgressBar.startAnimation(scaleAnimation)
+                        scaleAnimation.setAnimationListener(object : Animation.AnimationListener
+                        {
+                            override fun onAnimationStart(p0: Animation?) {
+                                lowProgressBar.alpha = 1f
+                            }
+
+                            override fun onAnimationEnd(p0: Animation?) {
+                            }
+
+                            override fun onAnimationRepeat(p0: Animation?) {
+                            }
+
+                        })
+                    }
+
+                }
+                if ((userBAIInteferenceResult.toFloat() == 1.0f) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                        lowProgressBar.alpha = 1f
+                    }
+                    barHeightSet = true
+                    var scaleAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleAnimation.fillAfter = true
+                    scaleAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleAnimation)
+                }
+                if ((userBAIInteferenceResult < 4) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                        var newMildViewHeight : Float = (userBAIInteferenceResult.toFloat() -1) / 3 * mildProgressViewHeight
+                        var mildY = mildProgressBar.y
+                        mildProgressBar.updateLayoutParams {
+                            height = newMildViewHeight.toInt()
+                        }
+                        val mildLayoutParams = mildProgressBar.layoutParams as ConstraintLayout.LayoutParams
+                        mildLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                        mildProgressBar.y = mildY
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+                            scaleMildAnimation.setAnimationListener(object : Animation.AnimationListener{
+
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                if ((userBAIInteferenceResult == 4.0) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                        lowProgressBar.alpha = 1f
+                        mildProgressBar.alpha = 1f
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+                            scaleMildAnimation.setAnimationListener(object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                if ((userBAIInteferenceResult < 7) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                        var newModViewHeight : Float = (userBAIInteferenceResult.toFloat() - 4) / 3 * moderateProgressViewHeight
+                        var modY = moderateProgressBar.y
+                        moderateProgressBar.updateLayoutParams{
+                            height = newModViewHeight.toInt()
+                        }
+                        val modLayoutParams = moderateProgressBar.layoutParams as ConstraintLayout.LayoutParams
+                        modLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                        moderateProgressBar.y = modY
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+
+                            scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleModerateAnimation.fillAfter = true
+                                    scaleModerateAnimation.duration = 400
+                                    moderateProgressBar.startAnimation(scaleModerateAnimation)
+                                    scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener
+                                    {
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            moderateProgressBar.alpha =1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                if ((userBAIInteferenceResult == 7.0) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+
+                            scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleModerateAnimation.fillAfter = true
+                                    scaleModerateAnimation.duration = 400
+                                    moderateProgressBar.startAnimation(scaleModerateAnimation)
+                                    scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener {
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            moderateProgressBar.alpha = 1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                if ((userBAISeverityResult < 10) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                        var newModViewHeight : Float = (userBAIInteferenceResult.toFloat() - 7) / 3 * severeProgreessViewHeight
+                        var modY = severeProgressBar.y
+                        severeProgressBar.updateLayoutParams{
+                            height = newModViewHeight.toInt()
+                        }
+                        val modLayoutParams = severeProgressBar.layoutParams as ConstraintLayout.LayoutParams
+                        modLayoutParams.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                        severeProgressBar.y = modY
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+
+                            scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildResultView.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleModerateAnimation.fillAfter = true
+                                    scaleModerateAnimation.duration = 400
+                                    moderateProgressBar.startAnimation(scaleModerateAnimation)
+                                    scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener
+                                    {
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            lowProgressBar.alpha = 1f
+                                            moderateProgressBar.alpha =1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+                                            var scaleSevereAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                            scaleSevereAnimation.fillAfter = true
+                                            scaleSevereAnimation.duration = 400
+                                            severeProgressBar.startAnimation(scaleSevereAnimation)
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                if ((userBAIInteferenceResult == 10.0) && (!barHeightSet))
+                {
+                    mainActivity.runOnUiThread {
+                    }
+                    barHeightSet = true
+                    var scaleLowAnimation = ScaleAnimation(1f , 1f , 0f , 1f)
+                    scaleLowAnimation.fillAfter = true
+                    scaleLowAnimation.duration = 400
+                    lowProgressBar.startAnimation(scaleLowAnimation)
+                    scaleLowAnimation.setAnimationListener( object : Animation.AnimationListener
+                    {
+                        override fun onAnimationStart(p0: Animation?) {
+                            lowProgressBar.alpha = 1f
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                            var scaleMildAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                            scaleMildAnimation.fillAfter = true
+                            scaleMildAnimation.duration = 400
+                            mildProgressBar.startAnimation(scaleMildAnimation)
+
+                            scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
+                            {
+                                override fun onAnimationStart(p0: Animation?) {
+                                    mildProgressBar.alpha = 1f
+                                }
+
+                                override fun onAnimationEnd(p0: Animation?) {
+                                    var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                    scaleModerateAnimation.fillAfter = true
+                                    scaleModerateAnimation.duration = 400
+                                    moderateProgressBar.startAnimation(scaleModerateAnimation)
+                                    scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener {
+                                        override fun onAnimationStart(p0: Animation?) {
+                                            moderateProgressBar.alpha = 1f
+                                        }
+
+                                        override fun onAnimationEnd(p0: Animation?) {
+
+                                            var scaleModerateAnimation = ScaleAnimation(1f, 1f, 0f, 1f)
+                                            scaleModerateAnimation.fillAfter = true
+                                            scaleModerateAnimation.duration = 400
+                                            moderateProgressBar.startAnimation(scaleModerateAnimation)
+                                            scaleModerateAnimation.setAnimationListener(object : Animation.AnimationListener
+                                            {
+                                                override fun onAnimationStart(p0: Animation?) {
+                                                    moderateProgressBar.alpha =1f
+                                                }
+
+                                                override fun onAnimationEnd(p0: Animation?) {
+                                                    severeProgressBar.alpha =1f
+                                                }
+
+                                                override fun onAnimationRepeat(p0: Animation?) {
+                                                }
+
+                                            })
+
+                                        }
+
+                                        override fun onAnimationRepeat(p0: Animation?) {
+                                        }
+
+                                    })
+                                }
+
+                                override fun onAnimationRepeat(p0: Animation?) {
+                                }
+
+                            })
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    })
+                }
+                delay(4000)
+                lowProgressBar.alpha = 0f
+                mildProgressBar.alpha = 0f
+                moderateProgressBar.alpha = 0f
+                severeProgressBar.alpha = 0f
+                //re set the height for each resultView
+                lowResultView.updateLayoutParams {
+                    height = lowProgressViewHeight
+                }
+
+                mildResultView.updateLayoutParams {
+                    height = mildProgressViewHeight
+                }
+
+                moderateResultView.updateLayoutParams {
+                    height = moderateProgressViewHeight
+                }
+
+
+                severeResultView.updateLayoutParams {
+                    height = severeProgreessViewHeight
+                }
+
+            }
+
+        }
+
+    }
 
 
     suspend fun ResultSTAIBArViews(runningResult: Int)
