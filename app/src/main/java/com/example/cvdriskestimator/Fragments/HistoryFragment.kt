@@ -675,14 +675,17 @@ class HistoryFragment : Fragment() {
                        }
                    }
 
-                   if (minScore > 10)
-                       minScore -= 10
-                   else
-                       minScore = 0f
-                   if (maxScore < 90)
-                       maxScore += 10
-                   else
-                       maxScore = 100f
+//                   if (minScore > 10)
+//                       minScore -= 10
+//                   else
+//                       minScore = 0f
+//                   if (maxScore < 90)
+//                       maxScore += 10
+//                   else
+//                       maxScore = 100f
+
+                   minScore = 0f
+                   maxScore = 1f
 
                    //create the data set
                    dataSet1 = LineDataSet(null, Html.fromHtml("DIABETES %").toString())
@@ -1406,14 +1409,14 @@ class HistoryFragment : Fragment() {
         if (param2 == "BPI")
         {
             if (minPSScore < minPIScore)
-                leftAxis.axisMinimum = minPSScore
+                leftAxis.axisMinimum = 0.0f
             else
-                leftAxis.axisMinimum = minPIScore
+                leftAxis.axisMinimum = 0.0f
 
             if (maxPSScore > maxPSScore)
-                leftAxis.axisMaximum = maxPSScore
+                leftAxis.axisMaximum = 10.0f
             else
-                leftAxis.axisMaximum = maxPIScore
+                leftAxis.axisMaximum = 10.0f
         }
         else
         {

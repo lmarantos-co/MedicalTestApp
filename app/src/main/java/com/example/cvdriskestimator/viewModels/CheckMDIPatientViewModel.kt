@@ -127,7 +127,7 @@ class CheckMDIPatientViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testData = realmDAO.fetchTestData(patientData.value!!.patientId , "MDI")
+        testData = realmDAO.fetchTestData(patientData.value!!.patientId , "Major Depression Index")
         patientData.postValue(patientData.value)
         testData.postValue(testData.value)
     }
@@ -250,7 +250,7 @@ class CheckMDIPatientViewModel : ViewModel() {
                 }
             }
 
-//            realm.insertOrUpdate(currentTest)
+            realm.insertOrUpdate(currentTest)
 //
 //
 //            var dummyTest1 = Test()
