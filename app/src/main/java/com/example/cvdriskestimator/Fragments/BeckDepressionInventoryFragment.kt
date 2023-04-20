@@ -83,8 +83,8 @@ class BeckDepressionInventoryFragment : Fragment() {
         {
             if (testDate != "")
             {
-                var date = convertStringToCalenderDate(testDate!!)
-                historyTest = bdiPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+//                var date = convertStringToCalenderDate(testDate!!)
+                historyTest = bdiPatientViewModel.fetchHistoryTest(patientId!! , testDate!!)
             }
 
         }

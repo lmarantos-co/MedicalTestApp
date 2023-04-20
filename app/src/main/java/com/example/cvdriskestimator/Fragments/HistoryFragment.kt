@@ -1735,8 +1735,8 @@ class HistoryFragment : Fragment() {
 //        }
 //
         bindingHistoryFragment.testResultDateListView.setOnItemClickListener { parent, view, position, id ->
-            var testDate = allTests.get(position)!!.testDate.toString()
-            showPatientTest(param1!! , testDate , param2!!)
+            var testID = allTests.get(position)!!.testId
+            showPatientTest(param1!! , testID , param2!!)
         }
     }
 

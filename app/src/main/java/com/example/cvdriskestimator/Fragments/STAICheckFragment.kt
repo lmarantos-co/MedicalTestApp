@@ -372,8 +372,8 @@ class STAICheckFragment : Fragment() {
         {
             if (testDate != "")
             {
-                var date = convertStringToCalenderDate(testDate!!)
-                historyTest = staiPatientViewModel.fetchHistoryTest(patientId!! , date!!)
+//                var date = convertStringToCalenderDate(testDate!!)
+                historyTest = staiPatientViewModel.fetchHistoryTest(patientId!! , testDate!!)
             }
         }
         if (historyTest.patientSTAISScore != null)

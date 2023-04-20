@@ -91,13 +91,13 @@ class MDICheckFragment : Fragment() {
                     //default time zone
 //                    val defaultZoneId: ZoneId = ZoneId.systemDefault()
 //                    val formatter = DateTimeFormatter.ofPattern("yyyy MM dd")
-                    var testDateFormated = convertStringToCalenderDate(testDate!!)
+//                    var testDateFormated = convertStringToCalenderDate(testDate!!)
 //                    val localDate = LocalDate.parse(testDateFormated)
 //                    val text: String = localDate.format(formatter)
 //                    val parsedDate: LocalDate = LocalDate.parse(text, formatter)
 //                    val covertedDate = java.util.Date.from(localDate.atStartOfDay(defaultZoneId).toInstant())
 //                    val d = SimpleDateFormat("yyyy-MM-dd").parse(localDate.toString())
-                    historyTest = mdiPatientViewModel.fetchHistoryTest(patientId!! , testDateFormated!!)
+                    historyTest = mdiPatientViewModel.fetchHistoryTest(patientId!! , testDate!!)
                 }
             }
             if (historyTest.patientMDITestResult != null)
