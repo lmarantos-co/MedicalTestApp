@@ -5,6 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/MidnightBlue"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -27,18 +28,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/testoptionstitleTxtV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:shadowColor="@android:color/darker_gray"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="4"
+        android:text="Επιλογές Ερωτηματολογίου"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include_cvd_title_form" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:background="@color/MidnightBlue"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/relativelayout_style"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/include_cvd_title_form">
+        app:layout_constraintTop_toBottomOf="@id/testoptionstitleTxtV">
 
         <TextView
             android:id="@+id/addNewTxtV"
@@ -46,8 +68,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="16dp"
+            android:padding="10dp"
             android:background="@color/light_gray"
             android:gravity="center"
             android:shadowColor="@android:color/darker_gray"
@@ -56,8 +80,7 @@
             android:shadowRadius="4"
             android:text="ΠΡΟΣΘΗΚΗ ΝΕΟΥ"
             android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/updateLastTxtV"
@@ -67,6 +90,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="16dp"
+            android:padding="10dp"
             android:background="@color/light_gray"
             android:gravity="center"
             android:shadowColor="@android:color/darker_gray"
@@ -75,8 +99,7 @@
             android:shadowRadius="4"
             android:text="ΕΠΕΞΕΡΓΑΣΙΑ ΤΕΛΕΥΤΑΙΟΥ"
             android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/historyTxtV"
@@ -85,6 +108,8 @@
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginBottom="16dp"
+            android:padding="10dp"
             android:background="@color/light_gray"
             android:gravity="center"
             android:shadowColor="@color/light_gray"
@@ -93,8 +118,7 @@
             android:shadowRadius="4"
             android:text="ΙΣΤΟΡΙΚΟ"
             android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 

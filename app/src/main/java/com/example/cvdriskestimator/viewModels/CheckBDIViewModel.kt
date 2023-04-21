@@ -173,7 +173,7 @@ class CheckBDIPatientViewModel : ViewModel() {
 //                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
 //                }
 //            }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testDate" , testId).equalTo("testName" , "Beck Depression Inventory").findAll()
+            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testId" , testId).equalTo("testName" , "Beck Depression Inventory").findAll()
         }
 
         return tests!!.get(tests!!.size -1)!!

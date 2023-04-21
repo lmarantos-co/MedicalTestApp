@@ -699,6 +699,7 @@ class CheckBPIPatientViewModel : ViewModel() {
         testData = realmDAO.fetchTestData(patientData.value!!.patientId , "Brief Pain Inventory")
         patientData.postValue(patientData!!.value)
         testData.postValue(testData.value)
+        bpiFragment.setTestDataManuallty(testData.value!!)
     }
 
     fun convertDate(dateString: String): Date? {

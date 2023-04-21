@@ -313,7 +313,7 @@
     <string name="pdq_test_results">Parkinson Disease Questionnaire Score Results</string>
     <string name="pdq_test_score">Αποτέλεσμα : Συνολική εκτίμηση με βάση τις 8 κατηγορίες - ποσοστό : %1$s</string>
     <string name="pdq_test_intro_text">ΕΞΑΙΤΙΑΣ ΤΗΣ ΝΟΣΟΥ ΤΟΥ ΠΑΡΚΙΝΣΟΝ πόσο συχνά είχατε, τον προηγούμενο μήνα, τα παρακάτω;</string>
-    <string name="intro_screen_new_customer">Νέος Πελάτης</string>
+    <string name="intro_screen_new_customer">Νέος\n Πελάτης</string>
     <string name="intro_screen_all_customers">Όλοι οι πελάτες</string>
     <string name="bdi_test_results">BDI Test</string>
     <string name="bdi_test_intro_text">Kυκλώστε τον αριθμό δίπλα από την δήλωση που περιγράφει καλύτερα τον τρόπο

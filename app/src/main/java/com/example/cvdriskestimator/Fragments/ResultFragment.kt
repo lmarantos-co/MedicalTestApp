@@ -6149,6 +6149,7 @@ fun showMDIResultBarViews()
 
     private fun getScreenDimens()
     {
+
         val displayMetrics = DisplayMetrics()
         mainActivity.windowManager.defaultDisplay.getMetrics(displayMetrics)
         screenWidth = displayMetrics.widthPixels

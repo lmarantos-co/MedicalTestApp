@@ -14,11 +14,6 @@
         android:icon="@drawable/questionary"/>
 
     <item
-        android:id="@+id/doctor_item"
-        app:showAsAction="always"
-        android:title="Έξοδος Ιατρού"
-        android:icon="@drawable/doctor_logout"  />
-    <item
         android:id="@+id/customer_change_item"
         app:showAsAction="always"
         android:title="Αλλαγή ασθενούς"
@@ -59,5 +54,11 @@
         app:showAsAction="always"
         android:title="Πίνακας αποτελεσμάτων"
         android:icon="@drawable/leaderboard"/>
+
+    <item
+        android:id="@+id/doctor_item"
+        app:showAsAction="always"
+        android:title="Έξοδος Ιατρού"
+        android:icon="@drawable/doctor_logout"  />
 
 </menu>

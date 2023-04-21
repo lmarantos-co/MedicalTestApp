@@ -370,10 +370,15 @@ class BPICheckFragment : Fragment() {
         bpiPatientViewModel.patientData.observe(viewLifecycleOwner) {
         }
         bpiPatientViewModel.testData.observe(viewLifecycleOwner) {
-            if (it.patientBPIQ1 != null)
+            if (it != null)
                 setPatientDataOnForm(it!!)
         }
 
+    }
+
+    fun setTestDataManuallty(it : Test)
+    {
+        setPatientDataOnForm(it)
     }
 
     fun setPatientInitialisedStatus(status : Boolean)

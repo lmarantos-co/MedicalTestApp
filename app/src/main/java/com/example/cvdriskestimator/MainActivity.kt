@@ -334,7 +334,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
 
         lastNameArrayAdapter =
-            ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, doctorPatients)
+            ArrayAdapter<String>(this, R.layout.paitent_names_list_1, doctorPatients)
         customersListView.adapter = lastNameArrayAdapter
 
 
@@ -386,6 +386,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         allPatientResultsPopUp = findViewById(R.id.include_all_patient_list_test)
         if (showList == true)
             allPatientResultsPopUp.visibility = View.VISIBLE
+        allPatientResultsPopUp.findViewById<ImageView>(R.id.userIcon).setOnClickListener {
+            showPopUp(userIconImg)
+        }
         allPatientResultsLinLayout = allPatientResultsPopUp.findViewById(R.id.patientTestsLinLayout)
         var patientname = allPatientResultsPopUp.findViewById<TextView>(R.id.patientNameTxtV)
         var patientNameText = "Τεστ ολοκληρωμένα από το χρήστη " + getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
@@ -986,10 +989,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
         MTETitle.setOnClickListener {
-            hideSoftInputKeyboard()
-            hideFragmentVisibility()
-            showLayoutElements()
-            onBackPressed()
             playSelectTestAudio(1)
             showMedicalTests()
         }
@@ -1084,14 +1083,15 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         userIconImg.animate()
             .scaleX(0.5f).scaleY(0.5f) //scale to quarter(half x,half y)
             .translationY((userIconImg.height / 4).toFloat())
+            .translationX((userIconImg.width / 4).toFloat())
             .rotation(360f) // one round turns
-            .setDuration(500) // all take 1 seconds
+            .setDuration(1500) // all take 1 seconds
             .withEndAction {
                 //animation ended
                 userIconImg.animate()
                     .scaleX(1f).scaleY(1f)
                     // move to bottom / right
-                    .rotation(360f).duration = 500 // all take 1 seconds
+                    .rotation(360f).duration = 1500 // all take 1 seconds
             }
 
         termsOFUseView.setOnClickListener {
@@ -2027,14 +2027,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         //aplly font to all menu item
         applyFontToMenuItem(popupMenu.menu.getItem(0) , "Αρχική" , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(1) , "Ερωτηματολόγια" , applicationContext)
-        applyFontToMenuItem(popupMenu.menu.getItem(2) , "Έξοδος ιατρού" , applicationContext)
-        applyFontToMenuItem(popupMenu.menu.getItem(3) , this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Αλλαγή ασθνεούς")!! , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(4) , "Προσθήκη Ασθενούς" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(8) , "Έξοδος ιατρού" , applicationContext)
+        applyFontToMenuItem(popupMenu.menu.getItem(2) , this.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Αλλαγή ασθνεούς")!! , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(3) , "Προσθήκη Ασθενούς" , applicationContext )
 //        applyFontToMenuItem(popupMenu.menu.getItem(3) , "Doctor Log Out" , applicationContext)
-        applyFontToMenuItem(popupMenu.menu.getItem(5) , this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " δεδομένα" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(6) , "Καθαρισμός δεδομένων" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(7) , "Όροι Χρήσης" , applicationContext )
-        applyFontToMenuItem(popupMenu.menu.getItem(8) ,"Πίνακας αποτελεσμάτων" , applicationContext)
+        applyFontToMenuItem(popupMenu.menu.getItem(4) , this.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " δεδομένα" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(5) , "Καθαρισμός δεδομένων" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(6) , "Όροι Χρήσης" , applicationContext )
+        applyFontToMenuItem(popupMenu.menu.getItem(7) ,"Πίνακας αποτελεσμάτων" , applicationContext)
 
 
         // show icons on popup menu
