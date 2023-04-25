@@ -1857,7 +1857,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 }
                 R.id.questions ->
                 {
-                    backToActivity()
+                    playSelectTestAudio(1)
+                    showMedicalTests()
                 }
                 R.id.doctor_item ->
                 {

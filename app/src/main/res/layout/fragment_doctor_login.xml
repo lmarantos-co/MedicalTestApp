@@ -169,16 +169,16 @@
 
             <EditText
                 android:id="@+id/userNameLoginEditText"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/userNameTxtV"
                 android:layout_centerInParent="false"
                 android:layout_centerHorizontal="true"
-                android:gravity="center"
                 android:clickable="true"
                 android:editable="true"
                 android:ems="10"
                 android:enabled="true"
+                android:gravity="center"
                 android:hint="Εισάγετε το όνομα χρήστη"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
@@ -219,7 +219,7 @@
 
             <EditText
                 android:id="@+id/editTextLoginPassword"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/passwordTxtV"
                 android:layout_centerInParent="false"

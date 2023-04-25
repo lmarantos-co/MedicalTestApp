@@ -55,7 +55,7 @@ class RealmDAO {
             {
                 var testList = realm.where(Test::class.java).isNotNull("patientBPIQ1").equalTo("testName" , testName).equalTo("patientId" , patientId).findAll()
                 if (testList.size > 0)
-                    testdata.value = testList.get(testList.size -1)!!
+                    testdata.value =  realm.copyFromRealm(testList.get(testList.size -1)!!)
             }
             "Beck Depression Inventory" ->
             {

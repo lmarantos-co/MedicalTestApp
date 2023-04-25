@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     android:background="@color/MidnightBlue">
 
+    <TextView
+        android:id="@+id/searchCustomersTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ασθενείς"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/topHGL"
+        app:layout_constraintStart_toStartOf="@+id/leftVGL"
+        app:layout_constraintTop_toBottomOf="@+id/include_cvd_title_form" />
+
     <RelativeLayout
         android:id="@+id/searchCustomersrelLayout"
         android:layout_width="0dp"
@@ -15,17 +26,6 @@
         app:layout_constraintEnd_toStartOf="@+id/rightVGL"
         app:layout_constraintStart_toStartOf="@+id/leftVGL"
         app:layout_constraintTop_toTopOf="@+id/topHGL">
-
-        <TextView
-            android:id="@+id/searchCustomersTxtV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:text="Ασθενείς"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
 
         <SearchView
             android:id="@+id/customersSearchView"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.24" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bottomHGL"
