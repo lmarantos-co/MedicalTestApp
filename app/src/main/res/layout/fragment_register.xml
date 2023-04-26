@@ -200,7 +200,7 @@
 
                     <EditText
                         android:id="@+id/userNameRegEditText"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/userNameTxtV"
                         android:layout_centerInParent="true"
@@ -210,11 +210,11 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/register_username_hint"
-                        android:textColorHint="@color/black"
                         android:inputType="textPersonName"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
                         android:text="@={registerViewModel.inputUserName}"
+                        android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
                 </RelativeLayout>
@@ -246,7 +246,7 @@
 
                     <EditText
                         android:id="@+id/editTextRegPassword"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/passwordTxtV"
                         android:layout_centerHorizontal="true"
@@ -257,17 +257,17 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/register_password_hint"
-                        android:textColorHint="@color/black"
                         android:inputType="textPassword"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
                         android:password="true"
                         android:text="@={registerViewModel.inputPassword}"
+                        android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/editTextRegValidatePassword"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/editTextRegPassword"
                         android:layout_centerInParent="true"
@@ -277,12 +277,12 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/register_re_enterpassword_hint"
-                        android:textColorHint="@color/black"
                         android:inputType="textPassword"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
                         android:password="true"
                         android:text="@={registerViewModel.inputPassValidate}"
+                        android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
                 </RelativeLayout>
@@ -315,7 +315,7 @@
 
                     <EditText
                         android:id="@+id/patientNameEditTxt"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/userExtraUbfiTxtV"
                         android:layout_centerInParent="true"
@@ -324,16 +324,16 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/account_info_name"
-                        android:textColorHint="@color/black"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
                         android:text="@={registerViewModel.inputPatientName}"
+                        android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/patientLatNameEditTxt"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/patientNameEditTxt"
                         android:layout_centerInParent="true"
@@ -351,7 +351,7 @@
 
                     <EditText
                         android:id="@+id/userDateOfBirthEditText"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/patientLatNameEditTxt"
                         android:layout_centerInParent="true"
@@ -370,7 +370,7 @@
 
                     <EditText
                         android:id="@+id/userOccupationEditText"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/userDateOfBirthEditText"
                         android:layout_centerInParent="true"
@@ -380,16 +380,16 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/account_info_occupation"
-                        android:textColorHint="@color/black"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
                         android:text="@={registerViewModel.inputOccupation}"
+                        android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/userYearsOfApprenticeEditText"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/userOccupationEditText"
                         android:layout_centerInParent="true"
@@ -399,11 +399,11 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:hint="@string/account_info_years_of_prof"
-                        android:textColorHint="@color/black"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
                         android:text="@={registerViewModel.inputYearsOfApprenctice}"
+                        android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
                 </RelativeLayout>

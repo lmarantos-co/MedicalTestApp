@@ -183,7 +183,7 @@
 
                 <EditText
                     android:id="@+id/userNameRegisterEditText"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/userNameTxtV"
                     android:layout_centerInParent="true"
@@ -193,11 +193,11 @@
                     android:enabled="true"
                     android:gravity="center"
                     android:hint="@string/register_doctor_username_hint"
-                    android:textColorHint="#000000"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:paddingStart="4dp"
                     android:text="@={registerDoctorViewModel.inputDoctorName}"
+                    android:textColorHint="#000000"
                     android:textSize="20sp" />
 
             </RelativeLayout>
@@ -229,7 +229,7 @@
 
                 <EditText
                     android:id="@+id/editTextRegisterPassword"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/passwordTxtV"
                     android:layout_centerHorizontal="true"
@@ -240,17 +240,17 @@
                     android:enabled="true"
                     android:gravity="center"
                     android:hint="@string/register_doctor_password_hint"
-                    android:textColorHint="#000000"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
                     android:paddingStart="4dp"
                     android:password="true"
                     android:text="@={registerDoctorViewModel.inputDoctorPassword}"
+                    android:textColorHint="#000000"
                     android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/editTextValidateRegisterPassword"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/editTextRegisterPassword"
                     android:layout_centerInParent="true"
@@ -260,12 +260,12 @@
                     android:enabled="true"
                     android:gravity="center"
                     android:hint="@string/register_doctor_ρε_password_hint"
-                    android:textColorHint="#000000"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
                     android:paddingStart="4dp"
                     android:password="true"
                     android:text="@={registerDoctorViewModel.inputPasswordValidate}"
+                    android:textColorHint="#000000"
                     android:textSize="20sp" />
 
             </RelativeLayout>
