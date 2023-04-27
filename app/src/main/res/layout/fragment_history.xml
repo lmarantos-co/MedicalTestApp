@@ -102,7 +102,7 @@
                     android:backgroundTint="@color/light_gray"
                     android:clickable="true"
                     android:enabled="true"
-                    android:text="Επιλογή Ημ/νιών"
+                    android:text="Επιλογή ημ/νιών"
                     android:textAllCaps="false"
                     android:textColor="@color/black" />
 

@@ -54,7 +54,7 @@
             android:background="@drawable/terms_of_use_texttitle"
             android:gravity="center"
             android:minHeight="48dp"
-            android:text="ΟΡΟΙ ΧΡΗΣΗΣ"
+            android:text="Όροι χρήσης"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:visibility="visible" />
