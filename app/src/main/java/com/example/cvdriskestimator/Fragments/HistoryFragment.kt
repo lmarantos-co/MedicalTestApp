@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import com.example.cvdriskestimator.CustomClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
@@ -26,6 +27,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import io.realm.Realm
 import io.realm.RealmResults
 import java.text.SimpleDateFormat
@@ -61,6 +63,9 @@ class HistoryFragment : Fragment() {
     private lateinit var staiCheckFragment: STAICheckFragment
     private lateinit var dassCheckFragment: DASSCheckFragment
     private lateinit var zungFragment: CheckZUNGFragment
+    private var loginDoctorFragment =  LoginFragment.newInstance()
+    private var registerDoctorFragment =  RegisterFragment.newInstance()
+    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private var dateFromPicked : Boolean = false
     private var dateToPicked : Boolean = false
     private var openDatePicker : Boolean = false
@@ -95,8 +100,8 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        param1 = this.arguments!!.getString("patientId")!!
-        param2 = this.arguments!!.getString("testName")
+        param1 = this.requireArguments().getString("patientId")!!
+        param2 = this.requireArguments().getString("testName")
 
         bindingHistoryFragment.datePickerLinLayout.visibility = View.GONE
 
@@ -113,6 +118,13 @@ class HistoryFragment : Fragment() {
 
         bindingHistoryFragment.includeCvdTitleForm.MTEConLayout.setOnClickListener {
             mainActivity.backToActivity()
+        }
+
+        //set the PopUpMenu
+        val popupMenu = PopUpMenu(bindingHistoryFragment.includePopupMenu.termsRelLayout , mainActivity, this,  loginDoctorFragment, registerDoctorFragment , null , leaderBoardFragment)
+
+        bindingHistoryFragment.includeCvdTitleForm.userIcon.setOnClickListener {
+            popupMenu.showPopUp(it)
         }
 
         setColorOnTestTitle()
@@ -1396,15 +1408,22 @@ class HistoryFragment : Fragment() {
 
         val xl: XAxis = testResultsChart.xAxis
         xl.textColor = Color.BLACK
-        xl.valueFormatter = DefaultAxisValueFormatter(4)
-        xl.setDrawGridLines(true)
         xl.setAvoidFirstLastClipping(true)
         xl.isEnabled = true
         xl.setDrawLabels(false)
+//        xl.setPosition(XAxis.XAxisPosition.BOTTOM);
+//        xl.setDrawGridLines(false);
+//        xl.setValueFormatter(IndexAxisValueFormatter(getChartValues(minScore , maxScore)))
 
         val leftAxis: YAxis = testResultsChart.axisLeft
         leftAxis.textColor = Color.BLACK
         leftAxis.setDrawGridLines(false)
+        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
+//        leftAxis.valueFormatter = IndexAxisValueFormatter(getChartValues(minScore , maxScore))
+
+        leftAxis.setLabelCount(5, true);
+        leftAxis.setAxisMaxValue(maxScore);
+        leftAxis.setAxisMinValue(minScore);
 
         if (param2 == "BPI")
         {
@@ -1425,9 +1444,8 @@ class HistoryFragment : Fragment() {
         }
 
 
-        leftAxis.setDrawGridLines(true)
         leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART)
-        leftAxis.valueFormatter = DefaultAxisValueFormatter(4)
+//        leftAxis.valueFormatter = DefaultAxisValueFormatter(4)
         leftAxis.spaceMin = 50f
         leftAxis.isGranularityEnabled = true
         leftAxis.granularity = 20f
@@ -1442,6 +1460,21 @@ class HistoryFragment : Fragment() {
         testResultsChart.xAxis.setDrawGridLines(false)
         testResultsChart.setDrawBorders(false)
         testResultsChart.invalidate()
+    }
+
+    private fun getChartValues(minScore: Float, maxScore: Float): ArrayList<String>? {
+
+        //for 5 values
+        var valueStep = (maxScore - minScore) / 5
+        var listOfValues = ArrayList<String>()
+        listOfValues.add((minScore + valueStep).toString())
+        listOfValues.add((minScore + valueStep * 2).toString())
+        listOfValues.add((minScore + valueStep * 3).toString())
+        listOfValues.add((minScore + valueStep * 4).toString())
+        listOfValues.add((minScore + valueStep * 5).toString())
+
+        return listOfValues
+
     }
 
     private fun setUniformMotionForListViews()

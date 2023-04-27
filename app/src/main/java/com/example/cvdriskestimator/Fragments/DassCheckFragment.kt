@@ -267,19 +267,19 @@ class DASSCheckFragment : Fragment() {
             {
 
             }
-            0 ->
+            1 ->
             {
                 (rg.getChildAt(0) as RadioButton).isChecked = true
             }
-            1 ->
+            2 ->
             {
                 (rg.getChildAt(1) as RadioButton).isChecked = true
             }
-            2 ->
+            3 ->
             {
                 (rg.getChildAt(2) as RadioButton).isChecked = true
             }
-            3->
+            4->
             {
                 (rg.getChildAt(3) as RadioButton).isChecked = true
             }
@@ -291,13 +291,13 @@ class DASSCheckFragment : Fragment() {
         var result : Int? = null
         val radioButtonId = rg.checkedRadioButtonId
         if (rg.get(0).id == radioButtonId)
-            result = 0
-        if (rg.get(1).id == radioButtonId)
             result = 1
-        if (rg.get(2).id == radioButtonId)
+        if (rg.get(1).id == radioButtonId)
             result = 2
-        if (rg.get(3).id == radioButtonId)
+        if (rg.get(2).id == radioButtonId)
             result = 3
+        if (rg.get(3).id == radioButtonId)
+            result = 4
         return result
     }
 

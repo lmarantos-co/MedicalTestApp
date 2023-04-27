@@ -106,6 +106,7 @@
             android:background="@drawable/zung_test_results_style_sub"
             android:gravity="center"
             android:minHeight="48dp"
+            android:text="Results : "
             android:textColor="@color/black"
             android:textSize="20sp" />
 

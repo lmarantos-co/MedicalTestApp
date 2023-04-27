@@ -167,6 +167,7 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
+
             <EditText
                 android:id="@+id/userNameLoginEditText"
                 android:layout_width="wrap_content"
@@ -176,13 +177,13 @@
                 android:layout_centerHorizontal="true"
                 android:clickable="true"
                 android:editable="true"
+                android:ellipsize="none"
                 android:ems="10"
                 android:enabled="true"
                 android:gravity="center"
-                android:hint="Εισάγετε το όνομα χρήστη"
+                android:hint="\Εισάγετε όνομα χρήστη"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:paddingStart="4dp"
                 android:text="@={loginDoctorViewModel.inputUserName}"
                 android:textColor="@color/black"
                 android:textColorHint="#000000"
@@ -226,6 +227,7 @@
                 android:layout_centerHorizontal="true"
                 android:clickable="true"
                 android:editable="true"
+                android:ellipsize="none"
                 android:ems="10"
                 android:enabled="true"
                 android:gravity="center"

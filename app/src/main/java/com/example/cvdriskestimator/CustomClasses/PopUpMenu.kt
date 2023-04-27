@@ -65,7 +65,7 @@ class PopUpMenu {
                     prMainActivity.logOutDoctor()
                 }
                 R.id.customer_change_item -> {
-                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is BeckDepressionInventoryFragment) || (prFragment is HamiltonDepressionFragment) || (prFragment is GDSCheckFragment)|| (prFragment is STAICheckFragment) || (prFragment is CheckZUNGFragment)  ||(prFragment is ResultFragment) || (prleaderBoardFragment is LeaderBoardFragment))
+                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is BeckDepressionInventoryFragment) || (prFragment is HamiltonDepressionFragment) || (prFragment is GDSCheckFragment)|| (prFragment is STAICheckFragment) || (prFragment is CheckZUNGFragment)  ||(prFragment is ResultFragment) || (prFragment is HistoryFragment) || (prleaderBoardFragment is LeaderBoardFragment))
                     {
                         val prefs = prMainActivity.getPreferences(Context.MODE_PRIVATE)
                         val message = prefs.getString("LOG", "Test1")
@@ -77,7 +77,7 @@ class PopUpMenu {
 
                 }
                 R.id.customer_add_item -> {
-                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is LoginFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is LeaderBoardFragment) || (prFragment is ResultFragment))
+                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is LoginFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is HistoryFragment) || (prFragment is LeaderBoardFragment) || (prFragment is ResultFragment))
                     {
                         prMainActivity.backToActivity()
                         prMainActivity.fragmentTransaction(prRegisterFragment!!)

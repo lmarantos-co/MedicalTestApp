@@ -74,9 +74,9 @@ class BAICheckFragment : Fragment() {
 
         val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
 
-        var patientId = this.arguments!!.getString("patientId")
-        var testDate = this.arguments!!.getString("testDate" , "")
-        var openType = this.arguments!!.getString("openType")
+        var patientId = this.requireArguments().getString("patientId")
+        var testDate = this.requireArguments().getString("testDate" , "")
+        var openType = this.requireArguments().getString("openType")
 
 
         if (openType == "open_history")

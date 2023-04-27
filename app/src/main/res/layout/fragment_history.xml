@@ -18,6 +18,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <include
+            android:id="@+id/include_popup_menu"
+            layout="@layout/popup_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            tools:layout_editor_absoluteY="921dp" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horGL1"
             android:layout_width="match_parent"
@@ -142,7 +150,7 @@
                     android:layout_below="@id/datePickerButton"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/gray_result_title_style"
+                    android:background="@drawable/gray_history_fragment_result"
                     android:orientation="horizontal">
 
                     <TextView
@@ -179,7 +187,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/light_gray"
+                    android:background="@drawable/gray_bottom_list_history_fragment_style"
                     android:orientation="horizontal"
                     android:scrollbars="vertical">
 
