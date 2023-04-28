@@ -73,9 +73,9 @@ class HamiltonDepressionFragment : Fragment() {
 
         val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
 
-        var patientId = this.arguments!!.getString("patientId")
-        var testDate = this.arguments!!.getString("testDate" , "")
-        var openType = this.arguments!!.getString("openType")
+        var patientId = this.requireArguments().getString("patientId")
+        var testDate = this.requireArguments().getString("testDate" , "")
+        var openType = this.requireArguments().getString("openType")
 
 
         if (openType == "open_history")
@@ -217,8 +217,8 @@ class HamiltonDepressionFragment : Fragment() {
             setQuestionRadioGroup(hamDCheckBinding.HAMDQ9RG , test.patientHAMDQ9)
             setQuestionRadioGroup(hamDCheckBinding.HAMDQ10RG , test.patientHAMDQ10)
             setQuestionRadioGroup(hamDCheckBinding.HAMDQ11RG , test.patientHAMDQ11)
-            setQuestionRadioGroup(hamDCheckBinding.HAMDQ2RG , test.patientHAMDQ12)
-            setQuestionRadioGroup(hamDCheckBinding.HAMDQ3RG , test.patientHAMDQ13)
+            setQuestionRadioGroup(hamDCheckBinding.HAMDQ12RG , test.patientHAMDQ12)
+            setQuestionRadioGroup(hamDCheckBinding.HAMDQ13RG , test.patientHAMDQ13)
             setQuestionRadioGroup(hamDCheckBinding.HAMDQ14RG , test.patientHAMDQ14)
             setQuestionRadioGroup(hamDCheckBinding.HAMDQ15RG , test.patientHAMDQ15)
             setQuestionRadioGroup(hamDCheckBinding.HAMDQ16RG , test.patientHAMDQ16)

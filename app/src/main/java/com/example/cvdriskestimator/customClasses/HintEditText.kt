@@ -10,20 +10,22 @@ import com.example.cvdriskestimator.R
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 
-@SuppressLint("ResourceAsColor")
 class HintEditText @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : AppCompatEditText(context, attrs, defStyleAttr) {
 
-    private val underlinePaint = Paint()
-    private var isHintUnderlined = false
+    private val hintPaint = Paint().apply {
+        isAntiAlias = true
+        style = Paint.Style.STROKE
+        strokeCap = Paint.Cap.SQUARE
+    }
 
-    init {
-        // Set the underline color and width
-        underlinePaint.color = R.color.black
-        underlinePaint.strokeWidth = 1f
+    private val underlinePaint = Paint().apply {
+        isAntiAlias = true
+        style = Paint.Style.STROKE
+        strokeCap = Paint.Cap.SQUARE
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -39,34 +41,35 @@ class HintEditText @JvmOverloads constructor(
         setMeasuredDimension(width, measuredHeight)
     }
 
-    override fun onDraw(canvas: Canvas?) {
+
+
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        // Draw the underline below the hint text if it hasn't been drawn already
-        if (!isHintUnderlined && hint != null) {
-            val hintLayout = layout
-            val hintStart = hintLayout?.getLineStart(0) ?: 0
-            val hintEnd = hintLayout?.getLineEnd(0) ?: 0
-            val hintWidth = paint.measureText(hint.toString(), hintStart, hintEnd)
+        // Draw underline
+        underlinePaint.color = currentHintTextColor
+        val underlineStart = paddingStart
+        val underlineEnd = width - paddingEnd
+        val underlineTop = height - paddingBottom - underlineThickness
+        val underlineBottom = height - paddingBottom
+        canvas.drawRect(underlineStart.toFloat(), underlineTop.toFloat(), underlineEnd.toFloat(), underlineBottom.toFloat(), underlinePaint)
 
-            canvas?.drawLine(
-                paddingStart.toFloat(),
-                height - paddingBottom.toFloat(),
-                paddingStart.toFloat() + hintWidth,
-                height - paddingBottom.toFloat(),
-                underlinePaint
-            )
+        // Draw hint text
+        hintPaint.color = currentHintTextColor
+        hintPaint.textSize = textSize
+        hintPaint.textAlign = Paint.Align.LEFT
+        val hintLayout = layout
+        val hint = hint ?: return
+        val hintTop = hintLayout.getLineTop(0).toFloat()
+        val hintBottom = hintLayout.getLineBottom(0).toFloat()
+        val hintWidth = paint.measureText(hint.toString())
+        val hintX = paddingStart.toFloat()
+        val hintY = hintTop - hintTextMargin
+        canvas.drawText(hint.toString(), hintX + hintWidth, hintY, hintPaint)
+    }
 
-            isHintUnderlined = true
-        }
-
-        // Draw the underline below the user-entered text
-        canvas?.drawLine(
-            paddingStart.toFloat(),
-            height - paddingBottom.toFloat(),
-            width - paddingEnd.toFloat(),
-            height - paddingBottom.toFloat(),
-            underlinePaint
-        )
+    companion object {
+        private const val underlineThickness = 4f
+        private const val hintTextMargin = 8f
     }
 }

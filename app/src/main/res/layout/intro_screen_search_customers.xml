@@ -31,11 +31,11 @@
             android:id="@+id/customersSearchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:queryHint="Αναζήτηση"
-            android:iconifiedByDefault="false"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="false"
-            android:orientation="vertical">
+            android:iconifiedByDefault="false"
+            android:orientation="vertical"
+            android:queryHint="Αναζήτηση">
 
         </SearchView>
 
