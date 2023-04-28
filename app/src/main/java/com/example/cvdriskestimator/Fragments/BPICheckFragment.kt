@@ -11,7 +11,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -23,10 +22,9 @@ import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
-import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentBPICheckBinding
 import com.example.cvdriskestimator.viewModels.CheckBPIPatientViewModel
@@ -105,9 +103,9 @@ class BPICheckFragment : Fragment() {
         val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
 
 
-        var patientId = this.arguments!!.getString("patientId")
-        var testDate = this.arguments!!.getString("testDate" , "")
-        var openType = this.arguments!!.getString("openType")
+        var patientId = this.requireArguments().getString("patientId")
+        var testDate = this.requireArguments().getString("testDate" , "")
+        var openType = this.requireArguments().getString("openType")
 
 
         if (openType == "open_history")

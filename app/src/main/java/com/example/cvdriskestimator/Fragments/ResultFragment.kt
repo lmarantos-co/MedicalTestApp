@@ -18,8 +18,8 @@ import androidx.constraintlayout.widget.Guideline
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.palette.graphics.Palette
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
-import com.example.cvdriskestimator.CustomClasses.customDerpesionProgressView
+import com.example.cvdriskestimator.customClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.customDerpesionProgressView
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import kotlinx.coroutines.*

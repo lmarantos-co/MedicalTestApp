@@ -15,7 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
@@ -23,7 +23,6 @@ import com.example.cvdriskestimator.viewModels.CheckSTAIPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckSTAIPatientViewModelFactory
 import java.sql.Date
 import java.util.*
-import java.util.zip.Inflater
 
 
 /**

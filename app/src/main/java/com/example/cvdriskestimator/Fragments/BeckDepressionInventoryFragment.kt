@@ -15,7 +15,7 @@ import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentBeckDepressionInventoryBinding
@@ -73,24 +73,35 @@ class BeckDepressionInventoryFragment : Fragment() {
 
         val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
 
-        var patientId = this.arguments!!.getString("patientId")
-        var testDate = this.arguments!!.getString("testDate" , "")
-        var openType = this.arguments!!.getString("openType")
+        var patientId = this.requireArguments().getString("patientId")
+        var testDate = this.requireArguments().getString("testDate" , "")
+        var openType = this.requireArguments().getString("openType")
 
 
-        var historyTest = Test()
-        if (patientId != "")
+        if (openType == "open_history")
         {
-            if (testDate != "")
+            var historyTest = Test()
+            if (patientId != "")
             {
-//                var date = convertStringToCalenderDate(testDate!!)
-                historyTest = bdiPatientViewModel.fetchHistoryTest(patientId!! , testDate!!)
+                if (testDate != "")
+                {
+                    //var date = convertStringToDate(testDate!!)
+                    //default time zone
+//                    val defaultZoneId: ZoneId = ZoneId.systemDefault()
+//                    val formatter = DateTimeFormatter.ofPattern("yyyy MM dd")
+//                    var testDateFormated = convertStringToCalenderDate(testDate)
+//                    val localDate = LocalDate.parse(testDateFormated)
+//                    val text: String = localDate.format(formatter)
+//                    val parsedDate: LocalDate = LocalDate.parse(text, formatter)
+//                    val covertedDate = java.util.Date.from(localDate.atStartOfDay(defaultZoneId).toInstant())
+//                    val d = SimpleDateFormat("yyyy-MM-dd").parse(localDate.toString())
+                    historyTest = bdiPatientViewModel.fetchHistoryTest(patientId!! , testDate!!)
+                }
             }
-
-        }
-        if (historyTest.patientBDITestResult != null)
-        {
-            setPatientData(historyTest)
+            if (historyTest.patientBDITestResult != null)
+            {
+                setPatientData(historyTest)
+            }
         }
         else
         {

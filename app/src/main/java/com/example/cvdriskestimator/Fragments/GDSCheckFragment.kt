@@ -15,20 +15,13 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.core.view.get
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.R
-import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentGDSCheckBinding
-import com.example.cvdriskestimator.databinding.FragmentMDICheckBinding
 import com.example.cvdriskestimator.viewModels.CheckGDSPatientViewModelFactory
 import com.example.cvdriskestimator.viewModels.CheckGDSViewModel
-import com.example.cvdriskestimator.viewModels.CheckMDIPatientViewModel
-import com.example.cvdriskestimator.viewModels.CheckMDIPatientViewModelFactory
 import java.sql.Date
-import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class GDSCheckFragment : Fragment() {

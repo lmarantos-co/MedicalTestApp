@@ -1,4 +1,4 @@
-package com.example.cvdriskestimator.CustomClasses
+package com.example.cvdriskestimator.customClasses
 
 import android.content.Context
 import android.view.GestureDetector

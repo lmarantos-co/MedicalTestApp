@@ -1,4 +1,4 @@
-package com.example.cvdriskestimator.CustomClasses
+package com.example.cvdriskestimator.customClasses
 
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater

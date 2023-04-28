@@ -14,10 +14,8 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.R
-import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.*
 import com.example.cvdriskestimator.viewModels.CheckGPDQPatientViewModelFactory

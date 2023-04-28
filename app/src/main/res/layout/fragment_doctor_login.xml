@@ -168,7 +168,7 @@
                 android:textSize="20sp" />
 
 
-            <EditText
+            <com.example.cvdriskestimator.customClasses.HintEditText
                 android:id="@+id/userNameLoginEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -177,7 +177,8 @@
                 android:layout_centerHorizontal="true"
                 android:clickable="true"
                 android:editable="true"
-                android:ellipsize="none"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:ems="10"
                 android:enabled="true"
                 android:gravity="center"
@@ -218,7 +219,7 @@
                 android:textSize="20sp" />
 
 
-            <EditText
+            <com.example.cvdriskestimator.customClasses.HintEditText
                 android:id="@+id/editTextLoginPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -226,8 +227,9 @@
                 android:layout_centerInParent="false"
                 android:layout_centerHorizontal="true"
                 android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:editable="true"
-                android:ellipsize="none"
                 android:ems="10"
                 android:enabled="true"
                 android:gravity="center"

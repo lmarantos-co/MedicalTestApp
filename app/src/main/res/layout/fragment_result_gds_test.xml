@@ -502,8 +502,8 @@
 
     <View
         android:id="@+id/view14"
-        android:layout_width="165dp"
-        android:layout_height="24dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/view13"
         app:layout_constraintEnd_toStartOf="@+id/rightHGLresultBar"
         app:layout_constraintStart_toStartOf="@+id/leftHGLresultBar"

@@ -15,20 +15,15 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
-import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentMedDietTestBinding
-import com.example.cvdriskestimator.viewModels.CheckMDIPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckMedDietTestViewModel
 import com.example.cvdriskestimator.viewModels.CheckMedDietTestViewModelFactory
 import java.sql.Date
-import java.text.SimpleDateFormat
 import java.util.*
 
 

@@ -1,4 +1,4 @@
-package com.example.cvdriskestimator.CustomClasses
+package com.example.cvdriskestimator.customClasses
 
 import android.app.AlertDialog
 import android.content.Context
@@ -9,7 +9,6 @@ import android.view.MenuInflater
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.example.cvdriskestimator.Fragments.*
 import com.example.cvdriskestimator.MainActivity

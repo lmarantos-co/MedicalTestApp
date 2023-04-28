@@ -29,7 +29,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cvdriskestimator.CustomClasses.CustomTestListAdapter
+import com.example.cvdriskestimator.customClasses.CustomTestListAdapter
 import com.example.cvdriskestimator.Fragments.*
 import com.example.cvdriskestimator.RealmDB.Doctor
 import com.example.cvdriskestimator.RealmDB.Patient
@@ -41,7 +41,6 @@ import io.realm.Realm
 import io.realm.RealmList
 import java.lang.reflect.Method
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 

@@ -13,5 +13,5 @@
     <dimen name="mdstestQ1A6Padding">12dp</dimen>
     <dimen name="mdstestQ2A3Padding">22dp</dimen>
     <dimen name="mdstestQ2A4Padding">10dp</dimen>
-    <dimen name="mdiMagendaTextSize">18sp</dimen>
+    <dimen name="mdiMagendaTextSize">20sp</dimen>
 </resources>

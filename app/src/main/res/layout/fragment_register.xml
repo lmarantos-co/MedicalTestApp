@@ -69,8 +69,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/topHorGL">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/formConLayout"
+            <RelativeLayout
+                android:id="@+id/formRelLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/MidnightBlue"
@@ -156,9 +156,8 @@
                     android:text="@string/register_title"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    app:layout_constraintEnd_toStartOf="@+id/verGl2"
-                    app:layout_constraintStart_toStartOf="@+id/verGL1"
-                    app:layout_constraintTop_toTopOf="@+id/horGL2" />
+                    android:layout_marginTop="32dp"
+                    android:layout_centerHorizontal="true"/>
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/verGL1"
@@ -176,15 +175,14 @@
 
                 <RelativeLayout
                     android:id="@+id/userNameRelLayout"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/formTxtV"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginRight="8dp"
-                    android:background="@drawable/relativelayout_style"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/barHG4">
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
                         android:id="@+id/userNameTxtV"
@@ -198,16 +196,17 @@
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.example.cvdriskestimator.customClasses.HintEditText
                         android:id="@+id/userNameRegEditText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/userNameTxtV"
                         android:layout_centerInParent="true"
                         android:clickable="true"
-                        android:editable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/register_username_hint"
                         android:inputType="textPersonName"
@@ -221,15 +220,14 @@
 
                 <RelativeLayout
                     android:id="@+id/userpassRelLayout"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/userNameRelLayout"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginRight="8dp"
-                    android:background="@drawable/relativelayout_style"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/horGL6">
+                    android:background="@drawable/relativelayout_style">
 
 
                     <TextView
@@ -244,7 +242,7 @@
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.example.cvdriskestimator.customClasses.HintEditText
                         android:id="@+id/editTextRegPassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -252,12 +250,14 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="false"
                         android:clickable="true"
-                        android:editable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/register_password_hint"
                         android:inputType="textPassword"
+                        android:maxLines="1"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
                         android:password="true"
@@ -265,19 +265,21 @@
                         android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.example.cvdriskestimator.customClasses.HintEditText
                         android:id="@+id/editTextRegValidatePassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/editTextRegPassword"
                         android:layout_centerInParent="true"
                         android:clickable="true"
-                        android:editable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/register_re_enterpassword_hint"
                         android:inputType="textPassword"
+                        android:maxLines="1"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
                         android:password="true"
@@ -289,15 +291,15 @@
 
                 <RelativeLayout
                     android:id="@+id/userExtraInfoRelLayout"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
+                    android:layout_below="@+id/userpassRelLayout"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginRight="8dp"
-                    android:background="@drawable/relativelayout_style"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/userpassRelLayout">
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
                         android:id="@+id/userExtraUbfiTxtV"
@@ -313,7 +315,7 @@
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.example.cvdriskestimator.customClasses.HintEditText
                         android:id="@+id/patientNameEditTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -322,6 +324,8 @@
                         android:clickable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/account_info_name"
                         android:inputType="text"
@@ -331,7 +335,7 @@
                         android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.example.cvdriskestimator.customClasses.HintEditText
                         android:id="@+id/patientLatNameEditTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -340,6 +344,8 @@
                         android:clickable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/account_info_lastname"
                         android:inputType="text"
@@ -349,9 +355,9 @@
                         android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.example.cvdriskestimator.customClasses.HintEditText
                         android:id="@+id/userDateOfBirthEditText"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/patientLatNameEditTxt"
                         android:layout_centerInParent="true"
@@ -359,6 +365,8 @@
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/account_info_date_birth"
                         android:inputType="text"
@@ -368,7 +376,7 @@
                         android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.example.cvdriskestimator.customClasses.HintEditText
                         android:id="@+id/userOccupationEditText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -378,6 +386,8 @@
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/account_info_occupation"
                         android:inputType="text"
@@ -387,7 +397,7 @@
                         android:textColorHint="@color/black"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.example.cvdriskestimator.customClasses.HintEditText
                         android:id="@+id/userYearsOfApprenticeEditText"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -397,6 +407,8 @@
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/account_info_years_of_prof"
                         android:inputType="text"
@@ -416,7 +428,7 @@
                     app:layout_constraintGuide_percent="0.75" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
 
         </androidx.core.widget.NestedScrollView>
 

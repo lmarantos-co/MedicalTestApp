@@ -32,7 +32,7 @@
     <string name="register_title">Παρακαλώ εισάγετε τα δεδομένα εγγραφής : </string>
     <string name="account_info_text">Εισάγετε τα στοιχεία του λογαριασμού σας</string>
     <string name="account_info_name">Εισάγετε τα όνομα σας</string>
-    <string name="account_info_lastname">Εισάγετε τα επώνυμο σας</string>
+    <string name="account_info_lastname">Εισάγετε το επώνυμο σας</string>
     <string name="account_info_occupation">Εισάγετε τo επάγγελμα</string>
     <string name="account_info_date_birth">Εισάγετε την ημερομηνία γέννηση σας</string>
     <string name="account_info_years_of_prof">Xρόνια επαγγέλματος</string>
@@ -313,7 +313,7 @@
     <string name="pdq_test_results">Parkinson Disease Questionnaire Score Results</string>
     <string name="pdq_test_score">Αποτέλεσμα : Συνολική εκτίμηση με βάση τις 8 κατηγορίες - ποσοστό : %1$s</string>
     <string name="pdq_test_intro_text">ΕΞΑΙΤΙΑΣ ΤΗΣ ΝΟΣΟΥ ΤΟΥ ΠΑΡΚΙΝΣΟΝ πόσο συχνά είχατε, τον προηγούμενο μήνα, τα παρακάτω;</string>
-    <string name="intro_screen_new_customer">Νέος\n πελάτης</string>
+    <string name="intro_screen_new_customer">Νέος πελάτης</string>
     <string name="intro_screen_all_customers">Όλοι οι πελάτες</string>
     <string name="bdi_test_results">BDI Test</string>
     <string name="bdi_test_intro_text">Kυκλώστε τον αριθμό δίπλα από την δήλωση που περιγράφει καλύτερα τον τρόπο

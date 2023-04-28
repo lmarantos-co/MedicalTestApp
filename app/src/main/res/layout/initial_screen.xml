@@ -61,6 +61,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/intro_screen_panel_dummy_3"
                 android:gravity="center"
+                android:maxLines="1"
                 android:text="@string/intro_screen_new_customer"
                 android:textColor="@color/black"
                 android:textSize="20sp"

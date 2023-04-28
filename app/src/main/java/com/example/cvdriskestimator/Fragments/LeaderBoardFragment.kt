@@ -7,16 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.RelativeLayout
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.arasthel.spannedgridlayoutmanager.SpanSize
-import com.arasthel.spannedgridlayoutmanager.SpannedGridLayoutManager
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
-import com.example.cvdriskestimator.CustomClasses.leaderBoardRecyclerAdapter
+import com.example.cvdriskestimator.customClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.leaderBoardRecyclerAdapter
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 

@@ -6,13 +6,11 @@ import android.util.DisplayMetrics
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.databinding.FragmentDoctorLoginBinding
 import com.example.cvdriskestimator.viewModels.LoginDoctorViewModel
 import com.example.cvdriskestimator.viewModels.LoginDoctorViewModelFactory
-import com.example.cvdriskestimator.viewModels.LoginPatientViewModelFactory
-import com.example.cvdriskestimator.viewModels.LoginPatientViewModel
 
 
 class LoginDoctorFragment : Fragment() {

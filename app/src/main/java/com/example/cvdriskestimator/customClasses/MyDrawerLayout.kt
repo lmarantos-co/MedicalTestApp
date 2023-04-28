@@ -1,10 +1,8 @@
-package com.example.cvdriskestimator.CustomClasses
+package com.example.cvdriskestimator.customClasses
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View.MeasureSpec
 
-import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 
 import androidx.drawerlayout.widget.DrawerLayout

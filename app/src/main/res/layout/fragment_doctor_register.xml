@@ -181,15 +181,15 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
-                <EditText
+                <com.example.cvdriskestimator.customClasses.HintEditText
                     android:id="@+id/userNameRegisterEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/userNameTxtV"
                     android:layout_centerInParent="true"
                     android:clickable="true"
-                    android:editable="true"
-                    android:ellipsize="none"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:ems="10"
                     android:enabled="true"
                     android:gravity="center"
@@ -228,7 +228,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
-                <EditText
+                <com.example.cvdriskestimator.customClasses.HintEditText
                     android:id="@+id/editTextRegisterPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -236,8 +236,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="false"
                     android:clickable="true"
-                    android:editable="true"
-                    android:ellipsize="none"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:ems="10"
                     android:enabled="true"
                     android:gravity="center"
@@ -250,15 +250,15 @@
                     android:textColorHint="#000000"
                     android:textSize="20sp" />
 
-                <EditText
+                <com.example.cvdriskestimator.customClasses.HintEditText
                     android:id="@+id/editTextValidateRegisterPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/editTextRegisterPassword"
                     android:layout_centerInParent="true"
                     android:clickable="true"
-                    android:editable="true"
-                    android:ellipsize="none"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:ems="10"
                     android:enabled="true"
                     android:gravity="center"
