@@ -1112,7 +1112,7 @@ class HistoryFragment : Fragment() {
                    if (maxScore < 17)
                        maxScore += 5
                    else
-                       maxScore = 21f
+                       maxScore = 25f
 
                    //create the data set
                    dataSet1 = LineDataSet(null, Html.fromHtml("DASS anxiety").toString())
@@ -1152,10 +1152,10 @@ class HistoryFragment : Fragment() {
                        minScore -= 5
                    else
                        minScore = 0f
-                   if (maxScore < 17)
+                   if (maxScore < 27)
                        maxScore += 5
                    else
-                       maxScore = 21f
+                       maxScore = 35f
 
                    //create the data set
                    dataSet2 = LineDataSet(null, Html.fromHtml("DASS stress").toString())
@@ -1195,10 +1195,10 @@ class HistoryFragment : Fragment() {
                        minScore -= 5
                    else
                        minScore = 0f
-                   if (maxScore < 17)
+                   if (maxScore < 22)
                        maxScore += 5
                    else
-                       maxScore = 21f
+                       maxScore = 30f
 
                    //create the data set
                    dataSet3 = LineDataSet(null, Html.fromHtml("DASS depression").toString())

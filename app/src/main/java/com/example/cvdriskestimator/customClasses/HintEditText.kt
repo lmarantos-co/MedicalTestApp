@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Rect
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
 import com.example.cvdriskestimator.R
@@ -16,6 +17,9 @@ class HintEditText @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : AppCompatEditText(context, attrs, defStyleAttr) {
 
+    private val hintBounds = Rect()
+
+
     private val hintPaint = Paint().apply {
         isAntiAlias = true
         style = Paint.Style.STROKE
@@ -26,6 +30,7 @@ class HintEditText @JvmOverloads constructor(
         isAntiAlias = true
         style = Paint.Style.STROKE
         strokeCap = Paint.Cap.SQUARE
+        color = resources.getColor(R.color.black)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -47,7 +52,7 @@ class HintEditText @JvmOverloads constructor(
         super.onDraw(canvas)
 
         // Draw underline
-        underlinePaint.color = currentHintTextColor
+//        underlinePaint.color = currentHintTextColor
         val underlineStart = paddingStart
         val underlineEnd = width - paddingEnd
         val underlineTop = height - paddingBottom - underlineThickness
@@ -66,6 +71,14 @@ class HintEditText @JvmOverloads constructor(
         val hintX = paddingStart.toFloat()
         val hintY = hintTop - hintTextMargin
         canvas.drawText(hint.toString(), hintX + hintWidth, hintY, hintPaint)
+
+        // Draw hint text underline
+        hintPaint.getTextBounds(hint.toString(), 0, hint.length, hintBounds)
+        val hintUnderlineStart = hintX.toInt() + hintWidth.toInt() + hintTextMargin.toInt()
+        val hintUnderlineEnd = hintUnderlineStart + hintBounds.width()
+        val hintUnderlineTop = hintBottom.toInt() + hintTextMargin.toInt()
+        val hintUnderlineBottom = hintUnderlineTop + underlineThickness.toInt()
+        canvas.drawRect(hintUnderlineStart.toFloat(), hintUnderlineTop.toFloat(), hintUnderlineEnd.toFloat(), hintUnderlineBottom.toFloat(), underlinePaint)
     }
 
     companion object {

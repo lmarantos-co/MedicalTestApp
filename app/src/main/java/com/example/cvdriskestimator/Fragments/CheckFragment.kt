@@ -81,11 +81,11 @@ class CheckFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI(view)
-        val userName = activity!!.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
+        val userName = requireActivity().getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
 
-        var patientId = this.arguments!!.getString("patientId")
-        var testDate = this.arguments!!.getString("testDate" , "")
-        var openType = this.arguments!!.getString("openType")
+        var patientId = this.requireArguments().getString("patientId")
+        var testDate = this.requireArguments().getString("testDate" , "")
+        var openType = this.requireArguments().getString("openType")
 
         if (openType == "open_history")
         {
@@ -228,7 +228,7 @@ class CheckFragment : Fragment() {
         //set onClick listeners on the info views
         checkBinding.imgVInfo.setOnClickListener {
             Toast.makeText(
-                activity!!.applicationContext,
+                requireActivity().applicationContext,
                 resources.getString(R.string.age_info),
                 Toast.LENGTH_LONG
             ).show()
@@ -236,7 +236,7 @@ class CheckFragment : Fragment() {
 
         checkBinding.imgVInfo2.setOnClickListener {
             Toast.makeText(
-                activity!!.applicationContext,
+                requireActivity().applicationContext,
                 resources.getString(R.string.smoker_info),
                 Toast.LENGTH_LONG
             ).show()

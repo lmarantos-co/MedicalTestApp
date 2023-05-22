@@ -72,9 +72,9 @@ class GDSCheckFragment : Fragment() {
         val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
 
 
-        var patientId = this.arguments!!.getString("patientId")
-        var testDate = this.arguments!!.getString("testDate" , "")
-        var openType = this.arguments!!.getString("openType")
+        var patientId = this.requireArguments().getString("patientId")
+        var testDate = this.requireArguments().getString("testDate" , "")
+        var openType = this.requireArguments().getString("openType")
 
 
         if (openType == "open_history")
@@ -266,16 +266,16 @@ class GDSCheckFragment : Fragment() {
             && (rg.id != gdsCheckBinding.GDS13QRG.id))
         {
             if (rg.get(1).id == radioButtonId)
-                result = 1
-            if (rg.get(0).id == radioButtonId)
                 result = 0
+            if (rg.get(0).id == radioButtonId)
+                result = 1
         }
         else
         {
             if (rg.get(1).id == radioButtonId)
-                result = 0
-            if (rg.get(0).id == radioButtonId)
                 result = 1
+            if (rg.get(0).id == radioButtonId)
+                result = 0
         }
         return result
     }

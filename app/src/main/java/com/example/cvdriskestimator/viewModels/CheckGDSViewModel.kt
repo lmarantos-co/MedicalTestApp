@@ -92,9 +92,7 @@ class CheckGDSViewModel : ViewModel() {
             && (checkQuestionForInputError(allPatientSelections[10]  , 11)) && (checkQuestionForInputError(allPatientSelections[11]  , 12))
             && (checkQuestionForInputError(allPatientSelections[12]  , 13)))
         {
-            val result = mdiTestEstimator.calculateMDI(allPatientSelections[0]!!, allPatientSelections[1]!!, allPatientSelections[2]!!, allPatientSelections[3]!!, allPatientSelections[4]!! ,
-                allPatientSelections[5]!! , allPatientSelections[6]!!, allPatientSelections[7]!! , allPatientSelections[8]!! , allPatientSelections[9]!! ,
-                allPatientSelections[10]!! , allPatientSelections[11]!! , allPatientSelections[12]!!)
+            val result = mdiTestEstimator.calculateBDI(allPatientSelections)
             storePatientOnRealm(allPatientSelections , result)
             openResultFragment(result)
         }

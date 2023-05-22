@@ -492,8 +492,8 @@ class ResultFragment : Fragment() {
                 totalScore = view.findViewById(R.id.totalScore)
                 depressStatus = view.findViewById(R.id.depressionStatus)
                 setMDIResultsOnForm(
-                    arguments!!.getDouble(ARG_PARAM1).toInt(),
-                    getMDIResult(arguments!!.getDouble(ARG_PARAM1).toInt())
+                    requireArguments().getDouble(ARG_PARAM1).toInt(),
+                    getMDIResult(requireArguments().getDouble(ARG_PARAM1).toInt())
                 )
 
                 noDepressionLayout.post {
@@ -592,8 +592,8 @@ class ResultFragment : Fragment() {
             totalScore = view.findViewById(R.id.totalScore)
             depressStatus = view.findViewById(R.id.depressionStatus)
             setBDIResultsOnForm(
-                arguments!!.getDouble(ARG_PARAM1).toInt(),
-                getBDIResult(arguments!!.getDouble(ARG_PARAM1).toInt())
+                requireArguments().getDouble(ARG_PARAM1).toInt(),
+                getBDIResult(requireArguments().getDouble(ARG_PARAM1).toInt())
             )
 
             noDepressionLayout.post {
@@ -658,8 +658,8 @@ class ResultFragment : Fragment() {
             totalScore = view.findViewById(R.id.totalScore)
             depressStatus = view.findViewById(R.id.depressionStatus)
             setHAMResultsOnForm(
-                arguments!!.getDouble(ARG_PARAM1).toInt(),
-                getHAMMResult(arguments!!.getDouble(ARG_PARAM1).toInt())
+                requireArguments().getDouble(ARG_PARAM1).toInt(),
+                getHAMMResult(requireArguments().getDouble(ARG_PARAM1).toInt())
             )
 
             noDepressionLayout.post {
@@ -807,8 +807,8 @@ class ResultFragment : Fragment() {
             totalScore = view.findViewById(R.id.totalScore)
             depressStatus = view.findViewById(R.id.depressionStatus)
             setBDIResultsOnForm(
-                arguments!!.getDouble(ARG_PARAM1).toInt(),
-                getZUNGResult(arguments!!.getDouble(ARG_PARAM1).toInt())
+                requireArguments().getDouble(ARG_PARAM1).toInt(),
+                getZUNGResult(requireArguments().getDouble(ARG_PARAM1).toInt())
             )
 
             noDepressionLayout.post {
@@ -2006,7 +2006,7 @@ fun showMDIResultBarViews()
 
 
     private fun showBDIResultBarViews() {
-        val userMDIResult = (arguments!!.getDouble(ARG_PARAM1) * 1)
+        val userMDIResult = (requireArguments().getDouble(ARG_PARAM1) * 1)
         var barHeightSet = false
         if (userMDIResult < 9)
         {
@@ -2234,7 +2234,7 @@ fun showMDIResultBarViews()
                     scaleMildAnimation.setAnimationListener( object : Animation.AnimationListener
                     {
                         override fun onAnimationStart(p0: Animation?) {
-                            mildResultView.alpha = 1f
+                            mildDepressionResultView.alpha = 1f
                         }
 
                         override fun onAnimationEnd(p0: Animation?) {
