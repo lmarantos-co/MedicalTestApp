@@ -23,7 +23,7 @@ buildscript {
     //...
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.2'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.20-RC'
         classpath "io.realm:realm-gradle-plugin:10.11.0"
     }
 }

@@ -62,6 +62,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/red_bpi_form_style"
+                android:drawableLeft="@drawable/ic_pain__24dp"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:minHeight="48dp"
