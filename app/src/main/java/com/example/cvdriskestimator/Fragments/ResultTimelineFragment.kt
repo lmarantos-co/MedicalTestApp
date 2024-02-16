@@ -311,36 +311,36 @@ class ResultTimelineFragment : Fragment() {
         var viewHeight : Int = 0
         var latests : RealmResults<Test>
 
-        override fun onDraw(canvas: android.graphics.Canvas?) {
-            super.onDraw(canvas)
-
-            viewWidth  = this.layoutParams.width
-            viewHeight = this.layoutParams.height
-
-            //initialize the paint object
-            paint.apply {
-                isAntiAlias = true
-                color = mainActivity.getColor(R.color.black)
-                style = Paint.Style.STROKE
-            }
-
-            //draw the vertical axis line
-            canvas!!.drawLine((viewHeight / 20f) , (viewWidth / 2f) , (viewHeight - (viewHeight / 20f)) , (viewWidth / 2f) , paint)
-
-            var lineHeight = (viewHeight - ((viewHeight / 20f) *2))
-            var linePieces = (lineHeight / latests.size -1)
-
-            //draw small horizontal lines in between the vertical line
-            for (i in 0..latests.size -1)
-            {
-                for (k in 0..10)
-                {
-                    canvas!!.drawLine( ((viewWidth  / 2f) - viewWidth/20) ,(viewHeight / 20f) + (linePieces * i) + (linePieces / k), ((viewWidth  / 2f) + viewWidth/20)  ,(viewHeight / 20f) + (linePieces * i) + (linePieces / k), paint)
-                }
-                canvas!!.drawLine((viewHeight / 20f) + (linePieces * i) , ((viewWidth  / 2f) - viewWidth/18) , (viewHeight / 20f) + (linePieces * (i + 1)), ((viewWidth  / 2f) + viewWidth/18), paint)
-            }
-
-        }
+//        override fun onDraw(canvas: android.graphics.Canvas?) {
+//            super.onDraw(canvas)
+//
+//            viewWidth  = this.layoutParams.width
+//            viewHeight = this.layoutParams.height
+//
+//            //initialize the paint object
+//            paint.apply {
+//                isAntiAlias = true
+//                color = mainActivity.getColor(R.color.black)
+//                style = Paint.Style.STROKE
+//            }
+//
+//            //draw the vertical axis line
+//            canvas!!.drawLine((viewHeight / 20f) , (viewWidth / 2f) , (viewHeight - (viewHeight / 20f)) , (viewWidth / 2f) , paint)
+//
+//            var lineHeight = (viewHeight - ((viewHeight / 20f) *2))
+//            var linePieces = (lineHeight / latests.size -1)
+//
+//            //draw small horizontal lines in between the vertical line
+//            for (i in 0..latests.size -1)
+//            {
+//                for (k in 0..10)
+//                {
+//                    canvas!!.drawLine( ((viewWidth  / 2f) - viewWidth/20) ,(viewHeight / 20f) + (linePieces * i) + (linePieces / k), ((viewWidth  / 2f) + viewWidth/20)  ,(viewHeight / 20f) + (linePieces * i) + (linePieces / k), paint)
+//                }
+//                canvas!!.drawLine((viewHeight / 20f) + (linePieces * i) , ((viewWidth  / 2f) - viewWidth/18) , (viewHeight / 20f) + (linePieces * (i + 1)), ((viewWidth  / 2f) + viewWidth/18), paint)
+//            }
+//
+//        }
 
         init {
             latests = allTests

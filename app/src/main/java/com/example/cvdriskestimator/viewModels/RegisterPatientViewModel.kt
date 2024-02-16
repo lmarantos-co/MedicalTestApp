@@ -259,30 +259,30 @@ class RegisterPatientViewModel : ViewModel() , Observable{
                         // 4.
                         realmTransaction.copyToRealmOrUpdate(patient)
                         //add the patient to the patientList of the doctor
-                        var doctor = Doctor()
-                        val doctorUserName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("doctorUserName" , "tempDoctor")
-                        doctor = realmTransaction.where(Doctor::class.java).equalTo("doctorUserName", doctorUserName).findFirst()!!
-                        var patientList = ArrayList<String>()
-                        if (doctor.doctorCustomers != null)
-                        {
-                            for (i in 0 until doctor.doctorCustomers!!.size)
-                            {
-                                patientList.add(doctor.doctorCustomers!!.get(i)!!)
-                            }
-                            patientList.add(patient.patientLastName)
-                            doctor.doctorCustomers = null
-                        }
-                        for (i in 0 until patientList.size)
-                        {
-                            doctor.doctorCustomers!!.add(patientList.get(i))
-                        }
-                        realmTransaction.insertOrUpdate(doctor)
+//                        var doctor = Doctor()
+//                        val doctorUserName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("doctorUserName" , "tempDoctor")
+//                        doctor = realmTransaction.where(Doctor::class.java).equalTo("doctorUserName", doctorUserName).findFirst()!!
+//                        var patientList = ArrayList<String>()
+//                        if (doctor.doctorCustomers != null)
+//                        {
+//                            for (i in 0 until doctor.doctorCustomers!!.size)
+//                            {
+//                                patientList.add(doctor.doctorCustomers!!.get(i)!!)
+//                            }
+//                            patientList.add(patient.patientLastName)
+//                            doctor.doctorCustomers = null
+//                        }
+//                        for (i in 0 until patientList.size)
+//                        {
+//                            doctor.doctorCustomers!!.add(patientList.get(i))
+//                        }
+//                        realmTransaction.insertOrUpdate(doctor)
                         }
                     Toast.makeText(mainActivity.applicationContext, mainActivity.resources.getString(R.string.register_success) , Toast.LENGTH_LONG).show()
                     hideSoftInputKeyboard()
                     val sharedPref = mainActivity.getPreferences(Context.MODE_PRIVATE) ?: return
                     with (sharedPref.edit()) {
-                        putString("userName" , "tempUser")
+                        putString("userName" , userName)
 //            putString("userName" , "tempUser")
                         apply()
                     }
