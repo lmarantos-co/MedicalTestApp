@@ -31,6 +31,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cvdriskestimator.customClasses.CustomTestListAdapter
 import com.example.cvdriskestimator.Fragments.*
+import com.example.cvdriskestimator.RealmDB.CVDTest
+import com.example.cvdriskestimator.RealmDB.DiabetesTest
 import com.example.cvdriskestimator.RealmDB.Doctor
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDB
@@ -2127,7 +2129,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             calendar.set(Calendar.YEAR , currentDate.year)
             calendar.set(Calendar.MONTH , currentDate.month)
             calendar.set(Calendar.DAY_OF_MONTH , LocalDateTime.now().dayOfMonth)
-            var allCVDTest = realm.where(Test::class.java).notEqualTo("SSB" , "").equalTo("patientId" , patient!!.patientId).findAll()
+//            var allCVDTest = realm.where(Test::class.java).notEqualTo("SSB" , "").equalTo("patientId" , patient!!.patientId).findAll()
+            var allCVDTest = realm.where(CVDTest::class.java).equalTo("patientId" , patient!!.patientId).findAll()
             var CVDTestResult = ""
             if (allCVDTest.size > 0)
             {
@@ -2138,7 +2141,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 CVDTestResult = "CardioVascularDis - ${dateFormat.format(allCVDTestSize!!.testDate)}"
             }
 
-            var allDiabetesTest = realm.where(Test::class.java).notEqualTo("patientPAM" , "").equalTo("patientId" , patient!!.patientId).findAll()
+//            var allDiabetesTest = realm.where(Test::class.java).notEqualTo("patientPAM" , "").equalTo("patientId" , patient!!.patientId).findAll()
+            var allDiabetesTest = realm.where(DiabetesTest::class.java).equalTo("patientId" , patient!!.patientId).findAll()
             var DiabetesTestResult = ""
             if (allDiabetesTest.size > 0)
             {
