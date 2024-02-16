@@ -2066,6 +2066,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         popupMenu.show()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     fun hideResultFragment(resultFragment: ResultFragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
             fragmentTransaction.hide(resultFragment)
