@@ -81,17 +81,17 @@ class PDQCheckViewModel : ViewModel() {
         }
     }
 
-    fun setPatientDataOnForm(username : String)
-    {
-        fetchPatientData(username)
-    }
+//    fun setPatientDataOnForm(username : String)
+//    {
+//        fetchPatientData(username)
+//    }
 
-    private fun fetchPatientData(username : String) {
-        patientData = realmDAO.fetchPatientData(username)
-        testData = realmDAO.fetchTestData(patientData.value!!.patientId , "PDQ")
-        patientData.postValue(patientData.value)
-        testData.postValue(testData.value)
-    }
+//    private fun fetchPatientData(username : String) {
+//        patientData = realmDAO.fetchPatientData(username)
+//        testData = realmDAO.fetchTestData(patientData.value!!.patientId , "PDQ")
+//        patientData.postValue(patientData.value)
+//        testData.postValue(testData.value)
+//    }
 
     fun checkPDQTestPatient(allPatientSelections : IntArray) : Boolean
     {

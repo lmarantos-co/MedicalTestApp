@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
+import com.example.cvdriskestimator.RealmDB.BAITest
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentBAICheckBinding
 import com.example.cvdriskestimator.viewModels.CheckBAIPatientViewModel
@@ -81,7 +82,7 @@ class BAICheckFragment : Fragment() {
 
         if (openType == "open_history")
         {
-            var historyTest = Test()
+            var historyTest = BAITest()
             if (patientId != "")
             {
                 if (testDate != "")
@@ -208,7 +209,7 @@ class BAICheckFragment : Fragment() {
 
     }
 
-    private fun setPatientData(test : Test)
+    private fun setPatientData(test : BAITest)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()

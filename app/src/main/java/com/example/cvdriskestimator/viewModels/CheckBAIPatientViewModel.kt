@@ -10,6 +10,7 @@ import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.BAITestEstimator
+import com.example.cvdriskestimator.RealmDB.BAITest
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
@@ -33,7 +34,7 @@ class CheckBAIPatientViewModel : ViewModel() {
     private lateinit var historyFragment: HistoryFragment
 
     var patientData = MutableLiveData<Patient>()
-    var testDATA = MutableLiveData<Test>()
+    var testDATA = MutableLiveData<BAITest>()
 
 
     fun passActivity(activity: MainActivity)
@@ -79,7 +80,7 @@ class CheckBAIPatientViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "Beck Anxiety Index")
+        testDATA = realmDAO.fetchBAITestData(patientData.value!!.patientId , "Beck Anxiety Index")
         patientData.postValue(patientData.value)
         testDATA.postValue(testDATA.value)
     }
@@ -150,9 +151,9 @@ class CheckBAIPatientViewModel : ViewModel() {
         mainActivity.fragmentTransaction(historyFragment)
     }
 
-    fun fetchHistoryTest(patientId : String, testID : String) : Test
+    fun fetchHistoryTest(patientId : String, testID : String) : BAITest
     {
-        var tests : RealmResults<Test>? = null
+        var tests : RealmResults<BAITest>? = null
         realm.executeTransaction {
 
 //            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "Beck Anxiety Index").findAll()
@@ -175,7 +176,7 @@ class CheckBAIPatientViewModel : ViewModel() {
 //                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
 //                }
 //            }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).equalTo("testName" , "Beck Anxiety Index").findAll()
+            tests = realm.where(BAITest::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).findAll()
         }
 
         return tests!!.get(tests!!.size -1)!!

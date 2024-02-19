@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
+import com.example.cvdriskestimator.RealmDB.HAMTest
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentHamiltonDepressionBinding
 import com.example.cvdriskestimator.viewModels.*
@@ -80,7 +81,7 @@ class HamiltonDepressionFragment : Fragment() {
 
         if (openType == "open_history")
         {
-            var historyTest = Test()
+            var historyTest = HAMTest()
             if (patientId != "")
             {
                 if (testDate != "")
@@ -201,7 +202,7 @@ class HamiltonDepressionFragment : Fragment() {
 
     }
 
-    private fun setPatientData(test : Test)
+    private fun setPatientData(test : HAMTest)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()

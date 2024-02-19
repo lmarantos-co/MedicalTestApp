@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.RealmDB.BPITest
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentBPICheckBinding
 import com.example.cvdriskestimator.viewModels.CheckBPIPatientViewModel
@@ -110,7 +111,7 @@ class BPICheckFragment : Fragment() {
 
         if (openType == "open_history")
         {
-            var historyTest = Test()
+            var historyTest = BPITest()
             if (patientId != "")
             {
                 if (testDate != "")
@@ -374,7 +375,7 @@ class BPICheckFragment : Fragment() {
 
     }
 
-    fun setTestDataManuallty(it : Test)
+    fun setTestDataManuallty(it : BPITest)
     {
         if (it != null)
             setPatientDataOnForm(it)
@@ -551,7 +552,7 @@ class BPICheckFragment : Fragment() {
     }
 
 
-    private fun setPatientDataOnForm(test : Test)
+    private fun setPatientDataOnForm(test : BPITest)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialiseFormData()

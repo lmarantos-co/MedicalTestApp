@@ -70,15 +70,15 @@ class PDQCheckFirstCategoryFragment : Fragment() {
         pdqCheckBinding.includeCvdTitleForm.userIcon.alpha = 1f
 
         val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
-        if (userName != "tempUser")
-        {
-            pdqPatientViewModel.setPatientDataOnForm(userName!!)
-        }
-        else
-        {
-            pdqPatientViewModel.initialiseUserDummy()
-            pdqPatientViewModel.setPatientDataOnForm(userName)
-        }
+//        if (userName != "tempUser")
+//        {
+//            pdqPatientViewModel.setPatientDataOnForm(userName!!)
+//        }
+//        else
+//        {
+//            pdqPatientViewModel.initialiseUserDummy()
+//            pdqPatientViewModel.setPatientDataOnForm(userName)
+//        }
 
         if (savedInstanceState!= null)
         {

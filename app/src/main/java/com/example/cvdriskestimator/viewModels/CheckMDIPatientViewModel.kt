@@ -10,6 +10,7 @@ import com.example.cvdriskestimator.Fragments.MDICheckFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.MDITestEstimator
+import com.example.cvdriskestimator.RealmDB.MDITest
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
@@ -33,7 +34,7 @@ class CheckMDIPatientViewModel : ViewModel() {
 
     //mutable data that hold the patient data
     var patientData = MutableLiveData<Patient>()
-    var testData = MutableLiveData<Test>()
+    var testData = MutableLiveData<MDITest>()
 
     fun passActivity(activity : MainActivity)
     {
@@ -94,9 +95,9 @@ class CheckMDIPatientViewModel : ViewModel() {
         mainActivity.fragmentTransaction(historyFragment)
     }
 
-    fun fetchHistoryTest(patientId : String, testID : String) : Test
+    fun fetchHistoryTest(patientId : String, testID : String) : MDITest
     {
-        var tests : RealmResults<Test>? = null
+        var tests : RealmResults<MDITest>? = null
         realm.executeTransaction {
 
 //            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "Major Depression Index").findAll()
@@ -119,7 +120,7 @@ class CheckMDIPatientViewModel : ViewModel() {
 //                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
 //                }
 //            }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).equalTo("testName" , "Major Depression Index").findAll()
+            tests = realm.where(MDITest::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).findAll()
         }
 
         return tests!!.get(tests!!.size - 1)!!
@@ -127,7 +128,7 @@ class CheckMDIPatientViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testData = realmDAO.fetchTestData(patientData.value!!.patientId , "Major Depression Index")
+        testData = realmDAO.fetchMDITestData(patientData.value!!.patientId , "Major Depression Index")
         patientData.postValue(patientData.value)
         testData.postValue(testData.value)
     }

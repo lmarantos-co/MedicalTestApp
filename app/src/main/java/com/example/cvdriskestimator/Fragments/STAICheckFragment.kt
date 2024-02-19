@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.RealmDB.STAITest
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.viewModels.CheckSTAIPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckSTAIPatientViewModelFactory
@@ -366,7 +367,7 @@ class STAICheckFragment : Fragment() {
         var openType = this.arguments!!.getString("openType")
 
 
-        var historyTest = Test()
+        var historyTest = STAITest()
         if (patientId != "")
         {
             if (testDate != "")
@@ -794,7 +795,7 @@ class STAICheckFragment : Fragment() {
 
     }
 
-    private fun setPatientData(test : Test)
+    private fun setPatientData(test : STAITest)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()

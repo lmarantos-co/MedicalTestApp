@@ -17,6 +17,7 @@ import androidx.core.view.get
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
+import com.example.cvdriskestimator.RealmDB.MDITest
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentMDICheckBinding
 import com.example.cvdriskestimator.viewModels.CheckMDIPatientViewModel
@@ -78,7 +79,7 @@ class MDICheckFragment : Fragment() {
 
         if (openType == "open_history")
         {
-            var historyTest = Test()
+            var historyTest = MDITest()
             if (patientId != "")
             {
                 if (testDate != "")
@@ -191,7 +192,7 @@ class MDICheckFragment : Fragment() {
 
     }
 
-    private fun setPatientData(test : Test)
+    private fun setPatientData(test : MDITest)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()

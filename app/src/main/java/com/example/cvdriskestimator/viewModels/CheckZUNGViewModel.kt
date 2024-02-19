@@ -15,6 +15,7 @@ import com.example.cvdriskestimator.MedicalTestAlgorithms.ZUNGTestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
+import com.example.cvdriskestimator.RealmDB.ZUNGTest
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.coroutines.Job
@@ -34,7 +35,7 @@ class CheckZUNGPatientViewModel : ViewModel() {
     private lateinit var historyFragment: HistoryFragment
 
     var patientData = MutableLiveData<Patient>()
-    var testDATA = MutableLiveData<Test>()
+    var testDATA = MutableLiveData<ZUNGTest>()
 
 
     fun passActivity(activity: MainActivity)
@@ -79,7 +80,7 @@ class CheckZUNGPatientViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "ZUNG")
+        testDATA = realmDAO.fetchZUNGTestData(patientData.value!!.patientId , "ZUNG")
         patientData.postValue(patientData.value)
         testDATA.postValue(testDATA.value)
     }
@@ -146,9 +147,9 @@ class CheckZUNGPatientViewModel : ViewModel() {
         mainActivity.fragmentTransaction(historyFragment)
     }
 
-    fun fetchHistoryTest(patientId : String, testId : String) : Test
+    fun fetchHistoryTest(patientId : String, testId : String) : ZUNGTest
     {
-        var tests : RealmResults<Test>? = null
+        var tests : RealmResults<ZUNGTest>? = null
         realm.executeTransaction {
 
 //            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "ZUNG").findAll()
@@ -171,7 +172,7 @@ class CheckZUNGPatientViewModel : ViewModel() {
 //                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
 //                }
 //            }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testId" , testId).equalTo("testName" , "ZUNG").findAll()
+            tests = realm.where(ZUNGTest::class.java).equalTo("patientId" , patientId).equalTo("testId" , testId).findAll()
         }
 
         return tests!!.get(tests!!.size - 1)!!

@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.RealmDB.CVDTest
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentCheckBinding
 import com.example.cvdriskestimator.viewModels.CheckPatientViewModel
@@ -89,7 +90,7 @@ class CheckFragment : Fragment() {
 
         if (openType == "open_history")
         {
-            var historyTest = Test()
+            var historyTest = CVDTest()
             if (patientId != "")
             {
                 if (testDate != "")
@@ -275,7 +276,7 @@ class CheckFragment : Fragment() {
         checkBinding.TreatRadioGroup.clearCheck()
     }
 
-    private fun setPatientData(test : Test)
+    private fun setPatientData(test : CVDTest)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initPatientData()
@@ -287,7 +288,7 @@ class CheckFragment : Fragment() {
             checkBinding.tchEdTxt.setText(test.TCH)
             checkBinding.hchEdTxt.setText(test.HDL)
             setSmokingStatus(test.smoker)
-            setTreatmentStatus(test.treatment)
+            setTreatmentStatus(test.treatment!!)
         }, 1000)
 
     }

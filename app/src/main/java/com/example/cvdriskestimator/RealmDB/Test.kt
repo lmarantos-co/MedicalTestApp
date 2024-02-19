@@ -11,668 +11,669 @@ import java.util.*
 open class Test : RealmModel
 {
     @PrimaryKey
-    var testId : String = ""
+    open var testId : String = ""
 
     @Required
-    var patientId : String = ""
-
-    var testDate : Date? = null
+    open var patientId : String = ""
 
     @Required
-    var testName : String = ""
+    open var testDate : Date? = null
+
+    @Required
+    open var testName : String = ""
 
     //CVD TEST
 
     @Required
-    var patientAge : String = ""
+    open var patientAge : String = ""
 
     @Required
-    var patientSex : String = ""
+    open var patientSex : String = ""
 
     @Required
-    var patientRace : String = ""
+    open var patientRace : String = ""
 
     @Required
-    var SSB : String = ""
+    open var SSB : String = ""
 
     @Required
-    var TCH : String = ""
+    open var TCH : String = ""
 
     @Required
-    var HDL : String = ""
+    open var HDL : String = ""
 
     @Required
-    var smoker : String = ""
+    open var smoker : String = ""
 
-    var cvdTestResult : Int? = null
+    open var cvdTestResult : Int? = null
 
     //DIABETES CHECK
 
     @Required
-    var treatment : String = ""
+    open var treatment : String = ""
 
     @Required
-    var patientPAM : String = ""
+    open var patientPAM : String = ""
 
     @Required
-    var patientSteroids : String = ""
+    open var patientSteroids : String = ""
 
     @Required
-    var patientBMI : String = ""
+    open var patientBMI : String = ""
 
     @Required
-    var patientSiblings : String = ""
+    open var patientSiblings : String = ""
 
-    var diabetesTestResult : Double? = null
+   open var diabetesTestResult : Double? = null
 
 
     //variables related with Major Depression Inventory Test
 
-    var patientMDIQ1 : Int? = null
+    open var patientMDIQ1 : Int? = null
 
 
-    var patientMDIQ2 : Int? = null
+    open var patientMDIQ2 : Int? = null
 
 
-    var patientMDIQ3 : Int? = null
+    open var patientMDIQ3 : Int? = null
 
 
-    var patientMDIQ4 : Int? = null
+    open var patientMDIQ4 : Int? = null
 
 
-    var patientMDIQ5 : Int? = null
+    open var patientMDIQ5 : Int? = null
 
 
-    var patientMDIQ6 : Int? = null
+    open var patientMDIQ6 : Int? = null
 
 
-    var patientMDIQ7 : Int? = null
+    open var patientMDIQ7 : Int? = null
 
 
-    var patientMDIQ8 : Int? = null
+    open var patientMDIQ8 : Int? = null
 
 
-    var patientMDIQ9 : Int? = null
+    open var patientMDIQ9 : Int? = null
 
 
-    var patientMDIQ10 : Int? = null
+    open var patientMDIQ10 : Int? = null
 
 
-    var patientMDIQ11 : Int? = null
+    open var patientMDIQ11 : Int? = null
 
 
-    var patientMDIQ12 : Int? = null
+    open var patientMDIQ12 : Int? = null
 
 
-    var patientMDIQ13 : Int? = null
+    open var patientMDIQ13 : Int? = null
 
-    var patientMDITestResult : Int? = null
+    open var patientMDITestResult : Int? = null
 
     //variables related with Beck Anxiety Inventory Test
 
-    var patientBAIQ1 : Int? = null
+    open var patientBAIQ1 : Int? = null
 
 
-    var patientBAIQ2 : Int? = null
+    open var patientBAIQ2 : Int? = null
 
 
-    var patientBAIQ3 : Int? = null
+    open var patientBAIQ3 : Int? = null
 
 
-    var patientBAIQ4 : Int? = null
+    open var patientBAIQ4 : Int? = null
 
 
-    var patientBAIQ5 : Int? = null
+    open var patientBAIQ5 : Int? = null
 
 
-    var patientBAIQ6 : Int? = null
+    open var patientBAIQ6 : Int? = null
 
 
-    var patientBAIQ7 : Int? = null
+    open var patientBAIQ7 : Int? = null
 
 
-    var patientBAIQ8 : Int? = null
+    open var patientBAIQ8 : Int? = null
 
 
-    var patientBAIQ9 : Int? = null
+    open var patientBAIQ9 : Int? = null
 
 
-    var patientBAIQ10 : Int? = null
+    open var patientBAIQ10 : Int? = null
 
 
-    var patientBAIQ11 : Int? = null
+    open var patientBAIQ11 : Int? = null
 
 
-    var patientBAIQ12 : Int? = null
+    open var patientBAIQ12 : Int? = null
 
 
-    var patientBAIQ13 : Int? = null
+    open var patientBAIQ13 : Int? = null
 
-    var patientBAIQ14 : Int? = null
-
-
-    var patientBAIQ15 : Int? = null
+    open var patientBAIQ14 : Int? = null
 
 
-    var patientBAIQ16 : Int? = null
+    open var patientBAIQ15 : Int? = null
 
 
-    var patientBAIQ17 : Int? = null
+    open var patientBAIQ16 : Int? = null
 
 
-    var patientBAIQ18 : Int? = null
+    open var patientBAIQ17 : Int? = null
 
 
-    var patientBAIQ19 : Int? = null
+    open var patientBAIQ18 : Int? = null
 
 
-    var patientBAIQ20 : Int? = null
+    open var patientBAIQ19 : Int? = null
 
 
-    var patientBAIQ21 : Int? = null
+    open var patientBAIQ20 : Int? = null
 
-    var patientBAITestResult : Int? = null
+
+    open var patientBAIQ21 : Int? = null
+
+    open var patientBAITestResult : Int? = null
 
     //variables related wth the Med Diet Score Test
 
-    var patientMDSQ1 : Int? = null
+    open var patientMDSQ1 : Int? = null
 
-    var patientMDSQ2 : Int? = null
+    open var patientMDSQ2 : Int? = null
 
-    var patientMDSQ3 : Int? = null
+    open var patientMDSQ3 : Int? = null
 
-    var patientMDSQ4: Int? = null
+    open var patientMDSQ4: Int? = null
 
-    var patientMDSQ5 : Int? = null
+    open var patientMDSQ5 : Int? = null
 
-    var patientMDSQ6 : Int? = null
+    open var patientMDSQ6 : Int? = null
 
-    var patientMDSQ7 : Int? = null
+    open var patientMDSQ7 : Int? = null
 
-    var patientMDSQ8 : Int? = null
+    open var patientMDSQ8 : Int? = null
 
-    var patientMDSQ9 : Int? = null
+    open var patientMDSQ9 : Int? = null
 
-    var patientMDSQ10 : Int? = null
+    open var patientMDSQ10 : Int? = null
 
-    var patientMDSQ11 : Int? = null
+    open var patientMDSQ11 : Int? = null
 
-    var patientMDSTestResult : Int? = null
+    open var patientMDSTestResult : Int? = null
 
     //variables related with the Brief Pain Inventory Index
 
-    var patientBPIQ1 : Int? = null
+    open var patientBPIQ1 : Int? = null
 
-    var patientBPIQ2 : Int? = null
+    open var patientBPIQ2 : Int? = null
 
-    var patientBPIQ3 : Int? = null
+    open var patientBPIQ3 : Int? = null
 
-    var patientBPIQ4 : Int? = null
+    open var patientBPIQ4 : Int? = null
 
-    var patientBPIQ5 : Int? = null
+    open var patientBPIQ5 : Int? = null
 
-    var patientBPIQ6 : Int? = null
+    open var patientBPIQ6 : Int? = null
 
-    var patientBPIQ7 : Int? = null
+    open var patientBPIQ7 : Int? = null
 
-    var patientBPIQ8 : Int? = null
+    open var patientBPIQ8 : Int? = null
 
-    var patientBPIQ9 : Int? = null
+    open var patientBPIQ9 : Int? = null
 
-    var patientBPIQ10 : Int? = null
+    open var patientBPIQ10 : Int? = null
 
-    var patientBPIQ11 : Int? = null
+    open var patientBPIQ11 : Int? = null
 
-    var patientBPIQ12 : Int? = null
+    open var patientBPIQ12 : Int? = null
 
-    var patientBPIcircleX : Float? = null
+    open var patientBPIcircleX : Float? = null
 
-    var patientBPIcircleY : Float? = null
+    open var patientBPIcircleY : Float? = null
 
-    var patientBPITestSeverityResult : Float? = null
+    open var patientBPITestSeverityResult : Float? = null
 
-    var patientBPITestInterferenceResult : Float? = null
+    open var patientBPITestInterferenceResult : Float? = null
 
 
     //variables related with GDS Test
 
-    var patientGDSQ1 : Int? = null
+    open var patientGDSQ1 : Int? = null
 
-    var patientGDSQ2 : Int? = null
+    open var patientGDSQ2 : Int? = null
 
-    var patientGDSQ3 : Int? = null
+    open var patientGDSQ3 : Int? = null
 
-    var patientGDSQ4 : Int? = null
+    open var patientGDSQ4 : Int? = null
 
-    var patientGDSQ5 : Int? = null
+    open var patientGDSQ5 : Int? = null
 
-    var patientGDSQ6 : Int? = null
+    open var patientGDSQ6 : Int? = null
 
-    var patientGDSQ7 : Int? = null
+    open var patientGDSQ7 : Int? = null
 
-    var patientGDSQ8 : Int? = null
+    open var patientGDSQ8 : Int? = null
 
-    var patientGDSQ9 : Int? = null
+    open var patientGDSQ9 : Int? = null
 
-    var patientGDSQ10 : Int? = null
+    open var patientGDSQ10 : Int? = null
 
-    var patientGDSQ11 : Int? = null
+    open var patientGDSQ11 : Int? = null
 
-    var patientGDSQ12 : Int? = null
+    open var patientGDSQ12 : Int? = null
 
-    var patientGDSQ13 : Int? = null
+    open var patientGDSQ13 : Int? = null
 
-    var patientGDSQ14 : Int? = null
+    open var patientGDSQ14 : Int? = null
 
-    var patientGDSQ15 : Int? = null
+    open var patientGDSQ15 : Int? = null
 
-    var patientGDSTestResult : Int? = null
+    open var patientGDSTestResult : Int? = null
 
     //variables related with the PDQ Test
 
-    var patientPDQQ1 : Int? = null
+    open var patientPDQQ1 : Int? = null
 
-    var patientPDQQ2 : Int? = null
+    open var patientPDQQ2 : Int? = null
 
-    var patientPDQQ3 : Int? = null
+    open var patientPDQQ3 : Int? = null
 
-    var patientPDQQ4 : Int? = null
+    open var patientPDQQ4 : Int? = null
 
-    var patientPDQQ5 : Int? = null
+    open var patientPDQQ5 : Int? = null
 
-    var patientPDQQ6 : Int? = null
+    open var patientPDQQ6 : Int? = null
 
-    var patientPDQQ7 : Int? = null
+    open var patientPDQQ7 : Int? = null
 
-    var patientPDQQ8 : Int? = null
+    open var patientPDQQ8 : Int? = null
 
-    var patientPDQQ9 : Int? = null
+    open var patientPDQQ9 : Int? = null
 
-    var patientPDQQ10 : Int? = null
+    open var patientPDQQ10 : Int? = null
 
-    var patientPDQQ11 : Int? = null
+    open var patientPDQQ11 : Int? = null
 
-    var patientPDQQ12 : Int? = null
+    open var patientPDQQ12 : Int? = null
 
-    var patientPDQQ13 : Int? = null
+    open var patientPDQQ13 : Int? = null
 
-    var patientPDQQ14 : Int? = null
+    open var patientPDQQ14 : Int? = null
 
-    var patientPDQQ15 : Int? = null
+    open var patientPDQQ15 : Int? = null
 
-    var patientPDQQ16 : Int? = null
+    open var patientPDQQ16 : Int? = null
 
-    var patientPDQQ17 : Int? = null
+    open var patientPDQQ17 : Int? = null
 
-    var patientPDQQ18 : Int? = null
+    open var patientPDQQ18 : Int? = null
 
-    var patientPDQQ19 : Int? = null
+    open var patientPDQQ19 : Int? = null
 
-    var patientPDQQ20 : Int? = null
+    open var patientPDQQ20 : Int? = null
 
-    var patientPDQQ21 : Int? = null
+    open var patientPDQQ21 : Int? = null
 
-    var patientPDQQ22 : Int? = null
+    open var patientPDQQ22 : Int? = null
 
-    var patientPDQQ23 : Int? = null
+    open var patientPDQQ23 : Int? = null
 
-    var patientPDQQ24 : Int? = null
+    open var patientPDQQ24 : Int? = null
 
-    var patientPDQQ25 : Int? = null
+    open var patientPDQQ25 : Int? = null
 
-    var patientPDQQ26 : Int? = null
+    open var patientPDQQ26 : Int? = null
 
-    var patientPDQQ27 : Int? = null
+    open var patientPDQQ27 : Int? = null
 
-    var patientPDQQ28 : Int? = null
+    open var patientPDQQ28 : Int? = null
 
-    var patientPDQQ29 : Int? = null
+    open var patientPDQQ29 : Int? = null
 
-    var patientPDQQ30 : Int? = null
+    open var patientPDQQ30 : Int? = null
 
-    var patientPDQQ31 : Int? = null
+    open var patientPDQQ31 : Int? = null
 
-    var patientPDQQ32 : Int? = null
+    open var patientPDQQ32 : Int? = null
 
-    var patientPDQQ33 : Int? = null
+    open var patientPDQQ33 : Int? = null
 
-    var patientPDQQ34 : Int? = null
+    open var patientPDQQ34 : Int? = null
 
-    var patientPDQQ35 : Int? = null
+    open var patientPDQQ35 : Int? = null
 
-    var patientPDQQ36 : Int? = null
+    open var patientPDQQ36 : Int? = null
 
-    var patientPDQQ37 : Int? = null
+    open var patientPDQQ37 : Int? = null
 
-    var patientPDQQ38 : Int? = null
+    open var patientPDQQ38 : Int? = null
 
-    var patientPDQQ39 : Int? = null
+    open var patientPDQQ39 : Int? = null
 
     //variables related with Beck Depression Inventory Test
 
-    var patientBDIQ1 : Int? = null
+    open var patientBDIQ1 : Int? = null
 
 
-    var patientBDIQ2 : Int? = null
+    open var patientBDIQ2 : Int? = null
 
 
-    var patientBDIQ3 : Int? = null
+    open var patientBDIQ3 : Int? = null
 
 
-    var patientBDIQ4 : Int? = null
+    open var patientBDIQ4 : Int? = null
 
 
-    var patientBDIQ5 : Int? = null
+    open var patientBDIQ5 : Int? = null
 
 
-    var patientBDIQ6 : Int? = null
+    open var patientBDIQ6 : Int? = null
 
 
-    var patientBDIQ7 : Int? = null
+    open var patientBDIQ7 : Int? = null
 
 
-    var patientBDIQ8 : Int? = null
+    open var patientBDIQ8 : Int? = null
 
 
-    var patientBDIQ9 : Int? = null
+    open var patientBDIQ9 : Int? = null
 
 
-    var patientBDIQ10 : Int? = null
+    open var patientBDIQ10 : Int? = null
 
 
-    var patientBDIQ11 : Int? = null
+    open var patientBDIQ11 : Int? = null
 
 
-    var patientBDIQ12 : Int? = null
+    open var patientBDIQ12 : Int? = null
 
 
-    var patientBDIQ13 : Int? = null
+    open var patientBDIQ13 : Int? = null
 
-    var patientBDIQ14 : Int? = null
-
-
-    var patientBDIQ15 : Int? = null
+    open var patientBDIQ14 : Int? = null
 
 
-    var patientBDIQ16 : Int? = null
+    open var patientBDIQ15 : Int? = null
 
 
-    var patientBDIQ17 : Int? = null
+    open var patientBDIQ16 : Int? = null
 
 
-    var patientBDIQ18 : Int? = null
+    open var patientBDIQ17 : Int? = null
 
 
-    var patientBDIQ19 : Int? = null
+    open var patientBDIQ18 : Int? = null
 
 
-    var patientBDIQ20 : Int? = null
+    open var patientBDIQ19 : Int? = null
 
 
-    var patientBDIQ21 : Int? = null
+    open var patientBDIQ20 : Int? = null
 
-    var patientBDITestResult : Int? = null
+
+    open var patientBDIQ21 : Int? = null
+
+    open var patientBDITestResult : Int? = null
 
 
     //variables related with hamilton Depression
 
-    var patientHAMDQ1 : Int? = null
+    open var patientHAMDQ1 : Int? = null
 
 
-    var patientHAMDQ2 : Int? = null
+    open var patientHAMDQ2 : Int? = null
 
 
-    var patientHAMDQ3 : Int? = null
+    open var patientHAMDQ3 : Int? = null
 
 
-    var patientHAMDQ4 : Int? = null
+    open var patientHAMDQ4 : Int? = null
 
 
-    var patientHAMDQ5 : Int? = null
+    open var patientHAMDQ5 : Int? = null
 
 
-    var patientHAMDQ6 : Int? = null
+    open var patientHAMDQ6 : Int? = null
 
 
-    var patientHAMDQ7 : Int? = null
+    open var patientHAMDQ7 : Int? = null
 
 
-    var patientHAMDQ8 : Int? = null
+    open var patientHAMDQ8 : Int? = null
 
 
-    var patientHAMDQ9 : Int? = null
+    open var patientHAMDQ9 : Int? = null
 
 
-    var patientHAMDQ10 : Int? = null
+    open var patientHAMDQ10 : Int? = null
 
 
-    var patientHAMDQ11 : Int? = null
+    open var patientHAMDQ11 : Int? = null
 
 
-    var patientHAMDQ12 : Int? = null
+    open var patientHAMDQ12 : Int? = null
 
 
-    var patientHAMDQ13 : Int? = null
+    open var patientHAMDQ13 : Int? = null
 
-    var patientHAMDQ14 : Int? = null
-
-
-    var patientHAMDQ15 : Int? = null
+    open var patientHAMDQ14 : Int? = null
 
 
-    var patientHAMDQ16 : Int? = null
+    open var patientHAMDQ15 : Int? = null
 
 
-    var patientHAMDQ17 : Int? = null
+    open var patientHAMDQ16 : Int? = null
 
 
-    var patientHAMDTestResult : Int? = null
+    open var patientHAMDQ17 : Int? = null
+
+
+    open var patientHAMDTestResult : Int? = null
 
 
     //Stai Test
 
     //state
 
-    var patientSTAISQ1 : Int? = null
+    open var patientSTAISQ1 : Int? = null
 
 
-    var patientSTAISQ2 : Int? = null
+    open var patientSTAISQ2 : Int? = null
 
 
-    var patientSTAISQ3 : Int? = null
+    open var patientSTAISQ3 : Int? = null
 
 
-    var patientSTAISQ4 : Int? = null
+    open var patientSTAISQ4 : Int? = null
 
 
-    var patientSTAISQ5 : Int? = null
+    open var patientSTAISQ5 : Int? = null
 
 
-    var patientSTAISQ6 : Int? = null
+    open var patientSTAISQ6 : Int? = null
 
 
-    var patientSTAISQ7 : Int? = null
+    open var patientSTAISQ7 : Int? = null
 
 
-    var patientSTAISQ8 : Int? = null
+    open var patientSTAISQ8 : Int? = null
 
 
-    var patientSTAISQ9 : Int? = null
+    open var patientSTAISQ9 : Int? = null
 
 
-    var patientSTAISQ10 : Int? = null
+    open var patientSTAISQ10 : Int? = null
 
 
-    var patientSTAISQ11 : Int? = null
+    open var patientSTAISQ11 : Int? = null
 
 
-    var patientSTAISQ12 : Int? = null
+    open var patientSTAISQ12 : Int? = null
 
 
-    var patientSTAISQ13 : Int? = null
+    open var patientSTAISQ13 : Int? = null
 
-    var patientSTAISQ14 : Int? = null
+    open var patientSTAISQ14 : Int? = null
 
-    var patientSTAISQ15 : Int? = null
+    open var patientSTAISQ15 : Int? = null
 
-    var patientSTAISQ16 : Int? = null
+    open var patientSTAISQ16 : Int? = null
 
-    var patientSTAISQ17 : Int? = null
+    open var patientSTAISQ17 : Int? = null
 
-    var patientSTAISQ18 : Int? = null
+    open var patientSTAISQ18 : Int? = null
 
-    var patientSTAISQ19 : Int? = null
+    open var patientSTAISQ19 : Int? = null
 
-    var patientSTAISQ20 : Int? = null
+    open var patientSTAISQ20 : Int? = null
 
 
     //trait
 
-    var patientSTAITQ21 : Int? = null
+    open var patientSTAITQ21 : Int? = null
 
 
-    var patientSTAITQ22 : Int? = null
+    open var patientSTAITQ22 : Int? = null
 
 
-    var patientSTAITQ23 : Int? = null
+    open var patientSTAITQ23 : Int? = null
 
 
-    var patientSTAITQ24 : Int? = null
+    open var patientSTAITQ24 : Int? = null
 
 
-    var patientSTAITQ25 : Int? = null
+    open var patientSTAITQ25 : Int? = null
 
 
-    var patientSTAITQ26 : Int? = null
+    open var patientSTAITQ26 : Int? = null
 
 
-    var patientSTAITQ27 : Int? = null
+    open var patientSTAITQ27 : Int? = null
 
 
-    var patientSTAITQ28 : Int? = null
+    open var patientSTAITQ28 : Int? = null
 
 
-    var patientSTAITQ29 : Int? = null
+    open var patientSTAITQ29 : Int? = null
 
 
-    var patientSTAITQ30 : Int? = null
+    open var patientSTAITQ30 : Int? = null
 
 
-    var patientSTAITQ31 : Int? = null
+    open var patientSTAITQ31 : Int? = null
 
 
-    var patientSTAITQ32 : Int? = null
+    open var patientSTAITQ32 : Int? = null
 
-    var patientSTAITQ33 : Int? = null
+    open var patientSTAITQ33 : Int? = null
 
-    var patientSTAITQ34 : Int? = null
+    open var patientSTAITQ34 : Int? = null
 
-    var patientSTAITQ35 : Int? = null
+    open var patientSTAITQ35 : Int? = null
 
-    var patientSTAITQ36 : Int? = null
+    open var patientSTAITQ36 : Int? = null
 
-    var patientSTAITQ37 : Int? = null
+    open var patientSTAITQ37 : Int? = null
 
-    var patientSTAITQ38 : Int? = null
+    open var patientSTAITQ38 : Int? = null
 
-    var patientSTAITQ39 : Int? = null
+    open var patientSTAITQ39 : Int? = null
 
-    var patientSTAITQ40 : Int? = null
+    open var patientSTAITQ40 : Int? = null
 
-    var patientSTAISScore : Int? = null
-    var patientSTAITScore : Int? = null
+    open var patientSTAISScore : Int? = null
+    open var patientSTAITScore : Int? = null
 
     //DASS Test
 
-    var patientDASSQ1 : Int? = null
+    open var patientDASSQ1 : Int? = null
 
-    var patientDASSQ2 : Int? = null
+    open var patientDASSQ2 : Int? = null
 
-    var patientDASSQ3 : Int? = null
+    open var patientDASSQ3 : Int? = null
 
-    var patientDASSQ4 : Int? = null
+    open var patientDASSQ4 : Int? = null
 
-    var patientDASSQ5 : Int? = null
+    open var patientDASSQ5 : Int? = null
 
-    var patientDASSQ6 : Int? = null
+    open var patientDASSQ6 : Int? = null
 
-    var patientDASSQ7 : Int? = null
+    open var patientDASSQ7 : Int? = null
 
-    var patientDASSQ8 : Int? = null
+    open var patientDASSQ8 : Int? = null
 
-    var patientDASSQ9 : Int? = null
+    open var patientDASSQ9 : Int? = null
 
-    var patientDASSQ10 : Int? = null
+    open var patientDASSQ10 : Int? = null
 
-    var patientDASSQ11 : Int? = null
+    open var patientDASSQ11 : Int? = null
 
-    var patientDASSQ12 : Int? = null
+    open var patientDASSQ12 : Int? = null
 
-    var patientDASSQ13 : Int? = null
+    open var patientDASSQ13 : Int? = null
 
-    var patientDASSQ14 : Int? = null
+    open var patientDASSQ14 : Int? = null
 
-    var patientDASSQ15 : Int? = null
+    open var patientDASSQ15 : Int? = null
 
-    var patientDASSQ16 : Int? = null
+    open var patientDASSQ16 : Int? = null
 
-    var patientDASSQ17 : Int? = null
+    open var patientDASSQ17 : Int? = null
 
-    var patientDASSQ18 : Int? = null
+    open var patientDASSQ18 : Int? = null
 
-    var patientDASSQ19 : Int? = null
+    open var patientDASSQ19 : Int? = null
 
-    var patientDASSQ20 : Int? = null
+    open var patientDASSQ20 : Int? = null
 
-    var patientDASSQ21 : Int? = null
+    open var patientDASSQ21 : Int? = null
 
-    var dassStressResult : Int? = null
-    var dassAnxietyResult : Int? = null
-    var dassDepressionResult : Int? = null
+    open var dassStressResult : Int? = null
+    open var dassAnxietyResult : Int? = null
+    open var dassDepressionResult : Int? = null
 
 
     //ZUNG Test
 
-    var patientZUNGQ1 : Int? = null
+    open var patientZUNGQ1 : Int? = null
 
-    var patientZUNGQ2 : Int? = null
+    open var patientZUNGQ2 : Int? = null
 
-    var patientZUNGQ3 : Int? = null
+    open var patientZUNGQ3 : Int? = null
 
-    var patientZUNGQ4 : Int? = null
+    open var patientZUNGQ4 : Int? = null
 
-    var patientZUNGQ5 : Int? = null
+    open var patientZUNGQ5 : Int? = null
 
-    var patientZUNGQ6 : Int? = null
+    open var patientZUNGQ6 : Int? = null
 
-    var patientZUNGQ7 : Int? = null
+    open var patientZUNGQ7 : Int? = null
 
-    var patientZUNGQ8 : Int? = null
+    open var patientZUNGQ8 : Int? = null
 
-    var patientZUNGQ9 : Int? = null
+    open var patientZUNGQ9 : Int? = null
 
-    var patientZUNGQ10 : Int? = null
+    open var patientZUNGQ10 : Int? = null
 
-    var patientZUNGQ11 : Int? = null
+    open var patientZUNGQ11 : Int? = null
 
-    var patientZUNGQ12 : Int? = null
+    open var patientZUNGQ12 : Int? = null
 
-    var patientZUNGQ13 : Int? = null
+    open var patientZUNGQ13 : Int? = null
 
-    var patientZUNGQ14 : Int? = null
+    open var patientZUNGQ14 : Int? = null
 
-    var patientZUNGQ15 : Int? = null
+    open var patientZUNGQ15 : Int? = null
 
-    var patientZUNGQ16 : Int? = null
+    open var patientZUNGQ16 : Int? = null
 
-    var patientZUNGQ17 : Int? = null
+    open var patientZUNGQ17 : Int? = null
 
-    var patientZUNGQ18 : Int? = null
+    open var patientZUNGQ18 : Int? = null
 
-    var patientZUNGQ19 : Int? = null
+    open var patientZUNGQ19 : Int? = null
 
-    var patientZUNGQ20 : Int? = null
+    open var patientZUNGQ20 : Int? = null
 
-    var zungTestReesult : Int? = null
+    open var zungTestReesult : Int? = null
 
 }

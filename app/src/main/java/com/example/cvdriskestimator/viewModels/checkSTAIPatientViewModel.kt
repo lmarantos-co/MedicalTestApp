@@ -13,6 +13,7 @@ import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.StaiTestEstimator
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
+import com.example.cvdriskestimator.RealmDB.STAITest
 import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
 import io.realm.RealmResults
@@ -33,7 +34,7 @@ class CheckSTAIPatientViewModel : ViewModel() {
     private lateinit var historyFragment: HistoryFragment
 
     var patientData = MutableLiveData<Patient>()
-    var testDATA = MutableLiveData<Test>()
+    var testDATA = MutableLiveData<STAITest>()
 
 
     fun passActivity(activity: MainActivity)
@@ -78,7 +79,7 @@ class CheckSTAIPatientViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "STAI")
+        testDATA = realmDAO.fetchSTAITestData(patientData.value!!.patientId , "STAI")
         patientData.postValue(patientData.value)
         testDATA.postValue(testDATA.value)
     }
@@ -154,9 +155,9 @@ class CheckSTAIPatientViewModel : ViewModel() {
         mainActivity.fragmentTransaction(historyFragment)
     }
 
-    fun fetchHistoryTest(patientId : String, testID : String) : Test
+    fun fetchHistoryTest(patientId : String, testID : String) : STAITest
     {
-        var tests : RealmResults<Test>? = null
+        var tests : RealmResults<STAITest>? = null
         realm.executeTransaction {
 
 //            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "STAI").findAll()
@@ -179,7 +180,7 @@ class CheckSTAIPatientViewModel : ViewModel() {
 //                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
 //                }
 //            }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).equalTo("testName" , "STAI").findAll()
+            tests = realm.where(STAITest::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).findAll()
         }
 
         return tests!!.get(tests!!.size - 1)!!

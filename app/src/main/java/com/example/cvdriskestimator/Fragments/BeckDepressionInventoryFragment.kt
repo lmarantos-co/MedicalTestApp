@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
+import com.example.cvdriskestimator.RealmDB.BDITest
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentBeckDepressionInventoryBinding
 import com.example.cvdriskestimator.viewModels.*
@@ -80,7 +81,7 @@ class BeckDepressionInventoryFragment : Fragment() {
 
         if (openType == "open_history")
         {
-            var historyTest = Test()
+            var historyTest = BDITest()
             if (patientId != "")
             {
                 if (testDate != "")
@@ -205,7 +206,7 @@ class BeckDepressionInventoryFragment : Fragment() {
 
     }
 
-    private fun setPatientData(test : Test)
+    private fun setPatientData(test : BDITest)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()

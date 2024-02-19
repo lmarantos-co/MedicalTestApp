@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.RealmDB.DiabetesTest
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentDiabetesCheckBinding
 import com.example.cvdriskestimator.viewModels.CheckDiabetesPatientViewModel
@@ -87,7 +88,7 @@ class DiabetesCheckFragment : Fragment() {
 
         if (openType == "open_history")
         {
-            var historyTest = Test()
+            var historyTest = DiabetesTest()
             if (patientId != "")
             {
                 if (testDate != "")
@@ -380,7 +381,7 @@ class DiabetesCheckFragment : Fragment() {
         diabetesCheckBinding.SmokeRGr.clearCheck()
     }
 
-    private fun setPatientData(test : Test)
+    private fun setPatientData(test : DiabetesTest)
     {
         Handler(Looper.getMainLooper()).postDelayed(kotlinx.coroutines.Runnable {
             initPatientData()

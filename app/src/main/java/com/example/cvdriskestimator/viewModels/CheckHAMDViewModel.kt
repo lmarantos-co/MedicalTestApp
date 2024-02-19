@@ -11,6 +11,7 @@ import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.HammitlonTestEstimator
+import com.example.cvdriskestimator.RealmDB.HAMTest
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
@@ -34,7 +35,7 @@ class CheckHAMDPatientViewModel : ViewModel() {
     private lateinit var historyFragment: HistoryFragment
 
     var patientData = MutableLiveData<Patient>()
-    var testDATA = MutableLiveData<Test>()
+    var testDATA = MutableLiveData<HAMTest>()
 
 
     fun passActivity(activity: MainActivity)
@@ -79,7 +80,7 @@ class CheckHAMDPatientViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testDATA = realmDAO.fetchTestData(patientData.value!!.patientId , "Hammilton Depression")
+        testDATA = realmDAO.fetchHamTestData(patientData.value!!.patientId , "Hammilton Depression")
         patientData.postValue(patientData.value)
         testDATA.postValue(testDATA.value)
     }
@@ -145,9 +146,9 @@ class CheckHAMDPatientViewModel : ViewModel() {
         mainActivity.fragmentTransaction(historyFragment)
     }
 
-    fun fetchHistoryTest(patientId : String, testID : String) : Test
+    fun fetchHistoryTest(patientId : String, testID : String) : HAMTest
     {
-        var tests : RealmResults<Test>? = null
+        var tests : RealmResults<HAMTest>? = null
         realm.executeTransaction {
 
 //            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "Hammilton Depression").findAll()
@@ -170,7 +171,7 @@ class CheckHAMDPatientViewModel : ViewModel() {
 //                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
 //                }
 //            }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).equalTo("testName" , "Hammilton Depression").findAll()
+            tests = realm.where(HAMTest::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).findAll()
         }
 
         return tests!!.get(tests!!.size - 1)!!

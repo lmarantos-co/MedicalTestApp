@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.core.view.get
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
+import com.example.cvdriskestimator.RealmDB.GDSTest
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.databinding.FragmentGDSCheckBinding
 import com.example.cvdriskestimator.viewModels.CheckGDSPatientViewModelFactory
@@ -79,7 +80,7 @@ class GDSCheckFragment : Fragment() {
 
         if (openType == "open_history")
         {
-            var historyTest = Test()
+            var historyTest = GDSTest()
             if (patientId != "")
             {
                 if (testDate != "")
@@ -195,7 +196,7 @@ class GDSCheckFragment : Fragment() {
 
     }
 
-    private fun setPatientData(test : Test)
+    private fun setPatientData(test : GDSTest)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()

@@ -17,7 +17,19 @@ import androidx.fragment.app.Fragment
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.RealmDB.BAITest
+import com.example.cvdriskestimator.RealmDB.BDITest
+import com.example.cvdriskestimator.RealmDB.BPITest
+import com.example.cvdriskestimator.RealmDB.CVDTest
+import com.example.cvdriskestimator.RealmDB.DASSTest
+import com.example.cvdriskestimator.RealmDB.DiabetesTest
+import com.example.cvdriskestimator.RealmDB.GDSTest
+import com.example.cvdriskestimator.RealmDB.HAMTest
+import com.example.cvdriskestimator.RealmDB.MDITest
+import com.example.cvdriskestimator.RealmDB.MDSTest
+import com.example.cvdriskestimator.RealmDB.STAITest
 import com.example.cvdriskestimator.RealmDB.Test
+import com.example.cvdriskestimator.RealmDB.ZUNGTest
 import com.example.cvdriskestimator.databinding.FragmentHistoryBinding
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
@@ -27,6 +39,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import io.realm.Realm
+import io.realm.RealmList
 import io.realm.RealmResults
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -222,7 +235,7 @@ class HistoryFragment : Fragment() {
             "CardioVascularDisease" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("CardioVascularDisease")
-                tests = realm.where(Test::class.java).isNotNull("SSB") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(CVDTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //
@@ -237,14 +250,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("SSB").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(CVDTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "DIABETES" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("DIABETES")
-                tests = realm.where(Test::class.java).isNotNull("patientPAM") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(DiabetesTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -256,14 +269,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientPAM").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(DiabetesTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Major Depression Index" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Major Depression Index")
-                tests = realm.where(Test::class.java).isNotNull("patientMDIQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(MDITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -275,14 +288,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientMDIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(MDITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "BPI" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Brief Pain Inventory")
-                tests = realm.where(Test::class.java).isNotNull("patientBPIQ1") .equalTo("patientId" , param1).equalTo("testName" , "Brief Pain Inventory").findAll()
+                tests = realm.where(BPITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -294,14 +307,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientBPIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(BPITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Beck Anxiety Index" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Beck Anxiety Index")
-                tests = realm.where(Test::class.java).isNotNull("patientBAIQ1") .equalTo("patientId" , param1).equalTo("testName" , "Beck Anxiety Index").findAll()
+                tests = realm.where(BAITest::class.java).isNotNull("patientBAIQ1") .equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -313,14 +326,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientBPIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(BAITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "MDS" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Mediterranean Diet Test")
-                tests = realm.where(Test::class.java).isNotNull("patientMDSQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(MDSTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -332,14 +345,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientMDSQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(MDSTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Brief Pain Inventory" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Brief Pain Inventory")
-                tests = realm.where(Test::class.java).isNotNull("patientBPIQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(BPITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -351,14 +364,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientBPIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(BPITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Beck Depression Inventory" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Beck Depression Inventory")
-                tests = realm.where(Test::class.java).isNotNull("patientBDIQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(BDITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -370,14 +383,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientBPIQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(BDITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Geriatric Depression Scale" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Geriatric Depression Scale")
-                tests = realm.where(Test::class.java).isNotNull("patientGDSQ6") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(GDSTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -389,14 +402,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientGDSQ6").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(GDSTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Hammilton Depression" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Hammilton Depression")
-                tests = realm.where(Test::class.java).isNotNull("patientHAMDQ3") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(HAMTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -408,14 +421,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientHAMDQ3").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(HAMTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "STAI" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("STAI")
-                tests = realm.where(Test::class.java).isNotNull("patientSTAISQ3") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(STAITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -427,14 +440,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientSTAISQ3").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(STAITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "DASS" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("DASS")
-                tests = realm.where(Test::class.java).isNotNull("patientDASSQ3") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(DASSTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -446,14 +459,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientDASSQ3").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(DASSTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "ZUNG" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("ZUNG")
-                tests = realm.where(Test::class.java).isNotNull("patientZUNGQ3") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                tests = realm.where(ZUNGTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -465,7 +478,7 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(Test::class.java).isNotNull("patientZUNGQ3").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    tests = realm.where(ZUNGTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }

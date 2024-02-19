@@ -15,6 +15,7 @@ import com.example.cvdriskestimator.Fragments.ResultTimelineFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.CVDRiskEstimator
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.RealmDB.CVDTest
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
@@ -48,7 +49,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
     //mutable live data from realm database
     var patientDATA = MutableLiveData<Patient>()
 
-    var testDATA = MutableLiveData<Test>()
+    var testDATA = MutableLiveData<CVDTest>()
 
     fun setFragment(chckFragment: CheckFragment)
     {
@@ -102,9 +103,9 @@ class CheckPatientViewModel : ViewModel() , Observable {
         mainActivity.fragmentTransaction(timelineFragment)
     }
 
-    fun fetchHistoryTest(patientId : String, testID : String) : Test
+    fun fetchHistoryTest(patientId : String, testID : String) : CVDTest
     {
-        var tests : RealmResults<Test>? = null
+        var tests : RealmResults<CVDTest>? = null
         realm.executeTransaction {
 
 //            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "CardioVascularDisease").findAll()
@@ -127,7 +128,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
 //                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
 //                }
 //            }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).equalTo("testName" , "CardioVascularDisease").findAll()
+            tests = realm.where(CVDTest::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).findAll()
         }
 
 
@@ -344,7 +345,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
         val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
         val username = prefs.getString("userName" , "tempUser")
         patientDATA = realmDAO.fetchPatientData(username!!)
-        testDATA = realmDAO.fetchTestData(patientDATA.value!!.patientId , "CardioVascularDisease")
+        testDATA = realmDAO.fetchCVDTestData(patientDATA.value!!.patientId , "CardioVascularDisease")
         patientDATA.postValue(patientDATA.value)
         testDATA.postValue(testDATA.value)
     }

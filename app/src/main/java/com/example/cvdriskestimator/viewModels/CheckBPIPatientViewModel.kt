@@ -1,5 +1,6 @@
 package com.example.cvdriskestimator.viewModels
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.BPITestEstimator
+import com.example.cvdriskestimator.RealmDB.BPITest
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
@@ -35,7 +37,7 @@ class CheckBPIPatientViewModel : ViewModel() {
     private lateinit var historyFragment: HistoryFragment
 
     var patientData = MutableLiveData<Patient>()
-    var testData = MutableLiveData<Test>()
+    var testData = MutableLiveData<BPITest>()
 
 
     //pass the main activity instance
@@ -100,9 +102,9 @@ class CheckBPIPatientViewModel : ViewModel() {
     }
 
 
-    fun fetchHistoryTest(patientId : String, testID : String) : Test
+    fun fetchHistoryTest(patientId : String, testID : String) : BPITest
     {
-        var tests : RealmResults<Test>? = null
+        var tests : RealmResults<BPITest>? = null
         realm.executeTransaction {
 
 //            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "Brief Pain Inventory").findAll()
@@ -125,7 +127,7 @@ class CheckBPIPatientViewModel : ViewModel() {
 //                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
 //                }
 //            }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).equalTo("testName" , "Brief Pain Inventory").findAll()
+            tests = realm.where(BPITest::class.java).equalTo("patientId" , patientId).equalTo("testId" , testID).findAll()
         }
 
         return tests!!.get(tests!!.size -1)!!
@@ -172,7 +174,8 @@ class CheckBPIPatientViewModel : ViewModel() {
         return result
     }
 
-    fun storePatientDataOnRealmDB(allPatientData : ArrayList<Int?> , circleCoordinates: ArrayList<Float?> , scoreResults : ArrayList<Float>)
+    @SuppressLint("SuspiciousIndentation")
+    fun storePatientDataOnRealmDB(allPatientData : ArrayList<Int?>, circleCoordinates: ArrayList<Float?>, scoreResults : ArrayList<Float>)
     {
         realm.executeTransaction {
             var username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
@@ -277,7 +280,7 @@ class CheckBPIPatientViewModel : ViewModel() {
     private fun getPatientData(username : String)
     {
         patientData = realmDAO.fetchPatientData(username)
-        testData = realmDAO.fetchTestData(patientData.value!!.patientId , "Brief Pain Inventory")
+        testData = realmDAO.fetchBPITestData(patientData.value!!.patientId , "Brief Pain Inventory")
         patientData.postValue(patientData!!.value)
         testData.postValue(testData.value)
         if (testData.value != null)

@@ -12,6 +12,7 @@ import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.Diabetes2Estimator
+import com.example.cvdriskestimator.RealmDB.DiabetesTest
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
@@ -35,7 +36,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
 
     // Mutable Live Data for Patient
     var patientDATA = MutableLiveData<Patient>()
-    var testDATA = MutableLiveData<Test>()
+    var testDATA = MutableLiveData<DiabetesTest>()
 
 
     fun setMainActivity(activity: MainActivity)
@@ -97,9 +98,9 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
         mainActivity.fragmentTransaction(historyFragment)
     }
 
-    fun fetchHistoryTest(patientId : String, testId : String) : Test
+    fun fetchHistoryTest(patientId : String, testId : String) : DiabetesTest
     {
-        var tests : RealmResults<Test>? = null
+        var tests : RealmResults<DiabetesTest>? = null
         realm.executeTransaction {
 
 //            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "DIABETES").findAll()
@@ -122,7 +123,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
 //                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
 //                }
 //            }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testId" , testId).equalTo("testName" , "DIABETES").findAll()
+            tests = realm.where(DiabetesTest::class.java).equalTo("patientId" , patientId).equalTo("testId" , testId).findAll()
         }
 
         return tests!!.get(tests!!.size - 1)!!
@@ -205,7 +206,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
         val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
         val username = prefs.getString("userName" , "tempUser")
         patientDATA = realmDAO.fetchPatientData(username!!)
-        testDATA = realmDAO.fetchTestData(patientDATA.value!!.patientId , "DIABETES")
+        testDATA = realmDAO.fetchDiabetesTestData(patientDATA.value!!.patientId , "DIABETES")
         patientDATA.postValue(patientDATA.value)
         testDATA.postValue(testDATA.value)
     }

@@ -10,6 +10,7 @@ import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.MDITestEstimator
+import com.example.cvdriskestimator.RealmDB.GDSTest
 import com.example.cvdriskestimator.RealmDB.Patient
 import com.example.cvdriskestimator.RealmDB.RealmDAO
 import com.example.cvdriskestimator.RealmDB.Test
@@ -33,7 +34,7 @@ class CheckGDSViewModel : ViewModel() {
 
     //mutable data that hold the patient data
     var patientData = MutableLiveData<Patient>()
-    var testData = MutableLiveData<Test>()
+    var testData = MutableLiveData<GDSTest>()
 
     fun passActivity(activity : MainActivity)
     {
@@ -77,7 +78,7 @@ class CheckGDSViewModel : ViewModel() {
 
     private fun fetchPatientData(username : String) {
         patientData = realmDAO.fetchPatientData(username)
-        testData = realmDAO.fetchTestData(patientData.value!!.patientId ,  "Geriatric Depression Scale")
+        testData = realmDAO.fetchGDSTestData(patientData.value!!.patientId ,  "Geriatric Depression Scale")
         patientData.postValue(patientData.value)
         testData.postValue(testData.value)
     }
@@ -116,9 +117,9 @@ class CheckGDSViewModel : ViewModel() {
         mainActivity.fragmentTransaction(historyFragment)
     }
 
-    fun fetchHistoryTest(patientId : String, testDate : String) : Test
+    fun fetchHistoryTest(patientId : String, testDate : String) : GDSTest
     {
-        var tests : RealmResults<Test>? = null
+        var tests : RealmResults<GDSTest>? = null
         realm.executeTransaction {
 
 //            var dummyTestList = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testName" , "Geriatric Depression Scale").findAll()
@@ -141,7 +142,7 @@ class CheckGDSViewModel : ViewModel() {
 //                    dummyTestDate.set(Calendar.DAY_OF_MONTH , 31)
 //                }
 //            }
-            tests = realm.where(Test::class.java).equalTo("patientId" , patientId).equalTo("testId" , testDate).equalTo("testName" , "Geriatric Depression Scale").findAll()
+            tests = realm.where(GDSTest::class.java).equalTo("patientId" , patientId).equalTo("testId" , testDate).findAll()
         }
 
         return tests!!.get(tests!!.size -1)!!

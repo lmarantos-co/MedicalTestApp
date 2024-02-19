@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.RealmDB.Test
+import com.example.cvdriskestimator.RealmDB.ZUNGTest
 import com.example.cvdriskestimator.databinding.FragmentZungSrdsCheckBinding
 import com.example.cvdriskestimator.viewModels.CheckZUNGPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckZUNGPatientViewModelFactory
@@ -76,7 +77,7 @@ class CheckZUNGFragment : Fragment() {
 
         if (openType == "open_history")
         {
-            var historyTest = Test()
+            var historyTest = ZUNGTest()
             if (patientId != "")
             {
                 if (testDate != "")
@@ -202,7 +203,7 @@ class CheckZUNGFragment : Fragment() {
 
     }
 
-    private fun setPatientData(test : Test)
+    private fun setPatientData(test : ZUNGTest)
     {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()
