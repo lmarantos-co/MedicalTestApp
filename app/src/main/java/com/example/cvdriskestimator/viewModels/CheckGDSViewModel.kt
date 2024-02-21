@@ -180,7 +180,7 @@ class CheckGDSViewModel : ViewModel() {
             //store the patient data on the database
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
-            var currentTest = Test()
+            var currentTest = GDSTest()
             val date = Date()
 //            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             //check if the current date is already in the test database
@@ -192,10 +192,10 @@ class CheckGDSViewModel : ViewModel() {
 //            calendar.set(Calendar.HOUR_OF_DAY, date.hours)
 //            calendar.set(Calendar.MINUTE, date.minutes)
 //            calendar.set(Calendar.SECOND, date.seconds)
-            val dateCount = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            val dateCount = realm.where(GDSTest::class.java).equalTo("testDate" , calendar.time).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+                currentTest = realm.where(GDSTest::class.java).equalTo("testDate" , calendar.time).findFirst()!!
             }
 
             currentTest!!.patientGDSQ1 = allPatientSelections[0]
@@ -221,7 +221,7 @@ class CheckGDSViewModel : ViewModel() {
             var testId : Int = 0
             if (dateCount.toInt() == 0)
             {
-                var testList = realm.where(Test::class.java).findAll()
+                var testList = realm.where(GDSTest::class.java).findAll()
                 if (testList.size > 0)
                 {
                     testId = testList.get(testList.size -1)!!.testId.toInt()
@@ -235,18 +235,18 @@ class CheckGDSViewModel : ViewModel() {
                 }
             }
 
-            var listOftests = ArrayList<Test>()
-            if (patient!!.listOfTests!! != null)
+            var listOftests = ArrayList<GDSTest>()
+            if (patient!!.listOfGDSTests!! != null)
             {
-                for (i in 0 until patient!!.listOfTests!!.size -1)
+                for (i in 0 until patient!!.listOfGDSTests!!.size -1)
                 {
-                    listOftests[i] = patient!!.listOfTests!!.get(i)!!
+                    listOftests[i] = patient!!.listOfGDSTests!!.get(i)!! as GDSTest
                 }
                 listOftests.add(currentTest)
-                patient!!.listOfTests = null
+                patient!!.listOfGDSTests = null
                 for (i in 0 until listOftests.size -1)
                 {
-                    patient.listOfTests!![i] = listOftests.get(i)
+                    patient.listOfGDSTests!![i] = listOftests.get(i)
                 }
             }
             realm.insertOrUpdate(currentTest)

@@ -11,86 +11,118 @@ open class DiabetesTest : RealmModel {
 
     private var test = Test()
 
-    var testId: String
-        get() = test.testId
-        set(value) {
-            test.testId = value
-        }
+    @PrimaryKey
+    open var testId: String = ""
 
-    var patientId: String
-        get() = test.patientId
-        set(value) {
-            test.patientId = value
-        }
+    @Required
+    open var patientId : String = ""
 
-    var testDate: Date?
-        get() = test.testDate
-        set(value) {
-            test.testDate = value
-        }
+//    var patientId: String
+//        get() = test.patientId
+//        set(value) {
+//            test.patientId = value
+//        }
 
-    var testName: String
-        get() = test.testName
-        set(value) {
-            test.testName = "DiabetesTest"
-        }
+    @Required
+    open var testDate : Date? = null
+
+//    var testDate: Date?
+//        get() = test.testDate
+//        set(value) {
+//            test.testDate = value
+//        }
+
+    @Required
+    open var testName : String? = "DiabetesTest"
+
+//    var testName: String
+//        get() = test.testName
+//        set(value) {
+//            test.testName = "DiabetesTest"
+//        }
 
 
     //DIABETES CHECK
 
-    var patientSex: String?
-        get() = test.patientSex
-        set(value) {
-            test.patientSex = value!!
-        }
+    @Required
+    open var patientSex: String? = null
+//    var patientSex: String?
+//        get() = test.patientSex
+//        set(value) {
+//            test.patientSex = value!!
+//        }
 
-    var patientAge: String?
-        get() = test.patientAge
-        set(value) {
-            test.patientAge = value!!
-        }
+    @Required
+    open var patientAge: String? = null
 
-    var treatment: String?
-        get() = test.treatment
-        set(value) {
-            test.treatment = value!!
-        }
+//    var patientAge: String?
+//        get() = test.patientAge
+//        set(value) {
+//            test.patientAge = value!!
+//        }
 
-    var smoker: String?
-        get() = test.smoker
-        set(value) {
-            test.smoker = value!!
-        }
+    @Required
+    open var treatment: String? = null
 
-    var patientPAM: String?
-        get() = test.patientPAM
-        set(value) {
-            test.patientPAM = value!!
-        }
+//    var treatment: String?
+//        get() = test.treatment
+//        set(value) {
+//            test.treatment = value!!
+//        }
 
-    var patientSteroids: String?
-        get() = test.patientSteroids
-        set(value) {
-            test.patientSteroids = value!!
-        }
+    @Required
+    open var smoker: String? = null
 
-    var patientBMI: String?
-        get() = test.patientBMI
-        set(value) {
-            test.patientBMI = value!!
-        }
+//    var smoker: String?
+//        get() = test.smoker
+//        set(value) {
+//            test.smoker = value!!
+//        }
 
-    var patientSiblings: String?
-        get() = test.patientSiblings
-        set(value) {
-            test.patientSiblings = value!!
-        }
+    @Required
+    open var patientPAM: String? = null
 
-    var diabetesTestResult: Double?
-        get() = test.diabetesTestResult
-        set(value) {
-            test.diabetesTestResult = value!!
-        }
+//    var patientPAM: String?
+//        get() = test.patientPAM
+//        set(value) {
+//            test.patientPAM = value!!
+//        }
+
+    @Required
+    open var patientSteroids: String? = null
+
+//    var patientSteroids: String?
+//        get() = test.patientSteroids
+//        set(value) {
+//            test.patientSteroids = value!!
+//        }
+
+    @Required
+    open var patientBMI: String? = null
+
+//    var patientBMI: String?
+//        get() = test.patientBMI
+//        set(value) {
+//            test.patientBMI = value!!
+//        }
+
+    @Required
+    open var patientSiblings: String? = null
+
+//    var patientSiblings: String?
+//        get() = test.patientSiblings
+//        set(value) {
+//            test.patientSiblings = value!!
+//        }
+
+    @Required
+    open var diabetesTestResult: Int? = null
+
+//    var diabetesTestResult: Double?
+//        get() = test.diabetesTestResult
+//        set(value) {
+//            test.diabetesTestResult = value!!
+//        }
 
 
 }

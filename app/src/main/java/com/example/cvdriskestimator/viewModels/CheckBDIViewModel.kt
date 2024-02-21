@@ -29,7 +29,7 @@ class CheckBDIPatientViewModel : ViewModel() {
     private lateinit var mainActivity: MainActivity
     private lateinit var bdiCheckFragment: BeckDepressionInventoryFragment
     private lateinit var realm : Realm
-    private lateinit var baiTestEstimator : BAITestEstimator
+    private lateinit var bdiTestEstimator : BDITestEstimator
     private var realmDAO = RealmDAO()
     private lateinit var resultFragment: ResultFragment
     private lateinit var historyFragment: HistoryFragment
@@ -41,7 +41,6 @@ class CheckBDIPatientViewModel : ViewModel() {
     fun passActivity(activity: MainActivity)
     {
         mainActivity = activity
-        baiTestEstimator = BAITestEstimator(activity)
     }
 
     fun passFragment(BDICheckFragment: BeckDepressionInventoryFragment)
@@ -189,7 +188,7 @@ class CheckBDIPatientViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
 
-            var currentTest = Test()
+            var currentTest = BDITest()
 //            val date = Date()
 //            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             val calendar: Calendar = Calendar.getInstance()
@@ -200,10 +199,10 @@ class CheckBDIPatientViewModel : ViewModel() {
 //            calendar.set(Calendar.MINUTE, date.minutes)
 //            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
-            val dateCount = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            val dateCount = realm.where(BDITest::class.java).equalTo("testDate" , calendar.time).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+                currentTest = realm.where(BDITest::class.java).equalTo("testDate" , calendar.time).findFirst()!!
             }
 
             currentTest!!.patientBDIQ1 = allPatientSelections[0]
@@ -250,18 +249,18 @@ class CheckBDIPatientViewModel : ViewModel() {
             }
 
             //add the test to the patient test list
-            var testList = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var testList = ArrayList<BDITest>()
+            if (patient.listOfBDITests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfBDITests!!.size -1)
                 {
-                    testList.add(patient.listOfTests!!.get(i)!!)
+                    testList.add(patient.listOfBDITests!!.get(i)!! as BDITest)
                 }
                 testList.add(currentTest)
-                patient.listOfTests = null
+                patient.listOfBDITests = null
                 for (i in 0 until testList.size -1)
                 {
-                    patient.listOfTests!![i] = testList.get(i)
+                    patient.listOfBDITests!![i] = testList.get(i)
                 }
             }
             currentTest.testId = testId.toString()
@@ -539,18 +538,18 @@ class CheckBDIPatientViewModel : ViewModel() {
             }
 
             //add the test to the patient test list
-            var testList3 = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var testList3 = ArrayList<BDITest>()
+            if (patient.listOfBDITests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfBDITests!!.size -1)
                 {
-                    testList3.add(patient.listOfTests!!.get(i)!!)
+                    testList3.add(patient.listOfBDITests!!.get(i)!! as BDITest)
                 }
                 testList3.add(currentTest)
-                patient.listOfTests = null
+                patient.listOfBDITests = null
                 for (i in 0 until testList3.size -1)
                 {
-                    patient.listOfTests!![i] = testList3.get(i)
+                    patient.listOfBDITests!![i] = testList3.get(i)
                 }
             }
             realm.insertOrUpdate(currentTest)

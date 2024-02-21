@@ -187,7 +187,7 @@ class CheckDASSPatientViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
 
-            var currentTest = Test()
+            var currentTest = DASSTest()
 //            val date = Date()
 //            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             val calendar: Calendar = Calendar.getInstance()
@@ -201,7 +201,7 @@ class CheckDASSPatientViewModel : ViewModel() {
             val dateCount = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+                currentTest = realm.where(DASSTest::class.java).equalTo("testDate" , calendar.time).findFirst()!!
             }
 
             currentTest!!.patientDASSQ1 = allPatientSelections[0]
@@ -235,7 +235,7 @@ class CheckDASSPatientViewModel : ViewModel() {
             var testId : Int = 0
             if (dateCount.toInt() == 0)
             {
-                var testList = realm.where(Test::class.java).findAll()
+                var testList = realm.where(DASSTest::class.java).findAll()
                 if (testList.size > 0)
                 {
                     testId = testList.get(testList.size -1)!!.testId.toInt()
@@ -250,18 +250,18 @@ class CheckDASSPatientViewModel : ViewModel() {
             }
 
             //add the test to the patient test list
-            var testList = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var testList = ArrayList<DASSTest>()
+            if (patient.listOfDASSTests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfDASSTests!!.size -1)
                 {
-                    testList.add(patient.listOfTests!!.get(i)!!)
+                    testList.add(patient.listOfDASSTests!!.get(i)!! as DASSTest)
                 }
                 testList.add(currentTest)
-                patient.listOfTests = null
+                patient.listOfDASSTests = null
                 for (i in 0 until testList.size -1)
                 {
-                    patient.listOfTests!![i] = testList.get(i)
+                    patient.listOfDASSTests!![i] = testList.get(i)
                 }
             }
             realm.insertOrUpdate(currentTest)

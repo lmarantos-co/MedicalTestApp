@@ -223,7 +223,7 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
         realm.executeTransaction {
             var patient : Patient = realm.where(Patient::class.java).equalTo("userName" , userName).findFirst()!!
 
-            var currentTest = Test()
+            var currentTest = DiabetesTest()
             val date = Date()
 //            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             //check if the current date is already in the test database
@@ -234,10 +234,10 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
     //        calendar.set(Calendar.HOUR_OF_DAY, date.hours)
     //        calendar.set(Calendar.MINUTE, date.minutes)
     //        calendar.set(Calendar.SECOND, date.seconds)
-            val dateCount = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            val dateCount = realm.where(DiabetesTest::class.java).equalTo("testDate" , calendar.time).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+                currentTest = realm.where(DiabetesTest::class.java).equalTo("testDate" , calendar.time).findFirst()!!
             }
 
             currentTest.patientAge = age
@@ -249,13 +249,13 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
             currentTest.smoker = SmokingStatus
             currentTest.patientId = patient.patientId
             currentTest.testDate = calendar.time
-            currentTest.diabetesTestResult = result
+            currentTest.diabetesTestResult = result.toInt()
             currentTest.testName = "DIABETES"
 
             var testId : Int = 0
             if (dateCount.toInt() == 0)
             {
-                var testList = realm.where(Test::class.java).findAll()
+                var testList = realm.where(DiabetesTest::class.java).findAll()
                 if (testList.size > 0)
                 {
                     testId = testList.get(testList.size -1)!!.testId.toInt()
@@ -269,18 +269,18 @@ class CheckDiabetesPatientViewModel : ViewModel() , Observable {
                 }
             }
 
-            var listOfTest = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var listOfTest = ArrayList<DiabetesTest>()
+            if (patient.listOfDiabetesTests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfDiabetesTests!!.size -1)
                 {
-                    listOfTest[i] = patient.listOfTests!!.get(i)!!
+                    listOfTest[i] = patient.listOfDiabetesTests!!.get(i)!! as DiabetesTest
                 }
-                patient.listOfTests = null
+                patient.listOfDiabetesTests = null
                 listOfTest.add(currentTest)
                 for (i in 0 until listOfTest.size -1)
                 {
-                    patient.listOfTests?.set(i, listOfTest.get(i))
+                    patient.listOfDiabetesTests?.set(i, listOfTest.get(i))
                 }
             }
             realm.insertOrUpdate(currentTest)

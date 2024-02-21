@@ -37,7 +37,18 @@ open class Patient() : RealmModel {
 
     var yearsOfApprentice : Int = 0
 
-    var listOfTests : RealmList<Test>? = null
+    var listOfBAITests : RealmList<BAITest>? = null
+    var listOfBDITests : RealmList<BDITest>? = null
+    var listOfBPITests : RealmList<BPITest>? = null
+    var listOfCVDTests : RealmList<CVDTest>? = null
+    var listOfDASSTests : RealmList<DASSTest>? = null
+    var listOfDiabetesTests : RealmList<DiabetesTest>? = null
+    var listOfGDSTests : RealmList<GDSTest>? = null
+    var listOfHAMTests : RealmList<HAMTest>? = null
+    var listOfMDITests : RealmList<MDITest>? = null
+    var listOfMDSTests : RealmList<MDSTest>? = null
+    var listOfSTAITests : RealmList<STAITest>? = null
+    var listOfZUNGTests : RealmList<ZUNGTest>? = null
 
 
 }

@@ -159,20 +159,20 @@ class PDQCheckViewModel : ViewModel() {
             var dateFormatter = DateTimeFormatter.ofPattern("yyyy MM dd")
             var testDate = dateFormatter.parse(LocalDateTime.now().toString()).toString()
 
-            var listOftests = ArrayList<Test>()
-            if (patient!!.listOfTests!! != null)
-            {
-                for (i in 0 until patient!!.listOfTests!!.size)
-                {
-                    listOftests[i] = patient!!.listOfTests!!.get(i)!!
-                }
-                listOftests.add(PDQTest)
-                patient!!.listOfTests = null
-                for (i in 0 until listOftests.size)
-                {
-                    patient.listOfTests!![i] = listOftests.get(i)
-                }
-            }
+//            var listOftests = ArrayList<Test>()
+//            if (patient!!.listOfTests!! != null)
+//            {
+//                for (i in 0 until patient!!.listOfTests!!.size)
+//                {
+//                    listOftests[i] = patient!!.listOfTests!!.get(i)!!
+//                }
+//                listOftests.add(PDQTest)
+//                patient!!.listOfTests = null
+//                for (i in 0 until listOftests.size)
+//                {
+//                    patient.listOfTests!![i] = listOftests.get(i)
+//                }
+//            }
             realm.insert(PDQTest)
 
             realm.insertOrUpdate(patient)
@@ -290,20 +290,20 @@ class PDQCheckViewModel : ViewModel() {
                 }
             }
 
-            var listOftests = ArrayList<Test>()
-            if (patient!!.listOfTests!! != null)
-            {
-                for (i in 0 until patient!!.listOfTests!!.size -1)
-                {
-                    listOftests[i] = patient!!.listOfTests!!.get(i)!!
-                }
-                listOftests.add(currentTest)
-                patient!!.listOfTests = null
-                for (i in 0 until listOftests.size -1)
-                {
-                    patient.listOfTests!![i] = listOftests.get(i)
-                }
-            }
+//            var listOftests = ArrayList<Test>()
+//            if (patient!!.listOfTests!! != null)
+//            {
+//                for (i in 0 until patient!!.listOfTests!!.size -1)
+//                {
+//                    listOftests[i] = patient!!.listOfTests!!.get(i)!!
+//                }
+//                listOftests.add(currentTest)
+//                patient!!.listOfTests = null
+//                for (i in 0 until listOftests.size -1)
+//                {
+//                    patient.listOfTests!![i] = listOftests.get(i)
+//                }
+//            }
             realm.insertOrUpdate(currentTest)
 
             realm.insertOrUpdate(patient)

@@ -191,7 +191,7 @@ class CheckBAIPatientViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
 
-            var currentTest = Test()
+            var currentTest = BAITest()
 //            val date = Date()
 //            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             val calendar: Calendar = Calendar.getInstance()
@@ -202,10 +202,10 @@ class CheckBAIPatientViewModel : ViewModel() {
 //            calendar.set(Calendar.MINUTE, date.minutes)
 //            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
-            val dateCount = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            val dateCount = realm.where(BAITest::class.java).equalTo("testDate" , calendar.time).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+                currentTest = realm.where(BAITest::class.java).equalTo("testDate" , calendar.time).findFirst()!!
             }
 
             currentTest!!.patientBAIQ1 = allPatientSelections[0]
@@ -237,7 +237,7 @@ class CheckBAIPatientViewModel : ViewModel() {
             var testId : Int = 0
             if (dateCount.toInt() == 0)
             {
-                var testList = realm.where(Test::class.java).findAll()
+                var testList = realm.where(BAITest::class.java).findAll()
                 if (testList.size > 0)
                 {
                     testId = testList.get(testList.size -1)!!.testId.toInt()
@@ -252,18 +252,18 @@ class CheckBAIPatientViewModel : ViewModel() {
             }
 
             //add the test to the patient test list
-            var testList = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var testList = ArrayList<BAITest>()
+            if (patient.listOfBAITests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfBAITests!!.size -1)
                 {
-                    testList.add(patient.listOfTests!!.get(i)!!)
+                    testList.add(patient.listOfBAITests!!.get(i)!! as BAITest)
                 }
                 testList.add(currentTest)
-                patient.listOfTests = null
+                patient.listOfBAITests = null
                 for (i in 0 until testList.size -1)
                 {
-                    patient.listOfTests!![i] = testList.get(i)
+                    patient.listOfBAITests!![i] = testList.get(i)
                 }
             }
             realm.insertOrUpdate(currentTest)
@@ -278,7 +278,7 @@ class CheckBAIPatientViewModel : ViewModel() {
             calendar2.set(Calendar.MINUTE, 0)
             calendar2.set(Calendar.SECOND, 0)
 
-            var dummyTest1 = Test()
+            var dummyTest1 = BAITest()
 
             dummyTest1!!.patientBAIQ1 = 2
             dummyTest1!!.patientBAIQ2 = 1
@@ -309,25 +309,25 @@ class CheckBAIPatientViewModel : ViewModel() {
 
 
             //add the test to the patient test list
-            var testList1 = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var testList1 = ArrayList<BAITest>()
+            if (patient.listOfBAITests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfBAITests!!.size -1)
                 {
-                    testList1.add(patient.listOfTests!!.get(i)!!)
+                    testList1.add(patient.listOfBAITests!!.get(i)!! as BAITest)
                 }
                 testList1.add(currentTest)
-                patient.listOfTests = null
+                patient.listOfBAITests = null
                 for (i in 0 until testList1.size -1)
                 {
-                    patient.listOfTests!![i] = testList1.get(i)
+                    patient.listOfBAITests!![i] = testList1.get(i)
                 }
             }
             realm.insertOrUpdate(dummyTest1)
             //update the user record within realm database
             realm.copyToRealmOrUpdate(patient)
 
-            var dummyTest2 = Test()
+            var dummyTest2 = BAITest()
 
             var calendar3 = Calendar.getInstance()
             calendar3.set(Calendar.YEAR , 2023)
@@ -366,18 +366,18 @@ class CheckBAIPatientViewModel : ViewModel() {
 
 
             //add the test to the patient test list
-            var testList2 = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var testList2 = ArrayList<BAITest>()
+            if (patient.listOfBAITests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfBAITests!!.size -1)
                 {
-                    testList2.add(patient.listOfTests!!.get(i)!!)
+                    testList2.add(patient.listOfBAITests!!.get(i)!! as BAITest)
                 }
                 testList2.add(currentTest)
-                patient.listOfTests = null
+                patient.listOfBAITests = null
                 for (i in 0 until testList2.size -1)
                 {
-                    patient.listOfTests!![i] = testList2.get(i)
+                    patient.listOfBAITests!![i] = testList2.get(i)
                 }
             }
             realm.insertOrUpdate(dummyTest2)
@@ -423,18 +423,18 @@ class CheckBAIPatientViewModel : ViewModel() {
 
 
             //add the test to the patient test list
-            var testList3 = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var testList3 = ArrayList<BAITest>()
+            if (patient.listOfBAITests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfBAITests!!.size -1)
                 {
-                    testList3.add(patient.listOfTests!!.get(i)!!)
+                    testList3.add(patient.listOfBAITests!!.get(i)!! as BAITest)
                 }
                 testList3.add(currentTest)
-                patient.listOfTests = null
+                patient.listOfBAITests = null
                 for (i in 0 until testList3.size -1)
                 {
-                    patient.listOfTests!![i] = testList3.get(i)
+                    patient.listOfBAITests!![i] = testList3.get(i)
                 }
             }
             realm.insertOrUpdate(dummyTest3)
@@ -481,18 +481,18 @@ class CheckBAIPatientViewModel : ViewModel() {
 
 
             //add the test to the patient test list
-            var testList4 = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var testList4 = ArrayList<BAITest>()
+            if (patient.listOfBAITests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfBAITests!!.size -1)
                 {
-                    testList4.add(patient.listOfTests!!.get(i)!!)
+                    testList4.add(patient.listOfBAITests!!.get(i)!! as BAITest)
                 }
                 testList4.add(currentTest)
-                patient.listOfTests = null
+                patient.listOfBAITests = null
                 for (i in 0 until testList4.size -1)
                 {
-                    patient.listOfTests!![i] = testList4.get(i)
+                    patient.listOfBAITests!![i] = testList4.get(i)
                 }
             }
             realm.insertOrUpdate(dummyTest4)

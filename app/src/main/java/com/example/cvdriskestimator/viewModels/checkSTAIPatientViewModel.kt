@@ -195,7 +195,7 @@ class CheckSTAIPatientViewModel : ViewModel() {
             val username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
             val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
 
-            var currentTest = Test()
+            var currentTest = STAITest()
 //            val date = Date()
 //            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             val calendar: Calendar = Calendar.getInstance()
@@ -206,10 +206,10 @@ class CheckSTAIPatientViewModel : ViewModel() {
 //            calendar.set(Calendar.MINUTE, date.minutes)
 //            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
-            val dateCount = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            val dateCount = realm.where(STAITest::class.java).equalTo("testDate" , calendar.time).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+                currentTest = realm.where(STAITest::class.java).equalTo("testDate" , calendar.time).findFirst()!!
             }
 
             currentTest!!.patientSTAISQ1 = allPatientSelections[0]
@@ -261,7 +261,7 @@ class CheckSTAIPatientViewModel : ViewModel() {
             var testId : Int = 0
             if (dateCount.toInt() == 0)
             {
-                var testList = realm.where(Test::class.java).findAll()
+                var testList = realm.where(STAITest::class.java).findAll()
                 if (testList.size > 0)
                 {
                     testId = testList.get(testList.size -1)!!.testId.toInt()
@@ -276,18 +276,18 @@ class CheckSTAIPatientViewModel : ViewModel() {
             }
 
             //add the test to the patient test list
-            var testList = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var testList = ArrayList<STAITest>()
+            if (patient.listOfSTAITests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfSTAITests!!.size -1)
                 {
-                    testList.add(patient.listOfTests!!.get(i)!!)
+                    testList.add(patient.listOfSTAITests!!.get(i)!! as STAITest)
                 }
                 testList.add(currentTest)
-                patient.listOfTests = null
+                patient.listOfSTAITests = null
                 for (i in 0 until testList.size -1)
                 {
-                    patient.listOfTests!![i] = testList.get(i)
+                    patient.listOfSTAITests!![i] = testList.get(i)
                 }
             }
             realm.insertOrUpdate(currentTest)

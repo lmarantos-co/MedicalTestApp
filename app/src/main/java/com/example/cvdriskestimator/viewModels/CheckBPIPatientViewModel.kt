@@ -181,7 +181,7 @@ class CheckBPIPatientViewModel : ViewModel() {
             var username = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
             var patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
 
-            var currentTest = Test()
+            var currentTest = BPITest()
 //            val date = Date()
 //            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             val calendar: Calendar = Calendar.getInstance()
@@ -192,10 +192,10 @@ class CheckBPIPatientViewModel : ViewModel() {
 //            calendar.set(Calendar.MINUTE, date.minutes)
 //            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
-            val dateCount = realm.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            val dateCount = realm.where(BPITest::class.java).equalTo("testDate" , calendar.time).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+                currentTest = realm.where(BPITest::class.java).equalTo("testDate" , calendar.time).findFirst()!!
             }
 
             currentTest!!.patientBPIQ1 = allPatientData[0]
@@ -235,18 +235,18 @@ class CheckBPIPatientViewModel : ViewModel() {
                 }
             }
 
-            var listOftest = ArrayList<Test>()
+            var listOftest = ArrayList<BPITest>()
 
             //add the test to the patient table
-            if (patient!!.listOfTests != null)
+            if (patient!!.listOfBPITests != null)
             {
-                for (i in 0 until patient!!.listOfTests!!.size -1)
-                listOftest[i] = patient!!.listOfTests!!.get(i)!!
+                for (i in 0 until patient!!.listOfBPITests!!.size -1)
+                listOftest[i] = patient!!.listOfBPITests!!.get(i)!! as BPITest
 
-                patient!!.listOfTests = null
+                patient!!.listOfBPITests = null
                 for (i in 0 until listOftest.size -1)
                 {
-                    patient!!.listOfTests!![i] = listOftest.get(i)
+                    patient!!.listOfBPITests!![i] = listOftest.get(i)
                 }
             }
             listOftest.add(currentTest)

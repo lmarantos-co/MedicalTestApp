@@ -183,7 +183,7 @@ class CheckMedDietTestViewModel : ViewModel(){
             var userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
             var patient = defaultInstance.where(Patient::class.java).isNotNull("patientId").equalTo("userName", userName).findFirst()
 
-            var currentTest = Test()
+            var currentTest = MDSTest()
 //            val date = Date()
 //            var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             val calendar: Calendar = Calendar.getInstance()
@@ -194,10 +194,10 @@ class CheckMedDietTestViewModel : ViewModel(){
 //            calendar.set(Calendar.MINUTE, date.minutes)
 //            calendar.set(Calendar.SECOND, date.seconds)
             //check if the current date is already in the test database
-            val dateCount = defaultInstance.where(Test::class.java).equalTo("testDate" , calendar.time).count()
+            val dateCount = defaultInstance.where(MDSTest::class.java).equalTo("testDate" , calendar.time).count()
             if (dateCount > 0)
             {
-                currentTest = defaultInstance.where(Test::class.java).equalTo("testDate" , calendar.time).findFirst()!!
+                currentTest = defaultInstance.where(MDSTest::class.java).equalTo("testDate" , calendar.time).findFirst()!!
             }
             currentTest!!.patientMDSQ1 = medDietScoreValues.get(0)
             currentTest!!.patientMDSQ2 = medDietScoreValues.get(1)
@@ -232,18 +232,18 @@ class CheckMedDietTestViewModel : ViewModel(){
                 }
             }
 
-            var listOftests = ArrayList<Test>()
-            if (patient!!.listOfTests!! != null)
+            var listOftests = ArrayList<MDSTest>()
+            if (patient!!.listOfMDSTests!! != null)
             {
-                for (i in 0 until patient!!.listOfTests!!.size -1)
+                for (i in 0 until patient!!.listOfMDSTests!!.size -1)
                 {
-                    listOftests[i] = patient!!.listOfTests!!.get(i)!!
+                    listOftests[i] = patient!!.listOfMDSTests!!.get(i)!! as MDSTest
                 }
                 listOftests.add(currentTest)
-                patient!!.listOfTests = null
+                patient!!.listOfMDSTests = null
                 for (i in 0 until listOftests.size -1)
                 {
-                    patient.listOfTests!![i] = listOftests.get(i)
+                    patient.listOfMDSTests!![i] = listOftests.get(i)
                 }
             }
             defaultInstance.insertOrUpdate(currentTest)

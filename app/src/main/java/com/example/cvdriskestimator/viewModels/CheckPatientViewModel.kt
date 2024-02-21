@@ -359,7 +359,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
     private  fun saveUserDataToDB(sex : String, age : String, sbp : String, TCH : String, HDL : String, smokingStatus: String, treatmentStatus: String , score : Int)
     {
         val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
-        var allTests = realm.where(Test::class.java).findAll()
+        var allTests = realm.where(CVDTest::class.java).findAll()
         val username = prefs.getString("userName", "tempUser")
         //get the user record
 //        val realm = Realm.getInstance(mainActivity.passRealmConfig())
@@ -368,7 +368,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
             val patient : Patient = realm.where(Patient::class.java).equalTo("userName" , username).findFirst()!!
             //update the user record with the relevant data
 
-            var currentTest = Test()
+            var currentTest = CVDTest()
  //           val date = Date()
  //           var currentDate = Date(date.year , date.month , date.date , date.hours , date.minutes ,date.seconds)
             //default time zone
@@ -391,10 +391,10 @@ class CheckPatientViewModel : ViewModel() , Observable {
 //            calendar0.set(Calendar.SECOND, date.seconds)
 
             //check if the current date is already in the test database
-            val dateCount = realm.where(Test::class.java).equalTo("testDate" , calendar0.time).count()
+            val dateCount = realm.where(CVDTest::class.java).equalTo("testDate" , calendar0.time).count()
             if (dateCount > 0)
             {
-                currentTest = realm.where(Test::class.java).equalTo("testDate" , calendar0.time).findFirst()!!
+                currentTest = realm.where(CVDTest::class.java).equalTo("testDate" , calendar0.time).findFirst()!!
             }
             currentTest.patientSex = sex
             currentTest.patientAge = age
@@ -410,7 +410,7 @@ class CheckPatientViewModel : ViewModel() , Observable {
             var testId : Int = 0
             if (dateCount.toInt() == 0)
             {
-                var testList = realm.where(Test::class.java).findAll()
+                var testList = realm.where(CVDTest::class.java).findAll()
                 if (testList.size > 0)
                 {
                     testId = testList.get(testList.size -1)!!.testId.toInt()
@@ -425,18 +425,18 @@ class CheckPatientViewModel : ViewModel() , Observable {
             }
 
             //add the test to the patient test list
-            var testList = ArrayList<Test>()
-            if (patient.listOfTests != null)
+            var testList = ArrayList<CVDTest>()
+            if (patient.listOfCVDTests != null)
             {
-                for (i in 0 until patient.listOfTests!!.size -1)
+                for (i in 0 until patient.listOfCVDTests!!.size -1)
                 {
-                    testList.add(patient.listOfTests!!.get(i)!!)
+                    testList.add(patient.listOfCVDTests!!.get(i)!! as CVDTest)
                 }
                 testList.add(currentTest)
-                patient.listOfTests = null
+                patient.listOfCVDTests = null
                 for (i in 0 until testList.size -1)
                 {
-                    patient.listOfTests!![i] = testList.get(i)
+                    patient.listOfCVDTests!![i] = testList.get(i)
                 }
             }
             realm.insertOrUpdate(currentTest)

@@ -14,7 +14,6 @@ import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.BAITest
@@ -30,6 +29,7 @@ import com.example.cvdriskestimator.RealmDB.MDSTest
 import com.example.cvdriskestimator.RealmDB.STAITest
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.RealmDB.ZUNGTest
+import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.databinding.FragmentHistoryBinding
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
@@ -39,8 +39,9 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import io.realm.Realm
-import io.realm.RealmList
 import io.realm.RealmResults
+import java.lang.reflect.ParameterizedType
+import java.lang.reflect.Type
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.ZoneOffset
@@ -223,11 +224,11 @@ class HistoryFragment : Fragment() {
         getAllTests(null , null)
     }
 
-    private fun getAllTests(fromDate : Date?  , toDate : Date?) : RealmResults<Test>
+    private fun getAllTests(fromDate : Date?  , toDate : Date?) : RealmResults<Any>
     {
         realm = Realm.getDefaultInstance()
         //get all the tests related with the specific test and patient
-        var tests : RealmResults<Test>? = null
+        var tests : RealmResults<Any>? = null
         var last10Tests : RealmResults<Test>? = null
 
         when (param2)
@@ -235,7 +236,7 @@ class HistoryFragment : Fragment() {
             "CardioVascularDisease" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("CardioVascularDisease")
-                tests = realm.where(CVDTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(CVDTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //
@@ -250,14 +251,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests)
                 if (fromDate != null)
                 {
-                    tests = realm.where(CVDTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(CVDTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "DIABETES" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("DIABETES")
-                tests = realm.where(DiabetesTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(DiabetesTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -269,14 +270,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(DiabetesTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(DiabetesTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Major Depression Index" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Major Depression Index")
-                tests = realm.where(MDITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(MDITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -288,14 +289,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(MDITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(MDITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "BPI" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Brief Pain Inventory")
-                tests = realm.where(BPITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(BPITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -307,14 +308,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(BPITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(BPITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Beck Anxiety Index" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Beck Anxiety Index")
-                tests = realm.where(BAITest::class.java).isNotNull("patientBAIQ1") .equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(BAITest::class.java).isNotNull("patientBAIQ1") .equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -326,14 +327,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(BAITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(BAITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "MDS" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Mediterranean Diet Test")
-                tests = realm.where(MDSTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(MDSTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -345,14 +346,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(MDSTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(MDSTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Brief Pain Inventory" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Brief Pain Inventory")
-                tests = realm.where(BPITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(BPITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -364,14 +365,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(BPITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(BPITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Beck Depression Inventory" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Beck Depression Inventory")
-                tests = realm.where(BDITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(BDITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -383,14 +384,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(BDITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(BDITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Geriatric Depression Scale" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Geriatric Depression Scale")
-                tests = realm.where(GDSTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(GDSTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -402,14 +403,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(GDSTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(GDSTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "Hammilton Depression" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("Hammilton Depression")
-                tests = realm.where(HAMTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(HAMTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -421,14 +422,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(HAMTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(HAMTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "STAI" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("STAI")
-                tests = realm.where(STAITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(STAITest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -440,14 +441,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(STAITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(STAITest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "DASS" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("DASS")
-                tests = realm.where(DASSTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(DASSTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -459,14 +460,14 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(DASSTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(DASSTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
             "ZUNG" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("ZUNG")
-                tests = realm.where(ZUNGTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                tests = realm.where(ZUNGTest::class.java).equalTo("patientId" , param1).findAll() as RealmResults<Any>
 //                if (tests.size > 10)
 //                {
 //                    tests.forEachIndexed { index, test ->
@@ -478,7 +479,7 @@ class HistoryFragment : Fragment() {
                 setDatesFromTestsToChartSubTitle(tests!!)
                 if (fromDate != null)
                 {
-                    tests = realm.where(ZUNGTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Test>
+                    tests = realm.where(ZUNGTest::class.java).between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).findAll() as RealmResults<Any>
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
@@ -489,7 +490,7 @@ class HistoryFragment : Fragment() {
         return tests!!
     }
 
-    private fun setDatesFromTestsToChartSubTitle(tests : RealmResults<Test>)
+    private fun setDatesFromTestsToChartSubTitle(tests : RealmResults<Any>)
     {
         var maxDate = Date(1990 , 1 ,1)
         var minDate : Date = Calendar.getInstance().getTime()
@@ -506,18 +507,226 @@ class HistoryFragment : Fragment() {
 //        calendar2.set(Calendar.DAY_OF_MONTH , maxDate.day)
         minDate = calendar2.time
 
-        for (test in tests)
-        {
-            if (test.testDate!!.before(minDate))
-            {
-                minDate = test.testDate!!
-            }
+        var allTests : Any
 
-            if (test.testDate!!.after(maxDate))
+
+        //identify the realmList class by using kotlin reflection
+        if (isInstanceOfRealmResults(tests, BAITest::class.java))
+        {
+            allTests =  tests as RealmResults<BAITest>
+
+            for (test in allTests)
             {
-                maxDate = test.testDate!!
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
             }
         }
+
+        if (isInstanceOfRealmResults(tests, BDITest::class.java))
+        {
+            allTests =  tests as RealmResults<BDITest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
+        if (isInstanceOfRealmResults(tests, BPITest::class.java))
+        {
+            allTests =  tests as RealmResults<BDITest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
+        if (isInstanceOfRealmResults(tests, CVDTest::class.java))
+        {
+            allTests =  tests as RealmResults<CVDTest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
+        if (isInstanceOfRealmResults(tests, DASSTest::class.java))
+        {
+            allTests =  tests as RealmResults<DASSTest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
+        if (isInstanceOfRealmResults(tests, DiabetesTest::class.java))
+        {
+            allTests =  tests as RealmResults<DiabetesTest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
+        if (isInstanceOfRealmResults(tests, GDSTest::class.java))
+        {
+            allTests =  tests as RealmResults<GDSTest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
+        if (isInstanceOfRealmResults(tests, HAMTest::class.java))
+        {
+            allTests =  tests as RealmResults<HAMTest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
+        if (isInstanceOfRealmResults(tests, MDITest::class.java))
+        {
+            allTests =  tests as RealmResults<MDITest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
+        if (isInstanceOfRealmResults(tests, MDSTest::class.java))
+        {
+            allTests =  tests as RealmResults<MDSTest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
+        if (isInstanceOfRealmResults(tests, STAITest::class.java))
+        {
+            allTests =  tests as RealmResults<STAITest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
+        if (isInstanceOfRealmResults(tests, ZUNGTest::class.java))
+        {
+            allTests =  tests as RealmResults<ZUNGTest>
+
+            for (test in allTests)
+            {
+                if (test.testDate!!.before(minDate))
+                {
+                    minDate = test.testDate!!
+                }
+
+                if (test.testDate!!.after(maxDate))
+                {
+                    maxDate = test.testDate!!
+                }
+            }
+        }
+
         val lMindate: LocalDate = LocalDate.from(minDate.toInstant().atZone(ZoneOffset.UTC))
         val lMaxdate: LocalDate = LocalDate.from(maxDate.toInstant().atZone(ZoneOffset.UTC))
         val sMinDate = DateTimeFormatter.ISO_DATE.format(lMindate) // uuuu-MM-dd
@@ -529,7 +738,34 @@ class HistoryFragment : Fragment() {
 
     }
 
-    private fun initTestResultsScopeDataChart(allTests : RealmResults<Test>)
+    fun isInstanceOfRealmResults(`object`: RealmResults<*>, clazz: Class<*>): Boolean {
+        val type: Type = `object`.javaClass.genericSuperclass
+        if (type is ParameterizedType) {
+            val parameterizedType = type as ParameterizedType
+            val typeArguments: Array<Type> = parameterizedType.actualTypeArguments
+            if (typeArguments.size > 0) {
+                val typeArgument: Type = typeArguments[0]
+                if (typeArgument is Class<*>) {
+                    val typeClass = typeArgument as Class<*>
+                    return clazz.isAssignableFrom(typeClass)
+                }
+            }
+        }
+        return false
+    }
+
+
+    fun <T> convertToRealmResults(anyObject: RealmResults<Any>?, clazz: Class<T>): RealmResults<T>? {
+        if (anyObject is RealmResults<*>) {
+            if (clazz.isAssignableFrom(anyObject.firstOrNull()?.javaClass)) {
+                @Suppress("UNCHECKED_CAST")
+                return anyObject as RealmResults<T>
+            }
+        }
+        return null // Or handle the case where `anyObject` is not a RealmResults object or the types don't match
+    }
+
+    private fun initTestResultsScopeDataChart(allTests : RealmResults<Any>)
     {
         //get the min and max values of the scores
         var minScore : Float = 1000f
@@ -549,10 +785,85 @@ class HistoryFragment : Fragment() {
         var dataSet2 : LineDataSet
         var dataSet3 : LineDataSet
 
+        var castedAllBAITest : Any =""
+        var castedAllBDITest : Any = ""
+        var castedAllBPITest : Any = ""
+        var castedAllDASSTest : Any = ""
+        var castedAllDiabetesTest : Any = ""
+        var castedAllCVDTest : Any = ""
+        var castedAllGDSTest : Any = ""
+        var castedAllHAMTest : Any = ""
+        var castedAllMDITest : Any = ""
+        var castedAllMDSTest : Any = ""
+        var castedAllSTAITest : Any = ""
+        var castedAllZUNGTest : Any = ""
+
+
+
+
+        if (isInstanceOfRealmResults(allTests , BAITest::class.java))
+        {
+            castedAllBAITest = convertToRealmResults(allTests , BAITest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , BDITest::class.java))
+        {
+            castedAllBDITest = convertToRealmResults(allTests , BDITest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , BPITest::class.java))
+        {
+            castedAllBPITest = convertToRealmResults(allTests , BPITest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , CVDTest::class.java))
+        {
+            castedAllCVDTest = convertToRealmResults(allTests , CVDTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , DASSTest::class.java))
+        {
+            castedAllDASSTest = convertToRealmResults(allTests , DASSTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , DiabetesTest::class.java))
+        {
+            castedAllDiabetesTest = convertToRealmResults(allTests , DiabetesTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , GDSTest::class.java))
+        {
+            castedAllGDSTest = convertToRealmResults(allTests , GDSTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , HAMTest::class.java))
+        {
+            castedAllHAMTest = convertToRealmResults(allTests , HAMTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , MDITest::class.java))
+        {
+            castedAllMDITest = convertToRealmResults(allTests , MDITest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , MDSTest::class.java))
+        {
+            castedAllMDSTest = convertToRealmResults(allTests , MDSTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , STAITest::class.java))
+        {
+            castedAllSTAITest = convertToRealmResults(allTests , STAITest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , ZUNGTest::class.java))
+        {
+            castedAllZUNGTest = convertToRealmResults(allTests , ZUNGTest::class.java)!!
+        }
 
         if (param2 == "BPI")
         {
-            for (test in allTests)
+            for (test in castedAllBPITest as RealmResults<BPITest>)
             {
                 if (minPSScore < test.patientBPITestSeverityResult!!)
                 {
@@ -606,7 +917,7 @@ class HistoryFragment : Fragment() {
 
             for (i in 0 until allTests.size)
             {
-                var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBPITestSeverityResult!!)
+                var entry = Entry(i.toFloat() , castedAllBPITest.get(i)!!.patientBPITestSeverityResult!!)
                 dataSet1.addEntry(entry)
             }
 
@@ -623,7 +934,7 @@ class HistoryFragment : Fragment() {
 
             for (i in 0 until allTests.size)
             {
-                var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBPITestInterferenceResult!!)
+                var entry = Entry(i.toFloat() , castedAllBPITest.get(i)!!.patientBPITestInterferenceResult!!)
                 dataSet2.addEntry(entry)
             }
 
@@ -638,7 +949,7 @@ class HistoryFragment : Fragment() {
            {
                "CardioVascularDisease" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllCVDTest as RealmResults<CVDTest>)
                    {
                        if (minScore > test.cvdTestResult!!)
                        {
@@ -674,7 +985,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.cvdTestResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllCVDTest.get(i)!!.cvdTestResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -685,7 +996,7 @@ class HistoryFragment : Fragment() {
 
                "DIABETES" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllDiabetesTest as RealmResults<DiabetesTest>)
                    {
                        if (minScore > test.diabetesTestResult!!)
                        {
@@ -722,9 +1033,9 @@ class HistoryFragment : Fragment() {
                    dataSet1.cubicIntensity = 0.2f
                    dataSet1.clear()
 
-                   for (i in 0 until allTests.size)
+                   for (i in 0 until castedAllDiabetesTest.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.diabetesTestResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllDiabetesTest.get(i)!!.diabetesTestResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -734,7 +1045,7 @@ class HistoryFragment : Fragment() {
 
                "Major Depression Index" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllMDITest as RealmResults<MDITest>)
                    {
                        if (minScore > test.patientMDITestResult!!)
                        {
@@ -770,7 +1081,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientMDITestResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllMDITest.get(i)!!.patientMDITestResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -781,7 +1092,7 @@ class HistoryFragment : Fragment() {
 
                "Beck Anxiety Index" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllBAITest as RealmResults<BAITest>)
                    {
                        if (minScore > test.patientBAITestResult!!)
                        {
@@ -817,7 +1128,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBAITestResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllBAITest.get(i)!!.patientBAITestResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -828,7 +1139,7 @@ class HistoryFragment : Fragment() {
 
                "BPI" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllBDITest as RealmResults<BPITest>)
                    {
                        if (minScore > test.patientBPITestSeverityResult!!)
                        {
@@ -862,16 +1173,16 @@ class HistoryFragment : Fragment() {
                    dataSet1.cubicIntensity = 0.2f
                    dataSet1.clear()
 
-                   for (i in 0 until allTests.size)
+                   for (i in 0 until castedAllBDITest.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBPITestSeverityResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllBDITest.get(i)!!.patientBPITestSeverityResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
                    data.addDataSet(dataSet1)
                    data.notifyDataChanged()
 
-                   for (test in allTests)
+                   for (test in castedAllBPITest as RealmResults<BPITest>)
                    {
                        if (minScore > test.patientBPITestSeverityResult!!)
                        {
@@ -907,7 +1218,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBPITestInterferenceResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllBPITest.get(i)!!.patientBPITestInterferenceResult!!.toFloat())
                        dataSet2.addEntry(entry)
                    }
 
@@ -919,7 +1230,7 @@ class HistoryFragment : Fragment() {
 
                "Beck Depression Inventory" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllBDITest as RealmResults<BDITest>)
                    {
                        if (minScore > test.patientBDITestResult!!)
                        {
@@ -955,7 +1266,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientBDITestResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllBDITest.get(i)!!.patientBDITestResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -966,7 +1277,7 @@ class HistoryFragment : Fragment() {
 
                "MDS" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllMDSTest as RealmResults<MDSTest>)
                    {
                        if (minScore > test.patientMDSTestResult!!)
                        {
@@ -1001,7 +1312,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientMDSTestResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllMDSTest.get(i)!!.patientMDSTestResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -1012,7 +1323,7 @@ class HistoryFragment : Fragment() {
 
                "Geriatric Depression Scale" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllGDSTest as RealmResults<GDSTest>)
                    {
                        if (minScore > test.patientGDSTestResult!!)
                        {
@@ -1048,7 +1359,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientGDSTestResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllGDSTest.get(i)!!.patientGDSTestResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -1058,7 +1369,7 @@ class HistoryFragment : Fragment() {
 
                "Hammilton Depression" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllHAMTest as RealmResults<HAMTest>)
                    {
                        if (minScore > test.patientHAMDTestResult!!)
                        {
@@ -1094,7 +1405,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientHAMDTestResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllHAMTest.get(i)!!.patientHAMDTestResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -1105,7 +1416,7 @@ class HistoryFragment : Fragment() {
 
                "DASS" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllDASSTest as RealmResults<DASSTest>)
                    {
                        if (minScore > test.dassAnxietyResult!!)
                        {
@@ -1141,14 +1452,14 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.dassAnxietyResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllDASSTest.get(i)!!.dassAnxietyResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
                    data.addDataSet(dataSet1)
                    data.notifyDataChanged()
 
-                   for (test in allTests)
+                   for (test in castedAllDASSTest)
                    {
                        if (minScore > test.dassStressResult!!)
                        {
@@ -1184,14 +1495,14 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.dassStressResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllDASSTest.get(i)!!.dassStressResult!!.toFloat())
                        dataSet2.addEntry(entry)
                    }
 
                    data.addDataSet(dataSet2)
                    data.notifyDataChanged()
 
-                   for (test in allTests)
+                   for (test in castedAllDASSTest)
                    {
                        if (minScore > test.dassDepressionResult!!)
                        {
@@ -1227,7 +1538,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.dassDepressionResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllDASSTest.get(i)!!.dassDepressionResult!!.toFloat())
                        dataSet3.addEntry(entry)
                    }
 
@@ -1239,7 +1550,7 @@ class HistoryFragment : Fragment() {
 
                "STAI" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllSTAITest as RealmResults<STAITest>)
                    {
                        if (minScore > test.patientSTAITScore!!)
                        {
@@ -1273,16 +1584,16 @@ class HistoryFragment : Fragment() {
                    dataSet1.cubicIntensity = 0.2f
                    dataSet1.clear()
 
-                   for (i in 0 until allTests.size)
+                   for (i in 0 until castedAllSTAITest.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientSTAITScore!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllSTAITest.get(i)!!.patientSTAITScore!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
                    data.addDataSet(dataSet1)
                    data.notifyDataChanged()
 
-                   for (test in allTests)
+                   for (test in castedAllSTAITest)
                    {
                        if (minScore > test.patientSTAISScore!!)
                        {
@@ -1318,7 +1629,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientSTAISScore!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllSTAITest.get(i)!!.patientSTAISScore!!.toFloat())
                        dataSet2.addEntry(entry)
                    }
 
@@ -1329,7 +1640,7 @@ class HistoryFragment : Fragment() {
 
                "ZUNG" ->
                {
-                   for (test in allTests)
+                   for (test in castedAllZUNGTest as RealmResults<ZUNGTest>)
                    {
                        if (minScore > test.zungTestReesult!!)
                        {
@@ -1365,7 +1676,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.zungTestReesult!!.toFloat())
+                       var entry = Entry(i.toFloat() , castedAllZUNGTest.get(i)!!.zungTestReesult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -1552,7 +1863,7 @@ class HistoryFragment : Fragment() {
         })
     }
 
-    private fun initTestResultsListView(allTests : RealmResults<Test>)
+    private fun initTestResultsListView(allTests : RealmResults<Any>)
     {
         var dateArrayList = ArrayList<String>()
         var scoreArrayList = ArrayList<String>()
@@ -1563,12 +1874,88 @@ class HistoryFragment : Fragment() {
         if (SCREEN_WIDTH > 1000)
             numOfSpaces = ((SCREEN_WIDTH / (5)).toInt() / sizeOfSpaceCharacter)
 
+        var castedAllBAITest : Any =""
+        var castedAllBDITest : Any = ""
+        var castedAllBPITest : Any = ""
+        var castedAllDASSTest : Any = ""
+        var castedAllDiabetesTest : Any = ""
+        var castedAllCVDTest : Any = ""
+        var castedAllGDSTest : Any = ""
+        var castedAllHAMTest : Any = ""
+        var castedAllMDITest : Any = ""
+        var castedAllMDSTest : Any = ""
+        var castedAllSTAITest : Any = ""
+        var castedAllZUNGTest : Any = ""
+
+
+
+
+        if (isInstanceOfRealmResults(allTests , BAITest::class.java))
+        {
+            castedAllBAITest = convertToRealmResults(allTests , BAITest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , BDITest::class.java))
+        {
+            castedAllBDITest = convertToRealmResults(allTests , BDITest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , BPITest::class.java))
+        {
+            castedAllBPITest = convertToRealmResults(allTests , BPITest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , CVDTest::class.java))
+        {
+            castedAllCVDTest = convertToRealmResults(allTests , CVDTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , DASSTest::class.java))
+        {
+            castedAllDASSTest = convertToRealmResults(allTests , DASSTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , DiabetesTest::class.java))
+        {
+            castedAllDiabetesTest = convertToRealmResults(allTests , DiabetesTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , GDSTest::class.java))
+        {
+            castedAllGDSTest = convertToRealmResults(allTests , GDSTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , HAMTest::class.java))
+        {
+            castedAllHAMTest = convertToRealmResults(allTests , HAMTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , MDITest::class.java))
+        {
+            castedAllMDITest = convertToRealmResults(allTests , MDITest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , MDSTest::class.java))
+        {
+            castedAllMDSTest = convertToRealmResults(allTests , MDSTest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , STAITest::class.java))
+        {
+            castedAllSTAITest = convertToRealmResults(allTests , STAITest::class.java)!!
+        }
+
+        if (isInstanceOfRealmResults(allTests , ZUNGTest::class.java))
+        {
+            castedAllZUNGTest = convertToRealmResults(allTests , ZUNGTest::class.java)!!
+        }
+
 
         when (param2)
         {
             "CardioVascularDisease" ->
             {
-                for (test in allTests)
+                for (test in castedAllCVDTest as RealmResults<CVDTest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1582,7 +1969,7 @@ class HistoryFragment : Fragment() {
             }
             "DIABETES" ->
             {
-                for (test in allTests)
+                for (test in castedAllDiabetesTest as RealmResults<DiabetesTest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1596,7 +1983,7 @@ class HistoryFragment : Fragment() {
             }
             "Major Depression Index" ->
             {
-                for (test in allTests)
+                for (test in castedAllMDITest as RealmResults<MDITest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1610,7 +1997,7 @@ class HistoryFragment : Fragment() {
             }
             "Beck Anxiety Index" ->
             {
-                for (test in allTests)
+                for (test in castedAllBAITest as RealmResults<BAITest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1624,7 +2011,7 @@ class HistoryFragment : Fragment() {
             }
             "MDS" ->
             {
-                for (test in allTests)
+                for (test in castedAllMDSTest as RealmResults<MDSTest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1638,7 +2025,7 @@ class HistoryFragment : Fragment() {
             }
             "BPI" ->
             {
-                for (test in allTests)
+                for (test in castedAllBPITest as RealmResults<BPITest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     dateArrayList.add("${format.format(test.testDate)}")
@@ -1648,7 +2035,7 @@ class HistoryFragment : Fragment() {
             }
             "Geriatric Depression Scale" ->
             {
-                for (test in allTests)
+                for (test in castedAllGDSTest as RealmResults<GDSTest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1662,7 +2049,7 @@ class HistoryFragment : Fragment() {
             }
             "Hammilton Depression" ->
             {
-                for (test in allTests)
+                for (test in castedAllHAMTest as RealmResults<HAMTest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1676,7 +2063,7 @@ class HistoryFragment : Fragment() {
             }
             "DASS" ->
             {
-                for (test in allTests)
+                for (test in castedAllDASSTest as RealmResults<DASSTest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1690,7 +2077,7 @@ class HistoryFragment : Fragment() {
             }
             "STAI" ->
             {
-                for (test in allTests)
+                for (test in castedAllSTAITest as RealmResults<STAITest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1704,7 +2091,7 @@ class HistoryFragment : Fragment() {
             }
             "Beck Depression Inventory" ->
             {
-                for (test in allTests)
+                for (test in castedAllBDITest as RealmResults<BDITest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1718,7 +2105,7 @@ class HistoryFragment : Fragment() {
             }
             "ZUNG" ->
             {
-                for (test in allTests)
+                for (test in castedAllZUNGTest as RealmResults<ZUNGTest>)
                 {
                     val format = SimpleDateFormat("yyy MM dd")
                     var emptyString = ""
@@ -1779,8 +2166,72 @@ class HistoryFragment : Fragment() {
 //        }
 //
         bindingHistoryFragment.testResultDateListView.setOnItemClickListener { parent, view, position, id ->
-            var testID = allTests.get(position)!!.testId
-            showPatientTest(param1!! , testID , param2!!)
+
+            if (isInstanceOfRealmResults(allTests , BAITest::class.java))
+            {
+                var baiTests = castedAllBAITest as RealmResults<BAITest>
+                var testID = baiTests.get(position)!!.testId
+                showPatientTest(param1!! , testID , param2!!)
+            }
+
+            if (isInstanceOfRealmResults(allTests , BDITest::class.java))
+            {
+                var bdiTests = castedAllBDITest as RealmResults<BDITest>
+                var testID = bdiTests.get(position)!!.testId
+                showPatientTest(param1!! , testID , param2!!)
+            }
+
+            if (isInstanceOfRealmResults(allTests , BPITest::class.java))
+            {
+                castedAllBPITest = convertToRealmResults(allTests , BPITest::class.java)!!
+            }
+
+            if (isInstanceOfRealmResults(allTests , CVDTest::class.java))
+            {
+                castedAllCVDTest = convertToRealmResults(allTests , CVDTest::class.java)!!
+            }
+
+            if (isInstanceOfRealmResults(allTests , DASSTest::class.java))
+            {
+                castedAllDASSTest = convertToRealmResults(allTests , DASSTest::class.java)!!
+            }
+
+            if (isInstanceOfRealmResults(allTests , DiabetesTest::class.java))
+            {
+                castedAllDiabetesTest = convertToRealmResults(allTests , DiabetesTest::class.java)!!
+            }
+
+            if (isInstanceOfRealmResults(allTests , GDSTest::class.java))
+            {
+                castedAllGDSTest = convertToRealmResults(allTests , GDSTest::class.java)!!
+            }
+
+            if (isInstanceOfRealmResults(allTests , HAMTest::class.java))
+            {
+                castedAllHAMTest = convertToRealmResults(allTests , HAMTest::class.java)!!
+            }
+
+            if (isInstanceOfRealmResults(allTests , MDITest::class.java))
+            {
+                castedAllMDITest = convertToRealmResults(allTests , MDITest::class.java)!!
+            }
+
+            if (isInstanceOfRealmResults(allTests , MDSTest::class.java))
+            {
+                castedAllMDSTest = convertToRealmResults(allTests , MDSTest::class.java)!!
+            }
+
+            if (isInstanceOfRealmResults(allTests , STAITest::class.java))
+            {
+                castedAllSTAITest = convertToRealmResults(allTests , STAITest::class.java)!!
+            }
+
+            if (isInstanceOfRealmResults(allTests , ZUNGTest::class.java))
+            {
+                castedAllZUNGTest = convertToRealmResults(allTests , ZUNGTest::class.java)!!
+            }
+
+
         }
     }
 

@@ -13,85 +13,112 @@ open class CVDTest : RealmModel
 
     private var test = Test()
 
-    var testId: String
-        get() = test.testId
-        set(value) {
-            test.testId = value
-        }
+    @PrimaryKey
+    open var testId: String = ""
 
-    var patientId: String
-        get() = test.patientId
-        set(value) {
-            test.patientId = value
-        }
+    @Required
+    open var patientId : String = ""
 
-    var testDate: Date?
-        get() = test.testDate
-        set(value) {
-            test.testDate = value
-        }
+//    var patientId: String
+//        get() = test.patientId
+//        set(value) {
+//            test.patientId = value
+//        }
 
-    var testName: String
-        get() = test.testName
-        set(value) {
-            test.testName = "CVDTest"
-        }
+    @Required
+    open var testDate : Date? = null
 
-    var patientAge: String
-        get() = test.patientAge
-        set(value) {
-            test.patientAge = value
-        }
+//    var testDate: Date?
+//        get() = test.testDate
+//        set(value) {
+//            test.testDate = value
+//        }
+
+    @Required
+    open var testName : String? = "CVDTest"
+
+    @Required
+    open var patientAge: String? = null
+
+//    var patientAge: String
+//        get() = test.patientAge
+//        set(value) {
+//            test.patientAge = value
+//        }
 
     //CVD TEST
 
-    var patientSex: String
-        get() = test.patientSex
-        set(value) {
-            test.patientSex = value
-        }
+    @Required
+    open var patientSex: String? = null
 
-    var patientRace: String
-        get() = test.patientRace
-        set(value) {
-            test.patientRace = value
-        }
+//    var patientSex: String
+//        get() = test.patientSex
+//        set(value) {
+//            test.patientSex = value
+//        }
 
-    var SSB: String
-        get() = test.SSB
-        set(value) {
-            test.SSB = value
-        }
+    @Required
+    open var patientRace: String? = null
 
-    var TCH: String
-        get() = test.TCH
-        set(value) {
-            test.TCH = value
-        }
+//    var patientRace: String
+//        get() = test.patientRace
+//        set(value) {
+//            test.patientRace = value
+//        }
 
-    var HDL: String
-        get() = test.HDL
-        set(value) {
-            test.HDL = value
-        }
+    @Required
+    open var SSB: String? = null
 
-    var smoker: String
-        get() = test.smoker
-        set(value) {
-            test.smoker = value
-        }
+//    var SSB: String
+//        get() = test.SSB
+//        set(value) {
+//            test.SSB = value
+//        }
 
-    var cvdTestResult: Int?
-        get() = test.cvdTestResult
-        set(value) {
-            test.cvdTestResult = value
-        }
+    @Required
+    open var TCH: String? = null
 
-    var treatment: String?
-        get() = test.treatment
-        set(value) {
-            test.treatment = value!!
-        }
+//    var TCH: String
+//        get() = test.TCH
+//        set(value) {
+//            test.TCH = value
+//        }
+
+    @Required
+    open var HDL: String? = null
+
+//    var HDL: String
+//        get() = test.HDL
+//        set(value) {
+//            test.HDL = value
+//        }
+
+    @Required
+    open var smoker: String? = null
+
+//    var smoker: String
+//        get() = test.smoker
+//        set(value) {
+//            test.smoker = value
+//        }
+
+    @Required
+    open var cvdTestResult: Int? = null
+
+//    var cvdTestResult: Int?
+//        get() = test.cvdTestResult
+//        set(value) {
+//            test.cvdTestResult = value
+//        }
+
+    @Required
+    open var treatment: String? = null
+
+//    var treatment: String?
+//        get() = test.treatment
+//        set(value) {
+//            test.treatment = value!!
+//        }
 
 
 }
