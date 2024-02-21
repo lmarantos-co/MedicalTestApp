@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bdi_test_results_style"
-        android:drawableLeft="@drawable/ic_bdi_depression_24_post"
+
         android:drawablePadding="8dp"
         android:elevation="4dp"
         android:gravity="center"
@@ -44,6 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/horGL1" />
+<!--    android:drawableLeft="@drawable/ic_bdi_depression_24_post"-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horGL1"
