@@ -52,17 +52,17 @@
                 app:layout_constraintGuide_percent="0.9" />
 
             <TextView
-                android:id="@+id/newCustomerTxtV"
+                android:id="@+id/newDoctorTxtV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/intro_screen_panel_dummy_3"
+                android:background="@drawable/intro_user_type_panel_1"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@string/intro_screen_new_customer"
+                android:text="@string/doctor_first_screen"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="normal"
@@ -72,17 +72,17 @@
                 app:layout_constraintTop_toTopOf="@id/hgl1" />
 
             <TextView
-                android:id="@+id/allCustomersTxtV"
+                android:id="@+id/newPatientTxtV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/intro_screen_panel_dummy_4"
+                android:background="@drawable/intro_user_type_panel_2"
                 android:gravity="center"
                 android:minLines="2"
-                android:text="@string/intro_screen_all_customers"
+                android:text="@string/patient_first_screen"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="normal"
@@ -153,9 +153,10 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/hgl1"
-                app:layout_constraintEnd_toStartOf="@+id/vgl"
+                app:layout_constraintEnd_toStartOf="@id/vg2"
                 app:layout_constraintStart_toStartOf="@+id/vgl1"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/select_user_type" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>

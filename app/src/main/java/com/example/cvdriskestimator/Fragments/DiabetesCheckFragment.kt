@@ -35,7 +35,6 @@ class DiabetesCheckFragment : Fragment() {
     private lateinit var diabetesCheckBinding : FragmentDiabetesCheckBinding
     private var checkDiabetesPatientViewModel =  CheckDiabetesPatientViewModel()
 
-    private  var loginFragment: LoginFragment = LoginFragment.newInstance()
     private  var registerFragment: RegisterFragment = RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popUpMenu: PopUpMenu
@@ -229,7 +228,7 @@ class DiabetesCheckFragment : Fragment() {
         }
 
         //initialize popUpMenu Component
-        popUpMenu = PopUpMenu(diabetesCheckBinding.includePopUpMenu.termsRelLayout, mainActivity, this, loginFragment, registerFragment , null ,leaderBoardFragment)
+        popUpMenu = PopUpMenu(diabetesCheckBinding.includePopUpMenu.termsRelLayout, mainActivity, this, registerFragment , null ,leaderBoardFragment)
 
         diabetesCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popUpMenu.showPopUp(diabetesCheckBinding.includeCvdTitleForm.userIcon)

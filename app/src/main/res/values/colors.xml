@@ -100,6 +100,7 @@
     <color name="who_blue_test">#00cbff</color>
     <color name="panel_test_color_1">#bbc551</color>
     <color name="panel_test_color_2">#8d8f4c</color>
-
+    <color name="patient_color">#e8e0c8</color>
+    <color name="doctor_color">#f7e5e7</color>
 
 </resources>

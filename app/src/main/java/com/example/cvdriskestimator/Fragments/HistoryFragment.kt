@@ -61,7 +61,6 @@ class HistoryFragment : Fragment() {
     private lateinit var staiCheckFragment: STAICheckFragment
     private lateinit var dassCheckFragment: DASSCheckFragment
     private lateinit var zungFragment: CheckZUNGFragment
-    private var loginDoctorFragment =  LoginFragment.newInstance()
     private var registerDoctorFragment =  RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private var dateFromPicked : Boolean = false
@@ -119,7 +118,7 @@ class HistoryFragment : Fragment() {
         }
 
         //set the PopUpMenu
-        val popupMenu = PopUpMenu(bindingHistoryFragment.includePopupMenu.termsRelLayout , mainActivity, this,  loginDoctorFragment, registerDoctorFragment , null , leaderBoardFragment)
+        val popupMenu = PopUpMenu(bindingHistoryFragment.includePopupMenu.termsRelLayout , mainActivity, this,  registerDoctorFragment , null , leaderBoardFragment)
 
         bindingHistoryFragment.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

@@ -6,6 +6,9 @@
 			+"Use clinical discretion in regards to patients who use e-cigarettes and other tobacco products.</string>
     <string name="cvd_response_text">Low-risk (less than 5%) \n Borderline risk (5% to 7.4%) \n
         Intermediate risk (7.5% to 19.9%) \n High risk (equal or above 20%) </string>
+    <string name="doctor_first_screen">ΙΑΤΡΟΣ</string>
+    <string name="patient_first_screen">ΑΣΘΕΝΗΣ</string>
+    <string name="select_user_type">Επιλέξτε Τύπο Χρήστη</string>
     <string name="doctor_screen_message">"Εισοδος στην εφαρμογή"</string>
     <string name="patient_screen_message">"Ασθενείς"</string>
     <string name="low_Risk"> Low-risk </string>

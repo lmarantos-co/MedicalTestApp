@@ -22,7 +22,6 @@ class PopUpMenu {
     private var prTermsOfUse : RelativeLayout
     private var prMainActivity : MainActivity
     private var prFragment : Fragment
-    private var prLoginFragment : LoginFragment?
     private var prRegisterFragment : RegisterFragment?
     private var prRegisterDoctorFragment : RegisterDoctorFragment? = null
     private var prleaderBoardFragment : LeaderBoardFragment?
@@ -32,12 +31,11 @@ class PopUpMenu {
     private lateinit var prPopupmenu: PopupMenu
     private lateinit var realm : Realm
 
-    constructor(termsOfUse : RelativeLayout, mainActivity: MainActivity, fragment: Fragment, loginFragment: LoginFragment?, registerFragment: RegisterFragment?, registerDoctorFragment : RegisterDoctorFragment? ,leaderBoardFragment: LeaderBoardFragment?)
+    constructor(termsOfUse : RelativeLayout, mainActivity: MainActivity, fragment: Fragment,  registerFragment: RegisterFragment?, registerDoctorFragment : RegisterDoctorFragment? ,leaderBoardFragment: LeaderBoardFragment?)
     {
         prTermsOfUse = termsOfUse
         prMainActivity = mainActivity
         prFragment = fragment
-        prLoginFragment = loginFragment
         prRegisterFragment = registerFragment
         prRegisterDoctorFragment = registerDoctorFragment
         prleaderBoardFragment = leaderBoardFragment
@@ -63,6 +61,10 @@ class PopUpMenu {
                 {
                     prMainActivity.logOutDoctor()
                 }
+                R.id.patient_item ->
+                {
+                    prMainActivity.logOutPatient()
+                }
                 R.id.customer_change_item -> {
                     if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is RegisterFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is BeckDepressionInventoryFragment) || (prFragment is HamiltonDepressionFragment) || (prFragment is GDSCheckFragment)|| (prFragment is STAICheckFragment) || (prFragment is CheckZUNGFragment)  ||(prFragment is ResultFragment) || (prFragment is HistoryFragment) || (prleaderBoardFragment is LeaderBoardFragment))
                     {
@@ -76,7 +78,7 @@ class PopUpMenu {
 
                 }
                 R.id.customer_add_item -> {
-                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) || (prFragment is LoginFragment) || (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is HistoryFragment) || (prFragment is LeaderBoardFragment) || (prFragment is ResultFragment))
+                    if ((prFragment is CheckFragment) || (prFragment is DiabetesCheckFragment) ||  (prFragment is MDICheckFragment) || (prFragment is BAICheckFragment) || (prFragment is medDietTestFragment) || (prFragment is BPICheckFragment) || (prFragment is HistoryFragment) || (prFragment is LeaderBoardFragment) || (prFragment is ResultFragment))
                     {
                         prMainActivity.backToActivity()
                         prMainActivity.fragmentTransaction(prRegisterFragment!!)
@@ -350,6 +352,19 @@ class PopUpMenu {
         }
         val inflater : MenuInflater = prPopupmenu.menuInflater
         inflater.inflate(R.menu.main_optionss_menu , prPopupmenu.menu)
+        //get the user type
+        val userType = prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("userType" , "doctor")
+
+        if (userType == "patient")
+        {
+            prPopupmenu.menu.getItem(3).isEnabled = false
+            prPopupmenu.menu.getItem(5).isEnabled = false
+            prPopupmenu.menu.getItem(9).isEnabled = false
+        }
+        if (userType == "doctor")
+        {
+            prPopupmenu.menu.getItem(10).isEnabled = false
+        }
         prPopupmenu.menu.getItem(3).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("LOG" , "Αλλαγή ασθενούς"))
         prPopupmenu.menu.getItem(4).setTitle(prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser") + " δεδομένα")
         // show icons on popup menu

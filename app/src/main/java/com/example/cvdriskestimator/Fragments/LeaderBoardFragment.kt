@@ -28,7 +28,6 @@ class LeaderBoardFragment : Fragment() {
 
     private lateinit var medTestForm : ConstraintLayout
     private lateinit var termsOfUse : ConstraintLayout
-    private lateinit var loginFragment: LoginFragment
     private lateinit var registerFragment: RegisterFragment
     private lateinit var mainActivity: MainActivity
     private lateinit var popUpMenu: PopUpMenu
@@ -59,9 +58,8 @@ class LeaderBoardFragment : Fragment() {
         medTestForm = view.findViewById(R.id.medicalEstimatorForm)
         termsOfUse = view.findViewById(R.id.termsOfUseRelLayout)
         medTestForm.findViewById<View>(R.id.userIcon).alpha = 1f
-        loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
-        popUpMenu = PopUpMenu(termsOfUse.findViewById(R.id.termsRelLayout) , mainActivity , this , loginFragment , registerFragment , null ,this  )
+        popUpMenu = PopUpMenu(termsOfUse.findViewById(R.id.termsRelLayout) , mainActivity , this , registerFragment , null ,this  )
 
         medTestForm.findViewById<View>(R.id.userIcon).setOnClickListener {
             popUpMenu.showPopUp(view)

@@ -32,7 +32,6 @@ class MDICheckFragment : Fragment() {
     private lateinit var mdiPatientViewModel: CheckMDIPatientViewModel
     private lateinit var mdiPatientViewModelFactory : CheckMDIPatientViewModelFactory
     private lateinit var mainActivity : MainActivity
-    private var loginFragment = LoginFragment.newInstance()
     private var registerFragment = RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popupMenu : PopUpMenu
@@ -168,7 +167,7 @@ class MDICheckFragment : Fragment() {
         mdiCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(mdiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , null ,leaderBoardFragment)
+        popupMenu = PopUpMenu(mdiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this, registerFragment , null ,leaderBoardFragment)
 
         mdiCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

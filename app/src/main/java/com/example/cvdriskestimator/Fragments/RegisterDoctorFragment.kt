@@ -30,7 +30,6 @@ class RegisterDoctorFragment : Fragment() {
 
     private lateinit var popupMenuComp : PopUpMenu
 
-    private lateinit var loginFragment: LoginFragment
     private var mteTitleHeight : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,7 +76,6 @@ class RegisterDoctorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loginFragment = LoginFragment.newInstance()
 //        popupMenuComp = PopUpMenu(registerDoctorBinding.inclusiveConLayout.getViewById(R.id.termsRelLayout) as RelativeLayout, mainActivity, this, loginFragment , null , this , leaderBoardFragment)
 
 //        registerDoctorBinding.includeCvdTitleForm.userIcon.setOnClickListener {

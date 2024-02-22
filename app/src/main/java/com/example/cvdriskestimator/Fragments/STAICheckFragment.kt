@@ -38,7 +38,6 @@ class STAICheckFragment : Fragment() {
                                                          1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 , 1 ,1 , 1 ,1 ,1 , 1, 1, 1, 1, 1, 1)
     private lateinit var popupMenu: PopUpMenu
 
-    private lateinit var loginFragment: LoginFragment
     private lateinit var registerFragment: RegisterFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
 
@@ -473,7 +472,6 @@ class STAICheckFragment : Fragment() {
 
 //        termsLayout.visibility = View.INVISIBLE
 
-        loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
         leaderBoardFragment = LeaderBoardFragment.newInstance()
 

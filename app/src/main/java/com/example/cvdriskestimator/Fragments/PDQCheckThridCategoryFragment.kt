@@ -32,7 +32,6 @@ class PDQCheckThridCategoryFragment : Fragment() {
     private lateinit var pdqPatientViewModel: PDQCheckViewModel
     private lateinit var pdqPatientViewModelFactory : CheckGPDQPatientViewModelFactory
     private lateinit var mainActivity : MainActivity
-    private var loginFragment = LoginFragment.newInstance()
     private var registerFragment = RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popupMenu : PopUpMenu
@@ -122,7 +121,7 @@ class PDQCheckThridCategoryFragment : Fragment() {
         pdqCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(pdqCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , null ,leaderBoardFragment)
+        popupMenu = PopUpMenu(pdqCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,registerFragment , null ,leaderBoardFragment)
 
         pdqCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

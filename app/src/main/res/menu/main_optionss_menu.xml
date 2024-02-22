@@ -61,4 +61,10 @@
         android:title="Έξοδος Ιατρού"
         android:icon="@drawable/doctor_logout"  />
 
+    <item
+        android:id="@+id/patient_item"
+        app:showAsAction="always"
+        android:title="Έξοδος Ασθενή"
+        android:icon="@drawable/doctor_logout" />
+
 </menu>

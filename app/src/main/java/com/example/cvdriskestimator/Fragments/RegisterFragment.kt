@@ -31,7 +31,6 @@ class RegisterFragment : Fragment() {
 
     private lateinit var popupMenuComp : PopUpMenu
 
-    private lateinit var loginFragment: LoginFragment
     private var mteTitleHeight : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,8 +85,7 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loginFragment = LoginFragment.newInstance()
-        popupMenuComp = PopUpMenu(registerBinding.includePopUpMenu.termsRelLayout as RelativeLayout, mainActivity, this, loginFragment , null , null ,leaderBoardFragment)
+        popupMenuComp = PopUpMenu(registerBinding.includePopUpMenu.termsRelLayout as RelativeLayout, mainActivity, this,  null , null ,leaderBoardFragment)
 
         registerBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenuComp.showPopUp(registerBinding.includeCvdTitleForm.userIcon)

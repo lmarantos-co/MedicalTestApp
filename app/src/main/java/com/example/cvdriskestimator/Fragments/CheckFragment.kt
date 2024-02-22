@@ -32,7 +32,6 @@ class CheckFragment : Fragment() {
     private lateinit var historyFragment: HistoryFragment
     private var selectedPatientTest = Test()
 
-    private  var loginFragment: LoginFragment = LoginFragment.newInstance()
     private  var registerFragment: RegisterFragment = RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popUpMenuComp: PopUpMenu
@@ -148,7 +147,7 @@ class CheckFragment : Fragment() {
             popUpMenuComp.showPopUp(checkBinding.includeCvdTitleForm.userIcon)
         }
 
-        popUpMenuComp = PopUpMenu(checkBinding.includePopUpMenu.termsRelLayout , mainActivity , this, loginFragment ,registerFragment , null, leaderBoardFragment)
+        popUpMenuComp = PopUpMenu(checkBinding.includePopUpMenu.termsRelLayout , mainActivity , this, registerFragment , null, leaderBoardFragment)
 
         checkBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 

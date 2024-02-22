@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     private lateinit var constraintLayout : ConstraintLayout
     private lateinit var introScreenConLayout : ConstraintLayout
+    private lateinit var doctorUserType : TextView
+    private lateinit var patientUserType : TextView
     private lateinit var allCustomersTxtV : TextView
     private lateinit var newCustomerTxtV : TextView
     private lateinit var introSearchCustomersConLayout : ConstraintLayout
@@ -59,10 +61,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var lastNameArrayAdapter : ArrayAdapter<String>
     private var selectCustomerType : Int = 0
     private lateinit var realmDB: RealmDB
-    private lateinit var loginFragment: LoginFragment
     private lateinit var registerFragment: RegisterFragment
     private lateinit var loginDoctorFragment: LoginDoctorFragment
     private lateinit var registerDoctorFragment: RegisterDoctorFragment
+    private lateinit var loginPatientFragment : LoginPatientFragment
     private lateinit var loginDoctorButton : TextView
     private lateinit var registerDoctorButton : TextView
     private lateinit var checkFragment: CheckFragment
@@ -198,30 +200,62 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     fun setContentViewForFirstAppScreen()
     {
-        setContentView(R.layout.app_first_screen)
 
-        initRealmDB()
-
-        MTETitle = findViewById(R.id.include_cvd_title_form)
-        MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
-        var menuIcon = MTETitle.findViewById<ImageView>(R.id.userIcon)
-        menuIcon.visibility = View.INVISIBLE
-
-
-        MTETitleForm.setOnClickListener {
-            setContentViewForFirstAppScreen()
+        setContentView(R.layout.initial_user_type_select_screen)
+        patientUserType = findViewById(R.id.newPatientTxtV)
+        doctorUserType = findViewById(R.id.newDoctorTxtV)
+        patientUserType.setOnClickListener {
+            val sharedPreferences = getPreferences(Context.MODE_PRIVATE).edit().apply {
+                putString("userType" , "Patient")
+            }.commit()
         }
+
+        doctorUserType.setOnClickListener {
+            val sharedPreferences = getPreferences(Context.MODE_PRIVATE).edit().apply {
+                putString("userType" , "Doctor")
+            }.commit()
+        }
+
+//        setContentView(R.layout.app_first_screen)
+//
+//        initRealmDB()
+//
+//        MTETitle = findViewById(R.id.include_cvd_title_form)
+//        MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
+//        var menuIcon = MTETitle.findViewById<ImageView>(R.id.userIcon)
+//        menuIcon.visibility = View.INVISIBLE
+//
+//
+//        MTETitleForm.setOnClickListener {
+//            setContentViewForFirstAppScreen()
+//        }
 
         loginDoctorButton = findViewById(R.id.loginDoctorTxtV)
         loginDoctorButton.setOnClickListener {
-            showPatientLasttest = false
-            setContentView(R.layout.activity_main)
+            val userType = getPreferences(Context.MODE_PRIVATE).getString("userType" , "Doctor")
+            if (userType == "Doctor")
+            {
+                showPatientLasttest = false
+                setContentView(R.layout.activity_main)
 //            setContentViewForMainLayout(false)
-            constraintLayout = findViewById(R.id.mainConLayout)
-            fragmentContainer = findViewById(R.id.fragmentContainer)
-            loginDoctorFragment = LoginDoctorFragment.newInstance()
+                constraintLayout = findViewById(R.id.mainConLayout)
+                fragmentContainer = findViewById(R.id.fragmentContainer)
+                loginDoctorFragment = LoginDoctorFragment.newInstance()
 //            hideLayoutElements()
-            fragmentTransaction(loginDoctorFragment)
+                fragmentTransaction(loginDoctorFragment)
+            }
+
+            if (userType == "Patient")
+            {
+                setContentView(R.layout.activity_main)
+//            setContentViewForMainLayout(false)
+                constraintLayout = findViewById(R.id.mainConLayout)
+                fragmentContainer = findViewById(R.id.fragmentContainer)
+                loginPatientFragment = LoginPatientFragment.newInstance()
+//            hideLayoutElements()
+                fragmentTransaction(loginPatientFragment)
+            }
+
         }
 
         registerDoctorButton = findViewById(R.id.registerDoctorTxtV)
@@ -256,7 +290,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             setContentViewForSearchCustomersScreen()
         }
 
-        newCustomerTxtV = findViewById<TextView>(R.id.newCustomerTxtV)
+        newCustomerTxtV = findViewById<TextView>(R.id.newDoctorTxtV)
         newCustomerTxtV.setOnClickListener {
             registerFragment = RegisterFragment()
             showPatientLasttest = true
@@ -375,7 +409,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
 
-    private fun setContentViewForMainLayout(showList : Boolean)
+    fun setContentViewForMainLayout(showList : Boolean)
     {
         setContentView(R.layout.activity_main)
 
@@ -1047,7 +1081,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dassPanel.layoutParams.height = height / 5
         dassPanel.layoutParams.width = (width / 2.3).toInt()
 
-        loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
         checkFragment = CheckFragment()
         checkDiabetesFragment = DiabetesCheckFragment()
@@ -1377,6 +1410,15 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             putString("doctorUserName" , "tempDoctor")
         }
         setContentViewForFirstAppScreen()
+    }
+
+    fun logOutPatient()
+    {
+        val shared = getPreferences(Context.MODE_PRIVATE) ?: return
+        with (shared.edit())
+        {
+            putString("patientUserName" , "tempPatient")
+        }
     }
 
     fun backToActivity() {
@@ -1733,7 +1775,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private fun hideFragmentVisibility()
     {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.hide(loginFragment)
         fragmentTransaction.hide(registerFragment)
         fragmentTransaction.hide(checkFragment)
         fragmentTransaction.hide(checkDiabetesFragment)
@@ -1769,8 +1810,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction.show(fragment)
         if (fragment is medDietTestFragment)
             fragmentTransaction.show(fragment)
-        if (fragment is LoginFragment)
-            fragmentTransaction.show(loginFragment)
+
         if (fragment is RegisterFragment)
             fragmentTransaction.show(registerFragment)
         if (fragment is LoginDoctorFragment)

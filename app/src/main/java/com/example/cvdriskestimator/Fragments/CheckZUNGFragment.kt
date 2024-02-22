@@ -33,7 +33,6 @@ class CheckZUNGFragment : Fragment() {
     private var allPatientSelections = arrayListOf<Int?>(1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 , 1 ,1 , 1 ,1 ,1 , 1, 1, 1, 1, 1, 1)
     private lateinit var popupMenu: PopUpMenu
 
-    private lateinit var loginFragment: LoginFragment
     private lateinit var registerFragment: RegisterFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
 
@@ -174,12 +173,11 @@ class CheckZUNGFragment : Fragment() {
 
         zungCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
-        loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
         leaderBoardFragment = LeaderBoardFragment.newInstance()
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(zungCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , null , leaderBoardFragment)
+        popupMenu = PopUpMenu(zungCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this, registerFragment , null , leaderBoardFragment)
 
         zungCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

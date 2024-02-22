@@ -39,7 +39,6 @@ class medDietTestFragment : Fragment() {
     private lateinit var medDietTestBinding: FragmentMedDietTestBinding
     private lateinit var checkMedDietTestViewModelFactory: CheckMedDietTestViewModelFactory
     private lateinit var registerFragment: RegisterFragment
-    private lateinit var loginFragment: LoginFragment
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popUpMenu: PopUpMenu
     private  var allPatientValues = arrayListOf<Int?>(1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 , 1 ,1)
@@ -297,7 +296,6 @@ class medDietTestFragment : Fragment() {
 
     private fun initUI(view : View)
     {
-        loginFragment = LoginFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
 
         medDietTestBinding.clearBtn.setOnClickListener {
@@ -318,7 +316,7 @@ class medDietTestFragment : Fragment() {
                 .show()
         }
 
-        popUpMenu = PopUpMenu(medDietTestBinding.includePopUpMenu.termsRelLayout , mainActivity , this , loginFragment , registerFragment , null , leaderBoardFragment)
+        popUpMenu = PopUpMenu(medDietTestBinding.includePopUpMenu.termsRelLayout , mainActivity , this , registerFragment , null , leaderBoardFragment)
 //        medDietTestBinding.includeCvdTitleForm.userIcon.setOnClickListener {
 //            medDietTestBinding.includePopUpMenu.includePopupMenu.visibility = View.VISIBLE
 //        }

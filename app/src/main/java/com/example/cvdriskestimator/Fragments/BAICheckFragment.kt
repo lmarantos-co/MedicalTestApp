@@ -38,7 +38,7 @@ class BAICheckFragment : Fragment() {
     private var allPatientSelections = arrayListOf<Int?>(1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 , 1 ,1 , 1 ,1 ,1 , 1, 1, 1, 1, 1, 1, 1)
     private lateinit var popupMenu: PopUpMenu
 
-    private lateinit var loginFragment: LoginFragment
+    private lateinit var loginPatientFragment: LoginPatientFragment
     private lateinit var registerFragment: RegisterFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
 
@@ -180,12 +180,12 @@ class BAICheckFragment : Fragment() {
 
         baiCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
-        loginFragment = LoginFragment.newInstance()
+        loginPatientFragment = LoginPatientFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
         leaderBoardFragment = LeaderBoardFragment.newInstance()
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(baiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , null , leaderBoardFragment)
+        popupMenu = PopUpMenu(baiCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,   registerFragment , null , leaderBoardFragment)
 
         baiCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

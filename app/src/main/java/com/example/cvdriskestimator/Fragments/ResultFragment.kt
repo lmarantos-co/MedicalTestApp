@@ -74,7 +74,6 @@ class ResultFragment : Fragment() {
     private lateinit var newConstraintSet: ConstraintSet
     private lateinit var palette: Palette
 
-    private var loginFragment: LoginFragment = LoginFragment.newInstance()
     private var registerFragment: RegisterFragment = RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popupMenuComp: PopUpMenu
@@ -944,7 +943,7 @@ class ResultFragment : Fragment() {
 
 
         popupMenuComp =
-            PopUpMenu(termsRelLayout, mainActivity, this, loginFragment, registerFragment , null ,leaderBoardFragment)
+            PopUpMenu(termsRelLayout, mainActivity, this,registerFragment , null ,leaderBoardFragment)
 
         userIcon.setOnClickListener {
             popupMenuComp.showPopUp(userIcon)

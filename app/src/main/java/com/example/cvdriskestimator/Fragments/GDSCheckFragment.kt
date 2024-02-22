@@ -30,7 +30,6 @@ class GDSCheckFragment : Fragment() {
     private lateinit var gdsPatientViewModel: CheckGDSViewModel
     private lateinit var gdsPatientViewModelFactory : CheckGDSPatientViewModelFactory
     private lateinit var mainActivity : MainActivity
-    private var loginFragment = LoginFragment.newInstance()
     private var registerFragment = RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
 //    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
@@ -172,7 +171,7 @@ class GDSCheckFragment : Fragment() {
         gdsCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(gdsCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,  loginFragment, registerFragment , null ,leaderBoardFragment)
+        popupMenu = PopUpMenu(gdsCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,registerFragment , null ,leaderBoardFragment)
 
         gdsCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)

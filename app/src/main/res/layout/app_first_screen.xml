@@ -23,7 +23,7 @@
         app:layout_constraintGuide_percent="0.14" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/doctorsLayout"
+        android:id="@+id/doctorsPatentsLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/include_cvd_title_form">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/doctorsConLayout"
+            android:id="@+id/doctorsPatientsConLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/MidnightBlue"
