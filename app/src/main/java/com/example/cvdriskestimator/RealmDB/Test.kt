@@ -675,4 +675,77 @@ open class Test : RealmModel
 
     var zungTestReesult : Int? = null
 
+    //OPQOL Test
+
+    var patientOPQOLQ1 : Int? = null
+
+    var patientOPQOLQ2 : Int? = null
+
+    var patientOPQOLQ3 : Int? = null
+
+    var patientOPQOLQ4 : Int? = null
+
+    var patientOPQOLQ5 : Int? = null
+
+    var patientOPQOLQ6 : Int? = null
+
+    var patientOPQOLQ7 : Int? = null
+
+    var patientOPQOLQ8 : Int? = null
+
+    var patientOPQOLQ9 : Int? = null
+
+    var patientOPQOLQ10 : Int? = null
+
+    var patientOPQOLQ11 : Int? = null
+
+    var patientOPQOLQ12 : Int? = null
+
+    var patientOPQOLQ13 : Int? = null
+
+    var patientOPQOLQ14 : Int? = null
+
+    var patientOPQOLQ15 : Int? = null
+
+    var patientOPQOLQ16 : Int? = null
+
+    var patientOPQOLQ17 : Int? = null
+
+    var patientOPQOLQ18 : Int? = null
+
+    var patientOPQOLQ19 : Int? = null
+
+    var patientOPQOLQ20 : Int? = null
+
+    var patientOPQOLQ21 : Int? = null
+
+    var patientOPQOLQ22 : Int? = null
+
+    var patientOPQOLQ23 : Int? = null
+
+    var patientOPQOLQ24 : Int? = null
+
+    var patientOPQOLQ25 : Int? = null
+
+    var patientOPQOLQ26 : Int? = null
+
+    var patientOPQOLQ27 : Int? = null
+
+    var patientOPQOLQ28 : Int? = null
+
+    var patientOPQOLQ29 : Int? = null
+
+    var patientOPQOLQ30 : Int? = null
+
+    var patientOPQOLQ31 : Int? = null
+
+    var patientOPQOLQ32 : Int? = null
+
+    var patientOPQOLQ33 : Int? = null
+
+    var patientOPQOLQ34 : Int? = null
+
+
+    var OPQOLTestReesult : Int? = null
+
 }

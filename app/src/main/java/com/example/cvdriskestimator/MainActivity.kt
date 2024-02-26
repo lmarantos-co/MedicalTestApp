@@ -200,6 +200,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     fun setContentViewForFirstAppScreen()
     {
+       getPreferences(Context.MODE_PRIVATE).edit().apply {
+           putString("doctorUserName" , "tempDoctor")
+       }.commit()
 
         setContentView(R.layout.initial_user_type_select_screen)
         patientUserType = findViewById(R.id.newPatientTxtV)
@@ -208,64 +211,128 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             val sharedPreferences = getPreferences(Context.MODE_PRIVATE).edit().apply {
                 putString("userType" , "Patient")
             }.commit()
+            setContentView(R.layout.app_first_screen)
+            loginDoctorButton = findViewById(R.id.loginDoctorTxtV)
+            loginDoctorButton.setOnClickListener {
+                val userType = getPreferences(Context.MODE_PRIVATE).getString("userType" , "Doctor")
+                if (userType == "Doctor")
+                {
+                    showPatientLasttest = false
+                    setContentView(R.layout.activity_main)
+//            setContentViewForMainLayout(false)
+                    constraintLayout = findViewById(R.id.mainConLayout)
+                    fragmentContainer = findViewById(R.id.fragmentContainer)
+                    loginDoctorFragment = LoginDoctorFragment.newInstance()
+//            hideLayoutElements()
+                    fragmentTransaction(loginDoctorFragment)
+                }
+
+                if (userType == "Patient")
+                {
+                    setContentView(R.layout.activity_main)
+//            setContentViewForMainLayout(false)
+                    constraintLayout = findViewById(R.id.mainConLayout)
+                    fragmentContainer = findViewById(R.id.fragmentContainer)
+                    loginPatientFragment = LoginPatientFragment.newInstance()
+//            hideLayoutElements()
+                    fragmentTransaction(loginPatientFragment)
+                }
+
+            }
+
+            registerDoctorButton = findViewById(R.id.registerDoctorTxtV)
+            registerDoctorButton.setOnClickListener {
+                val userType = getPreferences(Context.MODE_PRIVATE).getString("userType" , "Doctor")
+                if (userType == "Doctor")
+                {
+                    showPatientLasttest = false
+                    setContentViewForMainLayout(showPatientLasttest)
+                    registerDoctorFragment = RegisterDoctorFragment.newInstance()
+                    hideLayoutElements()
+                    fragmentTransaction(registerDoctorFragment)
+                }
+                if (userType == "Patient")
+                {
+                    showPatientLasttest = false
+                    setContentViewForMainLayout(showPatientLasttest)
+                    registerFragment = RegisterFragment.newInstance()
+                    hideLayoutElements()
+                    fragmentTransaction(registerFragment)
+                }
+
+            }
         }
 
         doctorUserType.setOnClickListener {
             val sharedPreferences = getPreferences(Context.MODE_PRIVATE).edit().apply {
                 putString("userType" , "Doctor")
             }.commit()
+            setContentView(R.layout.app_first_screen)
+            loginDoctorButton = findViewById(R.id.loginDoctorTxtV)
+            loginDoctorButton.setOnClickListener {
+                val userType = getPreferences(Context.MODE_PRIVATE).getString("userType" , "Doctor")
+                if (userType == "Doctor")
+                {
+                    showPatientLasttest = false
+                    setContentView(R.layout.activity_main)
+//            setContentViewForMainLayout(false)
+                    constraintLayout = findViewById(R.id.mainConLayout)
+                    fragmentContainer = findViewById(R.id.fragmentContainer)
+                    loginDoctorFragment = LoginDoctorFragment.newInstance()
+//            hideLayoutElements()
+                    fragmentTransaction(loginDoctorFragment)
+                }
+
+                if (userType == "Patient")
+                {
+                    setContentView(R.layout.activity_main)
+//            setContentViewForMainLayout(false)
+                    constraintLayout = findViewById(R.id.mainConLayout)
+                    fragmentContainer = findViewById(R.id.fragmentContainer)
+                    loginPatientFragment = LoginPatientFragment.newInstance()
+//            hideLayoutElements()
+                    fragmentTransaction(loginPatientFragment)
+                }
+
+            }
+
+            registerDoctorButton = findViewById(R.id.registerDoctorTxtV)
+            registerDoctorButton.setOnClickListener {
+                val userType = getPreferences(Context.MODE_PRIVATE).getString("userType" , "Doctor")
+                if (userType == "Doctor")
+                {
+                    showPatientLasttest = false
+                    setContentViewForMainLayout(showPatientLasttest)
+                    registerDoctorFragment = RegisterDoctorFragment.newInstance()
+                    hideLayoutElements()
+                    fragmentTransaction(registerDoctorFragment)
+                }
+                if (userType == "Patient")
+                {
+                    showPatientLasttest = false
+                    setContentViewForMainLayout(showPatientLasttest)
+                    registerFragment = RegisterFragment.newInstance()
+                    hideLayoutElements()
+                    fragmentTransaction(registerFragment)
+                }
+
+            }
         }
 
 //        setContentView(R.layout.app_first_screen)
 //
-//        initRealmDB()
+        initRealmDB()
 //
-//        MTETitle = findViewById(R.id.include_cvd_title_form)
-//        MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
-//        var menuIcon = MTETitle.findViewById<ImageView>(R.id.userIcon)
-//        menuIcon.visibility = View.INVISIBLE
+        MTETitle = findViewById(R.id.include_cvd_title_form)
+        MTETitleForm = MTETitle.findViewById(R.id.cvdTitleForm)
+        var menuIcon = MTETitle.findViewById<ImageView>(R.id.userIcon)
+        menuIcon.visibility = View.INVISIBLE
 //
 //
-//        MTETitleForm.setOnClickListener {
-//            setContentViewForFirstAppScreen()
-//        }
-
-        loginDoctorButton = findViewById(R.id.loginDoctorTxtV)
-        loginDoctorButton.setOnClickListener {
-            val userType = getPreferences(Context.MODE_PRIVATE).getString("userType" , "Doctor")
-            if (userType == "Doctor")
-            {
-                showPatientLasttest = false
-                setContentView(R.layout.activity_main)
-//            setContentViewForMainLayout(false)
-                constraintLayout = findViewById(R.id.mainConLayout)
-                fragmentContainer = findViewById(R.id.fragmentContainer)
-                loginDoctorFragment = LoginDoctorFragment.newInstance()
-//            hideLayoutElements()
-                fragmentTransaction(loginDoctorFragment)
-            }
-
-            if (userType == "Patient")
-            {
-                setContentView(R.layout.activity_main)
-//            setContentViewForMainLayout(false)
-                constraintLayout = findViewById(R.id.mainConLayout)
-                fragmentContainer = findViewById(R.id.fragmentContainer)
-                loginPatientFragment = LoginPatientFragment.newInstance()
-//            hideLayoutElements()
-                fragmentTransaction(loginPatientFragment)
-            }
-
+        MTETitleForm.setOnClickListener {
+            setContentViewForFirstAppScreen()
         }
 
-        registerDoctorButton = findViewById(R.id.registerDoctorTxtV)
-        registerDoctorButton.setOnClickListener {
-            showPatientLasttest = false
-            setContentViewForMainLayout(showPatientLasttest)
-            registerDoctorFragment = RegisterDoctorFragment.newInstance()
-            hideLayoutElements()
-            fragmentTransaction(registerDoctorFragment)
-        }
     }
 
     private fun setContentViewForIntroScreen()
@@ -290,7 +357,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             setContentViewForSearchCustomersScreen()
         }
 
-        newCustomerTxtV = findViewById<TextView>(R.id.newDoctorTxtV)
+        newCustomerTxtV = findViewById<TextView>(R.id.newCustomerTxtV)
         newCustomerTxtV.setOnClickListener {
             registerFragment = RegisterFragment()
             showPatientLasttest = true
@@ -1419,6 +1486,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         {
             putString("patientUserName" , "tempPatient")
         }
+        setContentViewForFirstAppScreen()
+
     }
 
     fun backToActivity() {
@@ -1793,10 +1862,37 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             .commit()
     }
 
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        //get the user type
+//        val userType = getPreferences(Context.MODE_PRIVATE).getString("userType" , "doctor")
+//
+//        if (userType == "patient")
+//        {
+////            popupMenu.menu.getItem(3).isEnabled = false
+////            popupMenu.menu.getItem(5).isEnabled = false
+////            popupMenu.menu.getItem(9).isEnabled = false
+//            val item1 = menu!!.findItem(R.id.customer_change_item)
+//            val item2 = menu!!.findItem(R.id.customer_add_item)
+//            val item3 = menu!!.findItem(R.id.doctor_item)
+//            item1?.isEnabled = false
+//            item2?.isEnabled = false
+//            item3?.isEnabled = false
+//            invalidateOptionsMenu()
+//        }
+//        if (userType == "doctor")
+//        {
+////            popupMenu.menu.getItem(11).isEnabled = false
+//            val item1 = menu!!.findItem(R.id.patient_item)
+//            item1?.isEnabled = false
+//            invalidateOptionsMenu()
+//        }
+//        return super.onCreateOptionsMenu(menu)
+//    }
+
 
     fun fragmentTransaction(fragment : Fragment) {
             setFragmentContainerConstraint(1)
-        if (!(fragment is LoginDoctorFragment) && !(fragment is RegisterDoctorFragment) && !(fragment is PatietTestListFragment))
+        if (!(fragment is LoginDoctorFragment) && !(fragment is RegisterDoctorFragment)  && !(fragment is LoginPatientFragment) && !(fragment is RegisterFragment) && !(fragment is PatietTestListFragment))
             hideLayoutElements()
 //        if (!(fragment is LoginDoctorFragment) && !(fragment is PatietTestListFragment))
         val fragmentTransaction = supportFragmentManager.beginTransaction()
@@ -2075,6 +2171,30 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         applyFontToMenuItem(popupMenu.menu.getItem(5) , "Καθαρισμός δεδομένων" , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(6) , "Όροι Χρήσης" , applicationContext )
         applyFontToMenuItem(popupMenu.menu.getItem(7) ,"Πίνακας αποτελεσμάτων" , applicationContext)
+        applyFontToMenuItem(popupMenu.menu.getItem(9) , "Έξοδος Ασθενή" , applicationContext)
+
+
+        //get the user type
+        val userType = getPreferences(Context.MODE_PRIVATE).getString("userType" , "doctor")
+
+        if (userType == "patient")
+        {
+//            popupMenu.menu.getItem(3).isEnabled = false
+//            popupMenu.menu.getItem(5).isEnabled = false
+//            popupMenu.menu.getItem(9).isEnabled = false
+            val item1 = popupMenu.menu.findItem(R.id.customer_change_item)
+            val item2 = popupMenu.menu.findItem(R.id.customer_add_item)
+            val item3 = popupMenu.menu.findItem(R.id.doctor_item)
+            item1?.setEnabled(false)
+            item2?.setEnabled(false)
+            item3?.setEnabled(false)
+        }
+        if (userType == "doctor")
+        {
+//            popupMenu.menu.getItem(11).isEnabled = false
+            val item1 = popupMenu.menu.findItem(R.id.patient_item)
+            item1?.setEnabled(false)
+        }
 
 
         // show icons on popup menu
@@ -2106,6 +2226,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         popupMenu.show()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     fun hideResultFragment(resultFragment: ResultFragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
             fragmentTransaction.hide(resultFragment)
@@ -2160,232 +2281,232 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             var realm = Realm.getDefaultInstance()
             var patientUserName = getPreferences(Context.MODE_PRIVATE).getString("userName", "tempUser")
             //fetch patientId related with patient username
-            var patient = realm.copyFromRealm(realm.where(Patient::class.java).equalTo("userName" , patientUserName).findFirst())
-            var currentDate = Date()
-            val calendar: Calendar = Calendar.getInstance()
-            calendar.set(Calendar.YEAR , currentDate.year)
-            calendar.set(Calendar.MONTH , currentDate.month)
-            calendar.set(Calendar.DAY_OF_MONTH , LocalDateTime.now().dayOfMonth)
-            var allCVDTest = realm.where(Test::class.java).notEqualTo("SSB" , "").equalTo("patientId" , patient!!.patientId).findAll()
-            var CVDTestResult = ""
-            if (allCVDTest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allCVDTestSize = allCVDTest.get(allCVDTest.size -1)
-                CVDTestName = "CardioVascularDis"
-                CVDTestDate = dateFormat.format(allCVDTestSize!!.testDate)
-                CVDTestResult = "CardioVascularDis - ${dateFormat.format(allCVDTestSize!!.testDate)}"
-            }
+            if (patientUserName != "tempUser") {
+                var patient = realm.copyFromRealm(
+                    realm.where(Patient::class.java).equalTo("userName", patientUserName)
+                        .findFirst()
+                )
+                var currentDate = Date()
+                val calendar: Calendar = Calendar.getInstance()
+                calendar.set(Calendar.YEAR, currentDate.year)
+                calendar.set(Calendar.MONTH, currentDate.month)
+                calendar.set(Calendar.DAY_OF_MONTH, LocalDateTime.now().dayOfMonth)
+                var allCVDTest = realm.where(Test::class.java).notEqualTo("SSB", "")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+                var CVDTestResult = ""
+                if (allCVDTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allCVDTestSize = allCVDTest.get(allCVDTest.size - 1)
+                    CVDTestName = "CardioVascularDis"
+                    CVDTestDate = dateFormat.format(allCVDTestSize!!.testDate)
+                    CVDTestResult =
+                        "CardioVascularDis - ${dateFormat.format(allCVDTestSize!!.testDate)}"
+                }
 
-            var allDiabetesTest = realm.where(Test::class.java).notEqualTo("patientPAM" , "").equalTo("patientId" , patient!!.patientId).findAll()
-            var DiabetesTestResult = ""
-            if (allDiabetesTest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allDiabetesSize = allDiabetesTest.get(allDiabetesTest.size -1)
-                DiabetesTestName = "DIABETES"
-                DiabetesTestDate = dateFormat.format(allDiabetesSize!!.testDate)
-                DiabetesTestResult = "DIABETES - ${dateFormat.format(allDiabetesSize!!.testDate)}"
-            }
-
-
-            var allMDITest = realm.where(Test::class.java).isNotNull("patientMDIQ1").equalTo("patientId" , patient!!.patientId).findAll()
-            var MDITestResult = ""
-            if (allMDITest.size > 0)
-            {
-
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allMDISize = allMDITest.get(allMDITest.size -1)
-                MDITestName = "Major Depression"
-                MDITestDate = dateFormat.format(allMDISize!!.testDate)
-                MDITestResult = "Major Depression - ${dateFormat.format(allMDISize!!.testDate)}"
-            }
+                var allDiabetesTest = realm.where(Test::class.java).notEqualTo("patientPAM", "")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+                var DiabetesTestResult = ""
+                if (allDiabetesTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allDiabetesSize = allDiabetesTest.get(allDiabetesTest.size - 1)
+                    DiabetesTestName = "DIABETES"
+                    DiabetesTestDate = dateFormat.format(allDiabetesSize!!.testDate)
+                    DiabetesTestResult =
+                        "DIABETES - ${dateFormat.format(allDiabetesSize!!.testDate)}"
+                }
 
 
-            var allBAITest = realm.where(Test::class.java).isNotNull("patientBAIQ1").equalTo("patientId" , patient!!.patientId).findAll()
-            var BAITestResult = ""
-            if (allBAITest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allBAISize = allBAITest.get(allBAITest.size -1)
-                BAITestName = "Beck Anxiety"
-                BAITestDate = dateFormat.format(allBAISize!!.testDate)
-                BAITestResult = "Beck Anxiety - ${dateFormat.format(allBAISize!!.testDate)}"
-            }
+                var allMDITest = realm.where(Test::class.java).isNotNull("patientMDIQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+                var MDITestResult = ""
+                if (allMDITest.size > 0) {
 
-            var allMDSTest = realm.where(Test::class.java).isNotNull("patientMDSQ1").equalTo("patientId" , patient!!.patientId).findAll()
-            var MDSTestResult = ""
-            if (allMDSTest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allMDSSize = allMDSTest.get(allMDSTest.size -1)
-                MDTTestName = "Mediterranean Diet"
-                MDTTestDate = dateFormat.format(allMDSSize!!.testDate)
-                MDSTestResult = "Mediterranean Diet - ${dateFormat.format(allMDSSize!!.testDate)}"
-            }
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allMDISize = allMDITest.get(allMDITest.size - 1)
+                    MDITestName = "Major Depression"
+                    MDITestDate = dateFormat.format(allMDISize!!.testDate)
+                    MDITestResult = "Major Depression - ${dateFormat.format(allMDISize!!.testDate)}"
+                }
 
-            var allBPITest = realm.where(Test::class.java).isNotNull("patientBPIQ1").equalTo("patientId" , patient!!.patientId).findAll()
-            if (allBPITest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allBPiSize = allBPITest.get(allBPITest.size -1)
-                BPITestName = "Brief Pain Inv"
-                BPITestDate = dateFormat.format(allBPiSize!!.testDate)
-                var BPITestResult = "Brief Pain Inv - ${dateFormat.format(allBPiSize!!.testDate)}"
-            }
 
-            var allBDITest = realm.where(Test::class.java).isNotNull("patientBDIQ1").equalTo("patientId" , patient!!.patientId).findAll()
+                var allBAITest = realm.where(Test::class.java).isNotNull("patientBAIQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+                var BAITestResult = ""
+                if (allBAITest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allBAISize = allBAITest.get(allBAITest.size - 1)
+                    BAITestName = "Beck Anxiety"
+                    BAITestDate = dateFormat.format(allBAISize!!.testDate)
+                    BAITestResult = "Beck Anxiety - ${dateFormat.format(allBAISize!!.testDate)}"
+                }
 
-            if (allBDITest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allBDISize = allBDITest.get(allBDITest.size -1)
-                BDITestName = "Beck Depression"
-                BDITestDate = dateFormat.format(allBDISize!!.testDate)
-                var BDITestResult = "Beck Depression - ${dateFormat.format(allBDISize!!.testDate)}"
-            }
+                var allMDSTest = realm.where(Test::class.java).isNotNull("patientMDSQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+                var MDSTestResult = ""
+                if (allMDSTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allMDSSize = allMDSTest.get(allMDSTest.size - 1)
+                    MDTTestName = "Mediterranean Diet"
+                    MDTTestDate = dateFormat.format(allMDSSize!!.testDate)
+                    MDSTestResult =
+                        "Mediterranean Diet - ${dateFormat.format(allMDSSize!!.testDate)}"
+                }
 
-            var allGDSTest = realm.where(Test::class.java).isNotNull("patientGDSQ1").equalTo("patientId" , patient!!.patientId).findAll()
+                var allBPITest = realm.where(Test::class.java).isNotNull("patientBPIQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+                if (allBPITest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allBPiSize = allBPITest.get(allBPITest.size - 1)
+                    BPITestName = "Brief Pain Inv"
+                    BPITestDate = dateFormat.format(allBPiSize!!.testDate)
+                    var BPITestResult =
+                        "Brief Pain Inv - ${dateFormat.format(allBPiSize!!.testDate)}"
+                }
 
-            if (allGDSTest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allGDSSize = allGDSTest.get(allGDSTest.size -1)
-                GDSTestName = "Geriatric Depression"
-                GDSTestDate = dateFormat.format(allGDSSize!!.testDate)
-                var GDSTestResult = "Geriatric Depression - ${dateFormat.format(allGDSSize!!.testDate)}"
-            }
+                var allBDITest = realm.where(Test::class.java).isNotNull("patientBDIQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
 
-            var allSTAIOnTest = realm.where(Test::class.java).isNotNull("patientSTAISQ1").equalTo("patientId" , patient!!.patientId).findAll()
+                if (allBDITest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allBDISize = allBDITest.get(allBDITest.size - 1)
+                    BDITestName = "Beck Depression"
+                    BDITestDate = dateFormat.format(allBDISize!!.testDate)
+                    var BDITestResult =
+                        "Beck Depression - ${dateFormat.format(allBDISize!!.testDate)}"
+                }
 
-            if (allSTAIOnTest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allSTAISize = allSTAIOnTest.get(allSTAIOnTest.size -1)
-                STAITestName = "STAI"
-                STAITestDate = dateFormat.format(allSTAISize!!.testDate)
-                var STAITestResult = "STAI - ${dateFormat.format(allSTAISize!!.testDate)}"
-            }
+                var allGDSTest = realm.where(Test::class.java).isNotNull("patientGDSQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
 
-            var allHAMMILTOnTest = realm.where(Test::class.java).isNotNull("patientHAMDQ1").equalTo("patientId" , patient!!.patientId).findAll()
+                if (allGDSTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allGDSSize = allGDSTest.get(allGDSTest.size - 1)
+                    GDSTestName = "Geriatric Depression"
+                    GDSTestDate = dateFormat.format(allGDSSize!!.testDate)
+                    var GDSTestResult =
+                        "Geriatric Depression - ${dateFormat.format(allGDSSize!!.testDate)}"
+                }
 
-            if (allHAMMILTOnTest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allHammiltonSize = allHAMMILTOnTest.get(allHAMMILTOnTest.size -1)
-                HammiltonTestName = "Hammilton"
-                HammiltonTestDate = dateFormat.format(allHammiltonSize!!.testDate)
-                var HammiltonTestResult = "Hammilton - ${dateFormat.format(allHammiltonSize!!.testDate)}"
-            }
+                var allSTAIOnTest = realm.where(Test::class.java).isNotNull("patientSTAISQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
 
-            var allDASSTest = realm.where(Test::class.java).isNotNull("patientDASSQ1").equalTo("patientId" , patient!!.patientId).findAll()
+                if (allSTAIOnTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allSTAISize = allSTAIOnTest.get(allSTAIOnTest.size - 1)
+                    STAITestName = "STAI"
+                    STAITestDate = dateFormat.format(allSTAISize!!.testDate)
+                    var STAITestResult = "STAI - ${dateFormat.format(allSTAISize!!.testDate)}"
+                }
 
-            if (allDASSTest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allDASSSize = allDASSTest.get(allDASSTest.size -1)
-                DASSTestName = "Dass"
-                DASSTestDate = dateFormat.format(allDASSSize!!.testDate)
-                var DASSTestResult = "Dass - ${dateFormat.format(allDASSSize!!.testDate)}"
-            }
+                var allHAMMILTOnTest = realm.where(Test::class.java).isNotNull("patientHAMDQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
 
-            var allZUNGTest = realm.where(Test::class.java).isNotNull("patientZUNGQ1").equalTo("patientId" , patient!!.patientId).findAll()
+                if (allHAMMILTOnTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allHammiltonSize = allHAMMILTOnTest.get(allHAMMILTOnTest.size - 1)
+                    HammiltonTestName = "Hammilton"
+                    HammiltonTestDate = dateFormat.format(allHammiltonSize!!.testDate)
+                    var HammiltonTestResult =
+                        "Hammilton - ${dateFormat.format(allHammiltonSize!!.testDate)}"
+                }
 
-            if (allZUNGTest.size > 0)
-            {
-                var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                var allZUNGSize = allZUNGTest.get(allZUNGTest.size -1)
-                ZungTestName = "ZUNG"
-                ZungTestDate = dateFormat.format(allZUNGSize!!.testDate)
-                var ZUNGTestResult = "ZUNG - ${dateFormat.format(allZUNGSize!!.testDate)}"
-            }
+                var allDASSTest = realm.where(Test::class.java).isNotNull("patientDASSQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+
+                if (allDASSTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allDASSSize = allDASSTest.get(allDASSTest.size - 1)
+                    DASSTestName = "Dass"
+                    DASSTestDate = dateFormat.format(allDASSSize!!.testDate)
+                    var DASSTestResult = "Dass - ${dateFormat.format(allDASSSize!!.testDate)}"
+                }
+
+                var allZUNGTest = realm.where(Test::class.java).isNotNull("patientZUNGQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+
+                if (allZUNGTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allZUNGSize = allZUNGTest.get(allZUNGTest.size - 1)
+                    ZungTestName = "ZUNG"
+                    ZungTestDate = dateFormat.format(allZUNGSize!!.testDate)
+                    var ZUNGTestResult = "ZUNG - ${dateFormat.format(allZUNGSize!!.testDate)}"
+                }
 
 //            allPatientsTestNameListView = findViewById(R.id.alltestsNameResultsistView)
 //            allPatientTestDateLisView = findViewById(R.id.alltestsDatesResultsistView)
 
-            if (CVDTestName != "")
-            {
-                allPatientTestNameData.add(CVDTestName)
-                allPatientTestDateData.add(CVDTestDate)
-                allPatientTestNames += CVDTestName +"\n"
-                allPatientTestDates += CVDTestDate + "\n"
-            }
-            if (DiabetesTestName != "")
-            {
-                allPatientTestNameData.add(DiabetesTestName)
-                allPatientTestDateData.add(DiabetesTestDate)
-                allPatientTestNames += DiabetesTestName +"\n"
-                allPatientTestDates += DiabetesTestDate + "\n"
-            }
-            if (MDITestName != "")
-            {
-                allPatientTestNameData.add(MDITestName)
-                allPatientTestDateData.add(MDITestDate)
-                allPatientTestNames += MDITestName +"\n"
-                allPatientTestDates += MDITestDate + "\n"
-            }
-            if (BAITestName != "")
-            {
-                allPatientTestNameData.add(BAITestName)
-                allPatientTestDateData.add(BAITestDate)
-                allPatientTestNames += BAITestName +"\n"
-                allPatientTestDates += BAITestDate + "\n"
-            }
-            if (BPITestName != "")
-            {
-                allPatientTestNameData.add(BPITestName)
-                allPatientTestDateData.add(BPITestDate)
-                allPatientTestNames += BPITestName +"\n"
-                allPatientTestDates += BPITestDate + "\n"
-            }
-            if (MDTTestName != "")
-            {
-                allPatientTestNameData.add(MDTTestName)
-                allPatientTestDateData.add(MDTTestDate)
-                allPatientTestNames += MDTTestName +"\n"
-                allPatientTestDates += MDTTestDate + "\n"
-            }
-            if (GDSTestName != "")
-            {
-                allPatientTestNameData.add(GDSTestName)
-                allPatientTestDateData.add(GDSTestDate)
-                allPatientTestNames += GDSTestName +"\n"
-                allPatientTestDates += GDSTestDate + "\n"
-            }
-            if (BDITestName != "")
-            {
-                allPatientTestNameData.add(BDITestName)
-                allPatientTestDateData.add(BDITestDate)
-                allPatientTestNames += BDITestName +"\n"
-                allPatientTestDates += BDITestDate + "\n"
-            }
-            if (STAITestName != "")
-            {
-                allPatientTestNameData.add(STAITestName)
-                allPatientTestDateData.add(STAITestDate)
-                allPatientTestNames += STAITestName +"\n"
-                allPatientTestDates += STAITestDate + "\n"
-            }
-            if (HammiltonTestName != "")
-            {
-                allPatientTestNameData.add(HammiltonTestName)
-                allPatientTestDateData.add(HammiltonTestDate)
-                allPatientTestNames += HammiltonTestName +"\n"
-                allPatientTestDates += HammiltonTestDate + "\n"
-            }
-            if (DASSTestName != "")
-            {
-                allPatientTestNameData.add(DASSTestName)
-                allPatientTestDateData.add(DASSTestDate)
-                allPatientTestNames += DASSTestName +"\n"
-                allPatientTestDates += DASSTestDate + "\n"
-            }
-            if (ZungTestName != "")
-            {
-                allPatientTestNameData.add(ZungTestName)
-                allPatientTestDateData.add(ZungTestDate)
-                allPatientTestNames += ZungTestName +"\n"
-                allPatientTestDates += ZungTestDate + "\n"
+                if (CVDTestName != "") {
+                    allPatientTestNameData.add(CVDTestName)
+                    allPatientTestDateData.add(CVDTestDate)
+                    allPatientTestNames += CVDTestName + "\n"
+                    allPatientTestDates += CVDTestDate + "\n"
+                }
+                if (DiabetesTestName != "") {
+                    allPatientTestNameData.add(DiabetesTestName)
+                    allPatientTestDateData.add(DiabetesTestDate)
+                    allPatientTestNames += DiabetesTestName + "\n"
+                    allPatientTestDates += DiabetesTestDate + "\n"
+                }
+                if (MDITestName != "") {
+                    allPatientTestNameData.add(MDITestName)
+                    allPatientTestDateData.add(MDITestDate)
+                    allPatientTestNames += MDITestName + "\n"
+                    allPatientTestDates += MDITestDate + "\n"
+                }
+                if (BAITestName != "") {
+                    allPatientTestNameData.add(BAITestName)
+                    allPatientTestDateData.add(BAITestDate)
+                    allPatientTestNames += BAITestName + "\n"
+                    allPatientTestDates += BAITestDate + "\n"
+                }
+                if (BPITestName != "") {
+                    allPatientTestNameData.add(BPITestName)
+                    allPatientTestDateData.add(BPITestDate)
+                    allPatientTestNames += BPITestName + "\n"
+                    allPatientTestDates += BPITestDate + "\n"
+                }
+                if (MDTTestName != "") {
+                    allPatientTestNameData.add(MDTTestName)
+                    allPatientTestDateData.add(MDTTestDate)
+                    allPatientTestNames += MDTTestName + "\n"
+                    allPatientTestDates += MDTTestDate + "\n"
+                }
+                if (GDSTestName != "") {
+                    allPatientTestNameData.add(GDSTestName)
+                    allPatientTestDateData.add(GDSTestDate)
+                    allPatientTestNames += GDSTestName + "\n"
+                    allPatientTestDates += GDSTestDate + "\n"
+                }
+                if (BDITestName != "") {
+                    allPatientTestNameData.add(BDITestName)
+                    allPatientTestDateData.add(BDITestDate)
+                    allPatientTestNames += BDITestName + "\n"
+                    allPatientTestDates += BDITestDate + "\n"
+                }
+                if (STAITestName != "") {
+                    allPatientTestNameData.add(STAITestName)
+                    allPatientTestDateData.add(STAITestDate)
+                    allPatientTestNames += STAITestName + "\n"
+                    allPatientTestDates += STAITestDate + "\n"
+                }
+                if (HammiltonTestName != "") {
+                    allPatientTestNameData.add(HammiltonTestName)
+                    allPatientTestDateData.add(HammiltonTestDate)
+                    allPatientTestNames += HammiltonTestName + "\n"
+                    allPatientTestDates += HammiltonTestDate + "\n"
+                }
+                if (DASSTestName != "") {
+                    allPatientTestNameData.add(DASSTestName)
+                    allPatientTestDateData.add(DASSTestDate)
+                    allPatientTestNames += DASSTestName + "\n"
+                    allPatientTestDates += DASSTestDate + "\n"
+                }
+                if (ZungTestName != "") {
+                    allPatientTestNameData.add(ZungTestName)
+                    allPatientTestDateData.add(ZungTestDate)
+                    allPatientTestNames += ZungTestName + "\n"
+                    allPatientTestDates += ZungTestDate + "\n"
+                }
             }
         }
 
