@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.core.view.get
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.MainActivity
@@ -178,11 +179,11 @@ class OPQOLCheckFragment : Fragment() {
             allPatientSelections[28] = getAsnwerFromRadioGroup(opqolCheckBinding.OPQOLQ2C7cRG)
             allPatientSelections[29] = getAsnwerFromRadioGroup(opqolCheckBinding.OPQOLQ2C7dRG)
             allPatientSelections[30] = getAsnwerFromRadioGroup(opqolCheckBinding.OPQOLQ2C8aRG)
-            opqolCheckBinding.OPQOLQ2C8bRG.clearCheck()
-            opqolCheckBinding.OPQOLQ2C8cRG.clearCheck()
-            opqolCheckBinding.OPQOLQ2C8dRG.clearCheck()
-            opqolCheckBinding.OPQOLQ2C8eRG.clearCheck()
-            opqolCheckBinding.OPQOLQ2C8fRG.clearCheck()
+            allPatientSelections[31] = getAsnwerFromRadioGroup(opqolCheckBinding.OPQOLQ2C8bRG)
+            allPatientSelections[32] = getAsnwerFromRadioGroup(opqolCheckBinding.OPQOLQ2C8cRG)
+            allPatientSelections[33] = getAsnwerFromRadioGroup(opqolCheckBinding.OPQOLQ2C8dRG)
+            allPatientSelections[34] = getAsnwerFromRadioGroup(opqolCheckBinding.OPQOLQ2C8eRG)
+            allPatientSelections[35] = getAsnwerFromRadioGroup(opqolCheckBinding.OPQOLQ2C8fRG)
 
 
             opqolPatientViewModel.checkBAITestPatient(allPatientSelections)
@@ -216,6 +217,50 @@ class OPQOLCheckFragment : Fragment() {
 
         }
 
+    }
+
+    private fun showSelectionError(error : String, qNo : Int) {
+        Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
+        {
+            when (qNo) {
+                1 -> opqolCheckBinding.OPQOLQ1RG.requestFocus()
+                2 -> opqolCheckBinding.OPQOLQ2C1RG.requestFocus()
+                3 -> opqolCheckBinding.OPQOLQ2C1bRG.requestFocus()
+                4 -> opqolCheckBinding.OPQOLQ2C1cRG.requestFocus()
+                5 -> opqolCheckBinding.OPQOLQ2C1dRG.requestFocus()
+                6 -> opqolCheckBinding.OPQOLQ2C2aRG.requestFocus()
+                7 -> opqolCheckBinding.OPQOLQ2C2bRG.requestFocus()
+                8 -> opqolCheckBinding.OPQOLQ2C2cRG.requestFocus()
+                9 -> opqolCheckBinding.OPQOLQ2C2dRG.requestFocus()
+                10 -> opqolCheckBinding.OPQOLQ2C3aRG.requestFocus()
+                11 -> opqolCheckBinding.OPQOLQ2C3bRG.requestFocus()
+                12 -> opqolCheckBinding.OPQOLQ2C3cRG.requestFocus()
+                13 -> opqolCheckBinding.OPQOLQ2C3dRG.requestFocus()
+                14 -> opqolCheckBinding.OPQOLQ2C3eRG.requestFocus()
+                15 -> opqolCheckBinding.OPQOLQ2C4aRG.requestFocus()
+                16 -> opqolCheckBinding.OPQOLQ2C4bRG.requestFocus()
+                17 -> opqolCheckBinding.OPQOLQ2C4cRG.requestFocus()
+                18 -> opqolCheckBinding.OPQOLQ2C4dRG.requestFocus()
+                19 -> opqolCheckBinding.OPQOLQ2C5aRG.requestFocus()
+                20 -> opqolCheckBinding.OPQOLQ2C5bRG.requestFocus()
+                21 -> opqolCheckBinding.OPQOLQ2C5cRG.requestFocus()
+                22 -> opqolCheckBinding.OPQOLQ2C5dRG.requestFocus()
+                23 -> opqolCheckBinding.OPQOLQ2C6aRG.requestFocus()
+                24 -> opqolCheckBinding.OPQOLQ2C6bRG.requestFocus()
+                25 -> opqolCheckBinding.OPQOLQ2C6cRG.requestFocus()
+                26 -> opqolCheckBinding.OPQOLQ2C6dRG.requestFocus()
+                27 -> opqolCheckBinding.OPQOLQ2C7aRG.requestFocus()
+                28 -> opqolCheckBinding.OPQOLQ2C7bRG.requestFocus()
+                29 -> opqolCheckBinding.OPQOLQ2C7cRG.requestFocus()
+                30 -> opqolCheckBinding.OPQOLQ2C7dRG.requestFocus()
+                31 -> opqolCheckBinding.OPQOLQ2C8aRG.requestFocus()
+                32 -> opqolCheckBinding.OPQOLQ2C8bRG.requestFocus()
+                33 -> opqolCheckBinding.OPQOLQ2C8cRG.requestFocus()
+                34 -> opqolCheckBinding.OPQOLQ2C8dRG.requestFocus()
+                35 -> opqolCheckBinding.OPQOLQ2C8eRG.requestFocus()
+                36 -> opqolCheckBinding.OPQOLQ2C8fRG.requestFocus()
+            }
+        }
     }
 
     private fun getAsnwerFromRadioGroup(opqolQ1RG: RadioGroup): Int? {
