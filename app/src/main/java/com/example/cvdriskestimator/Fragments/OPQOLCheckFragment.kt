@@ -6,25 +6,25 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.get
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.customClasses.PopUpMenu
-import com.example.cvdriskestimator.databinding.FragmentBAICheckBinding
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheckBinding
-import com.example.cvdriskestimator.viewModels.CheckBAIPatientViewModel
 import com.example.cvdriskestimator.viewModels.CheckBAIPatientViewModelFactory
 import com.example.cvdriskestimator.viewModels.CheckOPQOLViewModel
-
 
 
 class OPQOLCheckFragment : Fragment() {
@@ -39,6 +39,14 @@ class OPQOLCheckFragment : Fragment() {
     private lateinit var loginPatientFragment: LoginPatientFragment
     private lateinit var registerFragment: RegisterFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
+    private var allGeneratedRelativeViews = ArrayList<RelativeLayout>(36)
+    private var allGeneratedQuestionTxtViews = ArrayList<TextView>(36)
+    private var allGeneratedRadioButtons = ArrayList<RadioButton>(180)
+
+    // test components id
+    private var allGeneratedRelativeLayoutIds = ArrayList<Int>(36)
+    private var allGeneratedTxtViewsIds = ArrayList<Int>(36)
+    private var allGeneratedRadioButtonIds = ArrayList<Int>(180)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -148,6 +156,37 @@ class OPQOLCheckFragment : Fragment() {
                 .show()
         }
 
+        //  generate the questionaire components for the for the ui
+        for (layout in allGeneratedRelativeViews)
+        {
+            layout.id = View.generateViewId()
+        }
+
+        for (textView in allGeneratedQuestionTxtViews)
+        {
+            textView.id = View.generateViewId()
+        }
+
+        for (rb in allGeneratedRadioButtons)
+        {
+            rb.id = View.generateViewId()
+        }
+
+        for (layout in allGeneratedRelativeViews)
+        {
+            allGeneratedRelativeLayoutIds.add(layout.id)
+        }
+
+        for (textView in allGeneratedQuestionTxtViews)
+        {
+            allGeneratedTxtViewsIds.add(textView.id)
+        }
+
+        for (rb in allGeneratedRadioButtons)
+        {
+            allGeneratedRadioButtonIds.add(rb.id)
+        }
+
         opqolCheckBinding.submitBtn.setOnClickListener {
 
 
@@ -222,6 +261,106 @@ class OPQOLCheckFragment : Fragment() {
 
     }
 
+    private fun generateRelativeLayout(
+        layout: RelativeLayout,
+        txtView : TextView,
+        radioGroup : RadioGroup,
+        rb1 : RadioButton,
+        rb2 : RadioButton,
+        rb3 : RadioButton,
+        rb4 : RadioButton,
+        rb5 : RadioButton,
+        txtViewStringResource : Int,
+        radioButton1StringResource : Int,
+        radioButton2StringResource : Int,
+        radioButton3StringResource : Int,
+        radioButton4StringResource : Int,
+        radiobutton5StringResource : Int
+    ) : RelativeLayout
+    {
+        var relLayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT , RelativeLayout.LayoutParams.WRAP_CONTENT)
+        relLayoutParams.setMargins(16 , 0 , 16, 0)
+        layout.background = resources.getDrawable(R.drawable.relativelayout_style)
+
+        txtView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , ViewGroup.LayoutParams.WRAP_CONTENT)
+        txtView.background = resources.getDrawable(R.color.light_blue)
+        txtView.isFocusable = true
+        txtView.isFocusableInTouchMode = true
+        txtView.gravity = Gravity.CENTER
+        txtView.minHeight = 64
+        txtView.text = resources.getString(txtViewStringResource)
+        txtView.setTextColor(resources.getColor(R.color.black))
+        txtView.setTextSize(20f)
+
+        radioGroup.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , ViewGroup.LayoutParams.WRAP_CONTENT)
+
+
+        val rgVlayoutParams = RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.MATCH_PARENT,  // Width
+            RelativeLayout.LayoutParams.WRAP_CONTENT // Height
+        )
+
+        // Add a rule to position the TextView below the specified component
+        rgVlayoutParams.addRule(RelativeLayout.BELOW, txtView.getId())
+
+        // Apply the layout parameters to the TextView
+        radioGroup.layoutParams = rgVlayoutParams
+
+        val rblayoutParams = RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.MATCH_PARENT,  // Width
+            RelativeLayout.LayoutParams.WRAP_CONTENT // Height
+        )
+
+        // Add a rule to position the TextView below the specified component
+        rblayoutParams.addRule(RelativeLayout.BELOW, radioGroup.getId())
+
+        // Apply the layout parameters to the TextView
+        radioGroup.layoutParams = rblayoutParams
+        rb1.layoutParams = rblayoutParams
+        rb2.layoutParams = rblayoutParams
+        rb3.layoutParams = rblayoutParams
+        rb4.layoutParams = rblayoutParams
+        rb5.layoutParams = rblayoutParams
+        rb1.setPadding(8 , 0 , 8 , 0)
+        rb2.setPadding(8 , 0 , 8 , 0)
+        rb3.setPadding(8 , 0 , 8 , 0)
+        rb4.setPadding(8 , 0 , 8 , 0)
+        rb5.setPadding(8 , 0 , 8 , 0)
+        rb1.setText(radioButton1StringResource)
+        rb1.gravity = Gravity.CENTER or Gravity.LEFT
+        rb1.setTextColor(mainActivity.resources.getColor(R.color.black))
+        rb1.setTextSize(20f)
+        rb2.setText(radioButton2StringResource)
+        rb2.gravity = Gravity.CENTER or Gravity.LEFT
+
+        rb2.setTextColor(mainActivity.resources.getColor(R.color.black))
+        rb2.setTextSize(20f)
+        rb3.setText(radioButton3StringResource)
+        rb3.setTextColor(mainActivity.resources.getColor(R.color.black))
+        rb3.setTextSize(20f)
+        rb3.gravity = Gravity.CENTER or Gravity.LEFT
+        rb4.setText(radioButton4StringResource)
+        rb4.setTextColor(mainActivity.resources.getColor(R.color.black))
+        rb4.setTextSize(20f)
+        rb4.gravity = Gravity.CENTER or Gravity.LEFT
+        rb5.setText(radiobutton5StringResource)
+        rb5.setTextColor(mainActivity.resources.getColor(R.color.black))
+        rb5.setTextSize(20f)
+        rb5.gravity = Gravity.CENTER or Gravity.LEFT
+        layout.layoutParams = relLayoutParams
+
+
+        //add the above components to the relativelayout
+        layout.addView(txtView)
+        layout.addView(radioGroup)
+        layout.addView(rb1)
+        layout.addView(rb2)
+        layout.addView(rb3)
+        layout.addView(rb4)
+        layout.addView(rb5)
+
+        return layout
+    }
 
 
     private fun setPatientData(test : Test)
