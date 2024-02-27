@@ -4,10 +4,13 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.core.view.get
@@ -95,7 +98,7 @@ class OPQOLCheckFragment : Fragment() {
                     historyTest = opqolPatientViewModel.fetchHistoryTest(patientId!! , testDate!!)
                 }
             }
-            if (historyTest.patientBAITestResult != null)
+            if (historyTest.OPQOLTestReesult != null)
             {
                 setPatientData(historyTest)
             }
@@ -186,7 +189,7 @@ class OPQOLCheckFragment : Fragment() {
             allPatientSelections[35] = getAsnwerFromRadioGroup(opqolCheckBinding.OPQOLQ2C8fRG)
 
 
-            opqolPatientViewModel.checkBAITestPatient(allPatientSelections)
+            opqolPatientViewModel.checkOPQOLTestPatient(allPatientSelections)
         }
 
         opqolCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
@@ -219,9 +222,57 @@ class OPQOLCheckFragment : Fragment() {
 
     }
 
-    private fun showSelectionError(error : String, qNo : Int) {
+
+
+    private fun setPatientData(test : Test)
+    {
+        Handler(Looper.getMainLooper()).postDelayed({
+            initialisePatientData()
+            //show all the data on the UI
+
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ1RG , test.patientOPQOLQ1!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1RG, test.patientOPQOLQ2!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1bRG , test.patientOPQOLQ3!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1cRG , test.patientOPQOLQ4!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1dRG , test.patientOPQOLQ5!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2aRG , test.patientOPQOLQ6!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2bRG , test.patientOPQOLQ7!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2cRG , test.patientOPQOLQ8!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2dRG , test.patientOPQOLQ9!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3aRG , test.patientOPQOLQ10!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3bRG , test.patientOPQOLQ11!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3cRG , test.patientOPQOLQ12!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3dRG , test.patientOPQOLQ13!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3eRG , test.patientOPQOLQ14!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4aRG , test.patientOPQOLQ15!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4bRG , test.patientOPQOLQ16!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4cRG , test.patientOPQOLQ17!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4dRG , test.patientOPQOLQ18!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C5aRG , test.patientOPQOLQ19!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C5bRG , test.patientOPQOLQ20!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C5cRG , test.patientOPQOLQ21!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C5dRG , test.patientOPQOLQ22!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C6aRG , test.patientOPQOLQ23!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C6bRG , test.patientOPQOLQ24!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C6cRG , test.patientOPQOLQ25!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C6dRG , test.patientOPQOLQ26!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C7aRG , test.patientOPQOLQ27!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C7bRG , test.patientOPQOLQ28!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C7cRG, test.patientOPQOLQ29!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C7dRG , test.patientOPQOLQ30!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C8aRG , test.patientOPQOLQ31!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C8bRG , test.patientOPQOLQ32!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C8cRG , test.patientOPQOLQ33!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C8dRG , test.patientOPQOLQ34!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C8eRG , test.patientOPQOLQ35!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C8fRG , test.patientOPQOLQ36!!)
+
+        } , 1000)
+    }
+
+
+    fun showSelectionError(error : String, qNo : Int) {
         Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
-        {
             when (qNo) {
                 1 -> opqolCheckBinding.OPQOLQ1RG.requestFocus()
                 2 -> opqolCheckBinding.OPQOLQ2C1RG.requestFocus()
@@ -261,7 +312,35 @@ class OPQOLCheckFragment : Fragment() {
                 36 -> opqolCheckBinding.OPQOLQ2C8fRG.requestFocus()
             }
         }
+
+    private fun setQuestionRadioGroup(rg: RadioGroup, patientAnswer: Int) {
+
+        if ((rg != opqolCheckBinding.OPQOLQ2C1dRG) && (rg != opqolCheckBinding.OPQOLQ2C2bRG)
+            && (rg != opqolCheckBinding.OPQOLQ2C2cRG) && (rg != opqolCheckBinding.OPQOLQ2C4cRG)
+            && (rg != opqolCheckBinding.OPQOLQ2C7dRG) && (rg != opqolCheckBinding.OPQOLQ2C8dRG))
+        {
+            when (patientAnswer)
+            {
+                1 -> (rg.getChildAt(0) as RadioButton).isChecked = true
+                2 -> (rg.getChildAt(1) as RadioButton).isChecked = true
+                3 -> (rg.getChildAt(2) as RadioButton).isChecked = true
+                4 -> (rg.getChildAt(3) as RadioButton).isChecked = true
+                5 -> (rg.getChildAt(5) as RadioButton).isChecked = true
+            }
+        }
+        else
+        {
+            when (patientAnswer)
+            {
+                5 -> (rg.getChildAt(0) as RadioButton).isChecked = true
+                4 -> (rg.getChildAt(1) as RadioButton).isChecked = true
+                3 -> (rg.getChildAt(2) as RadioButton).isChecked = true
+                2 -> (rg.getChildAt(3) as RadioButton).isChecked = true
+                1 -> (rg.getChildAt(5) as RadioButton).isChecked = true
+            }
+        }
     }
+
 
     private fun getAsnwerFromRadioGroup(opqolQ1RG: RadioGroup): Int? {
 
@@ -273,11 +352,11 @@ class OPQOLCheckFragment : Fragment() {
         {
             if (opqolQ1RG.get(0).id == radioButtonId)
             {
-                result = 1
+                result = 5
             }
             if (opqolQ1RG.get(1).id == radioButtonId)
             {
-                result = 2
+                result = 4
             }
             if (opqolQ1RG.get(2).id == radioButtonId)
             {
@@ -285,22 +364,22 @@ class OPQOLCheckFragment : Fragment() {
             }
             if (opqolQ1RG.get(3).id == radioButtonId)
             {
-                result = 4
+                result = 2
             }
             if (opqolQ1RG.get(4).id == radioButtonId)
             {
-                result = 5
+                result = 1
             }
         }
         else
         {
             if (opqolQ1RG.get(0).id == radioButtonId)
             {
-                result = 5
+                result = 1
             }
             if (opqolQ1RG.get(1).id == radioButtonId)
             {
-                result = 4
+                result = 2
             }
             if (opqolQ1RG.get(2).id == radioButtonId)
             {
@@ -308,11 +387,11 @@ class OPQOLCheckFragment : Fragment() {
             }
             if (opqolQ1RG.get(3).id == radioButtonId)
             {
-                result = 2
+                result = 4
             }
             if (opqolQ1RG.get(4).id == radioButtonId)
             {
-                result = 1
+                result = 5
             }
         }
         return result
@@ -364,6 +443,10 @@ class OPQOLCheckFragment : Fragment() {
         opqolCheckBinding.OPQOLQ2C8fRG.clearCheck()
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+    }
 
 
     companion object {

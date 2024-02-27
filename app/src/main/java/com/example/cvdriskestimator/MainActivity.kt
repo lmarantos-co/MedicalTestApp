@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var staiCheckFragment: STAICheckFragment
     private lateinit var dassCheckFragment : DASSCheckFragment
     private lateinit var zungCheckFFragment : CheckZUNGFragment
+    private lateinit var opqolCheckFragment: OPQOLCheckFragment
     private lateinit var timelineFragment: ResultTimelineFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
@@ -110,6 +111,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private var DASSTestName : String = ""
     private var HammiltonTestName : String = ""
     private var ZungTestName : String = ""
+    private var OPQOLTestName : String = ""
     private var CVDTestDate : String = ""
     private var DiabetesTestDate : String = ""
     private var MDITestDate : String = ""
@@ -122,6 +124,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private var DASSTestDate : String = ""
     private var HammiltonTestDate : String = ""
     private var ZungTestDate : String = ""
+    private var OPQOLTestDate : String = ""
     private lateinit var patienTestListOkBtn : Button
     private lateinit var includeTestOptionsPopup : ConstraintLayout
     private var showPatientLasttest : Boolean = false
@@ -155,6 +158,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var zungPanel : View
     private lateinit var hammiltonPanel : View
     private lateinit var dassPanel : View
+    private lateinit var opqolPanel : View
     private lateinit var cvdVectorIcon : View
     private lateinit var diabetesVectorIcon : View
     private lateinit var depressionIcon : View
@@ -168,6 +172,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var staiAnxietyIcon : View
     private lateinit var dassIcon : View
     private lateinit var zungIcon : View
+    private lateinit var opqolIcon : View
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
@@ -180,6 +185,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var dassTxtV : TextView
     private lateinit var hamiltonTxtV : TextView
     private lateinit var zungTxtV : TextView
+    private lateinit var opqolTxtV : TextView
     private lateinit var animationZoomIn : Animation
     private lateinit var animationBounce : Animation
     private lateinit var animationSlideLeftToRight : Animation
@@ -617,7 +623,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         painTestTitle = findViewById(R.id.painTxtView)
         zungTxtV = findViewById(R.id.zungTxtV)
         hamiltonTxtV = findViewById(R.id.hammTxtV)
-
+        opqolTxtV = findViewById<TextView>(R.id.opqolTxtV)
 
         initPrefs()
 
@@ -755,6 +761,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 zungCheckFFragment.arguments = bundle
                 fragmentTransaction(zungCheckFFragment)
             }
+
+            "OPQOL" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                opqolCheckFragment = OPQOLCheckFragment.newInstance()
+                opqolCheckFragment.arguments = bundle
+                fragmentTransaction(opqolCheckFragment)
+            }
         }
     }
 
@@ -884,6 +901,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 zungCheckFFragment = CheckZUNGFragment.newInstance()
                 zungCheckFFragment.arguments = bundle
                 fragmentTransaction(zungCheckFFragment)
+            }
+
+            "OPQOL" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                opqolCheckFragment = OPQOLCheckFragment.newInstance()
+                opqolCheckFragment.arguments = bundle
+                fragmentTransaction(opqolCheckFragment)
             }
         }
     }
@@ -1015,6 +1043,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 zungCheckFFragment = CheckZUNGFragment.newInstance()
                 zungCheckFFragment.arguments = bundle
                 fragmentTransaction(zungCheckFFragment)
+            }
+
+            "OPQOL" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                opqolCheckFragment = OPQOLCheckFragment.newInstance()
+                opqolCheckFragment.arguments = bundle
+                fragmentTransaction(opqolCheckFragment)
             }
         }
     }
@@ -1945,6 +1984,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction.show(dassCheckFragment)
         if (fragment is CheckZUNGFragment)
             fragmentTransaction.show(fragment)
+        if (fragment is OPQOLCheckFragment)
+            fragmentTransaction.show(fragment)
         if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)
         if (fragment is HistoryFragment)
@@ -2265,6 +2306,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         HammiltonTestName = ""
         DASSTestName = ""
         ZungTestName = ""
+        OPQOLTestName = ""
 //        runOnUiThread {
 //
 //            allPatientTestNames = ""
@@ -2432,6 +2474,33 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                     var ZUNGTestResult = "ZUNG - ${dateFormat.format(allZUNGSize!!.testDate)}"
                 }
 
+                if (allZUNGTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allZUNGSize = allZUNGTest.get(allZUNGTest.size - 1)
+                    ZungTestName = "ZUNG"
+                    ZungTestDate = dateFormat.format(allZUNGSize!!.testDate)
+                    var ZUNGTestResult = "ZUNG - ${dateFormat.format(allZUNGSize!!.testDate)}"
+                }
+
+                var allOPQOLTest = realm.where(Test::class.java).isNotNull("patientOPQOLQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+
+                if (allOPQOLTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allOPQOLSize = allOPQOLTest.get(allOPQOLTest.size - 1)
+                    OPQOLTestName = "OPQOL"
+                    OPQOLTestDate = dateFormat.format(allOPQOLSize!!.testDate)
+                    var OPQOLTestResult = "ZUNG - ${dateFormat.format(allOPQOLSize!!.testDate)}"
+                }
+
+                if (allZUNGTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allZUNGSize = allZUNGTest.get(allZUNGTest.size - 1)
+                    ZungTestName = "ZUNG"
+                    ZungTestDate = dateFormat.format(allZUNGSize!!.testDate)
+                    var ZUNGTestResult = "ZUNG - ${dateFormat.format(allZUNGSize!!.testDate)}"
+                }
+
 //            allPatientsTestNameListView = findViewById(R.id.alltestsNameResultsistView)
 //            allPatientTestDateLisView = findViewById(R.id.alltestsDatesResultsistView)
 
@@ -2506,6 +2575,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                     allPatientTestDateData.add(ZungTestDate)
                     allPatientTestNames += ZungTestName + "\n"
                     allPatientTestDates += ZungTestDate + "\n"
+                }
+
+                if (OPQOLTestName != "") {
+                    allPatientTestNameData.add(OPQOLTestName)
+                    allPatientTestDateData.add(OPQOLTestDate)
+                    allPatientTestNames += OPQOLTestName + "\n"
+                    allPatientTestDates += OPQOLTestName + "\n"
                 }
             }
         }

@@ -468,6 +468,25 @@ class HistoryFragment : Fragment() {
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
+            "OPQOL" ->
+            {
+                bindingHistoryFragment.testNameTxtV.setText("OPQOL-35")
+                tests = realm.where(Test::class.java).isNotNull("patientOPQOLQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+//                if (tests.size > 10)
+//                {
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//                }
+                setDatesFromTestsToChartSubTitle(tests!!)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("patientOPQOLQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
+            }
         }
         bindingHistoryFragment.testResultsLineChart.layoutParams.height = SCREEN_HEIGHT / 4
         initTestResultsScopeDataChart(tests!!)
@@ -1358,6 +1377,55 @@ class HistoryFragment : Fragment() {
                    data.addDataSet(dataSet1)
                    data.notifyDataChanged()
 
+               }
+
+               "OPQOL Test" ->
+               {
+                   for (test in allTests)
+                   {
+                       if (minScore > test.OPQOLTestReesult!!)
+                       {
+                           minScore = test.OPQOLTestReesult!!.toFloat()
+                       }
+
+                       if (maxScore < test.OPQOLTestReesult!!)
+                       {
+                           maxScore = test.OPQOLTestReesult!!.toFloat()
+                       }
+                   }
+
+//                   if (minScore > 10)
+//                       minScore -= 10
+//                   else
+//                       minScore = 0f
+//                   if (maxScore < 90)
+//                       maxScore += 10
+//                   else
+//                       maxScore = 100f
+
+                   minScore = 0f
+                   maxScore = 1f
+
+                   //create the data set
+                   dataSet1 = LineDataSet(null, Html.fromHtml("OPQOL-35").toString())
+                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet1.lineWidth = 2f
+                   dataSet1.color = Color.BLUE
+                   dataSet1.isHighlightEnabled = false
+                   dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
+                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.OPQOLTestReesult!!.toFloat())
+                       dataSet1.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
                }
            }
         }
