@@ -609,6 +609,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         bdiIcon = findViewById(R.id.bdiPanel)
         hamDIcon = findViewById(R.id.hammPanel)
         dassIcon = findViewById(R.id.dassPanel)
+        opqolIcon = findViewById(R.id.opqolPanel)
         staiAnxietyIcon = findViewById(R.id.staiPanel)
         zungIcon = findViewById(R.id.zungPanel)
         beckDeprTxtV = findViewById(R.id.bdiTxtV)
@@ -1145,7 +1146,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         zungPanel = findViewById(R.id.zungPanel)
         hammiltonPanel = findViewById(R.id.hammPanel)
         dassPanel = findViewById(R.id.dassPanel)
-
+        opqolPanel = findViewById(R.id.opqolPanel)
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val width = displayMetrics.widthPixels
@@ -1187,6 +1188,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dassPanel.layoutParams.height = height / 5
         dassPanel.layoutParams.width = (width / 2.3).toInt()
 
+        opqolPanel.layoutParams.height = height / 5
+        opqolPanel.layoutParams.width = (width / 2.3).toInt()
+
         registerFragment = RegisterFragment.newInstance()
         checkFragment = CheckFragment()
         checkDiabetesFragment = DiabetesCheckFragment()
@@ -1200,6 +1204,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         staiCheckFragment = STAICheckFragment()
         dassCheckFragment = DASSCheckFragment()
         zungCheckFFragment = CheckZUNGFragment()
+        opqolCheckFragment = OPQOLCheckFragment()
         var resultsArray = IntArray(8)
         resultsArray[0] = 40
         resultsArray[1] = 55
@@ -1381,6 +1386,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             hideLayoutElements()
             playSelectTestAudio(14)
             openTestPopUp("ZUNG")
+        }
+
+        opqolIcon.setOnClickListener {
+            hideLayoutElements()
+            openTestPopUp("OPQOL")
         }
 
 
@@ -1627,6 +1637,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         zungIcon.animate().alphaBy(1f).duration = 1200
         zungIcon.startAnimation(bounceTests)
         zungIcon.visibility = View.VISIBLE
+        opqolIcon.animate().alphaBy(1f).duration = 1200
+        opqolIcon.startAnimation(bounceTests)
+        opqolIcon.visibility = View.VISIBLE
 
     }
 
@@ -1708,6 +1721,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dassIcon.visibility = View.VISIBLE
         zungIcon.clearAnimation()
         zungIcon.visibility = View.VISIBLE
+        opqolIcon.visibility = View.VISIBLE
+        opqolIcon.clearAnimation()
         cvdVectorIcon.visibility = View.VISIBLE
         cvdTestTitle.visibility = View.VISIBLE
         diabetesVectorIcon.visibility = View.VISIBLE
@@ -1896,6 +1911,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(dassCheckFragment)
         fragmentTransaction.hide(hamDFragment)
         fragmentTransaction.hide(zungCheckFFragment)
+        fragmentTransaction.hide(opqolCheckFragment)
 //        fragmentTransaction.hide(pdqCheckFragment)
         fragmentTransaction.hide(leaderBoardFragment)
             .commit()
