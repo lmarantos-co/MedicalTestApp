@@ -747,8 +747,6 @@ open class Test : RealmModel
 
     var patientOPQOLQ35 : Int? = null
 
-    var patientOPQOLQ36 : Int? = null
-
     var OPQOLTestReesult : Int? = null
 
 }
