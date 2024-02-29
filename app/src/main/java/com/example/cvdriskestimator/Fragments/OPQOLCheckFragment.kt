@@ -16,6 +16,7 @@ import android.widget.RadioGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -666,8 +667,6 @@ class OPQOLCheckFragment : Fragment() {
                             getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8eRG)
                         allPatientSelections[34] =
                             getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8fRG)
-
-                    if (opqolPatientViewModel.checkOPQOLTestPatient2(allPatientSelections))
                         switchLayout()
                 }
 
