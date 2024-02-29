@@ -82,6 +82,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var dassCheckFragment : DASSCheckFragment
     private lateinit var zungCheckFFragment : CheckZUNGFragment
     private lateinit var opqolCheckFragment: OPQOLCheckFragment
+    private lateinit var opqolCheckFragment2 : OPQOLCheckFragment2
     private lateinit var timelineFragment: ResultTimelineFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
@@ -769,8 +770,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "updateLast")
-                opqolCheckFragment = OPQOLCheckFragment.newInstance()
-                opqolCheckFragment.arguments = bundle
+                opqolCheckFragment = OPQOLCheckFragment.newInstance(bundle)
                 fragmentTransaction(opqolCheckFragment)
             }
         }
@@ -910,8 +910,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "updateLast")
-                opqolCheckFragment = OPQOLCheckFragment.newInstance()
-                opqolCheckFragment.arguments = bundle
+                opqolCheckFragment = OPQOLCheckFragment.newInstance(bundle)
                 fragmentTransaction(opqolCheckFragment)
             }
         }
@@ -1052,8 +1051,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "updateLast")
-                opqolCheckFragment = OPQOLCheckFragment.newInstance()
-                opqolCheckFragment.arguments = bundle
+                opqolCheckFragment = OPQOLCheckFragment.newInstance(bundle)
                 fragmentTransaction(opqolCheckFragment)
             }
         }
@@ -1205,6 +1203,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dassCheckFragment = DASSCheckFragment()
         zungCheckFFragment = CheckZUNGFragment()
         opqolCheckFragment = OPQOLCheckFragment()
+        opqolCheckFragment2 = OPQOLCheckFragment2()
         var resultsArray = IntArray(8)
         resultsArray[0] = 40
         resultsArray[1] = 55
@@ -1912,6 +1911,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(hamDFragment)
         fragmentTransaction.hide(zungCheckFFragment)
         fragmentTransaction.hide(opqolCheckFragment)
+        fragmentTransaction.hide(opqolCheckFragment2)
 //        fragmentTransaction.hide(pdqCheckFragment)
         fragmentTransaction.hide(leaderBoardFragment)
             .commit()
@@ -2001,6 +2001,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is CheckZUNGFragment)
             fragmentTransaction.show(fragment)
         if (fragment is OPQOLCheckFragment)
+            fragmentTransaction.show(fragment)
+        if (fragment is OPQOLCheckFragment2)
             fragmentTransaction.show(fragment)
         if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)

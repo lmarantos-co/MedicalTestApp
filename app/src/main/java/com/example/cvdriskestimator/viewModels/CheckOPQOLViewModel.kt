@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.cvdriskestimator.Fragments.BAICheckFragment
 import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.OPQOLCheckFragment
+import com.example.cvdriskestimator.Fragments.OPQOLCheckFragment2
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.MedicalTestAlgorithms.BAITestEstimator
@@ -24,6 +25,7 @@ class CheckOPQOLViewModel : ViewModel()
 {
     private lateinit var mainActivity: MainActivity
     private lateinit var opqolCheckFragment: OPQOLCheckFragment
+    private lateinit var opqolCheckFragment2: OPQOLCheckFragment2
     private lateinit var realm : Realm
     private lateinit var baiTestEstimator : BAITestEstimator
     private var realmDAO = RealmDAO()
@@ -43,6 +45,11 @@ class CheckOPQOLViewModel : ViewModel()
     fun passFragment(qolCheckFragment: OPQOLCheckFragment)
     {
         opqolCheckFragment = qolCheckFragment
+    }
+
+    fun passFragment2(qolCheckFragment2: OPQOLCheckFragment2)
+    {
+        opqolCheckFragment2 = qolCheckFragment2
     }
 
     fun initialiseRealm()
@@ -121,42 +128,40 @@ class CheckOPQOLViewModel : ViewModel()
 
     fun checkOPQOLTestPatient2(allPatientSelections : ArrayList<Int?>) : Boolean
     {
-        return (checkQuestionForInputError(allPatientSelections.get(17) , 18)
-                && (checkQuestionForInputError(allPatientSelections.get(18) , 19))
+        return (checkQuestionForInputError(allPatientSelections.get(0) , 18)
+                && (checkQuestionForInputError(allPatientSelections.get(1) , 19))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(19) , 20))
+                (checkQuestionForInputError(allPatientSelections.get(2) , 20))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(20) , 21))
+                (checkQuestionForInputError(allPatientSelections.get(3) , 21))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(21) , 22))
+                (checkQuestionForInputError(allPatientSelections.get(4) , 22))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(22) , 23))
+                (checkQuestionForInputError(allPatientSelections.get(5) , 23))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(23) , 24))
+                (checkQuestionForInputError(allPatientSelections.get(6) , 24))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(24) , 25))
+                (checkQuestionForInputError(allPatientSelections.get(7) , 25))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(25) , 26))
+                (checkQuestionForInputError(allPatientSelections.get(8) , 26))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(26) , 27))
+                (checkQuestionForInputError(allPatientSelections.get(9) , 27))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(27) , 28))
+                (checkQuestionForInputError(allPatientSelections.get(10) , 28))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(28) , 29))
+                (checkQuestionForInputError(allPatientSelections.get(11) , 29))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(29) , 30))
+                (checkQuestionForInputError(allPatientSelections.get(12) , 30))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(30) , 31))
+                (checkQuestionForInputError(allPatientSelections.get(13) , 31))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(31) , 32))
+                (checkQuestionForInputError(allPatientSelections.get(14) , 32))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(32) , 33))
+                (checkQuestionForInputError(allPatientSelections.get(15) , 33))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(33) , 34))
+                (checkQuestionForInputError(allPatientSelections.get(16) , 34))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(34) , 35))
-                &&
-                (checkQuestionForInputError(allPatientSelections.get(35) , 36)))
+                (checkQuestionForInputError(allPatientSelections.get(17) , 35)))
     }
     fun history()
     {

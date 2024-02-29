@@ -13,15 +13,11 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.RelativeLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck1Binding
@@ -36,13 +32,18 @@ class OPQOLCheckFragment : Fragment() {
     private lateinit var opqolPatientViewModel: CheckOPQOLViewModel
     private lateinit var opqolCheckBinding : FragmentOPQOLCheck1Binding
     private lateinit var opqolCheckBinding2 : FragmentOPQOLCheck2Binding
+    private lateinit var thisFragmentPatientSelections : ArrayList<Int?>
+    private var thisFragmentSelectionsExists : Boolean = false
+    private lateinit var otherFragmentPatientSelections : ArrayList<Int>
+    private var otherFragmentSelectionsExists : Boolean = false
     private var allPatientSelections =
-    arrayListOf<Int?>(1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 , 1 ,1 , 1 ,1 ,1 , 1, 1, 1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1)
+    arrayListOf<Int?>(1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 , 1 ,1 , 1 ,1 ,1 , 1, 1, 1)
     private lateinit var popupMenu: PopUpMenu
 
     private lateinit var loginPatientFragment: LoginPatientFragment
     private lateinit var registerFragment: RegisterFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
+    private lateinit var opqolCheckFragment2: OPQOLCheckFragment2
     private lateinit var formLinearlayout : LinearLayout
 //    private var allGeneratedRelativeViews = ArrayList<RelativeLayout>(36)
 //    private var allGeneratedCategoryTxtViews = ArrayList<TextView>(7)
@@ -96,6 +97,18 @@ class OPQOLCheckFragment : Fragment() {
             CheckOPQOLViewModel::class.java)
         opqolCheckBinding.checkOQPOLPatientViewModel = opqolPatientViewModel
         opqolCheckBinding.lifecycleOwner = this
+        arguments?.let {
+            if (it.containsKey("Answers")) {
+                thisFragmentPatientSelections = it.getSerializable("Answers") as ArrayList<Int?>
+                thisFragmentSelectionsExists = true
+                if (it.containsKey("Answers2"))
+                {
+                    otherFragmentPatientSelections =
+                        it.getSerializable("Answers2") as ArrayList<Int>
+                    otherFragmentSelectionsExists = true
+                }
+            }
+        }
         return rootView
     }
 
@@ -114,27 +127,9 @@ class OPQOLCheckFragment : Fragment() {
         var testDate = this.requireArguments().getString("testDate" , "")
         var openType = this.requireArguments().getString("openType")
 
-        if (firstLayoutCompleted)
+        if (thisFragmentSelectionsExists == true)
         {
-            var newTest = Test()
-            newTest.patientOPQOLQ1 = allPatientSelections.get(0)
-            newTest.patientOPQOLQ2 = allPatientSelections.get(1)
-            newTest.patientOPQOLQ3 = allPatientSelections.get(2)
-            newTest.patientOPQOLQ4 = allPatientSelections.get(3)
-            newTest.patientOPQOLQ5 = allPatientSelections.get(4)
-            newTest.patientOPQOLQ6 = allPatientSelections.get(5)
-            newTest.patientOPQOLQ7 = allPatientSelections.get(6)
-            newTest.patientOPQOLQ8 = allPatientSelections.get(7)
-            newTest.patientOPQOLQ9 = allPatientSelections.get(8)
-            newTest.patientOPQOLQ10 = allPatientSelections.get(9)
-            newTest.patientOPQOLQ11= allPatientSelections.get(10)
-            newTest.patientOPQOLQ12 = allPatientSelections.get(11)
-            newTest.patientOPQOLQ13 = allPatientSelections.get(12)
-            newTest.patientOPQOLQ14 = allPatientSelections.get(13)
-            newTest.patientOPQOLQ15 = allPatientSelections.get(14)
-            newTest.patientOPQOLQ16 = allPatientSelections.get(15)
-            newTest.patientOPQOLQ17 = allPatientSelections.get(16)
-            setPatientData1(newTest)
+            setPatientSelections(thisFragmentPatientSelections)
         }
         else
         {
@@ -181,6 +176,28 @@ class OPQOLCheckFragment : Fragment() {
                 }
             }
         }
+//        if (firstLayoutCompleted)
+//        {
+//            var newTest = Test()
+//            newTest.patientOPQOLQ1 = allPatientSelections.get(0)
+//            newTest.patientOPQOLQ2 = allPatientSelections.get(1)
+//            newTest.patientOPQOLQ3 = allPatientSelections.get(2)
+//            newTest.patientOPQOLQ4 = allPatientSelections.get(3)
+//            newTest.patientOPQOLQ5 = allPatientSelections.get(4)
+//            newTest.patientOPQOLQ6 = allPatientSelections.get(5)
+//            newTest.patientOPQOLQ7 = allPatientSelections.get(6)
+//            newTest.patientOPQOLQ8 = allPatientSelections.get(7)
+//            newTest.patientOPQOLQ9 = allPatientSelections.get(8)
+//            newTest.patientOPQOLQ10 = allPatientSelections.get(9)
+//            newTest.patientOPQOLQ11= allPatientSelections.get(10)
+//            newTest.patientOPQOLQ12 = allPatientSelections.get(11)
+//            newTest.patientOPQOLQ13 = allPatientSelections.get(12)
+//            newTest.patientOPQOLQ14 = allPatientSelections.get(13)
+//            newTest.patientOPQOLQ15 = allPatientSelections.get(14)
+//            newTest.patientOPQOLQ16 = allPatientSelections.get(15)
+//            newTest.patientOPQOLQ17 = allPatientSelections.get(16)
+//            setPatientData1(newTest)
+//        }
 
 
         //set the observer for the patient mutable live data
@@ -374,10 +391,19 @@ class OPQOLCheckFragment : Fragment() {
             allPatientSelections[14] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C4bRG)
             allPatientSelections[15] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C4cRG)
             allPatientSelections[16] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C4dRG)
+            thisFragmentPatientSelections = allPatientSelections
+
             if (opqolPatientViewModel.checkOPQOLTestPatient1(allPatientSelections))
             {
-                firstLayoutCompleted = true
-                switchLayout()
+                var args = Bundle()
+                if (otherFragmentSelectionsExists)
+                {
+                    args.putSerializable("Answers2" , otherFragmentPatientSelections)
+                }
+
+                    args.putSerializable("Answers" , thisFragmentPatientSelections)
+                opqolCheckFragment2 = OPQOLCheckFragment2.newInstance(args)
+                mainActivity.fragmentTransaction(opqolCheckFragment2)
             }
 
         }
@@ -720,6 +746,34 @@ class OPQOLCheckFragment : Fragment() {
 
     }
 
+    private fun setPatientSelections(answers : ArrayList<Int?>)
+    {
+        Handler(Looper.getMainLooper()).postDelayed({
+            initialisePatientData()
+            //show all the data on the UI
+
+//            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ1RG , test.patientOPQOLQ1!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1RG, answers.get(0)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1bRG , answers.get(1)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1cRG , answers.get(2)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1dRG , answers.get(3)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2aRG , answers.get(4)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2bRG , answers.get(5)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2cRG , answers.get(6)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2dRG , answers.get(7)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3aRG , answers.get(8)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3bRG , answers.get(9)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3cRG , answers.get(10)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3dRG , answers.get(11)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3eRG , answers.get(12)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4aRG , answers.get(13)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4bRG , answers.get(14)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4cRG , answers.get(15)!!)
+            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4dRG , answers.get(16)!!)
+
+        } , 1000)
+    }
+
     private fun setPatientData1(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
@@ -821,8 +875,7 @@ class OPQOLCheckFragment : Fragment() {
     private fun setQuestionRadioGroup(rg: RadioGroup, patientAnswer: Int) {
 
         if ((rg != opqolCheckBinding.OPQOLQ2C1dRG) && (rg != opqolCheckBinding.OPQOLQ2C2bRG)
-            && (rg != opqolCheckBinding.OPQOLQ2C2cRG) && (rg != opqolCheckBinding.OPQOLQ2C4cRG)
-            && (rg != opqolCheckBinding2.OPQOLQ2C7dRG) && (rg != opqolCheckBinding2.OPQOLQ2C8dRG))
+            && (rg != opqolCheckBinding.OPQOLQ2C2cRG) && (rg != opqolCheckBinding.OPQOLQ2C4cRG))
         {
             when (patientAnswer)
             {
@@ -980,24 +1033,6 @@ class OPQOLCheckFragment : Fragment() {
         opqolCheckBinding.OPQOLQ2C4bRG.clearCheck()
         opqolCheckBinding.OPQOLQ2C4cRG.clearCheck()
         opqolCheckBinding.OPQOLQ2C4dRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C5aRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C5bRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C5cRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C5dRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C6aRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C6bRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C6cRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C6dRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C7aRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C7bRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C7cRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C7dRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8aRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8bRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8cRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8dRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8eRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8fRG.clearCheck()
     }
 
     override fun onAttach(context: Context) {
@@ -1010,9 +1045,11 @@ class OPQOLCheckFragment : Fragment() {
 
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance() =
+        fun newInstance(args : Bundle) =
             OPQOLCheckFragment().apply {
-
+                val fragment = OPQOLCheckFragment()
+                fragment.arguments = args
+                return fragment
             }
     }
 }
