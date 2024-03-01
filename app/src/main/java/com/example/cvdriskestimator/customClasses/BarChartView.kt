@@ -70,7 +70,10 @@ class BarChartView(context: Context, patientSelections : ArrayList<Int>) : View(
             paint.color = Color.WHITE
             paint.textSize = 30f
             paint.isAntiAlias = true
-            canvas!!.drawText(listOfTitles.get(i) , (barWidthFull /3).toFloat() , (i * (barHeight + spacesBetweenBars)).toFloat() + barHeight / 2 , paint)
+            // Set the letter spacing (in pixels)
+            val letterSpacingPx = 0.7f // Adjust this value as needed
+            paint.letterSpacing = letterSpacingPx
+            canvas!!.drawText(listOfTitles.get(i) , (barWidthFull /4).toFloat() , (i * (barHeight + spacesBetweenBars)).toFloat() + barHeight / 2 , paint)
         }
 
     }

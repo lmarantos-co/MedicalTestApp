@@ -173,6 +173,7 @@ class CheckOPQOLViewModel : ViewModel()
     {
         opqolTestEstimator = OPQOLTestEstimator(allPatientSelections)
         val result = opqolTestEstimator.opqolTestEstimator()
+        storePatientOnRealm(allPatientSelections , result)
         resultFragment = ResultFragment.newInstance(result.toDouble() , 0.0 ,  13, null , allPatientSelections)
         mainActivity.fragmentTransaction(resultFragment)
     }
@@ -226,7 +227,7 @@ class CheckOPQOLViewModel : ViewModel()
         return tests!!.get(tests!!.size -1)!!
     }
 
-    private fun storePatientOnDB(allPatientSelections: ArrayList<Int?> , score : Int)
+    private fun storePatientOnDB(allPatientSelections: ArrayList<Int> , score : Int)
     {
         //execute transaction on realm
         realm.executeTransaction {
@@ -346,7 +347,7 @@ class CheckOPQOLViewModel : ViewModel()
         return correctData
     }
 
-    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int?> , score : Int) : Job =
+    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int> , score : Int) : Job =
         viewModelScope.launch{
             storePatientOnDB(allPatientSelections , score)
         }

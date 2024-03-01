@@ -1050,7 +1050,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 var bundle = Bundle()
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
-                bundle.putString("openType" , "updateLast")
+                bundle.putString("openType" , "history")
                 opqolCheckFragment = OPQOLCheckFragment.newInstance(bundle)
                 fragmentTransaction(opqolCheckFragment)
             }

@@ -61,6 +61,7 @@ class HistoryFragment : Fragment() {
     private lateinit var staiCheckFragment: STAICheckFragment
     private lateinit var dassCheckFragment: DASSCheckFragment
     private lateinit var zungFragment: CheckZUNGFragment
+    private lateinit var opqolFragment : OPQOLCheckFragment
     private var registerDoctorFragment =  RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private var dateFromPicked : Boolean = false
@@ -468,7 +469,7 @@ class HistoryFragment : Fragment() {
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
-            "OPQOL" ->
+            "OPQOL Test" ->
             {
                 bindingHistoryFragment.testNameTxtV.setText("OPQOL-35")
                 tests = realm.where(Test::class.java).isNotNull("patientOPQOLQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
@@ -1784,6 +1785,20 @@ class HistoryFragment : Fragment() {
                     scoreArrayList.add("${test.zungTestReesult}")
                 }
             }
+            "OPQOL Test" ->
+            {
+                for (test in allTests)
+                {
+                    val format = SimpleDateFormat("yyy MM dd")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.OPQOLTestReesult}")
+                }
+            }
         }
 
         val dateAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textvview_history_xml, dateArrayList)
@@ -1996,6 +2011,12 @@ class HistoryFragment : Fragment() {
                     zungFragment = CheckZUNGFragment()
                     zungFragment.arguments = bundle
                     mainActivity.fragmentTransaction(zungFragment)
+                }
+                "OPQOL Test" ->
+                {
+                    opqolFragment = OPQOLCheckFragment()
+                    opqolFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(opqolFragment)
                 }
             }
 
