@@ -1,5 +1,6 @@
 package com.example.cvdriskestimator.Fragments
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
@@ -15,17 +16,24 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.MainActivity
+import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck1Binding
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck2Binding
 import com.example.cvdriskestimator.viewModels.CheckOPQOLPatientViewModelFactory
 import com.example.cvdriskestimator.viewModels.CheckOPQOLViewModel
+import org.w3c.dom.Document
+import org.w3c.dom.Element
+import org.w3c.dom.Node
+import java.io.InputStream
+import javax.xml.parsers.DocumentBuilderFactory
 
 
 class OPQOLCheckFragment : Fragment() {
@@ -55,11 +63,11 @@ class OPQOLCheckFragment : Fragment() {
 //    private var allGeneratedRadioButtons = ArrayList<RadioButton>(180)
 //
 //    // test components id
-//    private var allGeneratedRelativeLayoutIds = ArrayList<Int>(36)
+    private var allGeneratedRelativeLayoutIds = ArrayList<Int>(36)
 //    private var allGeneratedCatTxtViewsIds = ArrayList<Int>(36)
-//    private var allGeneratedTxtViewsIds = ArrayList<Int>(36)
-//    private var allGeneratedRadioGroupIds = ArrayList<Int>(36)
-//    private var allGeneratedRadioButtonIds = ArrayList<Int>(180)
+    private var allGeneratedTxtViewsIds = ArrayList<Int>(36)
+    private var allGeneratedRadioGroupIds = ArrayList<Int>(36)
+    private var allGeneratedRadioButtonIds = ArrayList<Int>(180)
     private var useLayout1 : Boolean = true
     private var firstLayoutCompleted : Boolean = false
     private var patientTest = Test()
@@ -114,12 +122,20 @@ class OPQOLCheckFragment : Fragment() {
         return rootView
     }
 
+    @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         opqolPatientViewModel.passActivity(mainActivity)
         opqolPatientViewModel.passFragment(this)
         opqolPatientViewModel.initialiseRealm()
+
+        //randomise the elements of the xml layout
+        val xmlResourceId = R.layout.fragment_o_p_q_o_l_check_1
+        val inputStream: InputStream = resources.openRawResource(xmlResourceId)
+        val components = parseComponents(inputStream)
+        // Shuffle the list of components
+        val shuffledComponents = components.shuffled()
 
         opqolCheckBinding.includeCvdTitleForm.userIcon.alpha = 1f
 
@@ -632,6 +648,7 @@ class OPQOLCheckFragment : Fragment() {
 //        return layout
 //    }
 
+
     // Function to switch layouts
     private fun switchLayout() {
         useLayout1 = !useLayout1 // Toggle between layouts
@@ -1040,6 +1057,89 @@ class OPQOLCheckFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
+    }
+
+    //xml randomization of questions methods
+    data class Component(
+        val relativeLayout: RelativeLayout,
+        val textView: TextView,
+        val radioGroup: RadioGroup,
+        val radioButtons: List<RadioButton>
+    )
+
+    fun parseComponents(inputStream: InputStream): List<Component> {
+        val components = mutableListOf<Component>()
+        val factory = DocumentBuilderFactory.newInstance()
+        val builder = factory.newDocumentBuilder()
+        val doc = builder.parse(inputStream)
+        val nodeList = doc.getElementsByTagName("RelativeLayout")
+
+        for (i in 0 until nodeList.length) {
+            val node = nodeList.item(i)
+            if (node.nodeType == Node.ELEMENT_NODE) {
+                val element = node as Element
+                val relativeLayout = element.getElementsByTagName("RelativeLayout").item(0) as RelativeLayout
+                val textView = element.getElementsByTagName("TextView").item(0) as TextView
+                val radioGroup = element.getElementsByTagName("RadioGroup").item(0) as RadioGroup
+                val radioButtons = mutableListOf<RadioButton>()
+                val radioButtonList = element.getElementsByTagName("RadioButton")
+
+                for (j in 0 until radioButtonList.length) {
+                    val radioButtonNode = radioButtonList.item(j)
+                    if (radioButtonNode.nodeType == Node.ELEMENT_NODE) {
+                        val radioButton = radioButtonNode as RadioButton
+                        radioButtons.add(radioButton)
+                    }
+                }
+
+                components.add(Component(relativeLayout , textView, radioGroup, radioButtons))
+            }
+        }
+
+        return components
+    }
+
+    fun generateXmlDocument(components: List<Component>): Document {
+        val factory = DocumentBuilderFactory.newInstance()
+        val builder = factory.newDocumentBuilder()
+        val doc = builder.newDocument()
+
+        val rootElement = doc.createElement("Components")
+        doc.appendChild(rootElement)
+
+        // Iterate over the shuffled list of components
+        for (component in components) {
+            val componentElement = doc.createElement("RelativeLayout")
+            //set the attributes for the relative layout
+//          Set layout width and height
+            componentElement.setAttribute("android:layout_width", "wrap_content")
+            componentElement.setAttribute("android:layout_height", "wrap_content")
+
+//          Set margin attributes
+            componentElement.setAttribute("android:layout_marginLeft", "16dp")
+            componentElement.setAttribute("android:layout_marginRight", "16dp")
+
+            val id = View.generateViewId().toString()
+            componentElement.setAttribute("android:id" , id)
+            allGeneratedRelativeLayoutIds.add(id.toInt())
+            componentElement.setAttribute("android:background" ,"@drawable/relativelayout_style" )
+            val textViewElement = doc.createElement("TextView")
+            textViewElement.textContent = component.textView.text.toString()
+            componentElement.appendChild(textViewElement)
+
+            val radioGroupElement = doc.createElement("RadioGroup")
+            componentElement.appendChild(radioGroupElement)
+
+            for (radioButton in component.radioButtons) {
+                val radioButtonElement = doc.createElement("RadioButton")
+                radioButtonElement.textContent = radioButton.text.toString()
+                radioGroupElement.appendChild(radioButtonElement)
+            }
+
+            rootElement.appendChild(componentElement)
+        }
+
+        return doc
     }
 
 
