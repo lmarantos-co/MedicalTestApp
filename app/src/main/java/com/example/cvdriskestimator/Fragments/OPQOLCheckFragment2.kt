@@ -268,15 +268,15 @@ class OPQOLCheckFragment2 : Fragment() {
 
             var thePatientSelections = ArrayList<Int>(36)
 
-            for (i in 0..selectionsFromPreviousFragment.size)
+            for (i in 0..selectionsFromPreviousFragment.size -1)
             {
-                thePatientSelections.set(i , selectionsFromPreviousFragment.get(i))
+                thePatientSelections.add(i , selectionsFromPreviousFragment.get(i))
             }
 
             var counter = 17
-            for (i in 0..thePatientSelections.size)
+            for (i in 0..thePatientSelections.size -1)
             {
-                thePatientSelections.set(counter , selectionsFromPreviousFragment.get(i))
+                thePatientSelections.add(counter , selectionsFromPreviousFragment.get(i))
                 counter ++
             }
             opqolPatientViewModel.passAllPatientSelections(thePatientSelections)

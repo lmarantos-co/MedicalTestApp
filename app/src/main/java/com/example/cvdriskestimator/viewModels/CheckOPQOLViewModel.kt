@@ -171,6 +171,7 @@ class CheckOPQOLViewModel : ViewModel()
 
     fun openResultFragment()
     {
+        opqolTestEstimator = OPQOLTestEstimator(allPatientSelections)
         val result = opqolTestEstimator.opqolTestEstimator()
         resultFragment = ResultFragment.newInstance(result.toDouble() , 0.0 ,  13, null)
         mainActivity.fragmentTransaction(resultFragment)

@@ -22,6 +22,7 @@ import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.customClasses.customDerpesionProgressView
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.customClasses.PieChartView
 import kotlinx.coroutines.*
 import java.util.*
 
@@ -854,21 +855,40 @@ class ResultFragment : Fragment() {
         {
             var score = arguments!!.getDouble(ARG_PARAM1)
             view = inflater.inflate(R.layout.fragment_result_opqol_test, container, false) as View
+            MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
+            menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+            closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+            companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+            termsRelLayout.visibility = View.INVISIBLE
             opqolTestResult = view.findViewById(R.id.totalScoreDescOPQOLTxtV)
             pieChartView = view.findViewById(R.id.pieChartView)
             opqolTestResult.setText((String.format(
                 resources.getString(R.string.mds_test_score),
                 String.format("%.2f", score.toFloat())
             )))
+
+            // Inside your activity or fragment
+            var angle = (score  / 140) * 360
+            val circleView = PieChartView(context!!, angle.toFloat())
+            val layoutParams = RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+            )
+            layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
+            circleView.layoutParams = layoutParams
+
+            pieChartView.addView(circleView)
         }
+
+
 
             return view
     }
 
-    private fun designPieChart(chartLayout : RelativeLayout)
-    {
-        chartLayout.
-    }
 
     private fun higlightDASSTxtViewsWithScore() {
 
