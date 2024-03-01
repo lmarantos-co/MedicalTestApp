@@ -110,7 +110,7 @@ class CheckBAIPatientViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Int)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  4 , null)
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  4 , null , null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

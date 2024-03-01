@@ -22,6 +22,7 @@ import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.customClasses.customDerpesionProgressView
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.customClasses.BarChartView
 import com.example.cvdriskestimator.customClasses.PieChartView
 import kotlinx.coroutines.*
 import java.util.*
@@ -36,6 +37,7 @@ private const val ARG_PARAM1 = "risk_result1"
 private const val ARG_PARAM2 = "risk_result2"
 private const val ARG_PARAM4 = "risk_result4"
 private const val ARG_PARAM3 = "test_type"
+private const val ARG_PARAM5 = "oqpol_selections"
 
 
 class ResultFragment : Fragment() {
@@ -878,10 +880,11 @@ class ResultFragment : Fragment() {
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT
             )
+            val selections = arguments!!.getSerializable(ARG_PARAM5) as ArrayList<Int>
             layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
             circleView.layoutParams = layoutParams
-
-            pieChartView.addView(circleView)
+            val barChartView = BarChartView(context!! , selections)
+            pieChartView.addView(barChartView)
         }
 
 
@@ -6210,7 +6213,7 @@ fun showMDIResultBarViews()
 
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: Double, param2: Double , param3: Int , param4 : Double?) =
+        fun newInstance(param1: Double, param2: Double , param3: Int , param4 : Double?, param5 : ArrayList<Int>?) =
             ResultFragment().apply {
                 arguments = Bundle().apply {
                     putDouble(ARG_PARAM1, param1)
@@ -6218,6 +6221,8 @@ fun showMDIResultBarViews()
                     if (param4 != null)
                         putDouble(ARG_PARAM4 , param4!!)
                     putInt(ARG_PARAM3 , param3)
+                    if (param5 != null)
+                        putSerializable(ARG_PARAM5 , param5)
                 }
             }
     }

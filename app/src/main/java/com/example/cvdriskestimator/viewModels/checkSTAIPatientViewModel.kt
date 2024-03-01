@@ -114,7 +114,7 @@ class CheckSTAIPatientViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Pair<Int , Int>)
     {
-        resultFragment = ResultFragment.newInstance(testResult.first.toDouble() , testResult.second.toDouble() ,  10 , null)
+        resultFragment = ResultFragment.newInstance(testResult.first.toDouble() , testResult.second.toDouble() ,  10 , null , null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

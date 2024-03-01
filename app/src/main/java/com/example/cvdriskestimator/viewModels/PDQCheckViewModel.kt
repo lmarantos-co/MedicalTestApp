@@ -102,12 +102,6 @@ class PDQCheckViewModel : ViewModel() {
                 && (checkQuestionForInputError(allPatientSelections[8]  , 9)) && (checkQuestionForInputError(allPatientSelections[9]  , 10)))
     }
 
-    private fun openResultFragment(testResult : Int)
-    {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 , 8, null)
-        mainActivity.fragmentTransaction(resultFragment)
-    }
-
     fun initializePatientData()
     {
         var userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userame" , "tempUser")

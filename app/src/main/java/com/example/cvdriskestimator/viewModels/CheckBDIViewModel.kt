@@ -108,7 +108,7 @@ class CheckBDIPatientViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Int)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  8, null)
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  8, null , null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

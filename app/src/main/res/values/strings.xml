@@ -898,4 +898,5 @@
     <string name="OPQOL35Q2Category8Q34">(34) Η θρησκεία, οι πεποιθήσεις ή η φιλοσοφία είναι σημαντικά για την ποιότητα ζωής μου</string>
     <string name="OPQOL35Q2Category8Q35">(35) Οι πολιτισμικές/ θρησκευτικές εκδηλώσεις και γιορτές είναι σημαντικές για την ποιότητα ζωής μου.</string>
     <string name="OPQOL35Q2Category8Q36">(36) Έχω ευθύνες προς τους άλλους οι οποίες περιορίζουν τις κοινωνικές μου δραστηριότητες ή τα χόμπι μου</string>
+    <string name="opqol_test_results">OPQOL Test</string>
 </resources>

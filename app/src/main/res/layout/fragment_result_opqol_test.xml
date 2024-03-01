@@ -38,7 +38,7 @@
         android:minHeight="48dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:text="@string/bdi_test_results"
+        android:text="@string/opqol_test_results"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

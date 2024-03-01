@@ -106,7 +106,7 @@ class CheckDASSPatientViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Triple<Int , Int , Int>)
     {
-        resultFragment = ResultFragment.newInstance(testResult.first.toDouble() , testResult.second.toDouble() ,  11 , testResult.third.toDouble())
+        resultFragment = ResultFragment.newInstance(testResult.first.toDouble() , testResult.second.toDouble() ,  11 , testResult.third.toDouble() , null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

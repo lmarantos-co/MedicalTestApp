@@ -149,7 +149,7 @@ class CheckGDSViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Int)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 , 7 , null)
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 , 7 , null , null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

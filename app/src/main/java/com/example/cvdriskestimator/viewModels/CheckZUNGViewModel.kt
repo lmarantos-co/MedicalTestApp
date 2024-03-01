@@ -106,7 +106,7 @@ class CheckZUNGPatientViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Int)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  12 , null)
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 ,  12 , null , null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 

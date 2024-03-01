@@ -274,9 +274,9 @@ class OPQOLCheckFragment2 : Fragment() {
             }
 
             var counter = 17
-            for (i in 0..thePatientSelections.size -1)
+            for (i in 0..allPatientSelections.size -1)
             {
-                thePatientSelections.add(counter , selectionsFromPreviousFragment.get(i))
+                thePatientSelections.add(counter , allPatientSelections.get(i)!!)
                 counter ++
             }
             opqolPatientViewModel.passAllPatientSelections(thePatientSelections)

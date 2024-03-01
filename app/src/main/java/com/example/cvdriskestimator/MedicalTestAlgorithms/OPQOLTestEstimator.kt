@@ -2,7 +2,7 @@ package com.example.cvdriskestimator.MedicalTestAlgorithms
 
 class OPQOLTestEstimator(allPatientSelections : ArrayList<Int>) {
 
-    private  var patientSelections = IntArray(35)
+    private  var patientSelections = IntArray(36)
 
     init {
         for (i in 0..allPatientSelections.size -1)
