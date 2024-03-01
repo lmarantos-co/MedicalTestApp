@@ -206,6 +206,10 @@ class ResultFragment : Fragment() {
     private lateinit var dassExtSevereAnxiety : TextView
     private lateinit var dassExtSevereStress : TextView
 
+    //OPQOL Test
+    private lateinit var opqolTestResult : TextView
+    private lateinit var pieChartView : RelativeLayout
+
     //screen dimensions
     var screenWidth: Int = 0
     var screenHeight: Int = 0
@@ -289,7 +293,7 @@ class ResultFragment : Fragment() {
         }
         if (test_type == 3) {
             view = inflater.inflate(R.layout.fragment_result_mdi_test, container, false) as View
-            formConLayout = view.findViewById(R.id.results_con_layout_zung_test)
+            formConLayout = view.findViewById(R.id.results_con_layout_opqol_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -311,7 +315,7 @@ class ResultFragment : Fragment() {
             moderateDepressionView = view.findViewById(R.id.modDepResultView)
             severeDepressionView = view.findViewById(R.id.severeDepResultView)
             totalScore = view.findViewById(R.id.totalScore)
-            depressStatus = view.findViewById(R.id.depressionStatus)
+            depressStatus = view.findViewById(R.id.QOLStatus)
             setMDIResultsOnForm(
                 arguments!!.getDouble(ARG_PARAM1).toInt(),
                 getMDIResult(arguments!!.getDouble(ARG_PARAM1).toInt())
@@ -383,7 +387,7 @@ class ResultFragment : Fragment() {
             userIcon.alpha = 1f
             testHeadling = view.findViewById(R.id.mdsTestTitleTxtV)
             mdsTestScore = view.findViewById(R.id.totalPSScore)
-            mdsTestResult = view.findViewById(R.id.totalScoreDescTxtV)
+            mdsTestResult = view.findViewById(R.id.totalScoreDescOPQOLTxtV)
             val score = arguments!!.getDouble(ARG_PARAM1)
             mdsTestScore.text = (String.format(
                 resources.getString(R.string.mds_test_score),
@@ -466,7 +470,7 @@ class ResultFragment : Fragment() {
         if (test_type == 7) {
             if (test_type == 3) {
                 view = inflater.inflate(R.layout.fragment_result_mdi_test, container, false) as View
-                formConLayout = view.findViewById(R.id.results_con_layout_zung_test)
+                formConLayout = view.findViewById(R.id.results_con_layout_opqol_test)
                 MTEtitle = view.findViewById(R.id.include_cvd_title_form)
                 menuConLayout = view.findViewById(R.id.include_pop_up_menu)
                 termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -489,7 +493,7 @@ class ResultFragment : Fragment() {
                 moderateDepressionView = view.findViewById(R.id.modDepResultView)
                 severeDepressionView = view.findViewById(R.id.severeDepResultView)
                 totalScore = view.findViewById(R.id.totalScore)
-                depressStatus = view.findViewById(R.id.depressionStatus)
+                depressStatus = view.findViewById(R.id.QOLStatus)
                 setMDIResultsOnForm(
                     requireArguments().getDouble(ARG_PARAM1).toInt(),
                     getMDIResult(requireArguments().getDouble(ARG_PARAM1).toInt())
@@ -537,7 +541,7 @@ class ResultFragment : Fragment() {
             userIcon.alpha = 1f
             testHeadling = view.findViewById(R.id.gdsTestTitleTxtV)
             gdsTestScore = view.findViewById(R.id.totalPSScore)
-            gdsTestResult = view.findViewById(R.id.totalScoreDescTxtV)
+            gdsTestResult = view.findViewById(R.id.totalScoreDescOPQOLTxtV)
             val score = arguments!!.getDouble(ARG_PARAM1)
              gdsTestResult.text = (String.format(
                 resources.getString(R.string.mds_test_score),
@@ -565,7 +569,7 @@ class ResultFragment : Fragment() {
 
         if (test_type == 8) {
             view = inflater.inflate(R.layout.fragment_result_bdi_test, container, false) as View
-            formConLayout = view.findViewById(R.id.results_con_layout_zung_test)
+            formConLayout = view.findViewById(R.id.results_con_layout_opqol_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -574,7 +578,7 @@ class ResultFragment : Fragment() {
             companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
             userIcon = MTEtitle.findViewById(R.id.userIcon)
             userIcon.alpha = 1f
-            testHeadling = view.findViewById(R.id.zungTestTitleTxtV)
+            testHeadling = view.findViewById(R.id.opqolTestTitleTxtV)
             riskResultTxtV = view.findViewById(R.id.testResultTxtV)
             depressionProgressBar = RelativeLayout(mainActivity.applicationContext)
             depressionProgressBar = view.findViewById(R.id.resulVerticalProgressBar)
@@ -589,7 +593,7 @@ class ResultFragment : Fragment() {
             severeDepressionView = view.findViewById(R.id.severeDepResultView)
             mostSevereDepressionView = view.findViewById(R.id.mostSevereDepResultView)
             totalScore = view.findViewById(R.id.totalScore)
-            depressStatus = view.findViewById(R.id.depressionStatus)
+            depressStatus = view.findViewById(R.id.QOLStatus)
             setBDIResultsOnForm(
                 requireArguments().getDouble(ARG_PARAM1).toInt(),
                 getBDIResult(requireArguments().getDouble(ARG_PARAM1).toInt())
@@ -633,7 +637,7 @@ class ResultFragment : Fragment() {
 
         if (test_type == 9) {
             view = inflater.inflate(R.layout.fragment_hammilton_result_fragment, container, false) as View
-            formConLayout = view.findViewById(R.id.results_con_layout_zung_test)
+            formConLayout = view.findViewById(R.id.results_con_layout_opqol_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -655,7 +659,7 @@ class ResultFragment : Fragment() {
             moderateDepressionView = view.findViewById(R.id.modDepResultView)
             severeDepressionView = view.findViewById(R.id.severeDepResultView)
             totalScore = view.findViewById(R.id.totalScore)
-            depressStatus = view.findViewById(R.id.depressionStatus)
+            depressStatus = view.findViewById(R.id.QOLStatus)
             setHAMResultsOnForm(
                 requireArguments().getDouble(ARG_PARAM1).toInt(),
                 getHAMMResult(requireArguments().getDouble(ARG_PARAM1).toInt())
@@ -780,7 +784,7 @@ class ResultFragment : Fragment() {
 
         if (test_type == 12) {
             view = inflater.inflate(R.layout.fragment_result_zung_test, container, false) as View
-            formConLayout = view.findViewById(R.id.results_con_layout_zung_test)
+            formConLayout = view.findViewById(R.id.results_con_layout_opqol_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -789,7 +793,7 @@ class ResultFragment : Fragment() {
             companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
             userIcon = MTEtitle.findViewById(R.id.userIcon)
             userIcon.alpha = 1f
-            testHeadling = view.findViewById(R.id.zungTestTitleTxtV)
+            testHeadling = view.findViewById(R.id.opqolTestTitleTxtV)
             riskResultTxtV = view.findViewById(R.id.testResultTxtV)
             depressionProgressBar = RelativeLayout(mainActivity.applicationContext)
             depressionProgressBar = view.findViewById(R.id.resulVerticalProgressBar)
@@ -804,7 +808,7 @@ class ResultFragment : Fragment() {
             severeDepressionView = view.findViewById(R.id.severeDepResultView)
             mostSevereDepressionView = view.findViewById(R.id.mostSevereDepResultView)
             totalScore = view.findViewById(R.id.totalScore)
-            depressStatus = view.findViewById(R.id.depressionStatus)
+            depressStatus = view.findViewById(R.id.QOLStatus)
             setBDIResultsOnForm(
                 requireArguments().getDouble(ARG_PARAM1).toInt(),
                 getZUNGResult(requireArguments().getDouble(ARG_PARAM1).toInt())
@@ -846,7 +850,24 @@ class ResultFragment : Fragment() {
 
         }
 
+        if (test_type == 13)
+        {
+            var score = arguments!!.getDouble(ARG_PARAM1)
+            view = inflater.inflate(R.layout.fragment_result_opqol_test, container, false) as View
+            opqolTestResult = view.findViewById(R.id.totalScoreDescOPQOLTxtV)
+            pieChartView = view.findViewById(R.id.pieChartView)
+            opqolTestResult.setText((String.format(
+                resources.getString(R.string.mds_test_score),
+                String.format("%.2f", score.toFloat())
+            )))
+        }
+
             return view
+    }
+
+    private fun designPieChart(chartLayout : RelativeLayout)
+    {
+        chartLayout.
     }
 
     private fun higlightDASSTxtViewsWithScore() {

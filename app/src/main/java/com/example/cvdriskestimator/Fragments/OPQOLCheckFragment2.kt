@@ -6,25 +6,19 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.RelativeLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.MainActivity
-import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.customClasses.PopUpMenu
-import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck1Binding
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck2Binding
 import com.example.cvdriskestimator.viewModels.CheckOPQOLPatientViewModelFactory
 import com.example.cvdriskestimator.viewModels.CheckOPQOLViewModel
@@ -271,6 +265,24 @@ class OPQOLCheckFragment2 : Fragment() {
                 getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8eRG)
             allPatientSelections[17] =
                 getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8fRG)
+
+            var thePatientSelections = ArrayList<Int>(36)
+
+            for (i in 0..selectionsFromPreviousFragment.size)
+            {
+                thePatientSelections.set(i , selectionsFromPreviousFragment.get(i))
+            }
+
+            var counter = 17
+            for (i in 0..thePatientSelections.size)
+            {
+                thePatientSelections.set(counter , selectionsFromPreviousFragment.get(i))
+                counter ++
+            }
+            opqolPatientViewModel.passAllPatientSelections(thePatientSelections)
+            if (opqolPatientViewModel.checkOPQOLTestPatient2(allPatientSelections))
+                opqolPatientViewModel.openResultFragment()
+
         }
 
 

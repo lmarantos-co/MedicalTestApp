@@ -154,7 +154,7 @@
             android:paddingBottom="5dp">
 
             <TextView
-                android:id="@+id/totalScoreDescTxtV"
+                android:id="@+id/totalScoreDescOPQOLTxtV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"

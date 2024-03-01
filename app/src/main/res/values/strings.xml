@@ -104,6 +104,8 @@
     <string name="GDS15">Αισθάνεστε ότι οι περισσότεροι άνθρωποι είναι καλύτερα από εσάς</string>
     <string name="gds_test_results">Getiatric Depression Scale Score Results</string>
     <string name="gds_test_score">Your results  score : %1$s</string>
+    <string name="opqol_test_qol">The level of quality of life : </string>
+
     <string name="BAIQ1">1. Numbness or tingling</string>
     <string name="BAIQ2">2. Feeling hot</string>
     <string name="BAIQ3">3. Wobbliness in legs</string>
