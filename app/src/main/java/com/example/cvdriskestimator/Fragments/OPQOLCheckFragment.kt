@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
-import android.graphics.Canvas
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.Gravity
+import android.util.Log
+import android.util.Xml
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +25,7 @@ import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.customClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.XMLUtils
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck1Binding
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck2Binding
 import com.example.cvdriskestimator.viewModels.CheckOPQOLPatientViewModelFactory
@@ -32,8 +33,18 @@ import com.example.cvdriskestimator.viewModels.CheckOPQOLViewModel
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
+import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserException
+import java.io.IOException
 import java.io.InputStream
+import java.io.StringReader
+import java.io.StringWriter
 import javax.xml.parsers.DocumentBuilderFactory
+import javax.xml.transform.OutputKeys
+import javax.xml.transform.Transformer
+import javax.xml.transform.TransformerFactory
+import javax.xml.transform.dom.DOMSource
+import javax.xml.transform.stream.StreamResult
 
 
 class OPQOLCheckFragment : Fragment() {
@@ -63,11 +74,28 @@ class OPQOLCheckFragment : Fragment() {
 //    private var allGeneratedRadioButtons = ArrayList<RadioButton>(180)
 //
 //    // test components id
-    private var allGeneratedRelativeLayoutIds = ArrayList<Int>(36)
+    private var allGeneratedRelativeLayoutIds = ArrayList<Int>(17)
 //    private var allGeneratedCatTxtViewsIds = ArrayList<Int>(36)
-    private var allGeneratedTxtViewsIds = ArrayList<Int>(36)
-    private var allGeneratedRadioGroupIds = ArrayList<Int>(36)
-    private var allGeneratedRadioButtonIds = ArrayList<Int>(180)
+    private var fragment1Randomized : Boolean = false
+    private var fragment2Randomized : Boolean = false
+    private lateinit var components : List<Component>
+    private var allGeneratedTxtViewsIds = ArrayList<Int>(17)
+    private var allGeneratedRadioGroupIds = ArrayList<Int>(17)
+    private var allGeneratedRadioButtonIds = ArrayList<Int>(85)
+    private var allGeneratedRadioGroups = ArrayList<RadioGroup>(17)
+    var questionNoList = ArrayList<Int>(35)
+    private var allGeneratedRelativeLayoutIds2Fr = ArrayList<Int>(18)
+    //    private var allGeneratedCatTxtViewsIds = ArrayList<Int>(36)
+    private var allGeneratedTxtViewsIds2Fr = ArrayList<Int>(18)
+    private var allGeneratedRadioGroupIds2Fr = ArrayList<Int>(18)
+    private var allGeneratedRadioButtonIds2Fr = ArrayList<Int>(90)
+    private var allGeneratedRadioGroups2Fr = ArrayList<RadioGroup>(18)
+    private var Fragment1Set : Boolean = false
+    private var Fragment2Set : Boolean = false
+    private lateinit var fragment1Document : String
+    private lateinit var fragment2Document : String
+    private lateinit var fragment1Doc : Document
+    private lateinit var fragment2Doc : Document
     private var useLayout1 : Boolean = true
     private var firstLayoutCompleted : Boolean = false
     private var patientTest = Test()
@@ -81,6 +109,7 @@ class OPQOLCheckFragment : Fragment() {
         }
     }
 
+    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -118,6 +147,92 @@ class OPQOLCheckFragment : Fragment() {
                     otherFragmentSelectionsExists = true
                 }
             }
+            if (it.containsKey("Fragment1Document"))
+            {
+                fragment1Document = it.getString("Fragment1Document")!!
+            }
+            if (it.containsKey("Fragment2Document"))
+            {
+                fragment2Document = it.getString("Fragment2Document")!!
+            }
+            if (it.containsKey("allGeneratedRelativeLayoutIds2Fr"))
+            {
+                allGeneratedRelativeLayoutIds2Fr = it.getSerializable("allGeneratedRelativeLayoutIds2Fr") as ArrayList<Int>
+            }
+            if (it.containsKey("allGeneratedTxtViewsIds2Fr"))
+            {
+                allGeneratedTxtViewsIds2Fr = it.getSerializable("allGeneratedTxtViewsIds2Fr") as ArrayList<Int>
+            }
+            if (it.containsKey("allGeneratedRadioGroupIds2Fr"))
+            {
+                allGeneratedRadioGroupIds2Fr = it.getSerializable("allGeneratedRadioGroupIds2Fr") as ArrayList<Int>
+            }
+            if (it.containsKey("allGeneratedRadioButtonIds2Fr"))
+            {
+                allGeneratedRadioButtonIds2Fr = it.getSerializable("allGeneratedRadioButtonIds2Fr") as ArrayList<Int>
+            }
+            if (it.containsKey("allGeneratedRadioGroups2Fr"))
+            {
+                allGeneratedRadioGroups2Fr = it.getSerializable("allGeneratedRadioGroups2Fr") as ArrayList<RadioGroup>
+            }
+            if (it.containsKey("Questions"))
+            {
+                questionNoList = it.getSerializable("Questions") as ArrayList<Int>
+            }
+            if (it.containsKey("allGeneratedRelativeLayoutIds1Fr"))
+            {
+                allGeneratedRelativeLayoutIds = it.getSerializable("allGeneratedRelativeLayoutIds") as ArrayList<Int>
+            }
+            if (it.containsKey("allGeneratedTxtViewsIds"))
+            {
+                allGeneratedTxtViewsIds = it.getSerializable("allGeneratedTxtViewsIds") as ArrayList<Int>
+            }
+            if (it.containsKey("allGeneratedRadioGroupIds"))
+            {
+                allGeneratedRadioGroupIds = it.getSerializable("allGeneratedRadioGroupIds") as ArrayList<Int>
+            }
+            if (it.containsKey("allGeneratedRadioButtonIds"))
+            {
+                allGeneratedRadioButtonIds = it.getSerializable("allGeneratedRadioButtonIds") as ArrayList<Int>
+            }
+            if (it.containsKey("allGeneratedRadioGroups"))
+            {
+                allGeneratedRadioGroups = it.getSerializable("allGeneratedRadioGroups") as ArrayList<RadioGroup>
+            }
+            if (!fragment1Randomized)
+            {
+                //randomise the elements of the xml layout
+                val xmlResourceId = R.layout.fragment_o_p_q_o_l_check_1
+                val inputStream: InputStream = resources.openRawResource(xmlResourceId)
+                components = parseComponents(inputStream).toMutableList()
+                components.drop(1)
+                // Shuffle the list of components
+//        val shuffledComponents = components.shuffled()
+                questionNoList = ArrayList<Int>(35)
+                for (i in 0..34)
+                {
+                    questionNoList.add(i)
+                }
+                questionNoList.shuffle()
+                for (i in 0..16)
+                {
+                    var temp = components.get(i)
+                    components.toMutableList()[i] = components.get(questionNoList.get(i))
+                    components.toMutableList()[questionNoList.get(i)] = temp
+                }
+                fragment1Doc = generateXmlDocument(components , questionNoList)
+                fragment1Document = convertDocumentToString(fragment1Doc!!)!!
+
+                for (i in 0..16)
+                {
+                    var newRadioGroup = view!!.findViewById<RadioGroup>(allGeneratedRadioGroupIds.get(i))
+                    allGeneratedRadioGroups.add(newRadioGroup)
+                }
+                fragment1Randomized = true
+            }
+            if (fragment1Randomized)
+                fragment1Doc = XMLUtils.parseXMLFromString(fragment1Document)!!
+            addXmlToView(view!! , fragment1Document)
         }
         return rootView
     }
@@ -130,25 +245,6 @@ class OPQOLCheckFragment : Fragment() {
         opqolPatientViewModel.passFragment(this)
         opqolPatientViewModel.initialiseRealm()
 
-        //randomise the elements of the xml layout
-        val xmlResourceId = R.layout.fragment_o_p_q_o_l_check_1
-        val inputStream: InputStream = resources.openRawResource(xmlResourceId)
-        val components = parseComponents(inputStream).toMutableList()
-        components.drop(1)
-        // Shuffle the list of components
-//        val shuffledComponents = components.shuffled()
-        var questionNoList = ArrayList<Int>(35)
-        for (i in 0..34)
-        {
-            questionNoList.add(i)
-        }
-        questionNoList.shuffle()
-        for (i in 0..34)
-        {
-            var temp = components.get(i)
-            components[i] = components.get(questionNoList.get(i))
-            components[questionNoList.get(i)] = temp
-        }
 
         opqolCheckBinding.includeCvdTitleForm.userIcon.alpha = 1f
 
@@ -405,23 +501,23 @@ class OPQOLCheckFragment : Fragment() {
         opqolCheckBinding.rightArrow.setOnClickListener {
 
 //            allPatientSelections[0] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ1RG)
-            allPatientSelections[0] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C1RG)
-            allPatientSelections[1] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C1bRG)
-            allPatientSelections[2] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C1cRG)
-            allPatientSelections[3] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C1dRG)
-            allPatientSelections[4] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C2aRG)
-            allPatientSelections[5] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C2bRG)
-            allPatientSelections[6] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C2cRG)
-            allPatientSelections[7] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C2dRG)
-            allPatientSelections[8] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C3aRG)
-            allPatientSelections[9] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C3bRG)
-            allPatientSelections[10] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C3cRG)
-            allPatientSelections[11] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C3dRG)
-            allPatientSelections[12] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C3eRG)
-            allPatientSelections[13] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C4aRG)
-            allPatientSelections[14] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C4bRG)
-            allPatientSelections[15] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C4cRG)
-            allPatientSelections[16] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ2C4dRG)
+            allPatientSelections[0] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(0))
+            allPatientSelections[1] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(1))
+            allPatientSelections[2] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(2))
+            allPatientSelections[3] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(3))
+            allPatientSelections[4] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(4))
+            allPatientSelections[5] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(5))
+            allPatientSelections[6] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(6))
+            allPatientSelections[7] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(7))
+            allPatientSelections[8] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(8))
+            allPatientSelections[9] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(9))
+            allPatientSelections[10] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(10))
+            allPatientSelections[11] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(11))
+            allPatientSelections[12] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(12))
+            allPatientSelections[13] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(13))
+            allPatientSelections[14] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(14))
+            allPatientSelections[15] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(15))
+            allPatientSelections[16] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(16))
             thisFragmentPatientSelections = allPatientSelections
 
             if (opqolPatientViewModel.checkOPQOLTestPatient1(allPatientSelections))
@@ -430,9 +526,23 @@ class OPQOLCheckFragment : Fragment() {
                 if (otherFragmentSelectionsExists)
                 {
                     args.putSerializable("Answers2" , otherFragmentPatientSelections)
+                    args.putBoolean("Fragment2Set" , true)
+                    args.putSerializable("allGeneratedRelativeLayoutIds2Fr" , allGeneratedRelativeLayoutIds2Fr)
+                    args.putSerializable("allGeneratedTxtViewsIds2Fr" , allGeneratedTxtViewsIds2Fr)
+                    args.putSerializable("allGeneratedRadioGroupIds2Fr" , allGeneratedRadioGroupIds2Fr)
+                    args.putSerializable("allGeneratedRadioButtonIds2Fr" , allGeneratedRadioButtonIds2Fr)
+                    args.putSerializable("allGeneratedRadioGroups2Fr" , allGeneratedRadioGroups2Fr)
+                    args.putString("Fragment2Document" , convertDocumentToString(fragment2Doc!!))
                 }
 
-                    args.putSerializable("Answers" , thisFragmentPatientSelections)
+                args.putSerializable("Answers" , thisFragmentPatientSelections)
+                args.putBoolean("Fragment1Set" , true)
+                args.putSerializable("AllQuestions" , questionNoList)
+                args.putSerializable("allGeneratedRelativeLayoutIdsFirstFragment" , allGeneratedRelativeLayoutIds)
+                args.putSerializable("allGeneratedTxtViewsIdsFirstFragment" , allGeneratedTxtViewsIds)
+                args.putSerializable("allGeneratedRadioGroupIdsFirstFragment" , allGeneratedRadioGroupIds)
+                args.putSerializable("allGeneratedRadioGrousFirstFragment" , allGeneratedRadioGroups)
+                args.putString("Fragment1Document" , convertDocumentToString(fragment1Doc!!))
                 opqolCheckFragment2 = OPQOLCheckFragment2.newInstance(args)
                 mainActivity.fragmentTransaction(opqolCheckFragment2)
             }
@@ -663,120 +773,120 @@ class OPQOLCheckFragment : Fragment() {
 
 
     // Function to switch layouts
-    private fun switchLayout() {
-        useLayout1 = !useLayout1 // Toggle between layouts
-        // Reinflate the layout
-        view?.let { view ->
-            val newLayout = if (useLayout1) {
-                opqolCheckBinding = FragmentOPQOLCheck1Binding.inflate(layoutInflater)
-                opqolCheckBinding.root
-            } else {
-                opqolCheckBinding2 = FragmentOPQOLCheck2Binding.inflate(layoutInflater)
-                if (openHistory) {
-                    if (historyTest.OPQOLTestReesult != null) {
-                        setPatientData2(historyTest)
-                    }
-                }
-                else
-                {
-                    if (patientTest.OPQOLTestReesult != null)
-                    {
-                        setPatientData2(historyTest)
-                    }
-                }
-
-                opqolCheckBinding2.leftArrow.setOnClickListener {
-
-//            allPatientSelections[0] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ1RG)
-
-                        allPatientSelections[17] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5aRG)
-                        allPatientSelections[18] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5bRG)
-                        allPatientSelections[19] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5cRG)
-                        allPatientSelections[20] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5dRG)
-                        allPatientSelections[21] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6aRG)
-                        allPatientSelections[22] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6bRG)
-                        allPatientSelections[23] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6cRG)
-                        allPatientSelections[24] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6dRG)
-                        allPatientSelections[25] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7aRG)
-                        allPatientSelections[26] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7bRG)
-                        allPatientSelections[27] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7cRG)
-                        allPatientSelections[28] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7dRG)
-                        allPatientSelections[29] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8aRG)
-                        allPatientSelections[30] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8bRG)
-                        allPatientSelections[31] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8cRG)
-                        allPatientSelections[32] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8dRG)
-                        allPatientSelections[33] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8eRG)
-                        allPatientSelections[34] =
-                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8fRG)
-                        switchLayout()
-                }
-
-                opqolCheckBinding2.submitBtn.setOnClickListener {
-                    allPatientSelections[17] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5aRG)
-                    allPatientSelections[18] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5bRG)
-                    allPatientSelections[19] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5cRG)
-                    allPatientSelections[20] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5dRG)
-                    allPatientSelections[21] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6aRG)
-                    allPatientSelections[22] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6bRG)
-                    allPatientSelections[23] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6cRG)
-                    allPatientSelections[24] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6dRG)
-                    allPatientSelections[25] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7aRG)
-                    allPatientSelections[26] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7bRG)
-                    allPatientSelections[27] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7cRG)
-                    allPatientSelections[28] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7dRG)
-                    allPatientSelections[29] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8aRG)
-                    allPatientSelections[30] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8bRG)
-                    allPatientSelections[31] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8cRG)
-                    allPatientSelections[32] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8dRG)
-                    allPatientSelections[33] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8eRG)
-                    allPatientSelections[34] =
-                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8fRG)
-                }
-                    opqolPatientViewModel.checkOPQOLTestPatient2(allPatientSelections)
-                opqolCheckBinding2.root
-            }
-            // Replace the current layout with the new layout
-            (requireView().parent as? ViewGroup)?.apply {
-                removeAllViews()
-                addView(newLayout)
-            }
-        }
-
-    }
+//    private fun switchLayout() {
+//        useLayout1 = !useLayout1 // Toggle between layouts
+//        // Reinflate the layout
+//        view?.let { view ->
+//            val newLayout = if (useLayout1) {
+//                opqolCheckBinding = FragmentOPQOLCheck1Binding.inflate(layoutInflater)
+//                opqolCheckBinding.root
+//            } else {
+//                opqolCheckBinding2 = FragmentOPQOLCheck2Binding.inflate(layoutInflater)
+//                if (openHistory) {
+//                    if (historyTest.OPQOLTestReesult != null) {
+//                        setPatientData2(historyTest)
+//                    }
+//                }
+//                else
+//                {
+//                    if (patientTest.OPQOLTestReesult != null)
+//                    {
+//                        setPatientData2(historyTest)
+//                    }
+//                }
+//
+//                opqolCheckBinding2.leftArrow.setOnClickListener {
+//
+////            allPatientSelections[0] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ1RG)
+//
+//                        allPatientSelections[17] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5aRG)
+//                        allPatientSelections[18] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5bRG)
+//                        allPatientSelections[19] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5cRG)
+//                        allPatientSelections[20] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5dRG)
+//                        allPatientSelections[21] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6aRG)
+//                        allPatientSelections[22] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6bRG)
+//                        allPatientSelections[23] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6cRG)
+//                        allPatientSelections[24] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6dRG)
+//                        allPatientSelections[25] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7aRG)
+//                        allPatientSelections[26] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7bRG)
+//                        allPatientSelections[27] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7cRG)
+//                        allPatientSelections[28] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7dRG)
+//                        allPatientSelections[29] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8aRG)
+//                        allPatientSelections[30] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8bRG)
+//                        allPatientSelections[31] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8cRG)
+//                        allPatientSelections[32] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8dRG)
+//                        allPatientSelections[33] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8eRG)
+//                        allPatientSelections[34] =
+//                            getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8fRG)
+//                        switchLayout()
+//                }
+//
+//                opqolCheckBinding2.submitBtn.setOnClickListener {
+//                    allPatientSelections[17] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5aRG)
+//                    allPatientSelections[18] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5bRG)
+//                    allPatientSelections[19] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5cRG)
+//                    allPatientSelections[20] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C5dRG)
+//                    allPatientSelections[21] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6aRG)
+//                    allPatientSelections[22] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6bRG)
+//                    allPatientSelections[23] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6cRG)
+//                    allPatientSelections[24] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C6dRG)
+//                    allPatientSelections[25] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7aRG)
+//                    allPatientSelections[26] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7bRG)
+//                    allPatientSelections[27] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7cRG)
+//                    allPatientSelections[28] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C7dRG)
+//                    allPatientSelections[29] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8aRG)
+//                    allPatientSelections[30] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8bRG)
+//                    allPatientSelections[31] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8cRG)
+//                    allPatientSelections[32] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8dRG)
+//                    allPatientSelections[33] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8eRG)
+//                    allPatientSelections[34] =
+//                        getAsnwerFromRadioGroup2(opqolCheckBinding2.OPQOLQ2C8fRG)
+//                }
+//                    opqolPatientViewModel.checkOPQOLTestPatient2(allPatientSelections)
+//                opqolCheckBinding2.root
+//            }
+//            // Replace the current layout with the new layout
+//            (requireView().parent as? ViewGroup)?.apply {
+//                removeAllViews()
+//                addView(newLayout)
+//            }
+//        }
+//
+//    }
 
     private fun setPatientSelections(answers : ArrayList<Int?>)
     {
@@ -785,23 +895,23 @@ class OPQOLCheckFragment : Fragment() {
             //show all the data on the UI
 
 //            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ1RG , test.patientOPQOLQ1!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1RG, answers.get(0)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1bRG , answers.get(1)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1cRG , answers.get(2)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1dRG , answers.get(3)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2aRG , answers.get(4)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2bRG , answers.get(5)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2cRG , answers.get(6)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2dRG , answers.get(7)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3aRG , answers.get(8)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3bRG , answers.get(9)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3cRG , answers.get(10)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3dRG , answers.get(11)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3eRG , answers.get(12)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4aRG , answers.get(13)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4bRG , answers.get(14)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4cRG , answers.get(15)!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4dRG , answers.get(16)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(0), answers.get(0)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(1) , answers.get(1)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(2) , answers.get(2)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(3) , answers.get(3)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(4) , answers.get(4)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(5) , answers.get(5)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(6) , answers.get(6)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(7) , answers.get(7)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(8) , answers.get(8)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(9) , answers.get(9)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(10) , answers.get(10)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(11) , answers.get(11)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(12) , answers.get(12)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(13) , answers.get(13)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(14) , answers.get(14)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(15) , answers.get(15)!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(16) , answers.get(16)!!)
 
         } , 1000)
     }
@@ -813,101 +923,84 @@ class OPQOLCheckFragment : Fragment() {
             //show all the data on the UI
 
 //            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ1RG , test.patientOPQOLQ1!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1RG, test.patientOPQOLQ1!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1bRG , test.patientOPQOLQ2!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1cRG , test.patientOPQOLQ3!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C1dRG , test.patientOPQOLQ4!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2aRG , test.patientOPQOLQ5!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2bRG , test.patientOPQOLQ6!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2cRG , test.patientOPQOLQ7!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C2dRG , test.patientOPQOLQ8!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3aRG , test.patientOPQOLQ9!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3bRG , test.patientOPQOLQ10!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3cRG , test.patientOPQOLQ11!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3dRG , test.patientOPQOLQ12!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C3eRG , test.patientOPQOLQ13!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4aRG , test.patientOPQOLQ14!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4bRG , test.patientOPQOLQ15!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4cRG , test.patientOPQOLQ16!!)
-            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ2C4dRG , test.patientOPQOLQ17!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(0), test.patientOPQOLQ1!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(1) , test.patientOPQOLQ2!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(2) , test.patientOPQOLQ3!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(3) , test.patientOPQOLQ4!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(4) , test.patientOPQOLQ5!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(5) , test.patientOPQOLQ6!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(6) , test.patientOPQOLQ7!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(7) , test.patientOPQOLQ8!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(8) , test.patientOPQOLQ9!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(9) , test.patientOPQOLQ10!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(10) , test.patientOPQOLQ11!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(11) , test.patientOPQOLQ12!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(12) , test.patientOPQOLQ13!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(13) , test.patientOPQOLQ14!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(14) , test.patientOPQOLQ15!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(15) , test.patientOPQOLQ16!!)
+            setQuestionRadioGroup(allGeneratedRadioGroups.get(16) , test.patientOPQOLQ17!!)
 
         } , 1000)
     }
 
-    private fun setPatientData2(test : Test)
-    {
-        Handler(Looper.getMainLooper()).postDelayed({
-//            initialisePatientData()
-            //show all the data on the UI
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C5aRG , test.patientOPQOLQ18!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C5bRG , test.patientOPQOLQ19!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C5cRG , test.patientOPQOLQ20!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C5dRG , test.patientOPQOLQ21!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C6aRG , test.patientOPQOLQ22!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C6bRG , test.patientOPQOLQ23!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C6cRG , test.patientOPQOLQ24!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C6dRG , test.patientOPQOLQ25!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C7aRG , test.patientOPQOLQ26!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C7bRG , test.patientOPQOLQ27!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C7cRG, test.patientOPQOLQ28!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C7dRG , test.patientOPQOLQ29!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8aRG , test.patientOPQOLQ30!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8bRG , test.patientOPQOLQ31!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8cRG , test.patientOPQOLQ32!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8dRG , test.patientOPQOLQ33!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8eRG , test.patientOPQOLQ34!!)
-            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8fRG , test.patientOPQOLQ35!!)
-
-        } , 1000)
-    }
+//    private fun setPatientData2(test : Test)
+//    {
+//        Handler(Looper.getMainLooper()).postDelayed({
+////            initialisePatientData()
+//            //show all the data on the UI
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C5aRG , test.patientOPQOLQ18!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C5bRG , test.patientOPQOLQ19!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C5cRG , test.patientOPQOLQ20!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C5dRG , test.patientOPQOLQ21!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C6aRG , test.patientOPQOLQ22!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C6bRG , test.patientOPQOLQ23!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C6cRG , test.patientOPQOLQ24!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C6dRG , test.patientOPQOLQ25!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C7aRG , test.patientOPQOLQ26!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C7bRG , test.patientOPQOLQ27!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C7cRG, test.patientOPQOLQ28!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C7dRG , test.patientOPQOLQ29!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8aRG , test.patientOPQOLQ30!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8bRG , test.patientOPQOLQ31!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8cRG , test.patientOPQOLQ32!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8dRG , test.patientOPQOLQ33!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8eRG , test.patientOPQOLQ34!!)
+//            setQuestionRadioGroup(opqolCheckBinding2.OPQOLQ2C8fRG , test.patientOPQOLQ35!!)
+//
+//        } , 1000)
+//    }
 
 
     fun showSelectionError(error : String, qNo : Int) {
         Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
             when (qNo) {
-                1 -> opqolCheckBinding.OPQOLQ1RG.requestFocus()
-                2 -> opqolCheckBinding.OPQOLQ2C1RG.requestFocus()
-                3 -> opqolCheckBinding.OPQOLQ2C1bRG.requestFocus()
-                4 -> opqolCheckBinding.OPQOLQ2C1cRG.requestFocus()
-                5 -> opqolCheckBinding.OPQOLQ2C1dRG.requestFocus()
-                6 -> opqolCheckBinding.OPQOLQ2C2aRG.requestFocus()
-                7 -> opqolCheckBinding.OPQOLQ2C2bRG.requestFocus()
-                8 -> opqolCheckBinding.OPQOLQ2C2cRG.requestFocus()
-                9 -> opqolCheckBinding.OPQOLQ2C2dRG.requestFocus()
-                10 -> opqolCheckBinding.OPQOLQ2C3aRG.requestFocus()
-                11 -> opqolCheckBinding.OPQOLQ2C3bRG.requestFocus()
-                12 -> opqolCheckBinding.OPQOLQ2C3cRG.requestFocus()
-                13 -> opqolCheckBinding.OPQOLQ2C3dRG.requestFocus()
-                14 -> opqolCheckBinding.OPQOLQ2C3eRG.requestFocus()
-                15 -> opqolCheckBinding.OPQOLQ2C4aRG.requestFocus()
-                16 -> opqolCheckBinding.OPQOLQ2C4bRG.requestFocus()
-                17 -> opqolCheckBinding.OPQOLQ2C4cRG.requestFocus()
-                18 -> opqolCheckBinding.OPQOLQ2C4dRG.requestFocus()
-                19 -> opqolCheckBinding2.OPQOLQ2C5aRG.requestFocus()
-                20 -> opqolCheckBinding2.OPQOLQ2C5bRG.requestFocus()
-                21 -> opqolCheckBinding2.OPQOLQ2C5cRG.requestFocus()
-                22 -> opqolCheckBinding2.OPQOLQ2C5dRG.requestFocus()
-                23 -> opqolCheckBinding2.OPQOLQ2C6aRG.requestFocus()
-                24 -> opqolCheckBinding2.OPQOLQ2C6bRG.requestFocus()
-                25 -> opqolCheckBinding2.OPQOLQ2C6cRG.requestFocus()
-                26 -> opqolCheckBinding2.OPQOLQ2C6dRG.requestFocus()
-                27 -> opqolCheckBinding2.OPQOLQ2C7aRG.requestFocus()
-                28 -> opqolCheckBinding2.OPQOLQ2C7bRG.requestFocus()
-                29 -> opqolCheckBinding2.OPQOLQ2C7cRG.requestFocus()
-                30 -> opqolCheckBinding2.OPQOLQ2C7dRG.requestFocus()
-                31 -> opqolCheckBinding2.OPQOLQ2C8aRG.requestFocus()
-                32 -> opqolCheckBinding2.OPQOLQ2C8bRG.requestFocus()
-                33 -> opqolCheckBinding2.OPQOLQ2C8cRG.requestFocus()
-                34 -> opqolCheckBinding2.OPQOLQ2C8dRG.requestFocus()
-                35 -> opqolCheckBinding2.OPQOLQ2C8eRG.requestFocus()
-                36 -> opqolCheckBinding2.OPQOLQ2C8fRG.requestFocus()
+                1 -> allGeneratedRadioGroups.get(0).requestFocus()
+                2 -> allGeneratedRadioGroups.get(1).requestFocus()
+                3 -> allGeneratedRadioGroups.get(2).requestFocus()
+                4 -> allGeneratedRadioGroups.get(3).requestFocus()
+                5 -> allGeneratedRadioGroups.get(4).requestFocus()
+                6 -> allGeneratedRadioGroups.get(5).requestFocus()
+                7 -> allGeneratedRadioGroups.get(6).requestFocus()
+                8 -> allGeneratedRadioGroups.get(7).requestFocus()
+                9 -> allGeneratedRadioGroups.get(8).requestFocus()
+                10 -> allGeneratedRadioGroups.get(9).requestFocus()
+                11 -> allGeneratedRadioGroups.get(10).requestFocus()
+                12 -> allGeneratedRadioGroups.get(11).requestFocus()
+                13 -> allGeneratedRadioGroups.get(12).requestFocus()
+                14 -> allGeneratedRadioGroups.get(13).requestFocus()
+                15 -> allGeneratedRadioGroups.get(14).requestFocus()
+                16 -> allGeneratedRadioGroups.get(15).requestFocus()
+                17 -> allGeneratedRadioGroups.get(16).requestFocus()
+                18 -> allGeneratedRadioGroups.get(17).requestFocus()
             }
         }
 
     private fun setQuestionRadioGroup(rg: RadioGroup, patientAnswer: Int) {
 
-        if ((rg != opqolCheckBinding.OPQOLQ2C1dRG) && (rg != opqolCheckBinding.OPQOLQ2C2bRG)
-            && (rg != opqolCheckBinding.OPQOLQ2C2cRG) && (rg != opqolCheckBinding.OPQOLQ2C4cRG))
+        if ((rg != allGeneratedRadioGroups.get(questionNoList.get(3)))
+            && (rg != allGeneratedRadioGroups.get(questionNoList.get(5)))
+            && (rg != allGeneratedRadioGroups.get(questionNoList.get(6))))
         {
             when (patientAnswer)
             {
@@ -936,8 +1029,10 @@ class OPQOLCheckFragment : Fragment() {
 
         var result : Int? = null
         val radioButtonId = opqolQ1RG.checkedRadioButtonId
-        if ((opqolQ1RG != opqolCheckBinding.OPQOLQ2C1dRG) && (opqolQ1RG != opqolCheckBinding.OPQOLQ2C2bRG)
-            && (opqolQ1RG != opqolCheckBinding.OPQOLQ2C2cRG) && (opqolQ1RG != opqolCheckBinding.OPQOLQ2C4cRG))
+        if ((opqolQ1RG != allGeneratedRadioGroups.get(questionNoList.get(3)))
+            && (opqolQ1RG != allGeneratedRadioGroups.get(questionNoList.get(5)))
+            && (opqolQ1RG != allGeneratedRadioGroups.get(questionNoList.get(6)))
+            && (opqolQ1RG != allGeneratedRadioGroups.get(questionNoList.get(15))))
         {
             if (opqolQ1RG.get(0).id == radioButtonId)
             {
@@ -1047,24 +1142,24 @@ class OPQOLCheckFragment : Fragment() {
 
     fun initialisePatientData()
     {
-        opqolCheckBinding.OPQOLQ1RG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C1RG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C1bRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C1cRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C1dRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C2aRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C2bRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C2cRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C2dRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C3aRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C3bRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C3cRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C3dRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C3eRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C4aRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C4bRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C4cRG.clearCheck()
-        opqolCheckBinding.OPQOLQ2C4dRG.clearCheck()
+        allGeneratedRadioGroups.get(0).clearCheck()
+        allGeneratedRadioGroups.get(1).clearCheck()
+        allGeneratedRadioGroups.get(2).clearCheck()
+        allGeneratedRadioGroups.get(3).clearCheck()
+        allGeneratedRadioGroups.get(4).clearCheck()
+        allGeneratedRadioGroups.get(5).clearCheck()
+        allGeneratedRadioGroups.get(6).clearCheck()
+        allGeneratedRadioGroups.get(7).clearCheck()
+        allGeneratedRadioGroups.get(8).clearCheck()
+        allGeneratedRadioGroups.get(9).clearCheck()
+        allGeneratedRadioGroups.get(10).clearCheck()
+        allGeneratedRadioGroups.get(11).clearCheck()
+        allGeneratedRadioGroups.get(12).clearCheck()
+        allGeneratedRadioGroups.get(13).clearCheck()
+        allGeneratedRadioGroups.get(14).clearCheck()
+        allGeneratedRadioGroups.get(15).clearCheck()
+        allGeneratedRadioGroups.get(16).clearCheck()
+        allGeneratedRadioGroups.get(17).clearCheck()
     }
 
     override fun onAttach(context: Context) {
@@ -1148,7 +1243,7 @@ class OPQOLCheckFragment : Fragment() {
             val textViewElement = doc.createElement("TextView")
             val textViewId = View.generateViewId()
             allGeneratedTxtViewsIds.add(textViewId)
-            textViewElement.setAttribute("android:id" , textViewId.toString())
+            textViewElement.setAttribute("android:id" , "@id/${textViewId.toString()}")
             textViewElement.setAttribute("android:layout_width", "match_parent")
             textViewElement.setAttribute("android:layout_height", "wrap_content")
             textViewElement.setAttribute("android:background" , "@color/light_blue")
@@ -1176,24 +1271,6 @@ class OPQOLCheckFragment : Fragment() {
                 14 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q15"
                 15 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q16"
                 16 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q17"
-                17 -> textViewTextStringId = "@string/OPQOL35Q2Category5Q18"
-                18 -> textViewTextStringId = "@string/OPQOL35Q2Category5Q19"
-                19 -> textViewTextStringId = "@string/OPQOL35Q2Category5Q20"
-                20 -> textViewTextStringId = "@string/OPQOL35Q2Category5Q21"
-                21 -> textViewTextStringId = "@string/OPQOL35Q2Category6Q22"
-                22 -> textViewTextStringId = "@string/OPQOL35Q2Category6Q23"
-                23 -> textViewTextStringId = "@string/OPQOL35Q2Category6Q24"
-                24 -> textViewTextStringId = "@string/OPQOL35Q2Category6Q25"
-                25 -> textViewTextStringId = "@string/OPQOL35Q2Category7Q26"
-                26 -> textViewTextStringId = "@string/OPQOL35Q2Category7Q27"
-                27 -> textViewTextStringId = "@string/OPQOL35Q2Category7Q28"
-                28 -> textViewTextStringId = "@string/OPQOL35Q2Category7Q29"
-                29 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q30"
-                30 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q31"
-                31 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q32"
-                32 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q33"
-                33 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q34"
-                35 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q35"
             }
             textViewElement.setAttribute("android:text" , textViewTextStringId)
             textViewElement.setAttribute("android:textColor" , "@color/black")
@@ -1205,15 +1282,34 @@ class OPQOLCheckFragment : Fragment() {
             //set the attributes for the radioGroup
             val radioGroupId = View.generateViewId()
             allGeneratedRadioGroupIds.add(radioGroupId)
-            radioGroupElement.setAttribute("android:id" , radioGroupId.toString())
+            radioGroupElement.setAttribute("android:id" , "@id/${radioGroupId.toString()}")
             radioGroupElement.setAttribute("android:layout_width", "match_parent")
             radioGroupElement.setAttribute("android:layout_height", "wrap_content")
             radioGroupElement.setAttribute("android:layout_below" , "@id/${allGeneratedTxtViewsIds.get(i)}")
             componentElement.appendChild(radioGroupElement)
 
+            var radioBUttonCounter : Int = 0
             for (radioButton in components.get(i).radioButtons) {
                 val radioButtonElement = doc.createElement("RadioButton")
                 radioButtonElement.textContent = radioButton.text.toString()
+                val radioButtonId = View.generateViewId()
+                allGeneratedRadioButtonIds.add(radioButtonId)
+                radioButtonElement.setAttribute("android:id" , "@id/${radioButtonId}")
+                radioButtonElement.setAttribute("android:layout_width", "match_parent")
+                radioButtonElement.setAttribute("android:layout_height", "wrap_content")
+                radioButtonElement.setAttribute("android:layout_gravity" , "center|left")
+                radioGroupElement.setAttribute("android:paddingLeft" , "8dp")
+                radioGroupElement.setAttribute("android:paddingTop" , "8dp")
+                radioGroupElement.setAttribute("android:textColor" , "@color/black")
+                radioGroupElement.setAttribute("android:textSize" , "20sp")
+                when (radioBUttonCounter)
+                {
+                    0 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A1")
+                    1 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A2")
+                    2 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A3")
+                    3 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A4")
+                }
+                radioBUttonCounter ++
                 radioGroupElement.appendChild(radioButtonElement)
             }
 
@@ -1223,6 +1319,50 @@ class OPQOLCheckFragment : Fragment() {
         return doc
     }
 
+    private fun convertDocumentToString(document: Document): String? {
+        return try {
+            val transformerFactory = TransformerFactory.newInstance()
+            val transformer: Transformer = transformerFactory.newTransformer()
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes")
+            val source = DOMSource(document)
+            val writer = StringWriter()
+            val result = StreamResult(writer)
+            transformer.transform(source, result)
+            writer.toString()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    private fun addXmlToView(rootView: View, xmlString: String?) {
+        if (xmlString == null) {
+            Log.e("addXmlToView", "XML string is null")
+            return
+        }
+        val parser = Xml.newPullParser()
+        try {
+            parser.setInput(StringReader(xmlString))
+            var eventType = parser.eventType
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if (eventType == XmlPullParser.START_TAG) {
+                    val tagName = parser.name
+                    if ("TextView" == tagName) {
+                        val text = parser.getAttributeValue(null, "text")
+                        val textView = TextView(rootView.context)
+                        textView.text = text
+                        (rootView as ViewGroup).addView(textView)
+                    }
+                    // You can add more conditions for other types of views (e.g., RadioButton, etc.)
+                }
+                eventType = parser.next()
+            }
+        } catch (e: XmlPullParserException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
 
     companion object {
 
