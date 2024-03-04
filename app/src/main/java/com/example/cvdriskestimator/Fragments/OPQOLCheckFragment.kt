@@ -35,6 +35,7 @@ import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
+import java.io.ByteArrayInputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.StringReader
@@ -78,7 +79,7 @@ class OPQOLCheckFragment : Fragment() {
 //    private var allGeneratedCatTxtViewsIds = ArrayList<Int>(36)
     private var fragment1Randomized : Boolean = false
     private var fragment2Randomized : Boolean = false
-    private lateinit var components : List<Component>
+    private lateinit var components : ArrayList<Component>
     private var allGeneratedTxtViewsIds = ArrayList<Int>(17)
     private var allGeneratedRadioGroupIds = ArrayList<Int>(17)
     private var allGeneratedRadioButtonIds = ArrayList<Int>(85)
@@ -199,40 +200,7 @@ class OPQOLCheckFragment : Fragment() {
             {
                 allGeneratedRadioGroups = it.getSerializable("allGeneratedRadioGroups") as ArrayList<RadioGroup>
             }
-            if (!fragment1Randomized)
-            {
-                //randomise the elements of the xml layout
-                val xmlResourceId = R.layout.fragment_o_p_q_o_l_check_1
-                val inputStream: InputStream = resources.openRawResource(xmlResourceId)
-                components = parseComponents(inputStream).toMutableList()
-                components.drop(1)
-                // Shuffle the list of components
-//        val shuffledComponents = components.shuffled()
-                questionNoList = ArrayList<Int>(35)
-                for (i in 0..34)
-                {
-                    questionNoList.add(i)
-                }
-                questionNoList.shuffle()
-                for (i in 0..16)
-                {
-                    var temp = components.get(i)
-                    components.toMutableList()[i] = components.get(questionNoList.get(i))
-                    components.toMutableList()[questionNoList.get(i)] = temp
-                }
-                fragment1Doc = generateXmlDocument(components , questionNoList)
-                fragment1Document = convertDocumentToString(fragment1Doc!!)!!
 
-                for (i in 0..16)
-                {
-                    var newRadioGroup = view!!.findViewById<RadioGroup>(allGeneratedRadioGroupIds.get(i))
-                    allGeneratedRadioGroups.add(newRadioGroup)
-                }
-                fragment1Randomized = true
-            }
-            if (fragment1Randomized)
-                fragment1Doc = XMLUtils.parseXMLFromString(fragment1Document)!!
-            addXmlToView(view!! , fragment1Document)
         }
         return rootView
     }
@@ -241,6 +209,56 @@ class OPQOLCheckFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (!fragment1Randomized)
+        {
+            //randomise the elements of the xml layout
+            val xmlResourceId = R.layout.fragment_o_p_q_o_l_check_1
+//                var inputStream: InputStream = resources.openRawResource(xmlResourceId)
+            val xmlParser = resources.getXml(xmlResourceId)
+            //inputStream = inputStream.toString().replace("[^\\x20-\\x7e]", "").toInputStream()
+//                components = parseComponents(inputStream).toMutableList()
+            components = parseParserComponents(xmlParser)
+            components.drop(1)
+            // Shuffle the list of components
+//        val shuffledComponents = components.shuffled()
+            questionNoList = ArrayList<Int>(35)
+            for (i in 0..34)
+            {
+                questionNoList.add(i)
+            }
+            questionNoList.shuffle()
+            var counter : Int = 0
+            var questionsCounter : Int = 0
+            while ((counter <= 16) && (questionsCounter <= 35))
+            {
+                var temp = components.get(counter)
+                if (questionNoList.get(questionsCounter) <= 17)
+                {
+                    components[counter] = components.get(questionNoList.get(questionsCounter))
+                    components[questionNoList.get(questionsCounter)] = temp
+                    counter ++
+                }
+                else
+                {
+                    questionsCounter ++
+                }
+
+            }
+            fragment1Doc = generateXmlDocument(components , questionNoList)
+            fragment1Document = convertDocumentToString(fragment1Doc!!)!!
+
+            for (i in 0..16)
+            {
+                var newRadioGroup = view!!.findViewById<RadioGroup>(allGeneratedRadioGroupIds.get(i))
+                allGeneratedRadioGroups.add(newRadioGroup)
+            }
+            fragment1Randomized = true
+        }
+        if (fragment1Randomized)
+            fragment1Doc = XMLUtils.parseXMLFromString(fragment1Document)!!
+        val parentViewGroup = view.findViewById<ViewGroup>(R.id.opqolCheckLinLayout)
+//        addXmlToView(parentViewGroup!! , fragment1Document)
+        parentViewGroup.addView(inflateXmlLayout(mainActivity.applicationContext , fragment1Doc))
         opqolPatientViewModel.passActivity(mainActivity)
         opqolPatientViewModel.passFragment(this)
         opqolPatientViewModel.initialiseRealm()
@@ -1207,6 +1225,50 @@ class OPQOLCheckFragment : Fragment() {
         return components
     }
 
+    fun parseParserComponents(parser: XmlPullParser): ArrayList<Component> {
+        val components = ArrayList<Component>()
+
+        var eventType = parser.eventType
+        var relativeLayout: RelativeLayout? = null
+        var textView: TextView? = null
+        var radioGroup: RadioGroup? = null
+        val radioButtons = mutableListOf<RadioButton>()
+
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            when (eventType) {
+                XmlPullParser.START_TAG -> {
+                    when (parser.name) {
+                        "RelativeLayout" -> relativeLayout = RelativeLayout(context)
+                        "TextView" -> textView = TextView(context)
+                        "RadioGroup" -> radioGroup = RadioGroup(context)
+                        "RadioButton" -> {
+                            val radioButton = RadioButton(context)
+                            radioButtons.add(radioButton)
+                        }
+                    }
+                }
+                XmlPullParser.END_TAG -> {
+                    when (parser.name) {
+                        "RelativeLayout" -> {
+                            if (radioGroup != null)
+                            {
+                                components.add(Component(relativeLayout!!, textView!!, radioGroup!!, radioButtons))
+                                relativeLayout = null
+                                textView = null
+                                radioGroup = null
+                                radioButtons.clear()
+                            }
+
+                        }
+                    }
+                }
+            }
+            eventType = parser.next()
+        }
+
+        return components
+    }
+
     fun generateXmlDocument(components: List<Component> , qustionsNo : ArrayList<Int>): Document {
         val factory = DocumentBuilderFactory.newInstance()
         val builder = factory.newDocumentBuilder()
@@ -1238,7 +1300,7 @@ class OPQOLCheckFragment : Fragment() {
             }
             else
             {
-                componentElement.setAttribute("android:layout_below" , allGeneratedRelativeLayoutIds.get(-1).toString())
+                componentElement.setAttribute("android:layout_below" , allGeneratedRelativeLayoutIds.get(i-1).toString())
             }
             val textViewElement = doc.createElement("TextView")
             val textViewId = View.generateViewId()
@@ -1335,6 +1397,19 @@ class OPQOLCheckFragment : Fragment() {
         }
     }
 
+    fun inflateXmlLayout(context: Context, doc: Document): View {
+        val transformerFactory = TransformerFactory.newInstance()
+        val transformer = transformerFactory.newTransformer()
+        val domSource = DOMSource(doc)
+        val sw = StringWriter()
+        val streamResult = StreamResult(sw)
+        transformer.transform(domSource, streamResult)
+        val xmlAsString = sw.toString()
+
+        val inflater = LayoutInflater.from(context)
+        return inflater.inflate(R.layout.fragment_o_p_q_o_l_check_1, null)
+    }
+
     private fun addXmlToView(rootView: View, xmlString: String?) {
         if (xmlString == null) {
             Log.e("addXmlToView", "XML string is null")
@@ -1363,6 +1438,11 @@ class OPQOLCheckFragment : Fragment() {
             e.printStackTrace()
         }
     }
+
+    fun String.toInputStream(): InputStream {
+        return ByteArrayInputStream(this.toByteArray())
+    }
+
 
     companion object {
 
