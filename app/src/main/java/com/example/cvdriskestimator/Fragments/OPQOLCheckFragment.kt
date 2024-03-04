@@ -133,9 +133,22 @@ class OPQOLCheckFragment : Fragment() {
         //randomise the elements of the xml layout
         val xmlResourceId = R.layout.fragment_o_p_q_o_l_check_1
         val inputStream: InputStream = resources.openRawResource(xmlResourceId)
-        val components = parseComponents(inputStream)
+        val components = parseComponents(inputStream).toMutableList()
+        components.drop(1)
         // Shuffle the list of components
-        val shuffledComponents = components.shuffled()
+//        val shuffledComponents = components.shuffled()
+        var questionNoList = ArrayList<Int>(35)
+        for (i in 0..34)
+        {
+            questionNoList.add(i)
+        }
+        questionNoList.shuffle()
+        for (i in 0..34)
+        {
+            var temp = components.get(i)
+            components[i] = components.get(questionNoList.get(i))
+            components[questionNoList.get(i)] = temp
+        }
 
         opqolCheckBinding.includeCvdTitleForm.userIcon.alpha = 1f
 
@@ -1099,7 +1112,7 @@ class OPQOLCheckFragment : Fragment() {
         return components
     }
 
-    fun generateXmlDocument(components: List<Component>): Document {
+    fun generateXmlDocument(components: List<Component> , qustionsNo : ArrayList<Int>): Document {
         val factory = DocumentBuilderFactory.newInstance()
         val builder = factory.newDocumentBuilder()
         val doc = builder.newDocument()
@@ -1108,29 +1121,97 @@ class OPQOLCheckFragment : Fragment() {
         doc.appendChild(rootElement)
 
         // Iterate over the shuffled list of components
-        for (component in components) {
+        for (i in 0..components.size - 1) {
+
             val componentElement = doc.createElement("RelativeLayout")
             //set the attributes for the relative layout
 //          Set layout width and height
-            componentElement.setAttribute("android:layout_width", "wrap_content")
+            componentElement.setAttribute("android:layout_width", "match_parent")
             componentElement.setAttribute("android:layout_height", "wrap_content")
 
 //          Set margin attributes
             componentElement.setAttribute("android:layout_marginLeft", "16dp")
             componentElement.setAttribute("android:layout_marginRight", "16dp")
-
             val id = View.generateViewId().toString()
             componentElement.setAttribute("android:id" , id)
             allGeneratedRelativeLayoutIds.add(id.toInt())
             componentElement.setAttribute("android:background" ,"@drawable/relativelayout_style" )
+
+            if (i == 0)
+            {
+                componentElement.setAttribute("android:layout_below" , "@+id/opqoQ2cTextV")
+            }
+            else
+            {
+                componentElement.setAttribute("android:layout_below" , allGeneratedRelativeLayoutIds.get(-1).toString())
+            }
             val textViewElement = doc.createElement("TextView")
-            textViewElement.textContent = component.textView.text.toString()
+            val textViewId = View.generateViewId()
+            allGeneratedTxtViewsIds.add(textViewId)
+            textViewElement.setAttribute("android:id" , textViewId.toString())
+            textViewElement.setAttribute("android:layout_width", "match_parent")
+            textViewElement.setAttribute("android:layout_height", "wrap_content")
+            textViewElement.setAttribute("android:background" , "@color/light_blue")
+            textViewElement.setAttribute("android:focusable" , "true")
+            textViewElement.setAttribute("android:focusableInTouchMode" , "true")
+            textViewElement.setAttribute("android:gravity" , "center")
+            textViewElement.setAttribute("android:minHeight" , "64dp")
+            var textViewTextStringId : String =""
+            when (qustionsNo.get(i))
+            {
+                0 -> textViewTextStringId = "@string/OPQOL35Q2Category1Q1"
+                1 -> textViewTextStringId = "@string/OPQOL35Q2Category1Q2"
+                2 -> textViewTextStringId = "@string/OPQOL35Q2Category1Q3"
+                3 -> textViewTextStringId = "@string/OPQOL35Q2Category1Q4"
+                4 -> textViewTextStringId = "@string/OPQOL35Q2Category2Q5"
+                5 -> textViewTextStringId = "@string/OPQOL35Q2Category2Q6"
+                6 -> textViewTextStringId = "@string/OPQOL35Q2Category2Q7"
+                7 -> textViewTextStringId = "@string/OPQOL35Q2Category2Q8"
+                8 -> textViewTextStringId = "@string/OPQOL35Q2Category3Q9"
+                9 -> textViewTextStringId = "@string/OPQOL35Q2Category3Q10"
+                10 -> textViewTextStringId = "@string/OPQOL35Q2Category3Q11"
+                11 -> textViewTextStringId = "@string/OPQOL35Q2Category3Q12"
+                12 -> textViewTextStringId = "@string/OPQOL35Q2Category3Q13"
+                13 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q14"
+                14 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q15"
+                15 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q16"
+                16 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q17"
+                17 -> textViewTextStringId = "@string/OPQOL35Q2Category5Q18"
+                18 -> textViewTextStringId = "@string/OPQOL35Q2Category5Q19"
+                19 -> textViewTextStringId = "@string/OPQOL35Q2Category5Q20"
+                20 -> textViewTextStringId = "@string/OPQOL35Q2Category5Q21"
+                21 -> textViewTextStringId = "@string/OPQOL35Q2Category6Q22"
+                22 -> textViewTextStringId = "@string/OPQOL35Q2Category6Q23"
+                23 -> textViewTextStringId = "@string/OPQOL35Q2Category6Q24"
+                24 -> textViewTextStringId = "@string/OPQOL35Q2Category6Q25"
+                25 -> textViewTextStringId = "@string/OPQOL35Q2Category7Q26"
+                26 -> textViewTextStringId = "@string/OPQOL35Q2Category7Q27"
+                27 -> textViewTextStringId = "@string/OPQOL35Q2Category7Q28"
+                28 -> textViewTextStringId = "@string/OPQOL35Q2Category7Q29"
+                29 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q30"
+                30 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q31"
+                31 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q32"
+                32 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q33"
+                33 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q34"
+                35 -> textViewTextStringId = "@string/OPQOL35Q2Category8Q35"
+            }
+            textViewElement.setAttribute("android:text" , textViewTextStringId)
+            textViewElement.setAttribute("android:textColor" , "@color/black")
+            textViewElement.setAttribute("android:textSize" , "20sp")
+            textViewElement.textContent = components.get(i).textView.text.toString()
             componentElement.appendChild(textViewElement)
 
             val radioGroupElement = doc.createElement("RadioGroup")
+            //set the attributes for the radioGroup
+            val radioGroupId = View.generateViewId()
+            allGeneratedRadioGroupIds.add(radioGroupId)
+            radioGroupElement.setAttribute("android:id" , radioGroupId.toString())
+            radioGroupElement.setAttribute("android:layout_width", "match_parent")
+            radioGroupElement.setAttribute("android:layout_height", "wrap_content")
+            radioGroupElement.setAttribute("android:layout_below" , "@id/${allGeneratedTxtViewsIds.get(i)}")
             componentElement.appendChild(radioGroupElement)
 
-            for (radioButton in component.radioButtons) {
+            for (radioButton in components.get(i).radioButtons) {
                 val radioButtonElement = doc.createElement("RadioButton")
                 radioButtonElement.textContent = radioButton.text.toString()
                 radioGroupElement.appendChild(radioButtonElement)
