@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.util.TypedValue
 import android.util.Xml
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +29,9 @@ import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.customClasses.XMLUtils
+import com.example.cvdriskestimator.databinding.FragmentBAICheckBinding
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck1Binding
+import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck1TemplateBinding
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck2Binding
 import com.example.cvdriskestimator.viewModels.CheckOPQOLPatientViewModelFactory
 import com.example.cvdriskestimator.viewModels.CheckOPQOLViewModel
@@ -35,6 +40,7 @@ import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
+import org.xmlpull.v1.XmlPullParserFactory
 import java.io.ByteArrayInputStream
 import java.io.IOException
 import java.io.InputStream
@@ -53,6 +59,7 @@ class OPQOLCheckFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
     private lateinit var opqolPatientViewModel: CheckOPQOLViewModel
     private lateinit var opqolCheckBinding : FragmentOPQOLCheck1Binding
+    private lateinit var opqolCheckBindingTemplateBinding: FragmentOPQOLCheck1TemplateBinding
     private lateinit var opqolCheckBinding2 : FragmentOPQOLCheck2Binding
     private lateinit var thisFragmentPatientSelections : ArrayList<Int?>
     private var thisFragmentSelectionsExists : Boolean = false
@@ -116,27 +123,12 @@ class OPQOLCheckFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //assign the binding to the xml layout
-        val rootView = if (useLayout1) {
-            opqolCheckBinding = FragmentOPQOLCheck1Binding.inflate(inflater, container, false)
-            opqolPatientViewModel = CheckOPQOLViewModel()
-            opqolPatientViewModel = ViewModelProvider(this , CheckOPQOLPatientViewModelFactory()).get(
-                CheckOPQOLViewModel::class.java)
-            opqolCheckBinding.checkOQPOLPatientViewModel = opqolPatientViewModel
-            opqolCheckBinding.root
-
-        } else {
-            opqolCheckBinding2 = FragmentOPQOLCheck2Binding.inflate(inflater, container, false)
-            opqolPatientViewModel = CheckOPQOLViewModel()
-            opqolPatientViewModel = ViewModelProvider(this , CheckOPQOLPatientViewModelFactory()).get(
-                CheckOPQOLViewModel::class.java)
-            opqolCheckBinding2.checkOQPOLPatientViewModel = opqolPatientViewModel
-            opqolCheckBinding2.root
-        }
+        opqolCheckBindingTemplateBinding = FragmentOPQOLCheck1TemplateBinding.inflate(inflater , container , false)
         opqolPatientViewModel = CheckOPQOLViewModel()
         opqolPatientViewModel = ViewModelProvider(this , CheckOPQOLPatientViewModelFactory()).get(
             CheckOPQOLViewModel::class.java)
-        opqolCheckBinding.checkOQPOLPatientViewModel = opqolPatientViewModel
-        opqolCheckBinding.lifecycleOwner = this
+        opqolCheckBindingTemplateBinding.checkOQPOLPatientViewModel = opqolPatientViewModel
+        opqolCheckBindingTemplateBinding.lifecycleOwner = this
         arguments?.let {
             if (it.containsKey("Answers")) {
                 thisFragmentPatientSelections = it.getSerializable("Answers") as ArrayList<Int?>
@@ -202,7 +194,7 @@ class OPQOLCheckFragment : Fragment() {
             }
 
         }
-        return rootView
+        return opqolCheckBindingTemplateBinding.root.rootView
     }
 
     @SuppressLint("ResourceType")
@@ -231,9 +223,10 @@ class OPQOLCheckFragment : Fragment() {
             var questionsCounter : Int = 0
             while ((counter <= 16) && (questionsCounter <= 35))
             {
-                var temp = components.get(counter)
+
                 if (questionNoList.get(questionsCounter) <= 17)
                 {
+                    var temp = components.get(counter)
                     components[counter] = components.get(questionNoList.get(questionsCounter))
                     components[questionNoList.get(questionsCounter)] = temp
                     counter ++
@@ -254,17 +247,31 @@ class OPQOLCheckFragment : Fragment() {
             }
             fragment1Randomized = true
         }
-        if (fragment1Randomized)
-            fragment1Doc = XMLUtils.parseXMLFromString(fragment1Document)!!
+//        if (fragment1Randomized)
+//            fragment1Doc = XMLUtils.parseXMLFromString(fragment1Document)!!
         val parentViewGroup = view.findViewById<ViewGroup>(R.id.opqolCheckLinLayout)
+        var ViewToAppendGeneratedLayout = parentViewGroup.findViewById<View>(R.id.opqolPillow_5)
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+
 //        addXmlToView(parentViewGroup!! , fragment1Document)
-        parentViewGroup.addView(inflateXmlLayout(mainActivity.applicationContext , fragment1Doc))
+        val parentView = ViewToAppendGeneratedLayout.parent as ViewGroup // Assuming the parent is a ViewGroup
+        val index = parentView.indexOfChild(ViewToAppendGeneratedLayout)
+        var viewToBeAdded = createViewFromXml(fragment1Doc, mainActivity.applicationContext)
+        for (i in 0..viewToBeAdded.size -1)
+        {
+            parentView.addView(viewToBeAdded.get(i), index)
+        }
+        // Step 5: Inflate the modified layout in the fragment
+//        parentViewGroup.addView(inflateXmlLayout(mainActivity.applicationContext , fragment1Doc))
         opqolPatientViewModel.passActivity(mainActivity)
         opqolPatientViewModel.passFragment(this)
         opqolPatientViewModel.initialiseRealm()
 
 
-        opqolCheckBinding.includeCvdTitleForm.userIcon.alpha = 1f
+        opqolCheckBindingTemplateBinding.includeCvdTitleForm.userIcon.alpha = 1f
 
         val userName = mainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
 
@@ -358,7 +365,7 @@ class OPQOLCheckFragment : Fragment() {
             }
         }
 
-        opqolCheckBinding.clearBtn.setOnClickListener {
+        opqolCheckBindingTemplateBinding.clearBtn.setOnClickListener {
             AlertDialog.Builder(this.activity)
                 .setTitle("Clear All Data")
                 .setMessage("Are you sure you want to delete the user data?") // Specifying a listener allows you to take an action before dismissing the dialog.
@@ -516,7 +523,7 @@ class OPQOLCheckFragment : Fragment() {
 //
 //        }
 
-        opqolCheckBinding.rightArrow.setOnClickListener {
+        opqolCheckBindingTemplateBinding.rightArrow.setOnClickListener {
 
 //            allPatientSelections[0] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ1RG)
             allPatientSelections[0] = getAsnwerFromRadioGroup1(allGeneratedRadioGroups.get(0))
@@ -569,30 +576,30 @@ class OPQOLCheckFragment : Fragment() {
 
 
 
-        opqolCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
+        opqolCheckBindingTemplateBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
 
         loginPatientFragment = LoginPatientFragment.newInstance()
         registerFragment = RegisterFragment.newInstance()
         leaderBoardFragment = LeaderBoardFragment.newInstance()
 
         //set the PopUpMenu
-        popupMenu = PopUpMenu(opqolCheckBinding.includePopUpMenu.termsRelLayout , mainActivity, this,   registerFragment , null , leaderBoardFragment)
+        popupMenu = PopUpMenu(opqolCheckBindingTemplateBinding.includePopUpMenu.termsRelLayout , mainActivity, this,   registerFragment , null , leaderBoardFragment)
 
-        opqolCheckBinding.includeCvdTitleForm.userIcon.setOnClickListener {
+        opqolCheckBindingTemplateBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenu.showPopUp(it)
         }
 
 
         //listeners on form
-        opqolCheckBinding.includePopUpMenu.termsRelLayout.setOnClickListener {
+        opqolCheckBindingTemplateBinding.includePopUpMenu.termsRelLayout.setOnClickListener {
             hidePopPutermsLayout()
         }
 
-        opqolCheckBinding.includePopUpMenu.closeBtn.setOnClickListener {
+        opqolCheckBindingTemplateBinding.includePopUpMenu.closeBtn.setOnClickListener {
             hidePopPutermsLayout()
         }
 
-        opqolCheckBinding.includeCvdTitleForm.cvdTitleForm.setOnClickListener {
+        opqolCheckBindingTemplateBinding.includeCvdTitleForm.cvdTitleForm.setOnClickListener {
             mainActivity.backToActivity()
 
         }
@@ -1244,21 +1251,21 @@ class OPQOLCheckFragment : Fragment() {
                         "RadioButton" -> {
                             val radioButton = RadioButton(context)
                             radioButtons.add(radioButton)
+                            // If there's a RadioGroup, add the RadioButton to it
+                            radioGroup?.addView(radioButton)
                         }
                     }
                 }
                 XmlPullParser.END_TAG -> {
                     when (parser.name) {
                         "RelativeLayout" -> {
-                            if (radioGroup != null)
-                            {
+                            if (radioGroup != null) {
                                 components.add(Component(relativeLayout!!, textView!!, radioGroup!!, radioButtons))
                                 relativeLayout = null
                                 textView = null
                                 radioGroup = null
                                 radioButtons.clear()
                             }
-
                         }
                     }
                 }
@@ -1308,7 +1315,7 @@ class OPQOLCheckFragment : Fragment() {
             textViewElement.setAttribute("android:id" , "@id/${textViewId.toString()}")
             textViewElement.setAttribute("android:layout_width", "match_parent")
             textViewElement.setAttribute("android:layout_height", "wrap_content")
-            textViewElement.setAttribute("android:background" , "@color/light_blue")
+            textViewElement.setAttribute("android:background" , "@drawable/light_blue_textview")
             textViewElement.setAttribute("android:focusable" , "true")
             textViewElement.setAttribute("android:focusableInTouchMode" , "true")
             textViewElement.setAttribute("android:gravity" , "center")
@@ -1350,31 +1357,38 @@ class OPQOLCheckFragment : Fragment() {
             radioGroupElement.setAttribute("android:layout_below" , "@id/${allGeneratedTxtViewsIds.get(i)}")
             componentElement.appendChild(radioGroupElement)
 
-            var radioBUttonCounter : Int = 0
-            for (radioButton in components.get(i).radioButtons) {
-                val radioButtonElement = doc.createElement("RadioButton")
-                radioButtonElement.textContent = radioButton.text.toString()
-                val radioButtonId = View.generateViewId()
-                allGeneratedRadioButtonIds.add(radioButtonId)
-                radioButtonElement.setAttribute("android:id" , "@id/${radioButtonId}")
-                radioButtonElement.setAttribute("android:layout_width", "match_parent")
-                radioButtonElement.setAttribute("android:layout_height", "wrap_content")
-                radioButtonElement.setAttribute("android:layout_gravity" , "center|left")
-                radioGroupElement.setAttribute("android:paddingLeft" , "8dp")
-                radioGroupElement.setAttribute("android:paddingTop" , "8dp")
-                radioGroupElement.setAttribute("android:textColor" , "@color/black")
-                radioGroupElement.setAttribute("android:textSize" , "20sp")
-                when (radioBUttonCounter)
+            var allRadioButtons = ArrayList<RadioButton>(4)
+            if (components.get(i).radioGroup.childCount >0)
+            {
+                for (i in 0..components.get(i).radioGroup.childCount -1)
                 {
-                    0 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A1")
-                    1 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A2")
-                    2 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A3")
-                    3 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A4")
+                    allRadioButtons.add(components.get(i).radioGroup.get(i) as RadioButton)
                 }
-                radioBUttonCounter ++
-                radioGroupElement.appendChild(radioButtonElement)
-            }
 
+                for (k in 0 until allRadioButtons.size) {
+                    val radioButtonElement = doc.createElement("RadioButton")
+                    radioButtonElement.textContent = allRadioButtons.get(k).text.toString()
+                    val radioButtonId = View.generateViewId()
+                    allGeneratedRadioButtonIds.add(radioButtonId)
+                    radioButtonElement.setAttribute("android:id" , "@id/${radioButtonId}")
+                    radioButtonElement.setAttribute("android:layout_width", "match_parent")
+                    radioButtonElement.setAttribute("android:layout_height", "wrap_content")
+                    radioButtonElement.setAttribute("android:layout_gravity" , "center|left")
+                    radioGroupElement.setAttribute("android:paddingLeft" , "8dp")
+                    radioGroupElement.setAttribute("android:paddingTop" , "8dp")
+                    radioGroupElement.setAttribute("android:textColor" , "@color/black")
+                    radioGroupElement.setAttribute("android:textSize" , "20sp")
+                    when (k)
+                    {
+                        0 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A1")
+                        1 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A2")
+                        2 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A3")
+                        3 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A4")
+                    }
+                    radioGroupElement.appendChild(radioButtonElement)
+                }
+                allRadioButtons.clear()
+            }
             rootElement.appendChild(componentElement)
         }
 
@@ -1397,45 +1411,192 @@ class OPQOLCheckFragment : Fragment() {
         }
     }
 
-    fun inflateXmlLayout(context: Context, doc: Document): View {
-        val transformerFactory = TransformerFactory.newInstance()
-        val transformer = transformerFactory.newTransformer()
-        val domSource = DOMSource(doc)
-        val sw = StringWriter()
-        val streamResult = StreamResult(sw)
-        transformer.transform(domSource, streamResult)
-        val xmlAsString = sw.toString()
-
-        val inflater = LayoutInflater.from(context)
-        return inflater.inflate(R.layout.fragment_o_p_q_o_l_check_1, null)
+    fun createViewFromXml(document: Document, context: Context): List<View> {
+        val rootElement = document.documentElement ?: return emptyList()
+        return createViewsFromXml(rootElement, context)
     }
 
-    private fun addXmlToView(rootView: View, xmlString: String?) {
-        if (xmlString == null) {
-            Log.e("addXmlToView", "XML string is null")
-            return
-        }
-        val parser = Xml.newPullParser()
-        try {
-            parser.setInput(StringReader(xmlString))
-            var eventType = parser.eventType
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_TAG) {
-                    val tagName = parser.name
-                    if ("TextView" == tagName) {
-                        val text = parser.getAttributeValue(null, "text")
-                        val textView = TextView(rootView.context)
-                        textView.text = text
-                        (rootView as ViewGroup).addView(textView)
-                    }
-                    // You can add more conditions for other types of views (e.g., RadioButton, etc.)
+    private fun createViewsFromXml(element: Node, context: Context): List<View> {
+        val views = mutableListOf<View>()
+
+        val childNodes = element.childNodes
+        for (i in 0 until childNodes.length) {
+            val childNode = childNodes.item(i)
+            if (childNode.nodeType == Node.ELEMENT_NODE) {
+                val childElement = childNode as Element
+                val view = createViewFromXmlElement(childElement, context)
+                if (view != null) {
+                    applyProgrammaticallySetAttributes(childElement, view)
+                    views.add(view)
                 }
-                eventType = parser.next()
             }
-        } catch (e: XmlPullParserException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
+        }
+
+        return views
+    }
+
+    private fun applyProgrammaticallySetAttributes(element: Element, view: View) {
+        val layoutParams = view.layoutParams as? ViewGroup.MarginLayoutParams
+        layoutParams?.let {
+            it.width = parseDimension(element.getAttribute("android:layout_width"))
+            it.height = parseDimension(element.getAttribute("android:layout_height"))
+            it.leftMargin = parseDimension(element.getAttribute("android:layout_marginLeft"))
+            it.rightMargin = parseDimension(element.getAttribute("android:layout_marginRight"))
+            it.topMargin = parseDimension(element.getAttribute("android:layout_marginTop"))
+            it.bottomMargin = parseDimension(element.getAttribute("android:layout_marginBottom"))
+            it.marginStart = parseDimension(element.getAttribute("android:layout_marginStart"))
+            it.marginEnd = parseDimension(element.getAttribute("android:layout_marginEnd"))
+        }
+
+        if (view is TextView) {
+            view.text = element.getAttribute("android:text")
+            view.setTextColor(parseColor(element.getAttribute("android:textColor")))
+            view.setTextSize(TypedValue.COMPLEX_UNIT_SP, parseDimension(element.getAttribute("android:textSize")).toFloat())
+            view.gravity = parseGravity(element.getAttribute("android:gravity"))
+            view.isFocusable = element.getAttribute("android:focusable").toBoolean()
+            view.isFocusableInTouchMode = element.getAttribute("android:focusableInTouchMode").toBoolean()
+            view.minimumHeight = parseDimension(element.getAttribute("android:minHeight")).toInt()
+        }
+
+        if (view is RadioButton) {
+            view.text = element.getAttribute("android:text")
+            val belowId = parseResource(element.getAttribute("android:layout_below"))
+            if (belowId != 0) {
+                val params = view.layoutParams as? RelativeLayout.LayoutParams
+                params?.addRule(RelativeLayout.BELOW, belowId)
+            }
+            // Add any specific attributes for RadioButton here
+        }
+
+        // Set background resource
+        val backgroundResource = parseResource(element.getAttribute("android:background"))
+        if (backgroundResource != 0) {
+            view.setBackgroundResource(backgroundResource)
+        }
+
+        // Add other attributes as needed
+    }
+
+    private fun parseDimension(dimension: String): Int {
+        // Assuming dimension is specified in dp
+        return dimension.replace("dp", "").toInt()
+    }
+
+    private fun parseResource(resource: String): Int {
+        // Check if the resource string starts with '@drawable/' indicating it's a drawable resource
+        if (resource.startsWith("@drawable/")) {
+            // Extract the drawable resource name
+            val drawableName = resource.substring(10)
+            // Get the resource ID of the drawable
+            return context!!.resources.getIdentifier(drawableName, "drawable", context!!.packageName)
+        }
+        // If the resource string doesn't start with '@drawable/', it might be another type of resource
+        // Handle other types of resources as needed
+        return 0 // Return a default value or handle the case based on your application's logic
+    }
+
+    private fun parseColor(color: String): Int {
+        // Parse color string into color value
+        // You may need to handle different types of color strings (e.g., #RRGGBB, @color/colorName)
+        return Color.parseColor(color)
+    }
+
+    private fun parseGravity(gravity: String): Int {
+        // Parse gravity string into gravity value
+        // You may need to handle different types of gravity strings
+        // Here, we assume a single gravity value without '|' separator
+        return when (gravity) {
+            "center" -> Gravity.CENTER
+            "center_horizontal" -> Gravity.CENTER_HORIZONTAL
+            "center_vertical" -> Gravity.CENTER_VERTICAL
+            // Add more cases as needed
+            else -> Gravity.NO_GRAVITY
+        }
+    }
+    private fun createViewFromXmlElement(element: Element, context: Context): View? {
+        val tagName = element.tagName
+        return when (tagName) {
+            "RelativeLayout" -> createRelativeLayout(element, context)
+            else -> null
+        }
+    }
+
+    private fun createRelativeLayout(element: Element, context: Context): View? {
+        val relativeLayout = RelativeLayout(context)
+
+        val childNodes = element.childNodes
+        for (i in 0 until childNodes.length) {
+            val childNode = childNodes.item(i)
+            if (childNode.nodeType == Node.ELEMENT_NODE) {
+                val childElement = childNode as Element
+                val childView = createViewFromRelativeLayoutChild(childElement, context)
+                if (childView != null) {
+                    relativeLayout.addView(childView)
+                }
+            }
+        }
+
+        return relativeLayout
+    }
+
+    private fun createViewFromRelativeLayoutChild(element: Element, context: Context): View? {
+        return when (element.tagName) {
+            "TextView" -> createTextView(element, context)
+            "RadioGroup" -> createRadioGroup(element, context)
+            else -> null
+        }
+    }
+
+    private fun createTextView(element: Element, context: Context): TextView {
+        val textView = TextView(context)
+        textView.text = element.textContent
+        // Set other attributes if needed
+        return textView
+    }
+
+    private fun createRadioGroup(element: Element, context: Context): RadioGroup {
+        val radioGroup = RadioGroup(context)
+
+        val childNodes = element.childNodes
+        for (i in 0 until childNodes.length) {
+            val childNode = childNodes.item(i)
+            if (childNode.nodeType == Node.ELEMENT_NODE && childNode.nodeName == "RadioButton") {
+                val radioButton = createRadioButton(childNode as Element, context)
+                if (radioButton != null) {
+                    radioGroup.addView(radioButton)
+                }
+            }
+        }
+
+        // Set other attributes if needed
+        return radioGroup
+    }
+
+    private fun createRadioButton(element: Element, context: Context): RadioButton? {
+        val radioButton = RadioButton(context)
+        radioButton.text = element.textContent
+        // Set other attributes if needed
+        return radioButton
+    }
+
+    // Function to parse XML string to View
+// Function to parse XML string to View
+    fun parseXmlToView2(context: Context, xmlString: String): View {
+        val parser = Xml.newPullParser()
+        parser.setInput(xmlString.reader())
+        return LayoutInflater.from(context).inflate(parser, null)
+    }
+
+
+    // Function to create View from XML start tag
+    private fun createView(context: Context, parser: XmlPullParser): View {
+        val tagName = parser.name
+        val attrs = Xml.asAttributeSet(parser)
+
+        return when (tagName) {
+            "RelativeLayout" -> View(context)
+            // Handle other supported view types similarly
+            else -> throw IllegalArgumentException("Unsupported view type: $tagName")
         }
     }
 
