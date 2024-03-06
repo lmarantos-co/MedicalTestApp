@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -21,7 +22,9 @@ import android.widget.RadioGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.get
+import androidx.core.view.marginLeft
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cvdriskestimator.MainActivity
@@ -1303,7 +1306,7 @@ class OPQOLCheckFragment : Fragment() {
 
             if (i == 0)
             {
-                componentElement.setAttribute("android:layout_below" , "@+id/opqoQ2cTextV")
+                componentElement.setAttribute("android:layout_below" , R.id.opqoQ2cTextV.toString())
             }
             else
             {
@@ -1312,7 +1315,7 @@ class OPQOLCheckFragment : Fragment() {
             val textViewElement = doc.createElement("TextView")
             val textViewId = View.generateViewId()
             allGeneratedTxtViewsIds.add(textViewId)
-            textViewElement.setAttribute("android:id" , "@id/${textViewId.toString()}")
+            textViewElement.setAttribute("android:id" , "${textViewId.toString()}")
             textViewElement.setAttribute("android:layout_width", "match_parent")
             textViewElement.setAttribute("android:layout_height", "wrap_content")
             textViewElement.setAttribute("android:background" , "@drawable/light_blue_textview")
@@ -1320,28 +1323,46 @@ class OPQOLCheckFragment : Fragment() {
             textViewElement.setAttribute("android:focusableInTouchMode" , "true")
             textViewElement.setAttribute("android:gravity" , "center")
             textViewElement.setAttribute("android:minHeight" , "64dp")
-            var textViewTextStringId : String =""
+            var textViewTextStringId : Int = 0
             when (qustionsNo.get(i))
             {
-                0 -> textViewTextStringId = "@string/OPQOL35Q2Category1Q1"
-                1 -> textViewTextStringId = "@string/OPQOL35Q2Category1Q2"
-                2 -> textViewTextStringId = "@string/OPQOL35Q2Category1Q3"
-                3 -> textViewTextStringId = "@string/OPQOL35Q2Category1Q4"
-                4 -> textViewTextStringId = "@string/OPQOL35Q2Category2Q5"
-                5 -> textViewTextStringId = "@string/OPQOL35Q2Category2Q6"
-                6 -> textViewTextStringId = "@string/OPQOL35Q2Category2Q7"
-                7 -> textViewTextStringId = "@string/OPQOL35Q2Category2Q8"
-                8 -> textViewTextStringId = "@string/OPQOL35Q2Category3Q9"
-                9 -> textViewTextStringId = "@string/OPQOL35Q2Category3Q10"
-                10 -> textViewTextStringId = "@string/OPQOL35Q2Category3Q11"
-                11 -> textViewTextStringId = "@string/OPQOL35Q2Category3Q12"
-                12 -> textViewTextStringId = "@string/OPQOL35Q2Category3Q13"
-                13 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q14"
-                14 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q15"
-                15 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q16"
-                16 -> textViewTextStringId = "@string/OPQOL35Q2Category4Q17"
+                0 -> textViewTextStringId = R.string.OPQOL35Q2Category1Q1
+                1 -> textViewTextStringId = R.string.OPQOL35Q2Category1Q2
+                2 -> textViewTextStringId = R.string.OPQOL35Q2Category1Q3
+                3 -> textViewTextStringId = R.string.OPQOL35Q2Category1Q4
+                4 -> textViewTextStringId = R.string.OPQOL35Q2Category2Q5
+                5 -> textViewTextStringId = R.string.OPQOL35Q2Category2Q6
+                6 -> textViewTextStringId = R.string.OPQOL35Q2Category2Q7
+                7 -> textViewTextStringId = R.string.OPQOL35Q2Category2Q8
+                8 -> textViewTextStringId = R.string.OPQOL35Q2Category3Q9
+                9 -> textViewTextStringId = R.string.OPQOL35Q2Category3Q10
+                10 -> textViewTextStringId = R.string.OPQOL35Q2Category3Q11
+                11 -> textViewTextStringId = R.string.OPQOL35Q2Category3Q12
+                12 -> textViewTextStringId = R.string.OPQOL35Q2Category3Q13
+                13 -> textViewTextStringId = R.string.OPQOL35Q2Category4Q14
+                14 -> textViewTextStringId = R.string.OPQOL35Q2Category4Q15
+                15 -> textViewTextStringId = R.string.OPQOL35Q2Category4Q16
+                16 -> textViewTextStringId = R.string.OPQOL35Q2Category4Q17
+                17 -> textViewTextStringId = R.string.OPQOL35Q2Category5Q18
+                18 -> textViewTextStringId = R.string.OPQOL35Q2Category5Q19
+                19 -> textViewTextStringId = R.string.OPQOL35Q2Category5Q20
+                20 -> textViewTextStringId = R.string.OPQOL35Q2Category5Q21
+                21 -> textViewTextStringId = R.string.OPQOL35Q2Category6Q22
+                22 -> textViewTextStringId = R.string.OPQOL35Q2Category6Q23
+                23 -> textViewTextStringId = R.string.OPQOL35Q2Category6Q24
+                24 -> textViewTextStringId = R.string.OPQOL35Q2Category6Q25
+                25 -> textViewTextStringId = R.string.OPQOL35Q2Category7Q26
+                26 -> textViewTextStringId = R.string.OPQOL35Q2Category7Q27
+                27 -> textViewTextStringId = R.string.OPQOL35Q2Category7Q28
+                28 -> textViewTextStringId = R.string.OPQOL35Q2Category7Q29
+                29 -> textViewTextStringId = R.string.OPQOL35Q2Category8Q30
+                30 -> textViewTextStringId = R.string.OPQOL35Q2Category8Q31
+                31 -> textViewTextStringId = R.string.OPQOL35Q2Category8Q32
+                32 -> textViewTextStringId = R.string.OPQOL35Q2Category8Q33
+                33 -> textViewTextStringId = R.string.OPQOL35Q2Category8Q34
+                34 -> textViewTextStringId = R.string.OPQOL35Q2Category8Q35
             }
-            textViewElement.setAttribute("android:text" , textViewTextStringId)
+            textViewElement.setAttribute("android:text" , getString(textViewTextStringId))
             textViewElement.setAttribute("android:textColor" , "@color/black")
             textViewElement.setAttribute("android:textSize" , "20sp")
             textViewElement.textContent = components.get(i).textView.text.toString()
@@ -1351,10 +1372,10 @@ class OPQOLCheckFragment : Fragment() {
             //set the attributes for the radioGroup
             val radioGroupId = View.generateViewId()
             allGeneratedRadioGroupIds.add(radioGroupId)
-            radioGroupElement.setAttribute("android:id" , "@id/${radioGroupId.toString()}")
+            radioGroupElement.setAttribute("android:id" , "${radioGroupId.toString()}")
             radioGroupElement.setAttribute("android:layout_width", "match_parent")
             radioGroupElement.setAttribute("android:layout_height", "wrap_content")
-            radioGroupElement.setAttribute("android:layout_below" , "@id/${allGeneratedTxtViewsIds.get(i)}")
+            radioGroupElement.setAttribute("android:layout_below" , "${allGeneratedTxtViewsIds.get(i)}")
             componentElement.appendChild(radioGroupElement)
 
             var allRadioButtons = ArrayList<RadioButton>(4)
@@ -1370,20 +1391,20 @@ class OPQOLCheckFragment : Fragment() {
                     radioButtonElement.textContent = allRadioButtons.get(k).text.toString()
                     val radioButtonId = View.generateViewId()
                     allGeneratedRadioButtonIds.add(radioButtonId)
-                    radioButtonElement.setAttribute("android:id" , "@id/${radioButtonId}")
+                    radioButtonElement.setAttribute("android:id" , "${radioButtonId}")
                     radioButtonElement.setAttribute("android:layout_width", "match_parent")
                     radioButtonElement.setAttribute("android:layout_height", "wrap_content")
                     radioButtonElement.setAttribute("android:layout_gravity" , "center|left")
-                    radioGroupElement.setAttribute("android:paddingLeft" , "8dp")
-                    radioGroupElement.setAttribute("android:paddingTop" , "8dp")
-                    radioGroupElement.setAttribute("android:textColor" , "@color/black")
-                    radioGroupElement.setAttribute("android:textSize" , "20sp")
+                    radioButtonElement.setAttribute("android:paddingLeft" , "8dp")
+                    radioButtonElement.setAttribute("android:paddingTop" , "8dp")
+                    radioButtonElement.setAttribute("android:textColor" , "@color/black")
+                    radioButtonElement.setAttribute("android:textSize" , "20sp")
                     when (k)
                     {
-                        0 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A1")
-                        1 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A2")
-                        2 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A3")
-                        3 -> radioGroupElement.setAttribute("android:text" , "@string/OPQOL35Q2A4")
+                        0 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q1A1))
+                        1 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q1A2))
+                        2 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q1A1))
+                        3 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q1A1))
                     }
                     radioGroupElement.appendChild(radioButtonElement)
                 }
@@ -1416,70 +1437,171 @@ class OPQOLCheckFragment : Fragment() {
         return createViewsFromXml(rootElement, context)
     }
 
-    private fun createViewsFromXml(element: Node, context: Context): List<View> {
+    private fun createViewsFromXml(element: Element, context: Context): List<View> {
         val views = mutableListOf<View>()
 
+        // Process the current element
+        var view = createViewFromXmlElement(element, context)
+        if (view != null) {
+            view = applyProgrammaticallySetAttributes(element, view)!!
+            views.add(view)
+        }
+
+        // Recursively process child elements
         val childNodes = element.childNodes
         for (i in 0 until childNodes.length) {
             val childNode = childNodes.item(i)
             if (childNode.nodeType == Node.ELEMENT_NODE) {
                 val childElement = childNode as Element
-                val view = createViewFromXmlElement(childElement, context)
-                if (view != null) {
-                    applyProgrammaticallySetAttributes(childElement, view)
-                    views.add(view)
-                }
+                views.addAll(createViewsFromXml(childElement, context))
             }
         }
 
         return views
     }
 
-    private fun applyProgrammaticallySetAttributes(element: Element, view: View) {
-        val layoutParams = view.layoutParams as? ViewGroup.MarginLayoutParams
-        layoutParams?.let {
-            it.width = parseDimension(element.getAttribute("android:layout_width"))
-            it.height = parseDimension(element.getAttribute("android:layout_height"))
-            it.leftMargin = parseDimension(element.getAttribute("android:layout_marginLeft"))
-            it.rightMargin = parseDimension(element.getAttribute("android:layout_marginRight"))
-            it.topMargin = parseDimension(element.getAttribute("android:layout_marginTop"))
-            it.bottomMargin = parseDimension(element.getAttribute("android:layout_marginBottom"))
-            it.marginStart = parseDimension(element.getAttribute("android:layout_marginStart"))
-            it.marginEnd = parseDimension(element.getAttribute("android:layout_marginEnd"))
+    private fun applyProgrammaticallySetAttributes(element: Element, view: View) : View {
+        val layoutParams = view.layoutParams ?: RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        if (layoutParams is RelativeLayout.LayoutParams) {
+            layoutParams.width = parseDimension(element.getAttribute("android:layout_width"))
+            layoutParams.height = parseDimension(element.getAttribute("android:layout_height"))
+            layoutParams.leftMargin = parseDimension(element.getAttribute("android:layout_marginLeft"))
+            layoutParams.rightMargin = parseDimension(element.getAttribute("android:layout_marginRight"))
+            layoutParams.topMargin = parseDimension(element.getAttribute("android:layout_marginTop"))
+            layoutParams.bottomMargin = parseDimension(element.getAttribute("android:layout_marginBottom"))
+            layoutParams.marginStart = parseDimension(element.getAttribute("android:layout_marginStart"))
+            layoutParams.marginEnd = parseDimension(element.getAttribute("android:layout_marginEnd"))
+            layoutParams.setMargins(parseDimension(element.getAttribute("android:layout_marginLeft")) ,
+                parseDimension(element.getAttribute("android:layout_marginTop")),
+                parseDimension(element.getAttribute("android:layout_marginRight")) ,
+                parseDimension(element.getAttribute("android:layout_marginBottom")))
+        }
+        val relativeLayoutParams = layoutParams as RelativeLayout.LayoutParams
+
+        if (view is RelativeLayout)
+        {
+            view.background = parseDrawable(element.getAttribute("android:background") , context!!)
+
+            val belowId = parseResource(element.getAttribute("android:layout_below"))
+            if (belowId != 0) {
+                relativeLayoutParams.addRule(RelativeLayout.BELOW, belowId)
+            }
+            view.layoutParams = relativeLayoutParams
         }
 
         if (view is TextView) {
             view.text = element.getAttribute("android:text")
+            view.layoutParams = layoutParams
+            view.background = parseDrawable(element.getAttribute("android:background") , context!!)
             view.setTextColor(parseColor(element.getAttribute("android:textColor")))
             view.setTextSize(TypedValue.COMPLEX_UNIT_SP, parseDimension(element.getAttribute("android:textSize")).toFloat())
             view.gravity = parseGravity(element.getAttribute("android:gravity"))
             view.isFocusable = element.getAttribute("android:focusable").toBoolean()
             view.isFocusableInTouchMode = element.getAttribute("android:focusableInTouchMode").toBoolean()
             view.minimumHeight = parseDimension(element.getAttribute("android:minHeight")).toInt()
+            view.id = element.getAttribute("android:id").substringAfter("/").toInt()
+        }
+
+        if (view is RadioGroup) {
+            // Set RadioGroup attributes here
+//            val layoutParams = view.layoutParams as? RelativeLayout.LayoutParams
+//            layoutParams?.let {
+//                it.width = parseDimension(element.getAttribute("android:layout_width"))
+//                it.height = parseDimension(element.getAttribute("android:layout_height"))
+//                it.leftMargin = parseDimension(element.getAttribute("android:layout_marginLeft"))
+//                it.rightMargin = parseDimension(element.getAttribute("android:layout_marginRight"))
+//                it.topMargin = parseDimension(element.getAttribute("android:layout_marginTop"))
+//                it.bottomMargin = parseDimension(element.getAttribute("android:layout_marginBottom"))
+//                it.marginStart = parseDimension(element.getAttribute("android:layout_marginStart"))
+//                it.marginEnd = parseDimension(element.getAttribute("android:layout_marginEnd"))
+//            }
+            val belowId = parseResource(element.getAttribute("android:layout_below"))
+            if (belowId != 0) {
+                relativeLayoutParams.addRule(RelativeLayout.BELOW, belowId)
+            }
+            view.id = element.getAttribute("android:id").substringAfter("/").toInt()
+            view.layoutParams = relativeLayoutParams
         }
 
         if (view is RadioButton) {
-            view.text = element.getAttribute("android:text")
+            // Set radiobutton attributes here
+//            val layoutParams = view.layoutParams as? RelativeLayout.LayoutParams
+//            layoutParams?.let {
+//                it.width = parseDimension(element.getAttribute("android:layout_width"))
+//                it.height = parseDimension(element.getAttribute("android:layout_height"))
+//                it.leftMargin = parseDimension(element.getAttribute("android:layout_marginLeft"))
+//                it.rightMargin = parseDimension(element.getAttribute("android:layout_marginRight"))
+//                it.topMargin = parseDimension(element.getAttribute("android:layout_marginTop"))
+//                it.bottomMargin = parseDimension(element.getAttribute("android:layout_marginBottom"))
+//                it.marginStart = parseDimension(element.getAttribute("android:layout_marginStart"))
+//                it.marginEnd = parseDimension(element.getAttribute("android:layout_marginEnd"))
+//            }
+            view.text = resources.getString(element.getAttribute("android:text").toInt())
+            view.id = element.getAttribute("android:id").substringAfter("/").toInt()
+            view.gravity = parseGravity(element.getAttribute("android:gravity"))
+            view.setPadding(parseDimension(element.getAttribute("paddingLeft")) , parseDimension(element.getAttribute("paddingTop")) , 0 , 0)
             val belowId = parseResource(element.getAttribute("android:layout_below"))
             if (belowId != 0) {
-                val params = view.layoutParams as? RelativeLayout.LayoutParams
-                params?.addRule(RelativeLayout.BELOW, belowId)
+                relativeLayoutParams?.addRule(RelativeLayout.BELOW, belowId)
             }
             // Add any specific attributes for RadioButton here
+            view.layoutParams = relativeLayoutParams
+
         }
 
-        // Set background resource
-        val backgroundResource = parseResource(element.getAttribute("android:background"))
-        if (backgroundResource != 0) {
-            view.setBackgroundResource(backgroundResource)
+        if (view is RelativeLayout)
+        {
+            view.requestLayout()
         }
+        else
+        {
+            view.requestLayout()
+        }
+        return view
 
-        // Add other attributes as needed
     }
 
     private fun parseDimension(dimension: String): Int {
-        // Assuming dimension is specified in dp
-        return dimension.replace("dp", "").toInt()
+        return when (dimension) {
+            "match_parent" -> ViewGroup.LayoutParams.MATCH_PARENT
+            "wrap_content" -> ViewGroup.LayoutParams.WRAP_CONTENT
+            else -> {
+                // Assuming dimension is specified in dp
+                if (dimension.endsWith("dp")) {
+                    dimension.replace("dp", "").toInt()
+                } else {
+                    // Default to 0 if the dimension is not recognized
+                    0
+                }
+            }
+        }
+    }
+
+    private fun parseDrawable(drawableString: String, context: Context): Drawable? {
+        return when {
+            drawableString.startsWith("@drawable/") -> {
+                // If the drawableString starts with '@drawable/', it's a resource drawable
+                val resId = context.resources.getIdentifier(drawableString.substring(10), "drawable", context.packageName)
+                ContextCompat.getDrawable(context, resId)
+            }
+            else -> {
+                // If it's not a resource drawable, try parsing it using other methods
+                try {
+                    // Parse the drawable using Drawable.createFromXml()
+                    val xmlParser = XmlPullParserFactory.newInstance().newPullParser()
+                    xmlParser.setInput(StringReader(drawableString))
+                    Drawable.createFromXml(context.resources, xmlParser)
+                } catch (e: Exception) {
+                    // Log any exceptions and return null
+                    e.printStackTrace()
+                    null
+                }
+            }
+        }
     }
 
     private fun parseResource(resource: String): Int {
@@ -1490,6 +1612,10 @@ class OPQOLCheckFragment : Fragment() {
             // Get the resource ID of the drawable
             return context!!.resources.getIdentifier(drawableName, "drawable", context!!.packageName)
         }
+        else
+        {
+            return resource.toInt()
+        }
         // If the resource string doesn't start with '@drawable/', it might be another type of resource
         // Handle other types of resources as needed
         return 0 // Return a default value or handle the case based on your application's logic
@@ -1498,7 +1624,14 @@ class OPQOLCheckFragment : Fragment() {
     private fun parseColor(color: String): Int {
         // Parse color string into color value
         // You may need to handle different types of color strings (e.g., #RRGGBB, @color/colorName)
-        return Color.parseColor(color)
+        return if (color.startsWith("@color/")) {
+            // It's a color resource, retrieve the color value
+            val resId = context!!.resources.getIdentifier(color.substring(1), "color", context!!.packageName)
+            ContextCompat.getColor(context!!, resId)
+        } else {
+            // Parse color string into color value
+            Color.parseColor(color)
+        }
     }
 
     private fun parseGravity(gravity: String): Int {
@@ -1530,6 +1663,7 @@ class OPQOLCheckFragment : Fragment() {
             if (childNode.nodeType == Node.ELEMENT_NODE) {
                 val childElement = childNode as Element
                 val childView = createViewFromRelativeLayoutChild(childElement, context)
+                applyProgrammaticallySetAttributes(childElement , childView!!)
                 if (childView != null) {
                     relativeLayout.addView(childView)
                 }
