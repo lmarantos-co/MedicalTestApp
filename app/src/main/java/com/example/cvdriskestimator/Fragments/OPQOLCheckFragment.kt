@@ -213,7 +213,10 @@ class OPQOLCheckFragment : Fragment() {
             //inputStream = inputStream.toString().replace("[^\\x20-\\x7e]", "").toInputStream()
 //                components = parseComponents(inputStream).toMutableList()
             components = parseParserComponents(xmlParser)
-            components.drop(1)
+            var extraRadioButton = RadioButton(mainActivity.applicationContext)
+            extraRadioButton = fix5RadioButtonOfQuestion1(extraRadioButton)
+            components.get(0).radioGroup.addView(extraRadioButton)
+            components.removeFirst()
             // Shuffle the list of components
 //        val shuffledComponents = components.shuffled()
             questionNoList = ArrayList<Int>(35)
@@ -224,10 +227,10 @@ class OPQOLCheckFragment : Fragment() {
             questionNoList.shuffle()
             var counter : Int = 0
             var questionsCounter : Int = 0
-            while ((counter <= 16) && (questionsCounter <= 35))
+            while ((counter <= 16) && (questionsCounter < 35))
             {
 
-                if (questionNoList.get(questionsCounter) <= 17)
+                if (questionNoList.get(questionsCounter) <= 16)
                 {
                     var temp = components.get(counter)
                     components[counter] = components.get(questionNoList.get(questionsCounter))
@@ -1562,6 +1565,30 @@ class OPQOLCheckFragment : Fragment() {
         }
         return view
 
+    }
+
+    private fun fix5RadioButtonOfQuestion1(radioButton: RadioButton) : RadioButton
+    {
+        val layoutParams = RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        if (layoutParams is RelativeLayout.LayoutParams) {
+            layoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT
+            layoutParams.height = RelativeLayout.LayoutParams.WRAP_CONTENT
+        }
+
+        radioButton.layoutParams = layoutParams
+        var id = View.generateViewId()
+        radioButton.setId(id)
+        radioButton.gravity = Gravity.LEFT or Gravity.CENTER
+        radioButton.setText(R.string.OPQOL35Q2A5)
+        radioButton.setTextColor(Color.BLACK)
+        radioButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+        radioButton.setPadding(8 , 8 , 0 , 0)
+
+        return radioButton
     }
 
     private fun parseDimension(dimension: String): Int {
