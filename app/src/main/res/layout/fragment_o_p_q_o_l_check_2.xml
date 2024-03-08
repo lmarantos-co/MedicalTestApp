@@ -299,7 +299,7 @@
                     android:textSize="20sp" />
 
                 <View
-                    android:id="@+id/pillow_5"
+                    android:id="@+id/opqolPillow_5"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_below="@+id/opqoQ2bTextV"
@@ -313,7 +313,7 @@
                     android:id="@+id/opqoQ2qTextV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/pillow_5"
+                    android:layout_below="@id/opqolPillow_5"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:background="@color/light_blue"
@@ -710,7 +710,7 @@
                     android:id="@+id/opqoQ2q2TextV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/pillow_5"
+                    android:layout_below="@id/OPQOLQ2RelLayoutV"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:background="@color/light_blue"

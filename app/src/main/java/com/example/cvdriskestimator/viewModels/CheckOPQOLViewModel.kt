@@ -133,40 +133,40 @@ class CheckOPQOLViewModel : ViewModel()
 
     fun checkOPQOLTestPatient2(allPatientSelections : ArrayList<Int?>) : Boolean
     {
-        return (checkQuestionForInputError(allPatientSelections.get(0) , 18)
-            && (checkQuestionForInputError(allPatientSelections.get(1) , 19))
+        return (checkQuestionForInputError2(allPatientSelections.get(0) , 18)
+            && (checkQuestionForInputError2(allPatientSelections.get(1) , 19))
             &&
             (checkQuestionForInputError(allPatientSelections.get(2) , 20))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(3) , 21))
+            (checkQuestionForInputError2(allPatientSelections.get(3) , 21))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(4) , 22))
+            (checkQuestionForInputError2(allPatientSelections.get(4) , 22))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(5) , 23))
+            (checkQuestionForInputError2(allPatientSelections.get(5) , 23))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(6) , 24))
+            (checkQuestionForInputError2(allPatientSelections.get(6) , 24))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(7) , 25))
+            (checkQuestionForInputError2(allPatientSelections.get(7) , 25))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(8) , 26))
+            (checkQuestionForInputError2(allPatientSelections.get(8) , 26))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(9) , 27))
+            (checkQuestionForInputError2(allPatientSelections.get(9) , 27))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(10) , 28))
+            (checkQuestionForInputError2(allPatientSelections.get(10) , 28))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(11) , 29))
+            (checkQuestionForInputError2(allPatientSelections.get(11) , 29))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(12) , 30))
+            (checkQuestionForInputError2(allPatientSelections.get(12) , 30))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(13) , 31))
+            (checkQuestionForInputError2(allPatientSelections.get(13) , 31))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(14) , 32))
+            (checkQuestionForInputError2(allPatientSelections.get(14) , 32))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(15) , 33))
+            (checkQuestionForInputError2(allPatientSelections.get(15) , 33))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(16) , 34))
+            (checkQuestionForInputError2(allPatientSelections.get(16) , 34))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(17) , 35)))
+            (checkQuestionForInputError2(allPatientSelections.get(17) , 35)))
     }
 
     fun openResultFragment()
@@ -340,6 +340,19 @@ class CheckOPQOLViewModel : ViewModel()
         if (value == null)
         {
             opqolCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO , questionNO)
+            correctData = false
+        }
+        else
+            correctData = true
+        return correctData
+    }
+
+    private fun checkQuestionForInputError2(value : Int?, questionNO: Int) : Boolean
+    {
+        var correctData : Boolean = false
+        if (value == null)
+        {
+            opqolCheckFragment2.showSelectionError("Please select an answer for question No : " + questionNO , questionNO)
             correctData = false
         }
         else

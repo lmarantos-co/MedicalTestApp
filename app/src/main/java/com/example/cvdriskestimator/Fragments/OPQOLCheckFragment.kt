@@ -41,6 +41,7 @@ import com.example.cvdriskestimator.viewModels.CheckOPQOLViewModel
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
+import org.xml.sax.InputSource
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import org.xmlpull.v1.XmlPullParserFactory
@@ -101,6 +102,7 @@ class OPQOLCheckFragment : Fragment() {
     private var allGeneratedRadioGroupIds2Fr = ArrayList<Int>(18)
     private var allGeneratedRadioButtonIds2Fr = ArrayList<Int>(90)
     private var allGeneratedRadioGroups2Fr = ArrayList<RadioGroup>(18)
+    private var negativeRadioGroups = ArrayList<RadioGroup>(3)
     private var Fragment1Set : Boolean = false
     private var Fragment2Set : Boolean = false
     private lateinit var fragment1Document : String
@@ -146,10 +148,11 @@ class OPQOLCheckFragment : Fragment() {
             if (it.containsKey("Fragment1Document"))
             {
                 fragment1Document = it.getString("Fragment1Document")!!
+                fragment1Randomized = true
             }
-            if (it.containsKey("Fragment2Document"))
+            if (it.containsKey("Fragemnt2Document"))
             {
-                fragment2Document = it.getString("Fragment2Document")!!
+                fragment2Document = it.getString("Fragemnt2Document")!!
             }
             if (it.containsKey("allGeneratedRelativeLayoutIds2Fr"))
             {
@@ -177,7 +180,7 @@ class OPQOLCheckFragment : Fragment() {
             }
             if (it.containsKey("allGeneratedRelativeLayoutIds1Fr"))
             {
-                allGeneratedRelativeLayoutIds = it.getSerializable("allGeneratedRelativeLayoutIds") as ArrayList<Int>
+                allGeneratedRelativeLayoutIds = it.getSerializable("allGeneratedRelativeLayoutIds1Fr") as ArrayList<Int>
             }
             if (it.containsKey("allGeneratedTxtViewsIds"))
             {
@@ -246,11 +249,6 @@ class OPQOLCheckFragment : Fragment() {
             fragment1Doc = generateXmlDocument(components , questionNoList)
             fragment1Document = convertDocumentToString(fragment1Doc!!)!!
 
-            for (i in 0..16)
-            {
-                var newRadioGroup = view!!.findViewById<RadioGroup>(allGeneratedRadioGroupIds.get(i))
-                allGeneratedRadioGroups.add(newRadioGroup)
-            }
             fragment1Randomized = true
         }
 //        if (fragment1Randomized)
@@ -269,6 +267,28 @@ class OPQOLCheckFragment : Fragment() {
         for (i in 0..viewToBeAdded.size -1)
         {
             parentView.addView(viewToBeAdded.get(i), index)
+        }
+        for (i in 0..16)
+        {
+            var newRadioGroup = view.findViewById<RelativeLayout>(allGeneratedRelativeLayoutIds.get(i)).findViewById<RadioGroup>(allGeneratedRadioGroupIds.get(i))
+            allGeneratedRadioGroups.add(newRadioGroup)
+        }
+        //get the radiogroups associated with negative questions
+        negativeRadioGroups = ArrayList<RadioGroup>(6)
+        for (i in 0..16)
+        {
+            if (questionNoList.get(i) == 3)
+                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+            if (questionNoList.get(i) == 5)
+                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+            if (questionNoList.get(i) == 6)
+                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+            if (questionNoList.get(i) == 15)
+                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+            if (questionNoList.get(i) == 28)
+                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+            if (questionNoList.get(i) == 32)
+                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
         }
         // Step 5: Inflate the modified layout in the fragment
 //        parentViewGroup.addView(inflateXmlLayout(mainActivity.applicationContext , fragment1Doc))
@@ -563,17 +583,18 @@ class OPQOLCheckFragment : Fragment() {
                     args.putSerializable("allGeneratedRadioGroupIds2Fr" , allGeneratedRadioGroupIds2Fr)
                     args.putSerializable("allGeneratedRadioButtonIds2Fr" , allGeneratedRadioButtonIds2Fr)
                     args.putSerializable("allGeneratedRadioGroups2Fr" , allGeneratedRadioGroups2Fr)
-                    args.putString("Fragment2Document" , convertDocumentToString(fragment2Doc!!))
+                    args.putSerializable("Fragemnt2Document" , fragment2Doc)
                 }
 
                 args.putSerializable("Answers" , thisFragmentPatientSelections)
                 args.putBoolean("Fragment1Set" , true)
-                args.putSerializable("AllQuestions" , questionNoList)
-                args.putSerializable("allGeneratedRelativeLayoutIdsFirstFragment" , allGeneratedRelativeLayoutIds)
-                args.putSerializable("allGeneratedTxtViewsIdsFirstFragment" , allGeneratedTxtViewsIds)
-                args.putSerializable("allGeneratedRadioGroupIdsFirstFragment" , allGeneratedRadioGroupIds)
-                args.putSerializable("allGeneratedRadioGrousFirstFragment" , allGeneratedRadioGroups)
-                args.putString("Fragment1Document" , convertDocumentToString(fragment1Doc!!))
+                args.putSerializable("Questions" , questionNoList)
+                args.putSerializable("allGeneratedRelativeLayoutIds1Fr" , allGeneratedRelativeLayoutIds)
+                args.putSerializable("allGeneratedTxtViewsIds1Fr" , allGeneratedTxtViewsIds)
+                args.putSerializable("allGeneratedRadioGroups1Fr" , allGeneratedRadioGroupIds)
+                args.putSerializable("allGeneratedRadioGroupIds1Fr" , allGeneratedRadioGroupIds)
+                args.putSerializable("allGeneratedRadioButtonIds1Fr" , allGeneratedRadioButtonIds)
+                args.putSerializable("Fragment1Document" , fragment1Doc)
                 opqolCheckFragment2 = OPQOLCheckFragment2.newInstance(args)
                 mainActivity.fragmentTransaction(opqolCheckFragment2)
             }
@@ -1029,9 +1050,12 @@ class OPQOLCheckFragment : Fragment() {
 
     private fun setQuestionRadioGroup(rg: RadioGroup, patientAnswer: Int) {
 
-        if ((rg != allGeneratedRadioGroups.get(questionNoList.get(3)))
-            && (rg != allGeneratedRadioGroups.get(questionNoList.get(5)))
-            && (rg != allGeneratedRadioGroups.get(questionNoList.get(6))))
+        var positiveAnswer : Boolean = true
+        for (radioGroup in negativeRadioGroups)
+        {
+            positiveAnswer = positiveAnswer && (rg != radioGroup)
+        }
+        if (positiveAnswer)
         {
             when (patientAnswer)
             {
@@ -1060,10 +1084,12 @@ class OPQOLCheckFragment : Fragment() {
 
         var result : Int? = null
         val radioButtonId = opqolQ1RG.checkedRadioButtonId
-        if ((opqolQ1RG != allGeneratedRadioGroups.get(questionNoList.get(3)))
-            && (opqolQ1RG != allGeneratedRadioGroups.get(questionNoList.get(5)))
-            && (opqolQ1RG != allGeneratedRadioGroups.get(questionNoList.get(6)))
-            && (opqolQ1RG != allGeneratedRadioGroups.get(questionNoList.get(15))))
+        var positiveAnswer : Boolean = true
+        for (radioGroup in negativeRadioGroups)
+        {
+            positiveAnswer = positiveAnswer && (opqolQ1RG != radioGroup)
+        }
+        if (positiveAnswer)
         {
             if (opqolQ1RG.get(0).id == radioButtonId)
             {
@@ -1190,7 +1216,6 @@ class OPQOLCheckFragment : Fragment() {
         allGeneratedRadioGroups.get(14).clearCheck()
         allGeneratedRadioGroups.get(15).clearCheck()
         allGeneratedRadioGroups.get(16).clearCheck()
-        allGeneratedRadioGroups.get(17).clearCheck()
     }
 
     override fun onAttach(context: Context) {
@@ -1420,21 +1445,21 @@ class OPQOLCheckFragment : Fragment() {
         return doc
     }
 
-    private fun convertDocumentToString(document: Document): String? {
-        return try {
-            val transformerFactory = TransformerFactory.newInstance()
-            val transformer: Transformer = transformerFactory.newTransformer()
-            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes")
-            val source = DOMSource(document)
-            val writer = StringWriter()
-            val result = StreamResult(writer)
-            transformer.transform(source, result)
-            writer.toString()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            null
-        }
-    }
+//    private fun convertDocumentToString(document: Document): String? {
+//        return try {
+//            val transformerFactory = TransformerFactory.newInstance()
+//            val transformer: Transformer = transformerFactory.newTransformer()
+//            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes")
+//            val source = DOMSource(document)
+//            val writer = StringWriter()
+//            val result = StreamResult(writer)
+//            transformer.transform(source, result)
+//            writer.toString()
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//            null
+//        }
+//    }
 
     fun createViewFromXml(document: Document, context: Context): List<View> {
         val rootElement = document.documentElement ?: return emptyList()
@@ -1749,25 +1774,18 @@ class OPQOLCheckFragment : Fragment() {
         return radioButton
     }
 
-    // Function to parse XML string to View
-// Function to parse XML string to View
-    fun parseXmlToView2(context: Context, xmlString: String): View {
-        val parser = Xml.newPullParser()
-        parser.setInput(xmlString.reader())
-        return LayoutInflater.from(context).inflate(parser, null)
+    fun convertDocumentToString(document: Document): String {
+        val transformerFactory = TransformerFactory.newInstance()
+        val transformer = transformerFactory.newTransformer()
+        val writer = StringWriter()
+        transformer.transform(DOMSource(document), StreamResult(writer))
+        return writer.toString()
     }
 
-
-    // Function to create View from XML start tag
-    private fun createView(context: Context, parser: XmlPullParser): View {
-        val tagName = parser.name
-        val attrs = Xml.asAttributeSet(parser)
-
-        return when (tagName) {
-            "RelativeLayout" -> View(context)
-            // Handle other supported view types similarly
-            else -> throw IllegalArgumentException("Unsupported view type: $tagName")
-        }
+    fun convertStringToDocument(documentString: String?): Document {
+        val factory = DocumentBuilderFactory.newInstance()
+        val builder = factory.newDocumentBuilder()
+        return builder.parse(InputSource(StringReader(documentString)))
     }
 
     fun String.toInputStream(): InputStream {
