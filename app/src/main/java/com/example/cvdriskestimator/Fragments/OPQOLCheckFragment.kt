@@ -1401,10 +1401,11 @@ class OPQOLCheckFragment : Fragment() {
                     radioButtonElement.setAttribute("android:textSize" , "20sp")
                     when (k)
                     {
-                        0 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q1A1))
-                        1 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q1A2))
-                        2 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q1A1))
-                        3 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q1A1))
+                        0 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q2A1))
+                        1 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q2A2))
+                        2 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q2A3))
+                        3 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q2A4))
+                        4 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q2A5))
                     }
                     radioGroupElement.appendChild(radioButtonElement)
                 }
@@ -1485,12 +1486,13 @@ class OPQOLCheckFragment : Fragment() {
         if (view is RelativeLayout)
         {
             view.background = parseDrawable(element.getAttribute("android:background") , context!!)
-
+            view.id = element.getAttribute("android:id").substringAfter("/").toInt()
             val belowId = parseResource(element.getAttribute("android:layout_below"))
             if (belowId != 0) {
                 relativeLayoutParams.addRule(RelativeLayout.BELOW, belowId)
             }
             view.layoutParams = relativeLayoutParams
+            view.requestLayout()
         }
 
         if (view is TextView) {
@@ -1525,6 +1527,7 @@ class OPQOLCheckFragment : Fragment() {
             }
             view.id = element.getAttribute("android:id").substringAfter("/").toInt()
             view.layoutParams = relativeLayoutParams
+            view.requestLayout()
         }
 
         if (view is RadioButton) {
@@ -1540,17 +1543,13 @@ class OPQOLCheckFragment : Fragment() {
 //                it.marginStart = parseDimension(element.getAttribute("android:layout_marginStart"))
 //                it.marginEnd = parseDimension(element.getAttribute("android:layout_marginEnd"))
 //            }
-            view.text = resources.getString(element.getAttribute("android:text").toInt())
+            view.text = element.getAttribute("android:text")
             view.id = element.getAttribute("android:id").substringAfter("/").toInt()
             view.gravity = parseGravity(element.getAttribute("android:gravity"))
             view.setPadding(parseDimension(element.getAttribute("paddingLeft")) , parseDimension(element.getAttribute("paddingTop")) , 0 , 0)
-            val belowId = parseResource(element.getAttribute("android:layout_below"))
-            if (belowId != 0) {
-                relativeLayoutParams?.addRule(RelativeLayout.BELOW, belowId)
-            }
             // Add any specific attributes for RadioButton here
             view.layoutParams = relativeLayoutParams
-
+            view.requestLayout()
         }
 
         if (view is RelativeLayout)
@@ -1573,6 +1572,15 @@ class OPQOLCheckFragment : Fragment() {
                 // Assuming dimension is specified in dp
                 if (dimension.endsWith("dp")) {
                     dimension.replace("dp", "").toInt()
+
+                } else {
+                    // Default to 0 if the dimension is not recognized
+                    0
+                }
+                // Assuming dimension is specified in dp
+                if (dimension.endsWith("sp")) {
+                    dimension.replace("sp", "").toInt()
+
                 } else {
                     // Default to 0 if the dimension is not recognized
                     0
@@ -1697,6 +1705,7 @@ class OPQOLCheckFragment : Fragment() {
             if (childNode.nodeType == Node.ELEMENT_NODE && childNode.nodeName == "RadioButton") {
                 val radioButton = createRadioButton(childNode as Element, context)
                 if (radioButton != null) {
+                    applyProgrammaticallySetAttributes(childNode as Element, radioButton)
                     radioGroup.addView(radioButton)
                 }
             }
