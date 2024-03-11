@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var zungCheckFFragment : CheckZUNGFragment
     private lateinit var opqolCheckFragment: OPQOLCheckFragment
     private lateinit var opqolCheckFragment2 : OPQOLCheckFragment2
+    private lateinit var gasCheckFragment: GASCheckFragment
     private lateinit var timelineFragment: ResultTimelineFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
@@ -113,6 +114,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private var HammiltonTestName : String = ""
     private var ZungTestName : String = ""
     private var OPQOLTestName : String = ""
+    private var GasTestName : String = ""
     private var CVDTestDate : String = ""
     private var DiabetesTestDate : String = ""
     private var MDITestDate : String = ""
@@ -126,6 +128,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private var HammiltonTestDate : String = ""
     private var ZungTestDate : String = ""
     private var OPQOLTestDate : String = ""
+    private var GASTestDate : String = ""
     private lateinit var patienTestListOkBtn : Button
     private lateinit var includeTestOptionsPopup : ConstraintLayout
     private var showPatientLasttest : Boolean = false
@@ -174,6 +177,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var dassIcon : View
     private lateinit var zungIcon : View
     private lateinit var opqolIcon : View
+    private lateinit var gasIcon : View
     private lateinit var cvdTestTitle : TextView
     private lateinit var diabetestestTitle : TextView
     private lateinit var depressionTestTitle : TextView
@@ -187,6 +191,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var hamiltonTxtV : TextView
     private lateinit var zungTxtV : TextView
     private lateinit var opqolTxtV : TextView
+    private lateinit var gasTxtV : TextView
     private lateinit var animationZoomIn : Animation
     private lateinit var animationBounce : Animation
     private lateinit var animationSlideLeftToRight : Animation
@@ -613,10 +618,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         opqolIcon = findViewById(R.id.opqolPanel)
         staiAnxietyIcon = findViewById(R.id.staiPanel)
         zungIcon = findViewById(R.id.zungPanel)
+        gasIcon = findViewById(R.id.gdPanel3)
         beckDeprTxtV = findViewById(R.id.bdiTxtV)
         gerDepTxtV = findViewById(R.id.gdsTxtV)
         staiTxtV = findViewById(R.id.staTxtV)
         dassTxtV = findViewById(R.id.dassTxtV)
+        gasTxtV = findViewById(R.id.gassTxtV)
         cvdTestTitle = findViewById(R.id.cvdTestTxtView)
         diabetestestTitle = findViewById(R.id.diabetesTestTxtView)
         depressionTestTitle = findViewById(R.id.depressionTestTxtView)
@@ -684,7 +691,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 var bundle = Bundle()
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
-                bundle.putString("openType" , "addNew")
+                bundle.putString("openType" , "updateLast")
                 bpiCheckFragment = BPICheckFragment()
                 bpiCheckFragment.arguments = bundle
                 fragmentTransaction(bpiCheckFragment)
@@ -772,6 +779,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("openType" , "updateLast")
                 opqolCheckFragment = OPQOLCheckFragment.newInstance(bundle)
                 fragmentTransaction(opqolCheckFragment)
+            }
+            "GAS" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                gasCheckFragment = GASCheckFragment()
+                gasCheckFragment.arguments = bundle
+                fragmentTransaction(gasCheckFragment)
             }
         }
     }
@@ -912,6 +929,26 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("openType" , "addNew")
                 opqolCheckFragment = OPQOLCheckFragment.newInstance(bundle)
                 fragmentTransaction(opqolCheckFragment)
+            }
+            "GAS" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                gasCheckFragment = GASCheckFragment()
+                gasCheckFragment.arguments = bundle
+                fragmentTransaction(gasCheckFragment)
+            }
+            "GAS" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                gasCheckFragment = GASCheckFragment()
+                gasCheckFragment.arguments = bundle
+                fragmentTransaction(gasCheckFragment)
             }
         }
     }
@@ -1054,6 +1091,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 opqolCheckFragment = OPQOLCheckFragment.newInstance(bundle)
                 fragmentTransaction(opqolCheckFragment)
             }
+            "GAS" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                gasCheckFragment = GASCheckFragment()
+                gasCheckFragment.arguments = bundle
+                fragmentTransaction(gasCheckFragment)
+            }
         }
     }
 
@@ -1145,6 +1192,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         hammiltonPanel = findViewById(R.id.hammPanel)
         dassPanel = findViewById(R.id.dassPanel)
         opqolPanel = findViewById(R.id.opqolPanel)
+        gasIcon = findViewById(R.id.gdPanel3)
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val width = displayMetrics.widthPixels
@@ -1189,6 +1237,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         opqolPanel.layoutParams.height = height / 5
         opqolPanel.layoutParams.width = (width / 2.3).toInt()
 
+        gasIcon.layoutParams.height = height / 5
+        gasIcon.layoutParams.width = (width / 2.3).toInt()
+
         registerFragment = RegisterFragment.newInstance()
         checkFragment = CheckFragment()
         checkDiabetesFragment = DiabetesCheckFragment()
@@ -1204,6 +1255,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         zungCheckFFragment = CheckZUNGFragment()
         opqolCheckFragment = OPQOLCheckFragment()
         opqolCheckFragment2 = OPQOLCheckFragment2()
+        gasCheckFragment = GASCheckFragment()
         var resultsArray = IntArray(8)
         resultsArray[0] = 40
         resultsArray[1] = 55
@@ -1390,6 +1442,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         opqolIcon.setOnClickListener {
             hideLayoutElements()
             openTestPopUp("OPQOL")
+        }
+
+        gasIcon.setOnClickListener {
+            hideLayoutElements()
+            openTestPopUp("GAS")
         }
 
 
@@ -1639,6 +1696,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         opqolIcon.animate().alphaBy(1f).duration = 1200
         opqolIcon.startAnimation(bounceTests)
         opqolIcon.visibility = View.VISIBLE
+        gasIcon.animate().alphaBy(1f).duration = 1200
+        gasIcon.startAnimation(bounceTests)
+        gasIcon.visibility = View.VISIBLE
 
     }
 
@@ -1678,6 +1738,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         hamDIcon.visibility = View.INVISIBLE
         zungIcon.clearAnimation()
         zungIcon.visibility = View.INVISIBLE
+        opqolIcon.clearAnimation()
+        opqolIcon.visibility = View.INVISIBLE
+        gasIcon.clearAnimation()
+        gasIcon.visibility = View.INVISIBLE
         cvdTestTitle.visibility = View.INVISIBLE
         diabetestestTitle.visibility = View.INVISIBLE
         depressionTestTitle.visibility = View.INVISIBLE
@@ -1722,6 +1786,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         zungIcon.visibility = View.VISIBLE
         opqolIcon.visibility = View.VISIBLE
         opqolIcon.clearAnimation()
+        gasIcon.visibility = View.VISIBLE
+        gasIcon.clearAnimation()
         cvdVectorIcon.visibility = View.VISIBLE
         cvdTestTitle.visibility = View.VISIBLE
         diabetesVectorIcon.visibility = View.VISIBLE
@@ -1736,6 +1802,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dassTxtV.visibility = View.VISIBLE
         zungTxtV.visibility = View.VISIBLE
         hamiltonTxtV.visibility = View.VISIBLE
+        gasTxtV.visibility = View.VISIBLE
     }
 
     private fun setAllViewsDimens()
@@ -1912,6 +1979,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(zungCheckFFragment)
         fragmentTransaction.hide(opqolCheckFragment)
         fragmentTransaction.hide(opqolCheckFragment2)
+        fragmentTransaction.hide(gasCheckFragment)
 //        fragmentTransaction.hide(pdqCheckFragment)
         fragmentTransaction.hide(leaderBoardFragment)
             .commit()
@@ -2003,6 +2071,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         if (fragment is OPQOLCheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is OPQOLCheckFragment2)
+            fragmentTransaction.show(fragment)
+        if (fragment is GASCheckFragment)
             fragmentTransaction.show(fragment)
         if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)
@@ -2325,6 +2395,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         DASSTestName = ""
         ZungTestName = ""
         OPQOLTestName = ""
+        GasTestName = ""
 //        runOnUiThread {
 //
 //            allPatientTestNames = ""
@@ -2519,6 +2590,27 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                     var ZUNGTestResult = "ZUNG - ${dateFormat.format(allZUNGSize!!.testDate)}"
                 }
 
+                if (allGDSTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allGDSSize = allGDSTest.get(allGDSTest.size - 1)
+                    GDSTestName = "Geriatric Depression"
+                    GDSTestDate = dateFormat.format(allGDSSize!!.testDate)
+                    var GDSTestResult =
+                        "Geriatric Depression - ${dateFormat.format(allGDSSize!!.testDate)}"
+                }
+
+                var allGASTest = realm.where(Test::class.java).isNotNull("patientGASQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+
+                if (allGASTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allGASSize = allGDSTest.get(allGASTest.size - 1)
+                    GasTestName = "GAS"
+                    GDSTestDate = dateFormat.format(allGASSize!!.testDate)
+                    var GDSTestResult =
+                        "Geriatric Depression - ${dateFormat.format(allGASSize!!.testDate)}"
+                }
+
 //            allPatientsTestNameListView = findViewById(R.id.alltestsNameResultsistView)
 //            allPatientTestDateLisView = findViewById(R.id.alltestsDatesResultsistView)
 
@@ -2600,6 +2692,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                     allPatientTestDateData.add(OPQOLTestDate)
                     allPatientTestNames += OPQOLTestName + "\n"
                     allPatientTestDates += OPQOLTestName + "\n"
+                }
+
+                if (GasTestName != "") {
+                    allPatientTestNameData.add(GasTestName)
+                    allPatientTestDateData.add(GASTestDate)
+                    allPatientTestNames += GasTestName + "\n"
+                    allPatientTestDates += GASTestDate + "\n"
                 }
             }
         }

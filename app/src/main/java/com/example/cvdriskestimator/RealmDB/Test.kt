@@ -749,4 +749,29 @@ open class Test : RealmModel
 
     var OPQOLTestReesult : Int? = null
 
+    //variables related with GAS Test
+
+    var patientGASQ1 : Int? = null
+
+    var patientGASQ2 : Int? = null
+
+    var patientGASQ3 : Int? = null
+
+    var patientGASQ4 : Int? = null
+
+    var patientGASQ5 : Int? = null
+
+    var patientGASQ6 : Int? = null
+
+    var patientGASQ7 : Int? = null
+
+    var patientGASQ8 : Int? = null
+
+    var patientGASQ9 : Int? = null
+
+    var patientGASQ10 : Int? = null
+
+
+    var patientGASTestResult : Int? = null
+
 }

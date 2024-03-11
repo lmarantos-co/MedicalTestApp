@@ -39,6 +39,16 @@ class MDITestEstimator {
         return resultSum
     }
 
+    fun calculateBAS(allPatientSelections : ArrayList<Int?>) : Int
+    {
+        var resultSum : Int  =0
+        for (i in 0..allPatientSelections.size -1)
+        {
+            resultSum += allPatientSelections.get(i)!!
+        }
+        return resultSum
+    }
+
     fun maxAB(a : Int, b : Int) : Int
     {
         if (a > b)

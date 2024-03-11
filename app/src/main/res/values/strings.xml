@@ -899,4 +899,19 @@
     <string name="OPQOL35Q2Category8Q35">(35) Οι πολιτισμικές/ θρησκευτικές εκδηλώσεις και γιορτές είναι σημαντικές για την ποιότητα ζωής μου.</string>
     <string name="OPQOL35Q2Category8Q36">(36) Έχω ευθύνες προς τους άλλους οι οποίες περιορίζουν τις κοινωνικές μου δραστηριότητες ή τα χόμπι μου</string>
     <string name="opqol_test_results">OPQOL Test</string>
+    <string name="GASQ1">1. Ήμουν οξύθυμος.</string>
+    <string name="GASQ2">2. Ένιωσα αποκομμένος ή απομονωμένος από τους άλλους.</string>
+    <string name="GASQ3">3. Ένιωσα σαστισμένος/σύγχυση</string>
+    <string name="GASQ4">4. Είχα δυσκολία να παραμείνω ακίνητος/ήσυχος</string>
+    <string name="GASQ5">5. Δεν μπορούσα να ελέγξω την ανησυχία μου.</string>
+    <string name="GASQ6">6. Ένιωσα ανήσυχος, νευρικός ή αγανακτισμένος.</string>
+    <string name="GASQ7">7. Ένιωσα κουρασμένος.|</string>
+    <string name="GASQ8">8. Οι μύες μου ήταν σφιγμένοι.</string>
+    <string name="GASQ9">9. Ένιωσα, ότι δεν είχα κανέναν έλεγχο στη ζωή μου.</string>
+    <string name="GASQ10">10. Ένιωσα, ότι κάτι τρομερό θα μου συνέβαινε.</string>
+    <string name="GASΑ1">Καθόλου</string>
+    <string name="GASΑ2">Μερικές φορές</string>
+    <string name="GASA3">Τις περισσότερες φορές</string>
+    <string name="GASA4">Συνέχεια</string>
+    <string name="gas_test_intro_text">Επέλεξε την καλύτερη απάντηση για το πως νοιώθετε</string>
 </resources>

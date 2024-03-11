@@ -488,6 +488,25 @@ class HistoryFragment : Fragment() {
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
+            "GAS" ->
+            {
+                bindingHistoryFragment.testNameTxtV.setText("GAS")
+                tests = realm.where(Test::class.java).isNotNull("patientGASQ6") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+//                if (tests.size > 10)
+//                {
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//                }
+                setDatesFromTestsToChartSubTitle(tests!!)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("patientGASQ6").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
+            }
         }
         bindingHistoryFragment.testResultsLineChart.layoutParams.height = SCREEN_HEIGHT / 4
         initTestResultsScopeDataChart(tests!!)
@@ -1042,6 +1061,52 @@ class HistoryFragment : Fragment() {
 
                    //create the data set
                    dataSet1 = LineDataSet(null, Html.fromHtml("GDS").toString())
+                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet1.lineWidth = 2f
+                   dataSet1.color = Color.BLUE
+                   dataSet1.isHighlightEnabled = false
+                   dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
+                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientGDSTestResult!!.toFloat())
+                       dataSet1.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
+               }
+
+               "GAS" ->
+               {
+                   for (test in allTests)
+                   {
+                       if (minScore > test.patientGASTestResult!!)
+                       {
+                           minScore = test.patientGASTestResult!!.toFloat()
+                       }
+
+                       if (maxScore < test.patientGASTestResult!!)
+                       {
+                           maxScore = test.patientGASTestResult!!.toFloat()
+                       }
+
+                       if (minScore > 3)
+                           minScore -= 2
+                       else
+                           minScore = 0f
+                       if (maxScore < 12)
+                           maxScore += 2
+                       else
+                           maxScore = 15f
+                   }
+
+                   //create the data set
+                   dataSet1 = LineDataSet(null, Html.fromHtml("GAS").toString())
                    dataSet1.axisDependency = YAxis.AxisDependency.LEFT
                    dataSet1.lineWidth = 2f
                    dataSet1.color = Color.BLUE
