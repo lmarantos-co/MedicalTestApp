@@ -887,8 +887,6 @@ class ResultFragment : Fragment() {
             pieChartView.addView(barChartView)
         }
 
-
-
             return view
     }
 

@@ -219,7 +219,7 @@ class OPQOLCheckFragment2 : Fragment() {
 //                components = parseComponents(inputStream).toMutableList()
             components = parseParserComponents(xmlParser)
             components.removeFirst()
-            for (i in 0..17)
+            for (i in 0..16)
             {
                 newComponents.add(i , components.get(i))
             }
@@ -244,7 +244,7 @@ class OPQOLCheckFragment2 : Fragment() {
                 }
             }
 
-            fragment2Doc = generateXmlDocument(components , questionNoList)
+            fragment2Doc = generateXmlDocument(newComponents , questionNoList)
             Fragment2Document = convertDocumentToString(fragment2Doc!!)!!
 
 

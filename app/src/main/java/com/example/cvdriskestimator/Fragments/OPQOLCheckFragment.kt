@@ -71,6 +71,8 @@ class OPQOLCheckFragment : Fragment() {
     private var otherFragmentSelectionsExists : Boolean = false
     private var allPatientSelections =
     arrayListOf<Int?>(1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 , 1 ,1 , 1 ,1 ,1 , 1, 1, 1)
+    private var fragment2AnswersFromPreviousTest = ArrayList<Int>(18)
+    private var answersFromPreviousTest : Boolean = false
     private lateinit var popupMenu: PopUpMenu
 
     private lateinit var loginPatientFragment: LoginPatientFragment
@@ -182,21 +184,21 @@ class OPQOLCheckFragment : Fragment() {
             {
                 allGeneratedRelativeLayoutIds = it.getSerializable("allGeneratedRelativeLayoutIds1Fr") as ArrayList<Int>
             }
-            if (it.containsKey("allGeneratedTxtViewsIds"))
+            if (it.containsKey("allGeneratedTxtViewsIds1Fr"))
             {
-                allGeneratedTxtViewsIds = it.getSerializable("allGeneratedTxtViewsIds") as ArrayList<Int>
+                allGeneratedTxtViewsIds = it.getSerializable("allGeneratedTxtViewsIds1Fr") as ArrayList<Int>
             }
-            if (it.containsKey("allGeneratedRadioGroupIds"))
+            if (it.containsKey("allGeneratedRadioGroupIds1Fr"))
             {
-                allGeneratedRadioGroupIds = it.getSerializable("allGeneratedRadioGroupIds") as ArrayList<Int>
+                allGeneratedRadioGroupIds = it.getSerializable("allGeneratedRadioGroupIds1Fr") as ArrayList<Int>
             }
-            if (it.containsKey("allGeneratedRadioButtonIds"))
+            if (it.containsKey("allGeneratedRadioButtonIds1Fr"))
             {
-                allGeneratedRadioButtonIds = it.getSerializable("allGeneratedRadioButtonIds") as ArrayList<Int>
+                allGeneratedRadioButtonIds = it.getSerializable("allGeneratedRadioButtonIds1Fr") as ArrayList<Int>
             }
-            if (it.containsKey("allGeneratedRadioGroups"))
+            if (it.containsKey("allGeneratedRadioGroups1Fr"))
             {
-                allGeneratedRadioGroups = it.getSerializable("allGeneratedRadioGroups") as ArrayList<RadioGroup>
+                allGeneratedRadioGroups = it.getSerializable("allGeneratedRadioGroups1Fr") as ArrayList<RadioGroup>
             }
 
         }
@@ -263,7 +265,7 @@ class OPQOLCheckFragment : Fragment() {
 //        addXmlToView(parentViewGroup!! , fragment1Document)
         val parentView = ViewToAppendGeneratedLayout.parent as ViewGroup // Assuming the parent is a ViewGroup
         val index = parentView.indexOfChild(ViewToAppendGeneratedLayout)
-        var viewToBeAdded = createViewFromXml(fragment1Doc, mainActivity.applicationContext)
+        var viewToBeAdded = createViewFromXml(convertStringToDocument(fragment1Document), mainActivity.applicationContext)
         for (i in 0..viewToBeAdded.size -1)
         {
             parentView.addView(viewToBeAdded.get(i), index)
@@ -314,7 +316,7 @@ class OPQOLCheckFragment : Fragment() {
             if (openType == "open_history")
             {
                 openHistory = true
-                historyTest = Test()
+//                historyTest = Test()
                 if (patientId != "")
                 {
                     if (testDate != "")
@@ -334,6 +336,7 @@ class OPQOLCheckFragment : Fragment() {
                 }
                 if (historyTest.OPQOLTestReesult != null)
                 {
+                    setPatientSelectionsForFragment2(historyTest)
                     setPatientData1(historyTest)
                 }
             }
@@ -387,6 +390,7 @@ class OPQOLCheckFragment : Fragment() {
             {
                 if (useLayout1)
                     patientTest = it
+                setPatientSelectionsForFragment2(it)
                 setPatientData1(it)
             }
         }
@@ -574,6 +578,10 @@ class OPQOLCheckFragment : Fragment() {
             if (opqolPatientViewModel.checkOPQOLTestPatient1(allPatientSelections))
             {
                 var args = Bundle()
+                if (answersFromPreviousTest)
+                {
+                    args.putSerializable("Answers2" , fragment2AnswersFromPreviousTest)
+                }
                 if (otherFragmentSelectionsExists)
                 {
                     args.putSerializable("Answers2" , otherFragmentPatientSelections)
@@ -583,7 +591,7 @@ class OPQOLCheckFragment : Fragment() {
                     args.putSerializable("allGeneratedRadioGroupIds2Fr" , allGeneratedRadioGroupIds2Fr)
                     args.putSerializable("allGeneratedRadioButtonIds2Fr" , allGeneratedRadioButtonIds2Fr)
                     args.putSerializable("allGeneratedRadioGroups2Fr" , allGeneratedRadioGroups2Fr)
-                    args.putSerializable("Fragemnt2Document" , fragment2Doc)
+                    args.putSerializable("Fragemnt2Document" , convertDocumentToString(fragment2Doc))
                 }
 
                 args.putSerializable("Answers" , thisFragmentPatientSelections)
@@ -591,10 +599,10 @@ class OPQOLCheckFragment : Fragment() {
                 args.putSerializable("Questions" , questionNoList)
                 args.putSerializable("allGeneratedRelativeLayoutIds1Fr" , allGeneratedRelativeLayoutIds)
                 args.putSerializable("allGeneratedTxtViewsIds1Fr" , allGeneratedTxtViewsIds)
-                args.putSerializable("allGeneratedRadioGroups1Fr" , allGeneratedRadioGroupIds)
+                args.putSerializable("allGeneratedRadioGroups1Fr" , allGeneratedRadioGroups)
                 args.putSerializable("allGeneratedRadioGroupIds1Fr" , allGeneratedRadioGroupIds)
                 args.putSerializable("allGeneratedRadioButtonIds1Fr" , allGeneratedRadioButtonIds)
-                args.putSerializable("Fragment1Document" , fragment1Doc)
+                args.putSerializable("Fragment1Document" , convertDocumentToString(fragment1Doc))
                 opqolCheckFragment2 = OPQOLCheckFragment2.newInstance(args)
                 mainActivity.fragmentTransaction(opqolCheckFragment2)
             }
@@ -631,6 +639,28 @@ class OPQOLCheckFragment : Fragment() {
 
         }
 
+    }
+
+    private fun setPatientSelectionsForFragment2(it : Test) {
+        fragment2AnswersFromPreviousTest[0] = it.patientOPQOLQ18!!
+        fragment2AnswersFromPreviousTest[1] = it.patientOPQOLQ19!!
+        fragment2AnswersFromPreviousTest[2] = it.patientOPQOLQ20!!
+        fragment2AnswersFromPreviousTest[3] = it.patientOPQOLQ21!!
+        fragment2AnswersFromPreviousTest[4] = it.patientOPQOLQ22!!
+        fragment2AnswersFromPreviousTest[5] = it.patientOPQOLQ23!!
+        fragment2AnswersFromPreviousTest[6] = it.patientOPQOLQ24!!
+        fragment2AnswersFromPreviousTest[7] = it.patientOPQOLQ25!!
+        fragment2AnswersFromPreviousTest[8] = it.patientOPQOLQ26!!
+        fragment2AnswersFromPreviousTest[9] = it.patientOPQOLQ27!!
+        fragment2AnswersFromPreviousTest[10] = it.patientOPQOLQ28!!
+        fragment2AnswersFromPreviousTest[11] = it.patientOPQOLQ29!!
+        fragment2AnswersFromPreviousTest[12] = it.patientOPQOLQ30!!
+        fragment2AnswersFromPreviousTest[13] = it.patientOPQOLQ31!!
+        fragment2AnswersFromPreviousTest[14] = it.patientOPQOLQ32!!
+        fragment2AnswersFromPreviousTest[15] = it.patientOPQOLQ33!!
+        fragment2AnswersFromPreviousTest[16] = it.patientOPQOLQ34!!
+        fragment2AnswersFromPreviousTest[17] = it.patientOPQOLQ35!!
+        answersFromPreviousTest = true
     }
 
 //    private fun populateAllTextViewsStringResources()

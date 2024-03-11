@@ -73,7 +73,7 @@ class BarChartView(context: Context, patientSelections : ArrayList<Int>) : View(
             // Set the letter spacing (in pixels)
             val letterSpacingPx = 0.7f // Adjust this value as needed
             paint.letterSpacing = letterSpacingPx
-            canvas!!.drawText(listOfTitles.get(i) , (barWidthFull /4).toFloat() , (i * (barHeight + spacesBetweenBars)).toFloat() + barHeight / 2 , paint)
+            canvas!!.drawText(listOfTitles.get(i) ,barStart.toFloat() + 10, (i * (barHeight + spacesBetweenBars)).toFloat() + barHeight / 2 , paint)
         }
 
     }
