@@ -2606,7 +2606,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                     var dateFormat = SimpleDateFormat("MM/dd/yyyy")
                     var allGASSize = allGASTest.get(allGASTest.size - 1)
                     GasTestName = "GAS"
-                    GDSTestDate = dateFormat.format(allGASSize!!.testDate)
+                    GASTestDate = dateFormat.format(allGASSize!!.testDate)
                     var GDSTestResult =
                         "Geriatric Depression - ${dateFormat.format(allGASSize!!.testDate)}"
                 }
