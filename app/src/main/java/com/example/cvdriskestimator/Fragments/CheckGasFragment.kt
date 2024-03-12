@@ -100,7 +100,7 @@ class GASCheckFragment : Fragment() {
                     historyTest = gasPatientViewModel.fetchHistoryTest(patientId!! , testDate!!)
                 }
             }
-            if (historyTest.patientGDSTestResult != null)
+            if (historyTest.patientGASTestResult != null)
             {
                 setPatientData(historyTest)
             }

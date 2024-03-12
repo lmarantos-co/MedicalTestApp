@@ -491,7 +491,7 @@ class HistoryFragment : Fragment() {
             }
             "GAS" ->
             {
-                bindingHistoryFragment.testNameTxtV.setText("GAS")
+                bindingHistoryFragment.testNameTxtV.setText("Geriatric Anxiety Scale")
                 tests = realm.where(Test::class.java).isNotNull("patientGASQ6") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
 //                if (tests.size > 10)
 //                {
@@ -1767,7 +1767,7 @@ class HistoryFragment : Fragment() {
                     bindingHistoryFragment.testResultDateListView
                 }
             }
-            "Geriatric Depression Scale" ->
+            "GAS" ->
             {
                 for (test in allTests)
                 {
@@ -1778,7 +1778,7 @@ class HistoryFragment : Fragment() {
                         emptyString += " "
                     }
                     dateArrayList.add("${format.format(test.testDate)}")
-                    scoreArrayList.add("${test.patientGDSTestResult}")
+                    scoreArrayList.add("${test.patientGASTestResult}")
                 }
             }
             "Hammilton Depression" ->
@@ -2109,7 +2109,7 @@ class HistoryFragment : Fragment() {
                     opqolFragment.arguments = bundle
                     mainActivity.fragmentTransaction(opqolFragment)
                 }
-                "Geriatric Anxiety Scale" ->
+                "GAS" ->
                 {
                     gasCheckFragment = GASCheckFragment()
                     gasCheckFragment.arguments = bundle

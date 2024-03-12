@@ -111,6 +111,12 @@ class RealmDAO {
                 if (testList.size > 0)
                     testdata.value = testList.get(testList.size -1)!!
             }
+            "GAS" ->
+            {
+                var testList = realm.where(Test::class.java).isNotNull("patientGASQ1").equalTo("testName" , testName).equalTo("patientId" , patientId).findAll()
+                if (testList.size > 0)
+                    testdata.value = testList.get(testList.size -1)!!
+            }
         }
         return testdata
     }

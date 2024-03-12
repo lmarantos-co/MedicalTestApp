@@ -6209,10 +6209,7 @@ fun showMDIResultBarViews()
             moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
             severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
             //request layouts
-            lowAnxietyResultView.requestLayout()
-            mildAnxietyResultView.requestLayout()
-            moderateAnxietyResultView.requestLayout()
-            severeAnxietyResultView.requestLayout()
+
         }
         if ((testSum >=10) && (testSum <= 14))
         {
