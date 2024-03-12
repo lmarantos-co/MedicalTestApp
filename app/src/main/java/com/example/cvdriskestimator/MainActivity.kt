@@ -518,8 +518,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             allPatientResultsPopUp.visibility = View.INVISIBLE
             mainScrollView.visibility =View.VISIBLE
             setScrolViewConstraint(1)
-            showLayoutElements()
             showMedicalTests()
+            showLayoutElements()
         }
 
 
@@ -1176,6 +1176,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         MTETitle.setOnClickListener {
             playSelectTestAudio(1)
             showMedicalTests()
+            showLayoutElements()
         }
 
         //set the view references for the panels
@@ -2118,6 +2119,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 R.id.home_item -> {
                     playSelectTestAudio(1)
                     showMedicalTests()
+                    showLayoutElements()
                 }
                 R.id.questions ->
                 {
