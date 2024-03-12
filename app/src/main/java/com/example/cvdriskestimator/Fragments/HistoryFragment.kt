@@ -62,6 +62,7 @@ class HistoryFragment : Fragment() {
     private lateinit var dassCheckFragment: DASSCheckFragment
     private lateinit var zungFragment: CheckZUNGFragment
     private lateinit var opqolFragment : OPQOLCheckFragment
+    private lateinit var gasCheckFragment: GASCheckFragment
     private var registerDoctorFragment =  RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private var dateFromPicked : Boolean = false
@@ -1106,7 +1107,7 @@ class HistoryFragment : Fragment() {
                    }
 
                    //create the data set
-                   dataSet1 = LineDataSet(null, Html.fromHtml("GAS").toString())
+                   dataSet1 = LineDataSet(null, Html.fromHtml("Gerietric Anxiety Scale").toString())
                    dataSet1.axisDependency = YAxis.AxisDependency.LEFT
                    dataSet1.lineWidth = 2f
                    dataSet1.color = Color.BLUE
@@ -1119,7 +1120,7 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientGDSTestResult!!.toFloat())
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientGASTestResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -1864,6 +1865,20 @@ class HistoryFragment : Fragment() {
                     scoreArrayList.add("${test.OPQOLTestReesult}")
                 }
             }
+            "Geriatric Anxiety Scale" ->
+            {
+                for (test in allTests)
+                {
+                    val format = SimpleDateFormat("yyy MM dd")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.patientGASTestResult}")
+                }
+            }
         }
 
         val dateAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textvview_history_xml, dateArrayList)
@@ -1991,6 +2006,17 @@ class HistoryFragment : Fragment() {
                 bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_blue))
 
             }
+            "OPQOL Test" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.light_blue))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.light_blue))
+
+            }
+            "Geriatric Anxiety Scale" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.purple_3))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.purple_3))
+            }
         }
     }
 
@@ -2082,6 +2108,12 @@ class HistoryFragment : Fragment() {
                     opqolFragment = OPQOLCheckFragment()
                     opqolFragment.arguments = bundle
                     mainActivity.fragmentTransaction(opqolFragment)
+                }
+                "Geriatric Anxiety Scale" ->
+                {
+                    gasCheckFragment = GASCheckFragment()
+                    gasCheckFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(gasCheckFragment)
                 }
             }
 
