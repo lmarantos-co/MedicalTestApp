@@ -1,8 +1,11 @@
 package com.example.cvdriskestimator.Fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Bundle
@@ -23,6 +26,7 @@ import com.example.cvdriskestimator.customClasses.customDerpesionProgressView
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.customClasses.BarChartView
+import com.example.cvdriskestimator.customClasses.CustomRelativeLayout
 import com.example.cvdriskestimator.customClasses.PieChartView
 import kotlinx.coroutines.*
 import java.util.*
@@ -212,6 +216,16 @@ class ResultFragment : Fragment() {
     //OPQOL Test
     private lateinit var opqolTestResult : TextView
     private lateinit var pieChartView : RelativeLayout
+
+    //GAS Test
+    private lateinit var lowAnxietyResultView : RelativeLayout
+    private lateinit var mildAnxietyResultView : RelativeLayout
+    private lateinit var moderateAnxietyResultView : RelativeLayout
+    private lateinit var severeAnxietyResultView : RelativeLayout
+    private lateinit var totalGASScore : TextView
+    private lateinit var gasTestTextResult : TextView
+    private lateinit var GAStestSummary : TextView
+    private lateinit var GAStestSummaryB : TextView
 
     //screen dimensions
     var screenWidth: Int = 0
@@ -887,6 +901,34 @@ class ResultFragment : Fragment() {
             pieChartView.addView(barChartView)
         }
 
+        if (test_type == 14) {
+            view = inflater.inflate(R.layout.fragment_result_gas_test, container, false)
+//            formConLayout = view.findViewById(R.id.results_constraint_layout)
+            testHeadling = view.findViewById(R.id.gasTestTitleTxtV)
+            riskResultTxtV = view.findViewById(R.id.gasTestResultTxtV)
+//            riskResultTxtVSum = view.findViewById(R.id.txtViewTestResultSummary)
+//            cvdTestResults = view.findViewById(R.id.txtVcvdTestDetails)
+            MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
+            menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+            termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+            termsRelLayout.visibility = View.INVISIBLE
+            closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+            companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            lowAnxietyResultView = view.findViewById(R.id.lowAnxietyResultView)
+            mildAnxietyResultView = view.findViewById(R.id.mildAnxietyResultView)
+            moderateAnxietyResultView = view.findViewById(R.id.moderateAnxietyResultView)
+            severeAnxietyResultView = view.findViewById(R.id.severeAnxietyResultView)
+            totalGASScore = view.findViewById(R.id.totalGASScore)
+            val score = arguments!!.getDouble(ARG_PARAM1).toInt()
+            totalGASScore.setText(score.toString())
+            gasTestTextResult = view.findViewById(R.id.gasTestResultTxtV)
+            GAStestSummary = view.findViewById(R.id.GAStestSummary)
+            GAStestSummaryB = view.findViewById(R.id.GAStestSummaryB)
+            setGasTestSummary(score)
+        }
             return view
     }
 
@@ -1581,6 +1623,7 @@ class ResultFragment : Fragment() {
     }
 
     //function to create Views above the result bar
+    @SuppressLint("SuspiciousIndentation")
     fun createDepressionResultBarViews() {
 
         depressionProgressBar.layoutParams.width = 0
@@ -6141,6 +6184,88 @@ fun showMDIResultBarViews()
             lowAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
             moderateAnxietyRelLayout.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
             severeAnxietyRelLayout.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+        }
+    }
+
+    fun setGasTestSummary(testSum : Int)
+    {
+        if ((testSum >=0) && (testSum <= 9))
+        {
+            GAStestSummary.text = mainActivity.resources.getString(R.string.gas_low_anxiety_a)
+            GAStestSummaryB.text = mainActivity.resources.getString(R.string.gas_low_anxiety_b)
+            GAStestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+            GAStestSummaryB.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+    //        lowAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+            lowAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+//            var viewLength = lowAnxietyResultView.width
+//            var newViewLength = (viewLength * (testSum / 9).toFloat()).toFloat()
+            lowAnxietyResultView
+            lowAnxietyResultView
+            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            //request layouts
+            lowAnxietyResultView.requestLayout()
+            mildAnxietyResultView.requestLayout()
+            moderateAnxietyResultView.requestLayout()
+            severeAnxietyResultView.requestLayout()
+        }
+        if ((testSum >=10) && (testSum <= 14))
+        {
+            GAStestSummary.text = mainActivity.resources.getString(R.string.gas_mild_anxiety_a)
+            GAStestSummaryB.text = mainActivity.resources.getString(R.string.gas_mild_anxiety_b)
+            GAStestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+            GAStestSummaryB.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+   //         mildAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+            mildAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+
+            //request layouts
+
+        }
+        if ((testSum >=15) && (testSum <= 19))
+        {
+            GAStestSummary.text = mainActivity.resources.getString(R.string.gas_moderate_anxiety_a)
+            GAStestSummaryB.text = mainActivity.resources.getString(R.string.gas_moderate_anxiety_b)
+            GAStestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+            GAStestSummaryB.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+   //         moderateAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+            moderateAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+
+
+        }
+        if ((testSum >=20) && (testSum <= 30))
+        {
+            GAStestSummary.text = mainActivity.resources.getString(R.string.gas_severe_anxiety_a)
+            GAStestSummaryB.text = mainActivity.resources.getString(R.string.gas_severe_anxiety_b)
+            GAStestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+            GAStestSummaryB.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+            severeAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+
         }
     }
 

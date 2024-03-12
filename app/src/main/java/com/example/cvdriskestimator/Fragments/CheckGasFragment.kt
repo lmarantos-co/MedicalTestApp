@@ -164,7 +164,7 @@ class GASCheckFragment : Fragment() {
             allPatientSelections[9] = getAsnwerFromRadioGroup(gasCheckBinding.GAS10QRG)
 
 
-            gasPatientViewModel.checkGDSTestPatient(allPatientSelections)
+            gasPatientViewModel.checkGASTestPatient(allPatientSelections)
         }
 
         gasCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE

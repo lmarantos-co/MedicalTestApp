@@ -2604,7 +2604,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
                 if (allGASTest.size > 0) {
                     var dateFormat = SimpleDateFormat("MM/dd/yyyy")
-                    var allGASSize = allGDSTest.get(allGASTest.size - 1)
+                    var allGASSize = allGASTest.get(allGASTest.size - 1)
                     GasTestName = "GAS"
                     GDSTestDate = dateFormat.format(allGASSize!!.testDate)
                     var GDSTestResult =

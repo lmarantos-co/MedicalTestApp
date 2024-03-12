@@ -83,7 +83,7 @@ class CheckGASViewModel : ViewModel() {
         testData.postValue(testData.value)
     }
 
-    fun checkGDSTestPatient(allPatientSelections : ArrayList<Int?>)
+    fun checkGASTestPatient(allPatientSelections : ArrayList<Int?>)
     {
         if ((checkQuestionForInputError(allPatientSelections[0] , 1)) && (checkQuestionForInputError(allPatientSelections[1]  , 2))
             && (checkQuestionForInputError(allPatientSelections[2]  , 3)) && (checkQuestionForInputError(allPatientSelections[3]  , 4))
@@ -128,7 +128,7 @@ class CheckGASViewModel : ViewModel() {
 
     private fun openResultFragment(testResult : Int)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 , 7 , null , null)
+        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 , 14 , null , null)
         mainActivity.fragmentTransaction(resultFragment)
     }
 
