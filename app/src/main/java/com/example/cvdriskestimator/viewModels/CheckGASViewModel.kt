@@ -91,7 +91,7 @@ class CheckGASViewModel : ViewModel() {
             && (checkQuestionForInputError(allPatientSelections[6]  , 7)) && (checkQuestionForInputError(allPatientSelections[7]  , 8))
             && (checkQuestionForInputError(allPatientSelections[8]  , 9)) && (checkQuestionForInputError(allPatientSelections[9]  , 10)))
         {
-            val result = mdiTestEstimator.calculateBDI(allPatientSelections)
+            val result = mdiTestEstimator.calculateGAS(allPatientSelections)
             storePatientOnRealm(allPatientSelections , result)
             openResultFragment(result)
         }

@@ -39,7 +39,7 @@ class MDITestEstimator {
         return resultSum
     }
 
-    fun calculateBAS(allPatientSelections : ArrayList<Int?>) : Int
+    fun calculateGAS(allPatientSelections : ArrayList<Int?>) : Int
     {
         var resultSum : Int  =0
         for (i in 0..allPatientSelections.size -1)
