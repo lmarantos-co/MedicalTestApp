@@ -59,7 +59,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/purple_mditest_form_title_style"
+                android:background="@drawable/oranges_gas_test_form_title_test"
                 android:drawableLeft="@drawable/ic_anxiety_24_black"
                 android:drawablePadding="8dp"
                 android:gravity="center"
@@ -67,7 +67,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:singleLine="false"
-                android:text="GDS Test"
+                android:text="GAS Test"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -128,7 +128,7 @@
                         android:id="@+id/GASQ1TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/orange_textview"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
@@ -214,7 +214,7 @@
                         android:id="@+id/GASQ2TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/orange_textview"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
@@ -299,7 +299,7 @@
                         android:id="@+id/GASQ3TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/orange_textview"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
@@ -384,7 +384,7 @@
                         android:id="@+id/GDSQ4TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/orange_textview"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
@@ -470,7 +470,7 @@
                         android:id="@+id/GASQ5TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/orange_textview"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
@@ -556,7 +556,7 @@
                         android:id="@+id/GASQ6TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/orange_textview"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
@@ -644,7 +644,7 @@
                         android:id="@+id/GASQ7TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/orange_textview"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
@@ -730,7 +730,7 @@
                         android:id="@+id/GASQ8TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/orange_textview"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
@@ -816,7 +816,7 @@
                         android:id="@+id/GASQ9TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/orange_textview"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
@@ -904,7 +904,7 @@
                         android:id="@+id/GASQ10TxtV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/purple_textview"
+                        android:background="@drawable/orange_textview"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
@@ -976,23 +976,477 @@
 
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:id="@+id/GASQ11RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:id="@+id/GASQ11TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/orange_textview"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:text="@string/GASQ11"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id='@+id/GAS11QRG'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/GASQ11TxtV"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/GAS11QRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASΑ1"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS11QRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="left"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASΑ2"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS11QRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASA3"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS11QRB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASA4"
+                            android:textColor="@color/black" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/GASQ12RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:id="@+id/GASQ12TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/orange_textview"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/GASQ11"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id='@+id/GAS12QRG'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/GASQ12TxtV"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/GAS12QRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASΑ1"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS12QRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="left"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASΑ2"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS12QRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASA3"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS12QRB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASA4"
+                            android:textColor="@color/black" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/GASQ13RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:id="@+id/GASQ13TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/orange_textview"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/GASQ13"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id='@+id/GAS13QRG'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/GASQ13TxtV"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/GAS13QRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASΑ1"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS13QRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="left"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASΑ2"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS13QRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASA3"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS13QRB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASA4"
+                            android:textColor="@color/black" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/GASQ14RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:id="@+id/GASQ134TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/orange_textview"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/GASQ14"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id='@+id/GAS14QRG'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/GASQ134TxtV"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/GAS14QRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASΑ1"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS14QRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="left"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASΑ2"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS14QRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASA3"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS14QRB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASA4"
+                            android:textColor="@color/black" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/GASQ15RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:id="@+id/GASQ15TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/orange_textview"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/GASQ15"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id='@+id/GAS15QRG'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/GASQ15TxtV"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/GAS15QRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASΑ1"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS15QRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="left"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASΑ2"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS15QRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASA3"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/GAS15QRB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="8dp"
+                            android:text="@string/GASA4"
+                            android:textColor="@color/black" />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/arrowButtonsRelLayoyt">
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/submitBtn"
+                    <!--                    <androidx.appcompat.widget.AppCompatButton-->
+                    <!--                        android:id="@+id/submitBtn"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_centerInParent="true"-->
+                    <!--                        android:layout_gravity="center"-->
+                    <!--                        android:layout_marginTop="8dp"-->
+                    <!--                        android:layout_marginBottom="8dp"-->
+                    <!--                        android:background="@drawable/bai_button_rounded_corners"-->
+                    <!--                        android:padding="20dp"-->
+                    <!--                        android:text="Υπολογισμός"-->
+                    <!--                        android:textAllCaps="false"-->
+                    <!--                        android:textSize="20sp"-->
+                    <!--                        android:visibility="visible"-->
+                    <!--                        tools:ignore="TextContrastCheck" />-->
+
+                    <ImageView
+                        android:id="@+id/right_arrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
                         android:layout_centerInParent="true"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
                         android:layout_marginBottom="8dp"
-                        android:background="@drawable/mdi_button_rounded_corners"
+                        android:background="@drawable/right_arrow"
+                        android:backgroundTint="@color/light_blue"
                         android:padding="20dp"
-                        android:text="Υπολογισμός"
+                        android:text="Επόμενη Φόρμα"
                         android:textAllCaps="false"
                         android:textSize="20sp"
                         android:visibility="visible"
@@ -1002,17 +1456,17 @@
                         android:id="@+id/clearBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/submitBtn"
-                        android:layout_alignParentLeft="false"
+                        android:layout_alignBottom="@id/right_arrow"
+                        android:layout_alignParentLeft="true"
                         android:layout_alignParentRight="false"
                         android:layout_alignParentBottom="false"
                         android:layout_centerVertical="false"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_toLeftOf="@id/submitBtn"
-                        android:textAllCaps="false"
-                        android:background="@drawable/mdi_button_rounded_corners"
-                        android:text="Καθαριμός δεδομένων" />
+                        android:background="@drawable/bai_button_rounded_corners"
+                        android:text="Καθαρισμός φόρμας"
+                        android:textAllCaps="false" />
 
 
                 </RelativeLayout>

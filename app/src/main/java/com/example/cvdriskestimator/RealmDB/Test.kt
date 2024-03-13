@@ -771,7 +771,50 @@ open class Test : RealmModel
 
     var patientGASQ10 : Int? = null
 
+    var patientGASQ11 : Int? = null
+
+    var patientGASQ12 : Int? = null
+
+    var patientGASQ13 : Int? = null
+
+    var patientGASQ14 : Int? = null
+
+    var patientGASQ15 : Int? = null
+
+    var patientGASQ16 : Int? = null
+
+    var patientGASQ17 : Int? = null
+
+    var patientGASQ18 : Int? = null
+
+    var patientGASQ19 : Int? = null
+
+    var patientGASQ20 : Int? = null
+
+    var patientGASQ21 : Int? = null
+
+    var patientGASQ22 : Int? = null
+
+    var patientGASQ23 : Int? = null
+
+    var patientGASQ24 : Int? = null
+
+    var patientGASQ25 : Int? = null
+
+    var patientGASQ26 : Int? = null
+
+    var patientGASQ27 : Int? = null
+
+    var patientGASQ28 : Int? = null
+
+    var patientGASQ29 : Int? = null
+
+    var patientGASQ30 : Int? = null
 
     var patientGASTestResult : Int? = null
+
+    var patientGASSomatic : Int? = null
+    var patientGASCognitive : Int? = null
+    var patientGASAffective : Int? = null
 
 }

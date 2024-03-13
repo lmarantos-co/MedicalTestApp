@@ -293,6 +293,19 @@ class PopUpMenu {
                                     (prFragment as CheckZUNGFragment).initialisePatientData()
                                 }
 
+                                if (prFragment is OPQOLCheckFragment)
+                                {
+                                    (prFragment as OPQOLCheckFragment).initialisePatientData()
+                                }
+                                if (prFragment is OPQOLCheckFragment2)
+                                {
+                                    (prFragment as OPQOLCheckFragment2).initialisePatientData()
+                                }
+                                if (prFragment is GASCheckFragment)
+                                {
+                                    (prFragment as GASCheckFragment).initialisePatientData()
+                                }
+
                                 if (prFragment is PDQCheckFirstCategoryFragment)
                                 {
                                     (prFragment as PDQCheckFirstCategoryFragment).initialisePatientData()

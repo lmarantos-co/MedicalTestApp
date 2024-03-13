@@ -19,18 +19,15 @@ import androidx.core.view.get
 import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.RealmDB.Test
-import com.example.cvdriskestimator.databinding.FragmentCheckGasBinding
-import com.example.cvdriskestimator.databinding.FragmentGDSCheckBinding
+import com.example.cvdriskestimator.databinding.FragmentCheckGas1Binding
 import com.example.cvdriskestimator.viewModels.CheckGASPatientViewModelFactory
 import com.example.cvdriskestimator.viewModels.CheckGASViewModel
-import com.example.cvdriskestimator.viewModels.CheckGDSPatientViewModelFactory
-import com.example.cvdriskestimator.viewModels.CheckGDSViewModel
-import java.sql.Date
 import java.util.*
+import kotlin.collections.ArrayList
 
-class GASCheckFragment : Fragment() {
+class GASCheckFragment1 : Fragment() {
 
-    private lateinit var gasCheckBinding: FragmentCheckGasBinding
+    private lateinit var gasCheckBinding: FragmentCheckGas1Binding
     private lateinit var gasPatientViewModel: CheckGASViewModel
     private lateinit var gasPatientViewModelFactory : CheckGASPatientViewModelFactory
     private lateinit var mainActivity : MainActivity
@@ -38,7 +35,11 @@ class GASCheckFragment : Fragment() {
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     //    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popupMenu : PopUpMenu
-    private var allPatientSelections = arrayListOf<Int?>(1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 1)
+    private var allPatientSelections = arrayListOf<Int?>(1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 1 ,1 ,1 ,1 ,1 ,1)
+    private var allPatientSelectionsFr2 = arrayListOf<Int?>(1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 1 ,1 ,1 ,1 ,1 ,1)
+    private var answersFromSecondFragment : Boolean = false
+    private var answersFromFirstFragment : Boolean = false
+    private lateinit var gasCheckFragment2: GASCheckFragment2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,13 +54,26 @@ class GASCheckFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        gasCheckBinding = FragmentCheckGasBinding.inflate(inflater , container , false)
+        gasCheckBinding = FragmentCheckGas1Binding.inflate(inflater , container , false)
         gasPatientViewModel = CheckGASViewModel()
         gasPatientViewModelFactory = CheckGASPatientViewModelFactory()
         gasPatientViewModel =  ViewModelProvider(this, gasPatientViewModelFactory).get(
             CheckGASViewModel::class.java)
         gasCheckBinding.checkGASViewModel = gasPatientViewModel
         gasCheckBinding.lifecycleOwner = this
+
+        if (arguments!!.containsKey("fragment2Answers"))
+        {
+            answersFromSecondFragment = true
+            allPatientSelectionsFr2 = arguments!!.getSerializable("fragment2Answers") as ArrayList<Int?>
+        }
+
+        if (arguments!!.containsKey("fragment1Answers"))
+        {
+            allPatientSelections = arguments!!.get("fragment1Answers") as ArrayList<Int?>
+            answersFromFirstFragment = true
+        }
+
         return gasCheckBinding.root
     }
 
@@ -79,7 +93,10 @@ class GASCheckFragment : Fragment() {
         var testDate = this.requireArguments().getString("testDate" , "")
         var openType = this.requireArguments().getString("openType")
 
-
+        if (answersFromFirstFragment == true)
+        {
+            setPatientSelections(allPatientSelectionsFr2)
+        }
         if (openType == "open_history")
         {
             var historyTest = Test()
@@ -150,7 +167,7 @@ class GASCheckFragment : Fragment() {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show()        }
 
-        gasCheckBinding.submitBtn.setOnClickListener {
+        gasCheckBinding.rightArrow.setOnClickListener {
 
             allPatientSelections[0] = getAsnwerFromRadioGroup(gasCheckBinding.GAS1QRG)
             allPatientSelections[1] = getAsnwerFromRadioGroup(gasCheckBinding.GAS2QRG)
@@ -162,9 +179,22 @@ class GASCheckFragment : Fragment() {
             allPatientSelections[7] = getAsnwerFromRadioGroup(gasCheckBinding.GAS8QRG)
             allPatientSelections[8] = getAsnwerFromRadioGroup(gasCheckBinding.GAS9QRG)
             allPatientSelections[9] = getAsnwerFromRadioGroup(gasCheckBinding.GAS10QRG)
+            allPatientSelections[10] = getAsnwerFromRadioGroup(gasCheckBinding.GAS11QRG)
+            allPatientSelections[11] = getAsnwerFromRadioGroup(gasCheckBinding.GAS12QRG)
+            allPatientSelections[12] = getAsnwerFromRadioGroup(gasCheckBinding.GAS13QRG)
+            allPatientSelections[13] = getAsnwerFromRadioGroup(gasCheckBinding.GAS14QRG)
+            allPatientSelections[14] = getAsnwerFromRadioGroup(gasCheckBinding.GAS15QRG)
 
+            var bundle = Bundle()
+            if (gasPatientViewModel.checkGASTestPatient1(allPatientSelections))
+           {
+               bundle.putSerializable("fragment1Answers" , allPatientSelections)
+               if (answersFromSecondFragment)
+                   bundle.putSerializable("fragment2Answers" , allPatientSelectionsFr2)
+           }
 
-            gasPatientViewModel.checkGASTestPatient(allPatientSelections)
+            gasCheckFragment2 = GASCheckFragment2.newInstance(bundle)
+            mainActivity.fragmentTransaction(gasCheckFragment2)
         }
 
         gasCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
@@ -193,6 +223,29 @@ class GASCheckFragment : Fragment() {
 
     }
 
+    private fun setPatientSelections(test : ArrayList<Int?>)
+    {
+        Handler(Looper.getMainLooper()).postDelayed({
+            initialisePatientData()
+            //show all the data on the UI
+            setQuestionRadioGroup(gasCheckBinding.GAS1QRG , test[0])
+            setQuestionRadioGroup(gasCheckBinding.GAS2QRG , test[1])
+            setQuestionRadioGroup(gasCheckBinding.GAS3QRG , test[2])
+            setQuestionRadioGroup(gasCheckBinding.GAS4QRG , test[3])
+            setQuestionRadioGroup(gasCheckBinding.GAS5QRG , test[4])
+            setQuestionRadioGroup(gasCheckBinding.GAS6QRG , test[5])
+            setQuestionRadioGroup(gasCheckBinding.GAS7QRG , test[6])
+            setQuestionRadioGroup(gasCheckBinding.GAS8QRG , test[7])
+            setQuestionRadioGroup(gasCheckBinding.GAS9QRG , test[8])
+            setQuestionRadioGroup(gasCheckBinding.GAS10QRG , test[9])
+            setQuestionRadioGroup(gasCheckBinding.GAS11QRG , test[10])
+            setQuestionRadioGroup(gasCheckBinding.GAS12QRG , test[11])
+            setQuestionRadioGroup(gasCheckBinding.GAS13QRG , test[12])
+            setQuestionRadioGroup(gasCheckBinding.GAS14QRG , test[13])
+            setQuestionRadioGroup(gasCheckBinding.GAS15QRG , test[14])
+        } , 1000)
+    }
+
     private fun setPatientData(test : Test)
     {
         Handler(Looper.getMainLooper()).postDelayed({
@@ -208,7 +261,11 @@ class GASCheckFragment : Fragment() {
             setQuestionRadioGroup(gasCheckBinding.GAS8QRG , test.patientGASQ8)
             setQuestionRadioGroup(gasCheckBinding.GAS9QRG , test.patientGASQ9)
             setQuestionRadioGroup(gasCheckBinding.GAS10QRG , test.patientGASQ10)
-
+            setQuestionRadioGroup(gasCheckBinding.GAS11QRG , test.patientGASQ11)
+            setQuestionRadioGroup(gasCheckBinding.GAS12QRG , test.patientGASQ12)
+            setQuestionRadioGroup(gasCheckBinding.GAS13QRG , test.patientGASQ13)
+            setQuestionRadioGroup(gasCheckBinding.GAS14QRG , test.patientGASQ14)
+            setQuestionRadioGroup(gasCheckBinding.GAS15QRG , test.patientGASQ15)
         } , 1000)
     }
 
@@ -224,7 +281,11 @@ class GASCheckFragment : Fragment() {
         gasCheckBinding.GAS8QRG.clearCheck()
         gasCheckBinding.GAS9QRG.clearCheck()
         gasCheckBinding.GAS10QRG.clearCheck()
-
+        gasCheckBinding.GAS11QRG.clearCheck()
+        gasCheckBinding.GAS12QRG.clearCheck()
+        gasCheckBinding.GAS13QRG.clearCheck()
+        gasCheckBinding.GAS14QRG.clearCheck()
+        gasCheckBinding.GAS15QRG.clearCheck()
     }
 
     private fun setQuestionRadioGroup(rg : RadioGroup, answer : Int?)
@@ -329,6 +390,31 @@ class GASCheckFragment : Fragment() {
             {
                 gasCheckBinding.GAS10QRG.requestFocus()
             }
+
+            11 ->
+            {
+                gasCheckBinding.GAS11QRG.requestFocus()
+            }
+
+            12 ->
+            {
+                gasCheckBinding.GAS12QRG.requestFocus()
+            }
+
+            13 ->
+            {
+                gasCheckBinding.GAS13QRG.requestFocus()
+            }
+
+           14 ->
+            {
+                gasCheckBinding.GAS14QRG.requestFocus()
+            }
+
+            15 ->
+            {
+                gasCheckBinding.GAS15QRG.requestFocus()
+            }
         }
     }
 
@@ -345,8 +431,8 @@ class GASCheckFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance() =
-            GASCheckFragment().apply {
+        fun newInstance(args : Bundle) =
+            GASCheckFragment1().apply {
                 arguments = Bundle().apply {
                 }
             }

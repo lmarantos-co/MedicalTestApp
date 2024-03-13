@@ -16,6 +16,7 @@
     <color name="third_dark_accent">#3900e6</color>
     <color name="fourth_dark_accent">#531aff</color>
     <color name="MidnightBlue">#191970</color>
+    <color name="opqolBlue">#0036ff</color>
     <color name="Naby">#000080</color>
     <color name="intro_button_colors">#1900db</color>
     <color name="DarkBlue">#00008B</color>
@@ -28,6 +29,7 @@
     <color name="very_light_gray">#EEEEEE</color>
     <color name="light_gray">#DDDDDD</color>
     <color name="sandy_brown">#F4A460</color>
+    <color name="orange">#FFC900</color>
     <color name="Red">#FF0000</color>
     <color name="dark_red">	#8B0000</color>
     <color name="red_violet">#F8BBD0</color>

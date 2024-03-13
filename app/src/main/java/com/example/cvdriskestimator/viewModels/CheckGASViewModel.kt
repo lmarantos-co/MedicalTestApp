@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cvdriskestimator.Fragments.GASCheckFragment
-import com.example.cvdriskestimator.Fragments.GDSCheckFragment
+import com.example.cvdriskestimator.Fragments.GASCheckFragment1
+import com.example.cvdriskestimator.Fragments.GASCheckFragment2
 import com.example.cvdriskestimator.Fragments.HistoryFragment
 import com.example.cvdriskestimator.Fragments.ResultFragment
 import com.example.cvdriskestimator.MainActivity
@@ -19,13 +19,14 @@ import io.realm.RealmResults
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Calendar
+import java.util.Date
 
 class CheckGASViewModel : ViewModel() {
 
     private lateinit var mainActivity : MainActivity
-    private lateinit var gasCheckFragment: GASCheckFragment
+    private lateinit var gasCheckFragment: GASCheckFragment1
+    private lateinit var gasCheckFragment2: GASCheckFragment2
     private lateinit  var realm : Realm
     private  var realmDAO =  RealmDAO()
     private var mdiTestEstimator = MDITestEstimator()
@@ -41,9 +42,14 @@ class CheckGASViewModel : ViewModel() {
         mainActivity = activity
     }
 
-    fun passFragment(fragment : GASCheckFragment)
+    fun passFragment(fragment : GASCheckFragment1)
     {
         gasCheckFragment = fragment
+    }
+
+    fun passFragmen2(fragment : GASCheckFragment2)
+    {
+        gasCheckFragment2 = fragment
     }
 
     fun initialiseRealm()
@@ -83,17 +89,47 @@ class CheckGASViewModel : ViewModel() {
         testData.postValue(testData.value)
     }
 
-    fun checkGASTestPatient(allPatientSelections : ArrayList<Int?>)
+    fun checkGASTestPatient1(allPatientSelections : ArrayList<Int?>) : Boolean
     {
         if ((checkQuestionForInputError(allPatientSelections[0] , 1)) && (checkQuestionForInputError(allPatientSelections[1]  , 2))
             && (checkQuestionForInputError(allPatientSelections[2]  , 3)) && (checkQuestionForInputError(allPatientSelections[3]  , 4))
             && (checkQuestionForInputError(allPatientSelections[4]  , 5)) && (checkQuestionForInputError(allPatientSelections[5]  , 6))
             && (checkQuestionForInputError(allPatientSelections[6]  , 7)) && (checkQuestionForInputError(allPatientSelections[7]  , 8))
-            && (checkQuestionForInputError(allPatientSelections[8]  , 9)) && (checkQuestionForInputError(allPatientSelections[9]  , 10)))
+            && (checkQuestionForInputError(allPatientSelections[8]  , 9)) && (checkQuestionForInputError(allPatientSelections[9]  , 10))
+            && (checkQuestionForInputError(allPatientSelections[10] , 11) && (checkQuestionForInputError(allPatientSelections[11] , 12)))
+            && (checkQuestionForInputError(allPatientSelections[12] , 13) && (checkQuestionForInputError(allPatientSelections[13] , 14)))
+            && (checkQuestionForInputError(allPatientSelections[14] , 15)))
+        {
+            val result = mdiTestEstimator.calculateGAS(allPatientSelections)
+//            storePatientOnRealm(allPatientSelections , result)
+//            openResultFragment(result)
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+
+    fun checkGASTestPatient2(allPatientSelections : ArrayList<Int?>) : Boolean
+    {
+        if ((checkQuestionForInputError(allPatientSelections[15] , 16)) && (checkQuestionForInputError(allPatientSelections[16]  , 17))
+            && (checkQuestionForInputError(allPatientSelections[17]  , 18)) && (checkQuestionForInputError(allPatientSelections[18]  , 19))
+            && (checkQuestionForInputError(allPatientSelections[19]  , 20)) && (checkQuestionForInputError(allPatientSelections[20]  , 21))
+            && (checkQuestionForInputError(allPatientSelections[21]  , 22)) && (checkQuestionForInputError(allPatientSelections[22]  , 23))
+            && (checkQuestionForInputError(allPatientSelections[23]  , 24)) && (checkQuestionForInputError(allPatientSelections[24]  , 25))
+            && (checkQuestionForInputError(allPatientSelections[25] , 26) && (checkQuestionForInputError(allPatientSelections[26] , 27)))
+            && (checkQuestionForInputError(allPatientSelections[27] , 28) && (checkQuestionForInputError(allPatientSelections[28] , 29)))
+            && (checkQuestionForInputError(allPatientSelections[29] , 30)))
         {
             val result = mdiTestEstimator.calculateGAS(allPatientSelections)
             storePatientOnRealm(allPatientSelections , result)
             openResultFragment(result)
+            return true
+        }
+        else
+        {
+            return false
         }
     }
 
@@ -126,9 +162,9 @@ class CheckGASViewModel : ViewModel() {
         return tests!!.get(tests!!.size -1)!!
     }
 
-    private fun openResultFragment(testResult : Int)
+    private fun openResultFragment(testResult : ArrayList<Int>)
     {
-        resultFragment = ResultFragment.newInstance(testResult.toDouble() , 0.0 , 14 , null , null)
+        resultFragment = ResultFragment.newInstance(0.0 , 0.0 , 14 , null , testResult)
         mainActivity.fragmentTransaction(resultFragment)
     }
 
@@ -145,12 +181,12 @@ class CheckGASViewModel : ViewModel() {
         return correctData
     }
 
-    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int?> , result : Int) : Job =
+    private fun storePatientOnRealm(allPatientSelections: ArrayList<Int?> , result : ArrayList<Int>) : Job =
         viewModelScope.launch{
             storePatientOnDB(allPatientSelections , result)
         }
 
-    private fun storePatientOnDB(allPatientSelections: ArrayList<Int?> , result : Int)
+    private fun storePatientOnDB(allPatientSelections: ArrayList<Int?> , result : ArrayList<Int>)
     {
         //execute transaction on realm
         realm.executeTransaction {
@@ -186,7 +222,31 @@ class CheckGASViewModel : ViewModel() {
             currentTest!!.patientGASQ8 = allPatientSelections[7]
             currentTest!!.patientGASQ9 = allPatientSelections[8]
             currentTest!!.patientGASQ10 = allPatientSelections[9]
-            currentTest!!.patientGASTestResult = result
+            currentTest!!.patientGASQ11 = allPatientSelections[10]
+            currentTest!!.patientGASQ12 = allPatientSelections[11]
+            currentTest!!.patientGASQ13 = allPatientSelections[12]
+            currentTest!!.patientGASQ14 = allPatientSelections[13]
+            currentTest!!.patientGASQ15 = allPatientSelections[14]
+            currentTest!!.patientGASQ16 = allPatientSelections[15]
+            currentTest!!.patientGASQ17 = allPatientSelections[16]
+            currentTest!!.patientGASQ18 = allPatientSelections[17]
+            currentTest!!.patientGASQ19 = allPatientSelections[18]
+            currentTest!!.patientGASQ20 = allPatientSelections[19]
+            currentTest!!.patientGASQ21 = allPatientSelections[20]
+            currentTest!!.patientGASQ22 = allPatientSelections[21]
+            currentTest!!.patientGASQ23 = allPatientSelections[22]
+            currentTest!!.patientGASQ24 = allPatientSelections[23]
+            currentTest!!.patientGASQ25 = allPatientSelections[24]
+            currentTest!!.patientGASQ26 = allPatientSelections[25]
+            currentTest!!.patientGASQ27 = allPatientSelections[26]
+            currentTest!!.patientGASQ28 = allPatientSelections[27]
+            currentTest!!.patientGASQ29 = allPatientSelections[28]
+            currentTest!!.patientGASQ30 = allPatientSelections[29]
+            currentTest!!.patientGASTestResult = result[0] + result[1] + result[2]
+            currentTest!!.patientGASSomatic = result[0]
+            currentTest!!.patientGASCognitive = result[1]
+            currentTest!!.patientGASCognitive = result[2]
+
             currentTest!!.patientId = patient!!.patientId
             currentTest.testDate = calendar.time
             currentTest.testName = "GAS"
