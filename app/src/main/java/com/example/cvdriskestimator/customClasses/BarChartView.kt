@@ -48,16 +48,16 @@ class BarChartView(context: Context, patientSelections : ArrayList<Int>) : View(
             var widthBarRatio : Float = 0f
             if ((i != 2) && (i != 7))
             {
-                widthBarRatio = (question1Score.toFloat() / 20 * barWidthFull.toFloat())
+                widthBarRatio = (listOfScores.get(i).toFloat() / 20 * barWidthFull.toFloat())
 
             }
             if (i == 2)
             {
-                widthBarRatio = (question1Score.toFloat() / 25 * barWidthFull.toFloat())
+                widthBarRatio = (listOfScores.get(i).toFloat() / 25 * barWidthFull.toFloat())
             }
             if (i == 7)
             {
-                widthBarRatio = (question1Score.toFloat() / 30 * barWidthFull.toFloat())
+                widthBarRatio = (listOfScores.get(i).toFloat() / 30 * barWidthFull.toFloat())
 
             }
             var specificColor = allColors.get((widthBarRatio / barWidthFull * 30).toInt())
