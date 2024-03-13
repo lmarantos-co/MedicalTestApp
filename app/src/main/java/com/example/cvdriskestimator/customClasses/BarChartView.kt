@@ -17,7 +17,8 @@ class BarChartView(context: Context, patientSelections : ArrayList<Int>) : View(
         super.onDraw(canvas)
         var barHeight = height / 15
         var barWidthFull = width / 1.2
-        var spacesBetweenBars = height / 20
+        var spacesBetweenBars = height / 18
+        var offsetFromTheTop : Int = 50
         var barStart = width / 15
         val paint = Paint()
         paint.color = Color.BLACK
@@ -62,18 +63,25 @@ class BarChartView(context: Context, patientSelections : ArrayList<Int>) : View(
             var specificColor = allColors.get((widthBarRatio / barWidthFull * 30).toInt())
             paint.color = specificColor
             paint.style = Paint.Style.FILL // Fill mode
-            canvas!!.drawRect(barStart.toFloat() , (i * (barHeight + spacesBetweenBars)).toFloat() , widthBarRatio.toFloat() , (i * (barHeight + spacesBetweenBars)).toFloat() + barHeight.toFloat() , paint)
+            canvas!!.drawRect(barStart.toFloat() , (i * (barHeight + spacesBetweenBars) + offsetFromTheTop).toFloat() , widthBarRatio.toFloat() , (i * (barHeight + spacesBetweenBars)).toFloat() + (barHeight + offsetFromTheTop).toFloat() , paint)
             paint.color = Color.BLACK // Black color for the border
             paint.style = Paint.Style.STROKE // Stroke mode for border
             paint.strokeWidth = 5f // Adjust the border width as needed
-            canvas!!.drawRect(barStart.toFloat() , (i * (barHeight + spacesBetweenBars)).toFloat()  , barWidthFull.toFloat() ,(i * (barHeight + spacesBetweenBars)).toFloat() + barHeight.toFloat(), paint)
+            canvas!!.drawRect(barStart.toFloat() , (i * (barHeight + spacesBetweenBars) + offsetFromTheTop).toFloat()  , barWidthFull.toFloat() ,(i * (barHeight + spacesBetweenBars)).toFloat() + (barHeight.toFloat() + offsetFromTheTop), paint)
             paint.color = Color.WHITE
             paint.textSize = 30f
             paint.isAntiAlias = true
             // Set the letter spacing (in pixels)
-            val letterSpacingPx = 0.7f // Adjust this value as needed
+            val letterSpacingPx = 0.6f // Adjust this value as needed
             paint.letterSpacing = letterSpacingPx
-            canvas!!.drawText(listOfTitles.get(i) ,barStart.toFloat() + 10, (i * (barHeight + spacesBetweenBars)).toFloat() + barHeight / 2 , paint)
+            if (i == 0)
+            {
+                canvas!!.drawText(listOfTitles.get(i) ,barStart.toFloat() + 10, (i * (barHeight + spacesBetweenBars)).toFloat() + offsetFromTheTop /2 , paint)
+            }
+            else
+            {
+                canvas!!.drawText(listOfTitles.get(i) ,barStart.toFloat() + 10, (i * (barHeight + spacesBetweenBars) + offsetFromTheTop).toFloat()  , paint)
+            }
         }
 
     }
