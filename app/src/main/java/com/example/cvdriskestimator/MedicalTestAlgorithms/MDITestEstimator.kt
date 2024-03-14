@@ -43,17 +43,11 @@ class MDITestEstimator {
     {
         var resultSum = ArrayList<Int>(3)
 
-        var answer1 = allPatientSelections.get(0)!! + allPatientSelections.get(1)!! + allPatientSelections.get(2)!!
-        + allPatientSelections.get(7)!! + allPatientSelections.get(8)!! + allPatientSelections.get(17)!!
-        + allPatientSelections.get(20)!! + allPatientSelections.get(21)!! + allPatientSelections.get(22)!!
+        var answer1 = allPatientSelections.get(0)!! + allPatientSelections.get(1)!! + allPatientSelections.get(2)!! + allPatientSelections.get(7)!! + allPatientSelections.get(8)!! + allPatientSelections.get(17)!! + allPatientSelections.get(20)!! + allPatientSelections.get(21)!! + allPatientSelections.get(22)!!
 
-        var answer2 = allPatientSelections.get(3)!! + allPatientSelections.get(4)!! + allPatientSelections.get(11)!!
-        + allPatientSelections.get(15)!! + allPatientSelections.get(17)!! + allPatientSelections.get(18)!!
-        + allPatientSelections.get(23)!! + allPatientSelections.get(24)!!
+        var answer2 = allPatientSelections.get(3)!! + allPatientSelections.get(4)!! + allPatientSelections.get(11)!! + allPatientSelections.get(15)!! + allPatientSelections.get(17)!! + allPatientSelections.get(18)!! + allPatientSelections.get(23)!! + allPatientSelections.get(24)!!
 
-        var answer3 = allPatientSelections.get(5)!! + allPatientSelections.get(6)!! + allPatientSelections.get(9)!!
-        + allPatientSelections.get(10)!! + allPatientSelections.get(12)!! + allPatientSelections.get(13)!!
-        + allPatientSelections.get(14)!! + allPatientSelections.get(19)!!
+        var answer3 = allPatientSelections.get(5)!! + allPatientSelections.get(6)!! + allPatientSelections.get(9)!! + allPatientSelections.get(10)!! + allPatientSelections.get(12)!! + allPatientSelections.get(13)!! + allPatientSelections.get(14)!! + allPatientSelections.get(19)!!
 
         resultSum.add(answer1)
         resultSum.add(answer2)

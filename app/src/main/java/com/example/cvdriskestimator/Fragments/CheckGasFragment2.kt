@@ -37,8 +37,8 @@ class GASCheckFragment2 : Fragment() {
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     //    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popupMenu : PopUpMenu
-    private var allPatientSelections = arrayListOf<Int?>(1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 1 ,1 ,1 ,1 ,1 ,1)
-    private var allPatientSelectionsFr2 = arrayListOf<Int?>(1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 1 ,1 ,1 ,1 ,1 ,1)
+    private var allPatientSelections = arrayListOf<Int?>( 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 1 , 1, 1, 1, 1,  1, 1)
+    private var allPatientSelectionsFr2 = arrayListOf<Int?>( 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 1 , 1, 1, 1, 1,  1, 1)
     private var answersFromSecondFragment : Boolean = false
     private var answersFromFirstFragment : Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -461,6 +461,9 @@ class GASCheckFragment2 : Fragment() {
         fun newInstance(args : Bundle) =
             GASCheckFragment2().apply {
                 arguments = Bundle().apply {
+                    val fragment = GASCheckFragment2()
+                    fragment.arguments = args
+                    return fragment
                 }
             }
     }

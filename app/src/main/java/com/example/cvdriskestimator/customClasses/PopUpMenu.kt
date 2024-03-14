@@ -301,9 +301,13 @@ class PopUpMenu {
                                 {
                                     (prFragment as OPQOLCheckFragment2).initialisePatientData()
                                 }
-                                if (prFragment is GASCheckFragment)
+                                if (prFragment is GASCheckFragment1)
                                 {
-                                    (prFragment as GASCheckFragment).initialisePatientData()
+                                    (prFragment as GASCheckFragment1).initialisePatientData()
+                                }
+                                if (prFragment is GASCheckFragment2)
+                                {
+                                    (prFragment as GASCheckFragment2).initialisePatientData()
                                 }
 
                                 if (prFragment is PDQCheckFirstCategoryFragment)

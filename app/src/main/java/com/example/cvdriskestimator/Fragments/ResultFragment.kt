@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Bundle
@@ -26,8 +24,8 @@ import com.example.cvdriskestimator.customClasses.customDerpesionProgressView
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.customClasses.BarChartView
-import com.example.cvdriskestimator.customClasses.CustomRelativeLayout
 import com.example.cvdriskestimator.customClasses.PieChartView
+import com.example.cvdriskestimator.customClasses.verticalBarChartView
 import kotlinx.coroutines.*
 import java.util.*
 
@@ -226,6 +224,9 @@ class ResultFragment : Fragment() {
     private lateinit var gasTestTextResult : TextView
     private lateinit var GAStestSummary : TextView
     private lateinit var GAStestSummaryB : TextView
+    private lateinit var verticalBarChartView: verticalBarChartView
+    private lateinit var BarChartView: RelativeLayout
+
 
     //screen dimensions
     var screenWidth: Int = 0
@@ -310,7 +311,7 @@ class ResultFragment : Fragment() {
         }
         if (test_type == 3) {
             view = inflater.inflate(R.layout.fragment_result_mdi_test, container, false) as View
-            formConLayout = view.findViewById(R.id.results_con_layout_opqol_test)
+//            formConLayout = view.findViewById(R.id.results_con_layout_mdi_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -332,7 +333,7 @@ class ResultFragment : Fragment() {
             moderateDepressionView = view.findViewById(R.id.modDepResultView)
             severeDepressionView = view.findViewById(R.id.severeDepResultView)
             totalScore = view.findViewById(R.id.totalScore)
-            depressStatus = view.findViewById(R.id.QOLStatus)
+            depressStatus = view.findViewById(R.id.MDIStatus)
             setMDIResultsOnForm(
                 arguments!!.getDouble(ARG_PARAM1).toInt(),
                 getMDIResult(arguments!!.getDouble(ARG_PARAM1).toInt())
@@ -369,7 +370,7 @@ class ResultFragment : Fragment() {
         }
         if (test_type == 4) {
             view = inflater.inflate(R.layout.fragment_result_bai_test, container, false)
-            formConLayout = view.findViewById(R.id.results_con_layout_bpi_test)
+//            formConLayout = view.findViewById(R.id.results_con_layout_bpi_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -393,7 +394,7 @@ class ResultFragment : Fragment() {
 
         if (test_type == 5) {
             view = inflater.inflate(R.layout.fragment_result_mds_layout, container, false)
-            formConLayout = view.findViewById(R.id.results_con_layout_bpi_test)
+//            formConLayout = view.findViewById(R.id.results_con_layout_bpi_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -404,7 +405,7 @@ class ResultFragment : Fragment() {
             userIcon.alpha = 1f
             testHeadling = view.findViewById(R.id.mdsTestTitleTxtV)
             mdsTestScore = view.findViewById(R.id.totalPSScore)
-            mdsTestResult = view.findViewById(R.id.totalScoreDescOPQOLTxtV)
+            mdsTestResult = view.findViewById(R.id.totalScoreDescMDITxtV)
             val score = arguments!!.getDouble(ARG_PARAM1)
             mdsTestScore.text = (String.format(
                 resources.getString(R.string.mds_test_score),
@@ -586,7 +587,7 @@ class ResultFragment : Fragment() {
 
         if (test_type == 8) {
             view = inflater.inflate(R.layout.fragment_result_bdi_test, container, false) as View
-            formConLayout = view.findViewById(R.id.results_con_layout_opqol_test)
+//            formConLayout = view.findViewById(R.id.results_con_layout_opqol_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -654,7 +655,7 @@ class ResultFragment : Fragment() {
 
         if (test_type == 9) {
             view = inflater.inflate(R.layout.fragment_hammilton_result_fragment, container, false) as View
-            formConLayout = view.findViewById(R.id.results_con_layout_opqol_test)
+//            formConLayout = view.findViewById(R.id.results_con_layout_opqol_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -714,7 +715,7 @@ class ResultFragment : Fragment() {
         }
         if (test_type == 10) {
             view = inflater.inflate(R.layout.fragment_stai_result, container, false)
-            formConLayout = view.findViewById(R.id.results_con_layout_stai_test)
+//            formConLayout = view.findViewById(R.id.results_con_layout_stai_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
@@ -881,7 +882,7 @@ class ResultFragment : Fragment() {
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
             termsRelLayout.visibility = View.INVISIBLE
             opqolTestResult = view.findViewById(R.id.totalScoreDescOPQOLTxtV)
-            pieChartView = view.findViewById(R.id.pieChartView)
+            pieChartView = view.findViewById(R.id.BarChartView)
             opqolTestResult.setText((String.format(
                 resources.getString(R.string.mds_test_score),
                 String.format("%.2f", score.toFloat())
@@ -902,10 +903,10 @@ class ResultFragment : Fragment() {
         }
 
         if (test_type == 14) {
-            view = inflater.inflate(R.layout.fragment_result_gas_test, container, false)
+            view = inflater.inflate(R.layout.fragment_result_gas_test_2, container, false)
 //            formConLayout = view.findViewById(R.id.results_constraint_layout)
-            testHeadling = view.findViewById(R.id.gasTestTitleTxtV)
-            riskResultTxtV = view.findViewById(R.id.gasTestResultTxtV)
+            testHeadling = view.findViewById(R.id.gasTestTitleTxtV2)
+            riskResultTxtV = view.findViewById(R.id.gasTestTitleTxtV2)
 //            riskResultTxtVSum = view.findViewById(R.id.txtViewTestResultSummary)
 //            cvdTestResults = view.findViewById(R.id.txtVcvdTestDetails)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
@@ -917,17 +918,18 @@ class ResultFragment : Fragment() {
             closeBtn = menuConLayout.findViewById(R.id.closeBtn)
             companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
             userIcon = MTEtitle.findViewById(R.id.userIcon)
-            lowAnxietyResultView = view.findViewById(R.id.lowAnxietyResultView)
-            mildAnxietyResultView = view.findViewById(R.id.mildAnxietyResultView)
-            moderateAnxietyResultView = view.findViewById(R.id.moderateAnxietyResultView)
-            severeAnxietyResultView = view.findViewById(R.id.severeAnxietyResultView)
-            totalGASScore = view.findViewById(R.id.totalGASScore)
-            val score = arguments!!.getDouble(ARG_PARAM1).toInt()
+            totalGASScore = view.findViewById(R.id.totalScore)
+            var allScores = arguments!!.getSerializable(ARG_PARAM5) as ArrayList<Int>
+            val score = allScores.get(0) + allScores.get(1) + allScores.get(2)
             totalGASScore.setText(score.toString())
-            gasTestTextResult = view.findViewById(R.id.gasTestResultTxtV)
+//            gasTestTextResult = view.findViewById(R.id.gasTestResultTxtV2)
             GAStestSummary = view.findViewById(R.id.GAStestSummary)
             GAStestSummaryB = view.findViewById(R.id.GAStestSummaryB)
             setGasTestSummary(score)
+            BarChartView = view.findViewById(R.id.verticalBarChartView)
+            verticalBarChartView = verticalBarChartView(context!! , allScores)
+            BarChartView.addView(verticalBarChartView)
+            BarChartView.invalidate()
         }
             return view
     }
@@ -6200,14 +6202,14 @@ fun showMDIResultBarViews()
                 textAlignment = View.TEXT_ALIGNMENT_TEXT_START
             }
     //        lowAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
-            lowAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
-//            var viewLength = lowAnxietyResultView.width
-//            var newViewLength = (viewLength * (testSum / 9).toFloat()).toFloat()
-            lowAnxietyResultView
-            lowAnxietyResultView
-            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
-            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
-            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            lowAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+////            var viewLength = lowAnxietyResultView.width
+////            var newViewLength = (viewLength * (testSum / 9).toFloat()).toFloat()
+//            lowAnxietyResultView
+//            lowAnxietyResultView
+//            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
             //request layouts
 
         }
@@ -6221,11 +6223,11 @@ fun showMDIResultBarViews()
             GAStestSummaryB.apply {
                 textAlignment = View.TEXT_ALIGNMENT_TEXT_START
             }
-            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
-   //         mildAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
-            mildAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
-            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
-            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//   //         mildAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+//            mildAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+//            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
 
             //request layouts
 
@@ -6240,11 +6242,11 @@ fun showMDIResultBarViews()
             GAStestSummaryB.apply {
                 textAlignment = View.TEXT_ALIGNMENT_TEXT_START
             }
-            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
-            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
-   //         moderateAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
-            moderateAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
-            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//   //         moderateAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+//            moderateAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+//            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
 
 
         }
@@ -6258,10 +6260,10 @@ fun showMDIResultBarViews()
             GAStestSummaryB.apply {
                 textAlignment = View.TEXT_ALIGNMENT_TEXT_START
             }
-            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
-            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
-            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
-            severeAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+//            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            severeAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
 
         }
     }

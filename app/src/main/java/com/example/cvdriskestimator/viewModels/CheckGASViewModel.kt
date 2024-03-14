@@ -100,7 +100,7 @@ class CheckGASViewModel : ViewModel() {
             && (checkQuestionForInputError(allPatientSelections[12] , 13) && (checkQuestionForInputError(allPatientSelections[13] , 14)))
             && (checkQuestionForInputError(allPatientSelections[14] , 15)))
         {
-            val result = mdiTestEstimator.calculateGAS(allPatientSelections)
+//            val result = mdiTestEstimator.calculateGAS(allPatientSelections)
 //            storePatientOnRealm(allPatientSelections , result)
 //            openResultFragment(result)
             return true
@@ -113,14 +113,14 @@ class CheckGASViewModel : ViewModel() {
 
     fun checkGASTestPatient2(allPatientSelections : ArrayList<Int?>) : Boolean
     {
-        if ((checkQuestionForInputError(allPatientSelections[15] , 16)) && (checkQuestionForInputError(allPatientSelections[16]  , 17))
-            && (checkQuestionForInputError(allPatientSelections[17]  , 18)) && (checkQuestionForInputError(allPatientSelections[18]  , 19))
-            && (checkQuestionForInputError(allPatientSelections[19]  , 20)) && (checkQuestionForInputError(allPatientSelections[20]  , 21))
-            && (checkQuestionForInputError(allPatientSelections[21]  , 22)) && (checkQuestionForInputError(allPatientSelections[22]  , 23))
-            && (checkQuestionForInputError(allPatientSelections[23]  , 24)) && (checkQuestionForInputError(allPatientSelections[24]  , 25))
-            && (checkQuestionForInputError(allPatientSelections[25] , 26) && (checkQuestionForInputError(allPatientSelections[26] , 27)))
-            && (checkQuestionForInputError(allPatientSelections[27] , 28) && (checkQuestionForInputError(allPatientSelections[28] , 29)))
-            && (checkQuestionForInputError(allPatientSelections[29] , 30)))
+        if ((checkQuestionForInputError2(allPatientSelections[15] , 16)) && (checkQuestionForInputError2(allPatientSelections[16]  , 17))
+            && (checkQuestionForInputError2(allPatientSelections[17]  , 18)) && (checkQuestionForInputError2(allPatientSelections[18]  , 19))
+            && (checkQuestionForInputError2(allPatientSelections[19]  , 20)) && (checkQuestionForInputError2(allPatientSelections[20]  , 21))
+            && (checkQuestionForInputError2(allPatientSelections[21]  , 22)) && (checkQuestionForInputError2(allPatientSelections[22]  , 23))
+            && (checkQuestionForInputError2(allPatientSelections[23]  , 24)) && (checkQuestionForInputError2(allPatientSelections[24]  , 25))
+            && (checkQuestionForInputError2(allPatientSelections[25] , 26) && (checkQuestionForInputError2(allPatientSelections[26] , 27)))
+            && (checkQuestionForInputError2(allPatientSelections[27] , 28) && (checkQuestionForInputError2(allPatientSelections[28] , 29)))
+            && (checkQuestionForInputError2(allPatientSelections[29] , 30)))
         {
             val result = mdiTestEstimator.calculateGAS(allPatientSelections)
             storePatientOnRealm(allPatientSelections , result)
@@ -174,6 +174,19 @@ class CheckGASViewModel : ViewModel() {
         if (value == null)
         {
             gasCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO, questionNO)
+            correctData = false
+        }
+        else
+            correctData = true
+        return correctData
+    }
+
+    private fun checkQuestionForInputError2(value : Int?, questionNO: Int) : Boolean
+    {
+        var correctData : Boolean = false
+        if (value == null)
+        {
+            gasCheckFragment2.showSelectionError("Please select an answer for question No : " + questionNO, questionNO)
             correctData = false
         }
         else

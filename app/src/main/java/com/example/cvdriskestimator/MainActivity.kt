@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var zungCheckFFragment : CheckZUNGFragment
     private lateinit var opqolCheckFragment: OPQOLCheckFragment
     private lateinit var opqolCheckFragment2 : OPQOLCheckFragment2
-    private lateinit var gasCheckFragment: GASCheckFragment
+    private lateinit var gasCheckFragment: GASCheckFragment1
     private lateinit var timelineFragment: ResultTimelineFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
@@ -786,7 +786,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "updateLast")
-                gasCheckFragment = GASCheckFragment()
+                gasCheckFragment = GASCheckFragment1()
                 gasCheckFragment.arguments = bundle
                 fragmentTransaction(gasCheckFragment)
             }
@@ -936,7 +936,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "addNew")
-                gasCheckFragment = GASCheckFragment()
+                gasCheckFragment = GASCheckFragment1()
                 gasCheckFragment.arguments = bundle
                 fragmentTransaction(gasCheckFragment)
             }
@@ -946,7 +946,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "addNew")
-                gasCheckFragment = GASCheckFragment()
+                gasCheckFragment = GASCheckFragment1()
                 gasCheckFragment.arguments = bundle
                 fragmentTransaction(gasCheckFragment)
             }
@@ -1097,7 +1097,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 bundle.putString("patientId" , "")
                 bundle.putString("testDate" , "")
                 bundle.putString("openType" , "history")
-                gasCheckFragment = GASCheckFragment()
+                gasCheckFragment = GASCheckFragment1()
                 gasCheckFragment.arguments = bundle
                 fragmentTransaction(gasCheckFragment)
             }
@@ -1256,7 +1256,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         zungCheckFFragment = CheckZUNGFragment()
         opqolCheckFragment = OPQOLCheckFragment()
         opqolCheckFragment2 = OPQOLCheckFragment2()
-        gasCheckFragment = GASCheckFragment()
+        gasCheckFragment = GASCheckFragment1()
         var resultsArray = IntArray(8)
         resultsArray[0] = 40
         resultsArray[1] = 55
@@ -2073,7 +2073,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             fragmentTransaction.show(fragment)
         if (fragment is OPQOLCheckFragment2)
             fragmentTransaction.show(fragment)
-        if (fragment is GASCheckFragment)
+        if (fragment is GASCheckFragment1)
+            fragmentTransaction.show(fragment)
+        if (fragment is GASCheckFragment2)
             fragmentTransaction.show(fragment)
         if (fragment is LeaderBoardFragment)
             fragmentTransaction.show(fragment)

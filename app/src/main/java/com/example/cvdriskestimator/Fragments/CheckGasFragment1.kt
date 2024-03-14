@@ -191,10 +191,12 @@ class GASCheckFragment1 : Fragment() {
                bundle.putSerializable("fragment1Answers" , allPatientSelections)
                if (answersFromSecondFragment)
                    bundle.putSerializable("fragment2Answers" , allPatientSelectionsFr2)
+
+               gasCheckFragment2 = GASCheckFragment2.newInstance(bundle)
+               mainActivity.fragmentTransaction(gasCheckFragment2)
            }
 
-            gasCheckFragment2 = GASCheckFragment2.newInstance(bundle)
-            mainActivity.fragmentTransaction(gasCheckFragment2)
+
         }
 
         gasCheckBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
@@ -434,6 +436,9 @@ class GASCheckFragment1 : Fragment() {
         fun newInstance(args : Bundle) =
             GASCheckFragment1().apply {
                 arguments = Bundle().apply {
+                    val fragment = GASCheckFragment1()
+                    fragment.arguments = args
+                    return fragment
                 }
             }
     }

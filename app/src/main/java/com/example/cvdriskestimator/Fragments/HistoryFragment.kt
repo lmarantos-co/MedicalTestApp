@@ -62,7 +62,7 @@ class HistoryFragment : Fragment() {
     private lateinit var dassCheckFragment: DASSCheckFragment
     private lateinit var zungFragment: CheckZUNGFragment
     private lateinit var opqolFragment : OPQOLCheckFragment
-    private lateinit var gasCheckFragment: GASCheckFragment
+    private lateinit var gasCheckFragment: GASCheckFragment1
     private var registerDoctorFragment =  RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private var dateFromPicked : Boolean = false
@@ -2111,7 +2111,7 @@ class HistoryFragment : Fragment() {
                 }
                 "GAS" ->
                 {
-                    gasCheckFragment = GASCheckFragment()
+                    gasCheckFragment = GASCheckFragment1()
                     gasCheckFragment.arguments = bundle
                     mainActivity.fragmentTransaction(gasCheckFragment)
                 }
