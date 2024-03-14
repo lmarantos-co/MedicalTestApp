@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="CheckGDSViewModel"
+            type="com.example.cvdriskestimator.viewModels.CheckGDSViewModel"
+            />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/formConLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MidnightBlue">
+
+
+        <include
+            android:id="@+id/include_cvd_title_form"
+            layout="@layout/cvd_title_form"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/horGL1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <include
+            android:id="@+id/include_pop_up_menu"
+            layout="@layout/popup_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1"
+            android:id="@+id/GDSTestTitleLayout">
+
+            <TextView
+                android:id="@+id/sidasTestTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/sidas_test_form_title_test"
+                android:drawableLeft="@drawable/ic_gds_depression_24_post"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:singleLine="false"
+                android:text="SIDAS Test"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fadeScrollbars="false"
+            android:fillViewport="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toBottomOf="@id/horGL1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/sidasCheckLinLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:context=".MainActivity">
+
+                <View
+                    android:id="@+id/pillowVIew"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/formTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/sidas_title_info"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RelativeLayout
+                    android:id="@+id/SIDASQ1RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:id="@+id/SIDASQ1TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sidas_textview"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/sidas_q1"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id='@+id/SIDAS1QRG'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/SIDASQ1TxtV"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/SIDAS1QRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="1"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS1QRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="2"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS1QRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="3"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS1QRB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="4"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS1QRB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="5"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS1QRB6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="6"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS1QRB7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="7"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS1QRB88"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="8"
+                            android:textColor="@color/black" />
+
+                            <RadioButton
+                            android:id="@+id/SIDAS1QRB9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="9"
+                            android:textColor="@color/black"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS1QRB10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="10"
+                            android:textColor="@color/black" />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/SIDASQ2RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:id="@+id/SIDASQ2TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sidas_textview"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/sidas_q2"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id='@+id/SIDAS2QRG'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/SIDASQ2TxtV"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="1"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="2"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="3"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="4"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="5"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="6"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="7"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB88"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="8"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="9"
+                            android:textColor="@color/black"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="10"
+                            android:textColor="@color/black" />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/SIDASQ3RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:id="@+id/SIDASQ3TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sidas_textview"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/sidas_q3"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id='@+id/SIDAS3QRG'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/SIDASQ3TxtV"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/SIDAS3QRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="1"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS3QRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="2"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS3QRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="3"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS3QRB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="4"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS3QRB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="5"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS3QRB6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="6"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS3QRB7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="7"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS3QRB88"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="8"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS3QRB9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="9"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS3QRB10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="10"
+                            android:textColor="@color/black" />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/SIDASQ4RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:id="@+id/SIDASQ4TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sidas_textview"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/sidas_q4"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id='@+id/SIDAS4QRG'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/SIDASQ4TxtV"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="1"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="2"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="3"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="4"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="5"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="6"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="7"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB88"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="8"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="9"
+                            android:textColor="@color/black"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="10"
+                            android:textColor="@color/black" />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/SIDASQ5RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:id="@+id/SIDASQ5TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sidas_textview"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/sidas_q5"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id='@+id/SIDAS5QRG'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/SIDASQ5TxtV"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="1"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="2"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="3"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="4"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="5"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="6"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="7"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB88"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="8"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="9"
+                            android:textColor="@color/black"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="10"
+                            android:textColor="@color/black" />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/arrowButtonsRelLayoyt">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submitBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/sidas_button_rounded_corners"
+                        android:padding="20dp"
+                        android:text="Υπολογισμός"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:visibility="visible"
+                        tools:ignore="TextContrastCheck" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/clearBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/submitBtn"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerVertical="false"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/submitBtn"
+                        android:background="@drawable/sidas_button_rounded_corners"
+                        android:text="Καθαριμός δεδομένων"
+                        android:textAllCaps="false" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

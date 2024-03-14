@@ -522,7 +522,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
-                    android:background="@drawable/geriatric_depression_panel"
+                    android:background="@drawable/geriatric_anxiety_panel"
                     android:visibility="visible" />
 
                 <TextView
