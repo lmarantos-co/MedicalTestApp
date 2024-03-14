@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="CheckGDSViewModel"
-            type="com.example.cvdriskestimator.viewModels.CheckGDSViewModel"
+            name="CheckSIDASViewModel"
+            type="com.example.cvdriskestimator.viewModels.CheckSIDASPatientViewModel"
             />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout

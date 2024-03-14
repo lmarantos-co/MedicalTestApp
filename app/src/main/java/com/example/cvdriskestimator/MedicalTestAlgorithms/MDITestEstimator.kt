@@ -56,6 +56,12 @@ class MDITestEstimator {
         return resultSum
     }
 
+    fun calculateSIDASScore(allPatientSelections: ArrayList<Int?>) : Int
+    {
+        var result : Int = 0
+        result = allPatientSelections.get(0)!! + (10 - allPatientSelections.get(1)!!) + allPatientSelections.get(2)!! + allPatientSelections.get(3)!! + allPatientSelections.get(4)!!
+        return result
+    }
     fun maxAB(a : Int, b : Int) : Int
     {
         if (a > b)

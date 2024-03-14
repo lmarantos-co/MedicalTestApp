@@ -817,4 +817,17 @@ open class Test : RealmModel
     var patientGASCognitive : Int? = null
     var patientGASAffective : Int? = null
 
+    //SIDAS Test
+    var patientSIDASQ1 : Int? = null
+
+    var patientSIDASQ2 : Int? = null
+
+    var patientSIDASQ3 : Int? = null
+
+    var patientSIDASQ4 : Int? = null
+
+    var patientSIDASQ5 : Int? = null
+
+    var sidasTestResult : Int? = null
+
 }
