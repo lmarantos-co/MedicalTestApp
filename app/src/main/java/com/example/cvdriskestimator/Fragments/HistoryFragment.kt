@@ -63,6 +63,7 @@ class HistoryFragment : Fragment() {
     private lateinit var zungFragment: CheckZUNGFragment
     private lateinit var opqolFragment : OPQOLCheckFragment
     private lateinit var gasCheckFragment: GASCheckFragment1
+    private lateinit var sidasCheckFragment: SIDASCheckFragment
     private var registerDoctorFragment =  RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private var dateFromPicked : Boolean = false
@@ -505,6 +506,25 @@ class HistoryFragment : Fragment() {
                 if (fromDate != null)
                 {
                     tests = realm.where(Test::class.java).isNotNull("patientGASQ6").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+                    setDatesFromTestsToChartSubTitle(tests)
+                }
+            }
+            "SIDAS" ->
+            {
+                bindingHistoryFragment.testNameTxtV.setText("Suicidal Ideation Attributes Scale")
+                tests = realm.where(Test::class.java).isNotNull("patientSIDASQ1") .equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
+//                if (tests.size > 10)
+//                {
+//                    tests.forEachIndexed { index, test ->
+//                        if ( index > (tests!!.size - 11))
+//                            last10Tests!!.add(index , test)
+//                    }
+//                    setDatesFromTestsToChartSubTitle(last10Tests!!)
+//                }
+                setDatesFromTestsToChartSubTitle(tests!!)
+                if (fromDate != null)
+                {
+                    tests = realm.where(Test::class.java).isNotNull("patientSIDASQ1").between("testDate" , fromDate!! , toDate!!).equalTo("patientId" , param1).equalTo("testName" , param2).findAll()
                     setDatesFromTestsToChartSubTitle(tests)
                 }
             }
@@ -1446,18 +1466,18 @@ class HistoryFragment : Fragment() {
 
                }
 
-               "OPQOL Test" ->
+               "SIDAS" ->
                {
                    for (test in allTests)
                    {
-                       if (minScore > test.OPQOLTestReesult!!)
+                       if (minScore > test.sidasTestResult!!)
                        {
-                           minScore = test.OPQOLTestReesult!!.toFloat()
+                           minScore = test.sidasTestResult!!.toFloat()
                        }
 
-                       if (maxScore < test.OPQOLTestReesult!!)
+                       if (maxScore < test.sidasTestResult!!)
                        {
-                           maxScore = test.OPQOLTestReesult!!.toFloat()
+                           maxScore = test.sidasTestResult!!.toFloat()
                        }
                    }
 
@@ -1474,7 +1494,7 @@ class HistoryFragment : Fragment() {
                    maxScore = 1f
 
                    //create the data set
-                   dataSet1 = LineDataSet(null, Html.fromHtml("OPQOL-35").toString())
+                   dataSet1 = LineDataSet(null, Html.fromHtml("SIDAS").toString())
                    dataSet1.axisDependency = YAxis.AxisDependency.LEFT
                    dataSet1.lineWidth = 2f
                    dataSet1.color = Color.BLUE
@@ -1487,7 +1507,54 @@ class HistoryFragment : Fragment() {
 
                    for (i in 0 until allTests.size)
                    {
-                       var entry = Entry(i.toFloat() , allTests.get(i)!!.OPQOLTestReesult!!.toFloat())
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.sidasTestResult!!.toFloat())
+                       dataSet1.addEntry(entry)
+                   }
+
+                   data.addDataSet(dataSet1)
+                   data.notifyDataChanged()
+               }
+
+
+               "GAS" ->
+               {
+                   for (test in allTests)
+                   {
+                       if (minScore > test.patientGASTestResult!!)
+                       {
+                           minScore = test.patientGASTestResult!!.toFloat()
+                       }
+
+                       if (maxScore < test.patientGASTestResult!!)
+                       {
+                           maxScore = test.patientGASTestResult!!.toFloat()
+                       }
+
+                       if (minScore > 3)
+                           minScore -= 2
+                       else
+                           minScore = 0f
+                       if (maxScore < 12)
+                           maxScore += 2
+                       else
+                           maxScore = 15f
+                   }
+
+                   //create the data set
+                   dataSet1 = LineDataSet(null, Html.fromHtml("Gerietric Anxiety Scale").toString())
+                   dataSet1.axisDependency = YAxis.AxisDependency.LEFT
+                   dataSet1.lineWidth = 2f
+                   dataSet1.color = Color.BLUE
+                   dataSet1.isHighlightEnabled = false
+                   dataSet1.setDrawCircles(false)
+                   dataSet1.setDrawValues(false)
+                   dataSet1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                   dataSet1.cubicIntensity = 0.2f
+                   dataSet1.clear()
+
+                   for (i in 0 until allTests.size)
+                   {
+                       var entry = Entry(i.toFloat() , allTests.get(i)!!.patientGASTestResult!!.toFloat())
                        dataSet1.addEntry(entry)
                    }
 
@@ -1879,6 +1946,20 @@ class HistoryFragment : Fragment() {
                     scoreArrayList.add("${test.patientGASTestResult}")
                 }
             }
+            "SIDAS" ->
+            {
+                for (test in allTests)
+                {
+                    val format = SimpleDateFormat("yyy MM dd")
+                    var emptyString = ""
+                    for (i in 0..numOfSpaces)
+                    {
+                        emptyString += " "
+                    }
+                    dateArrayList.add("${format.format(test.testDate)}")
+                    scoreArrayList.add("${test.sidasTestResult}")
+                }
+            }
         }
 
         val dateAdapter = ArrayAdapter(mainActivity.applicationContext, R.layout.textvview_history_xml, dateArrayList)
@@ -2017,6 +2098,11 @@ class HistoryFragment : Fragment() {
                 bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.purple_3))
                 bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.purple_3))
             }
+            "SIDAS" ->
+            {
+                bindingHistoryFragment.testReulstLinLayout.background.setTint(mainActivity.getColor(R.color.Coral))
+                bindingHistoryFragment.testNameTxtV.background.setTint(mainActivity.getColor(R.color.Coral))
+            }
         }
     }
 
@@ -2114,6 +2200,12 @@ class HistoryFragment : Fragment() {
                     gasCheckFragment = GASCheckFragment1()
                     gasCheckFragment.arguments = bundle
                     mainActivity.fragmentTransaction(gasCheckFragment)
+                }
+                "SIDAS" ->
+                {
+                    sidasCheckFragment = SIDASCheckFragment()
+                    sidasCheckFragment.arguments = bundle
+                    mainActivity.fragmentTransaction(sidasCheckFragment)
                 }
             }
 

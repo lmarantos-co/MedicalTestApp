@@ -60,6 +60,10 @@ class MDITestEstimator {
     {
         var result : Int = 0
         result = allPatientSelections.get(0)!! + (10 - allPatientSelections.get(1)!!) + allPatientSelections.get(2)!! + allPatientSelections.get(3)!! + allPatientSelections.get(4)!!
+        if (allPatientSelections.get(0)!! == 0)
+        {
+            result = 0
+        }
         return result
     }
     fun maxAB(a : Int, b : Int) : Int

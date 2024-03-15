@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var opqolCheckFragment: OPQOLCheckFragment
     private lateinit var opqolCheckFragment2 : OPQOLCheckFragment2
     private lateinit var gasCheckFragment: GASCheckFragment1
+    private lateinit var sidasCheckFragment : SIDASCheckFragment
     private lateinit var timelineFragment: ResultTimelineFragment
     private lateinit var leaderBoardFragment: LeaderBoardFragment
     private lateinit var popupMenu: PopupMenu
@@ -115,6 +116,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private var ZungTestName : String = ""
     private var OPQOLTestName : String = ""
     private var GasTestName : String = ""
+    private var sidasTestName : String = ""
     private var CVDTestDate : String = ""
     private var DiabetesTestDate : String = ""
     private var MDITestDate : String = ""
@@ -129,6 +131,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private var ZungTestDate : String = ""
     private var OPQOLTestDate : String = ""
     private var GASTestDate : String = ""
+    private var sidasTestDate : String = ""
     private lateinit var patienTestListOkBtn : Button
     private lateinit var includeTestOptionsPopup : ConstraintLayout
     private var showPatientLasttest : Boolean = false
@@ -163,6 +166,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var hammiltonPanel : View
     private lateinit var dassPanel : View
     private lateinit var opqolPanel : View
+    private lateinit var sidasPanel : View
     private lateinit var cvdVectorIcon : View
     private lateinit var diabetesVectorIcon : View
     private lateinit var depressionIcon : View
@@ -619,6 +623,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         staiAnxietyIcon = findViewById(R.id.staiPanel)
         zungIcon = findViewById(R.id.zungPanel)
         gasIcon = findViewById(R.id.gdPanel3)
+        sidasPanel = findViewById(R.id.sidasPanel)
         beckDeprTxtV = findViewById(R.id.bdiTxtV)
         gerDepTxtV = findViewById(R.id.gdsTxtV)
         staiTxtV = findViewById(R.id.staTxtV)
@@ -790,6 +795,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 gasCheckFragment.arguments = bundle
                 fragmentTransaction(gasCheckFragment)
             }
+
+            "SIDASS" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "updateLast")
+                sidasCheckFragment = SIDASCheckFragment()
+                sidasCheckFragment.arguments = bundle
+                fragmentTransaction(sidasCheckFragment)
+            }
         }
     }
 
@@ -950,6 +966,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 gasCheckFragment.arguments = bundle
                 fragmentTransaction(gasCheckFragment)
             }
+
+            "SIDAS" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "addNew")
+                sidasCheckFragment = SIDASCheckFragment()
+                sidasCheckFragment.arguments = bundle
+                fragmentTransaction(sidasCheckFragment)
+            }
         }
     }
 
@@ -1101,6 +1128,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 gasCheckFragment.arguments = bundle
                 fragmentTransaction(gasCheckFragment)
             }
+
+            "SIDAS" ->
+            {
+                var bundle = Bundle()
+                bundle.putString("patientId" , "")
+                bundle.putString("testDate" , "")
+                bundle.putString("openType" , "history")
+                sidasCheckFragment = SIDASCheckFragment()
+                sidasCheckFragment.arguments = bundle
+                fragmentTransaction(sidasCheckFragment)
+            }
         }
     }
 
@@ -1194,6 +1232,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         dassPanel = findViewById(R.id.dassPanel)
         opqolPanel = findViewById(R.id.opqolPanel)
         gasIcon = findViewById(R.id.gdPanel3)
+        sidasPanel = findViewById(R.id.sidasPanel)
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val width = displayMetrics.widthPixels
@@ -1241,6 +1280,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         gasIcon.layoutParams.height = height / 5
         gasIcon.layoutParams.width = (width / 2.3).toInt()
 
+        sidasPanel.layoutParams.height = height / 5
+        sidasPanel.layoutParams.width = (width / 2.3).toInt()
+
         registerFragment = RegisterFragment.newInstance()
         checkFragment = CheckFragment()
         checkDiabetesFragment = DiabetesCheckFragment()
@@ -1257,6 +1299,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         opqolCheckFragment = OPQOLCheckFragment()
         opqolCheckFragment2 = OPQOLCheckFragment2()
         gasCheckFragment = GASCheckFragment1()
+        sidasCheckFragment = SIDASCheckFragment()
         var resultsArray = IntArray(8)
         resultsArray[0] = 40
         resultsArray[1] = 55
@@ -1450,6 +1493,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             openTestPopUp("GAS")
         }
 
+        sidasPanel.setOnClickListener {
+            hideLayoutElements()
+            openTestPopUp("SIDAS")
+        }
 
     }
 
@@ -1700,6 +1747,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         gasIcon.animate().alphaBy(1f).duration = 1200
         gasIcon.startAnimation(bounceTests)
         gasIcon.visibility = View.VISIBLE
+        sidasPanel.animate().alphaBy(1f).duration = 1200
+        sidasPanel.startAnimation(bounceTests)
+        sidasPanel.visibility = View.VISIBLE
 
     }
 
@@ -1789,6 +1839,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         opqolIcon.clearAnimation()
         gasIcon.visibility = View.VISIBLE
         gasIcon.clearAnimation()
+        sidasPanel.visibility = View.VISIBLE
+        sidasPanel.clearAnimation()
         cvdVectorIcon.visibility = View.VISIBLE
         cvdTestTitle.visibility = View.VISIBLE
         diabetesVectorIcon.visibility = View.VISIBLE
@@ -1981,6 +2033,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fragmentTransaction.hide(opqolCheckFragment)
         fragmentTransaction.hide(opqolCheckFragment2)
         fragmentTransaction.hide(gasCheckFragment)
+        fragmentTransaction.hide(sidasCheckFragment)
 //        fragmentTransaction.hide(pdqCheckFragment)
         fragmentTransaction.hide(leaderBoardFragment)
             .commit()
@@ -2400,6 +2453,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         ZungTestName = ""
         OPQOLTestName = ""
         GasTestName = ""
+        sidasTestName = ""
 //        runOnUiThread {
 //
 //            allPatientTestNames = ""
@@ -2603,6 +2657,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                         "Geriatric Depression - ${dateFormat.format(allGDSSize!!.testDate)}"
                 }
 
+                var allSIDASTest = realm.where(Test::class.java).isNotNull("patientSIDASQ1")
+                    .equalTo("patientId", patient!!.patientId).findAll()
+
+                if (allSIDASTest.size > 0) {
+                    var dateFormat = SimpleDateFormat("MM/dd/yyyy")
+                    var allSIDASSize = allSIDASTest.get(allSIDASTest.size - 1)
+                    sidasTestName = "SIDAS"
+                    sidasTestDate = dateFormat.format(allSIDASSize!!.testDate)
+                    var GDSTestResult =
+                        "Suicidal Ideation Attributes Scale - ${dateFormat.format(allSIDASSize!!.testDate)}"
+                }
+
+
                 var allGASTest = realm.where(Test::class.java).isNotNull("patientGASQ1")
                     .equalTo("patientId", patient!!.patientId).findAll()
 
@@ -2703,6 +2770,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                     allPatientTestDateData.add(GASTestDate)
                     allPatientTestNames += GasTestName + "\n"
                     allPatientTestDates += GASTestDate + "\n"
+                }
+
+                if (sidasTestName != "") {
+                    allPatientTestNameData.add(sidasTestName)
+                    allPatientTestDateData.add(sidasTestDate)
+                    allPatientTestNames += sidasTestName + "\n"
+                    allPatientTestDates += sidasTestDate + "\n"
                 }
             }
         }

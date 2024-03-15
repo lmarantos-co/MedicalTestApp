@@ -143,6 +143,18 @@
                         android:orientation="vertical">
 
                         <RadioButton
+                            android:id="@+id/SIDAS1QRB0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="0"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
                             android:id="@+id/SIDAS1QRB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -297,6 +309,18 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/SIDASQ2TxtV"
                         android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/SIDAS2QRB0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="0"
+                            android:textColor="@color/black" />
 
                         <RadioButton
                             android:id="@+id/SIDAS2QRB1"
@@ -455,6 +479,18 @@
                         android:orientation="vertical">
 
                         <RadioButton
+                            android:id="@+id/SIDAS3QRB0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="0"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
                             android:id="@+id/SIDAS3QRB1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -608,6 +644,18 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/SIDASQ4TxtV"
                         android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/SIDAS4QRB0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="0"
+                            android:textColor="@color/black" />
 
                         <RadioButton
                             android:id="@+id/SIDAS4QRB1"
@@ -764,6 +812,18 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/SIDASQ5TxtV"
                         android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/SIDAS5QRB0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:editable="true"
+                            android:enabled="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="0"
+                            android:textColor="@color/black" />
 
                         <RadioButton
                             android:id="@+id/SIDAS5QRB1"

@@ -154,7 +154,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS1QRB2"
@@ -167,7 +168,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS1QRB3"
@@ -180,7 +182,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS1QRB4"
@@ -193,7 +196,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -240,7 +244,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS2QRB2"
@@ -253,7 +258,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS2QRB3"
@@ -266,7 +272,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS2QRB4"
@@ -279,7 +286,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
                     </RadioGroup>
 
                 </RelativeLayout>
@@ -325,7 +333,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS3QRB2"
@@ -338,7 +347,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS3QRB3"
@@ -351,7 +361,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS3QRB4"
@@ -364,7 +375,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
                     </RadioGroup>
 
                 </RelativeLayout>
@@ -410,7 +422,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS4QRB2"
@@ -423,7 +436,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS4QRB3"
@@ -436,7 +450,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS4QRB4"
@@ -449,7 +464,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -496,7 +512,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS5QRB2"
@@ -509,7 +526,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS5QRB3"
@@ -522,7 +540,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS5QRB4"
@@ -535,7 +554,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -584,7 +604,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS6QRB2"
@@ -597,7 +618,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS6QRB3"
@@ -610,7 +632,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS6QRB4"
@@ -623,7 +646,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -670,7 +694,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS7QRB2"
@@ -683,7 +708,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS7QRB3"
@@ -696,7 +722,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS7QRB4"
@@ -709,7 +736,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -756,7 +784,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS8QRB2"
@@ -769,7 +798,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS8QRB3"
@@ -782,7 +812,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS8QRB4"
@@ -795,7 +826,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -844,7 +876,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS9QRB2"
@@ -857,7 +890,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS9QRB3"
@@ -870,7 +904,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS9QRB4"
@@ -883,7 +918,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -930,7 +966,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS10QRB2"
@@ -943,7 +980,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS10QRB3"
@@ -956,7 +994,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS10QRB4"
@@ -969,7 +1008,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1019,7 +1059,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS11QRB2"
@@ -1032,7 +1073,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS11QRB3"
@@ -1045,7 +1087,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS11QRB4"
@@ -1058,7 +1101,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1083,7 +1127,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
-                        android:text="@string/GASQ11"
+                        android:text="@string/GASQ12"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1105,7 +1149,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS12QRB2"
@@ -1118,7 +1163,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS12QRB3"
@@ -1131,7 +1177,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS12QRB4"
@@ -1144,7 +1191,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1191,7 +1239,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS13QRB2"
@@ -1204,7 +1253,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS13QRB3"
@@ -1217,7 +1267,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS13QRB4"
@@ -1230,7 +1281,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1279,7 +1331,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS14QRB2"
@@ -1292,7 +1345,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS14QRB3"
@@ -1305,7 +1359,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS14QRB4"
@@ -1318,7 +1373,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1365,7 +1421,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ1"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS15QRB2"
@@ -1378,7 +1435,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASΑ2"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS15QRB3"
@@ -1391,7 +1449,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA3"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/GAS15QRB4"
@@ -1404,7 +1463,8 @@
                             android:maxLines="1"
                             android:paddingLeft="8dp"
                             android:text="@string/GASA4"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>

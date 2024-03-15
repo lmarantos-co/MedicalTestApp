@@ -25,6 +25,7 @@ import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.customClasses.BarChartView
 import com.example.cvdriskestimator.customClasses.PieChartView
+import com.example.cvdriskestimator.customClasses.sidasBarChartView
 import com.example.cvdriskestimator.customClasses.verticalBarChartView
 import kotlinx.coroutines.*
 import java.util.*
@@ -226,6 +227,14 @@ class ResultFragment : Fragment() {
     private lateinit var GAStestSummaryB : TextView
     private lateinit var verticalBarChartView: verticalBarChartView
     private lateinit var BarChartView: RelativeLayout
+
+    //SIDAS Test
+
+    private lateinit var totalSIDASScore : TextView
+    private lateinit var SIDAStestSummary : TextView
+    private lateinit var SIDAStestSummaryB : TextView
+    private lateinit var sidasVerticalBarChartView: sidasBarChartView
+    private lateinit var sidasBarChartView: RelativeLayout
 
 
     //screen dimensions
@@ -931,6 +940,36 @@ class ResultFragment : Fragment() {
             BarChartView.addView(verticalBarChartView)
             BarChartView.invalidate()
         }
+
+        if (test_type == 15) {
+            view = inflater.inflate(R.layout.fragment_sidas_result, container, false)
+//            formConLayout = view.findViewById(R.id.results_constraint_layout)
+            testHeadling = view.findViewById(R.id.sidasTestTitleTxtV2)
+            riskResultTxtV = view.findViewById(R.id.sidasTestTitleTxtV2)
+//            riskResultTxtVSum = view.findViewById(R.id.txtViewTestResultSummary)
+//            cvdTestResults = view.findViewById(R.id.txtVcvdTestDetails)
+            MTEtitle = view.findViewById(R.id.include_cvd_title_form)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            userIcon.alpha = 1f
+            menuConLayout = view.findViewById(R.id.include_pop_up_menu)
+            termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
+            termsRelLayout.visibility = View.INVISIBLE
+            closeBtn = menuConLayout.findViewById(R.id.closeBtn)
+            companyLogo = MTEtitle.findViewById(R.id.covariance_logo)
+            userIcon = MTEtitle.findViewById(R.id.userIcon)
+            totalSIDASScore = view.findViewById(R.id.totalSidasScore)
+            var score = arguments!!.getDouble(ARG_PARAM1)
+            totalSIDASScore.setText(score.toInt().toString())
+//            gasTestTextResult = view.findViewById(R.id.gasTestResultTxtV2)
+            SIDAStestSummary = view.findViewById(R.id.SIDAStestSummary)
+            SIDAStestSummaryB = view.findViewById(R.id.SIDAStestSummaryB)
+            setSidasTestSummary(score.toInt())
+            sidasBarChartView = view.findViewById(R.id.sidasVerticalBarChartView)
+            sidasVerticalBarChartView = sidasBarChartView(context!! , score.toInt())
+            sidasBarChartView.addView(sidasVerticalBarChartView)
+            sidasBarChartView.invalidate()
+        }
+
             return view
     }
 
@@ -6189,9 +6228,66 @@ fun showMDIResultBarViews()
         }
     }
 
+    fun setSidasTestSummary(testSum : Int)
+    {
+        if (testSum == 0)
+        {
+            SIDAStestSummary.text = mainActivity.resources.getString(R.string.sidas_cat1)
+            SIDAStestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_CENTER
+            }
+
+
+
+        }
+        if ((testSum >=1) && (testSum <= 9))
+        {
+            SIDAStestSummary.text = mainActivity.resources.getString(R.string.sidas_cat2)
+            SIDAStestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_CENTER
+            }
+//            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//   //         mildAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+//            mildAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+//            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+
+            //request layouts
+
+        }
+        if ((testSum >=10) && (testSum <= 20))
+        {
+            SIDAStestSummary.text = mainActivity.resources.getString(R.string.sidas_cat3)
+            SIDAStestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_CENTER
+            }
+
+//            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//   //         moderateAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+//            moderateAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+//            severeAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+
+
+        }
+        if ((testSum >=21) && (testSum <= 50))
+        {
+            SIDAStestSummary.text = mainActivity.resources.getString(R.string.sidas_cat4)
+            SIDAStestSummary.apply {
+                textAlignment = View.TEXT_ALIGNMENT_CENTER
+            }
+
+//            lowAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            mildAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            moderateAnxietyResultView.setBackgroundResource(R.drawable.white_mdille__border_rel_layout)
+//            severeAnxietyResultView.setBackgroundResource(R.drawable.blue_middle_border_rel_layout)
+
+        }
+    }
+
     fun setGasTestSummary(testSum : Int)
     {
-        if ((testSum >=0) && (testSum <= 9))
+        if ((testSum >=0) && (testSum <= 25))
         {
             GAStestSummary.text = mainActivity.resources.getString(R.string.gas_low_anxiety_a)
             GAStestSummaryB.text = mainActivity.resources.getString(R.string.gas_low_anxiety_b)
@@ -6213,7 +6309,7 @@ fun showMDIResultBarViews()
             //request layouts
 
         }
-        if ((testSum >=10) && (testSum <= 14))
+        if ((testSum >=26) && (testSum <= 50))
         {
             GAStestSummary.text = mainActivity.resources.getString(R.string.gas_mild_anxiety_a)
             GAStestSummaryB.text = mainActivity.resources.getString(R.string.gas_mild_anxiety_b)
@@ -6232,7 +6328,7 @@ fun showMDIResultBarViews()
             //request layouts
 
         }
-        if ((testSum >=15) && (testSum <= 19))
+        if ((testSum >=51) && (testSum <= 60))
         {
             GAStestSummary.text = mainActivity.resources.getString(R.string.gas_moderate_anxiety_a)
             GAStestSummaryB.text = mainActivity.resources.getString(R.string.gas_moderate_anxiety_b)
@@ -6250,7 +6346,7 @@ fun showMDIResultBarViews()
 
 
         }
-        if ((testSum >=20) && (testSum <= 30))
+        if ((testSum >=61) && (testSum <= 75))
         {
             GAStestSummary.text = mainActivity.resources.getString(R.string.gas_severe_anxiety_a)
             GAStestSummaryB.text = mainActivity.resources.getString(R.string.gas_severe_anxiety_b)

@@ -218,27 +218,27 @@ class SIDASCheckFragment : Fragment() {
             }
             0 ->
             {
-                (rg.getChildAt(5) as RadioButton).isChecked = true
+                (rg.getChildAt(0) as RadioButton).isChecked = true
             }
             1 ->
             {
-                (rg.getChildAt(4) as RadioButton).isChecked = true
+                (rg.getChildAt(1) as RadioButton).isChecked = true
             }
             2 ->
             {
-                (rg.getChildAt(3) as RadioButton).isChecked = true
+                (rg.getChildAt(2) as RadioButton).isChecked = true
             }
             3->
             {
-                (rg.getChildAt(2) as RadioButton).isChecked = true
+                (rg.getChildAt(3) as RadioButton).isChecked = true
             }
             4 ->
             {
-                (rg.getChildAt(1) as RadioButton).isChecked = true
+                (rg.getChildAt(4) as RadioButton).isChecked = true
             }
             5 ->
             {
-                (rg.getChildAt(0) as RadioButton).isChecked = true
+                (rg.getChildAt(5) as RadioButton).isChecked = true
             }
 
             6 ->
@@ -263,7 +263,7 @@ class SIDASCheckFragment : Fragment() {
 
             10 ->
             {
-                (rg.getChildAt(1) as RadioButton).isChecked = true
+                (rg.getChildAt(10) as RadioButton).isChecked = true
             }
         }
     }
@@ -273,26 +273,28 @@ class SIDASCheckFragment : Fragment() {
         var result : Int? = null
         val radioButtonId = rg.checkedRadioButtonId
         if (rg.get(5).id == radioButtonId)
-            result = 6
+            result = 5
         if (rg.get(6).id == radioButtonId)
-            result = 7
+            result = 6
         if (rg.get(7).id == radioButtonId)
-            result = 8
+            result = 7
         if (rg.get(8).id == radioButtonId)
-            result = 9
+            result = 8
         if (rg.get(9).id == radioButtonId)
+            result = 9
+        if (rg.get(10).id == radioButtonId)
             result = 10
 
         if (rg.get(0).id == radioButtonId)
-            result = 1
+            result = 0
         if (rg.get(1).id == radioButtonId)
-            result = 2
+            result = 1
         if (rg.get(2).id == radioButtonId)
-            result = 3
+            result = 2
         if (rg.get(3).id == radioButtonId)
-            result = 4
+            result = 3
         if (rg.get(4).id == radioButtonId)
-            result = 5
+            result = 4
 
         return result
     }

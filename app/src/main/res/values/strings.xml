@@ -986,4 +986,11 @@
     <string name="sidas_q4">4. Τον τελευταίο μήνα, σε ποιο βαθμό αισθανθήκατε βασανισμένοι από σκέψεις αυτοκτονίας; (0 = Καθόλου, 10 = Εξαιρετικά)</string>
     <string name="sidas_q5">5. Τον τελευταίο μήνα, πόσο οι σκέψεις για αυτοκτονία επηρέασαν την ικανότητά σας να εκτελείτε καθημερινές δραστηριότητες, όπως εργασία, οικιακές εργασίες ή κοινωνικές δραστηριότητες; (0 = Καθόλου, 10 = Εξαιρετικά)</string>
     <string name="sidas_title_info">Κλίμακα χαρακτηριστικών αυτοκτονικού ιδεασμού (SIDAS)</string>
+    <string name="sidas_test_results">Suicidal Ideation Attributes Scale</string>
+    <string name="sidas_text_result_header">Suicidal Ideation Attributes Scale Score</string>
+    <string name="sidas_cat1">Non Suicidal</string>
+    <string name="sidas_cat2">Low Suicidal Risk</string>
+    <string name="sidas_cat3">Medium Suicidal Risk</string>
+    <string name="sidas_cat4">High Suicidal Risk</string>
+
 </resources>
