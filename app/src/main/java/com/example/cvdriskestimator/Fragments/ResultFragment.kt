@@ -724,7 +724,7 @@ class ResultFragment : Fragment() {
         }
         if (test_type == 10) {
             view = inflater.inflate(R.layout.fragment_stai_result, container, false)
-//            formConLayout = view.findViewById(R.id.results_con_layout_stai_test)
+            formConLayout = view.findViewById(R.id.results_con_layout_stai_test)
             MTEtitle = view.findViewById(R.id.include_cvd_title_form)
             menuConLayout = view.findViewById(R.id.include_pop_up_menu)
             termsRelLayout = menuConLayout.findViewById(R.id.termsRelLayout)
