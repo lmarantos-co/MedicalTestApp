@@ -203,7 +203,7 @@ class CheckSIDASPatientViewModel : ViewModel() {
 
             currentTest!!.patientId = patient!!.patientId
             currentTest.testDate = calendar.time
-            currentTest!!.patientMDITestResult = result
+            currentTest!!.sidasTestResult = result
             currentTest!!.testName = "SIDAS"
 
             var testId : Int = 0

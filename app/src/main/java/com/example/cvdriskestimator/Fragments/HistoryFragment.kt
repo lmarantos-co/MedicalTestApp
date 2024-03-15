@@ -1490,9 +1490,6 @@ class HistoryFragment : Fragment() {
 //                   else
 //                       maxScore = 100f
 
-                   minScore = 0f
-                   maxScore = 1f
-
                    //create the data set
                    dataSet1 = LineDataSet(null, Html.fromHtml("SIDAS").toString())
                    dataSet1.axisDependency = YAxis.AxisDependency.LEFT

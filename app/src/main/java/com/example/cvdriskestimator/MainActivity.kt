@@ -796,7 +796,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 fragmentTransaction(gasCheckFragment)
             }
 
-            "SIDASS" ->
+            "SIDAS" ->
             {
                 var bundle = Bundle()
                 bundle.putString("patientId" , "")

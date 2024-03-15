@@ -98,7 +98,7 @@ class SIDASCheckFragment : Fragment() {
                     historyTest = sidasPatientViewModel.fetchHistoryTest(patientId!! , testDate!!)
                 }
             }
-            if (historyTest.patientMDITestResult != null)
+            if (historyTest.sidasTestResult != null)
             {
                 setPatientData(historyTest)
             }
@@ -191,11 +191,11 @@ class SIDASCheckFragment : Fragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             initialisePatientData()
             //show all the data on the UI
-            setQuestionRadioGroup(sidasCheckBinding.SIDAS1QRG , test.patientMDIQ1)
-            setQuestionRadioGroup(sidasCheckBinding.SIDAS2QRG , test.patientMDIQ2)
-            setQuestionRadioGroup(sidasCheckBinding.SIDAS3QRG , test.patientMDIQ3)
-            setQuestionRadioGroup(sidasCheckBinding.SIDAS4QRG , test.patientMDIQ4)
-            setQuestionRadioGroup(sidasCheckBinding.SIDAS5QRG , test.patientMDIQ5)
+            setQuestionRadioGroup(sidasCheckBinding.SIDAS1QRG , test.patientSIDASQ1)
+            setQuestionRadioGroup(sidasCheckBinding.SIDAS2QRG , test.patientSIDASQ2)
+            setQuestionRadioGroup(sidasCheckBinding.SIDAS3QRG , test.patientSIDASQ3)
+            setQuestionRadioGroup(sidasCheckBinding.SIDAS4QRG , test.patientSIDASQ4)
+            setQuestionRadioGroup(sidasCheckBinding.SIDAS5QRG , test.patientSIDASQ5)
 
         } , 1000)
     }
