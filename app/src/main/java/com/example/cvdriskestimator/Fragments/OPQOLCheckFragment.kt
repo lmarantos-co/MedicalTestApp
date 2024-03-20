@@ -1093,7 +1093,7 @@ class OPQOLCheckFragment : Fragment() {
                 2 -> (rg.getChildAt(1) as RadioButton).isChecked = true
                 3 -> (rg.getChildAt(2) as RadioButton).isChecked = true
                 4 -> (rg.getChildAt(3) as RadioButton).isChecked = true
-                5 -> (rg.getChildAt(5) as RadioButton).isChecked = true
+                5 -> (rg.getChildAt(4) as RadioButton).isChecked = true
             }
         }
         else
@@ -1104,7 +1104,7 @@ class OPQOLCheckFragment : Fragment() {
                 4 -> (rg.getChildAt(1) as RadioButton).isChecked = true
                 3 -> (rg.getChildAt(2) as RadioButton).isChecked = true
                 2 -> (rg.getChildAt(3) as RadioButton).isChecked = true
-                1 -> (rg.getChildAt(5) as RadioButton).isChecked = true
+                1 -> (rg.getChildAt(4) as RadioButton).isChecked = true
             }
         }
     }
@@ -1657,16 +1657,16 @@ class OPQOLCheckFragment : Fragment() {
 
                 } else {
                     // Default to 0 if the dimension is not recognized
-                    0
+                    if (dimension.endsWith("sp")) {
+                        dimension.replace("sp", "").toInt()
+
+                    } else {
+                        // Default to 0 if the dimension is not recognized
+                        0
+                    }
                 }
                 // Assuming dimension is specified in dp
-                if (dimension.endsWith("sp")) {
-                    dimension.replace("sp", "").toInt()
 
-                } else {
-                    // Default to 0 if the dimension is not recognized
-                    0
-                }
             }
         }
     }

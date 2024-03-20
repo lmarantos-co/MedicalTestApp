@@ -759,7 +759,7 @@ class OPQOLCheckFragment2 : Fragment() {
         doc.appendChild(rootElement)
 
         // Iterate over the shuffled list of components
-        for (i in 0..components.size - 1) {
+        for (i in 17..components.size - 1) {
 
             val componentElement = doc.createElement("RelativeLayout")
             //set the attributes for the relative layout
@@ -781,7 +781,7 @@ class OPQOLCheckFragment2 : Fragment() {
             }
             else
             {
-                componentElement.setAttribute("android:layout_below" , allGeneratedRelativeLayoutIds2Fr.get(i-1).toString())
+                componentElement.setAttribute("android:layout_below" , allGeneratedRelativeLayoutIds2Fr.get(i - 16 -1).toString())
             }
             val textViewElement = doc.createElement("TextView")
             val textViewId = View.generateViewId()
@@ -836,7 +836,7 @@ class OPQOLCheckFragment2 : Fragment() {
             textViewElement.setAttribute("android:text" , getString(textViewTextStringId))
             textViewElement.setAttribute("android:textColor" , "@color/black")
             textViewElement.setAttribute("android:textSize" , "20sp")
-            textViewElement.textContent = components.get(i).textView.text.toString()
+            textViewElement.textContent = components.get(i - 17).textView.text.toString()
             componentElement.appendChild(textViewElement)
 
             val radioGroupElement = doc.createElement("RadioGroup")
@@ -846,20 +846,20 @@ class OPQOLCheckFragment2 : Fragment() {
             radioGroupElement.setAttribute("android:id" , "${radioGroupId.toString()}")
             radioGroupElement.setAttribute("android:layout_width", "match_parent")
             radioGroupElement.setAttribute("android:layout_height", "wrap_content")
-            radioGroupElement.setAttribute("android:layout_below" , "${allGeneratedTxtViewsIds2Fr.get(i)}")
+            radioGroupElement.setAttribute("android:layout_below" , "${allGeneratedTxtViewsIds2Fr.get(i -17)}")
             componentElement.appendChild(radioGroupElement)
 
             var allRadioButtons = ArrayList<RadioButton>(4)
             if (components.get(i).radioGroup.childCount >0)
             {
-                for (i in 0..components.get(i).radioGroup.childCount -1)
+                for (k in 0..components.get(i).radioGroup.childCount -1)
                 {
-                    allRadioButtons.add(components.get(i).radioGroup.get(i) as RadioButton)
+                    allRadioButtons.add(components.get(i).radioGroup.get(k) as RadioButton)
                 }
 
-                for (k in 0 until allRadioButtons.size) {
+                for (l in 0 until allRadioButtons.size) {
                     val radioButtonElement = doc.createElement("RadioButton")
-                    radioButtonElement.textContent = allRadioButtons.get(k).text.toString()
+                    radioButtonElement.textContent = allRadioButtons.get(l).text.toString()
                     val radioButtonId = View.generateViewId()
                     allGeneratedRadioButtonIds2Fr.add(radioButtonId)
                     radioButtonElement.setAttribute("android:id" , "${radioButtonId}")
@@ -870,7 +870,7 @@ class OPQOLCheckFragment2 : Fragment() {
                     radioButtonElement.setAttribute("android:paddingTop" , "8dp")
                     radioButtonElement.setAttribute("android:textColor" , "@color/black")
                     radioButtonElement.setAttribute("android:textSize" , "20sp")
-                    when (k)
+                    when (l)
                     {
                         0 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q2A1))
                         1 -> radioButtonElement.setAttribute("android:text" , getString(R.string.OPQOL35Q2A2))
