@@ -1632,6 +1632,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setContentViewForFirstAppScreen()
     }
 
+
     fun logOutPatient()
     {
         val shared = getPreferences(Context.MODE_PRIVATE) ?: return
@@ -2336,6 +2337,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             R.id.leaderboard_item ->
             {
                 fragmentTransaction(leaderBoardFragment)
+            }
+            R.id.patient_item ->
+            {
+                logOutPatient()
             }
             }
             false
