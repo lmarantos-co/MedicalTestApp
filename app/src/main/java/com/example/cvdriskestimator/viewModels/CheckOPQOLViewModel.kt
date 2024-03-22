@@ -94,79 +94,79 @@ class CheckOPQOLViewModel : ViewModel()
     }
 
     //check all opqol questions for proper user input
-    fun checkOPQOLTestPatient1(allPatientSelections : ArrayList<Int?>) : Boolean
+    fun checkOPQOLTestPatient1(allPatientSelections : ArrayList<Int?> , questionsList : ArrayList<Int>) : Boolean
     {
-        return(checkQuestionForInputError(allPatientSelections.get(0) , 1))
+        return (checkQuestionForInputError(allPatientSelections.get(0) , questionsList.get(0)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(1) , 2))
+                (checkQuestionForInputError(allPatientSelections.get(1) , questionsList.get(1)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(2) , 3))
+                (checkQuestionForInputError(allPatientSelections.get(2) , questionsList.get(2)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(3) , 4))
+                (checkQuestionForInputError(allPatientSelections.get(3) , questionsList.get(3)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(4) , 5))
+                (checkQuestionForInputError(allPatientSelections.get(4) , questionsList.get(4)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(5) , 6))
+                (checkQuestionForInputError(allPatientSelections.get(5) , questionsList.get(5)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(6) , 7))
+                (checkQuestionForInputError(allPatientSelections.get(6) , questionsList.get(6)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(7) , 8))
+                (checkQuestionForInputError(allPatientSelections.get(7) , questionsList.get(7)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(8) , 9))
+                (checkQuestionForInputError(allPatientSelections.get(8) , questionsList.get(8)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(9) , 10))
+                (checkQuestionForInputError(allPatientSelections.get(9) , questionsList.get(9)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(10) , 11))
+                (checkQuestionForInputError(allPatientSelections.get(10) , questionsList.get(10)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(11) , 12))
+                (checkQuestionForInputError(allPatientSelections.get(11) , questionsList.get(11)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(12) , 13))
+                (checkQuestionForInputError(allPatientSelections.get(12) , questionsList.get(12)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(13) , 14))
+                (checkQuestionForInputError(allPatientSelections.get(13) , questionsList.get(13)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(14) , 15))
+                (checkQuestionForInputError(allPatientSelections.get(14) , questionsList.get(14)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(15) , 16))
+                (checkQuestionForInputError(allPatientSelections.get(15) , questionsList.get(15)))
                 &&
-                (checkQuestionForInputError(allPatientSelections.get(16) , 17))
+                (checkQuestionForInputError(allPatientSelections.get(16) , questionsList.get(16)))
     }
 
-    fun checkOPQOLTestPatient2(allPatientSelections : ArrayList<Int?>) : Boolean
+    fun checkOPQOLTestPatient2(allPatientSelections : ArrayList<Int?> , questionsList: ArrayList<Int>) : Boolean
     {
-        return (checkQuestionForInputError2(allPatientSelections.get(0) , 18)
-            && (checkQuestionForInputError2(allPatientSelections.get(1) , 19))
+        return (checkQuestionForInputError2(allPatientSelections.get(0) , questionsList.get(17))
+            && (checkQuestionForInputError2(allPatientSelections.get(1) , questionsList.get(18)))
             &&
-            (checkQuestionForInputError(allPatientSelections.get(2) , 20))
+            (checkQuestionForInputError(allPatientSelections.get(2) , questionsList.get(19)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(3) , 21))
+            (checkQuestionForInputError2(allPatientSelections.get(3) , questionsList.get(20)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(4) , 22))
+            (checkQuestionForInputError2(allPatientSelections.get(4) , questionsList.get(21)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(5) , 23))
+            (checkQuestionForInputError2(allPatientSelections.get(5) , questionsList.get(22)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(6) , 24))
+            (checkQuestionForInputError2(allPatientSelections.get(6) , questionsList.get(23)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(7) , 25))
+            (checkQuestionForInputError2(allPatientSelections.get(7) , questionsList.get(24)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(8) , 26))
+            (checkQuestionForInputError2(allPatientSelections.get(8) , questionsList.get(25)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(9) , 27))
+            (checkQuestionForInputError2(allPatientSelections.get(9) , questionsList.get(26)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(10) , 28))
+            (checkQuestionForInputError2(allPatientSelections.get(10) , questionsList.get(27)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(11) , 29))
+            (checkQuestionForInputError2(allPatientSelections.get(11) , questionsList.get(28)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(12) , 30))
+            (checkQuestionForInputError2(allPatientSelections.get(12) , questionsList.get(29)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(13) , 31))
+            (checkQuestionForInputError2(allPatientSelections.get(13) , questionsList.get(30)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(14) , 32))
+            (checkQuestionForInputError2(allPatientSelections.get(14) , questionsList.get(31)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(15) , 33))
+            (checkQuestionForInputError2(allPatientSelections.get(15) , questionsList.get(32)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(16) , 34))
+            (checkQuestionForInputError2(allPatientSelections.get(16) , questionsList.get(33)))
             &&
-            (checkQuestionForInputError2(allPatientSelections.get(17) , 35)))
+            (checkQuestionForInputError2(allPatientSelections.get(17) , questionsList.get(34))))
     }
 
     fun openResultFragment()
@@ -339,7 +339,7 @@ class CheckOPQOLViewModel : ViewModel()
         var correctData : Boolean = false
         if (value == null)
         {
-            opqolCheckFragment.showSelectionError("Please select an answer for question No : " + questionNO , questionNO)
+            opqolCheckFragment.showSelectionError("Please select an answer for question No : ${questionNO.plus(1)}", questionNO)
             correctData = false
         }
         else
@@ -352,7 +352,7 @@ class CheckOPQOLViewModel : ViewModel()
         var correctData : Boolean = false
         if (value == null)
         {
-            opqolCheckFragment2.showSelectionError("Please select an answer for question No : " + questionNO , questionNO)
+            opqolCheckFragment2.showSelectionError("Please select an answer for question No : ${questionNO.plus(1)}" , questionNO)
             correctData = false
         }
         else

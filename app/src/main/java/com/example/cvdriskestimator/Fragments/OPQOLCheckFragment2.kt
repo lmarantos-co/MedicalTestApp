@@ -260,6 +260,7 @@ class OPQOLCheckFragment2 : Fragment() {
 //        addXmlToView(parentViewGroup!! , fragment1Document)
         val parentView = ViewToAppendGeneratedLayout.parent as ViewGroup // Assuming the parent is a ViewGroup
         val index = parentView.indexOfChild(ViewToAppendGeneratedLayout)
+        fragment2Doc = convertStringToDocument(Fragment2Document)
         var viewToBeAdded = createViewFromXml(fragment2Doc, mainActivity.applicationContext)
         for (i in 0..viewToBeAdded.size -1)
         {
@@ -290,7 +291,7 @@ class OPQOLCheckFragment2 : Fragment() {
 
         if (selectionsFromThisFragmentExists)
         {
-            setPatientData2(selectionsFromThisFragment)
+            setPatientData2(selectionsFromThisFragment , parentView)
         }
 
 //        var patientId = this.requireArguments().getString("patientId")
@@ -412,13 +413,13 @@ class OPQOLCheckFragment2 : Fragment() {
             allPatientSelections[17] =
                 getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(17))
 
-            if (opqolPatientViewModel.checkOPQOLTestPatient2(allPatientSelections))
+            if (opqolPatientViewModel.checkOPQOLTestPatient2(allPatientSelections ,questionNoList))
             {
                 val args = Bundle()
                 args.putSerializable("Answers2" , allPatientSelections)
                 args.putSerializable("Answers" , selectionsFromPreviousFragment)
                 args.putString("Fragment1Document" , Fragment1Document)
-                args.putString("Fragemnt2Document" , Fragment2Document)
+                args.putString("Fragment2Document" , Fragment2Document)
                 args.putSerializable("allGeneratedRelativeLayoutIds2Fr" , allGeneratedRelativeLayoutIds2Fr)
                 args.putSerializable("allGeneratedTxtViewsIds2Fr" , allGeneratedTxtViewsIds2Fr)
                 args.putSerializable("allGeneratedRadioGroupIds2Fr" , allGeneratedRadioGroupIds2Fr)
@@ -489,7 +490,7 @@ class OPQOLCheckFragment2 : Fragment() {
                 counter ++
             }
             opqolPatientViewModel.passAllPatientSelections(thePatientSelections)
-            if (opqolPatientViewModel.checkOPQOLTestPatient2(allPatientSelections))
+            if (opqolPatientViewModel.checkOPQOLTestPatient2(allPatientSelections , questionNoList))
                 opqolPatientViewModel.openResultFragment()
 
         }
@@ -526,29 +527,29 @@ class OPQOLCheckFragment2 : Fragment() {
     }
 
 
-    private fun setPatientData2(answers : ArrayList<Int>)
+    private fun setPatientData2(answers : ArrayList<Int> , view : View)
     {
         Handler(Looper.getMainLooper()).postDelayed({
 //            initialisePatientData()
             //show all the data on the UI
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(0) , answers.get(0))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(1) , answers.get(1))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(2) , answers.get(2))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(3) , answers.get(3))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(4) , answers.get(4))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(5) , answers.get(5))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(6) , answers.get(6))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(7) , answers.get(7))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(8) , answers.get(8))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(9) , answers.get(9))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(10), answers.get(10))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(11) , answers.get(11))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(12) , answers.get(12))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(13) , answers.get(13))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(14) , answers.get(14))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(15) , answers.get(15))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(16) , answers.get(16))
-            setQuestionRadioGroup(allGeneratedRadioGroups2Fr.get(17) , answers.get(17))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(0)) , answers.get(0))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(1)) , answers.get(1))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(2)) , answers.get(2))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(3)) , answers.get(3))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(4)), answers.get(4))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(5)), answers.get(5))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(6)) , answers.get(6))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(7)) , answers.get(7))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(8)) , answers.get(8))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(9)) , answers.get(9))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(10)), answers.get(10))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(11)) , answers.get(11))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(12)), answers.get(12))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(13)), answers.get(13))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(14)), answers.get(14))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(15)), answers.get(15))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(16)), answers.get(16))
+            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds2Fr.get(17)), answers.get(17))
 
         } , 1000)
     }
@@ -557,24 +558,24 @@ class OPQOLCheckFragment2 : Fragment() {
     fun showSelectionError(error : String, qNo : Int) {
         Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
         when (qNo) {
-            19 -> allGeneratedRadioGroups2Fr.get(0).requestFocus()
-            20 -> allGeneratedRadioGroups2Fr.get(1).requestFocus()
-            21 -> allGeneratedRadioGroups2Fr.get(2).requestFocus()
-            22 -> allGeneratedRadioGroups2Fr.get(3).requestFocus()
-            23 -> allGeneratedRadioGroups2Fr.get(4).requestFocus()
-            24 -> allGeneratedRadioGroups2Fr.get(5).requestFocus()
-            25 -> allGeneratedRadioGroups2Fr.get(6).requestFocus()
-            26 -> allGeneratedRadioGroups2Fr.get(7).requestFocus()
-            27 -> allGeneratedRadioGroups2Fr.get(8).requestFocus()
-            28 -> allGeneratedRadioGroups2Fr.get(9).requestFocus()
-            29 -> allGeneratedRadioGroups2Fr.get(10).requestFocus()
-            30 -> allGeneratedRadioGroups2Fr.get(11).requestFocus()
-            31 -> allGeneratedRadioGroups2Fr.get(12).requestFocus()
-            32 -> allGeneratedRadioGroups2Fr.get(13).requestFocus()
-            33 -> allGeneratedRadioGroups2Fr.get(14).requestFocus()
-            34 -> allGeneratedRadioGroups2Fr.get(15).requestFocus()
-            35 -> allGeneratedRadioGroups2Fr.get(16).requestFocus()
-            36 -> allGeneratedRadioGroups2Fr.get(17).requestFocus()
+            19 -> allGeneratedRadioGroups.get(0).requestFocus()
+            20 -> allGeneratedRadioGroups.get(1).requestFocus()
+            21 -> allGeneratedRadioGroups.get(2).requestFocus()
+            22 -> allGeneratedRadioGroups.get(3).requestFocus()
+            23 -> allGeneratedRadioGroups.get(4).requestFocus()
+            24 -> allGeneratedRadioGroups.get(5).requestFocus()
+            25 -> allGeneratedRadioGroups.get(6).requestFocus()
+            26 -> allGeneratedRadioGroups.get(7).requestFocus()
+            27 -> allGeneratedRadioGroups.get(8).requestFocus()
+            28 -> allGeneratedRadioGroups.get(9).requestFocus()
+            29 -> allGeneratedRadioGroups.get(10).requestFocus()
+            30 -> allGeneratedRadioGroups.get(11).requestFocus()
+            31 -> allGeneratedRadioGroups.get(12).requestFocus()
+            32 -> allGeneratedRadioGroups.get(13).requestFocus()
+            33 -> allGeneratedRadioGroups.get(14).requestFocus()
+            34 -> allGeneratedRadioGroups.get(15).requestFocus()
+            35 -> allGeneratedRadioGroups.get(16).requestFocus()
+            36 -> allGeneratedRadioGroups.get(17).requestFocus()
         }
     }
 
@@ -1083,6 +1084,8 @@ class OPQOLCheckFragment2 : Fragment() {
             }
         }
     }
+
+
 
     private fun parseDrawable(drawableString: String, context: Context): Drawable? {
         return when {
