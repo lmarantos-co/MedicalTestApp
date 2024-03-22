@@ -1312,23 +1312,9 @@ class OPQOLCheckFragment : Fragment() {
 
     fun initialisePatientData()
     {
-        allGeneratedRadioGroups.get(0).clearCheck()
-        allGeneratedRadioGroups.get(1).clearCheck()
-        allGeneratedRadioGroups.get(2).clearCheck()
-        allGeneratedRadioGroups.get(3).clearCheck()
-        allGeneratedRadioGroups.get(4).clearCheck()
-        allGeneratedRadioGroups.get(5).clearCheck()
-        allGeneratedRadioGroups.get(6).clearCheck()
-        allGeneratedRadioGroups.get(7).clearCheck()
-        allGeneratedRadioGroups.get(8).clearCheck()
-        allGeneratedRadioGroups.get(9).clearCheck()
-        allGeneratedRadioGroups.get(10).clearCheck()
-        allGeneratedRadioGroups.get(11).clearCheck()
-        allGeneratedRadioGroups.get(12).clearCheck()
-        allGeneratedRadioGroups.get(13).clearCheck()
-        allGeneratedRadioGroups.get(14).clearCheck()
-        allGeneratedRadioGroups.get(15).clearCheck()
-        allGeneratedRadioGroups.get(16).clearCheck()
+        var allPatientSelections =
+            arrayListOf<Int?>( null , null ,null ,null , null, null, null, null, null, null, null ,null ,null ,null ,null ,null ,null ,null)
+        randomQuestonRecyclerViewAdapter.updateTestData(allPatientSelections)
     }
 
     override fun onAttach(context: Context) {

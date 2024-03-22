@@ -67,7 +67,7 @@ class OPQOLCheckFragment2 : Fragment() {
     private lateinit var opqolCheckBinding2 : FragmentOPQOLCheck2Binding
     private lateinit var opqolCheckBindingTemplateBinding: FragmentOPQOLCheck2TemplateBinding
     private var allPatientSelections =
-        arrayListOf<Int?>( 1 , 1 ,1 ,1 , 1, 1, 1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1)
+        arrayListOf<Int?>( null , null ,null ,null , null, null, null, null, null, null, null ,null ,null ,null ,null ,null ,null ,null)
     private var allGeneratedRadioGroups = ArrayList<RadioGroup>(35)
     private var selectionsFromPreviousFragment = ArrayList<Int>(17)
     private var selectionsFromThisFragment = ArrayList<Int?>(18)
@@ -733,24 +733,9 @@ class OPQOLCheckFragment2 : Fragment() {
 
     fun initialisePatientData()
     {
-        opqolCheckBinding2.OPQOLQ2C5aRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C5bRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C5cRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C5dRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C6aRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C6bRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C6cRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C6dRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C7aRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C7bRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C7cRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C7dRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8aRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8bRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8cRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8dRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8eRG.clearCheck()
-        opqolCheckBinding2.OPQOLQ2C8fRG.clearCheck()
+        var allPatientSelections =
+            arrayListOf<Int?>( null , null ,null ,null , null, null, null, null, null, null, null ,null ,null ,null ,null ,null ,null ,null)
+        randomQuestonRecyclerViewAdapter2.updateTestData(allPatientSelections)
     }
 
     //randomization and formation of xml document
