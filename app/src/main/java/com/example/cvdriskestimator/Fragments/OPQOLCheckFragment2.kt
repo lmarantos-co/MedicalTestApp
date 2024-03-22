@@ -26,10 +26,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.customClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.RandomQuestonRecyclerViewAdapter
+import com.example.cvdriskestimator.customClasses.RandomQuestonRecyclerViewAdapter2
 import com.example.cvdriskestimator.customClasses.XMLUtils
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck1TemplateBinding
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck2Binding
@@ -66,7 +70,7 @@ class OPQOLCheckFragment2 : Fragment() {
         arrayListOf<Int?>( 1 , 1 ,1 ,1 , 1, 1, 1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1)
     private var allGeneratedRadioGroups = ArrayList<RadioGroup>(35)
     private var selectionsFromPreviousFragment = ArrayList<Int>(17)
-    private var selectionsFromThisFragment = ArrayList<Int>(18)
+    private var selectionsFromThisFragment = ArrayList<Int?>(18)
     private var selectionsFromPreviousFragmentExists : Boolean = false
     private var selectionsFromThisFragmentExists : Boolean = false
     private lateinit var popupMenu: PopUpMenu
@@ -78,7 +82,7 @@ class OPQOLCheckFragment2 : Fragment() {
     private var allGeneratedRadioGroupIds2Fr = ArrayList<Int>(18)
     private var allGeneratedRadioButtonIds2Fr = ArrayList<Int>(90)
     private var allGeneratedRadioGroups2Fr = ArrayList<RadioGroup>(18)
-    var questionNoList = ArrayList<Int>(35)
+    var questionNoList = ArrayList<Int>(36)
 
     private var allGeneratedRelativeLayoutIds1Fr = ArrayList<Int>(17)
     //    private var allGeneratedCatTxtViewsIds = ArrayList<Int>(36)
@@ -105,6 +109,11 @@ class OPQOLCheckFragment2 : Fragment() {
     private var patientTest = Test()
     private var openHistory : Boolean = false
     private lateinit var historyTest : Test
+
+    //recyclerview implementation
+    private lateinit var randomQuestonRecyclerViewAdapter2: RandomQuestonRecyclerViewAdapter2
+    private lateinit var randomQuestionsRecyclerView: RecyclerView
+    private var allRandomQuestionStrings =  ArrayList<String>(36)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -136,7 +145,7 @@ class OPQOLCheckFragment2 : Fragment() {
             }
             if (it.containsKey("Answers2"))
             {
-                selectionsFromThisFragment = it.getSerializable("Answers2") as ArrayList<Int>
+                selectionsFromThisFragment = it.getSerializable("Answers2") as ArrayList<Int?>
                 selectionsFromThisFragmentExists = true
             }
             if (it.containsKey("allGeneratedRelativeLayoutIds2Fr"))
@@ -260,38 +269,86 @@ class OPQOLCheckFragment2 : Fragment() {
 //        addXmlToView(parentViewGroup!! , fragment1Document)
         val parentView = ViewToAppendGeneratedLayout.parent as ViewGroup // Assuming the parent is a ViewGroup
         val index = parentView.indexOfChild(ViewToAppendGeneratedLayout)
-        fragment2Doc = convertStringToDocument(Fragment2Document)
-        var viewToBeAdded = createViewFromXml(fragment2Doc, mainActivity.applicationContext)
-        for (i in 0..viewToBeAdded.size -1)
-        {
-            parentView.addView(viewToBeAdded.get(i), index)
-        }
-        for (i in 0..17)
-        {
-            var newRadioGroup = view.findViewById<RelativeLayout>(allGeneratedRelativeLayoutIds2Fr.get(i)).findViewById<RadioGroup>(allGeneratedRadioGroupIds2Fr.get(i))
-            allGeneratedRadioGroups.add(newRadioGroup)
-        }
-        //get the radiogroups associated with negative questions
-        negativeRadioGroups = ArrayList<RadioGroup>(6)
-        for (i in 0..16)
-        {
-            if (questionNoList.get(i) == 3)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-            if (questionNoList.get(i) == 5)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-            if (questionNoList.get(i) == 6)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-            if (questionNoList.get(i) == 15)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-            if (questionNoList.get(i) == 28)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-            if (questionNoList.get(i) == 32)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-        }
+
+        allRandomQuestionStrings.add(0 ,resources.getString(R.string.OPQOL35Q2Category1Q1))
+        allRandomQuestionStrings.add(1 , resources.getString(R.string.OPQOL35Q2Category1Q2))
+        allRandomQuestionStrings.add(2 , resources.getString(R.string.OPQOL35Q2Category1Q3))
+        allRandomQuestionStrings.add(3  , resources.getString(R.string.OPQOL35Q2Category1Q4))
+        allRandomQuestionStrings.add(4 , resources.getString(R.string.OPQOL35Q2Category2Q5))
+        allRandomQuestionStrings.add(5 , resources.getString(R.string.OPQOL35Q2Category2Q6))
+        allRandomQuestionStrings.add(6 , resources.getString(R.string.OPQOL35Q2Category2Q7))
+        allRandomQuestionStrings.add( 7 , resources.getString(R.string.OPQOL35Q2Category2Q8))
+        allRandomQuestionStrings.add( 8 , resources.getString(R.string.OPQOL35Q2Category3Q9))
+        allRandomQuestionStrings.add( 9 , resources.getString(R.string.OPQOL35Q2Category3Q10))
+        allRandomQuestionStrings.add(10 , resources.getString(R.string.OPQOL35Q2Category3Q11))
+        allRandomQuestionStrings.add(11 , resources.getString(R.string.OPQOL35Q2Category3Q12))
+        allRandomQuestionStrings.add(12 , resources.getString(R.string.OPQOL35Q2Category3Q13))
+        allRandomQuestionStrings.add(13 , resources.getString(R.string.OPQOL35Q2Category4Q14))
+        allRandomQuestionStrings.add(14 , resources.getString(R.string.OPQOL35Q2Category4Q15))
+        allRandomQuestionStrings.add(15 , resources.getString(R.string.OPQOL35Q2Category4Q16))
+        allRandomQuestionStrings.add(16 , resources.getString(R.string.OPQOL35Q2Category4Q17))
+        allRandomQuestionStrings.add(17 ,resources.getString(R.string.OPQOL35Q2Category5Q18))
+        allRandomQuestionStrings.add(18 ,  resources.getString(R.string.OPQOL35Q2Category5Q19))
+        allRandomQuestionStrings.add(19 , resources.getString(R.string.OPQOL35Q2Category5Q20))
+        allRandomQuestionStrings.add(20 , resources.getString(R.string.OPQOL35Q2Category5Q21))
+        allRandomQuestionStrings.add(21 ,  resources.getString(R.string.OPQOL35Q2Category6Q22))
+        allRandomQuestionStrings.add(22 , resources.getString(R.string.OPQOL35Q2Category6Q23))
+        allRandomQuestionStrings.add(23 , resources.getString(R.string.OPQOL35Q2Category6Q24))
+        allRandomQuestionStrings.add(24 , resources.getString(R.string.OPQOL35Q2Category6Q25))
+        allRandomQuestionStrings.add(25 ,  resources.getString(R.string.OPQOL35Q2Category7Q26))
+        allRandomQuestionStrings.add(26 ,resources.getString(R.string.OPQOL35Q2Category7Q27))
+        allRandomQuestionStrings.add(27 ,resources.getString(R.string.OPQOL35Q2Category7Q28))
+        allRandomQuestionStrings.add(28 , resources.getString(R.string.OPQOL35Q2Category7Q29))
+        allRandomQuestionStrings.add(29 , resources.getString(R.string.OPQOL35Q2Category8Q30))
+        allRandomQuestionStrings.add(30 ,resources.getString(R.string.OPQOL35Q2Category8Q31))
+        allRandomQuestionStrings.add(31 ,resources.getString(R.string.OPQOL35Q2Category8Q32))
+        allRandomQuestionStrings.add(32 , resources.getString(R.string.OPQOL35Q2Category8Q33))
+        allRandomQuestionStrings.add(33 , resources.getString(R.string.OPQOL35Q2Category8Q34))
+        allRandomQuestionStrings.add(34 , resources.getString(R.string.OPQOL35Q2Category8Q35))
+        allRandomQuestionStrings.add(35 , resources.getString(R.string.OPQOL35Q2Category8Q36))
+
+        var layoutManager = LinearLayoutManager(mainActivity.applicationContext)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        var questionListFragment2 = questionNoList.subList(17 , 35).toList()
+        val recyclerView2 = view.findViewById<RecyclerView>(R.id.randomRecyclerView2)
+        randomQuestonRecyclerViewAdapter2 = RandomQuestonRecyclerViewAdapter2(this , questionListFragment2 as ArrayList<Int> , allRandomQuestionStrings , allPatientSelections , recyclerView2)
+        recyclerView2.adapter = randomQuestonRecyclerViewAdapter2
+        recyclerView2.layoutManager = layoutManager
+        randomQuestonRecyclerViewAdapter2.notifyDataSetChanged()
+
+//        fragment2Doc = convertStringToDocument(Fragment2Document)
+//        var viewToBeAdded = createViewFromXml(fragment2Doc, mainActivity.applicationContext)
+//        for (i in 0..viewToBeAdded.size -1)
+//        {
+//            parentView.addView(viewToBeAdded.get(i), index)
+//        }
+//        for (i in 0..17)
+//        {
+//            var newRadioGroup = view.findViewById<RelativeLayout>(allGeneratedRelativeLayoutIds2Fr.get(i)).findViewById<RadioGroup>(allGeneratedRadioGroupIds2Fr.get(i))
+//            allGeneratedRadioGroups.add(newRadioGroup)
+//        }
+//        //get the radiogroups associated with negative questions
+//        negativeRadioGroups = ArrayList<RadioGroup>(6)
+//        for (i in 0..16)
+//        {
+//            if (questionNoList.get(i) == 3)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//            if (questionNoList.get(i) == 5)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//            if (questionNoList.get(i) == 6)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//            if (questionNoList.get(i) == 15)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//            if (questionNoList.get(i) == 28)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//            if (questionNoList.get(i) == 32)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//        }
 
         if (selectionsFromThisFragmentExists)
         {
-            setPatientData2(selectionsFromThisFragment , parentView)
+//            setPatientData2(selectionsFromThisFragment , parentView)
+            randomQuestonRecyclerViewAdapter2.updateTestData(selectionsFromThisFragment!!)
         }
 
 //        var patientId = this.requireArguments().getString("patientId")
@@ -376,42 +433,42 @@ class OPQOLCheckFragment2 : Fragment() {
 
 //            allPatientSelections[0] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ1RG)
 
-            allPatientSelections[0] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(0))
-            allPatientSelections[1] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(1))
-            allPatientSelections[2] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(2))
-            allPatientSelections[3] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(3))
-            allPatientSelections[4] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(4))
-            allPatientSelections[5] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(5))
-            allPatientSelections[6] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(6))
-            allPatientSelections[7] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(7))
-            allPatientSelections[8] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(8))
-            allPatientSelections[9] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(9))
-            allPatientSelections[10] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(10))
-            allPatientSelections[11] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(11))
-            allPatientSelections[12] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(12))
-            allPatientSelections[13] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(13))
-            allPatientSelections[14] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(14))
-            allPatientSelections[15] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(15))
-            allPatientSelections[16] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(16))
-            allPatientSelections[17] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(17))
+//            allPatientSelections[0] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(0))
+//            allPatientSelections[1] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(1))
+//            allPatientSelections[2] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(2))
+//            allPatientSelections[3] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(3))
+//            allPatientSelections[4] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(4))
+//            allPatientSelections[5] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(5))
+//            allPatientSelections[6] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(6))
+//            allPatientSelections[7] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(7))
+//            allPatientSelections[8] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(8))
+//            allPatientSelections[9] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(9))
+//            allPatientSelections[10] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(10))
+//            allPatientSelections[11] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(11))
+//            allPatientSelections[12] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(12))
+//            allPatientSelections[13] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(13))
+//            allPatientSelections[14] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(14))
+//            allPatientSelections[15] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(15))
+//            allPatientSelections[16] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(16))
+//            allPatientSelections[17] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(17))
 
             if (opqolPatientViewModel.checkOPQOLTestPatient2(allPatientSelections ,questionNoList))
             {
@@ -439,42 +496,42 @@ class OPQOLCheckFragment2 : Fragment() {
         }
 
         opqolCheckBindingTemplateBinding.submitBtn.setOnClickListener {
-            allPatientSelections[0] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(0))
-            allPatientSelections[1] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(1))
-            allPatientSelections[2] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(2))
-            allPatientSelections[3] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(3))
-            allPatientSelections[4] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(4))
-            allPatientSelections[5] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(5))
-            allPatientSelections[6] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(6))
-            allPatientSelections[7] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(7))
-            allPatientSelections[8] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(8))
-            allPatientSelections[9] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(9))
-            allPatientSelections[10] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(10))
-            allPatientSelections[11] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(11))
-            allPatientSelections[12] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(12))
-            allPatientSelections[13] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(13))
-            allPatientSelections[14] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(14))
-            allPatientSelections[15] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(15))
-            allPatientSelections[16] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(16))
-            allPatientSelections[17] =
-                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(17))
+//            allPatientSelections[0] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(0))
+//            allPatientSelections[1] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(1))
+//            allPatientSelections[2] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(2))
+//            allPatientSelections[3] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(3))
+//            allPatientSelections[4] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(4))
+//            allPatientSelections[5] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(5))
+//            allPatientSelections[6] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(6))
+//            allPatientSelections[7] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(7))
+//            allPatientSelections[8] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(8))
+//            allPatientSelections[9] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(9))
+//            allPatientSelections[10] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(10))
+//            allPatientSelections[11] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(11))
+//            allPatientSelections[12] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(12))
+//            allPatientSelections[13] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(13))
+//            allPatientSelections[14] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(14))
+//            allPatientSelections[15] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(15))
+//            allPatientSelections[16] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(16))
+//            allPatientSelections[17] =
+//                getAsnwerFromRadioGroup2(allGeneratedRadioGroups.get(17))
 
             var thePatientSelections = ArrayList<Int>(36)
 
@@ -558,24 +615,23 @@ class OPQOLCheckFragment2 : Fragment() {
     fun showSelectionError(error : String, qNo : Int) {
         Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
         when (qNo) {
-            19 -> allGeneratedRadioGroups.get(0).requestFocus()
-            20 -> allGeneratedRadioGroups.get(1).requestFocus()
-            21 -> allGeneratedRadioGroups.get(2).requestFocus()
-            22 -> allGeneratedRadioGroups.get(3).requestFocus()
-            23 -> allGeneratedRadioGroups.get(4).requestFocus()
-            24 -> allGeneratedRadioGroups.get(5).requestFocus()
-            25 -> allGeneratedRadioGroups.get(6).requestFocus()
-            26 -> allGeneratedRadioGroups.get(7).requestFocus()
-            27 -> allGeneratedRadioGroups.get(8).requestFocus()
-            28 -> allGeneratedRadioGroups.get(9).requestFocus()
-            29 -> allGeneratedRadioGroups.get(10).requestFocus()
-            30 -> allGeneratedRadioGroups.get(11).requestFocus()
-            31 -> allGeneratedRadioGroups.get(12).requestFocus()
-            32 -> allGeneratedRadioGroups.get(13).requestFocus()
-            33 -> allGeneratedRadioGroups.get(14).requestFocus()
-            34 -> allGeneratedRadioGroups.get(15).requestFocus()
-            35 -> allGeneratedRadioGroups.get(16).requestFocus()
-            36 -> allGeneratedRadioGroups.get(17).requestFocus()
+            19 -> randomQuestonRecyclerViewAdapter2.requestFocus(18)
+            20 -> randomQuestonRecyclerViewAdapter2.requestFocus(9)
+            21 -> randomQuestonRecyclerViewAdapter2.requestFocus(20)
+            22 -> randomQuestonRecyclerViewAdapter2.requestFocus(21)
+            23 -> randomQuestonRecyclerViewAdapter2.requestFocus(22)
+            24 -> randomQuestonRecyclerViewAdapter2.requestFocus(23)
+            25 -> randomQuestonRecyclerViewAdapter2.requestFocus(24)
+            26 -> randomQuestonRecyclerViewAdapter2.requestFocus(25)
+            27 -> randomQuestonRecyclerViewAdapter2.requestFocus(26)
+            28 -> randomQuestonRecyclerViewAdapter2.requestFocus(27)
+            29 -> randomQuestonRecyclerViewAdapter2.requestFocus(28)
+            30 -> randomQuestonRecyclerViewAdapter2.requestFocus(29)
+            31 -> randomQuestonRecyclerViewAdapter2.requestFocus(30)
+            32 -> randomQuestonRecyclerViewAdapter2.requestFocus(31)
+            33 -> randomQuestonRecyclerViewAdapter2.requestFocus(32)
+            34 -> randomQuestonRecyclerViewAdapter2.requestFocus(33)
+            35 -> randomQuestonRecyclerViewAdapter2.requestFocus(34)
         }
     }
 
@@ -1264,6 +1320,10 @@ class OPQOLCheckFragment2 : Fragment() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
+    }
+
+    fun setPatientAnswerFromRecyclerAdapter2(position: Int, i: Int) {
+        allPatientSelections[position] = i
     }
 
     override fun onAttach(context: Context) {

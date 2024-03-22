@@ -14,6 +14,7 @@ import android.util.TypedValue
 import android.util.Xml
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.OrientationEventListener
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -27,10 +28,15 @@ import androidx.core.view.get
 import androidx.core.view.marginLeft
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import androidx.recyclerview.widget.RecyclerView.Orientation
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Test
 import com.example.cvdriskestimator.customClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.RandomQuestonRecyclerViewAdapter
 import com.example.cvdriskestimator.customClasses.XMLUtils
 import com.example.cvdriskestimator.databinding.FragmentBAICheckBinding
 import com.example.cvdriskestimator.databinding.FragmentOPQOLCheck1Binding
@@ -70,7 +76,7 @@ class OPQOLCheckFragment : Fragment() {
     private lateinit var otherFragmentPatientSelections : ArrayList<Int>
     private var otherFragmentSelectionsExists : Boolean = false
     private var allPatientSelections =
-    arrayListOf<Int?>(1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 , 1 ,1 , 1 ,1 ,1 , 1, 1, 1)
+    arrayListOf<Int?>(null, null, null, null, null ,null ,null ,null ,null , null ,null , null ,null ,null , null, null, null)
     private var fragment2AnswersFromPreviousTest = ArrayList<Int>(18)
     private var answersFromPreviousTest : Boolean = false
     private lateinit var popupMenu: PopUpMenu
@@ -116,6 +122,11 @@ class OPQOLCheckFragment : Fragment() {
     private var patientTest = Test()
     private var openHistory : Boolean = false
     private lateinit var historyTest : Test
+
+    //recyclerview implementation
+    private lateinit var randomQuestonRecyclerViewAdapter: RandomQuestonRecyclerViewAdapter
+    private lateinit var randomQuestionsRecyclerView: RecyclerView
+    private var allRandomQuestionStrings =  ArrayList<String>(36)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -253,6 +264,7 @@ class OPQOLCheckFragment : Fragment() {
 
             fragment1Randomized = true
         }
+
 //        if (fragment1Randomized)
 //            fragment1Doc = XMLUtils.parseXMLFromString(fragment1Document)!!
         val parentViewGroup = view.findViewById<ViewGroup>(R.id.opqolCheckLinLayout)
@@ -265,35 +277,80 @@ class OPQOLCheckFragment : Fragment() {
 //        addXmlToView(parentViewGroup!! , fragment1Document)
         val parentView = ViewToAppendGeneratedLayout.parent as ViewGroup // Assuming the parent is a ViewGroup
         val index = parentView.indexOfChild(ViewToAppendGeneratedLayout)
-        var viewToBeAdded = createViewFromXml(convertStringToDocument(fragment1Document), mainActivity.applicationContext)
-        for (i in 0..viewToBeAdded.size -1)
-        {
-            parentView.addView(viewToBeAdded.get(i), index)
-        }
-        for (i in 0..16)
-        {
-            var newRadioGroup = view.findViewById<RelativeLayout>(allGeneratedRelativeLayoutIds.get(i)).findViewById<RadioGroup>(allGeneratedRadioGroupIds.get(i))
-            allGeneratedRadioGroups.add(newRadioGroup)
-        }
-        //get the radiogroups associated with negative questions
-        negativeRadioGroups = ArrayList<RadioGroup>(6)
-        for (i in 0..16)
-        {
-            if (questionNoList.get(i) == 3)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-            if (questionNoList.get(i) == 5)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-            if (questionNoList.get(i) == 6)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-            if (questionNoList.get(i) == 15)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-            if (questionNoList.get(i) == 28)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-            if (questionNoList.get(i) == 32)
-                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
-        }
+//        var viewToBeAdded = createViewFromXml(convertStringToDocument(fragment1Document), mainActivity.applicationContext)
+//        for (i in 0..viewToBeAdded.size -1)
+//        {
+//            parentView.addView(viewToBeAdded.get(i), index)
+//        }
+//        for (i in 0..16)
+//        {
+//            var newRadioGroup = view.findViewById<RelativeLayout>(allGeneratedRelativeLayoutIds.get(i)).findViewById<RadioGroup>(allGeneratedRadioGroupIds.get(i))
+//            allGeneratedRadioGroups.add(newRadioGroup)
+//        }
+//        //get the radiogroups associated with negative questions
+//        negativeRadioGroups = ArrayList<RadioGroup>(6)
+//        for (i in 0..16)
+//        {
+//            if (questionNoList.get(i) == 3)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//            if (questionNoList.get(i) == 5)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//            if (questionNoList.get(i) == 6)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//            if (questionNoList.get(i) == 15)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//            if (questionNoList.get(i) == 28)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//            if (questionNoList.get(i) == 32)
+//                negativeRadioGroups.add(allGeneratedRadioGroups.get(i))
+//        }
         // Step 5: Inflate the modified layout in the fragment
 //        parentViewGroup.addView(inflateXmlLayout(mainActivity.applicationContext , fragment1Doc))
+        allRandomQuestionStrings.add(0 ,resources.getString(R.string.OPQOL35Q2Category1Q1))
+        allRandomQuestionStrings.add(1 , resources.getString(R.string.OPQOL35Q2Category1Q2))
+        allRandomQuestionStrings.add(2 , resources.getString(R.string.OPQOL35Q2Category1Q3))
+        allRandomQuestionStrings.add(3  , resources.getString(R.string.OPQOL35Q2Category1Q4))
+        allRandomQuestionStrings.add(4 , resources.getString(R.string.OPQOL35Q2Category2Q5))
+        allRandomQuestionStrings.add(5 , resources.getString(R.string.OPQOL35Q2Category2Q6))
+        allRandomQuestionStrings.add(6 , resources.getString(R.string.OPQOL35Q2Category2Q7))
+        allRandomQuestionStrings.add( 7 , resources.getString(R.string.OPQOL35Q2Category2Q8))
+        allRandomQuestionStrings.add( 8 , resources.getString(R.string.OPQOL35Q2Category3Q9))
+        allRandomQuestionStrings.add( 9 , resources.getString(R.string.OPQOL35Q2Category3Q10))
+        allRandomQuestionStrings.add(10 , resources.getString(R.string.OPQOL35Q2Category3Q11))
+        allRandomQuestionStrings.add(11 , resources.getString(R.string.OPQOL35Q2Category3Q12))
+        allRandomQuestionStrings.add(12 , resources.getString(R.string.OPQOL35Q2Category3Q13))
+        allRandomQuestionStrings.add(13 , resources.getString(R.string.OPQOL35Q2Category4Q14))
+        allRandomQuestionStrings.add(14 , resources.getString(R.string.OPQOL35Q2Category4Q15))
+        allRandomQuestionStrings.add(15 , resources.getString(R.string.OPQOL35Q2Category4Q16))
+        allRandomQuestionStrings.add(16 , resources.getString(R.string.OPQOL35Q2Category4Q17))
+        allRandomQuestionStrings.add(17 ,resources.getString(R.string.OPQOL35Q2Category5Q18))
+        allRandomQuestionStrings.add(18 ,  resources.getString(R.string.OPQOL35Q2Category5Q19))
+        allRandomQuestionStrings.add(19 , resources.getString(R.string.OPQOL35Q2Category5Q20))
+        allRandomQuestionStrings.add(20 , resources.getString(R.string.OPQOL35Q2Category5Q21))
+        allRandomQuestionStrings.add(21 ,  resources.getString(R.string.OPQOL35Q2Category6Q22))
+        allRandomQuestionStrings.add(22 , resources.getString(R.string.OPQOL35Q2Category6Q23))
+        allRandomQuestionStrings.add(23 , resources.getString(R.string.OPQOL35Q2Category6Q24))
+        allRandomQuestionStrings.add(24 , resources.getString(R.string.OPQOL35Q2Category6Q25))
+        allRandomQuestionStrings.add(25 ,  resources.getString(R.string.OPQOL35Q2Category7Q26))
+        allRandomQuestionStrings.add(26 ,resources.getString(R.string.OPQOL35Q2Category7Q27))
+        allRandomQuestionStrings.add(27 ,resources.getString(R.string.OPQOL35Q2Category7Q28))
+        allRandomQuestionStrings.add(28 , resources.getString(R.string.OPQOL35Q2Category7Q29))
+        allRandomQuestionStrings.add(29 , resources.getString(R.string.OPQOL35Q2Category8Q30))
+        allRandomQuestionStrings.add(30 ,resources.getString(R.string.OPQOL35Q2Category8Q31))
+        allRandomQuestionStrings.add(31 ,resources.getString(R.string.OPQOL35Q2Category8Q32))
+        allRandomQuestionStrings.add(32 , resources.getString(R.string.OPQOL35Q2Category8Q33))
+        allRandomQuestionStrings.add(33 , resources.getString(R.string.OPQOL35Q2Category8Q34))
+        allRandomQuestionStrings.add(34 , resources.getString(R.string.OPQOL35Q2Category8Q35))
+        allRandomQuestionStrings.add(35 , resources.getString(R.string.OPQOL35Q2Category8Q36))
+
+        var layoutManager = LinearLayoutManager(mainActivity.applicationContext)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        var questionListFragment1 = questionNoList.subList(0 , 17).toList()
+        val recyclerView = view.findViewById<RecyclerView>(R.id.randomRecyclerView)
+        recyclerView.layoutManager = layoutManager
+        randomQuestonRecyclerViewAdapter = RandomQuestonRecyclerViewAdapter(this , questionListFragment1 as ArrayList<Int> , allRandomQuestionStrings , allPatientSelections , recyclerView)
+        recyclerView.adapter = randomQuestonRecyclerViewAdapter
+
         opqolPatientViewModel.passActivity(mainActivity)
         opqolPatientViewModel.passFragment(this)
         opqolPatientViewModel.initialiseRealm()
@@ -309,7 +366,8 @@ class OPQOLCheckFragment : Fragment() {
 
         if (thisFragmentSelectionsExists == true)
         {
-            setPatientSelections(thisFragmentPatientSelections ,parentView)
+//            setPatientSelections(thisFragmentPatientSelections ,parentView)
+            randomQuestonRecyclerViewAdapter.updateTestData(thisFragmentPatientSelections)
         }
         else
         {
@@ -391,7 +449,27 @@ class OPQOLCheckFragment : Fragment() {
                 if (useLayout1)
                     patientTest = it
                 setPatientSelectionsForFragment2(it)
-                setPatientData1(it , parentView)
+                var testData = ArrayList<Int?>(17)
+                testData[0] = it.patientOPQOLQ1!!
+                testData[1] = it.patientOPQOLQ2!!
+                testData[2] = it.patientOPQOLQ3!!
+                testData[3] = it.patientOPQOLQ4!!
+                testData[4] = it.patientOPQOLQ5!!
+                testData[5] = it.patientOPQOLQ6!!
+                testData[6] = it.patientOPQOLQ7!!
+                testData[7] = it.patientOPQOLQ8!!
+                testData[8] = it.patientOPQOLQ9!!
+                testData[9] = it.patientOPQOLQ10!!
+                testData[10] = it.patientOPQOLQ11!!
+                testData[11] = it.patientOPQOLQ12!!
+                testData[12] = it.patientOPQOLQ13!!
+                testData[13] = it.patientOPQOLQ14!!
+                testData[14] = it.patientOPQOLQ15!!
+                testData[15] = it.patientOPQOLQ16!!
+                testData[16] = it.patientOPQOLQ17!!
+
+                randomQuestonRecyclerViewAdapter.updateTestData(testData)
+//                setPatientData1(it , parentView)
             }
         }
 
@@ -556,23 +634,23 @@ class OPQOLCheckFragment : Fragment() {
         opqolCheckBindingTemplateBinding.rightArrow.setOnClickListener {
 
 //            allPatientSelections[0] = getAsnwerFromRadioGroup1(opqolCheckBinding.OPQOLQ1RG)
-            allPatientSelections[0] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(0)))
-            allPatientSelections[1] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(1)))
-            allPatientSelections[2] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(2)))
-            allPatientSelections[3] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(3)))
-            allPatientSelections[4] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(4)))
-            allPatientSelections[5] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(5)))
-            allPatientSelections[6] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(6)))
-            allPatientSelections[7] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(7)))
-            allPatientSelections[8] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(8)))
-            allPatientSelections[9] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(9)))
-            allPatientSelections[10] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(10)))
-            allPatientSelections[11] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(11)))
-            allPatientSelections[12] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(12)))
-            allPatientSelections[13] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(13)))
-            allPatientSelections[14] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(14)))
-            allPatientSelections[15] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(15)))
-            allPatientSelections[16] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(16)))
+//            allPatientSelections[0] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(0)))
+//            allPatientSelections[1] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(1)))
+//            allPatientSelections[2] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(2)))
+//            allPatientSelections[3] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(3)))
+//            allPatientSelections[4] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(4)))
+//            allPatientSelections[5] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(5)))
+//            allPatientSelections[6] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(6)))
+//            allPatientSelections[7] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(7)))
+//            allPatientSelections[8] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(8)))
+//            allPatientSelections[9] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(9)))
+//            allPatientSelections[10] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(10)))
+//            allPatientSelections[11] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(11)))
+//            allPatientSelections[12] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(12)))
+//            allPatientSelections[13] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(13)))
+//            allPatientSelections[14] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(14)))
+//            allPatientSelections[15] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(15)))
+//            allPatientSelections[16] = getAsnwerFromRadioGroup1(view.findViewById(allGeneratedRadioGroupIds.get(16)))
             thisFragmentPatientSelections = allPatientSelections
 
             if (opqolPatientViewModel.checkOPQOLTestPatient1(allPatientSelections , questionNoList))
@@ -1001,27 +1079,28 @@ class OPQOLCheckFragment : Fragment() {
     private fun setPatientData1(test : Test , view : View)
     {
         Handler(Looper.getMainLooper()).postDelayed({
-            initialisePatientData()
+//            initialisePatientData()
             //show all the data on the UI
 
 //            setQuestionRadioGroup(opqolCheckBinding.OPQOLQ1RG , test.patientOPQOLQ1!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(0)), test.patientOPQOLQ1!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(1)) , test.patientOPQOLQ2!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(2)) , test.patientOPQOLQ3!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(3)) , test.patientOPQOLQ4!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(4)), test.patientOPQOLQ5!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(5)), test.patientOPQOLQ6!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(6)) , test.patientOPQOLQ7!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(7)) , test.patientOPQOLQ8!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(8)) , test.patientOPQOLQ9!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(9)), test.patientOPQOLQ10!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(10)) , test.patientOPQOLQ11!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(11)) , test.patientOPQOLQ12!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(12)), test.patientOPQOLQ13!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(13)) , test.patientOPQOLQ14!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(4)) , test.patientOPQOLQ15!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(15)) , test.patientOPQOLQ16!!)
-            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(16)) , test.patientOPQOLQ17!!)
+//            randomQuestionsRecyclerView.get(0).findViewById<RadioGroup>(R.id.OPQOLDummyRadioGroup)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(0)), test.patientOPQOLQ1!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(1)) , test.patientOPQOLQ2!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(2)) , test.patientOPQOLQ3!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(3)) , test.patientOPQOLQ4!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(4)), test.patientOPQOLQ5!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(5)), test.patientOPQOLQ6!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(6)) , test.patientOPQOLQ7!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(7)) , test.patientOPQOLQ8!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(8)) , test.patientOPQOLQ9!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(9)), test.patientOPQOLQ10!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(10)) , test.patientOPQOLQ11!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(11)) , test.patientOPQOLQ12!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(12)), test.patientOPQOLQ13!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(13)) , test.patientOPQOLQ14!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(4)) , test.patientOPQOLQ15!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(15)) , test.patientOPQOLQ16!!)
+//            setQuestionRadioGroup(view.findViewById(allGeneratedRadioGroupIds.get(16)) , test.patientOPQOLQ17!!)
 
         } , 1000)
     }
@@ -1056,24 +1135,24 @@ class OPQOLCheckFragment : Fragment() {
 
     fun showSelectionError(error : String, qNo : Int) {
         Toast.makeText(mainActivity.applicationContext, error, Toast.LENGTH_LONG).show()
-            when (qNo) {
-                1 -> allGeneratedRadioGroups.get(0).requestFocus()
-                2 -> allGeneratedRadioGroups.get(1).requestFocus()
-                3 -> allGeneratedRadioGroups.get(2).requestFocus()
-                4 -> allGeneratedRadioGroups.get(3).requestFocus()
-                5 -> allGeneratedRadioGroups.get(4).requestFocus()
-                6 -> allGeneratedRadioGroups.get(5).requestFocus()
-                7 -> allGeneratedRadioGroups.get(6).requestFocus()
-                8 -> allGeneratedRadioGroups.get(7).requestFocus()
-                9 -> allGeneratedRadioGroups.get(8).requestFocus()
-                10 -> allGeneratedRadioGroups.get(9).requestFocus()
-                11 -> allGeneratedRadioGroups.get(10).requestFocus()
-                12 -> allGeneratedRadioGroups.get(11).requestFocus()
-                13 -> allGeneratedRadioGroups.get(12).requestFocus()
-                14 -> allGeneratedRadioGroups.get(13).requestFocus()
-                15 -> allGeneratedRadioGroups.get(14).requestFocus()
-                16 -> allGeneratedRadioGroups.get(15).requestFocus()
-                17 -> allGeneratedRadioGroups.get(16).requestFocus()
+            when (qNo + 1) {
+                1 -> randomQuestonRecyclerViewAdapter.requestFocus(0)
+                2 -> randomQuestonRecyclerViewAdapter.requestFocus(1)
+                3 -> randomQuestonRecyclerViewAdapter.requestFocus(2)
+                4 -> randomQuestonRecyclerViewAdapter.requestFocus(3)
+                5 -> randomQuestonRecyclerViewAdapter.requestFocus(4)
+                6 -> randomQuestonRecyclerViewAdapter.requestFocus(5)
+                7 -> randomQuestonRecyclerViewAdapter.requestFocus(6)
+                8 -> randomQuestonRecyclerViewAdapter.requestFocus(7)
+                9 -> randomQuestonRecyclerViewAdapter.requestFocus(8)
+                10 -> randomQuestonRecyclerViewAdapter.requestFocus(9)
+                11 -> randomQuestonRecyclerViewAdapter.requestFocus(10)
+                12 -> randomQuestonRecyclerViewAdapter.requestFocus(11)
+                13 -> randomQuestonRecyclerViewAdapter.requestFocus(12)
+                14 -> randomQuestonRecyclerViewAdapter.requestFocus(13)
+                15 -> randomQuestonRecyclerViewAdapter.requestFocus(14)
+                16 -> randomQuestonRecyclerViewAdapter.requestFocus(15)
+                17 -> randomQuestonRecyclerViewAdapter.requestFocus(16)
             }
         }
 
@@ -1838,6 +1917,10 @@ class OPQOLCheckFragment : Fragment() {
 
     fun String.toInputStream(): InputStream {
         return ByteArrayInputStream(this.toByteArray())
+    }
+
+    fun setPatientAnswerFromRecyclerAdapter(position: Int, i: Int) {
+        allPatientSelections[position] = i
     }
 
 
