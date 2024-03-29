@@ -679,75 +679,255 @@ open class Test : RealmModel
 
     var patientOPQOLQ1 : Int? = null
 
+    fun getOPQOLQ1() : Int?
+    {
+        return patientOPQOLQ1
+    }
+
     var patientOPQOLQ2 : Int? = null
+
+    fun getOPQOLQ2() : Int?
+    {
+        return patientOPQOLQ2
+    }
 
     var patientOPQOLQ3 : Int? = null
 
+    fun getOPQOLQ3() : Int?
+    {
+        return patientOPQOLQ3
+    }
+
     var patientOPQOLQ4 : Int? = null
+
+    fun getOPQOLQ4() : Int?
+    {
+        return patientOPQOLQ4
+    }
 
     var patientOPQOLQ5 : Int? = null
 
+    fun getOPQOLQ5() : Int?
+    {
+        return patientOPQOLQ5
+    }
+
     var patientOPQOLQ6 : Int? = null
+
+    fun getOPQOLQ6() : Int?
+    {
+        return patientOPQOLQ6
+    }
 
     var patientOPQOLQ7 : Int? = null
 
+    fun getOPQOLQ7() : Int?
+    {
+        return patientOPQOLQ7
+    }
+
     var patientOPQOLQ8 : Int? = null
+
+    fun getOPQOLQ8() : Int?
+    {
+        return patientOPQOLQ8
+    }
 
     var patientOPQOLQ9 : Int? = null
 
+    fun getOPQOLQ9() : Int?
+    {
+        return patientOPQOLQ9
+    }
+
     var patientOPQOLQ10 : Int? = null
+
+    fun getOPQOLQ10() : Int?
+    {
+        return patientOPQOLQ10
+    }
 
     var patientOPQOLQ11 : Int? = null
 
+    fun getOPQOLQ11() : Int?
+    {
+        return patientOPQOLQ11
+    }
+
     var patientOPQOLQ12 : Int? = null
+
+    fun getOPQOLQ12() : Int?
+    {
+        return patientOPQOLQ12
+    }
 
     var patientOPQOLQ13 : Int? = null
 
+    fun getOPQOLQ13() : Int?
+    {
+        return patientOPQOLQ13
+    }
+
     var patientOPQOLQ14 : Int? = null
+
+    fun getOPQOLQ14() : Int?
+    {
+        return patientOPQOLQ14
+    }
 
     var patientOPQOLQ15 : Int? = null
 
+    fun getOPQOLQ15() : Int?
+    {
+        return patientOPQOLQ15
+    }
+
     var patientOPQOLQ16 : Int? = null
+
+    fun getOPQOLQ16() : Int?
+    {
+        return patientOPQOLQ16
+    }
 
     var patientOPQOLQ17 : Int? = null
 
+    fun getOPQOLQ17() : Int?
+    {
+        return patientOPQOLQ17
+    }
+
     var patientOPQOLQ18 : Int? = null
+
+    fun getOPQOLQ18() : Int?
+    {
+        return patientOPQOLQ18
+    }
 
     var patientOPQOLQ19 : Int? = null
 
+    fun getOPQOLQ19() : Int?
+    {
+        return patientOPQOLQ19
+    }
+
     var patientOPQOLQ20 : Int? = null
+
+    fun getOPQOLQ20() : Int?
+    {
+        return patientOPQOLQ20
+    }
 
     var patientOPQOLQ21 : Int? = null
 
+    fun getOPQOLQ21() : Int?
+    {
+        return patientOPQOLQ21
+    }
+
     var patientOPQOLQ22 : Int? = null
+
+    fun getOPQOLQ22() : Int?
+    {
+        return patientOPQOLQ22
+    }
 
     var patientOPQOLQ23 : Int? = null
 
+    fun getOPQOLQ23() : Int?
+    {
+        return patientOPQOLQ23
+    }
+
     var patientOPQOLQ24 : Int? = null
+
+    fun getOPQOLQ24() : Int?
+    {
+        return patientOPQOLQ24
+    }
 
     var patientOPQOLQ25 : Int? = null
 
+    fun getOPQOLQ25() : Int?
+    {
+        return patientOPQOLQ25
+    }
+
     var patientOPQOLQ26 : Int? = null
+
+    fun getOPQOLQ26() : Int?
+    {
+        return patientOPQOLQ26
+    }
 
     var patientOPQOLQ27 : Int? = null
 
+    fun getOPQOLQ27() : Int?
+    {
+        return patientOPQOLQ27
+    }
+
     var patientOPQOLQ28 : Int? = null
+
+    fun getOPQOLQ28() : Int?
+    {
+        return patientOPQOLQ28
+    }
 
     var patientOPQOLQ29 : Int? = null
 
+    fun getOPQOLQ29() : Int?
+    {
+        return patientOPQOLQ29
+    }
+
     var patientOPQOLQ30 : Int? = null
+
+    fun getOPQOLQ30() : Int?
+    {
+        return patientOPQOLQ30
+    }
 
     var patientOPQOLQ31 : Int? = null
 
+    fun getOPQOLQ31() : Int?
+    {
+        return patientOPQOLQ31
+    }
+
     var patientOPQOLQ32 : Int? = null
+
+    fun getOPQOLQ32() : Int?
+    {
+        return patientOPQOLQ32
+    }
 
     var patientOPQOLQ33 : Int? = null
 
+    fun getOPQOLQ33() : Int?
+    {
+        return patientOPQOLQ33
+    }
+
     var patientOPQOLQ34 : Int? = null
+
+    fun getOPQOLQ34() : Int?
+    {
+        return patientOPQOLQ34
+    }
 
     var patientOPQOLQ35 : Int? = null
 
+    fun getOPQOLQ35() : Int?
+    {
+        return patientOPQOLQ1
+    }
+
     var OPQOLTestReesult : Int? = null
+
+    fun getOPQOLQResult() : Int?
+    {
+        return OPQOLTestReesult
+    }
 
     //variables related with GAS Test
 

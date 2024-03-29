@@ -32,7 +32,6 @@ class RandomQuestonRecyclerViewAdapter2(private var opqolCheckFragment2: OPQOLCh
     fun requestFocus(position: Int) {
         // Get the ViewHolder at the specified position
         recView2.scrollToPosition(position)
-
     }
 
     fun updateTestData(newTestData: ArrayList<Int?>) {

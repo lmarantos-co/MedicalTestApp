@@ -444,29 +444,29 @@ class OPQOLCheckFragment : Fragment() {
         }
 
         opqolPatientViewModel.testDATA.observe(viewLifecycleOwner) {
-            if (it != null)
+            if (it.getOPQOLQ1() != null)
             {
                 if (useLayout1)
                     patientTest = it
                 setPatientSelectionsForFragment2(it)
                 var testData = ArrayList<Int?>(17)
-                testData[0] = it.patientOPQOLQ1!!
-                testData[1] = it.patientOPQOLQ2!!
-                testData[2] = it.patientOPQOLQ3!!
-                testData[3] = it.patientOPQOLQ4!!
-                testData[4] = it.patientOPQOLQ5!!
-                testData[5] = it.patientOPQOLQ6!!
-                testData[6] = it.patientOPQOLQ7!!
-                testData[7] = it.patientOPQOLQ8!!
-                testData[8] = it.patientOPQOLQ9!!
-                testData[9] = it.patientOPQOLQ10!!
-                testData[10] = it.patientOPQOLQ11!!
-                testData[11] = it.patientOPQOLQ12!!
-                testData[12] = it.patientOPQOLQ13!!
-                testData[13] = it.patientOPQOLQ14!!
-                testData[14] = it.patientOPQOLQ15!!
-                testData[15] = it.patientOPQOLQ16!!
-                testData[16] = it.patientOPQOLQ17!!
+                testData.add(0 , it.getOPQOLQ1()!!)
+                testData.add(1 , it.getOPQOLQ2()!!)
+                testData.add(2 , it.getOPQOLQ3()!!)
+                testData.add(3 , it.getOPQOLQ4()!!)
+                testData.add(4 , it.getOPQOLQ5()!!)
+                testData.add(5 , it.getOPQOLQ6()!!)
+                testData.add(6 , it.getOPQOLQ7()!!)
+                testData.add(7 , it.getOPQOLQ8()!!)
+                testData.add(8 , it.getOPQOLQ9()!!)
+                testData.add(9 , it.getOPQOLQ10()!!)
+                testData.add(10 , it.getOPQOLQ11()!!)
+                testData.add(11 , it.getOPQOLQ12()!!)
+                testData.add(12 , it.getOPQOLQ13()!!)
+                testData.add(13 , it.getOPQOLQ14()!!)
+                testData.add(14 , it.getOPQOLQ15()!!)
+                testData.add(15 , it.getOPQOLQ16()!!)
+                testData.add(16 , it.getOPQOLQ17()!!)
 
                 randomQuestonRecyclerViewAdapter.updateTestData(testData)
 //                setPatientData1(it , parentView)
@@ -720,24 +720,24 @@ class OPQOLCheckFragment : Fragment() {
     }
 
     private fun setPatientSelectionsForFragment2(it : Test) {
-        fragment2AnswersFromPreviousTest[0] = it.patientOPQOLQ18!!
-        fragment2AnswersFromPreviousTest[1] = it.patientOPQOLQ19!!
-        fragment2AnswersFromPreviousTest[2] = it.patientOPQOLQ20!!
-        fragment2AnswersFromPreviousTest[3] = it.patientOPQOLQ21!!
-        fragment2AnswersFromPreviousTest[4] = it.patientOPQOLQ22!!
-        fragment2AnswersFromPreviousTest[5] = it.patientOPQOLQ23!!
-        fragment2AnswersFromPreviousTest[6] = it.patientOPQOLQ24!!
-        fragment2AnswersFromPreviousTest[7] = it.patientOPQOLQ25!!
-        fragment2AnswersFromPreviousTest[8] = it.patientOPQOLQ26!!
-        fragment2AnswersFromPreviousTest[9] = it.patientOPQOLQ27!!
-        fragment2AnswersFromPreviousTest[10] = it.patientOPQOLQ28!!
-        fragment2AnswersFromPreviousTest[11] = it.patientOPQOLQ29!!
-        fragment2AnswersFromPreviousTest[12] = it.patientOPQOLQ30!!
-        fragment2AnswersFromPreviousTest[13] = it.patientOPQOLQ31!!
-        fragment2AnswersFromPreviousTest[14] = it.patientOPQOLQ32!!
-        fragment2AnswersFromPreviousTest[15] = it.patientOPQOLQ33!!
-        fragment2AnswersFromPreviousTest[16] = it.patientOPQOLQ34!!
-        fragment2AnswersFromPreviousTest[17] = it.patientOPQOLQ35!!
+        fragment2AnswersFromPreviousTest.add(0 , it.getOPQOLQ18()!!)
+        fragment2AnswersFromPreviousTest.add(1 , it.getOPQOLQ19()!!)
+        fragment2AnswersFromPreviousTest.add(2 , it.getOPQOLQ20()!!)
+        fragment2AnswersFromPreviousTest.add(3 , it.getOPQOLQ21()!!)
+        fragment2AnswersFromPreviousTest.add(4 , it.getOPQOLQ22()!!)
+        fragment2AnswersFromPreviousTest.add(5 , it.getOPQOLQ23()!!)
+        fragment2AnswersFromPreviousTest.add(6 , it.getOPQOLQ24()!!)
+        fragment2AnswersFromPreviousTest.add(7 , it.getOPQOLQ25()!!)
+        fragment2AnswersFromPreviousTest.add(8 , it.getOPQOLQ18()!!)
+        fragment2AnswersFromPreviousTest.add(9 , it.getOPQOLQ19()!!)
+        fragment2AnswersFromPreviousTest.add(10 , it.getOPQOLQ20()!!)
+        fragment2AnswersFromPreviousTest.add(11 , it.getOPQOLQ21()!!)
+        fragment2AnswersFromPreviousTest.add(12 , it.getOPQOLQ22()!!)
+        fragment2AnswersFromPreviousTest.add(13 , it.getOPQOLQ23()!!)
+        fragment2AnswersFromPreviousTest.add(14 , it.getOPQOLQ24()!!)
+        fragment2AnswersFromPreviousTest.add(15 , it.getOPQOLQ25()!!)
+        fragment2AnswersFromPreviousTest.add(16 , it.getOPQOLQ26()!!)
+        fragment2AnswersFromPreviousTest.add(17 , it.getOPQOLQ27()!!)
         answersFromPreviousTest = true
     }
 
