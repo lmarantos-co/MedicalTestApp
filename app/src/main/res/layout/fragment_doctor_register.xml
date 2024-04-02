@@ -137,6 +137,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/register_title"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/verGl2"
@@ -178,6 +180,8 @@
                     android:gravity="center"
                     android:minHeight="48dp"
                     android:text="@string/register_doctor_username"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -194,6 +198,7 @@
                     android:focusableInTouchMode="true"
                     android:gravity="center"
                     android:hint="@string/register_doctor_username_hint"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:paddingStart="4dp"
@@ -225,6 +230,8 @@
                     android:gravity="center"
                     android:minHeight="48dp"
                     android:text="Κωδικός"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -242,6 +249,7 @@
                     android:focusableInTouchMode="true"
                     android:gravity="center"
                     android:hint="@string/register_doctor_password_hint"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
                     android:paddingStart="4dp"
@@ -290,6 +298,8 @@
             android:background="@drawable/login_register_textview_style"
             android:padding="20dp"
             android:text="Υποβολή"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp"

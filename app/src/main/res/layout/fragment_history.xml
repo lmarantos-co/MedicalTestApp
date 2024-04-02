@@ -63,6 +63,8 @@
                     android:background="@drawable/history_txtview"
                     android:padding="8dp"
                     android:text="testName"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -103,6 +105,8 @@
                     android:clickable="true"
                     android:enabled="true"
                     android:text="Επιλογή ημ/νιών"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textAllCaps="false"
                     android:textColor="@color/black" />
 
@@ -161,6 +165,7 @@
                         android:background="@drawable/history_test_result__caption_txtv_style"
                         android:gravity="center"
                         android:text="Ημ/νία"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -172,6 +177,7 @@
                         android:background="@drawable/history_test_result_txtv_caption_style_left"
                         android:gravity="center"
                         android:text="Αποτέλεσμα"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 

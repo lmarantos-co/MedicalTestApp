@@ -156,6 +156,8 @@
                     android:layout_marginTop="32dp"
                     android:gravity="center"
                     android:text="@string/register_title"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -193,6 +195,8 @@
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Όνομα χρήστη  :"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -209,6 +213,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/register_username_hint"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:inputType="textPersonName"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -239,6 +244,8 @@
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Κωδικός"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -256,6 +263,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/register_password_hint"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:minHeight="48dp"
@@ -278,6 +286,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/register_re_enterpassword_hint"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:minHeight="48dp"
@@ -312,6 +321,8 @@
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
                         android:text="@string/account_info_text"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -328,6 +339,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/account_info_name"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -348,6 +360,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/account_info_lastname"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -369,6 +382,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/account_info_date_birth"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -390,6 +404,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/account_info_occupation"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -411,6 +426,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="@string/account_info_years_of_prof"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:paddingStart="4dp"
@@ -439,6 +455,8 @@
             android:background="@drawable/login_register_textview_style"
             android:padding="20dp"
             android:text="Εγγραφή"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp"

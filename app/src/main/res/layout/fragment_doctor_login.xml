@@ -102,6 +102,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/login_title"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/verGl2"
@@ -164,6 +166,8 @@
                 android:gravity="center"
                 android:minHeight="48dp"
                 android:text="Όνομα χρήστη:"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -183,6 +187,7 @@
                 android:focusableInTouchMode="true"
                 android:gravity="center"
                 android:hint="\Εισάγετε όνομα χρήστη"
+                android:fontFamily="@font/didactgothic_regular"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:text="@={loginDoctorViewModel.inputUserName}"
@@ -215,6 +220,8 @@
                 android:gravity="center"
                 android:minHeight="48dp"
                 android:text="Kωδικός χρήστη:"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -234,6 +241,7 @@
                 android:focusableInTouchMode="true"
                 android:gravity="center"
                 android:hint="Εισάγετε το κωδικό σας"
+                android:fontFamily="@font/didactgothic_regular"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
                 android:paddingStart="4dp"
@@ -262,6 +270,8 @@
             android:backgroundTint="@color/black"
             android:padding="20dp"
             android:text="Είσοδος"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp"

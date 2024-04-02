@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainConLayout"
     android:layout_width="match_parent"
-    android:background="@color/MidnightBlue"
     android:layout_height="match_parent"
+    android:background="@drawable/background_shape"
     android:visibility="visible">
 
     <androidx.constraintlayout.widget.Guideline
@@ -80,7 +80,7 @@
         android:id="@+id/mainScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/MidnightBlue"
+        android:background="@drawable/background_shape"
         android:fadeScrollbars="false"
         android:fillViewport="true"
         android:scrollbarAlwaysDrawVerticalTrack="true"
@@ -140,9 +140,10 @@
                     android:layout_alignParentRight="false"
                     android:layout_centerHorizontal="false"
                     android:layout_centerVertical="true"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="CVD Test"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -167,8 +168,10 @@
                     android:layout_alignLeft="@id/diabetesPanel"
                     android:layout_alignParentRight="true"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Diabetes Test"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -201,8 +204,10 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentRight="false"
                     android:layout_centerVertical="true"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Derpession Test"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -227,8 +232,10 @@
                     android:layout_alignLeft="@id/anxietyPanel"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Anxiety Test"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -261,8 +268,10 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerHorizontal="false"
                     android:layout_centerVertical="true"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Pain Test"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -287,8 +296,10 @@
                     android:layout_alignLeft="@id/dietPanel"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="MedDietScore \n Test"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -320,8 +331,10 @@
                     android:layout_alignRight="@id/bdiPanel"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Beck \n Depression"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -345,8 +358,10 @@
                     android:layout_alignLeft="@id/gdPanel"
                     android:layout_alignParentRight="true"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Geriatric  \n Depression"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -378,8 +393,10 @@
                     android:layout_alignRight="@id/staiPanel"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="STAI Test"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -393,8 +410,10 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerInParent="true"
                     android:elevation="5dp"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Zung \n Depression"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -443,8 +462,10 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Hammilton \n Depression"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -470,8 +491,10 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerHorizontal="false"
                     android:layout_centerVertical="true"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="DASS TEST"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -507,8 +530,10 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="OPQOL-35 \n TEST"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -532,8 +557,10 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/opqolTxtV"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Geriatric Anxiety \n Scale"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
@@ -569,12 +596,13 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="SIDAS TEST"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="visible" />
-
 
 
             </RelativeLayout>
