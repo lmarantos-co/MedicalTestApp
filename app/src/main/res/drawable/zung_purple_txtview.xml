@@ -6,8 +6,8 @@
         android:color="@color/zung_purple" />
 
     <corners
-        android:topLeftRadius="20dp"
-        android:topRightRadius="20dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
         />
 
 </shape>

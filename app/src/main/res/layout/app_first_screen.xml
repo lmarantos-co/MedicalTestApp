@@ -35,7 +35,7 @@
             android:id="@+id/doctorsPatientsConLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/MidnightBlue"
+            android:background="@drawable/background_shape"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -74,11 +74,13 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/intro_screen_panel_dummy1"
+                android:background="@drawable/green_gradient_shape"
                 app:layout_constraintBottom_toTopOf="@+id/bottomCustomersHGL"
                 app:layout_constraintEnd_toEndOf="@id/middleVGL"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/leftGL"
-                app:layout_constraintTop_toTopOf="@id/horG2">
+                app:layout_constraintTop_toTopOf="@id/horG2"
+                app:layout_constraintVertical_bias="0.0">
 
                 <TextView
                     android:id="@+id/loginDoctorTxtV"
@@ -132,7 +134,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/intro_screen_panel_dummy_2"
+                android:background="@drawable/orange_gradient_shape"
                 app:layout_constraintBottom_toTopOf="@id/bottomCustomersHGL2"
                 app:layout_constraintEnd_toStartOf="@+id/rightGL"
                 app:layout_constraintLeft_toLeftOf="@id/rightGL"
@@ -190,7 +192,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/intro_screen_panel"
+                android:background="@drawable/blue_gradient_shape"
                 app:layout_constraintBottom_toTopOf="@id/bottomCustomersHGL2"
                 app:layout_constraintLeft_toLeftOf="@id/leftGL"
                 app:layout_constraintRight_toLeftOf="@id/middleVGL"
@@ -203,7 +205,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/intro_screen_panel"
+                android:background="@drawable/blue_gradient_shape"
                 app:layout_constraintBottom_toTopOf="@+id/bottomCustomersHGL"
                 app:layout_constraintEnd_toStartOf="@+id/rightGL"
                 app:layout_constraintStart_toStartOf="@+id/middleVGL"

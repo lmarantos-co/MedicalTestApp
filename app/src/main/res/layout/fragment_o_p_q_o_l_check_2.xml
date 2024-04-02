@@ -7,11 +7,12 @@
             name="CheckOQPOLPatientViewModel"
             type="com.example.cvdriskestimator.viewModels.CheckOPQOLViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
         <!--    covariance title form-->
 
@@ -49,14 +50,14 @@
             app:layout_constraintGuide_percent="0.1" />
 
         <RelativeLayout
+            android:id="@+id/BAITestTitleLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
-            android:id="@+id/BAITestTitleLayout">
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <TextView
                 android:id="@+id/opqolTestTitle"
@@ -89,10 +90,10 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <LinearLayout
                 android:id="@+id/opqolCheckLinLayout"
@@ -116,8 +117,8 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="@string/OPQOL35testtitle"
                     android:justificationMode="inter_word"
+                    android:text="@string/OPQOL35testtitle"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -306,7 +307,6 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:background="@color/very_light_gray" />
-
 
 
                 <TextView
@@ -611,6 +611,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutV"
                     android:layout_width="match_parent"
@@ -706,6 +707,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <TextView
                     android:id="@+id/opqoQ2q2TextV"
                     android:layout_width="match_parent"
@@ -1008,6 +1010,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutV2"
                     android:layout_width="match_parent"
@@ -1103,6 +1106,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <TextView
                     android:id="@+id/opqoQ2q3TextV6"
                     android:layout_width="match_parent"
@@ -1405,6 +1409,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutT5"
                     android:layout_width="match_parent"
@@ -1500,6 +1505,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <TextView
                     android:id="@+id/opqoQ2q3TextV"
                     android:layout_width="match_parent"
@@ -1802,6 +1808,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutT7"
                     android:layout_width="match_parent"
@@ -1897,6 +1904,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutT9"
                     android:layout_width="match_parent"
@@ -1992,6 +2000,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutT8"
                     android:layout_width="match_parent"
@@ -2087,10 +2096,11 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/left_arrow"
@@ -2132,7 +2142,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@id/submitBtn"
-                        android:textAllCaps="false"
                         android:layout_alignParentLeft="false"
                         android:layout_alignParentRight="false"
                         android:layout_alignParentBottom="false"
@@ -2141,7 +2150,8 @@
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/bai_button_rounded_corners"
-                        android:text="Καθαρισμός φόρμας" />
+                        android:text="Καθαρισμός φόρμας"
+                        android:textAllCaps="false" />
 
 
                 </RelativeLayout>

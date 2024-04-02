@@ -7,11 +7,12 @@
                 name="CheckMDIPatientViewModel"
                 type="com.example.cvdriskestimator.viewModels.CheckMDIPatientViewModel" />
         </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
         <!--    covariance title form-->
 
@@ -42,14 +43,14 @@
             app:layout_constraintGuide_percent="0.14" />
 
         <RelativeLayout
+            android:id="@+id/MDITestTitleLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
-            android:id="@+id/MDITestTitleLayout">
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <TextView
                 android:id="@+id/mdiTestTitle"
@@ -82,10 +83,10 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <LinearLayout
                 android:id="@+id/mdiCheckLinLayout"
@@ -235,11 +236,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ2"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -448,11 +449,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ4"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -555,11 +556,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ5"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -661,11 +662,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ6"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -769,11 +770,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ7"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -877,11 +878,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ8"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -984,11 +985,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ9"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1091,11 +1092,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ10"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1198,11 +1199,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ11"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1304,11 +1305,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ12"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1407,11 +1408,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/purple_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/MDIQ13"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1502,9 +1503,9 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">
+                    android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitBtn"
@@ -1535,8 +1536,8 @@
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/mdi_button_rounded_corners"
-                        android:textAllCaps="false"
-                        android:text="Καθαρισμός δεδομένων" />
+                        android:text="Καθαρισμός δεδομένων"
+                        android:textAllCaps="false" />
 
 
                 </RelativeLayout>

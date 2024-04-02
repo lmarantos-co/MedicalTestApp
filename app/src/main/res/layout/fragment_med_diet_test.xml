@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue"
+        android:background="@drawable/background_shape"
         tools:context=".Fragments.medDietTestFragment">
 
         <!--    covariance title form-->
@@ -1238,9 +1238,9 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">>
+                    android:layout_height="wrap_content">>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitBtn"
@@ -1271,8 +1271,8 @@
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/mds_button_rounded_corners"
-                        android:textAllCaps="false"
-                        android:text="Καθαρισμός δεδομένων" />
+                        android:text="Καθαρισμός δεδομένων"
+                        android:textAllCaps="false" />
                 </RelativeLayout>
 
             </LinearLayout>

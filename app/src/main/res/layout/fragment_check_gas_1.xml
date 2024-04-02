@@ -8,11 +8,12 @@
             type="com.example.cvdriskestimator.viewModels.CheckGASViewModel"
             />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
 
         <include
@@ -41,14 +42,14 @@
             tools:layout_editor_absoluteY="491dp" />
 
         <RelativeLayout
+            android:id="@+id/GASTestTitleLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
-            android:id="@+id/GASTestTitleLayout">
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <TextView
                 android:id="@+id/gasTestTitle"
@@ -81,10 +82,10 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <LinearLayout
                 android:id="@+id/gdsCheckLinLayout"
@@ -1473,9 +1474,9 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">
+                    android:layout_height="wrap_content">
 
                     <!--                    <androidx.appcompat.widget.AppCompatButton-->
                     <!--                        android:id="@+id/submitBtn"-->

@@ -14,7 +14,7 @@
         android:id="@+id/formConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horGL1"
@@ -94,10 +94,10 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <LinearLayout
                 android:id="@+id/checkLinLayout"
@@ -155,9 +155,9 @@
                             android:layout_centerInParent="false"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="false"
+                            android:background="@drawable/orange_textview_4"
                             android:focusable="true"
                             android:focusableInTouchMode="true"
-                            android:background="@drawable/orange_textview_4"
                             android:gravity="center"
                             android:minHeight="48dp"
                             android:text="Current Age :"
@@ -187,10 +187,10 @@
                         android:contentDescription="Enter Your Age"
                         android:contextClickable="true"
                         android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:inputType="number"
                         android:minHeight="48dp"
                         android:textSize="20sp" />
 
@@ -224,10 +224,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/orange_textview_4"
-                        android:gravity="center"
-                        android:minHeight="48dp"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="48dp"
                         android:text="Sex"
                         android:textSize="20sp" />
 
@@ -381,11 +381,11 @@
                         android:layout_centerInParent="true"
                         android:clickable="true"
                         android:contentDescription="Enter Your Systolic Blood Presure"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:inputType="number"
                         android:minHeight="48dp"
@@ -438,9 +438,9 @@
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
-                        android:gravity="center"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
+                        android:gravity="center"
                         android:inputType="number"
                         android:minHeight="48dp"
                         android:textSize="20sp"
@@ -491,11 +491,11 @@
                         android:layout_marginTop="5dp"
                         android:clickable="true"
                         android:contentDescription="Enter your HDL Cholesterol"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:inputType="number"
                         android:minHeight="48dp"
@@ -602,9 +602,9 @@
                             android:layout_centerInParent="false"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="false"
+                            android:background="@drawable/orange_textview_4"
                             android:focusable="true"
                             android:focusableInTouchMode="true"
-                            android:background="@drawable/orange_textview_4"
                             android:gravity="center"
                             android:minHeight="48dp"
                             android:text="Smoker?"
@@ -719,9 +719,9 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/orange_textview_4"
-                        android:gravity="center"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
+                        android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/treatment"
                         android:textSize="20sp" />
@@ -766,9 +766,9 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">
+                    android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitBtn"
@@ -799,8 +799,8 @@
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/cvd_button_rounded_corners"
-                        android:textAllCaps="false"
-                        android:text="Καθαρισμός φόρμας" />
+                        android:text="Καθαρισμός φόρμας"
+                        android:textAllCaps="false" />
 
 
                 </RelativeLayout>

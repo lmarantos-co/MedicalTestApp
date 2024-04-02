@@ -7,11 +7,12 @@
             name="CheckBAIPatientViewModel"
             type="com.example.cvdriskestimator.viewModels.CheckBAIPatientViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
         <!--    covariance title form-->
 
@@ -49,14 +50,14 @@
             app:layout_constraintGuide_percent="0.1" />
 
         <RelativeLayout
+            android:id="@+id/BAITestTitleLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
-            android:id="@+id/BAITestTitleLayout">
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <TextView
                 android:id="@+id/baiTestTitle"
@@ -89,10 +90,10 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <LinearLayout
                 android:id="@+id/baiCheckLinLayout"
@@ -116,8 +117,8 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="@string/bai_test_info"
                     android:justificationMode="inter_word"
+                    android:text="@string/bai_test_info"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -219,11 +220,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ2"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -256,8 +257,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ2RB3"
@@ -269,8 +269,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ2RB4"
@@ -282,8 +281,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -303,11 +301,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ3"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -340,8 +338,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ3RB3"
@@ -353,8 +350,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ3RB4"
@@ -366,8 +362,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -387,11 +382,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ4"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -424,8 +419,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ4RB3"
@@ -437,8 +431,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ4RB4"
@@ -450,8 +443,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -471,11 +463,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ5"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -508,8 +500,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ5RB3"
@@ -521,8 +512,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ5RB4"
@@ -534,8 +524,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -555,11 +544,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ6"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -592,8 +581,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ6RB3"
@@ -605,8 +593,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ6RB4"
@@ -618,8 +605,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -639,11 +625,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ7"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -676,8 +662,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ7RB3"
@@ -689,8 +674,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ7RB4"
@@ -702,8 +686,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -723,11 +706,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ8"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -760,8 +743,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ8RB3"
@@ -773,8 +755,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ8RB4"
@@ -786,8 +767,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -807,11 +787,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ9"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -844,8 +824,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ9RB3"
@@ -857,8 +836,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ9RB4"
@@ -870,8 +848,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -891,11 +868,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ10"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -928,8 +905,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ10RB3"
@@ -940,8 +916,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ10RB4"
@@ -953,8 +928,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -974,11 +948,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ11"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1011,8 +985,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ11RB3"
@@ -1024,8 +997,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ11RB4"
@@ -1037,8 +1009,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1058,11 +1029,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ12"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1095,8 +1066,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ12RB3"
@@ -1108,8 +1078,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ12RB4"
@@ -1121,8 +1090,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1142,11 +1110,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ13"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1179,8 +1147,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ13RB3"
@@ -1192,8 +1159,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ13RB4"
@@ -1205,8 +1171,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1227,11 +1192,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ14"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1264,8 +1229,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ14RB3"
@@ -1277,8 +1241,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ14RB4"
@@ -1290,8 +1253,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1312,11 +1274,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ15"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1349,8 +1311,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ15RB3"
@@ -1362,8 +1323,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ15RB4"
@@ -1375,8 +1335,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1397,11 +1356,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ16"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1434,8 +1393,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ16RB3"
@@ -1447,8 +1405,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ16RB4"
@@ -1460,8 +1417,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1482,11 +1438,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ17"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1519,8 +1475,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ17RB3"
@@ -1532,8 +1487,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ17RB4"
@@ -1545,8 +1499,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1567,11 +1520,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ18"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1592,8 +1545,7 @@
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ18RB2"
@@ -1605,8 +1557,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ18RB3"
@@ -1618,8 +1569,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ18RB4"
@@ -1631,8 +1581,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1653,11 +1602,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ19"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1678,8 +1627,7 @@
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ19RB2"
@@ -1691,8 +1639,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ19RB3"
@@ -1704,8 +1651,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ19RB4"
@@ -1717,8 +1663,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1739,11 +1684,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ20"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1776,8 +1721,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ20RB3"
@@ -1789,8 +1733,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ20RB4"
@@ -1822,11 +1765,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ21"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1871,8 +1814,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BAIQ21RB4"
@@ -1892,9 +1834,9 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">
+                    android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitBtn"
@@ -1917,7 +1859,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@id/submitBtn"
-                        android:textAllCaps="false"
                         android:layout_alignParentLeft="false"
                         android:layout_alignParentRight="false"
                         android:layout_alignParentBottom="false"
@@ -1926,7 +1867,8 @@
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/bai_button_rounded_corners"
-                        android:text="Καθαρισμός φόρμας" />
+                        android:text="Καθαρισμός φόρμας"
+                        android:textAllCaps="false" />
 
 
                 </RelativeLayout>

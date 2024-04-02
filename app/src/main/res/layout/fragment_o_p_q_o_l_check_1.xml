@@ -7,11 +7,12 @@
             name="CheckOQPOLPatientViewModel"
             type="com.example.cvdriskestimator.viewModels.CheckOPQOLViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/opqolFr1formConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
         <!--    covariance title form-->
 
@@ -49,14 +50,14 @@
             app:layout_constraintGuide_percent="0.1" />
 
         <RelativeLayout
+            android:id="@+id/BAITestTitleLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
-            android:id="@+id/BAITestTitleLayout">
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <TextView
                 android:id="@+id/opqolTestTitle"
@@ -89,10 +90,10 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <LinearLayout
                 android:id="@+id/opqolCheckLinLayout"
@@ -116,8 +117,8 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="@string/OPQOL35testtitle"
                     android:justificationMode="inter_word"
+                    android:text="@string/OPQOL35testtitle"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -266,21 +267,21 @@
                 </RelativeLayout>
 
                 <TextView
-                        android:id="@+id/opqoQ2TextV"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/pillow_4"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@drawable/light_blue_textview"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
-                        android:gravity="center"
-                        android:minHeight="64dp"
-                        android:text="@string/OPQOL35Q2info1"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
+                    android:id="@+id/opqoQ2TextV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pillow_4"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/light_blue_textview"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:minHeight="64dp"
+                    android:text="@string/OPQOL35Q2info1"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/opqoQ2bTextV"
@@ -419,14 +420,14 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                        android:id="@+id/OPQOLQ2RelLayoutb"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/OPQOLQ2RelLayouta"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@drawable/relativelayout_style">
+                    android:id="@+id/OPQOLQ2RelLayoutb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/OPQOLQ2RelLayouta"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
 
                     <TextView
                         android:id="@+id/opqoQ2fTextV"
@@ -512,7 +513,7 @@
                             android:textColor="@color/black"
                             android:textSize="20sp" />
                     </RadioGroup>
-                    </RelativeLayout>
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutc"
@@ -609,6 +610,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutd"
                     android:layout_width="match_parent"
@@ -704,6 +706,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <TextView
                     android:id="@+id/opqoQ2J2TextV"
                     android:layout_width="match_parent"
@@ -1006,6 +1009,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayouth"
                     android:layout_width="match_parent"
@@ -1127,7 +1131,6 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
-
 
 
                     <TextView
@@ -1311,6 +1314,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutm"
                     android:layout_width="match_parent"
@@ -1406,6 +1410,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutn"
                     android:layout_width="match_parent"
@@ -1501,6 +1506,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayouto"
                     android:layout_width="match_parent"
@@ -1596,6 +1602,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <TextView
                     android:id="@+id/opqoQ2oTextV"
                     android:layout_width="match_parent"
@@ -1898,6 +1905,7 @@
                             android:textSize="20sp" />
                     </RadioGroup>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/OPQOLQ2RelLayoutS"
                     android:layout_width="match_parent"
@@ -1995,25 +2003,25 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">
+                    android:layout_height="wrap_content">
 
-<!--                    <androidx.appcompat.widget.AppCompatButton-->
-<!--                        android:id="@+id/submitBtn"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_centerInParent="true"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:layout_marginTop="8dp"-->
-<!--                        android:layout_marginBottom="8dp"-->
-<!--                        android:background="@drawable/bai_button_rounded_corners"-->
-<!--                        android:padding="20dp"-->
-<!--                        android:text="Υπολογισμός"-->
-<!--                        android:textAllCaps="false"-->
-<!--                        android:textSize="20sp"-->
-<!--                        android:visibility="visible"-->
-<!--                        tools:ignore="TextContrastCheck" />-->
+                    <!--                    <androidx.appcompat.widget.AppCompatButton-->
+                    <!--                        android:id="@+id/submitBtn"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_centerInParent="true"-->
+                    <!--                        android:layout_gravity="center"-->
+                    <!--                        android:layout_marginTop="8dp"-->
+                    <!--                        android:layout_marginBottom="8dp"-->
+                    <!--                        android:background="@drawable/bai_button_rounded_corners"-->
+                    <!--                        android:padding="20dp"-->
+                    <!--                        android:text="Υπολογισμός"-->
+                    <!--                        android:textAllCaps="false"-->
+                    <!--                        android:textSize="20sp"-->
+                    <!--                        android:visibility="visible"-->
+                    <!--                        tools:ignore="TextContrastCheck" />-->
 
                     <ImageView
                         android:id="@+id/right_arrow"

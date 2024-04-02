@@ -15,7 +15,7 @@
         android:id="@+id/inclusiveConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
         <!--    covariance title form-->
 
@@ -73,7 +73,7 @@
                 android:id="@+id/formRelLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/MidnightBlue"
+                android:background="@drawable/background_shape"
                 tools:context=".Fragments.LoginFragment">
 
 
@@ -152,12 +152,12 @@
                     android:id="@+id/formTxtV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="32dp"
                     android:gravity="center"
                     android:text="@string/register_title"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:layout_marginTop="32dp"
-                    android:layout_centerHorizontal="true"/>
+                    android:textSize="20sp" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/verGL1"

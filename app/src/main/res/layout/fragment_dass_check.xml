@@ -7,11 +7,12 @@
             name="CheckDASSPatientViewModel"
             type="com.example.cvdriskestimator.viewModels.CheckDASSPatientViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
         <!--    covariance title form-->
 
@@ -49,14 +50,14 @@
             app:layout_constraintGuide_percent="0.1" />
 
         <RelativeLayout
+            android:id="@+id/BAITestTitleLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
-            android:id="@+id/BAITestTitleLayout">
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <TextView
                 android:id="@+id/dassTestTitle"
@@ -88,10 +89,10 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <LinearLayout
                 android:id="@+id/dassCheckLinLayout"
@@ -115,8 +116,8 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="@string/DASS_text_desc"
                     android:justificationMode="inter_word"
+                    android:text="@string/DASS_text_desc"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1812,9 +1813,9 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">
+                    android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitBtn"
@@ -1845,8 +1846,8 @@
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/green_button_rounded_corners"
-                        android:textAllCaps="true"
-                        android:text="Καθαρισμός φόρμας" />
+                        android:text="Καθαρισμός φόρμας"
+                        android:textAllCaps="true" />
 
 
                 </RelativeLayout>

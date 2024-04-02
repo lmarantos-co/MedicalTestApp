@@ -7,11 +7,12 @@
             name="CheckBDIViewModel"
             type="com.example.cvdriskestimator.viewModels.CheckBDIPatientViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
         <!--    covariance title form-->
 
@@ -49,14 +50,14 @@
             app:layout_constraintGuide_percent="0.1" />
 
         <RelativeLayout
+            android:id="@+id/BDITestTitleLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
-            android:id="@+id/BDITestTitleLayout">
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <TextView
                 android:id="@+id/bdiTestTitle"
@@ -77,7 +78,7 @@
                 android:text="BDI Test"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
-<!--            android:drawableLeft="@drawable/ic_bdi_depression_24_post"-->
+            <!--            android:drawableLeft="@drawable/ic_bdi_depression_24_post"-->
 
         </RelativeLayout>
 
@@ -89,10 +90,10 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <LinearLayout
                 android:id="@+id/bdiCheckLinLayout"
@@ -116,8 +117,8 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="@string/bdi_test_intro_text"
                     android:justificationMode="inter_word"
+                    android:text="@string/bdi_test_intro_text"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -234,11 +235,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_Β"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -272,8 +273,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Β2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ2RB3"
@@ -285,8 +285,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Β3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ2RB4"
@@ -298,8 +297,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Β4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ2RB5"
@@ -313,8 +311,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_Β5"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -334,11 +331,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_C"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -372,8 +369,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_C2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ3RB3"
@@ -385,8 +381,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_C3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ3RB4"
@@ -398,8 +393,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_C4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ3RB5"
@@ -413,8 +407,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_C5"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -434,11 +427,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_D"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -460,8 +453,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_D1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ4RB2"
@@ -473,8 +465,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_D2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ4RB3"
@@ -486,8 +477,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_D3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ4RB4"
@@ -499,8 +489,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_D4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ4RB5"
@@ -514,8 +503,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_D5"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -535,11 +523,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_E"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -561,8 +549,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_E1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ5RB2"
@@ -574,8 +561,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_E2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ5RB3"
@@ -587,8 +573,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_E3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ5RB4"
@@ -600,8 +585,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_E4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ5RB5"
@@ -615,8 +599,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_E5"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -636,11 +619,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_F"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -662,8 +645,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_F1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ6RB2"
@@ -675,8 +657,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_F2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ6RB3"
@@ -688,8 +669,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_F3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ6RB4"
@@ -701,8 +681,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_F4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ6RB5"
@@ -716,8 +695,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_F5"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -737,11 +715,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_G"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -763,8 +741,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_G1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ7RB2"
@@ -776,8 +753,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_G2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ7RB3"
@@ -789,8 +765,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_G3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ7RB4"
@@ -802,8 +777,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_G4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ7RB5"
@@ -817,8 +791,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_G5"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -838,11 +811,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_H"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -864,8 +837,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_H1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ8RB2"
@@ -877,8 +849,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_H2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ8RB3"
@@ -890,8 +861,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_H3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ8RB4"
@@ -905,8 +875,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_H4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -926,11 +895,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_I"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -952,8 +921,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_I1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ9RB2"
@@ -965,8 +933,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_I2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ9RB3"
@@ -978,8 +945,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_I3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ9RB4"
@@ -991,8 +957,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_I4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ9RB5"
@@ -1006,8 +971,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_I5"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1029,11 +993,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_K"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1055,8 +1019,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_K1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ10RB2"
@@ -1068,8 +1031,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_K2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ10RB3"
@@ -1081,8 +1043,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_K3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ10RB4"
@@ -1096,8 +1057,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_K4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1117,11 +1077,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_L"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1143,8 +1103,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_L1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ11RB2"
@@ -1156,8 +1115,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_L2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ11RB3"
@@ -1169,8 +1127,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_L3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ11RB4"
@@ -1184,8 +1141,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_L4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1205,11 +1161,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_M"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1231,8 +1187,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_M1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ12RB2"
@@ -1244,8 +1199,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_M2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ12RB3"
@@ -1257,8 +1211,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_M3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ12RB4"
@@ -1272,9 +1225,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_M4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
-
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1295,11 +1246,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_N"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1345,8 +1296,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_N3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ13RB4"
@@ -1360,8 +1310,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_N4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1381,11 +1330,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_O"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1467,11 +1416,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_P"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1551,11 +1500,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_Q"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1635,11 +1584,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_answer_R1"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1661,8 +1610,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_R1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ17RB2"
@@ -1674,8 +1622,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_R2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ17RB3"
@@ -1687,8 +1634,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_R3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ17RB4"
@@ -1702,8 +1648,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_R4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1724,11 +1669,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_answer_S1"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1750,8 +1695,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_S1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ18RB2"
@@ -1763,8 +1707,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_S2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ18RB3"
@@ -1776,8 +1719,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_S3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ18RB4"
@@ -1791,8 +1733,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_S4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1812,11 +1753,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_answer_T1"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1838,8 +1779,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_T1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ19RB2"
@@ -1851,8 +1791,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_T2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ19RB3"
@@ -1866,8 +1805,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_T3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1887,11 +1825,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_U"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1913,8 +1851,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_U1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ20RB2"
@@ -1926,8 +1863,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_U2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ20RB3"
@@ -1939,8 +1875,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_U3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ20RB4"
@@ -1954,13 +1889,13 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_U4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
 
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/BDIQ21RelLayout"
                     android:layout_width="match_parent"
@@ -1975,11 +1910,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_answer_V1"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2001,8 +1936,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_V1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ21RB2"
@@ -2014,8 +1948,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_V2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ21RB3"
@@ -2027,8 +1960,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_V3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/BDIQ21RB4"
@@ -2042,17 +1974,16 @@
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_V4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">
+                    android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitBtn"
@@ -2063,9 +1994,9 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:background="@drawable/bai_button_rounded_corners"
-                        android:textAllCaps="false"
                         android:padding="20dp"
                         android:text="Υπολογισμός"
+                        android:textAllCaps="false"
                         android:textSize="20sp"
                         android:visibility="visible"
                         tools:ignore="TextContrastCheck" />
@@ -2082,9 +2013,9 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
-                        android:textAllCaps="false"
                         android:background="@drawable/bai_button_rounded_corners"
-                        android:text="Καθραισμός φόρμας" />
+                        android:text="Καθραισμός φόρμας"
+                        android:textAllCaps="false" />
 
 
                 </RelativeLayout>

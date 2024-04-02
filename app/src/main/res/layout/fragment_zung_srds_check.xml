@@ -7,11 +7,12 @@
             name="CheckZUNGPatientViewModel"
             type="com.example.cvdriskestimator.viewModels.CheckZUNGPatientViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
         <!--    covariance title form-->
 
@@ -49,14 +50,14 @@
             app:layout_constraintGuide_percent="0.1" />
 
         <RelativeLayout
+            android:id="@+id/BAITestTitleLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
-            android:id="@+id/BAITestTitleLayout">
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <TextView
                 android:id="@+id/zungTestTitle"
@@ -89,10 +90,10 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <LinearLayout
                 android:id="@+id/zungCheckLinLayout"
@@ -116,8 +117,8 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="@string/ZUNG_SRDS"
                     android:justificationMode="inter_word"
+                    android:text="@string/ZUNG_SRDS"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -197,9 +198,9 @@
                             android:layout_below="@id/ZUNGQ1RB3"
                             android:layout_gravity="left"
                             android:gravity="left"
+                            android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
-                            android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -260,8 +261,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ2RB3"
@@ -273,8 +273,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ2RB4"
@@ -288,8 +287,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -347,8 +345,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ3RB3"
@@ -360,8 +357,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ3RB4"
@@ -375,8 +371,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -422,8 +417,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ4RB2"
@@ -435,8 +429,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ4RB3"
@@ -448,8 +441,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ4RB4"
@@ -463,8 +455,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -510,8 +501,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ5RB2"
@@ -523,8 +513,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ5RB3"
@@ -536,8 +525,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ5RB4"
@@ -551,8 +539,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -598,8 +585,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ6RB2"
@@ -611,8 +597,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ6RB3"
@@ -624,8 +609,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ6RB4"
@@ -639,8 +623,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -686,8 +669,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ7RB2"
@@ -699,8 +681,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ7RB3"
@@ -712,8 +693,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ7RB4"
@@ -727,8 +707,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -786,8 +765,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ8RB3"
@@ -799,8 +777,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ8RB4"
@@ -814,8 +791,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -861,8 +837,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ9RB2"
@@ -874,8 +849,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ9RB3"
@@ -887,8 +861,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ9RB4"
@@ -902,8 +875,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -949,8 +921,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ10RB2"
@@ -962,8 +933,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ10RB3"
@@ -974,8 +944,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ10RB4"
@@ -989,8 +958,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1036,8 +1004,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ11RB2"
@@ -1049,8 +1016,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ11RB3"
@@ -1062,8 +1028,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ11RB4"
@@ -1077,8 +1042,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1124,8 +1088,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ12RB2"
@@ -1137,8 +1100,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ12RB3"
@@ -1150,8 +1112,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ12RB4"
@@ -1165,8 +1126,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
@@ -1212,8 +1172,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ13RB2"
@@ -1225,8 +1184,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ13RB3"
@@ -1238,8 +1196,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ13RB4"
@@ -1253,8 +1210,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1313,8 +1269,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ14RB3"
@@ -1326,8 +1281,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ14RB4"
@@ -1341,8 +1295,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1389,8 +1342,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ15RB2"
@@ -1402,8 +1354,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ15RB3"
@@ -1415,8 +1366,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ15RB4"
@@ -1430,8 +1380,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1478,8 +1427,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ16RB2"
@@ -1491,8 +1439,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ16RB3"
@@ -1504,8 +1451,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ16RB4"
@@ -1519,8 +1465,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1567,8 +1512,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ17RB2"
@@ -1580,8 +1524,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ17RB3"
@@ -1593,8 +1536,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ17RB4"
@@ -1608,8 +1550,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1656,8 +1597,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ18RB2"
@@ -1669,8 +1609,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ18RB3"
@@ -1682,8 +1621,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ18RB4"
@@ -1697,8 +1635,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1745,8 +1682,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A1"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ19RB2"
@@ -1758,8 +1694,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A2"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ19RB3"
@@ -1771,8 +1706,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ19RB4"
@@ -1786,8 +1720,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/ZUNG_SRDS_A4"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
 
                     </RadioGroup>
@@ -1858,8 +1791,7 @@
                             android:paddingLeft="8dp"
                             android:text="@string/ZUNG_SRDS_A3"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/ZUNGQ20RB4"
@@ -1880,9 +1812,9 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">
+                    android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitBtn"
@@ -1913,8 +1845,8 @@
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/zung_button_rounded_corners"
-                        android:textAllCaps="false"
-                        android:text="Καθαρισμός δεδομένων" />
+                        android:text="Καθαρισμός δεδομένων"
+                        android:textAllCaps="false" />
 
 
                 </RelativeLayout>

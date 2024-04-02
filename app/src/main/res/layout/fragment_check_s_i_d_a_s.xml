@@ -8,11 +8,12 @@
             type="com.example.cvdriskestimator.viewModels.CheckSIDASPatientViewModel"
             />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formConLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/MidnightBlue">
+        android:background="@drawable/background_shape">
 
 
         <include
@@ -40,14 +41,14 @@
             app:layout_constraintGuide_percent="0.14" />
 
         <RelativeLayout
+            android:id="@+id/GDSTestTitleLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
-            android:id="@+id/GDSTestTitleLayout">
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <TextView
                 android:id="@+id/sidasTestTitle"
@@ -80,10 +81,10 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@id/horGL1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1">
 
             <LinearLayout
                 android:id="@+id/sidasCheckLinLayout"
@@ -250,7 +251,7 @@
                             android:text="8"
                             android:textColor="@color/black" />
 
-                            <RadioButton
+                        <RadioButton
                             android:id="@+id/SIDAS1QRB9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -260,8 +261,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="9"
-                            android:textColor="@color/black"
-                            />
+                            android:textColor="@color/black" />
 
                         <RadioButton
                             android:id="@+id/SIDAS1QRB10"
@@ -428,8 +428,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="9"
-                            android:textColor="@color/black"
-                            />
+                            android:textColor="@color/black" />
 
                         <RadioButton
                             android:id="@+id/SIDAS2QRB10"
@@ -763,8 +762,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="9"
-                            android:textColor="@color/black"
-                            />
+                            android:textColor="@color/black" />
 
                         <RadioButton
                             android:id="@+id/SIDAS4QRB10"
@@ -931,8 +929,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="9"
-                            android:textColor="@color/black"
-                            />
+                            android:textColor="@color/black" />
 
                         <RadioButton
                             android:id="@+id/SIDAS5QRB10"
@@ -952,11 +949,10 @@
                 </RelativeLayout>
 
 
-
                 <RelativeLayout
+                    android:id="@+id/arrowButtonsRelLayoyt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/arrowButtonsRelLayoyt">
+                    android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitBtn"

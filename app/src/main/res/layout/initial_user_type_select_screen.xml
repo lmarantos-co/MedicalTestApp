@@ -28,7 +28,7 @@
             android:id="@+id/doctorsPatientsConLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/MidnightBlue">
+            android:background="@drawable/background_shape">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/hgl1"
