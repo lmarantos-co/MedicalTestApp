@@ -71,6 +71,8 @@
                 android:paddingRight="16dp"
                 android:singleLine="false"
                 android:text="BPI Test"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -113,6 +115,8 @@
                     android:gravity="center"
                     android:justificationMode="inter_word"
                     android:text="@string/bpi_test_info"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -142,6 +146,8 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
                         android:text="@string/bpi_q1"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -185,6 +191,8 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
                         android:text="@string/bpi_q2"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -210,6 +218,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -217,6 +226,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -224,6 +234,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -231,6 +242,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -238,6 +250,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -245,6 +258,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -264,6 +278,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -271,6 +286,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -278,6 +294,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -285,6 +302,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -292,6 +310,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -306,6 +325,7 @@
                         android:layout_alignParentLeft="true"
                         android:paddingLeft="10dp"
                         android:text="@string/bpi_psscore_low"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic" />
@@ -318,6 +338,7 @@
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
                         android:text="@string/bpi_psscore_high"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic" />
@@ -346,6 +367,8 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
                         android:text="@string/bpi_q3"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -373,6 +396,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -380,6 +404,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -387,6 +412,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -394,6 +420,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -401,6 +428,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -408,6 +436,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -427,6 +456,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -434,6 +464,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -441,6 +472,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -448,6 +480,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -455,6 +488,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -469,6 +503,7 @@
                         android:layout_alignParentLeft="true"
                         android:paddingLeft="10dp"
                         android:text="@string/bpi_psscore_low"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic" />
@@ -481,6 +516,7 @@
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
                         android:text="@string/bpi_psscore_high"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic" />
@@ -509,6 +545,8 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
                         android:text="@string/bpi_q4"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -536,6 +574,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -543,6 +582,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -550,6 +590,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -557,6 +598,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -564,6 +606,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -571,6 +614,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -590,6 +634,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -597,6 +642,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -604,6 +650,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -611,6 +658,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -618,6 +666,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -632,6 +681,7 @@
                         android:layout_alignParentLeft="true"
                         android:paddingLeft="10dp"
                         android:text="@string/bpi_psscore_low"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic" />
@@ -644,6 +694,7 @@
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
                         android:text="@string/bpi_psscore_high"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic" />
@@ -672,6 +723,8 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
                         android:text="@string/bpi_q5"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -698,6 +751,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -705,6 +759,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -712,6 +767,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -719,6 +775,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -726,6 +783,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -733,6 +791,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -752,6 +811,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -759,6 +819,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -766,6 +827,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -773,6 +835,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -780,6 +843,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -794,6 +858,7 @@
                         android:layout_alignParentLeft="true"
                         android:paddingLeft="10dp"
                         android:text="@string/bpi_psscore_low"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic" />
@@ -805,6 +870,7 @@
                         android:layout_below="@id/q5_RG"
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:text="@string/bpi_psscore_high"
                         android:textColor="@color/black"
                         android:textSize="15sp"
@@ -834,6 +900,8 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
                         android:text="@string/bpi_q6"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -861,6 +929,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -868,6 +937,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -875,6 +945,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="20 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -882,6 +953,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="30 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -889,6 +961,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="40 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -896,6 +969,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="50 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -915,6 +989,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="60 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -922,6 +997,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="70 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -929,6 +1005,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="80 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -936,6 +1013,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="90 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -943,6 +1021,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="100 %"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
                         </RadioGroup>
 
@@ -957,6 +1036,7 @@
                         android:paddingLeft="10dp"
                         android:text="@string/bpi_meds_low"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textSize="15sp"
                         android:textStyle="italic" />
 
@@ -968,6 +1048,7 @@
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
                         android:text="@string/bpi_meds_high"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic" />
@@ -999,6 +1080,8 @@
                         android:paddingTop="10dp"
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:text="@string/bpi_q7"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -1026,6 +1109,8 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="@string/bpi_q7a"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1052,6 +1137,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1059,6 +1145,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1066,6 +1153,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1073,6 +1161,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1080,6 +1169,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1087,6 +1177,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1106,6 +1197,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1113,6 +1205,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1120,6 +1213,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1127,6 +1221,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1134,6 +1229,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
                         </RadioGroup>
 
@@ -1150,6 +1246,8 @@
                         android:focusableInTouchMode="true"
                         android:paddingLeft="5dp"
                         android:text="@string/bpi_q7b"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1177,6 +1275,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1184,6 +1283,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1191,6 +1291,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1198,6 +1299,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1205,6 +1307,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1212,6 +1315,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1231,6 +1335,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1238,6 +1343,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1245,6 +1351,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1252,6 +1359,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1259,6 +1367,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1279,6 +1388,8 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
                         android:text="@string/bpi_q7c"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1306,6 +1417,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1313,6 +1425,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1320,6 +1433,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1327,6 +1441,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1334,6 +1449,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1341,6 +1457,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1360,6 +1477,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1367,6 +1485,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1374,6 +1493,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1381,6 +1501,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1388,6 +1509,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1407,6 +1529,8 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="@string/bpi_q7d"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1434,6 +1558,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1441,6 +1566,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1448,6 +1574,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1455,6 +1582,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1462,6 +1590,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1469,6 +1598,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1488,6 +1618,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1495,6 +1626,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1502,6 +1634,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1509,6 +1642,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1516,6 +1650,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1536,6 +1671,8 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
                         android:text="@string/bpi_q7e"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1563,6 +1700,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1570,6 +1708,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1577,6 +1716,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1584,6 +1724,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1591,6 +1732,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1598,6 +1740,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1617,6 +1760,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1624,6 +1768,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1631,6 +1776,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1638,6 +1784,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1645,6 +1792,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1665,6 +1813,8 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
                         android:text="@string/bpi_q7f"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1692,6 +1842,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1699,6 +1850,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1706,6 +1858,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1713,6 +1866,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1720,6 +1874,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1727,6 +1882,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1746,6 +1902,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1753,6 +1910,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1760,6 +1918,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1767,6 +1926,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1774,6 +1934,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1794,6 +1955,8 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="10dp"
                         android:text="@string/bpi_q7g"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1821,6 +1984,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1828,6 +1992,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1835,6 +2000,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1842,6 +2008,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1849,6 +2016,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1856,6 +2024,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1875,6 +2044,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1882,6 +2052,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="7"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1889,6 +2060,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="8"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1896,6 +2068,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="9"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -1903,6 +2076,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10"
+                                android:fontFamily="@font/didactgothic_regular"
                                 android:textColor="@color/black" />
 
                         </RadioGroup>
@@ -1917,6 +2091,7 @@
                         android:layout_alignParentLeft="true"
                         android:paddingLeft="10dp"
                         android:text="@string/bpi_least_interfere"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic" />
@@ -1929,6 +2104,7 @@
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
                         android:text="@string/bpi_most_interfere"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic" />
@@ -1951,6 +2127,8 @@
                         android:background="@drawable/bpi_button_rounded_corners"
                         android:padding="20dp"
                         android:text="Υπολογισμός"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false"
                         android:textSize="20sp"
                         android:visibility="visible"
@@ -1970,6 +2148,8 @@
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/bpi_button_rounded_corners"
                         android:text="Καθαρισμός φόρμας"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false" />
 
 

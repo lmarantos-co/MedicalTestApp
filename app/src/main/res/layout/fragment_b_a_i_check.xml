@@ -77,6 +77,8 @@
                 android:paddingRight="16dp"
                 android:singleLine="false"
                 android:text="BAI Test"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -119,6 +121,8 @@
                     android:gravity="center"
                     android:justificationMode="inter_word"
                     android:text="@string/bai_test_info"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -144,6 +148,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ1"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -164,6 +170,7 @@
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
                             android:textColor="@color/black"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
 
                         <RadioButton
@@ -175,6 +182,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -187,6 +195,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -199,6 +208,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -225,6 +235,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ2"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -244,6 +256,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -256,6 +269,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -268,6 +282,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -280,6 +295,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -306,6 +322,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ3"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -325,6 +343,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -337,6 +356,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -349,6 +369,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -361,6 +382,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -387,6 +409,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ4"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -406,6 +430,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -418,6 +443,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -430,6 +456,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -442,6 +469,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -468,6 +496,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ5"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -487,6 +517,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -499,6 +530,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -511,6 +543,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -523,6 +556,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -549,6 +583,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ6"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -568,6 +604,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -580,6 +617,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -592,6 +630,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -604,6 +643,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -630,6 +670,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ7"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -649,6 +691,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -661,6 +704,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -673,6 +717,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -685,6 +730,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -711,6 +757,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ8"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -730,6 +778,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -742,6 +791,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -754,6 +804,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -766,6 +817,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -792,6 +844,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ9"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -811,6 +865,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -823,6 +878,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -835,6 +891,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -847,6 +904,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -873,6 +931,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ10"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -892,6 +952,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -904,6 +965,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -915,6 +977,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -927,6 +990,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -953,6 +1017,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ11"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -972,6 +1038,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -984,6 +1051,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -996,6 +1064,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1008,6 +1077,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1034,6 +1104,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ12"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1053,6 +1125,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1065,6 +1138,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1077,6 +1151,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1089,6 +1164,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1115,6 +1191,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ13"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1134,6 +1212,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1146,6 +1225,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1158,6 +1238,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1170,6 +1251,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1197,6 +1279,7 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ14"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1216,6 +1299,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1228,6 +1312,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1240,6 +1325,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1252,6 +1338,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1279,6 +1366,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ15"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1298,6 +1387,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1310,6 +1400,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1322,6 +1413,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1334,6 +1426,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1361,6 +1454,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ16"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1380,6 +1475,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1392,6 +1488,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1404,6 +1501,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1416,6 +1514,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1443,6 +1542,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ17"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1462,6 +1563,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1474,6 +1576,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1486,6 +1589,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1498,6 +1602,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1525,6 +1630,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ18"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1544,6 +1651,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1556,6 +1664,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1568,6 +1677,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1580,6 +1690,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1607,6 +1718,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ19"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1626,6 +1739,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1638,6 +1752,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1650,6 +1765,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1662,6 +1778,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1689,6 +1806,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ20"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1708,6 +1827,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1720,6 +1840,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1732,6 +1853,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1743,6 +1865,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1770,6 +1893,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BAIQ21"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1789,6 +1914,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/BAIA1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1801,6 +1927,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1813,6 +1940,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1825,6 +1953,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BAIA4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
