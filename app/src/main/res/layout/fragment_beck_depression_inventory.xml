@@ -76,6 +76,8 @@
                 android:paddingRight="16dp"
                 android:singleLine="false"
                 android:text="BDI Test"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
             <!--            android:drawableLeft="@drawable/ic_bdi_depression_24_post"-->
@@ -119,6 +121,8 @@
                     android:gravity="center"
                     android:justificationMode="inter_word"
                     android:text="@string/bdi_test_intro_text"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -144,6 +148,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_Α"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -164,6 +170,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_Α1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -176,6 +183,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Α2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -188,6 +196,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Α3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -200,6 +209,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Α4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -214,6 +224,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_Α5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -240,6 +251,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_Β"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -260,6 +273,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_Β1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -272,6 +286,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Β2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -284,6 +299,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Β3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -296,6 +312,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Β4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -310,6 +327,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_Β5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -336,6 +354,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_C"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -356,6 +376,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_C1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -368,6 +389,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_C2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -380,6 +402,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_C3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -392,6 +415,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_C4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -406,6 +430,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_C5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -432,6 +457,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_D"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -452,6 +479,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_D1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -464,6 +492,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_D2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -476,6 +505,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_D3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -488,6 +518,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_D4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -502,6 +533,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_D5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -528,6 +560,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_E"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -548,6 +582,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_E1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -560,6 +595,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_E2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -572,6 +608,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_E3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -584,6 +621,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_E4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -598,6 +636,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_E5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -624,6 +663,7 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_F"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -644,6 +684,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_F1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -656,6 +697,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_F2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -668,6 +710,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_F3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -680,6 +723,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_F4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -694,6 +738,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_F5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -720,6 +765,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_G"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -740,6 +787,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_G1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -752,6 +800,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_G2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -764,6 +813,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_G3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -776,6 +826,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_G4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -790,6 +841,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_G5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -816,6 +868,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_H"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -836,6 +890,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_H1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -848,6 +903,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_H2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -860,6 +916,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_H3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -874,6 +931,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_H4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -900,6 +958,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_I"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -920,6 +980,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_I1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -932,6 +993,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_I2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -944,6 +1006,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_I3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -956,6 +1019,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_I4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -970,6 +1034,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_I5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -998,6 +1063,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_K"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1018,6 +1085,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_K1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1030,6 +1098,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_K2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1042,6 +1111,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_K3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1056,6 +1126,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_K4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1082,6 +1153,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_L"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1102,6 +1175,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_L1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1114,6 +1188,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_L2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1126,6 +1201,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_L3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1140,6 +1216,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_L4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1166,6 +1243,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_M"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1186,6 +1265,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_M1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1198,6 +1278,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_M2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1210,6 +1291,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_M3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1224,6 +1306,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_M4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1251,6 +1334,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_N"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1271,6 +1356,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_N1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1283,6 +1369,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_N2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1295,6 +1382,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_N3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1309,6 +1397,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_N4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1335,6 +1424,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_O"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1355,6 +1446,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_O1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1367,6 +1459,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_O2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1378,8 +1471,8 @@
                             android:layout_gravity="left"
                             android:gravity="left"
                             android:paddingLeft="8dp"
-
                             android:text="@string/BDI_answer_O3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1394,6 +1487,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_O4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1421,6 +1515,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_P"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1441,6 +1537,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_P1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1453,6 +1550,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_P2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1465,6 +1563,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_P3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1479,6 +1578,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_P4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1505,6 +1605,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_Q"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1525,6 +1627,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_Q1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1537,6 +1640,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Q2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1549,6 +1653,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_Q3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1563,6 +1668,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_Q4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1589,6 +1695,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_answer_R1"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1609,6 +1717,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_R1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1621,6 +1730,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_R2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1633,6 +1743,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_R3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1647,6 +1758,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_R4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1674,6 +1786,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_answer_S1"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1694,6 +1808,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_S1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1706,6 +1821,8 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_S2"
+                            android:fontFamily="@font/didactgothic_regular"
+                            android:textStyle="bold"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1718,6 +1835,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_S3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1732,6 +1850,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_S4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1758,6 +1877,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_answer_T1"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1778,6 +1899,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_T1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1790,6 +1912,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_T2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1804,6 +1927,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_T3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1830,6 +1954,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_question_U"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1850,6 +1976,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_U1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1862,6 +1989,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_U2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1874,6 +2002,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_U3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1888,6 +2017,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_U4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1915,6 +2045,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/BDI_answer_V1"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1935,6 +2067,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_V1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1947,6 +2080,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_V2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1959,6 +2093,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/BDI_answer_V3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1973,6 +2108,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
                             android:text="@string/BDI_answer_V4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1996,6 +2132,8 @@
                         android:background="@drawable/bai_button_rounded_corners"
                         android:padding="20dp"
                         android:text="Υπολογισμός"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false"
                         android:textSize="20sp"
                         android:visibility="visible"
@@ -2015,6 +2153,8 @@
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/bai_button_rounded_corners"
                         android:text="Καθραισμός φόρμας"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false" />
 
 

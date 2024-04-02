@@ -80,6 +80,8 @@
                 android:paddingRight="16dp"
                 android:singleLine="false"
                 android:text="CVD Test"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -120,6 +122,8 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="Please enter the required patient data:"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -161,6 +165,8 @@
                             android:gravity="center"
                             android:minHeight="48dp"
                             android:text="Current Age :"
+                            android:fontFamily="@font/didactgothic_regular"
+                            android:textStyle="bold"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -185,6 +191,7 @@
                         android:layout_centerInParent="true"
                         android:clickable="true"
                         android:contentDescription="Enter Your Age"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:contextClickable="true"
                         android:ems="10"
                         android:focusable="true"
@@ -202,6 +209,7 @@
                         android:layout_centerInParent="true"
                         android:elevation="2dp"
                         android:text="Age must be between 20-79 "
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textSize="13sp"
                         android:textStyle="italic" />
 
@@ -229,6 +237,8 @@
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Sex"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textSize="20sp" />
 
                     <RadioGroup
@@ -250,6 +260,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="20dp"
                             android:text="MALE"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -263,6 +274,7 @@
                             android:gravity="center"
                             android:minHeight="48dp"
                             android:text="FEMALE"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -293,6 +305,8 @@
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Race"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textSize="20sp" />
 
                     <RadioGroup
@@ -313,6 +327,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="105dp"
                             android:text="White"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
 
                         <RadioButton
@@ -328,6 +343,7 @@
                             android:gravity="center"
                             android:minHeight="48dp"
                             android:text="African American"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
 
                         <RadioButton
@@ -343,6 +359,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="105dp"
                             android:text="Other"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
 
                     </RadioGroup>
@@ -369,6 +386,8 @@
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Systolic Blood Pressure (mm Hg)"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -381,6 +400,7 @@
                         android:layout_centerInParent="true"
                         android:clickable="true"
                         android:contentDescription="Enter Your Systolic Blood Presure"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
@@ -399,6 +419,7 @@
                         android:layout_below="@id/sbbEdTxt"
                         android:layout_centerInParent="true"
                         android:text="Value must be between 90-200 "
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textSize="13sp"
                         android:textStyle="italic"
                         app:layout_constraintTop_toBottomOf="@+id/sbbEdTxt" />
@@ -425,6 +446,8 @@
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Total Cholesterol (mg /Dl)"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textSize="20sp" />
 
                     <EditText
@@ -435,6 +458,7 @@
                         android:layout_centerInParent="true"
                         android:clickable="true"
                         android:contentDescription="Enter Your Total Cholesterol"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
@@ -453,6 +477,7 @@
                         android:layout_below="@+id/tchEdTxt"
                         android:layout_centerInParent="true"
                         android:text="Value must be between 130 - 320 "
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textSize="13sp"
                         android:textStyle="italic"
                         app:layout_constraintTop_toBottomOf="@+id/tchEdTxt" />
@@ -480,6 +505,8 @@
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="HDL Cholesterol (mg /Dl)"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textSize="20sp" />
 
                     <EditText
@@ -491,6 +518,7 @@
                         android:layout_marginTop="5dp"
                         android:clickable="true"
                         android:contentDescription="Enter your HDL Cholesterol"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
@@ -508,6 +536,7 @@
                         android:layout_below="@id/hchEdTxt"
                         android:layout_centerInParent="true"
                         android:text="Value must be between 20 - 100 "
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textSize="13sp"
                         android:textStyle="italic"
                         app:layout_constraintTop_toBottomOf="@+id/hchEdTxt" />
@@ -608,6 +637,8 @@
                             android:gravity="center"
                             android:minHeight="48dp"
                             android:text="Smoker?"
+                            android:fontFamily="@font/didactgothic_regular"
+                            android:textStyle="bold"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -639,6 +670,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="2dp"
                             android:text="Current"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textAlignment="center"
                             android:textSize="20sp" />
 
@@ -651,6 +683,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="3dp"
                             android:text="Former"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textAlignment="center"
                             android:textSize="20sp" />
 
@@ -662,6 +695,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="15dp"
                             android:text="Never"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textAlignment="center"
                             android:textSize="20sp" />
                     </RadioGroup>
@@ -724,6 +758,8 @@
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="@string/treatment"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textSize="20sp" />
 
                     <RadioGroup
@@ -746,6 +782,7 @@
                             android:gravity="center"
                             android:paddingRight="35dp"
                             android:text="on treatment"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
 
                         <RadioButton
@@ -758,6 +795,7 @@
                             android:enabled="true"
                             android:gravity="center"
                             android:text="not on treatment"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp"
                             tools:layout_editor_absoluteX="35dp"
                             tools:layout_editor_absoluteY="1234dp" />
@@ -781,6 +819,8 @@
                         android:background="@drawable/cvd_button_rounded_corners"
                         android:padding="20dp"
                         android:text="Υπολογισμός"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false"
                         android:textSize="20sp"
                         android:visibility="visible"
@@ -800,6 +840,8 @@
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/cvd_button_rounded_corners"
                         android:text="Καθαρισμός φόρμας"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false" />
 
 
