@@ -91,6 +91,7 @@
                     android:drawablePadding="16dp"
                     android:gravity="center"
                     android:text="Είσοδος"
+                    android:elevation="10dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/didactgothic_regular"
                     android:textStyle="bold"
@@ -107,6 +108,7 @@
                     android:layout_centerHorizontal="false"
                     android:layout_centerVertical="false"
                     android:layout_marginLeft="16dp"
+                    android:elevation="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/vericaltGL1"
                     app:layout_constraintStart_toStartOf="parent"
@@ -165,6 +167,8 @@
                     android:drawablePadding="16dp"
                     android:gravity="center"
                     android:text="Εγγραφή"
+                    android:elevation="10dp"
+
                     android:fontFamily="@font/didactgothic_regular"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -176,6 +180,7 @@
 
                 <ImageView
                     android:id="@+id/registerImgV"
+                    android:elevation="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -194,6 +199,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
+                android:elevation="10dp"
                 android:background="@drawable/blue_gradient_shape"
                 app:layout_constraintBottom_toTopOf="@id/bottomCustomersHGL2"
                 app:layout_constraintLeft_toLeftOf="@id/leftGL"
@@ -207,6 +213,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
+                android:elevation="10dp"
                 android:background="@drawable/blue_gradient_shape"
                 app:layout_constraintBottom_toTopOf="@+id/bottomCustomersHGL"
                 app:layout_constraintEnd_toStartOf="@+id/rightGL"
