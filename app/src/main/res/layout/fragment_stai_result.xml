@@ -161,6 +161,8 @@
             android:gravity="center"
             android:minHeight="48dp"
             android:text="@string/stai_test_results"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -184,11 +186,15 @@
                 android:layout_centerVertical="false"
                 android:gravity="center"
                 android:text="@string/stai_staiState_test_score"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/totalSTAIStatescore"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -216,6 +222,8 @@
                 android:layout_centerVertical="false"
                 android:gravity="center"
                 android:text="@string/stai_staiTrait_test_score"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -223,6 +231,8 @@
                 android:id="@+id/totalSTAITraitScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:paddingLeft="5dp"
                 android:textSize="20sp" />
@@ -416,6 +426,8 @@
             android:layout_marginStart="16dp"
             android:gravity="center"
             android:text="Καθόλου ή ελάχιστο άγχος"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -442,6 +454,8 @@
             android:layout_marginStart="16dp"
             android:gravity="center"
             android:text="Μέτριο Άγχος"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -466,6 +480,8 @@
             android:layout_marginStart="16dp"
             android:gravity="center"
             android:text="Πολύ Άγχος"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

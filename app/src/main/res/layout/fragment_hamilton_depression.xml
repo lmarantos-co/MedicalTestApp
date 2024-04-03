@@ -77,6 +77,8 @@
                 android:paddingRight="16dp"
                 android:singleLine="false"
                 android:text="Hammilton Test"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -119,6 +121,8 @@
                     android:gravity="center"
                     android:justificationMode="inter_word"
                     android:text="@string/HAM_TEST_Intro"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -144,6 +148,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q1"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -158,6 +164,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q1_extra"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -177,6 +185,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q1A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -189,6 +198,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q1A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -201,6 +211,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q1A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -213,6 +224,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q1A4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -226,6 +238,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q1A5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -252,6 +265,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q2"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -272,6 +287,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q2A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -284,6 +300,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q2A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -296,6 +313,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q2A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -308,6 +326,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q2A4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -321,6 +340,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q1A5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -347,6 +367,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q3"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -367,6 +389,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q3A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -379,6 +402,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q3A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -391,6 +415,7 @@
                             android:gravity="center|left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q3A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -403,6 +428,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q3A4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -416,6 +442,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q3A5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -442,6 +469,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q4"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -461,6 +490,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q4A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -473,6 +503,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q4A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -486,6 +517,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q4A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -512,6 +544,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q5"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -531,6 +565,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q5A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -543,6 +578,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q5A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -556,6 +592,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q5A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -582,6 +619,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q6"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -602,6 +641,7 @@
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
                             android:text="@string/HAM_Q6A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -615,6 +655,7 @@
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
                             android:text="@string/HAM_Q6A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -629,6 +670,7 @@
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
                             android:text="@string/HAM_Q6A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -655,6 +697,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q7"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -675,6 +719,7 @@
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
                             android:text="@string/HAM_Q7A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -689,6 +734,7 @@
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
                             android:text="@string/HAM_Q7A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -703,6 +749,7 @@
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
                             android:text="@string/HAM_Q7A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -718,6 +765,7 @@
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
                             android:text="@string/HAM_Q7A4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -758,6 +806,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q8_Intro"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -777,6 +827,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q8A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -789,6 +840,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q8A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -801,6 +853,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q8A3"
+                            android:textStyle="bold"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -813,6 +866,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q8A4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -826,6 +880,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q8A5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -852,6 +907,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q9"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -866,6 +923,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q9_Intro"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -885,6 +944,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q9A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -897,6 +957,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q9A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -909,6 +970,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q9A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -921,6 +983,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q9A4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -934,6 +997,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q9A5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -961,6 +1025,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q10"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -980,6 +1046,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q10A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -992,6 +1059,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q10A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1005,6 +1073,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q10A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1017,6 +1086,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q10A4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1030,6 +1100,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q10A5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1056,6 +1127,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q11"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1070,6 +1143,7 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q9_Intro"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1089,6 +1163,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q11A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1101,6 +1176,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q11A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1113,6 +1189,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q11A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1125,6 +1202,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q11A4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1138,6 +1216,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q11A5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1164,6 +1243,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q12"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1178,6 +1259,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q12_Intro"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1197,6 +1280,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q12A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1209,6 +1293,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q12A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1222,6 +1307,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q12A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1248,6 +1334,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q13"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1262,6 +1350,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q13_Intro"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1281,6 +1371,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q13A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1293,6 +1384,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q13A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1306,6 +1398,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q13A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1332,6 +1425,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q14"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1346,6 +1441,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q14_Intro"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1365,6 +1462,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q14A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1377,6 +1475,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q14A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1389,6 +1488,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q14A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1416,6 +1516,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q15"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1435,6 +1537,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q15A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1447,6 +1550,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q15A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1459,6 +1563,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q15A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1472,6 +1577,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q15A4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1499,6 +1605,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q16"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1518,6 +1626,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q16A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1530,6 +1639,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q16A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1543,6 +1653,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q16A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1569,6 +1680,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/HAM_Q17"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1588,6 +1701,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q17A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1600,6 +1714,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q17A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1613,6 +1728,7 @@
                             android:gravity="left"
                             android:paddingLeft="8dp"
                             android:text="@string/HAM_Q17A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -1637,6 +1753,8 @@
                         android:background="@drawable/ham_button_rounded_corners"
                         android:padding="20dp"
                         android:text="Υπολογισμός"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false"
                         android:textSize="20sp"
                         android:visibility="visible"
@@ -1656,6 +1774,8 @@
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/ham_button_rounded_corners"
                         android:text="Κααθρισμός δεδομένων"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false" />
 
 

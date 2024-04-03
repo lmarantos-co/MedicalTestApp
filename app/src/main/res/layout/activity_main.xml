@@ -127,6 +127,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/cvd_panel_layout"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
                 <TextView
@@ -143,6 +144,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="CVD Test"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -158,6 +160,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
+                    android:elevation="10dp"
                     android:background="@drawable/diabetes_panel_layout"
                     android:visibility="visible" />
 
@@ -171,6 +174,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Diabetes Test"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -193,6 +197,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/mdepression_layout"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
 
@@ -207,6 +212,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Derpession Test"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -222,6 +228,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
+                    android:elevation="10dp"
                     android:background="@drawable/anxiety_panel_layout"
                     android:visibility="visible" />
 
@@ -235,6 +242,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Anxiety Test"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -258,6 +266,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/pain_layout_panel"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
                 <TextView
@@ -271,6 +280,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Pain Test"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -287,6 +297,8 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/diet_panel_style"
+                    android:elevation="10dp"
+                    android:shadowRadius="4"
                     android:visibility="visible" />
 
                 <TextView
@@ -299,6 +311,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="MedDietScore \n Test"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -322,6 +335,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/beck_depression_panel"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
                 <TextView
@@ -334,6 +348,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Beck \n Depression"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -349,6 +364,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/geriatric_depression_panel"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
                 <TextView
@@ -361,6 +377,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Geriatric  \n Depression"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -384,6 +401,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/stai_panel_layout"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
                 <TextView
@@ -396,6 +414,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="STAI Test"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -409,10 +428,10 @@
                     android:layout_alignLeft="@id/zungPanel"
                     android:layout_alignParentRight="true"
                     android:layout_centerInParent="true"
-                    android:elevation="5dp"
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Zung \n Depression"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -429,6 +448,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/zung_panel_layout"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
             </RelativeLayout>
@@ -448,6 +468,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
+                    android:elevation="10dp"
                     android:background="@drawable/hamm_panel_layout"
                     android:visibility="visible" />
 
@@ -465,6 +486,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Hammilton \n Depression"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -481,6 +503,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/dass_panel_layout"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
                 <TextView
@@ -494,6 +517,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="DASS TEST"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -517,6 +541,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/opqol_panel_layout"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
                 <TextView
@@ -533,6 +558,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="OPQOL-35 \n TEST"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -548,6 +574,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/geriatric_anxiety_panel"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
                 <TextView
@@ -560,6 +587,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Geriatric Anxiety \n Scale"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -583,6 +611,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/sidas_panel_layout"
+                    android:elevation="10dp"
                     android:visibility="visible" />
 
                 <TextView
@@ -599,6 +628,7 @@
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="SIDAS TEST"
+                    android:elevation="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"

@@ -31,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bdi_test_results_style"
-
+        android:fontFamily="@font/didactgothic_regular"
+        android:textStyle="bold"
         android:drawablePadding="8dp"
         android:elevation="4dp"
         android:gravity="center"
@@ -108,6 +109,8 @@
             android:gravity="center"
             android:minHeight="48dp"
             android:textColor="@color/black"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -126,6 +129,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="false"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:text="@string/bdi_test_score"
                 android:textColor="@color/black"
@@ -137,6 +142,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingLeft="5dp"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -161,6 +168,8 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="@string/mdi_test_depression"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -170,6 +179,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingLeft="5dp"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -437,6 +448,8 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="ΠΙΟ ΣΟΒΑΡΗ ΚΑΤΑΘΛΙΨΗ"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
@@ -449,6 +462,8 @@
             android:layout_marginStart="8dp"
             android:text="50"
             android:textColor="@color/white"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/magendaBottomHGL"
             app:layout_constraintStart_toStartOf="@+id/magednaRightVGL"
@@ -472,6 +487,8 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="ΣΟΒΑΡΗ ΚΑΤΑΘΛΙΨΗ"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
@@ -499,6 +516,8 @@
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:text="ΜΕΤΡΙΑ ΚΑΤΑΘΛΙΨΗ"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
@@ -524,6 +543,8 @@
                 android:gravity="center"
                 android:paddingLeft="15dp"
                 android:text="ΗΠΙΑ ΚΑΤΑΘΛΙΨΗ"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
@@ -549,6 +570,8 @@
                 android:gravity="center"
                 android:paddingLeft="15dp"
                 android:text="ΕΛΑΧΙΣΤΗ ΚΑΤΑΘΛΙΨΗ"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 

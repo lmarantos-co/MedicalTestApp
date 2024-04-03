@@ -81,6 +81,8 @@
                 android:paddingRight="16dp"
                 android:singleLine="false"
                 android:text="DIABETES Test"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -122,6 +124,8 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="Please enter the required patient data:"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -164,6 +168,8 @@
                         android:shadowDx="2"
                         android:shadowDy="2"
                         android:text="Patient Sex"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -187,6 +193,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="15dp"
                             android:text="MALE"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
 
                         <RadioButton
@@ -197,6 +204,7 @@
                             android:gravity="center"
                             android:minHeight="48dp"
                             android:text="FEMALE"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
                     </RadioGroup>
 
@@ -228,6 +236,8 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="@string/medication"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -250,6 +260,7 @@
                             android:gravity="center"
                             android:minHeight="48dp"
                             android:text="YES"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
 
                         <RadioButton
@@ -261,6 +272,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="5dp"
                             android:text="NO"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
                     </RadioGroup>
 
@@ -293,6 +305,8 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="@string/steroids"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -316,6 +330,7 @@
                             android:minHeight="48dp"
                             android:singleLine="false"
                             android:text="YES"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
 
                         <RadioButton
@@ -328,6 +343,7 @@
                             android:paddingRight="5dp"
                             android:singleLine="false"
                             android:text="NO"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
                     </RadioGroup>
 
@@ -357,6 +373,8 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="Patient Age"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -371,6 +389,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="Patient age in years"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:inputType="number"
                         android:minHeight="48dp"
                         android:textSize="20sp" />
@@ -402,6 +421,8 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="@string/BMI"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -416,6 +437,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="Input your Body Mass Indicator"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:inputType="numberDecimal"
                         android:minHeight="48dp"
                         android:textSize="20sp" />
@@ -450,6 +472,8 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="@string/family_history"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -468,6 +492,7 @@
                             android:gravity="center"
                             android:minHeight="48dp"
                             android:text="@string/diabetes_and_sibling"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
 
                         <RadioButton
@@ -480,6 +505,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="15dp"
                             android:text="@string/diabetes_or_sibling"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
 
 
@@ -492,6 +518,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="70dp"
                             android:text="No relative with Diabetes"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textSize="20sp" />
                     </RadioGroup>
 
@@ -530,6 +557,8 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="Smoker?"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -551,6 +580,7 @@
                             android:gravity="center"
                             android:minHeight="48dp"
                             android:text="Current"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textAlignment="center"
                             android:textSize="20dp" />
 
@@ -564,6 +594,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="2dp"
                             android:text="Former"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textAlignment="center"
                             android:textSize="20sp" />
 
@@ -576,6 +607,7 @@
                             android:minHeight="48dp"
                             android:paddingRight="13dp"
                             android:text="Never"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textAlignment="center"
                             android:textSize="20sp" />
                     </RadioGroup>
@@ -598,6 +630,8 @@
                         android:background="@drawable/diabetes_button_rounded_corners"
                         android:padding="20dp"
                         android:text="Υπολογισμός"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false"
                         android:textSize="20sp"
                         android:visibility="visible"
@@ -617,6 +651,8 @@
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/diabetes_button_rounded_corners"
                         android:text="Καθαρισμός φόρμας"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false" />
 
 
@@ -645,9 +681,10 @@
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
                         android:text="RESULTS : "
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@android:color/holo_blue_dark"
                         android:textSize="20sp"
-                        android:textStyle="bold"
                         android:visibility="visible" />
 
                     <TextView
@@ -658,6 +695,7 @@
                         android:gravity="center"
                         android:padding="15dp"
                         android:text="@string/result"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 

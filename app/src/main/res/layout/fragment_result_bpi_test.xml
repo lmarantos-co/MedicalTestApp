@@ -47,6 +47,8 @@
         android:text="@string/bpi_title_result"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:fontFamily="@font/didactgothic_regular"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/horGL1" />
@@ -162,6 +164,8 @@
             android:gravity="center"
             android:minHeight="48dp"
             android:text="@string/bpi_test_results"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -185,6 +189,8 @@
                 android:layout_centerVertical="false"
                 android:gravity="center"
                 android:text="@string/bpi_pss_test_score"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -217,6 +223,8 @@
                 android:layout_centerVertical="false"
                 android:gravity="center"
                 android:text="@string/bpi_pis_test_score"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -226,6 +234,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingLeft="5dp"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -427,6 +437,8 @@
             android:gravity="center"
             android:text="Low Pain"
             android:textColor="@color/black"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textSize="20sp" />
 
     </RelativeLayout>
@@ -452,6 +464,8 @@
             android:layout_marginStart="16dp"
             android:gravity="center"
             android:text="Mild Pain"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -476,6 +490,8 @@
             android:layout_marginStart="16dp"
             android:gravity="center"
             android:text="Moderate Pain"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -501,6 +517,8 @@
             android:layout_marginStart="16dp"
             android:gravity="center"
             android:text="Severe Pain"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

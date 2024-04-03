@@ -32,6 +32,8 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:text="@string/ham_test_results"
+        android:fontFamily="@font/didactgothic_regular"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,6 +101,8 @@
             android:background="@drawable/hammilton_dep_results_style_2"
             android:gravity="center"
             android:minHeight="48dp"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -120,6 +124,8 @@
                 android:layout_centerVertical="false"
                 android:gravity="center"
                 android:text="@string/bdi_test_score"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -129,6 +135,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingLeft="5dp"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -153,6 +161,8 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="@string/mdi_test_depression"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -160,6 +170,8 @@
                 android:id="@+id/QOLStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:paddingLeft="5dp"
                 android:textSize="20sp" />
@@ -431,6 +443,8 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="ΣΟΒΑΡΗ ΚΑΤΑΘΛΙΨΗ"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
@@ -465,6 +479,8 @@
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:text="ΜΕΤΡΙΑ ΚΑΤΑΘΛΙΨΗ"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
@@ -490,6 +506,8 @@
                 android:gravity="center"
                 android:paddingLeft="15dp"
                 android:text="ΗΠΙΑ ΚΑΤΑΘΛΙΨΗ"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 
@@ -515,6 +533,8 @@
                 android:gravity="center"
                 android:paddingLeft="15dp"
                 android:text="ΕΛΑΧΙΣΤΗ ΚΑΤΑΘΛΙΨΗ"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/mdiMagendaTextSize" />
 

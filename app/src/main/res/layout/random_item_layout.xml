@@ -17,6 +17,8 @@
         android:gravity="center"
         android:minHeight="64dp"
         android:text="@string/OPQOL35Q2Category1Q1"
+        android:fontFamily="@font/didactgothic_regular"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -36,6 +38,7 @@
             android:paddingLeft="8dp"
             android:paddingTop="8dp"
             android:text="@string/OPQOL35Q2A1"
+            android:fontFamily="@font/didactgothic_regular"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -49,6 +52,7 @@
             android:paddingLeft="8dp"
             android:paddingTop="8dp"
             android:text="@string/OPQOL35Q2A2"
+            android:fontFamily="@font/didactgothic_regular"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -62,6 +66,7 @@
             android:paddingLeft="8dp"
             android:paddingTop="8dp"
             android:text="@string/OPQOL35Q2A3"
+            android:fontFamily="@font/didactgothic_regular"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -76,6 +81,7 @@
             android:paddingTop="8dp"
             android:text="@string/OPQOL35Q2A4"
             android:textColor="@color/black"
+            android:fontFamily="@font/didactgothic_regular"
             android:textSize="20sp" />
 
         <RadioButton
@@ -88,6 +94,7 @@
             android:paddingLeft="8dp"
             android:paddingTop="8dp"
             android:text="@string/OPQOL35Q2A5"
+            android:fontFamily="@font/didactgothic_regular"
             android:textColor="@color/black"
             android:textSize="20sp" />
     </RadioGroup>

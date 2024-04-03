@@ -46,6 +46,8 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:text="@string/gas_text_result_header"
+        android:fontFamily="@font/didactgothic_regular"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -177,6 +179,8 @@
             android:gravity="center"
             android:minHeight="48dp"
             android:textColor="@color/black"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -200,6 +204,8 @@
                 android:maxLines="3"
                 android:minLines="3"
                 android:text="@string/gas_text_result_header"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -210,6 +216,8 @@
                 android:gravity="center"
                 android:minLines="3"
                 android:paddingLeft="5dp"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -250,6 +258,8 @@
         android:text="9"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:fontFamily="@font/didactgothic_regular"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
         app:layout_constraintEnd_toStartOf="@+id/afterLowAnxietyHGL"
         app:layout_constraintStart_toStartOf="@+id/beforeLowAnxietyHGL"
@@ -262,6 +272,8 @@
         android:text="14"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:fontFamily="@font/didactgothic_regular"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
         app:layout_constraintEnd_toStartOf="@+id/beforeModerateNumAnxietyHGL2"
         app:layout_constraintStart_toStartOf="@+id/beforeModerateNumAnxietyHGL"
@@ -272,6 +284,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30"
+        android:fontFamily="@font/didactgothic_regular"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
@@ -392,6 +406,8 @@
             android:justificationMode="inter_word"
             android:padding="10dp"
             android:textAlignment="textStart"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -403,6 +419,8 @@
             android:justificationMode="inter_word"
             android:padding="10dp"
             android:textAlignment="textStart"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="16sp" />
 

@@ -31,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bdi_test_results_style"
-
+        android:fontFamily="@font/didactgothic_regular"
+        android:textStyle="bold"
         android:drawablePadding="8dp"
         android:elevation="4dp"
         android:gravity="center"
@@ -102,6 +103,8 @@
 
         <TextView
             android:id='@+id/testResultTxtV'
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bdi_test_results_style_sub"
@@ -128,6 +131,8 @@
                 android:layout_centerVertical="false"
                 android:gravity="center"
                 android:text="@string/bdi_test_score"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -136,6 +141,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:paddingLeft="5dp"
                 android:textSize="20sp" />
 
@@ -160,11 +167,15 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="@string/opqol_test_qol"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/QOLStatus"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

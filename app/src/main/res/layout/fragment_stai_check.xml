@@ -55,6 +55,8 @@
 
         <TextView
             android:id="@+id/staiTestTitle"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -112,6 +114,8 @@
                 android:gravity="center"
                 android:justificationMode="inter_word"
                 android:text="@string/STAI_STATE_test_Info"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -137,6 +141,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q1"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -155,6 +161,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -167,6 +174,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -179,6 +187,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -191,6 +200,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -217,6 +227,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q2"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -235,6 +247,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -247,6 +260,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -259,6 +273,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -271,6 +286,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -297,6 +313,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q3"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -315,6 +333,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -327,6 +346,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -339,6 +359,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -351,6 +372,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -377,6 +399,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q4"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -395,6 +419,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -407,6 +432,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -419,6 +445,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -431,6 +458,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -457,6 +485,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q5"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -475,6 +505,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -487,6 +518,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -499,6 +531,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -511,6 +544,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -537,6 +571,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q6"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -555,6 +591,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -567,6 +604,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -579,6 +617,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -591,6 +630,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -617,6 +657,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q7"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -635,6 +677,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -647,6 +690,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -659,6 +703,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -671,6 +716,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -697,6 +743,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q8"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -715,6 +763,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -727,6 +776,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -739,6 +789,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -751,6 +802,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -777,6 +829,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q9"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -795,6 +849,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -807,6 +862,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -819,6 +875,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -831,6 +888,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -857,6 +915,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q10"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -875,6 +935,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -887,6 +948,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -899,6 +961,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -911,6 +974,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -937,6 +1001,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q11"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -955,6 +1021,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -967,6 +1034,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -979,6 +1047,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -991,6 +1060,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1017,6 +1087,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q12"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1035,6 +1107,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1047,6 +1120,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1059,6 +1133,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1071,6 +1146,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1097,6 +1173,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q13"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1115,6 +1193,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1127,6 +1206,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1139,6 +1219,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1151,6 +1232,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1177,6 +1259,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q14"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1195,6 +1279,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1207,6 +1292,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1219,6 +1305,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1231,6 +1318,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1257,6 +1345,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q15"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1275,6 +1365,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1287,6 +1378,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1299,6 +1391,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1311,6 +1404,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1337,6 +1431,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q16"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1355,6 +1451,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1367,6 +1464,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1379,6 +1477,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1391,6 +1490,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1417,6 +1517,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q17"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1435,6 +1537,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1447,6 +1550,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1459,6 +1563,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1471,6 +1576,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1497,6 +1603,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q18"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1515,6 +1623,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1527,6 +1636,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1539,6 +1649,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1551,6 +1662,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1577,6 +1689,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q19"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1595,6 +1709,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1607,6 +1722,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1619,6 +1735,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1631,6 +1748,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1657,6 +1775,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_SANXIETY_Q20"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1675,6 +1795,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1687,6 +1808,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1699,6 +1821,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1711,6 +1834,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_SANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1730,6 +1854,8 @@
                 android:gravity="center"
                 android:justificationMode="inter_word"
                 android:text="@string/STAI_TRAIT_test_Info"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -1755,6 +1881,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q21"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1773,6 +1901,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1785,6 +1914,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1797,6 +1927,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1809,6 +1940,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1835,6 +1967,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q22"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1853,6 +1987,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1865,6 +2000,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1877,6 +2013,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1889,6 +2026,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1915,6 +2053,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q23"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -1933,6 +2073,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1945,6 +2086,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1957,6 +2099,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1969,6 +2112,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -1997,6 +2141,7 @@
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:text="@string/STAI_TANXIETY_Q24"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2015,6 +2160,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2027,6 +2173,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2039,6 +2186,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2051,6 +2199,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2077,6 +2226,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q25"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2095,6 +2246,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2107,6 +2259,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2119,6 +2272,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2131,6 +2285,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2157,6 +2312,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q26"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2175,6 +2332,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2187,6 +2345,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2199,6 +2358,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2211,6 +2371,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2238,6 +2399,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q27"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2256,6 +2419,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2268,6 +2432,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2280,6 +2445,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2292,6 +2458,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2318,6 +2485,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q28"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2336,6 +2505,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2348,6 +2518,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2360,6 +2531,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2372,6 +2544,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2398,6 +2571,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q29"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2416,6 +2591,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2428,6 +2604,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2440,6 +2617,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2452,6 +2630,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2478,6 +2657,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q30"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2496,6 +2677,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2508,6 +2690,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2520,6 +2703,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2532,6 +2716,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2558,6 +2743,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q31"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2576,6 +2763,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2588,6 +2776,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2600,6 +2789,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2612,6 +2802,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2638,6 +2829,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q32"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2656,6 +2849,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2668,6 +2862,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2680,6 +2875,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2692,6 +2888,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2718,6 +2915,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q33"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2736,6 +2935,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2748,6 +2948,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2760,6 +2961,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2772,6 +2974,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2798,6 +3001,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q34"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2816,6 +3021,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2828,6 +3034,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2840,6 +3047,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2852,6 +3060,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2878,6 +3087,7 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q35"
+                    android:fontFamily="@font/didactgothic_regular"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2896,6 +3106,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2908,6 +3119,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2920,6 +3132,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2932,6 +3145,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2958,6 +3172,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q36"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -2976,6 +3192,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -2988,6 +3205,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3000,6 +3218,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3012,6 +3231,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3038,6 +3258,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q37"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -3056,6 +3278,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3068,6 +3291,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3080,6 +3304,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3092,6 +3317,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3118,6 +3344,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q38"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -3136,6 +3364,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3148,6 +3377,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3160,6 +3390,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3172,6 +3403,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3198,6 +3430,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/STAI_TANXIETY_Q39"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -3216,6 +3450,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3228,6 +3463,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3240,6 +3476,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A3"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3252,6 +3489,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3281,6 +3519,8 @@
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:text="@string/STAI_TANXIETY_Q40"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -3299,6 +3539,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A1"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3311,6 +3552,7 @@
                         android:gravity="center|left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3335,6 +3577,7 @@
                         android:gravity="left"
                         android:paddingLeft="8dp"
                         android:text="@string/STAI_TANXIETY_A4"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -3359,6 +3602,8 @@
                     android:background="@drawable/bai_button_rounded_corners"
                     android:padding="20dp"
                     android:text="Υπολογισμός"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textAllCaps="false"
                     android:textSize="20sp"
                     android:visibility="visible"
@@ -3378,6 +3623,8 @@
                     android:layout_toLeftOf="@id/submitBtn"
                     android:background="@drawable/bai_button_rounded_corners"
                     android:text="Καθαρισμός δεδομένων"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textAllCaps="false" />
 
 

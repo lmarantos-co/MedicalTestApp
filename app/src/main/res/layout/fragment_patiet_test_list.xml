@@ -15,9 +15,10 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/history_txtview"
             android:text="Ασθενής"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,6 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:text="Δεδομένα τεστ"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/patientNameTxtV"
@@ -39,6 +42,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ημ/νια Τεστ"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/patientNameTxtV"
@@ -65,6 +70,8 @@
 
                 <TextView
                     android:id="@+id/testNamesTxtV"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="left"
@@ -76,6 +83,8 @@
 
                 <TextView
                     android:id="@+id/testDatesTxtV"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
@@ -144,6 +153,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/light_gray"
             android:text="OK"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

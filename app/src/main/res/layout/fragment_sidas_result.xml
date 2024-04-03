@@ -31,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/sidas_test_result_style"
-
+        android:fontFamily="@font/didactgothic_regular"
+        android:textStyle="bold"
         android:drawablePadding="8dp"
         android:elevation="4dp"
         android:gravity="center"
@@ -105,6 +106,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/sidas_test_result_style_sub"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:gravity="center"
             android:minHeight="48dp"
             android:textColor="@color/black"
@@ -128,6 +131,8 @@
                 android:layout_centerVertical="false"
                 android:gravity="center"
                 android:text="@string/sidas_test_results"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -163,6 +168,8 @@
                     android:layout_centerHorizontal="true"
                     android:gravity="left"
                     android:text="@string/sidas_text_result_header"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -172,6 +179,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:paddingLeft="5dp"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -181,6 +190,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:paddingLeft="5dp"
                 android:textSize="20sp" />
 
@@ -190,6 +201,8 @@
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
                 android:padding="10dp"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
@@ -199,6 +212,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/SIDAStestSummary"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:justificationMode="inter_word"
                 android:padding="10dp"
                 android:textAlignment="textStart"

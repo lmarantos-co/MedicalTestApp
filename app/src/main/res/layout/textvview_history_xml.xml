@@ -9,4 +9,5 @@
     android:gravity="left"
     android:textColor="@color/black"
     android:textSize="20sp"
+    android:fontFamily="@font/didactgothic_regular"
     android:textStyle="bold" />

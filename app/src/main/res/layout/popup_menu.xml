@@ -55,6 +55,8 @@
             android:gravity="center"
             android:minHeight="48dp"
             android:text="Όροι χρήσης"
+            android:fontFamily="@font/didactgothic_regular"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:visibility="visible" />
@@ -69,6 +71,7 @@
             android:justificationMode="inter_word"
             android:padding="15dp"
             android:text="@string/terms_of_use_1"
+            android:fontFamily="@font/didactgothic_regular"
             android:textColor="@color/black"
             android:textSize="@dimen/terms_text_size"
             android:visibility="visible" />
@@ -83,6 +86,7 @@
             android:justificationMode="inter_word"
             android:padding="15dp"
             android:text="@string/terms_of_use_2"
+            android:fontFamily="@font/didactgothic_regular"
             android:textColor="@color/black"
             android:textSize="@dimen/terms_text_size"
             android:visibility="visible" />
@@ -97,6 +101,7 @@
             android:justificationMode="inter_word"
             android:padding="15dp"
             android:text="@string/terms_of_use_3"
+            android:fontFamily="@font/didactgothic_regular"
             android:textColor="@color/black"
             android:textSize="@dimen/terms_reference_size"
             android:visibility="visible" />

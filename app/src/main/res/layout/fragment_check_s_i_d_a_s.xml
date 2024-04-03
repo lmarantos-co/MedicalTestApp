@@ -68,6 +68,8 @@
                 android:paddingRight="16dp"
                 android:singleLine="false"
                 android:text="SIDAS Test"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -107,6 +109,8 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/sidas_title_info"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -133,6 +137,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/sidas_q1"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -152,6 +158,7 @@
                             android:enabled="true"
                             android:gravity="center"
                             android:maxLines="1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:text="0"
                             android:textColor="@color/black" />
 
@@ -165,6 +172,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -177,6 +185,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -189,6 +198,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -201,6 +211,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -213,6 +224,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -225,6 +237,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="6"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -237,6 +250,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="7"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -249,6 +263,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="8"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -261,6 +276,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="9"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -273,6 +289,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="10"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
 
@@ -300,6 +317,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/sidas_q2"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -320,6 +339,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="0"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -332,6 +352,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -344,6 +365,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -356,6 +378,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -368,6 +391,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -380,6 +404,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -392,6 +417,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="6"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -404,6 +430,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="7"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -416,6 +443,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="8"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -428,6 +456,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="9"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -440,6 +469,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="10"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
 
@@ -467,6 +497,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/sidas_q3"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -486,6 +518,7 @@
                             android:enabled="true"
                             android:gravity="center"
                             android:maxLines="1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:text="0"
                             android:textColor="@color/black" />
 
@@ -499,6 +532,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -511,6 +545,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -523,6 +558,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -535,6 +571,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -547,6 +584,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -559,6 +597,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="6"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -571,6 +610,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="7"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -583,6 +623,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="8"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -595,6 +636,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="9"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -607,6 +649,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="10"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
 
@@ -634,6 +677,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/sidas_q4"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -654,6 +699,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="0"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -666,6 +712,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -678,6 +725,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -690,6 +738,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -702,6 +751,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -714,6 +764,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -726,6 +777,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="6"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -738,6 +790,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="7"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -750,6 +803,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="8"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -762,6 +816,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="9"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -774,6 +829,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="10"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
 
@@ -801,6 +857,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/sidas_q5"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -821,6 +879,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="0"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -833,6 +892,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -845,6 +905,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -857,6 +918,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -869,6 +931,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -881,6 +944,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="5"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -893,6 +957,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="6"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -905,6 +970,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="7"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -917,6 +983,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="8"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -929,6 +996,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="9"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
                         <RadioButton
@@ -941,6 +1009,7 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="10"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black" />
 
 
@@ -965,6 +1034,8 @@
                         android:background="@drawable/sidas_button_rounded_corners"
                         android:padding="20dp"
                         android:text="Υπολογισμός"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false"
                         android:textSize="20sp"
                         android:visibility="visible"
@@ -984,6 +1055,8 @@
                         android:layout_toLeftOf="@id/submitBtn"
                         android:background="@drawable/sidas_button_rounded_corners"
                         android:text="Καθαριμός δεδομένων"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false" />
 
 

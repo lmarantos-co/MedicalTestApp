@@ -77,6 +77,8 @@
                 android:paddingRight="16dp"
                 android:singleLine="false"
                 android:text="OPQOL Test"
+                android:fontFamily="@font/didactgothic_regular"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -119,6 +121,8 @@
                     android:gravity="center"
                     android:justificationMode="inter_word"
                     android:text="@string/OPQOL35testtitle"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -144,6 +148,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/OPQOL35testinfo1"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -158,6 +164,7 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/OPQOL35testinfo2"
+                        android:fontFamily="@font/didactgothic_regular"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="italic" />
@@ -179,6 +186,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/OPQOL35Q1"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -203,6 +212,8 @@
                         android:gravity="center"
                         android:minHeight="64dp"
                         android:text="@string/OPQOL35Q1nfo"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -222,6 +233,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/OPQOL35Q1A1"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -235,6 +247,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/OPQOL35Q1A2"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -248,6 +261,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/OPQOL35Q1A3"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -261,6 +275,7 @@
                             android:paddingLeft="8dp"
                             android:paddingTop="8dp"
                             android:text="@string/OPQOL35Q1A4"
+                            android:fontFamily="@font/didactgothic_regular"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
                     </RadioGroup>
@@ -280,6 +295,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/OPQOL35Q2info1"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -296,6 +313,8 @@
                     android:gravity="center"
                     android:minHeight="64dp"
                     android:text="@string/OPQOL35Q2info2"
+                    android:fontFamily="@font/didactgothic_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -352,6 +371,8 @@
                         android:backgroundTint="@color/light_blue"
                         android:padding="20dp"
                         android:text="Επόμενη Φόρμα"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false"
                         android:textSize="20sp"
                         android:visibility="visible"
@@ -371,6 +392,8 @@
                         android:layout_marginRight="8dp"
                         android:background="@drawable/bai_button_rounded_corners"
                         android:text="Καθαρισμός φόρμας"
+                        android:fontFamily="@font/didactgothic_regular"
+                        android:textStyle="bold"
                         android:textAllCaps="false" />
 
 
