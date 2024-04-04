@@ -428,13 +428,15 @@
                     android:layout_alignLeft="@id/zungPanel"
                     android:layout_alignParentRight="true"
                     android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:elevation="12dp"
+                    android:enabled="false"
                     android:fontFamily="@font/didactgothic_regular"
                     android:gravity="center"
                     android:text="Zung \n Depression"
-                    android:elevation="10dp"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:visibility="visible" />
 
                 <View
