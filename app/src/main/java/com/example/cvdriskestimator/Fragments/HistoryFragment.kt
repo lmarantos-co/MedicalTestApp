@@ -1122,8 +1122,6 @@ class HistoryFragment : Fragment() {
                            minScore = 0f
                        if (maxScore < 12)
                            maxScore += 2
-                       else
-                           maxScore = 15f
                    }
 
                    //create the data set

@@ -95,7 +95,7 @@ class GASCheckFragment1 : Fragment() {
 
         if (answersFromFirstFragment == true)
         {
-            setPatientSelections(allPatientSelectionsFr2)
+            setPatientSelections(allPatientSelections)
         }
         if (openType == "open_history")
         {
@@ -189,9 +189,8 @@ class GASCheckFragment1 : Fragment() {
             if (gasPatientViewModel.checkGASTestPatient1(allPatientSelections))
            {
                bundle.putSerializable("fragment1Answers" , allPatientSelections)
-               if (answersFromSecondFragment)
+               if (allPatientSelectionsFr2.get(0) != null)
                    bundle.putSerializable("fragment2Answers" , allPatientSelectionsFr2)
-
                gasCheckFragment2 = GASCheckFragment2.newInstance(bundle)
                mainActivity.fragmentTransaction(gasCheckFragment2)
            }
@@ -268,6 +267,23 @@ class GASCheckFragment1 : Fragment() {
             setQuestionRadioGroup(gasCheckBinding.GAS13QRG , test.patientGASQ13)
             setQuestionRadioGroup(gasCheckBinding.GAS14QRG , test.patientGASQ14)
             setQuestionRadioGroup(gasCheckBinding.GAS15QRG , test.patientGASQ15)
+            allPatientSelectionsFr2.add(0 , test.patientGASQ16)
+            allPatientSelectionsFr2.add(1 , test.patientGASQ17)
+            allPatientSelectionsFr2.add(2 , test.patientGASQ18)
+            allPatientSelectionsFr2.add(3 , test.patientGASQ19)
+            allPatientSelectionsFr2.add(4 , test.patientGASQ20)
+            allPatientSelectionsFr2.add(5 , test.patientGASQ21)
+            allPatientSelectionsFr2.add(6 , test.patientGASQ22)
+            allPatientSelectionsFr2.add(7 , test.patientGASQ23)
+            allPatientSelectionsFr2.add(8 , test.patientGASQ24)
+            allPatientSelectionsFr2.add(9 , test.patientGASQ25)
+            allPatientSelectionsFr2.add(10 , test.patientGASQ26)
+            allPatientSelectionsFr2.add(11 , test.patientGASQ27)
+            allPatientSelectionsFr2.add(12 , test.patientGASQ28)
+            allPatientSelectionsFr2.add(13 , test.patientGASQ29)
+            allPatientSelectionsFr2.add(14 , test.patientGASQ30)
+
+
         } , 1000)
     }
 
