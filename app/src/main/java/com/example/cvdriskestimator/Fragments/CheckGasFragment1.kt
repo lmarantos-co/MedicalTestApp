@@ -35,8 +35,8 @@ class GASCheckFragment1 : Fragment() {
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     //    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popupMenu : PopUpMenu
-    private var allPatientSelections = arrayListOf<Int?>(1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 1 ,1 ,1 ,1 ,1 ,1)
-    private var allPatientSelectionsFr2 = arrayListOf<Int?>(1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 1 ,1 ,1 ,1 ,1 ,1)
+    private var allPatientSelections = arrayListOf<Int?>(null, null ,null ,null ,null ,null ,null ,null ,null, null ,null ,null ,null ,null ,null)
+    private var allPatientSelectionsFr2 = arrayListOf<Int?>(null, null ,null ,null ,null ,null ,null ,null ,null, null ,null ,null ,null ,null ,null)
     private var answersFromSecondFragment : Boolean = false
     private var answersFromFirstFragment : Boolean = false
     private lateinit var gasCheckFragment2: GASCheckFragment2
