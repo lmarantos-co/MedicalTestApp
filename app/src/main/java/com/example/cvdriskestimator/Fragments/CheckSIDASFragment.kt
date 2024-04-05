@@ -188,30 +188,54 @@ class SIDASCheckFragment : Fragment() {
             {
                 sidasCheckBinding.SIDAS2QRG.isEnabled = false
                 sidasCheckBinding.SIDAS2QRG.isActivated = false
+                for (i in 0 until sidasCheckBinding.SIDAS2QRG.childCount) {
+                    sidasCheckBinding.SIDAS2QRG.getChildAt(i).isEnabled = false
+                }
                 sidasCheckBinding.SIDAS2QRG.isClickable = false
                 sidasCheckBinding.SIDAS3QRG.isEnabled = false
                 sidasCheckBinding.SIDAS3QRG.isClickable = false
+                for (i in 0 until sidasCheckBinding.SIDAS3QRG.childCount) {
+                    sidasCheckBinding.SIDAS3QRG.getChildAt(i).isEnabled = false
+                }
                 sidasCheckBinding.SIDAS4QRG.isActivated = false
                 sidasCheckBinding.SIDAS4QRG.isEnabled = false
                 sidasCheckBinding.SIDAS4QRG.isClickable = false
+                for (i in 0 until sidasCheckBinding.SIDAS4QRG.childCount) {
+                    sidasCheckBinding.SIDAS4QRG.getChildAt(i).isEnabled = false
+                }
                 sidasCheckBinding.SIDAS5QRG.isActivated = false
                 sidasCheckBinding.SIDAS5QRG.isEnabled = false
                 sidasCheckBinding.SIDAS5QRG.isClickable = false
+                for (i in 0 until sidasCheckBinding.SIDAS5QRG.childCount) {
+                    sidasCheckBinding.SIDAS5QRG.getChildAt(i).isEnabled = false
+                }
             }
             else
             {
                 sidasCheckBinding.SIDAS2QRG.isActivated = true
                 sidasCheckBinding.SIDAS2QRG.isEnabled = true
                 sidasCheckBinding.SIDAS2QRG.isClickable = true
+                for (i in 0 until sidasCheckBinding.SIDAS2QRG.childCount) {
+                    sidasCheckBinding.SIDAS2QRG.getChildAt(i).isEnabled = true
+                }
                 sidasCheckBinding.SIDAS3QRG.isActivated = true
                 sidasCheckBinding.SIDAS3QRG.isEnabled = true
                 sidasCheckBinding.SIDAS3QRG.isClickable = true
+                for (i in 0 until sidasCheckBinding.SIDAS3QRG.childCount) {
+                    sidasCheckBinding.SIDAS3QRG.getChildAt(i).isEnabled = true
+                }
                 sidasCheckBinding.SIDAS4QRG.isActivated = true
                 sidasCheckBinding.SIDAS4QRG.isEnabled = true
                 sidasCheckBinding.SIDAS4QRG.isClickable = true
+                for (i in 0 until sidasCheckBinding.SIDAS4QRG.childCount) {
+                    sidasCheckBinding.SIDAS4QRG.getChildAt(i).isEnabled = true
+                }
                 sidasCheckBinding.SIDAS5QRG.isActivated = true
                 sidasCheckBinding.SIDAS5QRG.isEnabled = true
                 sidasCheckBinding.SIDAS5QRG.isClickable = true
+                for (i in 0 until sidasCheckBinding.SIDAS5QRG.childCount) {
+                    sidasCheckBinding.SIDAS5QRG.getChildAt(i).isEnabled = true
+                }
             }
         }
 
