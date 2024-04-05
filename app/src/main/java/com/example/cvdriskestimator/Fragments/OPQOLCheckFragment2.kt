@@ -146,6 +146,7 @@ class OPQOLCheckFragment2 : Fragment() {
             if (it.containsKey("Answers2"))
             {
                 selectionsFromThisFragment = it.getSerializable("Answers2") as ArrayList<Int?>
+                allPatientSelections = selectionsFromThisFragment
                 selectionsFromThisFragmentExists = true
             }
             if (it.containsKey("allGeneratedRelativeLayoutIds2Fr"))
