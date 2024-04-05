@@ -2217,7 +2217,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                             realm = Realm.getDefaultInstance()
                             realm.executeTransaction {
                                 val username = getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
-                                val patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
+                                val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
+                                var allPatientTests = realm.where(Test::class.java).equalTo("patientId" , patient!!.patientId).findAll()
+                                for (test in allPatientTests)
+                                {
+                                    test!!.resetAllfieldsToNull()
+                                    realm.insertOrUpdate(test)
+                                }
                                 //get the last recorded
 
                                 //initialize all patient data fields

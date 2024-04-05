@@ -1010,4 +1010,727 @@ open class Test : RealmModel
 
     var sidasTestResult : Int? = null
 
+    fun resetAllfieldsToNull()
+    {
+        patientAge = ""
+
+        patientSex = ""
+
+        patientRace  = ""
+
+        SSB  = ""
+
+        TCH = ""
+
+        HDL = ""
+
+        smoker  = ""
+
+        cvdTestResult = null
+
+        //DIABETES CHECK
+
+        treatment = ""
+
+        patientPAM  = ""
+
+        patientSteroids  = ""
+
+        patientBMI = ""
+
+        patientSiblings = ""
+
+        diabetesTestResult  = null
+
+
+        //variables related with Major Depression Inventory Test
+
+        patientMDIQ1  = null
+
+
+        patientMDIQ2 = null
+
+
+        patientMDIQ3 = null
+
+
+        patientMDIQ4 = null
+
+
+        patientMDIQ5  = null
+
+
+        patientMDIQ6 = null
+
+
+        patientMDIQ7  = null
+
+
+        patientMDIQ8  = null
+
+
+        patientMDIQ9  = null
+
+
+       patientMDIQ10  = null
+
+
+        patientMDIQ11 = null
+
+
+        patientMDIQ12 = null
+
+
+        patientMDIQ13 = null
+
+        patientMDITestResult = null
+
+        //variables related with Beck Anxiety Inventory Test
+
+        patientBAIQ1 = null
+
+
+        patientBAIQ2 = null
+
+
+        patientBAIQ3 = null
+
+
+        patientBAIQ4 = null
+
+
+        patientBAIQ5 = null
+
+
+        patientBAIQ6 = null
+
+
+        patientBAIQ7 = null
+
+
+        patientBAIQ8 = null
+
+
+        patientBAIQ9 = null
+
+
+        patientBAIQ10 = null
+
+
+        patientBAIQ11 = null
+
+
+        patientBAIQ12 = null
+
+
+        patientBAIQ13 = null
+
+        patientBAIQ14 = null
+
+
+        patientBAIQ15 = null
+
+
+        patientBAIQ16 = null
+
+
+        patientBAIQ17 = null
+
+        patientBAIQ18  = null
+
+
+        patientBAIQ19 = null
+
+
+        patientBAIQ20 = null
+
+
+        patientBAIQ21 = null
+
+        patientBAITestResult = null
+
+        //variables related wth the Med Diet Score Test
+
+        patientMDSQ1 = null
+
+        patientMDSQ2 = null
+
+        patientMDSQ3 = null
+
+        patientMDSQ4 = null
+
+        patientMDSQ5= null
+
+        patientMDSQ6= null
+
+        patientMDSQ7 = null
+
+        patientMDSQ8 = null
+
+        patientMDSQ9= null
+
+        patientMDSQ10= null
+
+        patientMDSQ11 = null
+
+        patientMDSTestResult= null
+
+        //variables related with the Brief Pain Inventory Index
+
+        patientBPIQ1 = null
+
+        patientBPIQ2= null
+
+        patientBPIQ3= null
+
+        patientBPIQ4 = null
+
+        patientBPIQ5 = null
+
+        patientBPIQ6 = null
+
+        patientBPIQ7= null
+
+        patientBPIQ8= null
+
+        patientBPIQ9= null
+
+        patientBPIQ10 = null
+
+        patientBPIQ11 = null
+
+        patientBPIQ12 = null
+
+        patientBPIcircleX = null
+
+        patientBPIcircleY = null
+
+        patientBPITestSeverityResult = null
+
+        patientBPITestInterferenceResult = null
+
+
+        //variables related with GDS Test
+
+        patientGDSQ1 = null
+
+        patientGDSQ2 = null
+
+        patientGDSQ3  = null
+
+        patientGDSQ4 = null
+
+        patientGDSQ5 = null
+
+        patientGDSQ6 = null
+
+        patientGDSQ7 = null
+
+        patientGDSQ8 = null
+
+        patientGDSQ9 = null
+
+        patientGDSQ10 = null
+
+        patientGDSQ11 = null
+
+        patientGDSQ12 = null
+
+        patientGDSQ13 = null
+
+        patientGDSQ14 = null
+
+        patientGDSQ15 = null
+
+        patientGDSTestResult = null
+
+        //variables related with the PDQ Test
+
+        patientPDQQ1 = null
+
+        patientPDQQ2  = null
+
+        patientPDQQ3 = null
+
+        patientPDQQ4 = null
+
+        patientPDQQ5 = null
+
+        patientPDQQ6 = null
+
+        patientPDQQ7  = null
+
+        patientPDQQ8 = null
+
+        patientPDQQ9= null
+
+        patientPDQQ10 = null
+
+        patientPDQQ11  = null
+
+        patientPDQQ12 = null
+
+        patientPDQQ13 = null
+
+        patientPDQQ14 = null
+
+        patientPDQQ15 = null
+
+        patientPDQQ16 = null
+
+        patientPDQQ17 = null
+
+        patientPDQQ18 = null
+
+        patientPDQQ19 = null
+
+        patientPDQQ20 = null
+
+        patientPDQQ21 = null
+
+        patientPDQQ22 = null
+
+        patientPDQQ23= null
+
+        patientPDQQ24= null
+
+       patientPDQQ25 = null
+
+        patientPDQQ26 = null
+
+        patientPDQQ27= null
+
+        patientPDQQ28 = null
+
+        patientPDQQ29 = null
+
+        patientPDQQ30= null
+
+        patientPDQQ31 = null
+
+        patientPDQQ32  = null
+
+        patientPDQQ33  = null
+
+       patientPDQQ34 = null
+
+        patientPDQQ35 = null
+
+        patientPDQQ36 = null
+
+        patientPDQQ37 = null
+
+        patientPDQQ38 = null
+
+        patientPDQQ39 = null
+
+        //variables related with Beck Depression Inventory Test
+
+        patientBDIQ1 = null
+
+
+        patientBDIQ2 = null
+
+
+        patientBDIQ3 = null
+
+
+        patientBDIQ4 = null
+
+
+        patientBDIQ5 = null
+
+
+        patientBDIQ6 = null
+
+
+        patientBDIQ7 = null
+
+
+        patientBDIQ8 = null
+
+
+        patientBDIQ9 = null
+
+
+        patientBDIQ10 = null
+
+
+        patientBDIQ11 = null
+
+
+        patientBDIQ12 = null
+
+
+        patientBDIQ13 = null
+
+        patientBDIQ14 = null
+
+
+        patientBDIQ15 = null
+
+
+        patientBDIQ16 = null
+
+
+        patientBDIQ17 = null
+
+
+        patientBDIQ18 = null
+
+
+        patientBDIQ19 = null
+
+
+       patientBDIQ20 = null
+
+
+        patientBDIQ21 = null
+
+        patientBDITestResult= null
+
+
+        //variables related with hamilton Depression
+
+        patientHAMDQ1 = null
+
+
+        patientHAMDQ2 = null
+
+
+        patientHAMDQ3 = null
+
+
+        patientHAMDQ4= null
+
+
+        patientHAMDQ5= null
+
+
+        patientHAMDQ6 = null
+
+
+        patientHAMDQ7 =   null
+
+
+        patientHAMDQ8 = null
+
+
+        patientHAMDQ9= null
+
+
+        patientHAMDQ10 = null
+
+
+        patientHAMDQ11= null
+
+
+        patientHAMDQ12 = null
+
+
+        patientHAMDQ13= null
+
+        patientHAMDQ14 = null
+
+
+        patientHAMDQ15 = null
+
+
+        patientHAMDQ16  = null
+
+
+        patientHAMDQ17  = null
+
+
+        patientHAMDTestResult  = null
+
+
+        //Stai Test
+
+        //state
+
+        patientSTAISQ1 = null
+
+
+        patientSTAISQ2  = null
+
+
+        patientSTAISQ3 = null
+
+
+        patientSTAISQ4= null
+
+
+        patientSTAISQ5= null
+
+
+        patientSTAISQ6= null
+
+
+        patientSTAISQ7 = null
+
+
+        patientSTAISQ8 = null
+
+
+        patientSTAISQ9 = null
+
+
+        patientSTAISQ10= null
+
+
+        patientSTAISQ11 = null
+
+
+        patientSTAISQ12 = null
+
+
+        patientSTAISQ13 = null
+
+        patientSTAISQ14 = null
+
+        patientSTAISQ15 = null
+
+        patientSTAISQ16 = null
+
+        patientSTAISQ17 = null
+
+        patientSTAISQ18 = null
+
+        patientSTAISQ19 = null
+
+        patientSTAISQ20 = null
+
+
+        //trait
+
+        patientSTAITQ21 = null
+
+
+        patientSTAITQ22 = null
+
+
+        patientSTAITQ23 = null
+
+
+        patientSTAITQ24 = null
+
+
+        patientSTAITQ25 = null
+
+
+        patientSTAITQ26 = null
+
+
+        patientSTAITQ27 =   null
+
+
+        patientSTAITQ28 = null
+
+
+        patientSTAITQ29 = null
+
+
+        patientSTAITQ30= null
+
+
+        patientSTAITQ31= null
+
+
+        patientSTAITQ32 = null
+
+        patientSTAITQ33 = null
+
+        patientSTAITQ34 = null
+
+        patientSTAITQ35  = null
+
+        patientSTAITQ36 = null
+
+        patientSTAITQ37 = null
+
+        patientSTAITQ38 = null
+
+        patientSTAITQ39 = null
+
+        patientSTAITQ40 = null
+
+        patientSTAISScore = null
+        patientSTAITScore = null
+
+        //DASS Test
+
+        patientDASSQ1 = null
+
+        patientDASSQ2 = null
+
+        patientDASSQ3= null
+
+        patientDASSQ4 = null
+
+        patientDASSQ5= null
+
+        patientDASSQ6= null
+
+        patientDASSQ7 = null
+
+        patientDASSQ8= null
+
+        patientDASSQ9 = null
+
+        patientDASSQ10= null
+
+        patientDASSQ11= null
+
+        patientDASSQ12 = null
+
+        patientDASSQ13 = null
+
+        patientDASSQ14 = null
+
+        patientDASSQ15= null
+
+        patientDASSQ16 =  null
+
+        patientDASSQ17 = null
+
+        patientDASSQ18= null
+
+        patientDASSQ19= null
+
+        patientDASSQ20 = null
+
+        patientDASSQ21= null
+
+        dassStressResult= null
+        dassAnxietyResult= null
+        dassDepressionResult= null
+
+
+        //ZUNG Test
+
+        patientZUNGQ1= null
+
+        patientZUNGQ2 = null
+
+        patientZUNGQ3 = null
+
+        patientZUNGQ4 = null
+
+        patientZUNGQ5 = null
+
+        patientZUNGQ6 = null
+
+        patientZUNGQ7 = null
+
+        patientZUNGQ8 = null
+
+        patientZUNGQ9 = null
+
+        patientZUNGQ10 = null
+
+        patientZUNGQ11 = null
+
+        patientZUNGQ12 = null
+
+        patientZUNGQ13 = null
+
+        patientZUNGQ14= null
+
+        patientZUNGQ15 = null
+
+        patientZUNGQ16 = null
+
+        patientZUNGQ17 = null
+
+        patientZUNGQ18= null
+
+        patientZUNGQ19 = null
+
+        patientZUNGQ20 = null
+
+        zungTestReesult = null
+
+        //OPQOL Test
+
+        //variables related with GAS Test
+
+        patientGASQ1 = null
+
+        patientGASQ2  = null
+
+        patientGASQ3 = null
+
+        patientGASQ4 = null
+
+        patientGASQ5 = null
+
+        patientGASQ6 = null
+
+        patientGASQ7 = null
+
+        patientGASQ8 = null
+
+        patientGASQ9 = null
+
+        patientGASQ10 = null
+
+        patientGASQ11 = null
+
+        patientGASQ12 = null
+
+        patientGASQ13 = null
+
+        patientGASQ14 = null
+
+        patientGASQ15 = null
+
+        patientGASQ16 = null
+
+        patientGASQ17 = null
+
+        patientGASQ18 = null
+
+        patientGASQ19 = null
+        patientGASQ20  = null
+
+        patientGASQ21 = null
+
+        patientGASQ22 = null
+
+        patientGASQ23 = null
+
+        patientGASQ24 = null
+
+        patientGASQ25 = null
+
+        patientGASQ26 = null
+
+        patientGASQ27 = null
+
+        patientGASQ28 = null
+
+        patientGASQ29 = null
+
+        patientGASQ30 = null
+
+        patientGASTestResult= null
+
+        patientGASSomatic = null
+        patientGASCognitive = null
+        patientGASAffective= null
+
+        //SIDAS Test
+        patientSIDASQ1 = null
+
+        patientSIDASQ2 = null
+
+        patientSIDASQ3 = null
+
+        patientSIDASQ4 = null
+
+       patientSIDASQ5 = null
+
+       sidasTestResult = null
+    }
 }

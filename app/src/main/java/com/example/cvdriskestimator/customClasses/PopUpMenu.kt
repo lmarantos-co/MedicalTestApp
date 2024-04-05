@@ -14,6 +14,7 @@ import com.example.cvdriskestimator.Fragments.*
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.RealmDB.Patient
+import com.example.cvdriskestimator.RealmDB.Test
 import io.realm.Realm
 import java.lang.reflect.Method
 
@@ -110,7 +111,13 @@ class PopUpMenu {
                                 realm = Realm.getDefaultInstance()
                                 realm.executeTransaction {
                                     val username = prMainActivity.getPreferences(Context.MODE_PRIVATE).getString("userName" , "tempUser")
-                                    val patient = realm.where(Patient::class.java).isNotNull("id").equalTo("userName" , username).findFirst()
+                                    val patient = realm.where(Patient::class.java).isNotNull("patientId").equalTo("userName" , username).findFirst()
+                                    var allPatientTests = realm.where(Test::class.java).equalTo("patientId" , patient!!.patientId).findAll()
+                                    for (test in allPatientTests)
+                                    {
+                                        test!!.resetAllfieldsToNull()
+                                        realm.insertOrUpdate(test)
+                                    }
                                     //initaalize all patient data fields
 //                                    patient!!.patientAge = ""
 //                                    patient!!.smoker = ""
