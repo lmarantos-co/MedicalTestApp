@@ -187,23 +187,31 @@ class SIDASCheckFragment : Fragment() {
             if ((radioGroup.findViewById<RadioButton>(i).id == sidasCheckBinding.SIDAS1QRB0.id))
             {
                 sidasCheckBinding.SIDAS2QRG.isEnabled = false
-                sidasCheckBinding.SIDAS3QRG.isActivated = false
+                sidasCheckBinding.SIDAS2QRG.isActivated = false
+                sidasCheckBinding.SIDAS2QRG.isClickable = false
                 sidasCheckBinding.SIDAS3QRG.isEnabled = false
+                sidasCheckBinding.SIDAS3QRG.isClickable = false
                 sidasCheckBinding.SIDAS4QRG.isActivated = false
                 sidasCheckBinding.SIDAS4QRG.isEnabled = false
+                sidasCheckBinding.SIDAS4QRG.isClickable = false
                 sidasCheckBinding.SIDAS5QRG.isActivated = false
                 sidasCheckBinding.SIDAS5QRG.isEnabled = false
+                sidasCheckBinding.SIDAS5QRG.isClickable = false
             }
             else
             {
                 sidasCheckBinding.SIDAS2QRG.isActivated = true
                 sidasCheckBinding.SIDAS2QRG.isEnabled = true
+                sidasCheckBinding.SIDAS2QRG.isClickable = true
                 sidasCheckBinding.SIDAS3QRG.isActivated = true
                 sidasCheckBinding.SIDAS3QRG.isEnabled = true
+                sidasCheckBinding.SIDAS3QRG.isClickable = true
                 sidasCheckBinding.SIDAS4QRG.isActivated = true
                 sidasCheckBinding.SIDAS4QRG.isEnabled = true
+                sidasCheckBinding.SIDAS4QRG.isClickable = true
                 sidasCheckBinding.SIDAS5QRG.isActivated = true
                 sidasCheckBinding.SIDAS5QRG.isEnabled = true
+                sidasCheckBinding.SIDAS5QRG.isClickable = true
             }
         }
 
