@@ -135,13 +135,29 @@ class CheckSIDASPatientViewModel : ViewModel() {
 
     fun checkMDITestPatient(allPatientSelections : ArrayList<Int?>)
     {
-        if ((checkQuestionForInputError(allPatientSelections[0] , 1)) && (checkQuestionForInputError(allPatientSelections[1]  , 2))
-            && (checkQuestionForInputError(allPatientSelections[2]  , 3)) && (checkQuestionForInputError(allPatientSelections[3]  , 4))
-            && (checkQuestionForInputError(allPatientSelections[4]  , 5)))
+        if (allPatientSelections.get(1) != null)
         {
-            val result = mdiTestEstimator.calculateSIDASScore(allPatientSelections)
-            storePatientOnRealm(allPatientSelections , result)
-            openResultFragment(result)
+            if ((checkQuestionForInputError(allPatientSelections[0] , 1)) && (checkQuestionForInputError(allPatientSelections[1]  , 2))
+                && (checkQuestionForInputError(allPatientSelections[2]  , 3)) && (checkQuestionForInputError(allPatientSelections[3]  , 4))
+                && (checkQuestionForInputError(allPatientSelections[4]  , 5)))
+            {
+                val result = mdiTestEstimator.calculateSIDASScore(allPatientSelections)
+                storePatientOnRealm(allPatientSelections , result)
+                openResultFragment(result)
+            }
+        }
+        else
+        {
+            if (checkQuestionForInputError(allPatientSelections[0] , 1))
+            {
+                allPatientSelections[1] = 0
+                allPatientSelections[2] = 0
+                allPatientSelections[3] = 0
+                allPatientSelections[4] = 0
+                val result = mdiTestEstimator.calculateSIDASScore(allPatientSelections)
+                storePatientOnRealm(allPatientSelections , result)
+                openResultFragment(result)
+            }
         }
     }
 

@@ -38,7 +38,7 @@ class SIDASCheckFragment : Fragment() {
     private var registerFragment = RegisterFragment.newInstance()
     private var leaderBoardFragment = LeaderBoardFragment.newInstance()
     private lateinit var popupMenu : PopUpMenu
-    private var allPatientSelections = arrayListOf<Int?>(1, 1 ,1 ,1 ,1)
+    private var allPatientSelections = arrayListOf<Int?>(null, null ,null ,null ,null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -150,12 +150,26 @@ class SIDASCheckFragment : Fragment() {
         sidasCheckBinding.submitBtn.setOnClickListener {
 
             allPatientSelections[0] = getAsnwerFromRadioGroup(sidasCheckBinding.SIDAS1QRG)
-            allPatientSelections[1] = getAsnwerFromRadioGroup(sidasCheckBinding.SIDAS2QRG)
-            allPatientSelections[2] = getAsnwerFromRadioGroup(sidasCheckBinding.SIDAS3QRG)
-            allPatientSelections[3] = getAsnwerFromRadioGroup(sidasCheckBinding.SIDAS4QRG)
-            allPatientSelections[4] = getAsnwerFromRadioGroup(sidasCheckBinding.SIDAS5QRG)
+            if (sidasCheckBinding.SIDAS2QRG.isEnabled)
+            {
+                allPatientSelections[1] = getAsnwerFromRadioGroup(sidasCheckBinding.SIDAS2QRG)
 
+            }
+            if (sidasCheckBinding.SIDAS3QRG.isEnabled)
+            {
+                allPatientSelections[2] = getAsnwerFromRadioGroup(sidasCheckBinding.SIDAS3QRG)
 
+            }
+            if (sidasCheckBinding.SIDAS4QRG.isEnabled)
+            {
+                allPatientSelections[3] = getAsnwerFromRadioGroup(sidasCheckBinding.SIDAS4QRG)
+
+            }
+            if (sidasCheckBinding.SIDAS5QRG.isEnabled)
+            {
+                allPatientSelections[4] = getAsnwerFromRadioGroup(sidasCheckBinding.SIDAS5QRG)
+
+            }
 
             sidasPatientViewModel.checkMDITestPatient(allPatientSelections)
         }
@@ -169,6 +183,29 @@ class SIDASCheckFragment : Fragment() {
             popupMenu.showPopUp(it)
         }
 
+        sidasCheckBinding.SIDAS1QRG.setOnCheckedChangeListener { radioGroup, i ->
+            if ((radioGroup.findViewById<RadioButton>(i).id == sidasCheckBinding.SIDAS1QRB0.id))
+            {
+                sidasCheckBinding.SIDAS2QRG.isEnabled = false
+                sidasCheckBinding.SIDAS3QRG.isActivated = false
+                sidasCheckBinding.SIDAS3QRG.isEnabled = false
+                sidasCheckBinding.SIDAS4QRG.isActivated = false
+                sidasCheckBinding.SIDAS4QRG.isEnabled = false
+                sidasCheckBinding.SIDAS5QRG.isActivated = false
+                sidasCheckBinding.SIDAS5QRG.isEnabled = false
+            }
+            else
+            {
+                sidasCheckBinding.SIDAS2QRG.isActivated = true
+                sidasCheckBinding.SIDAS2QRG.isEnabled = true
+                sidasCheckBinding.SIDAS3QRG.isActivated = true
+                sidasCheckBinding.SIDAS3QRG.isEnabled = true
+                sidasCheckBinding.SIDAS4QRG.isActivated = true
+                sidasCheckBinding.SIDAS4QRG.isEnabled = true
+                sidasCheckBinding.SIDAS5QRG.isActivated = true
+                sidasCheckBinding.SIDAS5QRG.isEnabled = true
+            }
+        }
 
         //listeners on form
         sidasCheckBinding.includePopUpMenu.termsRelLayout.setOnClickListener {

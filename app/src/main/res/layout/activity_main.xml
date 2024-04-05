@@ -33,7 +33,7 @@
         layout="@layout/all_tests_results_of_patient_layou"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:elevation="10dp"
+        android:elevation="20dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
