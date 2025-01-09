@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/include_popup_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:elevation="5dp">
@@ -53,7 +54,7 @@
             android:background="@drawable/terms_of_use_texttitle"
             android:gravity="center"
             android:minHeight="48dp"
-            android:text="ΟΡΟΙ ΧΡΗΣΗΣ"
+            android:text="Όροι χρήσης"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:visibility="visible" />
@@ -100,14 +101,16 @@
             android:textSize="@dimen/terms_reference_size"
             android:visibility="visible" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <ImageView
             android:id="@+id/closeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/imagebutton_style"
-            android:text="X" />
+            android:padding="20dp"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
 
     </RelativeLayout>

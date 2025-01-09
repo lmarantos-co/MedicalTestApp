@@ -1,0 +1,1927 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="CheckZUNGPatientViewModel"
+            type="com.example.cvdriskestimator.viewModels.CheckZUNGPatientViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/formConLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MidnightBlue">
+
+        <!--    covariance title form-->
+
+        <include
+            android:id="@+id/include_cvd_title_form"
+            layout="@layout/cvd_title_form"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/horGL1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        application menu panel-->
+
+
+        <include
+            android:id="@+id/include_pop_up_menu"
+            layout="@layout/popup_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/radioBXSetter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1"
+            android:id="@+id/BAITestTitleLayout">
+
+            <TextView
+                android:id="@+id/zungTestTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/purple_zung_test_form_tite"
+                android:drawableLeft="@drawable/ic_zung_depression_face_24_post"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:singleLine="false"
+                android:text="ZUNG DEPRESSION Test"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fadeScrollbars="false"
+            android:fillViewport="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toBottomOf="@id/horGL1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/zungCheckLinLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:context=".MainActivity">
+
+                <View
+                    android:id="@+id/pillowVIew"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/formTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:text="@string/ZUNG_SRDS"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ1RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ1TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q1"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ1RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ1TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ1RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ1TxtV"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ1RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ1RB1"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ1RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ1RB2"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ1RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ1RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ2RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ2TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/purple_zung_test_form_tite"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q2"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ2RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ2TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ2RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ2TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ2RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ2RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ2RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ2RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ2RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ2RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ3RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ3TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q3"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ3RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ3TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ3RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ3TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ3RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ3RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ3RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ3RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ3RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ1RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ4RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ4TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q4"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ4RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ4TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ4RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ4TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ4RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ4RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ4RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ4RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ4RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ4RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ5RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ5TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q5"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ5RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ5TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ5RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ5TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ5RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ5RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ5RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ5RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ5RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ5RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ6RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ6TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q6"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ6RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ6TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ6RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ6TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ6RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ6RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ6RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ6RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ6RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ6RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ7RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ7TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q7"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ7RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ7TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ7RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ7TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ7RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ7RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ7RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ7RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ7RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ7RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ8RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ8TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q8"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ8RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ8TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ8RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ8TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ8RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ8RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ8RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ8RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ8RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ8RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ9RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ9TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q9"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ9RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ9TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ9RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ9TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ9RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ9RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ9RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ9RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ9RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ9RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ10RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ10TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q10"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ10RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ10TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ10RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ10TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ10RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ10RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ10RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ10RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ10RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNG11RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ11TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q11"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ11RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ11TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ11RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ11TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ11RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ11RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ11RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ11RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ11RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ11RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ12RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ12TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q12"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ12RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ12TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ12RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ12TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ12RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ12RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ12RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ12RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ12RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ12RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ13RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ13TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q13"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ13RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ13TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ13RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ13TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ13RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ13RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ13RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ13RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ13RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ13RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ14RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ14TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q14"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ14RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ14TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ14RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ14TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ14RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ14RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ14RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ14RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ14RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ14RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ15RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ15TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q15"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ15RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ15TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ15RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ15TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ15RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ15RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ15RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ15RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ15RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ15RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ16RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ16TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q16"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ16RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ16TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ16RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ16TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ16RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ16RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ16RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ16RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ16RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BAIQ16RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ17RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ17TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q17"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ17RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ17TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ17RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ17TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ17RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ17RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ17RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ17RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ17RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ17RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ18RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ18TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q18"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ18RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ18TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ18RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ18TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ18RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ18RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ18RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ18RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ18RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ18RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ19RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ19TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q19"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ19RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ19TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ19RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ19TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ19RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ19RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ19RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ19RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ19RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BAIQ19RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ZUNGQ20RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/ZUNGQ20TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zung_purple_txtview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/ZUNG_SRDS_Q20"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/ZUNGQ20RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ZUNGQ20TxtV">
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ20RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ20TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ20RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ20RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ20RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ZUNGQ20RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/ZUNG_SRDS_A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/ZUNGQ20RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/ZUNG_SRDS_A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/arrowButtonsRelLayoyt">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submitBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/zung_button_rounded_corners"
+                        android:padding="20dp"
+                        android:text="Υπολογισμός"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:visibility="visible"
+                        tools:ignore="TextContrastCheck" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/clearBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/submitBtn"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerVertical="false"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/submitBtn"
+                        android:background="@drawable/zung_button_rounded_corners"
+                        android:textAllCaps="false"
+                        android:text="Καθαρισμός δεδομένων" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

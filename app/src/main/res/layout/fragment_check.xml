@@ -35,15 +35,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!--        application menu panel-->
-
-
         <include
             android:id="@+id/include_pop_up_menu"
             layout="@layout/popup_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="visible" />
+
+        <!--        application menu panel-->
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VG5"
@@ -72,7 +72,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/orange_cvd_title_textview"
-                android:drawableLeft="@drawable/ic_favorite_white_24dp"
+                android:drawableLeft="@drawable/ic_favorite_black_24dp"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:minHeight="48dp"
@@ -107,11 +107,11 @@
                 android:orientation="vertical"
                 tools:context=".MainActivity">
 
+
                 <View
                     android:id="@+id/pillowVIew"
                     android:layout_width="match_parent"
                     android:layout_height="50dp" />
-
 
                 <TextView
                     android:id="@+id/formTxtV"
@@ -130,9 +130,9 @@
                     android:id="@+id/ageRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style"
                     android:backgroundTintMode="add"
                     android:elevation="2dp"
@@ -155,6 +155,8 @@
                             android:layout_centerInParent="false"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="false"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
                             android:background="@drawable/orange_textview_4"
                             android:gravity="center"
                             android:minHeight="48dp"
@@ -187,6 +189,8 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:minHeight="48dp"
                         android:textSize="20sp" />
 
@@ -207,9 +211,9 @@
                     android:id="@+id/sexRellayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style"
                     android:elevation="2dp"
                     android:gravity="center">
@@ -222,6 +226,8 @@
                         android:background="@drawable/orange_textview_4"
                         android:gravity="center"
                         android:minHeight="48dp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:text="Sex"
                         android:textSize="20sp" />
 
@@ -255,11 +261,13 @@
                             android:layout_gravity="center"
                             android:clickable="true"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:text="FEMALE"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                     </RadioGroup>
+
 
                 </RelativeLayout>
 
@@ -267,9 +275,9 @@
                     android:id="@+id/raceRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style"
                     android:elevation="2dp"
                     android:gravity="center">
@@ -280,6 +288,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/orange_textview_4"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:text="Race"
@@ -300,6 +310,7 @@
                             android:background="@drawable/radiobutton_style"
                             android:clickable="true"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="105dp"
                             android:text="White"
                             android:textSize="20sp" />
@@ -315,6 +326,7 @@
                             android:clickable="true"
                             android:enabled="true"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:text="African American"
                             android:textSize="20sp" />
 
@@ -328,6 +340,7 @@
                             android:clickable="true"
                             android:enabled="true"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="105dp"
                             android:text="Other"
                             android:textSize="20sp" />
@@ -340,9 +353,9 @@
                     android:id="@+id/sbbRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style"
                     android:elevation="2dp"
                     android:gravity="center">
@@ -368,6 +381,8 @@
                         android:layout_centerInParent="true"
                         android:clickable="true"
                         android:contentDescription="Enter Your Systolic Blood Presure"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
@@ -394,9 +409,9 @@
                     android:id="@+id/tchRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style"
                     android:elevation="2dp"
                     android:gravity="center">
@@ -424,6 +439,8 @@
                         android:ems="10"
                         android:enabled="true"
                         android:gravity="center"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:inputType="number"
                         android:minHeight="48dp"
                         android:textSize="20sp"
@@ -447,9 +464,9 @@
                     style="@style/CVDTestTextViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style"
                     android:elevation="2dp"
                     android:gravity="center">
@@ -474,6 +491,8 @@
                         android:layout_marginTop="5dp"
                         android:clickable="true"
                         android:contentDescription="Enter your HDL Cholesterol"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:editable="true"
                         android:ems="10"
                         android:enabled="true"
@@ -558,9 +577,9 @@
                     android:id="@+id/smokeRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style"
                     app:layout_constraintTop_toTopOf="@+id/fifthHorGDL">
 
@@ -583,6 +602,8 @@
                             android:layout_centerInParent="false"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="false"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
                             android:background="@drawable/orange_textview_4"
                             android:gravity="center"
                             android:minHeight="48dp"
@@ -615,6 +636,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
+                            android:minHeight="48dp"
                             android:paddingRight="2dp"
                             android:text="Current"
                             android:textAlignment="center"
@@ -626,6 +648,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
+                            android:minHeight="48dp"
                             android:paddingRight="3dp"
                             android:text="Former"
                             android:textAlignment="center"
@@ -636,6 +659,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="15dp"
                             android:text="Never"
                             android:textAlignment="center"
@@ -683,9 +707,9 @@
                     android:id="@+id/treatrelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:background="@drawable/relativelayout_style">
 
                     <TextView
@@ -696,6 +720,8 @@
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/orange_textview_4"
                         android:gravity="center"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:minHeight="48dp"
                         android:text="@string/treatment"
                         android:textSize="20sp" />
@@ -739,21 +765,45 @@
 
                 </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/submitBtn"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="false"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/cvd_button_rounded_corners"
-                    android:padding="20dp"
-                    android:text="CALCULATE"
-                    android:textSize="20sp"
-                    android:visibility="visible"
-                    tools:ignore="TextContrastCheck" />
+                    android:id="@+id/arrowButtonsRelLayoyt">
 
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submitBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/cvd_button_rounded_corners"
+                        android:padding="20dp"
+                        android:text="Υπολογισμός"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:visibility="visible"
+                        tools:ignore="TextContrastCheck" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/clearBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/submitBtn"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerVertical="false"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/submitBtn"
+                        android:background="@drawable/cvd_button_rounded_corners"
+                        android:textAllCaps="false"
+                        android:text="Καθαρισμός φόρμας" />
+
+
+                </RelativeLayout>
 
             </LinearLayout>
 

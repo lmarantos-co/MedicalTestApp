@@ -65,7 +65,7 @@
         android:id="@+id/userIcon"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:alpha="0"
+        android:alpha="1"
         android:background="@drawable/settings"
         app:layout_constraintBottom_toTopOf="@id/cvdtitleHorGL2User"
         app:layout_constraintLeft_toRightOf="@id/cvdtitleVGL8"
@@ -113,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.14" />
+        app:layout_constraintGuide_percent="0.17" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/cvdtitleVGL6"

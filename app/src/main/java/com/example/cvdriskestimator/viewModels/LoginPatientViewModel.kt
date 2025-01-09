@@ -2,33 +2,33 @@ package com.example.cvdriskestimator.viewModels
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cvdriskestimator.Fragments.LoginFragment
+import com.example.cvdriskestimator.Fragments.LoginDoctorFragment
+import com.example.cvdriskestimator.Fragments.LoginPatientFragment
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
+import com.example.cvdriskestimator.RealmDB.Doctor
 import com.example.cvdriskestimator.RealmDB.Patient
 import io.realm.Realm
 import java.util.regex.Pattern
 
 class LoginPatientViewModel () : ViewModel() , Observable {
 
-    private lateinit var loginFragment: LoginFragment
+    private lateinit var loginPatientFragment: LoginPatientFragment
     private lateinit var mainActivity : MainActivity
     private var patientName : String = ""
     private var patientPassword : String = ""
-    private var realm: Realm = Realm.getDefaultInstance()
 
     // defining our own password pattern
     private val PASSWORD_PATTERN: Pattern = Pattern.compile(
         "^" +
                 "(?=.*[@#$%^&+=])" +  // at least 1 special character
                 "(?=\\S+$)" +  // no white spaces
-                ".{4,}" +  // at least 4 characters
+                ".{5,}" +  // at least 4 characters
                 "$"
     )
 
@@ -38,9 +38,9 @@ class LoginPatientViewModel () : ViewModel() , Observable {
     @Bindable
     val inputPassword = MutableLiveData<String>()
 
-    fun setFragment(logFragment: LoginFragment)
+    fun setFragment(logPatientFragment: LoginPatientFragment)
     {
-        loginFragment = logFragment
+        loginPatientFragment = logPatientFragment
     }
 
     fun setActivity(activity: MainActivity)
@@ -56,6 +56,7 @@ class LoginPatientViewModel () : ViewModel() , Observable {
 
     private fun retrieveUser(userName : String)
     {
+        val realm = Realm.getDefaultInstance()
         var correctUserData = true
         //check for null pointer
         patientName = inputUserName.value!!
@@ -64,30 +65,30 @@ class LoginPatientViewModel () : ViewModel() , Observable {
         correctUserData = correctUserData && validatePassword(inputPassword.value!!)
         if (correctUserData)
         {
-            val patient: Patient? = realm.where(Patient::class.java).equalTo("userName", userName).findFirst()
+            val patient: Patient? = realm.where(Patient::class.java).equalTo("password", patientPassword).findFirst()
             if (patient != null) {
                 if (patient.password != patientPassword)
                 {
-                    loginFragment.passwordError(mainActivity.resources.getString(R.string.patient_not_in_db))
+                    loginPatientFragment.passwordError(mainActivity.resources.getString(R.string.patient_not_in_db))
                 }
                 else
                 {
-                    Log.d("LOGIN" , patient.userName)
-                    //save the username in shared preferences
-                    val sharedPref = mainActivity.getPreferences(Context.MODE_PRIVATE) ?: return
-                    with (sharedPref.edit()) {
-                        putString("userName", patient.userName)
-                        putString("MSG", "Welcome " + patient.userName.toString())
+//                    mainActivity.setLoginItemTitle()
+                    //set the doctor username in the shared prefs
+                    val prefs = mainActivity.getPreferences(Context.MODE_PRIVATE)
+                    prefs.edit().apply {
+                        putString("userName" , patientName)
+//                        putString("doctorPasword" , doctorPassword)
+//                        putString("userName", "tempUser")
                         apply()
                     }
-//                    mainActivity.setLoginItemTitle()
                     hideSoftInputKeyboard()
-                    loginFragment.backToActivity()
+                    mainActivity.setContentViewForMainLayout(true)
                 }
             }
             else
             {
-                loginFragment.passwordError(mainActivity.resources.getString(R.string.patient_not_in_db))
+                loginPatientFragment.passwordError(mainActivity.resources.getString(R.string.doctor_not_in_db))
             }
         }
     }
@@ -107,7 +108,7 @@ class LoginPatientViewModel () : ViewModel() , Observable {
         else
         {
             correctName = false
-            loginFragment.userNameError("Username cannot be empty.")
+            loginPatientFragment.userNameError("Username cannot be empty.")
         }
         return correctName
     }
@@ -116,10 +117,10 @@ class LoginPatientViewModel () : ViewModel() , Observable {
         // if password field is empty
         // it will display error message "Field can not be empty"
         return if (password.isEmpty()) {
-            loginFragment.passwordError("Field can not be empty")
+            loginPatientFragment.passwordError("Field can not be empty")
             false
         } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
-            loginFragment.passwordError("Password does not match.")
+            loginPatientFragment.passwordError("Password does not match.")
             false
         } else {
             true

@@ -1,20 +1,20 @@
 package com.example.cvdriskestimator.Fragments
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.*
-import android.widget.PopupMenu
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.cvdriskestimator.CustomClasses.PopUpMenu
+import com.example.cvdriskestimator.customClasses.PopUpMenu
 import com.example.cvdriskestimator.MainActivity
 import com.example.cvdriskestimator.R
 import com.example.cvdriskestimator.databinding.FragmentRegisterBinding
 import com.example.cvdriskestimator.viewModels.RegisterPatientViewModel
 import com.example.cvdriskestimator.viewModels.RegisterPatientViewModelFactory
-import java.lang.reflect.Method
 
 
 /**
@@ -27,10 +27,10 @@ class RegisterFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
     private lateinit var registerBinding: FragmentRegisterBinding
     private lateinit var registerViewModel: RegisterPatientViewModel
+    private var leaderBoardFragment = LeaderBoardFragment.newInstance()
 
     private lateinit var popupMenuComp : PopUpMenu
 
-    private lateinit var loginFragment: LoginFragment
     private var mteTitleHeight : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,7 +67,7 @@ class RegisterFragment : Fragment() {
 //        setUserIconDimens()
         userNameError(resources.getString(R.string.username_error))
         passwordError(resources.getString(R.string.password_error))
-        registerBinding.registerSbmBtn.setOnClickListener {
+        registerBinding.inclusiveConLayout.findViewById<Button>(R.id.registerSbmBtn).setOnClickListener {
 
             registerViewModel.insertOrUpdatePatient()
         }
@@ -76,14 +76,16 @@ class RegisterFragment : Fragment() {
             hideTermsOfUseLayout()
         }
 
+        registerBinding.includePopUpMenu.termsRelLayout.visibility = View.INVISIBLE
+
+
         return registerBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loginFragment = LoginFragment.newInstance()
-        popupMenuComp = PopUpMenu(registerBinding.includePopUpMenu.termsRelLayout , mainActivity, this, loginFragment , null)
+        popupMenuComp = PopUpMenu(registerBinding.includePopUpMenu.termsRelLayout as RelativeLayout, mainActivity, this,  null , null ,leaderBoardFragment)
 
         registerBinding.includeCvdTitleForm.userIcon.setOnClickListener {
             popupMenuComp.showPopUp(registerBinding.includeCvdTitleForm.userIcon)
@@ -99,11 +101,11 @@ class RegisterFragment : Fragment() {
             mainActivity.backToActivity()
         }
 
-        registerBinding.includePopUpMenu.closeBtn.setOnClickListener {
+        registerBinding.includePopUpMenu.includePopupMenu.setOnClickListener {
             hideTermsOfUseLayout()
         }
 
-        registerBinding.formConLayout.setOnClickListener {
+        registerBinding.formRelLayout.setOnClickListener {
             hideTermsOfUseLayout()
         }
     }
@@ -138,19 +140,50 @@ class RegisterFragment : Fragment() {
 
     fun userNameError(error : String)
     {
-        registerBinding.userNameEditText.requestFocus()
-        registerBinding.userNameEditText.error = error
+        (registerBinding.inclusiveConLayout.findViewById<EditText>(R.id.userNameRegEditText) as EditText).requestFocus()
+        (registerBinding.inclusiveConLayout.findViewById<EditText>(R.id.userNameRegEditText) as EditText).error = error
     }
 
     fun passwordError(error : String){
-        registerBinding.editTextTextPassword.requestFocus()
-        registerBinding.editTextTextPassword.error = error
+        (registerBinding.inclusiveConLayout.findViewById<EditText>(R.id.editTextRegPassword) as EditText).requestFocus()
+        (registerBinding.inclusiveConLayout.findViewById<EditText>(R.id.editTextRegPassword) as EditText).error = error
+    }
+
+    fun patientNameError(error : String)
+    {
+        (registerBinding.inclusiveConLayout.findViewById(R.id.patientNameEditTxt) as EditText).requestFocus()
+        (registerBinding.inclusiveConLayout.findViewById(R.id.patientNameEditTxt) as EditText).error = error
+    }
+
+    fun patientLastNameError(error : String)
+    {
+        (registerBinding.inclusiveConLayout.findViewById(R.id.patientLatNameEditTxt) as EditText).requestFocus()
+        (registerBinding.inclusiveConLayout.findViewById(R.id.patientLatNameEditTxt) as EditText).error = error
     }
 
     fun passwordMatchError(error : String){
-        registerBinding.editTextTextValidatePassword.requestFocus()
-        registerBinding.editTextTextValidatePassword.error = error
+        (registerBinding.inclusiveConLayout.findViewById(R.id.editTextRegValidatePassword) as EditText).requestFocus()
+        (registerBinding.inclusiveConLayout.findViewById(R.id.editTextRegValidatePassword) as EditText).error = error
     }
+
+    fun userDateError(error : String)
+    {
+        (registerBinding.inclusiveConLayout.findViewById(R.id.userDateOfBirthEditText) as EditText).requestFocus()
+        (registerBinding.inclusiveConLayout.findViewById(R.id.userDateOfBirthEditText) as EditText).error = error
+    }
+
+    fun userOccupationError(error : String)
+    {
+        (registerBinding.inclusiveConLayout.findViewById(R.id.userOccupationEditText) as EditText).requestFocus()
+        (registerBinding.inclusiveConLayout.findViewById(R.id.userOccupationEditText) as EditText).error = error
+    }
+
+    fun userYearsError (error : String)
+    {
+        (registerBinding.inclusiveConLayout.findViewById(R.id.userYearsOfApprenticeEditText) as EditText).requestFocus()
+        (registerBinding.inclusiveConLayout.findViewById(R.id.userYearsOfApprenticeEditText) as EditText).error = error
+    }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

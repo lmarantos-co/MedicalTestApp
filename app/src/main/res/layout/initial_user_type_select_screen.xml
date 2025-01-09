@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/initial_user_type_conLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/include_cvd_title_form"
+        layout="@layout/cvd_title_form"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/horGL1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/doctorsPatentsLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_cvd_title_form">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/doctorsPatientsConLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/MidnightBlue">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/hgl1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vgl1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vg2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <TextView
+                android:id="@+id/newDoctorTxtV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/intro_user_type_panel_1"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/doctor_first_screen"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@+id/bottomCustomersHGL"
+                app:layout_constraintEnd_toEndOf="@id/vgl"
+                app:layout_constraintStart_toStartOf="@id/vgl1"
+                app:layout_constraintTop_toTopOf="@id/hgl1" />
+
+            <TextView
+                android:id="@+id/newPatientTxtV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/intro_user_type_panel_2"
+                android:gravity="center"
+                android:minLines="2"
+                android:text="@string/patient_first_screen"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@+id/bottomCustomersHGL2"
+                app:layout_constraintEnd_toEndOf="@id/vg2"
+                app:layout_constraintStart_toStartOf="@id/vgl"
+                app:layout_constraintTop_toTopOf="@+id/bottomCustomersHGL" />
+
+            <View
+                android:id="@+id/dummyView1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/intro_screen_panel"
+                app:layout_constraintBottom_toTopOf="@+id/bottomCustomersHGL2"
+                app:layout_constraintEnd_toStartOf="@+id/vgl"
+                app:layout_constraintLeft_toRightOf="@id/vgl1"
+                app:layout_constraintStart_toStartOf="@id/vgl1"
+                app:layout_constraintTop_toTopOf="@+id/bottomCustomersHGL" />
+
+            <View
+                android:id="@+id/dummyView2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/intro_screen_panel"
+                app:layout_constraintBottom_toTopOf="@id/bottomCustomersHGL"
+                app:layout_constraintLeft_toRightOf="@id/vgl"
+                app:layout_constraintRight_toRightOf="@id/vg2"
+                app:layout_constraintTop_toTopOf="@id/hgl1" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/bottomCustomersHGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.4" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/bottomCustomersHGL2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.7" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vgl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/user_type_txtView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:gravity="left"
+                android:text="@string/patient_screen_message"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/hgl1"
+                app:layout_constraintEnd_toStartOf="@id/vg2"
+                app:layout_constraintStart_toStartOf="@+id/vgl1"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/select_user_type" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

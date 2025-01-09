@@ -1,0 +1,1244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/results_con_layout_bpi_test"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MidnightBlue">
+
+        <!--    covariance title form-->
+
+        <RelativeLayout
+            android:id="@+id/pdqTestTitleRelLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            app:layout_constraintLeft_toRightOf="@id/titleVGL1"
+            app:layout_constraintRight_toLeftOf="@id/titleVGL2"
+            app:layout_constraintTop_toBottomOf="@id/resultsTopHGL">
+
+
+            <TextView
+                android:id="@+id/totalPSScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pdq_relative_layout"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/pdq_test_results"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+
+            <LinearLayout
+                android:id="@+id/PDQScoreLinLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/totalPSScore"
+                android:background="@color/light_gray"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp">
+
+
+                <TextView
+                    android:id="@+id/totalScoreDescTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="false"
+                    android:gravity="center"
+                    android:text="@string/pdq_test_score"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/include_cvd_title_form"
+            layout="@layout/cvd_title_form"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/horGL1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/include_pop_up_menu"
+            layout="@layout/popup_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/titleVGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/titleVGL2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/resultsTopHGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/categoryResultRelLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/downCategoryHorGl"
+            app:layout_constraintLeft_toRightOf="@id/titleVGL1"
+            app:layout_constraintRight_toLeftOf="@id/titleVGL2"
+            app:layout_constraintTop_toBottomOf="@id/topCategoryHorGL">
+
+            <View
+                android:id="@+id/cat8v1view1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat7v1view1"
+                app:layout_constraintTop_toBottomOf="@id/level1ResultHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat8lv1view2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level1ResultHGL"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat7lv1view2"
+                app:layout_constraintTop_toBottomOf="@id/level2ResultHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat8lv1view3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level2ResultHGL"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat7lv1view3"
+                app:layout_constraintTop_toBottomOf="@id/level3CatHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat8Lv1view4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level3CatHGL"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat7Lv1view4"
+                app:layout_constraintTop_toBottomOf="@id/level4CatHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat8lv1view5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level4CatHGL"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat7lv1view5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat7v1view1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/seventhCatVGL"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat6v1view1"
+                app:layout_constraintTop_toBottomOf="@id/level1ResultHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/catLowerTxtV8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat7v1view1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/cat8v1view1"
+                app:layout_constraintTop_toTopOf="@+id/cat7v1view1" />
+
+            <View
+                android:id="@+id/cat7lv1view2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level1ResultHGL"
+                app:layout_constraintEnd_toStartOf="@+id/seventhCatVGL"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat6lv1view2"
+                app:layout_constraintTop_toBottomOf="@id/level2ResultHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat7lv1view3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level2ResultHGL"
+                app:layout_constraintEnd_toStartOf="@+id/seventhCatVGL"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat6lv1view3"
+                app:layout_constraintTop_toBottomOf="@id/level3CatHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat7Lv1view4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level3CatHGL"
+                app:layout_constraintEnd_toStartOf="@+id/seventhCatVGL"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat6Lv1view4"
+                app:layout_constraintTop_toBottomOf="@id/level4CatHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat7lv1view5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level4CatHGL"
+                app:layout_constraintEnd_toStartOf="@+id/seventhCatVGL"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat6lv1view5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat5lv1view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/gray_1"
+                app:layout_constraintBottom_toTopOf="@id/level4CatHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat4lv1view20"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/cat5Lv1view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/gray_2"
+                app:layout_constraintBottom_toTopOf="@id/level3CatHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat4Lv1view19"
+                app:layout_constraintTop_toBottomOf="@id/level4CatHGL" />
+
+            <View
+                android:id="@+id/cat5lv1view2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/gray_3"
+                app:layout_constraintBottom_toTopOf="@id/level2ResultHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat4lv1view18"
+                app:layout_constraintTop_toBottomOf="@id/level3CatHGL" />
+
+            <View
+                android:id="@+id/cat5lv1view3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/gray_4"
+                app:layout_constraintBottom_toTopOf="@id/level1ResultHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat4lv1view17"
+                app:layout_constraintTop_toBottomOf="@id/level2ResultHGL" />
+
+            <View
+                android:id="@+id/cat5lv1view25"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level4CatHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat4lv1view20"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/cat6lv1view5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level4CatHGL"
+                app:layout_constraintEnd_toStartOf="@+id/sixthCatVGL"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat5lv1view"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat6v1view1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/sixthCatVGL"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat5lv1view21"
+                app:layout_constraintTop_toBottomOf="@id/level1ResultHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/catLowerTxtV7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat7v1view1"
+                app:layout_constraintEnd_toEndOf="@+id/cat7v1view1"
+                app:layout_constraintStart_toStartOf="@+id/cat7v1view1"
+                app:layout_constraintTop_toTopOf="@+id/cat7v1view1" />
+
+            <View
+                android:id="@+id/cat6Lv1view4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level3CatHGL"
+                app:layout_constraintEnd_toStartOf="@+id/sixthCatVGL"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat5Lv1view"
+                app:layout_constraintTop_toBottomOf="@id/level4CatHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat6lv1view3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level2ResultHGL"
+                app:layout_constraintEnd_toStartOf="@+id/sixthCatVGL"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat5lv1view2"
+                app:layout_constraintTop_toBottomOf="@id/level3CatHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/cat6lv1view2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level1ResultHGL"
+                app:layout_constraintEnd_toStartOf="@+id/sixthCatVGL"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat5lv1view3"
+                app:layout_constraintTop_toBottomOf="@id/level2ResultHGL"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <View
+                android:id="@+id/cat5Lv1view24"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level3CatHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat4Lv1view19"
+                app:layout_constraintTop_toBottomOf="@id/level4CatHGL" />
+
+            <View
+                android:id="@+id/cat5lv1view23"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level2ResultHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat4lv1view18"
+                app:layout_constraintTop_toBottomOf="@id/level3CatHGL" />
+
+            <View
+                android:id="@+id/cat5lv1view22"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level1ResultHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat4lv1view17"
+                app:layout_constraintTop_toBottomOf="@id/level2ResultHGL" />
+
+            <View
+                android:id="@+id/cat5lv1view21"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintLeft_toRightOf="@id/forthCatVGL"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cat4lv1view16"
+                app:layout_constraintTop_toBottomOf="@id/level1ResultHGL" />
+
+            <View
+                android:id="@+id/cat4lv1view20"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level4CatHGL"
+                app:layout_constraintLeft_toRightOf="@id/thirdCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/forthCatVGL"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/catUpperTxtV5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level4CatHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintStart_toStartOf="@+id/cat5lv1view25"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/catUpperTxtV6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level4CatHGL"
+                app:layout_constraintEnd_toEndOf="@+id/cat6lv1view5"
+                app:layout_constraintStart_toEndOf="@+id/cat5lv1view"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/catUpperTxtV7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level4CatHGL"
+                app:layout_constraintEnd_toEndOf="@+id/cat7lv1view5"
+                app:layout_constraintStart_toStartOf="@+id/cat7lv1view5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/catUpperTxtV8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level4CatHGL"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/cat8lv1view5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/cat4Lv1view19"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level3CatHGL"
+                app:layout_constraintLeft_toRightOf="@id/thirdCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/forthCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level4CatHGL" />
+
+            <TextView
+                android:id="@+id/catMidUpperTxtV5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level3CatHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintStart_toStartOf="@+id/cat5Lv1view24"
+                app:layout_constraintTop_toTopOf="@+id/level4CatHGL" />
+
+            <TextView
+                android:id="@+id/catMidUpperTxtV6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level3CatHGL"
+                app:layout_constraintEnd_toEndOf="@+id/cat6Lv1view4"
+                app:layout_constraintStart_toEndOf="@+id/cat5Lv1view"
+                app:layout_constraintTop_toTopOf="@+id/level4CatHGL" />
+
+            <TextView
+                android:id="@+id/catMidUpperTxtV7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level3CatHGL"
+                app:layout_constraintEnd_toEndOf="@+id/cat7Lv1view4"
+                app:layout_constraintStart_toStartOf="@+id/cat7Lv1view4"
+                app:layout_constraintTop_toTopOf="@+id/level4CatHGL" />
+
+            <TextView
+                android:id="@+id/catMidUpperTxtV8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level3CatHGL"
+                app:layout_constraintEnd_toEndOf="@+id/cat8Lv1view4"
+                app:layout_constraintStart_toStartOf="@+id/cat8Lv1view4"
+                app:layout_constraintTop_toTopOf="@+id/level4CatHGL" />
+
+            <View
+                android:id="@+id/cat4lv1view18"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level2ResultHGL"
+                app:layout_constraintLeft_toRightOf="@id/thirdCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/forthCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level3CatHGL" />
+
+            <View
+                android:id="@+id/cat4lv1view17"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level1ResultHGL"
+                app:layout_constraintLeft_toRightOf="@id/thirdCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/forthCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level2ResultHGL" />
+
+            <TextView
+                android:id="@+id/catlowerMidtxtV5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level1ResultHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintStart_toStartOf="@+id/cat5lv1view22"
+                app:layout_constraintTop_toTopOf="@+id/level2ResultHGL" />
+
+            <TextView
+                android:id="@+id/catlowerMidtxtV6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level1ResultHGL"
+                app:layout_constraintEnd_toEndOf="@+id/cat6lv1view2"
+                app:layout_constraintStart_toEndOf="@+id/cat5lv1view3"
+                app:layout_constraintTop_toTopOf="@+id/level2ResultHGL" />
+
+            <TextView
+                android:id="@+id/catlowerMidtxtV7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level1ResultHGL"
+                app:layout_constraintEnd_toEndOf="@+id/cat7lv1view2"
+                app:layout_constraintStart_toStartOf="@+id/cat7lv1view2"
+                app:layout_constraintTop_toTopOf="@+id/level2ResultHGL" />
+
+            <TextView
+                android:id="@+id/catlowerMidtxtV8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level1ResultHGL"
+                app:layout_constraintEnd_toEndOf="@+id/cat8lv1view2"
+                app:layout_constraintStart_toStartOf="@+id/cat8lv1view2"
+                app:layout_constraintTop_toTopOf="@+id/level2ResultHGL" />
+
+            <View
+                android:id="@+id/cat4lv1view16"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/thirdCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/forthCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level1ResultHGL" />
+
+            <TextView
+                android:id="@+id/catLowerTxtV4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat4lv1view16"
+                app:layout_constraintEnd_toStartOf="@+id/cat5lv1view21"
+                app:layout_constraintStart_toStartOf="@+id/cat4lv1view16"
+                app:layout_constraintTop_toBottomOf="@+id/cat4lv1view17" />
+
+            <TextView
+                android:id="@+id/catLowerTxtV5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cat6v1view1"
+                app:layout_constraintStart_toStartOf="@+id/cat5lv1view21"
+                app:layout_constraintTop_toBottomOf="@+id/cat5lv1view3"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/catLowerTxtV6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                app:layout_constraintBottom_toBottomOf="@+id/cat6v1view1"
+                app:layout_constraintEnd_toStartOf="@+id/sixthCatVGL"
+                app:layout_constraintStart_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintTop_toTopOf="@+id/cat6v1view1"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@+id/cat3lv1view15"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level4CatHGL"
+                app:layout_constraintLeft_toRightOf="@id/secCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/thirdCatVGL"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/cat3lv1view14"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level3CatHGL"
+                app:layout_constraintLeft_toRightOf="@id/secCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/thirdCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level4CatHGL" />
+
+            <View
+                android:id="@+id/cat3lv1view13"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level2ResultHGL"
+                app:layout_constraintLeft_toRightOf="@id/secCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/thirdCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level3CatHGL" />
+
+            <TextView
+                android:id="@+id/catMidTxtV4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat4lv1view18"
+                app:layout_constraintEnd_toStartOf="@+id/cat5lv1view23"
+                app:layout_constraintStart_toStartOf="@+id/cat4lv1view18"
+                app:layout_constraintTop_toBottomOf="@+id/cat4Lv1view19" />
+
+            <TextView
+                android:id="@+id/catMidTxtV5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level2ResultHGL"
+                app:layout_constraintEnd_toStartOf="@+id/fiftCatVGL"
+                app:layout_constraintStart_toStartOf="@+id/cat5lv1view23"
+                app:layout_constraintTop_toTopOf="@+id/level3CatHGL" />
+
+            <TextView
+                android:id="@+id/catMidTxtV6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level2ResultHGL"
+                app:layout_constraintEnd_toEndOf="@+id/cat6lv1view3"
+                app:layout_constraintStart_toEndOf="@+id/cat5lv1view2"
+                app:layout_constraintTop_toTopOf="@+id/level3CatHGL" />
+
+            <TextView
+                android:id="@+id/catMidTxtV7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level2ResultHGL"
+                app:layout_constraintEnd_toEndOf="@+id/cat7lv1view3"
+                app:layout_constraintStart_toStartOf="@+id/cat7lv1view3"
+                app:layout_constraintTop_toTopOf="@+id/level3CatHGL" />
+
+            <TextView
+                android:id="@+id/catMidTxtV8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/level2ResultHGL"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/cat8lv1view3"
+                app:layout_constraintTop_toTopOf="@+id/level3CatHGL" />
+
+            <View
+                android:id="@+id/cat3lv1view12"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level1ResultHGL"
+                app:layout_constraintLeft_toRightOf="@id/secCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/thirdCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level2ResultHGL" />
+
+            <View
+                android:id="@+id/cat3lv1view11"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/secCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/thirdCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level1ResultHGL" />
+
+            <View
+                android:id="@+id/cat2lv1view10"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level4CatHGL"
+                app:layout_constraintLeft_toRightOf="@id/firstCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/secCatVGL"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/catUpperTxtV3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat3lv1view15"
+                app:layout_constraintEnd_toStartOf="@+id/cat4lv1view20"
+                app:layout_constraintStart_toStartOf="@+id/cat3lv1view15"
+                app:layout_constraintTop_toTopOf="@+id/cat3lv1view15" />
+
+            <TextView
+                android:id="@+id/catUpperTxtV4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat4lv1view20"
+                app:layout_constraintEnd_toStartOf="@+id/cat5lv1view25"
+                app:layout_constraintStart_toStartOf="@+id/cat4lv1view20"
+                app:layout_constraintTop_toTopOf="@+id/cat4lv1view20" />
+
+            <View
+                android:id="@+id/cat2lv1view9"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level3CatHGL"
+                app:layout_constraintLeft_toRightOf="@id/firstCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/secCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level4CatHGL" />
+
+            <View
+                android:id="@+id/cat2lv1view8"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level2ResultHGL"
+                app:layout_constraintLeft_toRightOf="@id/firstCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/secCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level3CatHGL" />
+
+            <TextView
+                android:id="@+id/catMidTxtV3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat3lv1view13"
+                app:layout_constraintEnd_toStartOf="@+id/cat4lv1view18"
+                app:layout_constraintStart_toStartOf="@+id/cat3lv1view13"
+                app:layout_constraintTop_toBottomOf="@+id/cat3lv1view14" />
+
+            <TextView
+                android:id="@+id/catMidTxtV2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat2lv1view8"
+                app:layout_constraintEnd_toStartOf="@+id/cat3lv1view13"
+                app:layout_constraintStart_toStartOf="@+id/cat2lv1view8"
+                app:layout_constraintTop_toBottomOf="@+id/cat2lv1view9" />
+
+            <View
+                android:id="@+id/cat2lv1view7"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level1ResultHGL"
+                app:layout_constraintLeft_toRightOf="@id/firstCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/secCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level2ResultHGL" />
+
+            <TextView
+                android:id="@+id/catlowerMidtxtV2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat2lv1view7"
+                app:layout_constraintEnd_toStartOf="@+id/cat3lv1view12"
+                app:layout_constraintStart_toStartOf="@+id/cat2lv1view7"
+                app:layout_constraintTop_toBottomOf="@+id/cat2lv1view8" />
+
+            <TextView
+                android:id="@+id/catlowerMidtxtV3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat3lv1view12"
+                app:layout_constraintEnd_toStartOf="@+id/cat4lv1view17"
+                app:layout_constraintStart_toStartOf="@+id/secCatVGL"
+                app:layout_constraintTop_toBottomOf="@+id/cat3lv1view13" />
+
+            <TextView
+                android:id="@+id/catlowerMidtxtV4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat4lv1view17"
+                app:layout_constraintEnd_toStartOf="@+id/forthCatVGL"
+                app:layout_constraintStart_toStartOf="@+id/cat4lv1view17"
+                app:layout_constraintTop_toBottomOf="@+id/cat4lv1view18" />
+
+            <View
+                android:id="@+id/cat2lv1view6"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toRightOf="@id/firstCatVGL"
+                app:layout_constraintRight_toLeftOf="@id/secCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level1ResultHGL"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/catLowerTxtV3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cat4lv1view16"
+                app:layout_constraintStart_toStartOf="@+id/cat3lv1view11"
+                app:layout_constraintTop_toBottomOf="@+id/cat3lv1view12"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/catLowerTxtV2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                app:layout_constraintBottom_toBottomOf="@+id/cat2lv1view6"
+                app:layout_constraintEnd_toStartOf="@+id/cat3lv1view11"
+                app:layout_constraintStart_toStartOf="@+id/cat2lv1view6"
+                app:layout_constraintTop_toBottomOf="@+id/cat2lv1view7"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@+id/cat1lv1view5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level4CatHGL"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/firstCatVGL"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/cat1lv1view4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level3CatHGL"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/firstCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level4CatHGL" />
+
+            <View
+                android:id="@+id/cat1lv1view3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level2ResultHGL"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/firstCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level3CatHGL" />
+
+            <View
+                android:id="@+id/cat1lv1view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/firstCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level1ResultHGL" />
+
+            <View
+                android:id="@+id/cat1lv1view2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/level1ResultHGL"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/firstCatVGL"
+                app:layout_constraintTop_toBottomOf="@id/level2ResultHGL" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/firstCatVGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.12" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/secCatVGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/thirdCatVGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.37" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/forthCatVGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/fiftCatVGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.62" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/sixthCatVGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.75" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/seventhCatVGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.87" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/level4CatHGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/level3CatHGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.4" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/level2ResultHGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/level1ResultHGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.8" />
+
+            <TextView
+                android:id="@+id/catLowerTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat1lv1view"
+                app:layout_constraintEnd_toStartOf="@+id/firstCatVGL"
+                app:layout_constraintStart_toStartOf="@+id/cat1lv1view"
+                app:layout_constraintTop_toTopOf="@+id/level1ResultHGL" />
+
+            <TextView
+                android:id="@+id/catlowerMidtxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/cat1lv1view"
+                app:layout_constraintEnd_toStartOf="@+id/firstCatVGL"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cat1lv1view3" />
+
+            <TextView
+                android:id="@+id/catMidTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat1lv1view3"
+                app:layout_constraintEnd_toStartOf="@+id/cat2lv1view8"
+                app:layout_constraintStart_toStartOf="@+id/cat1lv1view3"
+                app:layout_constraintTop_toTopOf="@+id/level3CatHGL" />
+
+            <TextView
+                android:id="@+id/catMidUpperTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat1lv1view4"
+                app:layout_constraintEnd_toStartOf="@+id/firstCatVGL"
+                app:layout_constraintStart_toStartOf="@+id/cat1lv1view4"
+                app:layout_constraintTop_toBottomOf="@+id/cat1lv1view5" />
+
+            <TextView
+                android:id="@+id/catMidUpperTxtV2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat2lv1view9"
+                app:layout_constraintEnd_toStartOf="@+id/cat3lv1view14"
+                app:layout_constraintStart_toStartOf="@+id/cat2lv1view9"
+                app:layout_constraintTop_toBottomOf="@+id/cat2lv1view10" />
+
+            <TextView
+                android:id="@+id/catMidUpperTxtV3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat3lv1view14"
+                app:layout_constraintEnd_toStartOf="@+id/cat4Lv1view19"
+                app:layout_constraintStart_toStartOf="@+id/cat3lv1view14"
+                app:layout_constraintTop_toBottomOf="@+id/cat3lv1view15" />
+
+            <TextView
+                android:id="@+id/catMidUpperTxtV4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat4Lv1view19"
+                app:layout_constraintEnd_toStartOf="@+id/cat5Lv1view24"
+                app:layout_constraintStart_toStartOf="@+id/thirdCatVGL"
+                app:layout_constraintTop_toBottomOf="@+id/cat4lv1view20" />
+
+            <TextView
+                android:id="@+id/catUpperTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat1lv1view5"
+                app:layout_constraintEnd_toStartOf="@+id/cat2lv1view10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cat1lv1view5" />
+
+            <TextView
+                android:id="@+id/catUpperTxtV2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/cat2lv1view10"
+                app:layout_constraintEnd_toStartOf="@+id/cat3lv1view15"
+                app:layout_constraintStart_toStartOf="@+id/cat2lv1view10"
+                app:layout_constraintTop_toTopOf="@+id/cat2lv1view10" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/magendaRelLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/titleVGL2"
+            app:layout_constraintStart_toStartOf="@+id/titleVGL1"
+            app:layout_constraintTop_toBottomOf="@+id/categoryResultRelLayout">
+
+            <LinearLayout
+                android:id="@+id/magLinLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/magRelLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/mobilityTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/green_5"
+                        android:gravity="center"
+                        android:text="ΚΙΝΗΤΙΚΟΤΗΤΗΑ" />
+
+                    <TextView
+                        android:id="@+id/activitiesTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/mobilityTxtV"
+                        android:background="@color/orange_5"
+                        android:gravity="center"
+                        android:text="ΔΡΑΣΤΗΡΙΟΤΗΤΗΕΣ ΤΗΣ ΚΑΘΗΜΕΡΙΝΟΤΗΤΑΣ" />
+
+                    <TextView
+                        android:id="@+id/wellbeingTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activitiesTxtV"
+                        android:background="@color/blue_5"
+                        android:gravity="center"
+                        android:text="ΣΥΝΑΙΣΘΗΜΑΤΙΚΗ ΠΛΗΡΟΤΗΤΑ" />
+
+                    <TextView
+                        android:id="@+id/stigmaTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wellbeingTxtV"
+                        android:background="@color/brown_3"
+                        android:gravity="center"
+                        android:text="ΣΤΙΓΜΑ" />
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:id="@+id/magRelLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/socialSupportTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray_3"
+                        android:gravity="center"
+                        android:text="ΚΟΙΝΩΝΙΚΗ ΥΠΟΣΤΗΡΙΞΗ" />
+
+                    <TextView
+                        android:id="@+id/cognitionxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/socialSupportTxtV"
+                        android:background="@color/red_3"
+                        android:gravity="center"
+                        android:text="ΓΝΩΣΤΙΚΗ ΛΕΙΤΟΥΡΓΙΑ" />
+
+                    <TextView
+                        android:id="@+id/communicationTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cognitionxtV"
+                        android:background="@color/purple_3"
+                        android:gravity="center"
+                        android:text="ΕΠΙΚΟΙΝΩΝΙΑ" />
+
+                    <TextView
+                        android:id="@+id/bodilyDiscomfortTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/communicationTxtV"
+                        android:background="@color/teal_3"
+                        android:gravity="center"
+                        android:text="ΣΩΜΑΤΙΚΗ ΔΥΣΦΟΡΙΑ" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/topCategoryHorGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/downCategoryHorGl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

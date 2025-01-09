@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="loginPatientViewModel"
+            type="com.example.cvdriskestimator.viewModels.LoginPatientViewModel"
+            />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/formConLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MidnightBlue"
+        android:elevation="5dp"
+        android:visibility="visible"
+        tools:context=".Fragments.LoginDoctorFragment">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.18" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/barHG4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.52" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="1" />
+
+        <!--    covariance title form-->
+
+        <include
+            android:id="@+id/include_cvd_title_form"
+            layout="@layout/cvd_title_form"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/horGL1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--    covariance title form-->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VG5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <TextView
+            android:id="@+id/formTxtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/login_title"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/verGl2"
+            app:layout_constraintStart_toStartOf="@+id/verGL1"
+            app:layout_constraintTop_toTopOf="@+id/horGL2" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/loginTitleTxtV"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="@drawable/relativelayout_style"-->
+        <!--            android:elevation="5dp"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="Please Enter Your Login Data :"-->
+        <!--            android:textSize="24sp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            android:shadowDx="15"-->
+        <!--            android:shadowDy="15"-->
+        <!--            android:shadowRadius="20"-->
+        <!--            android:shadowColor="@color/black"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/verGl2"-->
+        <!--            app:layout_constraintHorizontal_bias="0.0"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/verGL1"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/horGL2" />-->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verGl2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <RelativeLayout
+            android:id="@+id/userNameRelLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/relativelayout_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/barHG4">
+
+
+            <TextView
+                android:id="@+id/userNameTxtV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="false"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/login_resgister_layout_style"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="Όνομα χρήστη:"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+
+            <com.example.cvdriskestimator.customClasses.HintEditText
+                android:id="@+id/userNameLoginEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userNameTxtV"
+                android:layout_centerInParent="false"
+                android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:editable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:ems="10"
+                android:enabled="true"
+                android:gravity="center"
+                android:hint="\Εισάγετε όνομα χρήστη"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:text="@={loginPatientViewModel.inputUserName}"
+                android:textColor="@color/black"
+                android:textColorHint="#000000"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="@+id/userNameTxtV" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/userPassRelLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/relativelayout_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL5">
+
+            <TextView
+                android:id="@+id/passwordTxtV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/login_resgister_layout_style"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="Kωδικός χρήστη:"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+
+            <com.example.cvdriskestimator.customClasses.HintEditText
+                android:id="@+id/editTextLoginPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/passwordTxtV"
+                android:layout_centerInParent="false"
+                android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:editable="true"
+                android:ems="10"
+                android:enabled="true"
+                android:gravity="center"
+                android:hint="Εισάγετε το κωδικό σας"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:paddingStart="4dp"
+                android:password="true"
+                android:text="@={loginPatientViewModel.inputPassword}"
+                android:textColor="@color/black"
+                android:textColorHint="#000000"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verGL3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loginSbmBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/login_register_textview_style"
+            android:backgroundTint="@color/black"
+            android:padding="20dp"
+            android:text="Είσοδος"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/verGL3"
+            app:layout_constraintStart_toStartOf="@+id/VG5"
+            app:layout_constraintTop_toTopOf="@+id/horGL6" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

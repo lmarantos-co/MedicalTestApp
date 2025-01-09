@@ -1,0 +1,1709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="CheckHAMDViewModel"
+            type="com.example.cvdriskestimator.viewModels.CheckHAMDPatientViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/formConLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MidnightBlue">
+
+        <!--    covariance title form-->
+
+        <include
+            android:id="@+id/include_cvd_title_form"
+            layout="@layout/cvd_title_form"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/horGL1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        application menu panel-->
+
+
+        <include
+            android:id="@+id/include_pop_up_menu"
+            layout="@layout/popup_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/radioBXSetter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1"
+            android:id="@+id/BAITestTitleLayout">
+
+            <TextView
+                android:id="@+id/hamDTestTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/ham_test_form_title_style"
+                android:drawableLeft="@drawable/ic_hammilton_depression_small_24_post"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:singleLine="false"
+                android:text="Hammilton Test"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fadeScrollbars="false"
+            android:fillViewport="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toBottomOf="@id/horGL1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/hamDCheckLinLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:context=".MainActivity">
+
+                <View
+                    android:id="@+id/pillowVIew"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/formTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:text="@string/HAM_TEST_Intro"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ1RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ1TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q1"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/HAMDQ1ExtraTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/HAMDQ1TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q1_extra"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ1RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ1ExtraTxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ1RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ1TxtV"
+                            android:layout_gravity="center|left"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q1A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ1RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ1RB1"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q1A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ1RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/HAMDQ1RB2"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q1A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ1RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ1RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q1A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ1RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ1RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q1A5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ2RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ2TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q2"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ2RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ2TxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ2RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ1TxtV"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/HAM_Q2A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ2RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ2RB1"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q2A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ2RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/HAMDQ2RB2"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q2A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ2RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ1RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q2A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ2RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ2RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q1A5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ3RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ3TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q3"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ3RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ3TxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ3RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ3TxtV"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:layout_marginTop="8dp"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q3A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ3RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ3RB1"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q3A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ3RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/HAMDQ3RB2"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q3A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ3RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ3RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q3A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ3RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ3RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q3A5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ4RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ4TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q4"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ4RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ4TxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ4RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ4TxtV"
+                            android:layout_marginTop="8dp"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q4A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ4RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ4RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q4A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ4RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ4RB2"
+                            android:layout_marginBottom="8dp"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q4A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ5RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ5TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q5"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ5RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ5TxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ5RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ5TxtV"
+                            android:layout_gravity="left"
+                            android:layout_marginTop="8dp"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q5A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ5RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ5RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q5A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ5RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ5RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q5A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ6RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ6TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q6"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ6RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ6TxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ6RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ6TxtV"
+                            android:layout_gravity="left"
+                            android:layout_marginTop="8dp"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="@string/HAM_Q6A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ6RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ6RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="@string/HAM_Q6A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ6RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/HAMDQ6RB2"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="@string/HAM_Q6A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ7RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ7TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q7"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ7RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ7TxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ7RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ7TxtV"
+                            android:layout_gravity="left"
+                            android:layout_marginTop="8dp"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="@string/HAM_Q7A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ7RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ7RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:justificationMode="inter_word"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="@string/HAM_Q7A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ7RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ7RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:justificationMode="inter_word"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="@string/HAM_Q7A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ7RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ7RB3"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="left"
+                            android:justificationMode="inter_word"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="@string/HAM_Q7A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ8RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ8TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q8"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/HAMDQ8ExtraTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/HAMDQ8TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q8_Intro"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ8RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ8ExtraTxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ8RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ8TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/HAM_Q8A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ8RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ8RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q8A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ8RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ8RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q8A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ8RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ8RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q8A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ8RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ8RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q8A5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMD9RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMD9TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q9"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/HAMDQ9ExtraTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/HAMD9TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q9_Intro"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ9RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ9ExtraTxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ9RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMD9TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q9A1"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ9RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ9RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q9A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ9RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ9RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q9A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ9RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ9RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q9A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ9RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ9RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q9A5"
+                            android:layout_marginBottom="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ10RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ10TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q10"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ10RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ10TxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ10RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ10TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:layout_marginTop="8dp"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q10A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ10RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ10RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q10A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ10RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ10RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q10A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ10RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ10RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q10A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ10RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ10RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q10A5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMD11RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ11TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q11"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/HAMDQ11ExtraTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/HAMDQ11TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q9_Intro"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ11RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ11ExtraTxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ11RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ11TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/HAM_Q11A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ11RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ11RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q11A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ11RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ11RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q11A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ11RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ11RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q11A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ11RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ11RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q11A5"
+                            android:layout_marginBottom="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ12RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ12TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q12"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/HAMDQ12ExtraTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/HAMDQ12TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q12_Intro"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ12RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ12ExtraTxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ12RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ12TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/HAM_Q12A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ12RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ12RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q12A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ12RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ12RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q12A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ13RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ13TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q13"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/HAMDQ13ExtraTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/HAMDQ13TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q13_Intro"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ13RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ13ExtraTxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ13RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ13TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/HAM_Q13A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ13RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ13RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q13A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ13RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ13RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q13A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ14RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ14TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q14"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/HAMDQ14ExtraTxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/HAMDQ14TxtV"
+                        android:background="@drawable/ham_pink_textview_2"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q14_Intro"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ14RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ14ExtraTxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ14RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ14TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/HAM_Q14A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ14RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ14RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q14A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ14RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ14RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q14A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BAIQ15RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ15TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q15"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ15RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ15TxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ15RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ15TxtV"
+                            android:layout_gravity="left"
+                            android:layout_marginTop="8dp"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q15A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ15RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ15RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q15A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ15RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ15RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q15A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ15RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ15RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q15A4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ16RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ16TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q16"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ16RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ16TxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ16RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ16TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/HAM_Q16A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ16RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ16RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q16A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ16RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ16RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q16A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HAMDQ17RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/HAMDQ17TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ham_pink_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/HAM_Q17"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/HAMDQ17RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/HAMDQ17TxtV">
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ17RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ17TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/HAM_Q17A1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ17RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ17RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/HAM_Q17A2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/HAMDQ17RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/HAMDQ17RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/HAM_Q17A3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/arrowButtonsRelLayoyt">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submitBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/ham_button_rounded_corners"
+                        android:padding="20dp"
+                        android:text="Υπολογισμός"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:visibility="visible"
+                        tools:ignore="TextContrastCheck" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/clearBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/submitBtn"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerVertical="false"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/submitBtn"
+                        android:background="@drawable/ham_button_rounded_corners"
+                        android:textAllCaps="false"
+                        android:text="Κααθρισμός δεδομένων" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

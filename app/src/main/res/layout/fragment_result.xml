@@ -11,13 +11,14 @@
 
 
     <TextView
-        android:id="@+id/loginTitleTxtV2"
+        android:id="@+id/testTitleTxtV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@color/trans"
-        android:drawableLeft="@drawable/ic_favorite_white_24dp"
+        android:drawableLeft="@drawable/ic_favorite_black_24dp"
         android:drawablePadding="8dp"
-        android:elevation="5dp"
+        android:elevation="4dp"
         android:gravity="center"
         android:minHeight="48dp"
         android:paddingLeft="16dp"
@@ -93,42 +94,45 @@
         android:id="@+id/include_pop_up_menu"
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="-56dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/barHGL1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.38" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/barHGL2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.46" />
+        app:layout_constraintGuide_percent="0.55" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/barHGL3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.54" />
+        app:layout_constraintGuide_percent="0.65" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/barHG4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.62" />
+        app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/barHGL5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/numHGL1"
@@ -142,7 +146,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.56" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/numHGL3"
@@ -203,7 +207,7 @@
         android:text="20%+"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/numHGL4"
+        app:layout_constraintBottom_toTopOf="@+id/barHGL1"
         app:layout_constraintStart_toStartOf="@+id/percentGL1" />
 
     <TextView
@@ -215,7 +219,7 @@
         android:text="7.5%"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/numHGL3"
+        app:layout_constraintBottom_toTopOf="@+id/barHGL2"
         app:layout_constraintStart_toStartOf="@+id/percentGL1" />
 
     <TextView
@@ -225,7 +229,7 @@
         android:text="5%"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/numHGL2"
+        app:layout_constraintBottom_toTopOf="@+id/barHGL3"
         app:layout_constraintStart_toStartOf="@+id/percentGL1" />
 
 
@@ -236,8 +240,9 @@
         android:text="0%"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/numHGL1"
-        app:layout_constraintStart_toStartOf="@+id/percentGL1" />
+        app:layout_constraintBottom_toTopOf="@+id/barHG4"
+        app:layout_constraintEnd_toStartOf="@+id/verGL2"
+        app:layout_constraintStart_toStartOf="@+id/barVG1" />
 
     <RelativeLayout
         android:id="@+id/testResultInfoRelLayout"
@@ -300,14 +305,15 @@
     <TextView
         android:id="@+id/ratingBarTitle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
         android:gravity="center"
+        android:minHeight="48dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/hightRiskRelLayout"
         app:layout_constraintEnd_toEndOf="@id/rateBarRightGL"
-        app:layout_constraintStart_toStartOf="@id/rateBarLeftGL"
-        app:layout_constraintTop_toBottomOf="@id/guideline3" />
+        app:layout_constraintStart_toStartOf="@id/rateBarLeftGL" />
 
     <RelativeLayout
         android:id="@+id/hightRiskRelLayout"

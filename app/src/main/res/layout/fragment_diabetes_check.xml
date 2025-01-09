@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -16,20 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/MidnightBlue">
-
-        <RelativeLayout
-            android:id="@+id/cvdTitleForm"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/Naby"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            app:layout_constraintBottom_toTopOf="@id/horGL1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </RelativeLayout>
 
         <!--    covariance title form-->
 
@@ -156,9 +141,9 @@
                     android:id="@+id/sexRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/relativelayout_style"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
@@ -169,6 +154,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/green_textview_style_4"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:elevation="4dp"
                         android:gravity="center"
                         android:minHeight="48dp"
@@ -176,7 +163,7 @@
                         android:paddingBottom="5dp"
                         android:shadowDx="2"
                         android:shadowDy="2"
-                        android:text="PATIENT SEX"
+                        android:text="Patient Sex"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -197,8 +184,10 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="15dp"
-                            android:text="MALE" />
+                            android:text="MALE"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/femaleRB1"
@@ -206,7 +195,9 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="FEMALE" />
+                            android:minHeight="48dp"
+                            android:text="FEMALE"
+                            android:textSize="20sp" />
                     </RadioGroup>
 
                 </RelativeLayout>
@@ -215,9 +206,9 @@
                     android:id="@+id/pamRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/relativelayout_style"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -230,6 +221,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/green_textview_style_4"
                         android:elevation="4dp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
@@ -255,7 +248,9 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
-                            android:text="YES" />
+                            android:minHeight="48dp"
+                            android:text="YES"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/pamnegative"
@@ -263,8 +258,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="5dp"
-                            android:text="NO" />
+                            android:text="NO"
+                            android:textSize="20sp" />
                     </RadioGroup>
 
                 </RelativeLayout>
@@ -273,9 +270,9 @@
                     android:id="@+id/steroidsRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/relativelayout_style"
                     android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -289,6 +286,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/green_textview_style_4"
                         android:elevation="4dp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
@@ -314,8 +313,10 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:singleLine="false"
-                            android:text="YES" />
+                            android:text="YES"
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/steroidsnegativeRB2"
@@ -323,9 +324,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="5dp"
                             android:singleLine="false"
-                            android:text="NO" />
+                            android:text="NO"
+                            android:textSize="20sp" />
                     </RadioGroup>
 
                 </RelativeLayout>
@@ -334,9 +337,9 @@
                     android:id="@+id/ageRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/relativelayout_style"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -353,7 +356,7 @@
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:text="PATIENT AGE"
+                        android:text="Patient Age"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -364,6 +367,8 @@
                         android:layout_below="@id/ageTxtV"
                         android:layout_centerHorizontal="true"
                         android:ems="10"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="Patient age in years"
                         android:inputType="number"
@@ -377,9 +382,9 @@
                     android:id="@+id/bmiRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/relativelayout_style"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -398,7 +403,7 @@
                         android:paddingBottom="5dp"
                         android:text="@string/BMI"
                         android:textColor="@color/black"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/editTextBMI"
@@ -407,6 +412,8 @@
                         android:layout_below="@id/bmiTxtV"
                         android:layout_centerHorizontal="true"
                         android:ems="10"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:hint="Input your Body Mass Indicator"
                         android:inputType="numberDecimal"
@@ -420,9 +427,9 @@
                     android:id="@+id/siblingsRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/relativelayout_style"
                     android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -436,6 +443,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/green_textview_style_4"
                         android:elevation="4dp"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
@@ -457,6 +466,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:text="@string/diabetes_and_sibling"
                             android:textSize="20sp" />
 
@@ -467,6 +477,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="15dp"
                             android:text="@string/diabetes_or_sibling"
                             android:textSize="20sp" />
@@ -478,8 +489,9 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="70dp"
-                            android:text="No relatve with Diabetes"
+                            android:text="No relative with Diabetes"
                             android:textSize="20sp" />
                     </RadioGroup>
 
@@ -489,10 +501,10 @@
                     android:id="@+id/smokeRelLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/relativelayout_style"
                     android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -511,6 +523,8 @@
                         android:layout_centerVertical="false"
                         android:background="@drawable/green_textview_style_4"
                         android:elevation="4dp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:paddingTop="5dp"
@@ -535,6 +549,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:text="Current"
                             android:textAlignment="center"
                             android:textSize="20dp" />
@@ -546,6 +561,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/radiobutton_style"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="2dp"
                             android:text="Former"
                             android:textAlignment="center"
@@ -557,6 +573,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:minHeight="48dp"
                             android:paddingRight="13dp"
                             android:text="Never"
                             android:textAlignment="center"
@@ -565,20 +582,45 @@
 
                 </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/submitBtn"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="false"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/diabetes_button_rounded_corners"
-                    android:padding="20dp"
-                    android:text="CALCULATE"
-                    android:textSize="20sp"
-                    android:visibility="visible"
-                    tools:ignore="TextContrastCheck" />
+                    android:id="@+id/arrowButtonsRelLayoyt">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submitBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/diabetes_button_rounded_corners"
+                        android:padding="20dp"
+                        android:text="Υπολογισμός"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:visibility="visible"
+                        tools:ignore="TextContrastCheck" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/clearBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/submitBtn"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerVertical="false"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/submitBtn"
+                        android:textAllCaps="false"
+                        android:background="@drawable/diabetes_button_rounded_corners"
+                        android:text="Καθαρισμός φόρμας" />
+
+
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/resultsRelLayout"

@@ -1,0 +1,2097 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="CheckBDIViewModel"
+            type="com.example.cvdriskestimator.viewModels.CheckBDIPatientViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/formConLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MidnightBlue">
+
+        <!--    covariance title form-->
+
+        <include
+            android:id="@+id/include_cvd_title_form"
+            layout="@layout/cvd_title_form"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/horGL1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        application menu panel-->
+
+
+        <include
+            android:id="@+id/include_pop_up_menu"
+            layout="@layout/popup_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horGL1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/radioBXSetter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horGL1"
+            android:id="@+id/BDITestTitleLayout">
+
+            <TextView
+                android:id="@+id/bdiTestTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/blue_baitest_form_title_style"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:singleLine="false"
+                android:text="BDI Test"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+<!--            android:drawableLeft="@drawable/ic_bdi_depression_24_post"-->
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fadeScrollbars="false"
+            android:fillViewport="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toBottomOf="@id/horGL1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/bdiCheckLinLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:context=".MainActivity">
+
+                <View
+                    android:id="@+id/pillowVIew"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/formTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:text="@string/bdi_test_intro_text"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ1RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ1TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_Α"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ1RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ1TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ1RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ1TxtV"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_Α1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ1RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ1RB1"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_Α2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ1RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ1RB2"
+                            android:layout_gravity="left"
+                            android:gravity="center|left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_Α3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ1RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ1RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_Α4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ1RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ1RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_Α5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ2RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ2TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_Β"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ2RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ2TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ2RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ2TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_Β1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ2RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ1RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_Β2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ2RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ2RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_Β3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ2RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ2RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_Β4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ2RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ2RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_Β5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ3RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ3TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_C"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ3RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ3TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ3RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ3TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_C1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ3RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ3RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_C2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ3RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ3RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_C3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ3RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ3RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_C4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ3RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ3RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_C5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDQ4RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ4TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_D"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ4RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ4TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ4RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ4TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_D1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ4RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ4RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_D2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ4RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ4RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_D3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ4RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ4RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_D4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ4RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ4RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_D5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDQ5RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ5TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_E"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ5RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ5TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ5RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ5TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_E1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ5RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ5RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_E2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ5RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ5RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_E3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ5RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ5RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_E4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ5RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ5RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_E5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDQ6RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ6TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_F"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ6RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ6TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ6RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ6TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_F1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ6RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ6RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_F2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ6RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ6RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_F3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ6RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ6RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_F4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ6RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ6RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_F5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDQ7RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ7TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_G"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ7RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ7TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ7RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ7TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_G1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ7RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ7RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_G2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ7RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ7RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_G3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ7RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ7RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_G4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ7RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ7RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_G5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDQ8RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ8TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_H"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ8RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ8TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ8RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ8TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_H1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ8RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ8RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_H2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ8RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ8RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_H3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ8RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ8RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_H4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDQ9RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ9TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_I"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ9RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ9TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ9RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ9TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_I1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ9RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ9RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_I2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ9RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ9RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_I3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ9RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ9RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_I4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ9RB5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ9RB4"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_I5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/BDQ10RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ10TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_K"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ10RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ10TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ10RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ10TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_K1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ10RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ10RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_K2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ10RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ10RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_K3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ10RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ10RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_K4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDQ11RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ11TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_L"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ11RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ11TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ11RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ11TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_L1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ11RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ11RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_L2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ11RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ11RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_L3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ11RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ11RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_L4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDQ12RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ12TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_M"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ12RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ12TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ12RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ12TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_M1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ12RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ12RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_M2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ12RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ12RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_M3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ12RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ12RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_M4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ13RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ13TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_N"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ13RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ13TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ13RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ13TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_N1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ13RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ13RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_N2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ13RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ13RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_N3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ13RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ13RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_N4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ14RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ14TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_O"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ14RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ14TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ14RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ14TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_O1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ14RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ14RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_O2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ14RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ14RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+
+                            android:text="@string/BDI_answer_O3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ14RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ14RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_O4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ15RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ15TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_P"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ15RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ15TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ15RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ15TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_P1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ15RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ15RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_P2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ15RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ15RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_P3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ15RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ15RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_P4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ16RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ16TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_Q"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ16RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ16TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ16RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ16TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_Q1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ16RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ16RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_Q2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ16RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ16RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_Q3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ16RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ16RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_Q4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ17RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ17TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_answer_R1"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ17RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ17TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ17RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ17TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_R1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ17RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ17RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_R2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ17RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ17RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_R3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ17RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ17RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_R4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ18RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ18TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_answer_S1"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ18RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ18TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ18RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ18TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_S1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ18RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ18RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_S2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ18RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ18RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_S3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ18RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ18RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_S4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ19RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ19TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_answer_T1"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ19RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ19TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ19RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ19TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_T1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ19RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ19RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_T2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ19RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ19RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_T3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/BDIQ20RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ20TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_question_U"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ20RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ20TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ20RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ20TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_U1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ20RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ21RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_U2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ20RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ20RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_U3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ20RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ20RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_U4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/BDIQ21RelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/relativelayout_style">
+
+                    <TextView
+                        android:id="@+id/BDIQ21TxtV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/light_blue_textview"
+                        android:gravity="center"
+                        android:minHeight="64dp"
+                        android:text="@string/BDI_answer_V1"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/BDIQ21RG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/BDIQ21TxtV">
+
+                        <RadioButton
+                            android:id="@+id/BDIQ21RB1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ21TxtV"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_V1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ21RB2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ21RB1"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_V2"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ21RB3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ21RB2"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:text="@string/BDI_answer_V3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/BDIQ21RB4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/BDIQ21RB3"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/BDI_answer_V4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/arrowButtonsRelLayoyt">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submitBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/bai_button_rounded_corners"
+                        android:textAllCaps="false"
+                        android:padding="20dp"
+                        android:text="Υπολογισμός"
+                        android:textSize="20sp"
+                        android:visibility="visible"
+                        tools:ignore="TextContrastCheck" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/clearBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/submitBtn"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerVertical="false"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/submitBtn"
+                        android:textAllCaps="false"
+                        android:background="@drawable/bai_button_rounded_corners"
+                        android:text="Καθραισμός φόρμας" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

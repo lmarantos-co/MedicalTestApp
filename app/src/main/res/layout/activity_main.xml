@@ -1,36 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainActiConLayout"
+    android:id="@+id/mainConLayout"
     android:layout_width="match_parent"
+    android:background="@color/MidnightBlue"
     android:layout_height="match_parent"
-    android:background="@color/MidnightBlue">
-
-
-    <include
-        android:id="@+id/include_cvd_title_form"
-        layout="@layout/cvd_title_form"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/horGL1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:visibility="visible">
-
-    </FrameLayout>
+    android:visibility="visible">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horGL1"
@@ -39,264 +16,739 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.14" />
 
+    <include
+        android:id="@+id/include_cvd_title_form"
+        layout="@layout/cvd_title_form"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:elevation="15dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/horGL1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    covariance title form-->
+    <include
+        android:id="@+id/include_all_patient_list_test"
+        layout="@layout/all_tests_results_of_patient_layou"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:elevation="10dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_cvd_title_form" />
 
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="5dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/VG5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/Naby"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2" />
+    </FrameLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horGL2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.22"
-         />
+    <include
+        android:id="@+id/initial_test_screen_popup"
+        layout="@layout/initial_popup_test_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:elevation="5dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" />
-
-    <ImageView
-        android:id="@+id/cvdTestImgV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:alpha="1"
-        android:background="@color/trans"
-        android:cropToPadding="false"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/VGL4"
-        app:layout_constraintStart_toStartOf="@+id/VGL1"
-        app:layout_constraintTop_toTopOf="@+id/horGL2"
-        app:srcCompat="@drawable/ic_favorite_white_48dp" />
-
-    <TextView
-        android:id="@+id/cvdTestTxtView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="CVD Test"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/VGL4"
-        app:layout_constraintStart_toStartOf="@+id/VGL1"
-        app:layout_constraintTop_toBottomOf="@+id/cvdTestImgV" />
-
-    <ImageView
-        android:id="@+id/diabetesTestImgV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="@color/trans"
-        android:cropToPadding="false"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/VGL2"
-        app:layout_constraintStart_toStartOf="@+id/VGL4"
-        app:layout_constraintTop_toTopOf="@+id/horGL2"
-        app:srcCompat="@drawable/blood_drop" />
-
-    <TextView
-        android:id="@+id/diabetesTestTxtView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Diabetes Test"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/VGL2"
-        app:layout_constraintStart_toStartOf="@+id/VGL4"
-        app:layout_constraintTop_toBottomOf="@+id/diabetesTestImgV" />
-
-    <ImageView
-        android:id="@+id/kidneyImgV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:alpha="1"
-        android:background="@color/trans"
-        android:cropToPadding="false"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/VGL4"
-        app:layout_constraintStart_toStartOf="@+id/VGL1"
-        app:layout_constraintTop_toTopOf="@+id/barHG4"
-        app:srcCompat="@drawable/ic_kindey" />
-
-
-    <TextView
-        android:id="@+id/kidneysTestTxtView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Kidneys Temp"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/VGL4"
-        app:layout_constraintStart_toStartOf="@+id/VGL1"
-        app:layout_constraintTop_toBottomOf="@+id/kidneyImgV" />
-
-
-    <ImageView
-        android:id="@+id/lungsImgV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:alpha="1"
-        android:background="@color/trans"
-        android:cropToPadding="false"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/VGL2"
-        app:layout_constraintStart_toStartOf="@+id/VGL4"
-        app:layout_constraintTop_toTopOf="@+id/barHG4"
-        app:srcCompat="@drawable/ic_lungs_solid" />
-
-    <TextView
-        android:id="@+id/lungsTestTxtView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Lungs Temp"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/VGL2"
-        app:layout_constraintStart_toStartOf="@+id/VGL4"
-        app:layout_constraintTop_toBottomOf="@+id/lungsImgV" />
 
     <include
         android:id="@+id/include_popup_menu"
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/VGL1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/VGL2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/menuLeftGL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.4" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/VGL4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/VG6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.7" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horGLImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/barHG4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
-
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/registerTxtV"-->
-    <!--        style="@style/MainTextViewStyle"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:background="@color/third_dark_accent"-->
-    <!--        android:drawableLeft="@drawable/ic_register_128_svg"-->
-    <!--        android:gravity="center"-->
-    <!--        android:paddingLeft="10dp"-->
-    <!--        android:text="REGISTER"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        android:textSize="24sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        android:visibility="gone"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/horGL3"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="@id/horGL2" />-->
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horGL4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.92" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horGL5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.92" />
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/loginTxtV"-->
-    <!--        style="@style/MainTextViewStyle"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:background="@color/fourth_dark_accent"-->
-    <!--        android:drawableLeft="@drawable/ic_login_128_svg"-->
-    <!--        android:gravity="center"-->
-    <!--        android:paddingLeft="10dp"-->
-    <!--        android:text="LOGIN"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        android:textSize="24sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        android:visibility="gone"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/horGL4"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="@id/horGL3" />-->
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-
-        android:id="@+id/appBottomnavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_height="match_parent"
         android:visibility="gone"
-        app:labelVisibilityMode="labeled"
+        tools:layout_editor_absoluteY="921dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/mainScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/MidnightBlue"
+        android:fadeScrollbars="false"
+        android:fillViewport="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/horGL5"
-        app:menu="@menu/bottom_nav_menu">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horGL1">
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        <LinearLayout
+            android:id="@+id/mainActivityLinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+
+            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--                android:id="@+id/mainActiConLayout"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:background="@color/MidnightBlue"-->
+            <!--                android:scrollbars="vertical">-->
+
+
+            <RelativeLayout
+                android:id="@+id/cvdDiabetesRelLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horGL1b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.01" />
+
+                <View
+                    android:id="@+id/cvdPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/cvd_panel_layout"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/cvdTestTxtView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignWithParentIfMissing="false"
+                    android:layout_alignRight="@id/cvdPanel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentRight="false"
+                    android:layout_centerHorizontal="false"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:text="CVD Test"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+
+                <View
+                    android:id="@+id/diabetesPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/diabetes_panel_layout"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/diabetesTestTxtView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/diabetesPanel"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="Diabetes Test"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/depAnxietyRelLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/depressionPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/mdepression_layout"
+                    android:visibility="visible" />
+
+
+                <TextView
+                    android:id="@+id/depressionTestTxtView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/depressionPanel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="false"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="Derpession Test"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+
+                <View
+                    android:id="@+id/anxietyPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/anxiety_panel_layout"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/anxietyTestTxtView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/anxietyPanel"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="Anxiety Test"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/painDietRelLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/painPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/pain_layout_panel"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/painTxtView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/painPanel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerHorizontal="false"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="Pain Test"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+
+                <View
+                    android:id="@+id/dietPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/diet_panel_style"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/medDietScoreTxtView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/dietPanel"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="MedDietScore \n Test"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/gdiGdRelLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/bdiPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/beck_depression_panel"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/bdiTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/bdiPanel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="Beck \n Depression"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+                <View
+                    android:id="@+id/gdPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/geriatric_depression_panel"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/gdsTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/gdPanel"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="Geriatric  \n Depression"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/staiZungRelLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/staiPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/stai_panel_layout"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/staTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/staiPanel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="STAI Test"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+
+                <TextView
+                    android:id="@+id/zungTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/zungPanel"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:text="Zung \n Depression"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+                <View
+                    android:id="@+id/zungPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/zung_panel_layout"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/hammDassRelLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/hammPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/hamm_panel_layout"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/hammTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/hammPanel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:text="Hammilton \n Depression"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+
+                <View
+                    android:id="@+id/dassPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/dass_panel_layout"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/dassTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/dassPanel"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerHorizontal="false"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="DASS TEST"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/OPQOLRelLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/opqolPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/opqol_panel_layout"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/opqolTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/opqolPanel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:text="OPQOL-35 \n TEST"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+                <View
+                    android:id="@+id/gdPanel3"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/geriatric_anxiety_panel"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/gassTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/opqolTxtV"
+                    android:gravity="center"
+                    android:text="Geriatric Anxiety \n Scale"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SIDASRelLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/sidasPanel"
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/sidas_panel_layout"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/sidasTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/sidasPanel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:text="SIDAS TEST"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+
+
+            </RelativeLayout>
+
+            <!--    covariance title form-->
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/VG5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/Naby"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.15" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/VGL1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/VGL2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/menuLeftGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.4" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/VGL4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/VG6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGLImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.75" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/barHG4"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.35" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/barHG5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.55" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/barHGL6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.95" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/barHGL7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+
+            <!--    <TextView-->
+            <!--        android:id="@+id/registerTxtV"-->
+            <!--        style="@style/MainTextViewStyle"-->
+            <!--        android:layout_width="0dp"-->
+            <!--        android:layout_height="0dp"-->
+            <!--        android:background="@color/third_dark_accent"-->
+            <!--        android:drawableLeft="@drawable/ic_register_128_svg"-->
+            <!--        android:gravity="center"-->
+            <!--        android:paddingLeft="10dp"-->
+            <!--        android:text="REGISTER"-->
+            <!--        android:textColor="@color/white"-->
+            <!--        android:textSize="24sp"-->
+            <!--        android:textStyle="bold"-->
+            <!--        android:visibility="gone"-->
+            <!--        app:layout_constraintBottom_toTopOf="@id/horGL3"-->
+            <!--        app:layout_constraintEnd_toEndOf="parent"-->
+            <!--        app:layout_constraintStart_toStartOf="parent"-->
+            <!--        app:layout_constraintTop_toTopOf="@id/horGL2" />-->
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="1.15" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horGL5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="1.3" />
+
+            <!--    <TextView-->
+            <!--        android:id="@+id/loginTxtV"-->
+            <!--        style="@style/MainTextViewStyle"-->
+            <!--        android:layout_width="0dp"-->
+            <!--        android:layout_height="0dp"-->
+            <!--        android:background="@color/fourth_dark_accent"-->
+            <!--        android:drawableLeft="@drawable/ic_login_128_svg"-->
+            <!--        android:gravity="center"-->
+            <!--        android:paddingLeft="10dp"-->
+            <!--        android:text="LOGIN"-->
+            <!--        android:textColor="@color/white"-->
+            <!--        android:textSize="24sp"-->
+            <!--        android:textStyle="bold"-->
+            <!--        android:visibility="gone"-->
+            <!--        app:layout_constraintBottom_toTopOf="@id/horGL4"-->
+            <!--        app:layout_constraintEnd_toEndOf="parent"-->
+            <!--        app:layout_constraintStart_toStartOf="parent"-->
+            <!--        app:layout_constraintTop_toTopOf="@id/horGL3" />-->
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+
+                android:id="@+id/appBottomnavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:visibility="gone"
+                app:labelVisibilityMode="labeled"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/bottom_nav_menu">
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+            <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

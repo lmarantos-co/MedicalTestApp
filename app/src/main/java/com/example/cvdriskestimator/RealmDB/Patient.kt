@@ -1,15 +1,21 @@
 package com.example.cvdriskestimator.RealmDB
 
+import io.realm.RealmList
 import io.realm.RealmModel
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 import io.realm.annotations.Required
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 @RealmClass
 open class Patient() : RealmModel {
 
     @PrimaryKey
-    var id : String = ""
+    var patientId : String = ""
+
+    //User Data
 
     @Required
     var userName : String = ""
@@ -17,44 +23,21 @@ open class Patient() : RealmModel {
     @Required
     var password : String = ""
 
-    //patient data
+    @Required
+    var patientName : String = ""
 
     @Required
-    var patientAge : String = ""
+    var patientLastName : String = ""
 
     @Required
-    var patientSex : String = ""
+    var dateOfBirth : String = ""
 
     @Required
-    var patientRace : String = ""
+    var occupation : String = ""
 
-    @Required
-    var SSB : String = ""
+    var yearsOfApprentice : Int = 0
 
-    @Required
-    var TCH : String = ""
-
-    @Required
-    var HDL : String = ""
-
-    @Required
-    var smoker : String = ""
-
-    @Required
-    var treatment : String = ""
-
-    @Required
-    var patientPAM : String = ""
-
-    @Required
-    var patientSteroids : String = ""
-
-    @Required
-    var patientBMI : String = ""
-
-    @Required
-    var patientSiblings : String = ""
-
+    var listOfTests : RealmList<Test>? = null
 
 
 }

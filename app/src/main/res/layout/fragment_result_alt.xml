@@ -11,13 +11,14 @@
     tools:context=".Fragments.ResultFragment">
 
     <TextView
-        android:id="@+id/loginTitleTxtV2"
+        android:id="@+id/testTitleTxtV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="@color/trans"
-        android:drawableLeft="@drawable/ic_favorite_white_24dp"
+        android:drawableLeft="@drawable/ic_favorite_black_24dp"
         android:drawablePadding="8dp"
-        android:elevation="5dp"
+        android:elevation="4dp"
         android:gravity="center"
         android:minHeight="48dp"
         android:paddingLeft="16dp"
@@ -138,7 +139,8 @@
         android:id="@+id/include_pop_up_menu"
         layout="@layout/popup_menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/VG5"
@@ -213,7 +215,7 @@
         android:background="@drawable/relativelayout_style"
         app:layout_constraintLeft_toRightOf="@id/verGL1"
         app:layout_constraintRight_toLeftOf="@id/verGL2"
-        app:layout_constraintTop_toBottomOf="@+id/loginTitleTxtV2">
+        app:layout_constraintTop_toBottomOf="@+id/testTitleTxtV">
 
         <TextView
             android:id="@+id/txtVTestResultTitle"

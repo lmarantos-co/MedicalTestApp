@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/results_con_layout_bpi_test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/MidnightBlue">>
+
+    <!--    covariance title form-->
+
+    <include
+        android:id="@+id/include_cvd_title_form"
+        layout="@layout/cvd_title_form"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/horGL1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include_pop_up_menu"
+        layout="@layout/popup_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <TextView
+        android:id="@+id/baiTestTitleTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/trans"
+        android:drawableLeft="@drawable/ic_depression_24"
+        android:drawablePadding="8dp"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/cvd_test_results"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/horGL1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/titleVGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/titleVGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarNumVGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarVGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarNumVGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarNumVGL2b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarVGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarNumVGL2c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.88" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultsTopHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultsBottomHGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.38" />
+
+    <RelativeLayout
+        android:id="@+id/baiTestTitleRelLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/relativelayout_style"
+        android:gravity="center"
+        app:layout_constraintLeft_toRightOf="@id/titleVGL1"
+        app:layout_constraintRight_toLeftOf="@id/titleVGL2"
+        app:layout_constraintTop_toBottomOf="@+id/resultsTopHGL">
+
+        <TextView
+            android:id='@+id/testResultTxtV'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/ScoreLinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/testResultTxtV"
+            android:background="@color/very_light_gray"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/totalScoreDescOPQOLTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="false"
+                android:gravity="center"
+                android:maxLines="3"
+                android:minLines="3"
+                android:text="@string/bai_test_score"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/totalPSScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:minLines="3"
+                android:paddingLeft="5dp"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarTOPGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resultBarBOTTOMGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.52" />
+
+    <RelativeLayout
+        android:id="@+id/lowAnxietyResultBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/resultBarBOTTOMGL"
+        app:layout_constraintEnd_toEndOf="@id/lowAnxietyHGL"
+        app:layout_constraintStart_toStartOf="@id/resultBarVGL1"
+        app:layout_constraintTop_toBottomOf="@id/resultBarTOPGL" />
+
+    <RelativeLayout
+        android:id="@+id/moderateAnxietyResultBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/resultBarBOTTOMGL"
+        app:layout_constraintEnd_toEndOf="@id/moderateAnxietyHGL"
+        app:layout_constraintStart_toStartOf="@id/lowAnxietyHGL"
+        app:layout_constraintTop_toBottomOf="@id/resultBarTOPGL" />
+
+    <RelativeLayout
+        android:id="@+id/severeAnxietyResultBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/resultBarBOTTOMGL"
+        app:layout_constraintEnd_toEndOf="@id/resultBarVGL2"
+        app:layout_constraintStart_toStartOf="@id/moderateAnxietyHGL"
+        app:layout_constraintTop_toBottomOf="@id/resultBarTOPGL" />
+
+    <TextView
+        android:id="@+id/lowAnxietyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
+        app:layout_constraintEnd_toStartOf="@+id/resultBarNumVGL2"
+        app:layout_constraintStart_toStartOf="@+id/resultBarNumVGL1"
+        app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
+
+    <TextView
+        android:id="@+id/moderateAnxietyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="21"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
+        app:layout_constraintEnd_toStartOf="@+id/afterLowAnxietyHGL"
+        app:layout_constraintStart_toStartOf="@+id/beforeLowAnxietyHGL"
+        app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
+
+    <TextView
+        android:id="@+id/severeAnxietyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="35"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
+        app:layout_constraintEnd_toStartOf="@+id/beforeModerateNumAnxietyHGL2"
+        app:layout_constraintStart_toStartOf="@+id/beforeModerateNumAnxietyHGL"
+        app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
+
+    <TextView
+        android:id="@+id/mostSevereAnxietyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="63"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/AnxietyresultTopGL"
+        app:layout_constraintEnd_toStartOf="@+id/resultBarNumVGL2c"
+        app:layout_constraintStart_toStartOf="@+id/resultBarNumVGL2b"
+        app:layout_constraintTop_toTopOf="@+id/resultBarBOTTOMGL" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeLowAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.32" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lowAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/afterLowAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.38" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeModerateNumAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/moderateAnxietyHGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.58" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeModerateNumAnxietyHGL2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.61" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeTitleVGL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/beforeTitleVGL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/AnxietyresultTopGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.60" />
+
+    <RelativeLayout
+        android:id='@+id/baiTestSummaryRelLayout'
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bai_test_summary_rel_layout"
+        app:layout_constraintEnd_toEndOf="@id/titleVGL2"
+        app:layout_constraintStart_toStartOf="@id/titleVGL1"
+        app:layout_constraintTop_toBottomOf="@id/AnxietyresultTopGL">
+
+        <TextView
+            android:id="@+id/BAItestSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/BAItestSummaryB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/BAItestSummary"
+            android:justificationMode="inter_word"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
